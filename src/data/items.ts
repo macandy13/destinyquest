@@ -2,6 +2,17 @@ import { EquipmentItem } from '../types/hero';
 
 export const ITEMS: EquipmentItem[] = [
   {
+    "id": "master_cloack",
+    "name": "MASTER CLOAK",
+    "type": "cloak",
+    "act": 1,
+    "stats": {
+      "speed": 1
+    },
+    "abilities": ['Adrenaline', 'Charm', 'Acid', 'Barbs', 'Charge', 'Quicksilver', 'Parry'],
+    "entry": "0",
+    "location": "Vendor/Tithebury Cross"
+  }, {
     "id": "patchwork_cloak",
     "name": "Patchwork cloak",
     "type": "cloak",
@@ -6747,9 +6758,9 @@ export const ITEMS: EquipmentItem[] = [
 ];
 
 export const getItemsBySlot = (slot: string) => {
-    return ITEMS.filter(item => {
-        if (slot === 'ring1' || slot === 'ring2') return item.type === 'ring';
-        return item.type === slot;
-    });
+  return ITEMS.filter(item => {
+    if (slot === 'ring1' || slot === 'ring2') return item.type === 'ring';
+    return item.type === slot;
+  });
 };
 
