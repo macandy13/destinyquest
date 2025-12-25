@@ -6,6 +6,10 @@
     border-radius: 4px;
     background: var(--dq-bg-card);
     min-width: 120px;
+    max-width: 200px;
+    /* Limit width now that we have text */
+    display: flex;
+    flex-direction: column;
 }
 
 .ability-header {
@@ -13,6 +17,7 @@
     align-items: center;
     justify-content: space-between;
     gap: 0.5rem;
+    margin-bottom: 0.25rem;
 }
 
 .ability-name {
@@ -26,8 +31,18 @@
     color: var(--dq-dim);
 }
 
+.ability-description {
+    font-size: 0.75rem;
+    color: var(--dq-text-secondary);
+    margin-bottom: 0.5rem;
+    line-height: 1.2;
+    flex-grow: 1;
+    /* Allow description to take space if needed */
+}
+
 .ability-use-btn {
-    margin-top: 0.25rem;
+    margin-top: auto;
+    /* Push button to bottom */
     width: 100%;
     font-size: 0.75rem;
     background: #334155;
