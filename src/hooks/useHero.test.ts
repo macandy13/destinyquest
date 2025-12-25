@@ -4,6 +4,8 @@ import { describe, it, expect } from 'vitest';
 import { EquipmentItem } from '../types/hero';
 
 const MOCK_ITEM: EquipmentItem = {
+    id: 'test-item',
+    type: 'mainHand',
     name: 'Iron Sword',
     act: 1,
     stats: {

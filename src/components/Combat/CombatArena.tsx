@@ -10,7 +10,7 @@ interface CombatArenaProps {
 
 const CombatArena: React.FC<CombatArenaProps> = ({ hero }) => {
     const { combat, startCombat, nextRound, resolveSpeedRound, resolveDamageAndArmour } = useCombat(hero.stats);
-    const [diceTotal, setDiceTotal] = useState<number | undefined>(undefined);
+    const [, setDiceTotal] = useState<number | undefined>(undefined);
 
     if (!combat.isActive || !combat.enemy) {
         return (

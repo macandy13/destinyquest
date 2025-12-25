@@ -1,7 +1,7 @@
 import { renderHook, act } from '@testing-library/react';
 import { useCombat } from '../hooks/useCombat';
 import { HeroStats } from '../types/hero';
-import { describe, it, expect, beforeEach } from 'vitest';
+import { describe, it, expect } from 'vitest';
 
 const MOCK_HERO_STATS: HeroStats = {
     speed: 5,
