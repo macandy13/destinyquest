@@ -160,5 +160,17 @@ describe('Ability Implementations', () => {
             const updates = heal?.onActivate?.(mildDamageState, MOCK_HERO);
             expect(updates?.heroHealth).toBe(20);
         });
+
+        it('should return false for canActivate if health is full', () => {
+            const heal = getAbilityDefinition('Heal');
+            const fullHealthState = { ...INITIAL_STATE, heroHealth: 20 };
+            expect(heal?.canActivate?.(fullHealthState, MOCK_HERO)).toBe(false);
+        });
+
+        it('should return true for canActivate if health is not full', () => {
+            const heal = getAbilityDefinition('Heal');
+            const damagedState = { ...INITIAL_STATE, heroHealth: 10 };
+            expect(heal?.canActivate?.(damagedState, MOCK_HERO)).toBe(true);
+        });
     });
 });

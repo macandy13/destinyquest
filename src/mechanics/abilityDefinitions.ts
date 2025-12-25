@@ -167,6 +167,9 @@ registerAbility({
     name: 'Heal',
     type: 'modifier',
     description: 'Instantly restore 4 health.',
+    canActivate: (state, hero) => {
+        return state.heroHealth < hero.stats.maxHealth;
+    },
     onActivate: (state, hero) => {
         const newHealth = Math.min(hero.stats.maxHealth, state.heroHealth + 4);
         return {
