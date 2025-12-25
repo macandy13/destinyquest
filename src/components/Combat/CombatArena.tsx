@@ -3,6 +3,7 @@ import { useCombat } from '../../hooks/useCombat';
 import { getAbilityDefinition } from '../../mechanics/abilityDefinitions';
 import { Hero } from '../../types/hero';
 import CombatDice from './CombatDice';
+import CombatLog from './CombatLog';
 import './CombatArena.css';
 import { ActiveAbility } from '../../types/combat';
 
@@ -267,13 +268,7 @@ const CombatArena: React.FC<CombatArenaProps> = ({ hero }) => {
                 )}
             </div>
 
-            <div className="combat-log">
-                {[...combat.logs].reverse().map((log, i) => (
-                    <div key={i} className={`log-entry ${log.type}`}>
-                        [{log.round}] {log.message}
-                    </div>
-                ))}
-            </div>
+            <CombatLog logs={combat.logs} />
         </div>
     );
 };

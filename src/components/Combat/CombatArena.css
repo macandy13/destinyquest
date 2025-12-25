@@ -23,19 +23,6 @@
     /* Stabilize positioning */
 }
 
-.combat-log {
-    /* Removed margin-top auto as Grid handles placement */
-    background: rgba(0, 0, 0, 0.5);
-    border-radius: var(--radius-sm);
-    padding: var(--spacing-sm);
-    /* height is handled by grid row */
-    height: 100%;
-    overflow-y: auto;
-    font-size: 0.8rem;
-    font-family: monospace;
-    border-top: 2px solid var(--dq-gold-dim);
-}
-
 .combatants {
     display: flex;
     justify-content: space-between;
@@ -92,35 +79,7 @@
     align-items: center;
 }
 
-.combat-log {
-    margin-top: auto;
-    background: rgba(0, 0, 0, 0.5);
-    border-radius: var(--radius-sm);
-    padding: var(--spacing-sm);
-    max-height: 150px;
-    overflow-y: auto;
-    font-size: 0.8rem;
-    font-family: monospace;
-    border-top: 1px solid var(--dq-gold-dim);
-}
-
-.log-entry {
-    margin-bottom: 4px;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-    padding-bottom: 2px;
-}
-
-.log-entry.damage-hero {
-    color: var(--dq-crimson);
-}
-
-.log-entry.damage-enemy {
-    color: var(--dq-gold);
-}
-
-.log-entry.info {
-    color: var(--dq-light-grey);
-}
+/* Log styles moved to CombatLog.css */
 
 .combat-controls {
     display: grid;

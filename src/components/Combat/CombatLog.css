@@ -1,0 +1,112 @@
+/* CombatLog.css */
+
+.combat-log {
+    /* Sticky/Fixed at bottom of grid or absolute to container */
+    background: rgba(0, 0, 0, 0.85);
+    /* Darker background for readability */
+    border-radius: var(--radius-sm);
+    display: flex;
+    flex-direction: column;
+    /* Occupy the full height of the grid row */
+    height: 100%;
+    min-height: 150px;
+    border-top: 2px solid var(--dq-gold-dim);
+    position: relative;
+    /* For z-index context */
+    z-index: 10;
+    transition: all 0.3s ease;
+}
+
+.combat-log.fullscreen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    z-index: 1000;
+    border-radius: 0;
+    border: none;
+    min-height: 100vh;
+}
+
+.log-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: var(--spacing-sm);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.log-title {
+    color: var(--dq-gold);
+    font-size: 0.8rem;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.log-toggle {
+    background: transparent;
+    border: 1px solid var(--dq-gold-dim);
+    color: var(--dq-gold-dim);
+    font-size: 0.7rem;
+    padding: 2px 8px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.log-toggle:hover {
+    background: var(--dq-gold-dim);
+    color: var(--dq-bg-dark);
+}
+
+.log-content {
+    flex: 1;
+    overflow-y: auto;
+    padding: var(--spacing-sm);
+    font-size: 0.8rem;
+    font-family: monospace;
+}
+
+/* Scrollbar styling for log */
+.log-content::-webkit-scrollbar {
+    width: 6px;
+}
+
+.log-content::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.3);
+}
+
+.log-content::-webkit-scrollbar-thumb {
+    background: var(--dq-gold-dim);
+    border-radius: 3px;
+}
+
+.log-entry {
+    margin-bottom: 4px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    padding-bottom: 2px;
+}
+
+.log-entry.damage-hero {
+    color: var(--dq-crimson);
+}
+
+.log-entry.damage-enemy {
+    color: var(--dq-gold);
+}
+
+.log-entry.info {
+    color: var(--dq-light-grey);
+}
+
+.log-entry.win {
+    color: var(--dq-gold);
+    font-weight: bold;
+}
+
+.log-entry.loss {
+    color: var(--dq-crimson);
+    font-weight: bold;
+}
