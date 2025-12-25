@@ -29,6 +29,8 @@ export interface EquipmentItem {
     description?: string;
     stats?: Partial<HeroStats>;
     abilities?: string[];
+    entry?: string; // Entry number (e.g., "123")
+    location?: string; // Location or enemy where found
 }
 
 export type HeroPath = '' | 'Warrior' | 'Mage' | 'Rogue';

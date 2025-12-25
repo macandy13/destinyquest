@@ -9,7 +9,9 @@ export const ITEMS: EquipmentItem[] = [
     "stats": {
       "speed": 1
     },
-    "abilities": []
+    "abilities": [],
+    "entry": "68",
+    "location": "Vendor/Tithebury Cross"
   },
   {
     "id": "bat_cape",
@@ -20,7 +22,9 @@ export const ITEMS: EquipmentItem[] = [
       "speed": 1,
       "armour": 1
     },
-    "abilities": []
+    "abilities": [],
+    "entry": "114",
+    "location": "Vendor/Tithebury Cross"
   },
   {
     "id": "spindlesilk_cloak",
@@ -33,7 +37,9 @@ export const ITEMS: EquipmentItem[] = [
     },
     "abilities": [
       "Spindlesilk set"
-    ]
+    ],
+    "entry": "132",
+    "location": "Vendor/Tithebury Cross"
   },
   {
     "id": "chieftains_furs",
@@ -43,7 +49,9 @@ export const ITEMS: EquipmentItem[] = [
     "stats": {
       "armour": 1
     },
-    "abilities": []
+    "abilities": [],
+    "entry": "260",
+    "location": "Goblin chief"
   },
   {
     "id": "travellers_cloak",
@@ -56,7 +64,9 @@ export const ITEMS: EquipmentItem[] = [
     },
     "abilities": [
       "Charm"
-    ]
+    ],
+    "entry": "251",
+    "location": "Farmhouse bedroom"
   },
   {
     "id": "moth_eaten_blanket",
@@ -66,7 +76,9 @@ export const ITEMS: EquipmentItem[] = [
     "stats": {
       "speed": 1
     },
-    "abilities": []
+    "abilities": [],
+    "entry": "40",
+    "location": "Ruffians"
   },
   {
     "id": "crusaders_mantle",
@@ -78,7 +90,9 @@ export const ITEMS: EquipmentItem[] = [
     },
     "abilities": [
       "Charm"
-    ]
+    ],
+    "entry": "160",
+    "location": "Valadin Roth"
   },
   {
     "id": "hags_shawl",
@@ -91,7 +105,9 @@ export const ITEMS: EquipmentItem[] = [
     },
     "abilities": [
       "Charm"
-    ]
+    ],
+    "entry": "155",
+    "location": "Witch"
   },
   {
     "id": "savage_pelt",
@@ -104,7 +120,9 @@ export const ITEMS: EquipmentItem[] = [
     },
     "abilities": [
       "Savagery"
-    ]
+    ],
+    "entry": "26",
+    "location": "Mauler"
   },
   {
     "id": "mottled_cloak",
@@ -115,7 +133,9 @@ export const ITEMS: EquipmentItem[] = [
       "speed": 1,
       "armour": 1
     },
-    "abilities": []
+    "abilities": [],
+    "entry": "283",
+    "location": "Mud golem"
   },
   {
     "id": "diaphanous_wings",
@@ -128,7 +148,9 @@ export const ITEMS: EquipmentItem[] = [
     },
     "abilities": [
       "Haste"
-    ]
+    ],
+    "entry": "314",
+    "location": "Hive queen"
   },
   {
     "id": "cloak_of_white_winter",
@@ -141,7 +163,9 @@ export const ITEMS: EquipmentItem[] = [
     },
     "abilities": [
       "Piercing"
-    ]
+    ],
+    "entry": "385",
+    "location": "Baron Greylock"
   },
   {
     "id": "cloak_of_shadows",
@@ -154,7 +178,9 @@ export const ITEMS: EquipmentItem[] = [
     },
     "abilities": [
       "Feint"
-    ]
+    ],
+    "entry": "487",
+    "location": "Count(special)"
   },
   {
     "id": "golden_fleece",
@@ -167,7 +193,9 @@ export const ITEMS: EquipmentItem[] = [
     },
     "abilities": [
       "Radiance"
-    ]
+    ],
+    "entry": "548",
+    "location": "Treasure vault"
   },
   {
     "id": "phoenix_feathers",
@@ -180,7 +208,9 @@ export const ITEMS: EquipmentItem[] = [
     },
     "abilities": [
       "Charm"
-    ]
+    ],
+    "entry": "565",
+    "location": "Phoenix"
   },
   {
     "id": "destroyers_drape",
@@ -193,7 +223,9 @@ export const ITEMS: EquipmentItem[] = [
     },
     "abilities": [
       "Backfire"
-    ]
+    ],
+    "entry": "568",
+    "location": "Inferno"
   },
   {
     "id": "majestic_shoulders",
@@ -207,6 +239,8 @@ export const ITEMS: EquipmentItem[] = [
     "abilities": [
       "Royal regalia set"
     ],
+    "entry": "397",
+    "location": "Puzzle chest",
     "careerPreference": "Warrior"
   },
   {
@@ -221,6 +255,8 @@ export const ITEMS: EquipmentItem[] = [
     "abilities": [
       "Lifespark"
     ],
+    "entry": "509",
+    "location": "Swamp giant",
     "careerPreference": "Mage"
   },
   {
@@ -234,7 +270,9 @@ export const ITEMS: EquipmentItem[] = [
     },
     "abilities": [
       "Savagery"
-    ]
+    ],
+    "entry": "443",
+    "location": "Stone giant"
   },
   {
     "id": "mantle_of_spite",
@@ -248,6 +286,8 @@ export const ITEMS: EquipmentItem[] = [
     "abilities": [
       "Curse"
     ],
+    "entry": "713",
+    "location": "Gargoyle chest",
     "careerPreference": "Mage"
   },
   {
@@ -261,7 +301,9 @@ export const ITEMS: EquipmentItem[] = [
     },
     "abilities": [
       "Fearless"
-    ]
+    ],
+    "entry": "379",
+    "location": "Nalsa"
   },
   {
     "id": "winter_pelt",
@@ -274,7 +316,9 @@ export const ITEMS: EquipmentItem[] = [
     },
     "abilities": [
       "Savagery"
-    ]
+    ],
+    "entry": "359",
+    "location": "King Louis"
   },
   {
     "id": "flame_mantle",
@@ -287,7 +331,9 @@ export const ITEMS: EquipmentItem[] = [
     },
     "abilities": [
       "Fire aura"
-    ]
+    ],
+    "entry": "377",
+    "location": "Vesuvius"
   },
   {
     "id": "dragonscale_cloak",
@@ -300,7 +346,9 @@ export const ITEMS: EquipmentItem[] = [
     },
     "abilities": [
       "Second skin"
-    ]
+    ],
+    "entry": "708",
+    "location": "Kindle"
   },
   {
     "id": "slipstream_silk",
@@ -314,6 +362,8 @@ export const ITEMS: EquipmentItem[] = [
     "abilities": [
       "Surge"
     ],
+    "entry": "914",
+    "location": "Waldo's wares",
     "careerPreference": "Mage"
   },
   {
@@ -328,6 +378,8 @@ export const ITEMS: EquipmentItem[] = [
     "abilities": [
       "Overpower"
     ],
+    "entry": "815",
+    "location": "Waldo's wares",
     "careerPreference": "Warrior"
   },
   {
@@ -341,7 +393,9 @@ export const ITEMS: EquipmentItem[] = [
     },
     "abilities": [
       "Piercing"
-    ]
+    ],
+    "entry": "759",
+    "location": "Flesh golem"
   },
   {
     "id": "broken_wings",
@@ -354,7 +408,9 @@ export const ITEMS: EquipmentItem[] = [
     },
     "abilities": [
       "Fearless"
-    ]
+    ],
+    "entry": "906",
+    "location": "Bone angel"
   },
   {
     "id": "cloak_of_ceremonies",
@@ -367,7 +423,9 @@ export const ITEMS: EquipmentItem[] = [
     },
     "abilities": [
       "Radiance"
-    ]
+    ],
+    "entry": "892",
+    "location": "Arthurian's vault"
   },
   {
     "id": "stalwart_shoulders",
@@ -380,7 +438,9 @@ export const ITEMS: EquipmentItem[] = [
     },
     "abilities": [
       "Might of stone"
-    ]
+    ],
+    "entry": "565",
+    "location": "Yorvic"
   },
   {
     "id": "gloom_shade",
@@ -394,6 +454,8 @@ export const ITEMS: EquipmentItem[] = [
     "abilities": [
       "Steal"
     ],
+    "entry": "622",
+    "location": "Brothers' Grimm",
     "careerPreference": "Rogue"
   },
   {
@@ -408,6 +470,8 @@ export const ITEMS: EquipmentItem[] = [
     "abilities": [
       "Fortitude"
     ],
+    "entry": "727",
+    "location": "Brothers' Grimm",
     "careerPreference": "Warrior"
   },
   {
@@ -422,6 +486,8 @@ export const ITEMS: EquipmentItem[] = [
     "abilities": [
       "Surge"
     ],
+    "entry": "762",
+    "location": "Scout",
     "careerPreference": "Mage"
   },
   {
@@ -435,7 +501,9 @@ export const ITEMS: EquipmentItem[] = [
     },
     "abilities": [
       "Dark pact"
-    ]
+    ],
+    "entry": "765",
+    "location": "Malcontent"
   },
   {
     "id": "veil_of_dark_synergies",
@@ -449,6 +517,8 @@ export const ITEMS: EquipmentItem[] = [
     "abilities": [
       "Second wind"
     ],
+    "entry": "865",
+    "location": "Daarko",
     "careerPreference": "Mage"
   },
   {
@@ -463,6 +533,8 @@ export const ITEMS: EquipmentItem[] = [
     "abilities": [
       "Spore cloud"
     ],
+    "entry": "845",
+    "location": "Decayers",
     "careerPreference": "Mage"
   },
   {
@@ -477,6 +549,8 @@ export const ITEMS: EquipmentItem[] = [
     "abilities": [
       "Barbs"
     ],
+    "entry": "847",
+    "location": "The wrecker",
     "careerPreference": "Rogue"
   },
   {
@@ -488,7 +562,9 @@ export const ITEMS: EquipmentItem[] = [
       "brawn": 1,
       "armour": 1
     },
-    "abilities": []
+    "abilities": [],
+    "entry": "175",
+    "location": "Vendor/Tithebury Cross"
   },
   {
     "id": "all_weather_hat",
@@ -498,7 +574,9 @@ export const ITEMS: EquipmentItem[] = [
     "stats": {
       "speed": 1
     },
-    "abilities": []
+    "abilities": [],
+    "entry": "243",
+    "location": "Weather wizard"
   },
   {
     "id": "rusted_helm",
@@ -508,7 +586,9 @@ export const ITEMS: EquipmentItem[] = [
     "stats": {
       "speed": 1
     },
-    "abilities": []
+    "abilities": [],
+    "entry": "166",
+    "location": "Skeletons"
   },
   {
     "id": "maulers_maw",
@@ -521,7 +601,9 @@ export const ITEMS: EquipmentItem[] = [
     },
     "abilities": [
       "Fearless"
-    ]
+    ],
+    "entry": "26",
+    "location": "Mauler"
   },
   {
     "id": "trolls_nose_ring",
@@ -533,7 +615,9 @@ export const ITEMS: EquipmentItem[] = [
     },
     "abilities": [
       "Charm"
-    ]
+    ],
+    "entry": "122",
+    "location": "Bridge troll"
   },
   {
     "id": "ramrod_helm",
@@ -546,7 +630,9 @@ export const ITEMS: EquipmentItem[] = [
     },
     "abilities": [
       "Haste"
-    ]
+    ],
+    "entry": "311",
+    "location": "No Hope tinker"
   },
   {
     "id": "footpads_cover",
@@ -558,6 +644,8 @@ export const ITEMS: EquipmentItem[] = [
       "armour": 1
     },
     "abilities": [],
+    "entry": "338",
+    "location": "Thievies' guild",
     "careerPreference": "Rogue"
   },
   {
@@ -569,7 +657,9 @@ export const ITEMS: EquipmentItem[] = [
       "speed": 1,
       "armour": 1
     },
-    "abilities": []
+    "abilities": [],
+    "entry": "287",
+    "location": "Mushroom forest"
   },
   {
     "id": "great_helm",
@@ -580,7 +670,9 @@ export const ITEMS: EquipmentItem[] = [
       "speed": 1,
       "brawn": 1
     },
-    "abilities": []
+    "abilities": [],
+    "entry": "494",
+    "location": "Slime"
   },
   {
     "id": "wyrm_crest",
@@ -591,7 +683,9 @@ export const ITEMS: EquipmentItem[] = [
       "magic": 1,
       "armour": 2
     },
-    "abilities": []
+    "abilities": [],
+    "entry": "517",
+    "location": "Wormwood (normal)"
   },
   {
     "id": "wyrm_crown",
@@ -602,7 +696,9 @@ export const ITEMS: EquipmentItem[] = [
       "magic": 2,
       "armour": 2
     },
-    "abilities": []
+    "abilities": [],
+    "entry": "533",
+    "location": "Wormwood (special)"
   },
   {
     "id": "nightguard_cover",
@@ -615,7 +711,9 @@ export const ITEMS: EquipmentItem[] = [
     },
     "abilities": [
       "Steadfast"
-    ]
+    ],
+    "entry": "548",
+    "location": "Treasure vault"
   },
   {
     "id": "flame_bathed_cowl",
@@ -628,7 +726,9 @@ export const ITEMS: EquipmentItem[] = [
     },
     "abilities": [
       "Sear"
-    ]
+    ],
+    "entry": "655",
+    "location": "Inferno"
   },
   {
     "id": "jesters_cap",
@@ -641,7 +741,9 @@ export const ITEMS: EquipmentItem[] = [
     },
     "abilities": [
       "Last laugh"
-    ]
+    ],
+    "entry": "374",
+    "location": "Jester"
   },
   {
     "id": "masque_of_deceit",
@@ -654,7 +756,9 @@ export const ITEMS: EquipmentItem[] = [
     },
     "abilities": [
       "Deceieve"
-    ]
+    ],
+    "entry": "422",
+    "location": "Count (normal)"
   },
   {
     "id": "pirates_bandanna",
@@ -665,7 +769,9 @@ export const ITEMS: EquipmentItem[] = [
       "speed": 1,
       "brawn": 2
     },
-    "abilities": []
+    "abilities": [],
+    "entry": "716",
+    "location": "Kalimari"
   },
   {
     "id": "vanquishers_helm",
@@ -679,6 +785,8 @@ export const ITEMS: EquipmentItem[] = [
     "abilities": [
       "Vanquish"
     ],
+    "entry": "581",
+    "location": "Armoury",
     "careerPreference": "Warrior"
   },
   {
@@ -693,6 +801,8 @@ export const ITEMS: EquipmentItem[] = [
     "abilities": [
       "Steadfast"
     ],
+    "entry": "583",
+    "location": "Raptor pit",
     "careerPreference": "Rogue"
   },
   {
@@ -707,6 +817,8 @@ export const ITEMS: EquipmentItem[] = [
     "abilities": [
       "Evade"
     ],
+    "entry": "744",
+    "location": "Gargoyle chest",
     "careerPreference": "Rogue"
   },
   {
@@ -720,7 +832,9 @@ export const ITEMS: EquipmentItem[] = [
     },
     "abilities": [
       "Command"
-    ]
+    ],
+    "entry": "689",
+    "location": "Stone giant"
   },
   {
     "id": "crown_of_command_upgrade_1_",
@@ -733,7 +847,9 @@ export const ITEMS: EquipmentItem[] = [
     },
     "abilities": [
       "Command"
-    ]
+    ],
+    "entry": "689",
+    "location": "Stone giant"
   },
   {
     "id": "crown_of_command_upgrade_2_",
@@ -746,7 +862,9 @@ export const ITEMS: EquipmentItem[] = [
     },
     "abilities": [
       "Command"
-    ]
+    ],
+    "entry": "689",
+    "location": "Stone giant"
   },
   {
     "id": "tri_horned_hat",
@@ -759,7 +877,9 @@ export const ITEMS: EquipmentItem[] = [
     },
     "abilities": [
       "Charm"
-    ]
+    ],
+    "entry": "277",
+    "location": "Left-hook Luke"
   },
   {
     "id": "horns_of_the_bull",
@@ -772,7 +892,9 @@ export const ITEMS: EquipmentItem[] = [
     },
     "abilities": [
       "Charge"
-    ]
+    ],
+    "entry": "216",
+    "location": "Zen"
   },
   {
     "id": "simian_crown",
@@ -785,7 +907,9 @@ export const ITEMS: EquipmentItem[] = [
     },
     "abilities": [
       "Chill touch"
-    ]
+    ],
+    "entry": "359",
+    "location": "King Louis"
   },
   {
     "id": "desert_keffiyeh",
@@ -796,7 +920,9 @@ export const ITEMS: EquipmentItem[] = [
       "speed": 1,
       "brawn": 2
     },
-    "abilities": []
+    "abilities": [],
+    "entry": "370",
+    "location": "Nasareim"
   },
   {
     "id": "agal_of_shifting_sands",
@@ -807,7 +933,9 @@ export const ITEMS: EquipmentItem[] = [
       "magic": 2,
       "armour": 2
     },
-    "abilities": []
+    "abilities": [],
+    "entry": "370",
+    "location": "Nasareim"
   },
   {
     "id": "wreath_of_woe",
@@ -820,7 +948,9 @@ export const ITEMS: EquipmentItem[] = [
     },
     "abilities": [
       "Barbs"
-    ]
+    ],
+    "entry": "346",
+    "location": "Snapjaw"
   },
   {
     "id": "firewalkers_faceguard",
@@ -834,6 +964,8 @@ export const ITEMS: EquipmentItem[] = [
     "abilities": [
       "Overpower"
     ],
+    "entry": "400",
+    "location": "Magmageddon",
     "careerPreference": "Warrior"
   },
   {
@@ -848,6 +980,8 @@ export const ITEMS: EquipmentItem[] = [
     "abilities": [
       "Vanish"
     ],
+    "entry": "839",
+    "location": "Waldo's wares",
     "careerPreference": "Rogue"
   },
   {
@@ -859,7 +993,9 @@ export const ITEMS: EquipmentItem[] = [
       "magic": 3,
       "armour": 2
     },
-    "abilities": []
+    "abilities": [],
+    "entry": "776",
+    "location": "Bone wyvern"
   },
   {
     "id": "knuckle_head",
@@ -873,6 +1009,8 @@ export const ITEMS: EquipmentItem[] = [
     "abilities": [
       "Slam"
     ],
+    "entry": "695",
+    "location": "Bone construct",
     "careerPreference": "Warrior"
   },
   {
@@ -886,7 +1024,9 @@ export const ITEMS: EquipmentItem[] = [
     },
     "abilities": [
       "Charm"
-    ]
+    ],
+    "entry": "649",
+    "location": "Necromancer"
   },
   {
     "id": "enchanted_coif",
@@ -900,6 +1040,8 @@ export const ITEMS: EquipmentItem[] = [
     "abilities": [
       "Deceive"
     ],
+    "entry": "677",
+    "location": "Tor knight",
     "careerPreference": "Mage"
   },
   {
@@ -913,7 +1055,9 @@ export const ITEMS: EquipmentItem[] = [
     },
     "abilities": [
       "Charge"
-    ]
+    ],
+    "entry": "775",
+    "location": "Skeleton horde"
   },
   {
     "id": "bone_headdress",
@@ -926,7 +1070,9 @@ export const ITEMS: EquipmentItem[] = [
     },
     "abilities": [
       "Charm"
-    ]
+    ],
+    "entry": "778",
+    "location": "Ghoul pack"
   },
   {
     "id": "cracked_spectacles",
@@ -939,7 +1085,9 @@ export const ITEMS: EquipmentItem[] = [
     },
     "abilities": [
       "Focus"
-    ]
+    ],
+    "entry": "923",
+    "location": "Apprentice"
   },
   {
     "id": "crown_of_ice",
@@ -952,7 +1100,9 @@ export const ITEMS: EquipmentItem[] = [
     },
     "abilities": [
       "Barbs"
-    ]
+    ],
+    "entry": "874",
+    "location": "Sammain (special)"
   },
   {
     "id": "bone_halo",
@@ -965,7 +1115,9 @@ export const ITEMS: EquipmentItem[] = [
     },
     "abilities": [
       "Focus"
-    ]
+    ],
+    "entry": "906",
+    "location": "Bone angel"
   },
   {
     "id": "black_widow",
@@ -978,7 +1130,9 @@ export const ITEMS: EquipmentItem[] = [
     },
     "abilities": [
       "Webbed"
-    ]
+    ],
+    "entry": "929",
+    "location": "Dark Arthurian"
   },
   {
     "id": "diadem_of_mastery",
@@ -992,6 +1146,8 @@ export const ITEMS: EquipmentItem[] = [
     "abilities": [
       "Dominate"
     ],
+    "entry": "664",
+    "location": "Brothers' Grimm",
     "careerPreference": "Mage"
   },
   {
@@ -1005,7 +1161,9 @@ export const ITEMS: EquipmentItem[] = [
     },
     "abilities": [
       "Piercing"
-    ]
+    ],
+    "entry": "702",
+    "location": "Ghoulash"
   },
   {
     "id": "budaks_blindfold",
@@ -1019,6 +1177,8 @@ export const ITEMS: EquipmentItem[] = [
     "abilities": [
       "Second sight"
     ],
+    "entry": "733",
+    "location": "Budak",
     "careerPreference": "Rogue"
   },
   {
@@ -1032,7 +1192,9 @@ export const ITEMS: EquipmentItem[] = [
     },
     "abilities": [
       "Lightning"
-    ]
+    ],
+    "entry": "642",
+    "location": "Lichenstein"
   },
   {
     "id": "the_morgue",
@@ -1046,6 +1208,8 @@ export const ITEMS: EquipmentItem[] = [
     "abilities": [
       "Leech"
     ],
+    "entry": "765",
+    "location": "Malcontent",
     "careerPreference": "Mage"
   },
   {
@@ -1060,6 +1224,8 @@ export const ITEMS: EquipmentItem[] = [
     "abilities": [
       "Overload"
     ],
+    "entry": "765",
+    "location": "Death orb",
     "careerPreference": "Mage"
   },
   {
@@ -1073,7 +1239,9 @@ export const ITEMS: EquipmentItem[] = [
     },
     "abilities": [
       "Fortitide"
-    ]
+    ],
+    "entry": "665",
+    "location": "Lord of pain"
   },
   {
     "id": "dread_mask",
@@ -1087,6 +1255,8 @@ export const ITEMS: EquipmentItem[] = [
     "abilities": [
       "Overpower"
     ],
+    "entry": "893",
+    "location": "Daarko",
     "careerPreference": "Warrior"
   },
   {
@@ -1100,7 +1270,9 @@ export const ITEMS: EquipmentItem[] = [
     },
     "abilities": [
       "Chill touch"
-    ]
+    ],
+    "entry": "813",
+    "location": "Ghasts"
   },
   {
     "id": "thalamus_tiara",
@@ -1114,6 +1286,8 @@ export const ITEMS: EquipmentItem[] = [
     "abilities": [
       "Haste"
     ],
+    "entry": "826",
+    "location": "Doom orb",
     "careerPreference": "Mage"
   },
   {
@@ -1125,7 +1299,9 @@ export const ITEMS: EquipmentItem[] = [
       "speed": 1,
       "magic": 1
     },
-    "abilities": []
+    "abilities": [],
+    "entry": "68",
+    "location": "Vendor/Tithebury Cross"
   },
   {
     "id": "rat_bitten_gloves",
@@ -1136,7 +1312,9 @@ export const ITEMS: EquipmentItem[] = [
       "brawn": 1,
       "magic": 1
     },
-    "abilities": []
+    "abilities": [],
+    "entry": "161",
+    "location": "Rat swarm"
   },
   {
     "id": "half_digested_gauntlets",
@@ -1149,7 +1327,9 @@ export const ITEMS: EquipmentItem[] = [
     },
     "abilities": [
       "Acid"
-    ]
+    ],
+    "entry": "258",
+    "location": "Burrower wyrm"
   },
   {
     "id": "masons_gloves",
@@ -1161,7 +1341,9 @@ export const ITEMS: EquipmentItem[] = [
     },
     "abilities": [
       "First cut"
-    ]
+    ],
+    "entry": "209",
+    "location": "Crypt chest"
   },
   {
     "id": "stone_fists",
@@ -1172,7 +1354,9 @@ export const ITEMS: EquipmentItem[] = [
       "brawn": 2,
       "armour": 1
     },
-    "abilities": []
+    "abilities": [],
+    "entry": "522",
+    "location": "Treasure vault"
   },
   {
     "id": "diamond_gauntlets",
@@ -1184,7 +1368,9 @@ export const ITEMS: EquipmentItem[] = [
     },
     "abilities": [
       "Piercing"
-    ]
+    ],
+    "entry": "540",
+    "location": "Rumbler"
   },
   {
     "id": "vambraces_of_might",
@@ -1197,7 +1383,9 @@ export const ITEMS: EquipmentItem[] = [
     },
     "abilities": [
       "Parry"
-    ]
+    ],
+    "entry": "568",
+    "location": "Inferno"
   },
   {
     "id": "prophets_handwraps",
@@ -1210,7 +1398,9 @@ export const ITEMS: EquipmentItem[] = [
     },
     "abilities": [
       "Trickster"
-    ]
+    ],
+    "entry": "550",
+    "location": "Jenlar's cabin"
   },
   {
     "id": "nightguard_gloves",
@@ -1224,6 +1414,8 @@ export const ITEMS: EquipmentItem[] = [
     "abilities": [
       "Steadfast"
     ],
+    "entry": "642",
+    "location": "Armoury",
     "careerPreference": "Rogue"
   },
   {
@@ -1238,6 +1430,8 @@ export const ITEMS: EquipmentItem[] = [
     "abilities": [
       "Nightwalker set"
     ],
+    "entry": "765",
+    "location": "Gargoyle chest",
     "careerPreference": "Rogue"
   },
   {
@@ -1252,6 +1446,8 @@ export const ITEMS: EquipmentItem[] = [
     "abilities": [
       "Dominate"
     ],
+    "entry": "414",
+    "location": "Arena champion",
     "careerPreference": "Mage"
   },
   {
@@ -1265,7 +1461,9 @@ export const ITEMS: EquipmentItem[] = [
     },
     "abilities": [
       "Barbs"
-    ]
+    ],
+    "entry": "346",
+    "location": "Snapjaw"
   },
   {
     "id": "gardeners_gloves",
@@ -1278,7 +1476,9 @@ export const ITEMS: EquipmentItem[] = [
     },
     "abilities": [
       "Thorns"
-    ]
+    ],
+    "entry": "516",
+    "location": "Alchemist bonus quest"
   },
   {
     "id": "hydra_scaled_gloves",
@@ -1292,6 +1492,8 @@ export const ITEMS: EquipmentItem[] = [
     "abilities": [
       "Regrowth"
     ],
+    "entry": "389",
+    "location": "Snapjaw",
     "careerPreference": "Mage"
   },
   {
@@ -1306,6 +1508,8 @@ export const ITEMS: EquipmentItem[] = [
     "abilities": [
       "Regrowth"
     ],
+    "entry": "418",
+    "location": "Snapjaw",
     "careerPreference": "Mage"
   },
   {
@@ -1320,6 +1524,8 @@ export const ITEMS: EquipmentItem[] = [
     "abilities": [
       "Fire aura"
     ],
+    "entry": "377",
+    "location": "Vesuvius",
     "careerPreference": "Warrior"
   },
   {
@@ -1333,7 +1539,9 @@ export const ITEMS: EquipmentItem[] = [
     },
     "abilities": [
       "Sear"
-    ]
+    ],
+    "entry": "400",
+    "location": "Magmageddon"
   },
   {
     "id": "mortuary_gauntlets",
@@ -1347,6 +1555,8 @@ export const ITEMS: EquipmentItem[] = [
     "abilities": [
       "Acid"
     ],
+    "entry": "803",
+    "location": "Waldo's wares",
     "careerPreference": "Warrior"
   },
   {
@@ -1361,6 +1571,8 @@ export const ITEMS: EquipmentItem[] = [
     "abilities": [
       "Critical strike"
     ],
+    "entry": "903",
+    "location": "Waldo's wares",
     "careerPreference": "Rogue"
   },
   {
@@ -1374,7 +1586,9 @@ export const ITEMS: EquipmentItem[] = [
     },
     "abilities": [
       "Adrenaline"
-    ]
+    ],
+    "entry": "620",
+    "location": "Packmaster"
   },
   {
     "id": "gauntlets_of_the_fallen",
@@ -1388,6 +1602,8 @@ export const ITEMS: EquipmentItem[] = [
     "abilities": [
       "Finery of the fallen"
     ],
+    "entry": "617",
+    "location": "Tor knight",
     "careerPreference": "Warrior"
   },
   {
@@ -1401,7 +1617,9 @@ export const ITEMS: EquipmentItem[] = [
     },
     "abilities": [
       "Bleed"
-    ]
+    ],
+    "entry": "759",
+    "location": "Flesh golem"
   },
   {
     "id": "branded_bracers",
@@ -1414,7 +1632,9 @@ export const ITEMS: EquipmentItem[] = [
     },
     "abilities": [
       "Regrowth"
-    ]
+    ],
+    "entry": "880",
+    "location": "Branded brute"
   },
   {
     "id": "tainted_wraps",
@@ -1427,7 +1647,9 @@ export const ITEMS: EquipmentItem[] = [
     },
     "abilities": [
       "Curse"
-    ]
+    ],
+    "entry": "912",
+    "location": "Malaise"
   },
   {
     "id": "devourers_grips",
@@ -1441,6 +1663,8 @@ export const ITEMS: EquipmentItem[] = [
     "abilities": [
       "Rust"
     ],
+    "entry": "664",
+    "location": "Brothers'Grimm",
     "careerPreference": "Mage"
   },
   {
@@ -1454,7 +1678,9 @@ export const ITEMS: EquipmentItem[] = [
     },
     "abilities": [
       "Might of stone"
-    ]
+    ],
+    "entry": "736",
+    "location": "Ghoulash chains"
   },
   {
     "id": "bracelet_of_fire",
@@ -1468,6 +1694,8 @@ export const ITEMS: EquipmentItem[] = [
     "abilities": [
       "Embers"
     ],
+    "entry": "736",
+    "location": "Ghoulash chains",
     "careerPreference": "Mage"
   },
   {
@@ -1481,7 +1709,9 @@ export const ITEMS: EquipmentItem[] = [
     },
     "abilities": [
       "Adrenaline"
-    ]
+    ],
+    "entry": "736",
+    "location": "Ghoulash chains"
   },
   {
     "id": "bracelet_of_power",
@@ -1495,6 +1725,8 @@ export const ITEMS: EquipmentItem[] = [
     "abilities": [
       "Focus"
     ],
+    "entry": "702",
+    "location": "Ghoulash",
     "careerPreference": "Mage"
   },
   {
@@ -1508,7 +1740,9 @@ export const ITEMS: EquipmentItem[] = [
     },
     "abilities": [
       "Rake"
-    ]
+    ],
+    "entry": "722",
+    "location": "Bone giant"
   },
   {
     "id": "abattoir_gloves",
@@ -1522,6 +1756,8 @@ export const ITEMS: EquipmentItem[] = [
     "abilities": [
       "Bleed"
     ],
+    "entry": "642",
+    "location": "Lichenstein",
     "careerPreference": "Mage"
   },
   {
@@ -1532,7 +1768,9 @@ export const ITEMS: EquipmentItem[] = [
     "stats": {
       "magic": 1
     },
-    "abilities": []
+    "abilities": [],
+    "entry": "68",
+    "location": "Vendor/Tithebury Cross"
   },
   {
     "id": "goblin_leathers",
@@ -1542,7 +1780,9 @@ export const ITEMS: EquipmentItem[] = [
     "stats": {
       "armour": 1
     },
-    "abilities": []
+    "abilities": [],
+    "entry": "150",
+    "location": "Goblin"
   },
   {
     "id": "huntsmans_jerkin",
@@ -1552,7 +1792,9 @@ export const ITEMS: EquipmentItem[] = [
     "stats": {
       "armour": 1
     },
-    "abilities": []
+    "abilities": [],
+    "entry": "228",
+    "location": "Huntsman"
   },
   {
     "id": "studded_leather",
@@ -1562,7 +1804,9 @@ export const ITEMS: EquipmentItem[] = [
     "stats": {
       "armour": 2
     },
-    "abilities": []
+    "abilities": [],
+    "entry": "125/174",
+    "location": "Were rat"
   },
   {
     "id": "rain_soaked_robe",
@@ -1573,7 +1817,9 @@ export const ITEMS: EquipmentItem[] = [
       "magic": 1,
       "armour": 1
     },
-    "abilities": []
+    "abilities": [],
+    "entry": "243",
+    "location": "Weather wizard"
   },
   {
     "id": "web_coated_jerkin",
@@ -1586,7 +1832,9 @@ export const ITEMS: EquipmentItem[] = [
     },
     "abilities": [
       "Webbed"
-    ]
+    ],
+    "entry": "206",
+    "location": "Water cave"
   },
   {
     "id": "spindlesilk_mantle",
@@ -1599,7 +1847,9 @@ export const ITEMS: EquipmentItem[] = [
     },
     "abilities": [
       "Spindlesilk set"
-    ]
+    ],
+    "entry": "91",
+    "location": "Spindle"
   },
   {
     "id": "crusaders_vestments",
@@ -1612,7 +1862,9 @@ export const ITEMS: EquipmentItem[] = [
     },
     "abilities": [
       "Heal"
-    ]
+    ],
+    "entry": "160",
+    "location": "Valadin Roth"
   },
   {
     "id": "hellfire_robes",
@@ -1625,7 +1877,9 @@ export const ITEMS: EquipmentItem[] = [
     },
     "abilities": [
       "Trickster"
-    ]
+    ],
+    "entry": "133",
+    "location": "Changeling"
   },
   {
     "id": "duskleaf_doubloon",
@@ -1638,7 +1892,9 @@ export const ITEMS: EquipmentItem[] = [
     },
     "abilities": [
       "Charm"
-    ]
+    ],
+    "entry": "80",
+    "location": "Zalladrel"
   },
   {
     "id": "chitinous_carapace",
@@ -1651,7 +1907,9 @@ export const ITEMS: EquipmentItem[] = [
     },
     "abilities": [
       "Charm"
-    ]
+    ],
+    "entry": "368",
+    "location": "Kerklick"
   },
   {
     "id": "patchwork_jerkin",
@@ -1664,7 +1922,9 @@ export const ITEMS: EquipmentItem[] = [
     },
     "abilities": [
       "Evade"
-    ]
+    ],
+    "entry": "374",
+    "location": "Jester"
   },
   {
     "id": "gown_of_midnight",
@@ -1677,7 +1937,9 @@ export const ITEMS: EquipmentItem[] = [
     },
     "abilities": [
       "Evade"
-    ]
+    ],
+    "entry": "445",
+    "location": "Elvera"
   },
   {
     "id": "sanguine_gown",
@@ -1690,7 +1952,9 @@ export const ITEMS: EquipmentItem[] = [
     },
     "abilities": [
       "Evade"
-    ]
+    ],
+    "entry": "460",
+    "location": "Clymonistra"
   },
   {
     "id": "cinders_gown",
@@ -1704,6 +1968,8 @@ export const ITEMS: EquipmentItem[] = [
     "abilities": [
       "Sear"
     ],
+    "entry": "655",
+    "location": "Cinders",
     "careerPreference": "Mage"
   },
   {
@@ -1717,7 +1983,9 @@ export const ITEMS: EquipmentItem[] = [
     },
     "abilities": [
       "Charm"
-    ]
+    ],
+    "entry": "568",
+    "location": "Inferno"
   },
   {
     "id": "nightwalker_tunic",
@@ -1731,6 +1999,8 @@ export const ITEMS: EquipmentItem[] = [
     "abilities": [
       "Nightwalker set"
     ],
+    "entry": "497",
+    "location": "Boggart",
     "careerPreference": "Rogue"
   },
   {
@@ -1743,6 +2013,8 @@ export const ITEMS: EquipmentItem[] = [
       "armour": 3
     },
     "abilities": [],
+    "entry": "509",
+    "location": "Swamp giant",
     "careerPreference": "Warrior"
   },
   {
@@ -1756,7 +2028,9 @@ export const ITEMS: EquipmentItem[] = [
     },
     "abilities": [
       "Swamp legs"
-    ]
+    ],
+    "entry": "452",
+    "location": "Angler's cave"
   },
   {
     "id": "ink_stained_vest",
@@ -1767,7 +2041,9 @@ export const ITEMS: EquipmentItem[] = [
       "speed": 2,
       "brawn": 1
     },
-    "abilities": []
+    "abilities": [],
+    "entry": "716",
+    "location": "Kalimari"
   },
   {
     "id": "navigators_waistcoat",
@@ -1780,7 +2056,9 @@ export const ITEMS: EquipmentItem[] = [
     },
     "abilities": [
       "Charm"
-    ]
+    ],
+    "entry": "544",
+    "location": "Leviathan"
   },
   {
     "id": "channelers_robes",
@@ -1794,6 +2072,8 @@ export const ITEMS: EquipmentItem[] = [
     "abilities": [
       "Focus"
     ],
+    "entry": "434",
+    "location": "Raptor pit",
     "careerPreference": "Mage"
   },
   {
@@ -1808,6 +2088,8 @@ export const ITEMS: EquipmentItem[] = [
     "abilities": [
       "Charm"
     ],
+    "entry": "590",
+    "location": "Raptor pit",
     "careerPreference": "Warrior"
   },
   {
@@ -1822,6 +2104,8 @@ export const ITEMS: EquipmentItem[] = [
     "abilities": [
       "Evade"
     ],
+    "entry": "583",
+    "location": "Raptor pit",
     "careerPreference": "Rogue"
   },
   {
@@ -1835,7 +2119,9 @@ export const ITEMS: EquipmentItem[] = [
     },
     "abilities": [
       "Focus"
-    ]
+    ],
+    "entry": "598",
+    "location": "Armoury"
   },
   {
     "id": "stone_coat",
@@ -1849,6 +2135,8 @@ export const ITEMS: EquipmentItem[] = [
     "abilities": [
       "Might of stone"
     ],
+    "entry": "706",
+    "location": "Gargoyle chest",
     "careerPreference": "Warrior"
   },
   {
@@ -1862,7 +2150,9 @@ export const ITEMS: EquipmentItem[] = [
     },
     "abilities": [
       "Charge"
-    ]
+    ],
+    "entry": "216",
+    "location": "Zen"
   },
   {
     "id": "hunters_hide",
@@ -1875,7 +2165,9 @@ export const ITEMS: EquipmentItem[] = [
     },
     "abilities": [
       "Immobilise"
-    ]
+    ],
+    "entry": "379",
+    "location": "Nalsa"
   },
   {
     "id": "the_cage",
@@ -1889,6 +2181,8 @@ export const ITEMS: EquipmentItem[] = [
     "abilities": [
       "Iron will"
     ],
+    "entry": "414",
+    "location": "Arena champion",
     "careerPreference": "Warrior"
   },
   {
@@ -1903,6 +2197,8 @@ export const ITEMS: EquipmentItem[] = [
     "abilities": [
       "Second skin"
     ],
+    "entry": "708",
+    "location": "Kindle",
     "careerPreference": "Warrior"
   },
   {
@@ -1917,6 +2213,8 @@ export const ITEMS: EquipmentItem[] = [
     "abilities": [
       "Retaliation"
     ],
+    "entry": "803",
+    "location": "Waldo's wares",
     "careerPreference": "Warrior"
   },
   {
@@ -1931,6 +2229,8 @@ export const ITEMS: EquipmentItem[] = [
     "abilities": [
       "Overload"
     ],
+    "entry": "881",
+    "location": "Waldo's wares",
     "careerPreference": "Mage"
   },
   {
@@ -1945,6 +2245,8 @@ export const ITEMS: EquipmentItem[] = [
     "abilities": [
       "Fortitude"
     ],
+    "entry": "903",
+    "location": "Waldo's wares",
     "careerPreference": "Rogue"
   },
   {
@@ -1958,7 +2260,9 @@ export const ITEMS: EquipmentItem[] = [
     },
     "abilities": [
       "Fearless"
-    ]
+    ],
+    "entry": "730",
+    "location": "Bone giants"
   },
   {
     "id": "deathgrip_robes",
@@ -1971,7 +2275,9 @@ export const ITEMS: EquipmentItem[] = [
     },
     "abilities": [
       "Corruption"
-    ]
+    ],
+    "entry": "770",
+    "location": "Rotterghast"
   },
   {
     "id": "lions_tabard",
@@ -1984,7 +2290,9 @@ export const ITEMS: EquipmentItem[] = [
     },
     "abilities": [
       "Fearless"
-    ]
+    ],
+    "entry": "892",
+    "location": "Arthurian's vault"
   },
   {
     "id": "skullplate",
@@ -1997,7 +2305,9 @@ export const ITEMS: EquipmentItem[] = [
     },
     "abilities": [
       "Dominate"
-    ]
+    ],
+    "entry": "906",
+    "location": "Bone angel"
   },
   {
     "id": "funeral_gown",
@@ -2010,7 +2320,9 @@ export const ITEMS: EquipmentItem[] = [
     },
     "abilities": [
       "Charm"
-    ]
+    ],
+    "entry": "916",
+    "location": "Yorvic"
   },
   {
     "id": "redguards_tabard",
@@ -2023,7 +2335,9 @@ export const ITEMS: EquipmentItem[] = [
     },
     "abilities": [
       "Iron will"
-    ]
+    ],
+    "entry": "735",
+    "location": "Special achievement"
   },
   {
     "id": "stalkers_jerkin",
@@ -2037,6 +2351,8 @@ export const ITEMS: EquipmentItem[] = [
     "abilities": [
       "Evade"
     ],
+    "entry": "733",
+    "location": "Budak",
     "careerPreference": "Rogue"
   },
   {
@@ -2051,6 +2367,8 @@ export const ITEMS: EquipmentItem[] = [
     "abilities": [
       "Curse"
     ],
+    "entry": "570",
+    "location": "Silleer",
     "careerPreference": "Mage"
   },
   {
@@ -2065,6 +2383,8 @@ export const ITEMS: EquipmentItem[] = [
     "abilities": [
       "finery of the fallen"
     ],
+    "entry": "719",
+    "location": "Tor knight",
     "careerPreference": "Warrior"
   },
   {
@@ -2078,7 +2398,9 @@ export const ITEMS: EquipmentItem[] = [
     },
     "abilities": [
       "Bleed"
-    ]
+    ],
+    "entry": "765",
+    "location": "Malcontent"
   },
   {
     "id": "pacemaker",
@@ -2092,6 +2414,8 @@ export const ITEMS: EquipmentItem[] = [
     "abilities": [
       "Kick start"
     ],
+    "entry": "716",
+    "location": "The blob",
     "careerPreference": "Warrior"
   },
   {
@@ -2106,6 +2430,8 @@ export const ITEMS: EquipmentItem[] = [
     "abilities": [
       "Evade"
     ],
+    "entry": "631",
+    "location": "Mage hunter",
     "careerPreference": "Rogue"
   },
   {
@@ -2120,6 +2446,8 @@ export const ITEMS: EquipmentItem[] = [
     "abilities": [
       "Dominate"
     ],
+    "entry": "843",
+    "location": "Daarko",
     "careerPreference": "Rogue"
   },
   {
@@ -2133,7 +2461,9 @@ export const ITEMS: EquipmentItem[] = [
     },
     "abilities": [
       "Disease"
-    ]
+    ],
+    "entry": "845",
+    "location": "Decayers"
   },
   {
     "id": "beasts_harness",
@@ -2147,6 +2477,8 @@ export const ITEMS: EquipmentItem[] = [
     "abilities": [
       "Knockdown"
     ],
+    "entry": "801",
+    "location": "The wrecker",
     "careerPreference": "Warrior"
   },
   {
@@ -2161,6 +2493,8 @@ export const ITEMS: EquipmentItem[] = [
     "abilities": [
       "Savagery"
     ],
+    "entry": "847",
+    "location": "The wrecker",
     "careerPreference": "Rogue"
   },
   {
@@ -2175,6 +2509,8 @@ export const ITEMS: EquipmentItem[] = [
     "abilities": [
       "Bleed"
     ],
+    "entry": "882",
+    "location": "Sannrah",
     "careerPreference": "Warrior"
   },
   {
@@ -2186,7 +2522,9 @@ export const ITEMS: EquipmentItem[] = [
       "speed": 1,
       "brawn": 1
     },
-    "abilities": []
+    "abilities": [],
+    "entry": "175",
+    "location": "Vendor/Tithebury Cross"
   },
   {
     "id": "spindlesilk_boots",
@@ -2199,7 +2537,9 @@ export const ITEMS: EquipmentItem[] = [
     },
     "abilities": [
       "Spindlesilk set"
-    ]
+    ],
+    "entry": "110",
+    "location": "Vendor/Tithebury Cross"
   },
   {
     "id": "crows_feet",
@@ -2210,7 +2550,9 @@ export const ITEMS: EquipmentItem[] = [
       "speed": 1,
       "magic": 1
     },
-    "abilities": []
+    "abilities": [],
+    "entry": "204",
+    "location": "Scarecrow"
   },
   {
     "id": "goblin_kickers",
@@ -2221,7 +2563,9 @@ export const ITEMS: EquipmentItem[] = [
       "speed": 1,
       "brawn": 1
     },
-    "abilities": []
+    "abilities": [],
+    "entry": "199",
+    "location": "Hobgoblin"
   },
   {
     "id": "rat_skin_boots",
@@ -2231,7 +2575,9 @@ export const ITEMS: EquipmentItem[] = [
     "stats": {
       "speed": 1
     },
-    "abilities": []
+    "abilities": [],
+    "entry": "260",
+    "location": "Goblin chief"
   },
   {
     "id": "dusty_footpads",
@@ -2243,7 +2589,9 @@ export const ITEMS: EquipmentItem[] = [
     },
     "abilities": [
       "Charm"
-    ]
+    ],
+    "entry": "206",
+    "location": "Water cave"
   },
   {
     "id": "ruby_slippers",
@@ -2256,7 +2604,9 @@ export const ITEMS: EquipmentItem[] = [
     },
     "abilities": [
       "Click your heels"
-    ]
+    ],
+    "entry": "155",
+    "location": "Witch"
   },
   {
     "id": "boar_hide_boots",
@@ -2269,7 +2619,9 @@ export const ITEMS: EquipmentItem[] = [
     },
     "abilities": [
       "Steadfast"
-    ]
+    ],
+    "entry": "44",
+    "location": "Humbaroth"
   },
   {
     "id": "reed_woven_sandals",
@@ -2282,7 +2634,9 @@ export const ITEMS: EquipmentItem[] = [
     },
     "abilities": [
       "Charm"
-    ]
+    ],
+    "entry": "122",
+    "location": "Bridge troll"
   },
   {
     "id": "rune_forged_greaves",
@@ -2293,7 +2647,9 @@ export const ITEMS: EquipmentItem[] = [
       "speed": 2,
       "magic": 2
     },
-    "abilities": []
+    "abilities": [],
+    "entry": "311",
+    "location": "No Hope tinker"
   },
   {
     "id": "boots_of_swift_flight",
@@ -2305,6 +2661,8 @@ export const ITEMS: EquipmentItem[] = [
       "brawn": 2
     },
     "abilities": [],
+    "entry": "338",
+    "location": "Thievies' guild",
     "careerPreference": "Rogue"
   },
   {
@@ -2316,7 +2674,9 @@ export const ITEMS: EquipmentItem[] = [
       "speed": 1,
       "brawn": 1
     },
-    "abilities": []
+    "abilities": [],
+    "entry": "287",
+    "location": "Mushroom forest"
   },
   {
     "id": "sludge_waders",
@@ -2327,7 +2687,9 @@ export const ITEMS: EquipmentItem[] = [
       "speed": 1,
       "armour": 1
     },
-    "abilities": []
+    "abilities": [],
+    "entry": "494",
+    "location": "Slime"
   },
   {
     "id": "barons_boots",
@@ -2340,7 +2702,9 @@ export const ITEMS: EquipmentItem[] = [
     },
     "abilities": [
       "Dominate"
-    ]
+    ],
+    "entry": "385",
+    "location": "Baron Greylock"
   },
   {
     "id": "velvet_slippers",
@@ -2353,7 +2717,9 @@ export const ITEMS: EquipmentItem[] = [
     },
     "abilities": [
       "Haste"
-    ]
+    ],
+    "entry": "487",
+    "location": "Count (special)"
   },
   {
     "id": "scarab_sandals",
@@ -2365,6 +2731,8 @@ export const ITEMS: EquipmentItem[] = [
       "armour": 2
     },
     "abilities": [],
+    "entry": "446",
+    "location": "Treasure cave",
     "careerPreference": "Mage"
   },
   {
@@ -2378,7 +2746,9 @@ export const ITEMS: EquipmentItem[] = [
     },
     "abilities": [
       "Steadfast"
-    ]
+    ],
+    "entry": "497",
+    "location": "Boggart"
   },
   {
     "id": "sanguine_slippers",
@@ -2392,6 +2762,8 @@ export const ITEMS: EquipmentItem[] = [
     "abilities": [
       "Charm"
     ],
+    "entry": "497",
+    "location": "Boggart",
     "careerPreference": "Mage"
   },
   {
@@ -2403,7 +2775,9 @@ export const ITEMS: EquipmentItem[] = [
       "speed": 2,
       "armour": 1
     },
-    "abilities": []
+    "abilities": [],
+    "entry": "716",
+    "location": "Kalimari"
   },
   {
     "id": "scouts_longboots",
@@ -2417,6 +2791,8 @@ export const ITEMS: EquipmentItem[] = [
     "abilities": [
       "Sideswipe"
     ],
+    "entry": "590",
+    "location": "Raptor pit",
     "careerPreference": "Warrior"
   },
   {
@@ -2431,6 +2807,8 @@ export const ITEMS: EquipmentItem[] = [
     "abilities": [
       "Quicksilver"
     ],
+    "entry": "434",
+    "location": "Raptor pit",
     "careerPreference": "Mage"
   },
   {
@@ -2445,6 +2823,8 @@ export const ITEMS: EquipmentItem[] = [
     "abilities": [
       "Royal regalia"
     ],
+    "entry": "581",
+    "location": "Armoury",
     "careerPreference": "Warrior"
   },
   {
@@ -2459,6 +2839,8 @@ export const ITEMS: EquipmentItem[] = [
     "abilities": [
       "Sidestep"
     ],
+    "entry": "744",
+    "location": "Gargoyle chest",
     "careerPreference": "Rogue"
   },
   {
@@ -2473,6 +2855,8 @@ export const ITEMS: EquipmentItem[] = [
     "abilities": [
       "Sidestep"
     ],
+    "entry": "394",
+    "location": "Logan",
     "careerPreference": "Rogue"
   },
   {
@@ -2486,7 +2870,9 @@ export const ITEMS: EquipmentItem[] = [
     },
     "abilities": [
       "Steadfast"
-    ]
+    ],
+    "entry": "341",
+    "location": "Barkrot"
   },
   {
     "id": "marsh_striders",
@@ -2499,7 +2885,9 @@ export const ITEMS: EquipmentItem[] = [
     },
     "abilities": [
       "Sideswipe"
-    ]
+    ],
+    "entry": "389",
+    "location": "Hydra (normal)"
   },
   {
     "id": "marsh_stalkers",
@@ -2512,7 +2900,9 @@ export const ITEMS: EquipmentItem[] = [
     },
     "abilities": [
       "Sideswipe"
-    ]
+    ],
+    "entry": "418",
+    "location": "Hydra (special)"
   },
   {
     "id": "boots_of_shielding",
@@ -2526,6 +2916,8 @@ export const ITEMS: EquipmentItem[] = [
     "abilities": [
       "Deflect"
     ],
+    "entry": "881",
+    "location": "Waldo's wares",
     "careerPreference": "Mage"
   },
   {
@@ -2540,6 +2932,8 @@ export const ITEMS: EquipmentItem[] = [
     "abilities": [
       "Savagery"
     ],
+    "entry": "815",
+    "location": "Waldo's wares",
     "careerPreference": "Warrior"
   },
   {
@@ -2553,7 +2947,9 @@ export const ITEMS: EquipmentItem[] = [
     },
     "abilities": [
       "Steadfast"
-    ]
+    ],
+    "entry": "620",
+    "location": "Packmaster"
   },
   {
     "id": "heralds_spurs",
@@ -2566,7 +2962,9 @@ export const ITEMS: EquipmentItem[] = [
     },
     "abilities": [
       "Charge"
-    ]
+    ],
+    "entry": "617",
+    "location": "Tor knight"
   },
   {
     "id": "ebon_boots",
@@ -2579,7 +2977,9 @@ export const ITEMS: EquipmentItem[] = [
     },
     "abilities": [
       "Fearless"
-    ]
+    ],
+    "entry": "649",
+    "location": "Necromancer"
   },
   {
     "id": "bewitched_boots",
@@ -2592,7 +2992,9 @@ export const ITEMS: EquipmentItem[] = [
     },
     "abilities": [
       "Dominate"
-    ]
+    ],
+    "entry": "802",
+    "location": "Tomb"
   },
   {
     "id": "twisted_treads",
@@ -2605,7 +3007,9 @@ export const ITEMS: EquipmentItem[] = [
     },
     "abilities": [
       "Trickster"
-    ]
+    ],
+    "entry": "912",
+    "location": "Malaise"
   },
   {
     "id": "rumble_thumpers",
@@ -2618,7 +3022,9 @@ export const ITEMS: EquipmentItem[] = [
     },
     "abilities": [
       "Knockdown"
-    ]
+    ],
+    "entry": "616",
+    "location": "The blob"
   },
   {
     "id": "elemental_greaves",
@@ -2632,6 +3038,8 @@ export const ITEMS: EquipmentItem[] = [
     "abilities": [
       "Fire aura"
     ],
+    "entry": "865",
+    "location": "Daarko",
     "careerPreference": "Mage"
   },
   {
@@ -2646,6 +3054,8 @@ export const ITEMS: EquipmentItem[] = [
     "abilities": [
       "Feint"
     ],
+    "entry": "893",
+    "location": "Daarko",
     "careerPreference": "Warrior"
   },
   {
@@ -2657,7 +3067,8 @@ export const ITEMS: EquipmentItem[] = [
       "brawn": 1,
       "magic": 1
     },
-    "abilities": []
+    "abilities": [],
+    "location": "Prologue"
   },
   {
     "id": "notched_blade",
@@ -2668,7 +3079,9 @@ export const ITEMS: EquipmentItem[] = [
       "speed": 1,
       "brawn": 1
     },
-    "abilities": []
+    "abilities": [],
+    "entry": "175",
+    "location": "Vendor/Tithebury Cross"
   },
   {
     "id": "curved_blade",
@@ -2678,7 +3091,9 @@ export const ITEMS: EquipmentItem[] = [
     "stats": {
       "speed": 1
     },
-    "abilities": []
+    "abilities": [],
+    "entry": "199",
+    "location": "Hobgoblin"
   },
   {
     "id": "goblin_hewer",
@@ -2689,7 +3104,9 @@ export const ITEMS: EquipmentItem[] = [
       "speed": 1,
       "armour": 1
     },
-    "abilities": []
+    "abilities": [],
+    "entry": "82",
+    "location": "Woodsman"
   },
   {
     "id": "huntsmans_axe",
@@ -2699,7 +3116,9 @@ export const ITEMS: EquipmentItem[] = [
     "stats": {
       "brawn": 2
     },
-    "abilities": []
+    "abilities": [],
+    "entry": "228",
+    "location": "Huntsman"
   },
   {
     "id": "meat_cleaver",
@@ -2711,7 +3130,9 @@ export const ITEMS: EquipmentItem[] = [
     },
     "abilities": [
       "Bleed"
-    ]
+    ],
+    "entry": "260",
+    "location": "Goblin chief"
   },
   {
     "id": "crones_dagger",
@@ -2722,7 +3143,9 @@ export const ITEMS: EquipmentItem[] = [
       "speed": 1,
       "magic": 1
     },
-    "abilities": []
+    "abilities": [],
+    "entry": "40",
+    "location": "Ruffians"
   },
   {
     "id": "gilberts_club",
@@ -2732,7 +3155,9 @@ export const ITEMS: EquipmentItem[] = [
     "stats": {
       "brawn": 3
     },
-    "abilities": []
+    "abilities": [],
+    "entry": "40",
+    "location": "Ruffians"
   },
   {
     "id": "leaders_edge",
@@ -2743,7 +3168,9 @@ export const ITEMS: EquipmentItem[] = [
       "speed": 1,
       "brawn": 1
     },
-    "abilities": []
+    "abilities": [],
+    "entry": "125/174",
+    "location": "Were rat"
   },
   {
     "id": "acid_coated_battle_axe",
@@ -2756,7 +3183,9 @@ export const ITEMS: EquipmentItem[] = [
     },
     "abilities": [
       "Acid"
-    ]
+    ],
+    "entry": "258",
+    "location": "Burrower wyrm"
   },
   {
     "id": "venomous_fang",
@@ -2769,7 +3198,9 @@ export const ITEMS: EquipmentItem[] = [
     },
     "abilities": [
       "Venom"
-    ]
+    ],
+    "entry": "91",
+    "location": "Spindle"
   },
   {
     "id": "nightbringer",
@@ -2782,7 +3213,9 @@ export const ITEMS: EquipmentItem[] = [
     },
     "abilities": [
       "Might of stone"
-    ]
+    ],
+    "entry": "52",
+    "location": "Noldor (special)"
   },
   {
     "id": "nightfall",
@@ -2795,7 +3228,9 @@ export const ITEMS: EquipmentItem[] = [
     },
     "abilities": [
       "Might of stone"
-    ]
+    ],
+    "entry": "52",
+    "location": "Noldor (special)"
   },
   {
     "id": "ancient_sword",
@@ -2808,7 +3243,9 @@ export const ITEMS: EquipmentItem[] = [
     },
     "abilities": [
       "Bleed"
-    ]
+    ],
+    "entry": "222",
+    "location": "Skeleton knight"
   },
   {
     "id": "dirk_of_deceit",
@@ -2821,7 +3258,9 @@ export const ITEMS: EquipmentItem[] = [
     },
     "abilities": [
       "Corruption"
-    ]
+    ],
+    "entry": "271",
+    "location": "Fetch"
   },
   {
     "id": "silver_silence",
@@ -2834,7 +3273,9 @@ export const ITEMS: EquipmentItem[] = [
     },
     "abilities": [
       "Immobilise"
-    ]
+    ],
+    "entry": "271",
+    "location": "Fetch"
   },
   {
     "id": "skullbreaker",
@@ -2847,7 +3288,9 @@ export const ITEMS: EquipmentItem[] = [
     },
     "abilities": [
       "Pound"
-    ]
+    ],
+    "entry": "44",
+    "location": "Humbaroth"
   },
   {
     "id": "dark_crystal",
@@ -2861,6 +3304,8 @@ export const ITEMS: EquipmentItem[] = [
     "abilities": [
       "Venom"
     ],
+    "entry": "311",
+    "location": "No Hope tinker",
     "careerPreference": "Rogue"
   },
   {
@@ -2875,6 +3320,8 @@ export const ITEMS: EquipmentItem[] = [
     "abilities": [
       "Slam"
     ],
+    "entry": "338",
+    "location": "Thievies' guild",
     "careerPreference": "Rogue"
   },
   {
@@ -2889,6 +3336,8 @@ export const ITEMS: EquipmentItem[] = [
     "abilities": [
       "Deep wound"
     ],
+    "entry": "432",
+    "location": "Sea spray Steve",
     "careerPreference": "Rogue"
   },
   {
@@ -2900,7 +3349,9 @@ export const ITEMS: EquipmentItem[] = [
       "speed": 1,
       "magic": 2
     },
-    "abilities": []
+    "abilities": [],
+    "entry": "283",
+    "location": "Mud golem"
   },
   {
     "id": "shiny_dirk",
@@ -2911,7 +3362,9 @@ export const ITEMS: EquipmentItem[] = [
       "speed": 1,
       "brawn": 2
     },
-    "abilities": []
+    "abilities": [],
+    "entry": "287",
+    "location": "Mushroom forest"
   },
   {
     "id": "trog_spear",
@@ -2923,6 +3376,8 @@ export const ITEMS: EquipmentItem[] = [
       "brawn": 3
     },
     "abilities": [],
+    "entry": "327",
+    "location": "Trogs",
     "careerPreference": "Warrior"
   },
   {
@@ -2936,7 +3391,9 @@ export const ITEMS: EquipmentItem[] = [
     },
     "abilities": [
       "Parry"
-    ]
+    ],
+    "entry": "517",
+    "location": "Wormwood (normal)"
   },
   {
     "id": "lacerator",
@@ -2949,7 +3406,9 @@ export const ITEMS: EquipmentItem[] = [
     },
     "abilities": [
       "Parry"
-    ]
+    ],
+    "entry": "533",
+    "location": "Wormwood (special)"
   },
   {
     "id": "bone_scythe",
@@ -2962,7 +3421,9 @@ export const ITEMS: EquipmentItem[] = [
     },
     "abilities": [
       "Retaliation"
-    ]
+    ],
+    "entry": "368",
+    "location": "Kerklick"
   },
   {
     "id": "winters_bite",
@@ -2976,6 +3437,8 @@ export const ITEMS: EquipmentItem[] = [
     "abilities": [
       "Bleed"
     ],
+    "entry": "385",
+    "location": "Baron Greylock",
     "careerPreference": "Warrior"
   },
   {
@@ -2990,6 +3453,8 @@ export const ITEMS: EquipmentItem[] = [
     "abilities": [
       "Leech"
     ],
+    "entry": "455",
+    "location": "Lady Roe",
     "careerPreference": "Mage"
   },
   {
@@ -3004,6 +3469,8 @@ export const ITEMS: EquipmentItem[] = [
     "abilities": [
       "Riposte"
     ],
+    "entry": "487",
+    "location": "Count (special)",
     "careerPreference": "Rogue"
   },
   {
@@ -3017,6 +3484,8 @@ export const ITEMS: EquipmentItem[] = [
     "abilities": [
       "Slam"
     ],
+    "entry": "540",
+    "location": "Rumbler",
     "careerPreference": "Warrior"
   },
   {
@@ -3031,6 +3500,8 @@ export const ITEMS: EquipmentItem[] = [
     "abilities": [
       "Overload"
     ],
+    "entry": "548",
+    "location": "Treasure vault",
     "careerPreference": "Mage"
   },
   {
@@ -3044,7 +3515,9 @@ export const ITEMS: EquipmentItem[] = [
     },
     "abilities": [
       "Immobilise"
-    ]
+    ],
+    "entry": "565",
+    "location": "Phoenix"
   },
   {
     "id": "lucky_fishing_rod",
@@ -3057,7 +3530,9 @@ export const ITEMS: EquipmentItem[] = [
     },
     "abilities": [
       "Charm"
-    ]
+    ],
+    "entry": "452",
+    "location": "Angler's cave"
   },
   {
     "id": "magicians_crook",
@@ -3071,6 +3546,8 @@ export const ITEMS: EquipmentItem[] = [
     "abilities": [
       "Radiance"
     ],
+    "entry": "446",
+    "location": "Treasure cave",
     "careerPreference": "Mage"
   },
   {
@@ -3082,7 +3559,9 @@ export const ITEMS: EquipmentItem[] = [
       "speed": 1,
       "magic": 3
     },
-    "abilities": []
+    "abilities": [],
+    "entry": "479",
+    "location": "Wreekin"
   },
   {
     "id": "dark_malice",
@@ -3096,6 +3575,8 @@ export const ITEMS: EquipmentItem[] = [
     "abilities": [
       "Impale"
     ],
+    "entry": "506",
+    "location": "Scorpios",
     "careerPreference": "Warrior"
   },
   {
@@ -3110,6 +3591,8 @@ export const ITEMS: EquipmentItem[] = [
     "abilities": [
       "Venom"
     ],
+    "entry": "506",
+    "location": "Scorpios",
     "careerPreference": "Rogue"
   },
   {
@@ -3124,6 +3607,8 @@ export const ITEMS: EquipmentItem[] = [
     "abilities": [
       "Stun"
     ],
+    "entry": "544",
+    "location": "Leviathan",
     "careerPreference": "Warrior"
   },
   {
@@ -3138,6 +3623,8 @@ export const ITEMS: EquipmentItem[] = [
     "abilities": [
       "Disrupt"
     ],
+    "entry": "567",
+    "location": "Armoury",
     "careerPreference": "Rogue"
   },
   {
@@ -3152,6 +3639,8 @@ export const ITEMS: EquipmentItem[] = [
     "abilities": [
       "Cleave"
     ],
+    "entry": "581",
+    "location": "Armoury",
     "careerPreference": "Warrior"
   },
   {
@@ -3166,6 +3655,8 @@ export const ITEMS: EquipmentItem[] = [
     "abilities": [
       "Retaliation"
     ],
+    "entry": "593",
+    "location": "Armoury",
     "careerPreference": "Mage"
   },
   {
@@ -3180,6 +3671,8 @@ export const ITEMS: EquipmentItem[] = [
     "abilities": [
       "Knockdown"
     ],
+    "entry": "706",
+    "location": "Gargoyle chest",
     "careerPreference": "Warrior"
   },
   {
@@ -3194,6 +3687,8 @@ export const ITEMS: EquipmentItem[] = [
     "abilities": [
       "Stun"
     ],
+    "entry": "713",
+    "location": "Gargoyle chest",
     "careerPreference": "Mage"
   },
   {
@@ -3207,7 +3702,9 @@ export const ITEMS: EquipmentItem[] = [
     },
     "abilities": [
       "Riposte"
-    ]
+    ],
+    "entry": "277",
+    "location": "Left-hook Luke"
   },
   {
     "id": "nalsas_claws",
@@ -3220,7 +3717,9 @@ export const ITEMS: EquipmentItem[] = [
     },
     "abilities": [
       "Piercing"
-    ]
+    ],
+    "entry": "379",
+    "location": "Nalsa"
   },
   {
     "id": "ebony",
@@ -3233,7 +3732,9 @@ export const ITEMS: EquipmentItem[] = [
     },
     "abilities": [
       "Ebony and ivory"
-    ]
+    ],
+    "entry": "370",
+    "location": "Nasareim"
   },
   {
     "id": "brawlers_shiv",
@@ -3247,6 +3748,8 @@ export const ITEMS: EquipmentItem[] = [
     "abilities": [
       "Venom"
     ],
+    "entry": "414",
+    "location": "Arena champion",
     "careerPreference": "Rogue"
   },
   {
@@ -3261,6 +3764,8 @@ export const ITEMS: EquipmentItem[] = [
     "abilities": [
       "Fire aura"
     ],
+    "entry": "377",
+    "location": "Vesuvius",
     "careerPreference": "Mage"
   },
   {
@@ -3275,6 +3780,8 @@ export const ITEMS: EquipmentItem[] = [
     "abilities": [
       "Critical strike"
     ],
+    "entry": "400",
+    "location": "Magmageddon",
     "careerPreference": "Rogue"
   },
   {
@@ -3288,7 +3795,9 @@ export const ITEMS: EquipmentItem[] = [
     },
     "abilities": [
       "Riposte"
-    ]
+    ],
+    "entry": "729",
+    "location": "Shadowstalker"
   },
   {
     "id": "sliver_of_shadow",
@@ -3302,6 +3811,8 @@ export const ITEMS: EquipmentItem[] = [
     "abilities": [
       "Chill touch"
     ],
+    "entry": "839",
+    "location": "Waldo's wares",
     "careerPreference": "Rogue"
   },
   {
@@ -3316,6 +3827,8 @@ export const ITEMS: EquipmentItem[] = [
     "abilities": [
       "Sear"
     ],
+    "entry": "903",
+    "location": "Waldo's wares",
     "careerPreference": "Rogue"
   },
   {
@@ -3329,7 +3842,9 @@ export const ITEMS: EquipmentItem[] = [
     },
     "abilities": [
       "Critical strike"
-    ]
+    ],
+    "entry": "776",
+    "location": "Bone wyvern"
   },
   {
     "id": "bone_claw",
@@ -3342,7 +3857,9 @@ export const ITEMS: EquipmentItem[] = [
     },
     "abilities": [
       "Rake"
-    ]
+    ],
+    "entry": "695",
+    "location": "Bone construct"
   },
   {
     "id": "lasher",
@@ -3355,7 +3872,9 @@ export const ITEMS: EquipmentItem[] = [
     },
     "abilities": [
       "Bleed"
-    ]
+    ],
+    "entry": "620",
+    "location": "Packmaster"
   },
   {
     "id": "tainted_striker",
@@ -3369,6 +3888,8 @@ export const ITEMS: EquipmentItem[] = [
     "abilities": [
       "Corruption"
     ],
+    "entry": "677",
+    "location": "Tor knight",
     "careerPreference": "Mage"
   },
   {
@@ -3383,6 +3904,8 @@ export const ITEMS: EquipmentItem[] = [
     "abilities": [
       "Impale"
     ],
+    "entry": "759",
+    "location": "Flesh golem",
     "careerPreference": "Warrior"
   },
   {
@@ -3397,6 +3920,8 @@ export const ITEMS: EquipmentItem[] = [
     "abilities": [
       "Knockdown"
     ],
+    "entry": "730",
+    "location": "Bone giants",
     "careerPreference": "Warrior"
   },
   {
@@ -3411,6 +3936,8 @@ export const ITEMS: EquipmentItem[] = [
     "abilities": [
       "Deep wound"
     ],
+    "entry": "770",
+    "location": "Rotterghast",
     "careerPreference": "Rogue"
   },
   {
@@ -3425,6 +3952,8 @@ export const ITEMS: EquipmentItem[] = [
     "abilities": [
       "Immobilise"
     ],
+    "entry": "912",
+    "location": "Malaise",
     "careerPreference": "Rogue"
   },
   {
@@ -3439,6 +3968,8 @@ export const ITEMS: EquipmentItem[] = [
     "abilities": [
       "Deep wound"
     ],
+    "entry": "916",
+    "location": "Yorvic",
     "careerPreference": "Warrior"
   },
   {
@@ -3452,7 +3983,9 @@ export const ITEMS: EquipmentItem[] = [
     },
     "abilities": [
       "Stun"
-    ]
+    ],
+    "entry": "869",
+    "location": "Sammain (normal)"
   },
   {
     "id": "hoarfrost",
@@ -3465,7 +3998,9 @@ export const ITEMS: EquipmentItem[] = [
     },
     "abilities": [
       "Chill touch"
-    ]
+    ],
+    "entry": "874",
+    "location": "Sammain (special)"
   },
   {
     "id": "grimm_reaper",
@@ -3479,6 +4014,8 @@ export const ITEMS: EquipmentItem[] = [
     "abilities": [
       "Brutality"
     ],
+    "entry": "727",
+    "location": "Brothers' Grimm",
     "careerPreference": "Warrior"
   },
   {
@@ -3493,6 +4030,8 @@ export const ITEMS: EquipmentItem[] = [
     "abilities": [
       "Deep wound"
     ],
+    "entry": "733",
+    "location": "Budak",
     "careerPreference": "Rogue"
   },
   {
@@ -3507,6 +4046,8 @@ export const ITEMS: EquipmentItem[] = [
     "abilities": [
       "Shock!"
     ],
+    "entry": "570",
+    "location": "Silleer",
     "careerPreference": "Mage"
   },
   {
@@ -3520,7 +4061,9 @@ export const ITEMS: EquipmentItem[] = [
     },
     "abilities": [
       "Pound"
-    ]
+    ],
+    "entry": "722",
+    "location": "Bone giants"
   },
   {
     "id": "frost_burn",
@@ -3534,6 +4077,8 @@ export const ITEMS: EquipmentItem[] = [
     "abilities": [
       "Piercing"
     ],
+    "entry": "584",
+    "location": "Chilblain",
     "careerPreference": "Mage"
   },
   {
@@ -3547,7 +4092,9 @@ export const ITEMS: EquipmentItem[] = [
     },
     "abilities": [
       "Disease"
-    ]
+    ],
+    "entry": "616",
+    "location": "The blob"
   },
   {
     "id": "morticians_scalpel",
@@ -3561,6 +4108,8 @@ export const ITEMS: EquipmentItem[] = [
     "abilities": [
       "Disease"
     ],
+    "entry": "642",
+    "location": "Lichenstein",
     "careerPreference": "Rogue"
   },
   {
@@ -3574,7 +4123,9 @@ export const ITEMS: EquipmentItem[] = [
     },
     "abilities": [
       "Windblast"
-    ]
+    ],
+    "entry": "754",
+    "location": "Flay"
   },
   {
     "id": "blood_crescent",
@@ -3588,6 +4139,8 @@ export const ITEMS: EquipmentItem[] = [
     "abilities": [
       "Cleave"
     ],
+    "entry": "631",
+    "location": "Mage hunter",
     "careerPreference": "Warrior"
   },
   {
@@ -3602,6 +4155,8 @@ export const ITEMS: EquipmentItem[] = [
     "abilities": [
       "Shock!"
     ],
+    "entry": "665",
+    "location": "Death orb",
     "careerPreference": "Rogue"
   },
   {
@@ -3615,7 +4170,9 @@ export const ITEMS: EquipmentItem[] = [
     },
     "abilities": [
       "Trickster"
-    ]
+    ],
+    "entry": "711",
+    "location": "Lord of pain"
   },
   {
     "id": "shadow_woven_kris",
@@ -3629,6 +4186,8 @@ export const ITEMS: EquipmentItem[] = [
     "abilities": [
       "Deep wound"
     ],
+    "entry": "843",
+    "location": "Daarko",
     "careerPreference": "Rogue"
   },
   {
@@ -3643,6 +4202,8 @@ export const ITEMS: EquipmentItem[] = [
     "abilities": [
       "Fatal blow"
     ],
+    "entry": "847",
+    "location": "The wrecker",
     "careerPreference": "Rogue"
   },
   {
@@ -3657,6 +4218,8 @@ export const ITEMS: EquipmentItem[] = [
     "abilities": [
       "Rust"
     ],
+    "entry": "878",
+    "location": "The wrecker",
     "careerPreference": "Mage"
   },
   {
@@ -3671,6 +4234,8 @@ export const ITEMS: EquipmentItem[] = [
     "abilities": [
       "Impale"
     ],
+    "entry": "868",
+    "location": "Scarrons",
     "careerPreference": "Warrior"
   },
   {
@@ -3685,6 +4250,8 @@ export const ITEMS: EquipmentItem[] = [
     "abilities": [
       "Radiance"
     ],
+    "entry": "871",
+    "location": "Sannrah",
     "careerPreference": "Mage"
   },
   {
@@ -3699,6 +4266,8 @@ export const ITEMS: EquipmentItem[] = [
     "abilities": [
       "Feral fury"
     ],
+    "entry": "882",
+    "location": "Sannrah",
     "careerPreference": "Warrior"
   },
   {
@@ -3710,7 +4279,9 @@ export const ITEMS: EquipmentItem[] = [
       "brawn": 2,
       "armour": 1
     },
-    "abilities": []
+    "abilities": [],
+    "entry": "191",
+    "location": "Vendor/Tithebury Cross"
   },
   {
     "id": "murder_of_crows",
@@ -3721,7 +4292,9 @@ export const ITEMS: EquipmentItem[] = [
       "speed": 1,
       "brawn": 1
     },
-    "abilities": []
+    "abilities": [],
+    "entry": "204",
+    "location": "Scarecrow"
   },
   {
     "id": "crocks_tooth",
@@ -3731,7 +4304,9 @@ export const ITEMS: EquipmentItem[] = [
     "stats": {
       "brawn": 1
     },
-    "abilities": []
+    "abilities": [],
+    "entry": "118",
+    "location": "Crocodile"
   },
   {
     "id": "rennies_slicer",
@@ -3744,7 +4319,9 @@ export const ITEMS: EquipmentItem[] = [
     },
     "abilities": [
       "First cut"
-    ]
+    ],
+    "entry": "55/247",
+    "location": "Rennie the rat"
   },
   {
     "id": "stone_shield",
@@ -3757,7 +4334,9 @@ export const ITEMS: EquipmentItem[] = [
     },
     "abilities": [
       "Slam"
-    ]
+    ],
+    "entry": "41",
+    "location": "Noldor (normal)"
   },
   {
     "id": "essence_of_shadow",
@@ -3770,7 +4349,9 @@ export const ITEMS: EquipmentItem[] = [
     },
     "abilities": [
       "Chill touch"
-    ]
+    ],
+    "entry": "43",
+    "location": "Shadow"
   },
   {
     "id": "ghoul_claw",
@@ -3783,7 +4364,9 @@ export const ITEMS: EquipmentItem[] = [
     },
     "abilities": [
       "Piercing"
-    ]
+    ],
+    "entry": "106/127 /157",
+    "location": "Ghouls"
   },
   {
     "id": "dented_buckler",
@@ -3794,7 +4377,9 @@ export const ITEMS: EquipmentItem[] = [
       "speed": 1,
       "armour": 1
     },
-    "abilities": []
+    "abilities": [],
+    "entry": "166",
+    "location": "Skeletons"
   },
   {
     "id": "spiders_spinneret",
@@ -3807,7 +4392,9 @@ export const ITEMS: EquipmentItem[] = [
     },
     "abilities": [
       "Webbed"
-    ]
+    ],
+    "entry": "179",
+    "location": "Spiders"
   },
   {
     "id": "rage_claw",
@@ -3820,7 +4407,9 @@ export const ITEMS: EquipmentItem[] = [
     },
     "abilities": [
       "Dominate"
-    ]
+    ],
+    "entry": "26",
+    "location": "Mauler"
   },
   {
     "id": "ardent_edge",
@@ -3833,7 +4422,9 @@ export const ITEMS: EquipmentItem[] = [
     },
     "abilities": [
       "Parry"
-    ]
+    ],
+    "entry": "494",
+    "location": "Slime"
   },
   {
     "id": "champions_blade",
@@ -3846,7 +4437,9 @@ export const ITEMS: EquipmentItem[] = [
     },
     "abilities": [
       "Bleed"
-    ]
+    ],
+    "entry": "283",
+    "location": "Mud golem"
   },
   {
     "id": "ridgeback",
@@ -3860,6 +4453,8 @@ export const ITEMS: EquipmentItem[] = [
     "abilities": [
       "Slam"
     ],
+    "entry": "517",
+    "location": "Wormwood (normal)",
     "careerPreference": "Warrior"
   },
   {
@@ -3874,6 +4469,8 @@ export const ITEMS: EquipmentItem[] = [
     "abilities": [
       "Slam"
     ],
+    "entry": "533",
+    "location": "Wormwood (special)",
     "careerPreference": "Warrior"
   },
   {
@@ -3887,7 +4484,9 @@ export const ITEMS: EquipmentItem[] = [
     },
     "abilities": [
       "Piercing"
-    ]
+    ],
+    "entry": "522",
+    "location": "Treasure vault"
   },
   {
     "id": "shrink_ray",
@@ -3900,7 +4499,9 @@ export const ITEMS: EquipmentItem[] = [
     },
     "abilities": [
       "Zapped!"
-    ]
+    ],
+    "entry": "477/585",
+    "location": "Hal Arbuckle"
   },
   {
     "id": "book_of_black_deeds",
@@ -3912,6 +4513,8 @@ export const ITEMS: EquipmentItem[] = [
       "magic": 2
     },
     "abilities": [],
+    "entry": "445",
+    "location": "Treasure vault",
     "careerPreference": "Mage"
   },
   {
@@ -3925,7 +4528,9 @@ export const ITEMS: EquipmentItem[] = [
     },
     "abilities": [
       "Leech"
-    ]
+    ],
+    "entry": "422",
+    "location": "Treasure vault"
   },
   {
     "id": "ivory_r_w_",
@@ -3938,7 +4543,9 @@ export const ITEMS: EquipmentItem[] = [
     },
     "abilities": [
       "Ebony and ivory"
-    ]
+    ],
+    "entry": "333",
+    "location": "Treasure cave"
   },
   {
     "id": "t_bone_wand",
@@ -3952,6 +4559,8 @@ export const ITEMS: EquipmentItem[] = [
     "abilities": [
       "Bolt"
     ],
+    "entry": "449/529",
+    "location": "Wreekin",
     "careerPreference": "Mage"
   },
   {
@@ -3965,7 +4574,9 @@ export const ITEMS: EquipmentItem[] = [
     },
     "abilities": [
       "Webbed"
-    ]
+    ],
+    "entry": "479",
+    "location": "Wreekin"
   },
   {
     "id": "twin_furies",
@@ -3977,6 +4588,8 @@ export const ITEMS: EquipmentItem[] = [
       "brawn": 3
     },
     "abilities": [],
+    "entry": "452",
+    "location": "Angler's cave",
     "careerPreference": "Rogue"
   },
   {
@@ -3990,7 +4603,9 @@ export const ITEMS: EquipmentItem[] = [
     },
     "abilities": [
       "Stun"
-    ]
+    ],
+    "entry": "509",
+    "location": "Swamp giant"
   },
   {
     "id": "tome_of_deep_thought",
@@ -4002,6 +4617,8 @@ export const ITEMS: EquipmentItem[] = [
       "magic": 3
     },
     "abilities": [],
+    "entry": "550",
+    "location": "Jenlar's cabin",
     "careerPreference": "Mage"
   },
   {
@@ -4016,6 +4633,8 @@ export const ITEMS: EquipmentItem[] = [
     "abilities": [
       "Deep wound"
     ],
+    "entry": "590",
+    "location": "Raptor pit",
     "careerPreference": "Warrior"
   },
   {
@@ -4030,6 +4649,8 @@ export const ITEMS: EquipmentItem[] = [
     "abilities": [
       "Bull's eye"
     ],
+    "entry": "583",
+    "location": "Raptor pit",
     "careerPreference": "Rogue"
   },
   {
@@ -4044,6 +4665,8 @@ export const ITEMS: EquipmentItem[] = [
     "abilities": [
       "Sear"
     ],
+    "entry": "434",
+    "location": "Raptor pit",
     "careerPreference": "Mage"
   },
   {
@@ -4057,7 +4680,9 @@ export const ITEMS: EquipmentItem[] = [
     },
     "abilities": [
       "Lightning"
-    ]
+    ],
+    "entry": "544",
+    "location": "Leviathan"
   },
   {
     "id": "vorpal_sword",
@@ -4071,6 +4696,8 @@ export const ITEMS: EquipmentItem[] = [
     "abilities": [
       "Vanquish"
     ],
+    "entry": "567",
+    "location": "Armoury",
     "careerPreference": "Rogue"
   },
   {
@@ -4085,6 +4712,8 @@ export const ITEMS: EquipmentItem[] = [
     "abilities": [
       "Rake"
     ],
+    "entry": "706",
+    "location": "Gargoyle chest",
     "careerPreference": "Warrior"
   },
   {
@@ -4099,6 +4728,8 @@ export const ITEMS: EquipmentItem[] = [
     "abilities": [
       "Focus"
     ],
+    "entry": "713",
+    "location": "Gargoyle chest",
     "careerPreference": "Mage"
   },
   {
@@ -4113,6 +4744,8 @@ export const ITEMS: EquipmentItem[] = [
     "abilities": [
       "Slam"
     ],
+    "entry": "443",
+    "location": "Stone giant",
     "careerPreference": "Warrior"
   },
   {
@@ -4126,7 +4759,9 @@ export const ITEMS: EquipmentItem[] = [
     },
     "abilities": [
       "Immobilise"
-    ]
+    ],
+    "entry": "277",
+    "location": "Left-hook Luke"
   },
   {
     "id": "deathstrike",
@@ -4139,7 +4774,9 @@ export const ITEMS: EquipmentItem[] = [
     },
     "abilities": [
       "Bull's eye"
-    ]
+    ],
+    "entry": "394",
+    "location": "Logan"
   },
   {
     "id": "sprig_of_corruption",
@@ -4152,7 +4789,9 @@ export const ITEMS: EquipmentItem[] = [
     },
     "abilities": [
       "Corruption"
-    ]
+    ],
+    "entry": "341",
+    "location": "Barkrot"
   },
   {
     "id": "spine_tooth",
@@ -4166,6 +4805,8 @@ export const ITEMS: EquipmentItem[] = [
     "abilities": [
       "Critical strike"
     ],
+    "entry": "346",
+    "location": "Snapjaw",
     "careerPreference": "Rogue"
   },
   {
@@ -4180,6 +4821,8 @@ export const ITEMS: EquipmentItem[] = [
     "abilities": [
       "Deflect"
     ],
+    "entry": "389",
+    "location": "Hydra (normal)",
     "careerPreference": "Warrior"
   },
   {
@@ -4194,6 +4837,8 @@ export const ITEMS: EquipmentItem[] = [
     "abilities": [
       "Deflect"
     ],
+    "entry": "418",
+    "location": "Hydra (special)",
     "careerPreference": "Warrior"
   },
   {
@@ -4207,7 +4852,9 @@ export const ITEMS: EquipmentItem[] = [
     },
     "abilities": [
       "Deep wound"
-    ]
+    ],
+    "entry": "708",
+    "location": "Kindle"
   },
   {
     "id": "shadowblade",
@@ -4220,7 +4867,9 @@ export const ITEMS: EquipmentItem[] = [
     },
     "abilities": [
       "Retaliation"
-    ]
+    ],
+    "entry": "729",
+    "location": "Shadowstalker"
   },
   {
     "id": "talanosts_wall",
@@ -4234,6 +4883,8 @@ export const ITEMS: EquipmentItem[] = [
     "abilities": [
       "Deflect"
     ],
+    "entry": "803",
+    "location": "Waldo's wares",
     "careerPreference": "Warrior"
   },
   {
@@ -4248,6 +4899,8 @@ export const ITEMS: EquipmentItem[] = [
     "abilities": [
       "Critical strike"
     ],
+    "entry": "881",
+    "location": "Waldo's wares",
     "careerPreference": "Mage"
   },
   {
@@ -4261,7 +4914,9 @@ export const ITEMS: EquipmentItem[] = [
     },
     "abilities": [
       "Deflect"
-    ]
+    ],
+    "entry": "617",
+    "location": "Tor knight"
   },
   {
     "id": "spite",
@@ -4274,7 +4929,9 @@ export const ITEMS: EquipmentItem[] = [
     },
     "abilities": [
       "Venom"
-    ]
+    ],
+    "entry": "649",
+    "location": "Necromancer"
   },
   {
     "id": "iron_curtain",
@@ -4288,6 +4945,8 @@ export const ITEMS: EquipmentItem[] = [
     "abilities": [
       "Iron will"
     ],
+    "entry": "775",
+    "location": "Skeleton horde",
     "careerPreference": "Warrior"
   },
   {
@@ -4302,6 +4961,8 @@ export const ITEMS: EquipmentItem[] = [
     "abilities": [
       "Shackle"
     ],
+    "entry": "778",
+    "location": "Ghouls",
     "careerPreference": "Mage"
   },
   {
@@ -4315,7 +4976,9 @@ export const ITEMS: EquipmentItem[] = [
     },
     "abilities": [
       "Savagery"
-    ]
+    ],
+    "entry": "827",
+    "location": "Tomb robber"
   },
   {
     "id": "raven_eye",
@@ -4328,7 +4991,9 @@ export const ITEMS: EquipmentItem[] = [
     },
     "abilities": [
       "Bolt"
-    ]
+    ],
+    "entry": "834",
+    "location": "Dark ranger"
   },
   {
     "id": "witchs_finger",
@@ -4341,7 +5006,9 @@ export const ITEMS: EquipmentItem[] = [
     },
     "abilities": [
       "Curse"
-    ]
+    ],
+    "entry": "869",
+    "location": "Sammain (normal)"
   },
   {
     "id": "meat_grinder",
@@ -4354,7 +5021,9 @@ export const ITEMS: EquipmentItem[] = [
     },
     "abilities": [
       "Pound"
-    ]
+    ],
+    "entry": "891",
+    "location": "Clockwerk"
   },
   {
     "id": "steel_gear_solid",
@@ -4368,6 +5037,8 @@ export const ITEMS: EquipmentItem[] = [
     "abilities": [
       "Retaliation"
     ],
+    "entry": "891",
+    "location": "Clockwerk",
     "careerPreference": "Warrior"
   },
   {
@@ -4381,7 +5052,9 @@ export const ITEMS: EquipmentItem[] = [
     },
     "abilities": [
       "Knockdown"
-    ]
+    ],
+    "entry": "892",
+    "location": "Arthurian's vault"
   },
   {
     "id": "twilight_claw",
@@ -4394,7 +5067,9 @@ export const ITEMS: EquipmentItem[] = [
     },
     "abilities": [
       "Rake"
-    ]
+    ],
+    "entry": "929",
+    "location": "Dark arthurian"
   },
   {
     "id": "black_death",
@@ -4408,6 +5083,8 @@ export const ITEMS: EquipmentItem[] = [
     "abilities": [
       "Critical strike"
     ],
+    "entry": "622",
+    "location": "Brothers' Grimm",
     "careerPreference": "Rogue"
   },
   {
@@ -4422,6 +5099,8 @@ export const ITEMS: EquipmentItem[] = [
     "abilities": [
       "Rake"
     ],
+    "entry": "664",
+    "location": "Brothers'Grimm",
     "careerPreference": "Mage"
   },
   {
@@ -4436,6 +5115,8 @@ export const ITEMS: EquipmentItem[] = [
     "abilities": [
       "Sear"
     ],
+    "entry": "570",
+    "location": "Silleer",
     "careerPreference": "Mage"
   },
   {
@@ -4450,6 +5131,8 @@ export const ITEMS: EquipmentItem[] = [
     "abilities": [
       "Impale"
     ],
+    "entry": "719",
+    "location": "Tor knight",
     "careerPreference": "Warrior"
   },
   {
@@ -4464,6 +5147,8 @@ export const ITEMS: EquipmentItem[] = [
     "abilities": [
       "Shock!"
     ],
+    "entry": "719",
+    "location": "Tor knight",
     "careerPreference": "Warrior"
   },
   {
@@ -4478,6 +5163,8 @@ export const ITEMS: EquipmentItem[] = [
     "abilities": [
       "Piercing"
     ],
+    "entry": "722",
+    "location": "Bone giant",
     "careerPreference": "Warrior"
   },
   {
@@ -4492,6 +5179,8 @@ export const ITEMS: EquipmentItem[] = [
     "abilities": [
       "Dominate"
     ],
+    "entry": "762",
+    "location": "Scout",
     "careerPreference": "Mage"
   },
   {
@@ -4506,6 +5195,8 @@ export const ITEMS: EquipmentItem[] = [
     "abilities": [
       "Sear"
     ],
+    "entry": "762",
+    "location": "Scout",
     "careerPreference": "Rogue"
   },
   {
@@ -4520,6 +5211,8 @@ export const ITEMS: EquipmentItem[] = [
     "abilities": [
       "Piercing"
     ],
+    "entry": "584",
+    "location": "Chilblain",
     "careerPreference": "Rogue"
   },
   {
@@ -4533,7 +5226,9 @@ export const ITEMS: EquipmentItem[] = [
     },
     "abilities": [
       "Windblast"
-    ]
+    ],
+    "entry": "754",
+    "location": "Flay"
   },
   {
     "id": "shield_of_blasting",
@@ -4547,6 +5242,8 @@ export const ITEMS: EquipmentItem[] = [
     "abilities": [
       "Lightning"
     ],
+    "entry": "665",
+    "location": "Death orb",
     "careerPreference": "Warrior"
   },
   {
@@ -4560,7 +5257,9 @@ export const ITEMS: EquipmentItem[] = [
     },
     "abilities": [
       "Disease"
-    ]
+    ],
+    "entry": "711",
+    "location": "Lord of pain"
   },
   {
     "id": "fang_of_vengos",
@@ -4574,6 +5273,8 @@ export const ITEMS: EquipmentItem[] = [
     "abilities": [
       "Venom"
     ],
+    "entry": "868",
+    "location": "Scarrons",
     "careerPreference": "Rogue"
   },
   {
@@ -4588,6 +5289,8 @@ export const ITEMS: EquipmentItem[] = [
     "abilities": [
       "Leech"
     ],
+    "entry": "845",
+    "location": "Decayers",
     "careerPreference": "Warrior"
   },
   {
@@ -4602,6 +5305,8 @@ export const ITEMS: EquipmentItem[] = [
     "abilities": [
       "Haunt"
     ],
+    "entry": "813",
+    "location": "Ghasts",
     "careerPreference": "Mage"
   },
   {
@@ -4616,6 +5321,8 @@ export const ITEMS: EquipmentItem[] = [
     "abilities": [
       "Demolish"
     ],
+    "entry": "801",
+    "location": "The wrecker",
     "careerPreference": "Warrior"
   },
   {
@@ -4630,6 +5337,8 @@ export const ITEMS: EquipmentItem[] = [
     "abilities": [
       "Brain drain"
     ],
+    "entry": "826",
+    "location": "Doom orb",
     "careerPreference": "Mage"
   },
   {
@@ -4644,6 +5353,8 @@ export const ITEMS: EquipmentItem[] = [
     "abilities": [
       "Puncture"
     ],
+    "entry": "882",
+    "location": "Sannrah",
     "careerPreference": "Warrior"
   },
   {
@@ -4658,6 +5369,8 @@ export const ITEMS: EquipmentItem[] = [
     "abilities": [
       "Acid"
     ],
+    "entry": "887",
+    "location": "Sannrah",
     "careerPreference": "Rogue"
   },
   {
@@ -4668,7 +5381,9 @@ export const ITEMS: EquipmentItem[] = [
     "stats": {},
     "abilities": [
       "Might of stone"
-    ]
+    ],
+    "entry": "41",
+    "location": "Noldor (normal)"
   },
   {
     "id": "spindles_eye",
@@ -4680,7 +5395,9 @@ export const ITEMS: EquipmentItem[] = [
     },
     "abilities": [
       "Charm"
-    ]
+    ],
+    "entry": "91",
+    "location": "Spindle"
   },
   {
     "id": "third_eye",
@@ -4692,7 +5409,9 @@ export const ITEMS: EquipmentItem[] = [
     },
     "abilities": [
       "Charm"
-    ]
+    ],
+    "entry": "155",
+    "location": "Witch"
   },
   {
     "id": "demons_heart",
@@ -4704,7 +5423,9 @@ export const ITEMS: EquipmentItem[] = [
     },
     "abilities": [
       "Trickster"
-    ]
+    ],
+    "entry": "133",
+    "location": "Changeling"
   },
   {
     "id": "avians_crest",
@@ -4717,7 +5438,9 @@ export const ITEMS: EquipmentItem[] = [
     },
     "abilities": [
       "Charm"
-    ]
+    ],
+    "entry": "275",
+    "location": "Act 2 prologue"
   },
   {
     "id": "sap_filled_gland",
@@ -4729,7 +5452,9 @@ export const ITEMS: EquipmentItem[] = [
     },
     "abilities": [
       "Heal"
-    ]
+    ],
+    "entry": "283",
+    "location": "Kerklick"
   },
   {
     "id": "elemental_dust",
@@ -4741,7 +5466,9 @@ export const ITEMS: EquipmentItem[] = [
     },
     "abilities": [
       "Might of stone"
-    ]
+    ],
+    "entry": "540",
+    "location": "Rumbler"
   },
   {
     "id": "phoenix_ashes",
@@ -4753,7 +5480,9 @@ export const ITEMS: EquipmentItem[] = [
     },
     "abilities": [
       "Heal"
-    ]
+    ],
+    "entry": "565",
+    "location": "Phoenix"
   },
   {
     "id": "dours_whetstone_r_w_",
@@ -4765,7 +5494,9 @@ export const ITEMS: EquipmentItem[] = [
     },
     "abilities": [
       "Piercing"
-    ]
+    ],
+    "entry": "593",
+    "location": "Stone puzzle"
   },
   {
     "id": "seal_of_war",
@@ -4777,7 +5508,9 @@ export const ITEMS: EquipmentItem[] = [
     },
     "abilities": [
       "Fearless"
-    ]
+    ],
+    "entry": "593",
+    "location": "Stone puzzle"
   },
   {
     "id": "braids_of_the_bull",
@@ -4789,7 +5522,9 @@ export const ITEMS: EquipmentItem[] = [
     },
     "abilities": [
       "Charge"
-    ]
+    ],
+    "entry": "216",
+    "location": "Zen"
   },
   {
     "id": "tigers_heart",
@@ -4801,7 +5536,9 @@ export const ITEMS: EquipmentItem[] = [
     },
     "abilities": [
       "Cat's speed"
-    ]
+    ],
+    "entry": "162",
+    "location": "Shara Khana"
   },
   {
     "id": "tigers_fury",
@@ -4814,6 +5551,8 @@ export const ITEMS: EquipmentItem[] = [
     "abilities": [
       "Berserker"
     ],
+    "entry": "162",
+    "location": "Shara Khana",
     "careerPreference": "Warrior"
   },
   {
@@ -4827,6 +5566,8 @@ export const ITEMS: EquipmentItem[] = [
     "abilities": [
       "Pyromancer"
     ],
+    "entry": "407",
+    "location": "Vesuvius",
     "careerPreference": "Mage"
   },
   {
@@ -4840,6 +5581,8 @@ export const ITEMS: EquipmentItem[] = [
     "abilities": [
       "Medic"
     ],
+    "entry": "680",
+    "location": "Lansbury/medic tent",
     "careerPreference": "Mage"
   },
   {
@@ -4853,6 +5596,8 @@ export const ITEMS: EquipmentItem[] = [
     "abilities": [
       "Necromancer"
     ],
+    "entry": "692/850",
+    "location": "Necromancer",
     "careerPreference": "Mage"
   },
   {
@@ -4865,7 +5610,9 @@ export const ITEMS: EquipmentItem[] = [
     },
     "abilities": [
       "Deceive"
-    ]
+    ],
+    "entry": "730",
+    "location": "Bone giants"
   },
   {
     "id": "bag_o_bones",
@@ -4877,7 +5624,9 @@ export const ITEMS: EquipmentItem[] = [
     },
     "abilities": [
       "Curse"
-    ]
+    ],
+    "entry": "775",
+    "location": "Skeleton horde"
   },
   {
     "id": "dark_therapy",
@@ -4889,7 +5638,9 @@ export const ITEMS: EquipmentItem[] = [
     },
     "abilities": [
       "Regrowth"
-    ]
+    ],
+    "entry": "802",
+    "location": "Tomb"
   },
   {
     "id": "grimm_ichor",
@@ -4902,6 +5653,8 @@ export const ITEMS: EquipmentItem[] = [
     "abilities": [
       "Poison mastery"
     ],
+    "entry": "622",
+    "location": "Brothers' Grimm",
     "careerPreference": "Rogue"
   },
   {
@@ -4915,7 +5668,9 @@ export const ITEMS: EquipmentItem[] = [
     },
     "abilities": [
       "Fortitude"
-    ]
+    ],
+    "entry": "735",
+    "location": "Special achievement"
   },
   {
     "id": "heart_of_the_beast",
@@ -4928,7 +5683,9 @@ export const ITEMS: EquipmentItem[] = [
     },
     "abilities": [
       "Savagery"
-    ]
+    ],
+    "entry": "702",
+    "location": "Ghoulash"
   },
   {
     "id": "sands_of_time",
@@ -4940,7 +5697,9 @@ export const ITEMS: EquipmentItem[] = [
     },
     "abilities": [
       "Time shift"
-    ]
+    ],
+    "entry": "754",
+    "location": "Flay"
   },
   {
     "id": "winters_heart",
@@ -4953,6 +5712,8 @@ export const ITEMS: EquipmentItem[] = [
     "abilities": [
       "Icelock"
     ],
+    "entry": "761",
+    "location": "Chilblain",
     "careerPreference": "Mage"
   },
   {
@@ -4967,6 +5728,8 @@ export const ITEMS: EquipmentItem[] = [
     "abilities": [
       "Sidestep"
     ],
+    "entry": "843",
+    "location": "Daarko",
     "careerPreference": "Rogue"
   },
   {
@@ -4980,6 +5743,8 @@ export const ITEMS: EquipmentItem[] = [
     "abilities": [
       "Dominate"
     ],
+    "entry": "878",
+    "location": "The wrecker",
     "careerPreference": "Mage"
   },
   {
@@ -4990,7 +5755,9 @@ export const ITEMS: EquipmentItem[] = [
     "stats": {
       "magic": 1
     },
-    "abilities": []
+    "abilities": [],
+    "entry": "199",
+    "location": "Hobgoblin"
   },
   {
     "id": "stone_collar",
@@ -5002,7 +5769,9 @@ export const ITEMS: EquipmentItem[] = [
     },
     "abilities": [
       "Charm"
-    ]
+    ],
+    "entry": "41",
+    "location": "Noldor (normal)"
   },
   {
     "id": "beads_of_brilliance",
@@ -5013,7 +5782,9 @@ export const ITEMS: EquipmentItem[] = [
       "brawn": 1,
       "magic": 1
     },
-    "abilities": []
+    "abilities": [],
+    "entry": "193",
+    "location": "Flooded cave"
   },
   {
     "id": "clymonistras_sorrow",
@@ -5025,7 +5796,9 @@ export const ITEMS: EquipmentItem[] = [
     },
     "abilities": [
       "Cly's adornments"
-    ]
+    ],
+    "entry": "112",
+    "location": "Catacombs"
   },
   {
     "id": "trophy_of_bones",
@@ -5038,7 +5811,9 @@ export const ITEMS: EquipmentItem[] = [
     },
     "abilities": [
       "Charm"
-    ]
+    ],
+    "entry": "44",
+    "location": "Humbaroth"
   },
   {
     "id": "black_pearl",
@@ -5050,7 +5825,9 @@ export const ITEMS: EquipmentItem[] = [
     },
     "abilities": [
       "Curse"
-    ]
+    ],
+    "entry": "432",
+    "location": "Sea spray Steve"
   },
   {
     "id": "amber_coated_collar",
@@ -5062,7 +5839,9 @@ export const ITEMS: EquipmentItem[] = [
     },
     "abilities": [
       "Heal"
-    ]
+    ],
+    "entry": "314",
+    "location": "Hive queen"
   },
   {
     "id": "beetle_shell_garland",
@@ -5074,7 +5853,9 @@ export const ITEMS: EquipmentItem[] = [
     },
     "abilities": [
       "Charm"
-    ]
+    ],
+    "entry": "327",
+    "location": "Trogs"
   },
   {
     "id": "channelers_prism",
@@ -5086,7 +5867,9 @@ export const ITEMS: EquipmentItem[] = [
     },
     "abilities": [
       "Focus"
-    ]
+    ],
+    "entry": "522",
+    "location": "Treasure vault"
   },
   {
     "id": "silver_cross",
@@ -5099,7 +5882,9 @@ export const ITEMS: EquipmentItem[] = [
     },
     "abilities": [
       "Heal"
-    ]
+    ],
+    "entry": "291",
+    "location": "Dead traveller"
   },
   {
     "id": "vermillion_heart",
@@ -5111,7 +5896,9 @@ export const ITEMS: EquipmentItem[] = [
     },
     "abilities": [
       "Life spark"
-    ]
+    ],
+    "entry": "455",
+    "location": "Lady Roe"
   },
   {
     "id": "dours_fury",
@@ -5123,7 +5910,9 @@ export const ITEMS: EquipmentItem[] = [
     },
     "abilities": [
       "Savagery"
-    ]
+    ],
+    "entry": "397",
+    "location": "Treasure chest"
   },
   {
     "id": "marsh_pendant",
@@ -5136,7 +5925,9 @@ export const ITEMS: EquipmentItem[] = [
     },
     "abilities": [
       "Steadfast"
-    ]
+    ],
+    "entry": "506",
+    "location": "Scorpios"
   },
   {
     "id": "pendant_of_foresight",
@@ -5148,7 +5939,9 @@ export const ITEMS: EquipmentItem[] = [
     },
     "abilities": [
       "Evade"
-    ]
+    ],
+    "entry": "550",
+    "location": "Jenlar's cabin"
   },
   {
     "id": "lodestone",
@@ -5160,7 +5953,9 @@ export const ITEMS: EquipmentItem[] = [
     },
     "abilities": [
       "Rust"
-    ]
+    ],
+    "entry": "593",
+    "location": "Stone puzzle"
   },
   {
     "id": "warders_collar",
@@ -5174,6 +5969,8 @@ export const ITEMS: EquipmentItem[] = [
     "abilities": [
       "Might of stone"
     ],
+    "entry": "598",
+    "location": "Armoury",
     "careerPreference": "Mage"
   },
   {
@@ -5186,7 +5983,9 @@ export const ITEMS: EquipmentItem[] = [
     },
     "abilities": [
       "Piercing"
-    ]
+    ],
+    "entry": "359",
+    "location": "King Louis"
   },
   {
     "id": "eye_of_shadow",
@@ -5198,7 +5997,9 @@ export const ITEMS: EquipmentItem[] = [
     },
     "abilities": [
       "Haste"
-    ]
+    ],
+    "entry": "729",
+    "location": "Shadowstalker"
   },
   {
     "id": "ghouls_teeth",
@@ -5211,6 +6012,8 @@ export const ITEMS: EquipmentItem[] = [
     "abilities": [
       "Piercing"
     ],
+    "entry": "839",
+    "location": "Waldo's wares",
     "careerPreference": "Rogue"
   },
   {
@@ -5225,6 +6028,8 @@ export const ITEMS: EquipmentItem[] = [
     "abilities": [
       "Piercing"
     ],
+    "entry": "914",
+    "location": "Waldo's wares",
     "careerPreference": "Mage"
   },
   {
@@ -5237,7 +6042,9 @@ export const ITEMS: EquipmentItem[] = [
     },
     "abilities": [
       "Radiance"
-    ]
+    ],
+    "entry": "677",
+    "location": "Tor knight"
   },
   {
     "id": "horn_of_courage",
@@ -5251,6 +6058,8 @@ export const ITEMS: EquipmentItem[] = [
     "abilities": [
       "Courage"
     ],
+    "entry": "770",
+    "location": "Rotterghast",
     "careerPreference": "Warrior"
   },
   {
@@ -5263,7 +6072,9 @@ export const ITEMS: EquipmentItem[] = [
     },
     "abilities": [
       "Heal"
-    ]
+    ],
+    "entry": "834",
+    "location": "Dark ranger"
   },
   {
     "id": "charged_core",
@@ -5275,7 +6086,9 @@ export const ITEMS: EquipmentItem[] = [
     },
     "abilities": [
       "Lifespark"
-    ]
+    ],
+    "entry": "891",
+    "location": "Clockwerk"
   },
   {
     "id": "stolen_hope",
@@ -5288,7 +6101,9 @@ export const ITEMS: EquipmentItem[] = [
     },
     "abilities": [
       "Deceive"
-    ]
+    ],
+    "entry": "929",
+    "location": "Dark Arthurian"
   },
   {
     "id": "inner_circle",
@@ -5298,7 +6113,9 @@ export const ITEMS: EquipmentItem[] = [
     "stats": {},
     "abilities": [
       "(+5 health) Curse"
-    ]
+    ],
+    "entry": "541",
+    "location": "Zul"
   },
   {
     "id": "glacial_shards",
@@ -5312,6 +6129,8 @@ export const ITEMS: EquipmentItem[] = [
     "abilities": [
       "Piercing"
     ],
+    "entry": "584",
+    "location": "Chilblain",
     "careerPreference": "Warrior"
   },
   {
@@ -5324,7 +6143,9 @@ export const ITEMS: EquipmentItem[] = [
     },
     "abilities": [
       "(+5 health) Courage"
-    ]
+    ],
+    "entry": "777",
+    "location": "Rune chest"
   },
   {
     "id": "widows_band",
@@ -5336,7 +6157,9 @@ export const ITEMS: EquipmentItem[] = [
     },
     "abilities": [
       "Heal"
-    ]
+    ],
+    "entry": "104",
+    "location": "Martha"
   },
   {
     "id": "missing_link",
@@ -5347,7 +6170,9 @@ export const ITEMS: EquipmentItem[] = [
       "brawn": 1,
       "magic": 1
     },
-    "abilities": []
+    "abilities": [],
+    "entry": "180",
+    "location": "Barricaded room"
   },
   {
     "id": "travellers_band",
@@ -5360,7 +6185,9 @@ export const ITEMS: EquipmentItem[] = [
     },
     "abilities": [
       "Charm"
-    ]
+    ],
+    "entry": "251",
+    "location": "Farm bedroom"
   },
   {
     "id": "lightning_ring",
@@ -5370,7 +6197,9 @@ export const ITEMS: EquipmentItem[] = [
     "stats": {},
     "abilities": [
       "Lightning"
-    ]
+    ],
+    "entry": "243",
+    "location": "Weather wizard"
   },
   {
     "id": "grave_dust_ring",
@@ -5380,7 +6209,9 @@ export const ITEMS: EquipmentItem[] = [
     "stats": {
       "brawn": 1
     },
-    "abilities": []
+    "abilities": [],
+    "entry": "106/127",
+    "location": "Ghouls"
   },
   {
     "id": "scholars_circle",
@@ -5390,7 +6221,9 @@ export const ITEMS: EquipmentItem[] = [
     "stats": {},
     "abilities": [
       "Eureka!"
-    ]
+    ],
+    "entry": "170",
+    "location": "Perinold"
   },
   {
     "id": "blackfire_ring",
@@ -5400,7 +6233,9 @@ export const ITEMS: EquipmentItem[] = [
     "stats": {},
     "abilities": [
       "Sear"
-    ]
+    ],
+    "entry": "133",
+    "location": "Changeling"
   },
   {
     "id": "circle_of_thorns",
@@ -5410,7 +6245,9 @@ export const ITEMS: EquipmentItem[] = [
     "stats": {},
     "abilities": [
       "Thorns"
-    ]
+    ],
+    "entry": "80",
+    "location": "Zaladrell"
   },
   {
     "id": "splintered_band",
@@ -5423,6 +6260,8 @@ export const ITEMS: EquipmentItem[] = [
     "abilities": [
       "Retaliation"
     ],
+    "entry": "432",
+    "location": "Sea spray Steve",
     "careerPreference": "Warrior"
   },
   {
@@ -5435,7 +6274,9 @@ export const ITEMS: EquipmentItem[] = [
     },
     "abilities": [
       "Vanish"
-    ]
+    ],
+    "entry": "327",
+    "location": "Trogs"
   },
   {
     "id": "wayfarers_ring",
@@ -5448,7 +6289,9 @@ export const ITEMS: EquipmentItem[] = [
     },
     "abilities": [
       "Charm"
-    ]
+    ],
+    "entry": "291",
+    "location": "Dead traveller"
   },
   {
     "id": "vermillion_rage",
@@ -5460,7 +6303,9 @@ export const ITEMS: EquipmentItem[] = [
     },
     "abilities": [
       "Bleed"
-    ]
+    ],
+    "entry": "422",
+    "location": "Count (normal)"
   },
   {
     "id": "clymonistras_folly",
@@ -5473,7 +6318,9 @@ export const ITEMS: EquipmentItem[] = [
     },
     "abilities": [
       "Cly's adornments"
-    ]
+    ],
+    "entry": "460",
+    "location": "Clymonistra"
   },
   {
     "id": "finger_of_fire",
@@ -5485,7 +6332,9 @@ export const ITEMS: EquipmentItem[] = [
     },
     "abilities": [
       "Sear"
-    ]
+    ],
+    "entry": "655",
+    "location": "Cinders"
   },
   {
     "id": "ring_of_the_marshes",
@@ -5498,7 +6347,9 @@ export const ITEMS: EquipmentItem[] = [
     },
     "abilities": [
       "Swamp legs"
-    ]
+    ],
+    "entry": "449/529",
+    "location": "Wreekin"
   },
   {
     "id": "steadfast_ring",
@@ -5511,6 +6362,8 @@ export const ITEMS: EquipmentItem[] = [
     "abilities": [
       "Steadfast"
     ],
+    "entry": "446",
+    "location": "Treasure cave",
     "careerPreference": "Mage"
   },
   {
@@ -5523,7 +6376,9 @@ export const ITEMS: EquipmentItem[] = [
     },
     "abilities": [
       "Immobilise"
-    ]
+    ],
+    "entry": "333",
+    "location": "Treasure cave"
   },
   {
     "id": "band_of_conquest_r_w_",
@@ -5535,7 +6390,9 @@ export const ITEMS: EquipmentItem[] = [
     },
     "abilities": [
       "Fortitude"
-    ]
+    ],
+    "entry": "333",
+    "location": "Treasure cave"
   },
   {
     "id": "abyssal_brimstone",
@@ -5547,7 +6404,9 @@ export const ITEMS: EquipmentItem[] = [
     },
     "abilities": [
       "Cauterise"
-    ]
+    ],
+    "entry": "397",
+    "location": "Treasure chest"
   },
   {
     "id": "avatars_circle",
@@ -5560,6 +6419,8 @@ export const ITEMS: EquipmentItem[] = [
     "abilities": [
       "Overload"
     ],
+    "entry": "443",
+    "location": "Stone giant",
     "careerPreference": "Mage"
   },
   {
@@ -5572,7 +6433,9 @@ export const ITEMS: EquipmentItem[] = [
     },
     "abilities": [
       "Bleed"
-    ]
+    ],
+    "entry": "696",
+    "location": "Raolin Storm"
   },
   {
     "id": "menders_marcasite",
@@ -5584,7 +6447,9 @@ export const ITEMS: EquipmentItem[] = [
     },
     "abilities": [
       "Regrowth"
-    ]
+    ],
+    "entry": "696",
+    "location": "Raolin Storm"
   },
   {
     "id": "cutters_cornelian",
@@ -5596,7 +6461,9 @@ export const ITEMS: EquipmentItem[] = [
     },
     "abilities": [
       "Piercing"
-    ]
+    ],
+    "entry": "696",
+    "location": "Raolin Storm"
   },
   {
     "id": "magpies_mischief",
@@ -5608,7 +6475,9 @@ export const ITEMS: EquipmentItem[] = [
     },
     "abilities": [
       "Steal"
-    ]
+    ],
+    "entry": "394",
+    "location": "Logan"
   },
   {
     "id": "dryads_band",
@@ -5620,7 +6489,9 @@ export const ITEMS: EquipmentItem[] = [
     },
     "abilities": [
       "Thorn armour"
-    ]
+    ],
+    "entry": "341",
+    "location": "Barkrot"
   },
   {
     "id": "khanas_revenge",
@@ -5633,6 +6504,8 @@ export const ITEMS: EquipmentItem[] = [
     "abilities": [
       "Bleed"
     ],
+    "entry": "815",
+    "location": "Waldo's wares",
     "careerPreference": "Warrior"
   },
   {
@@ -5646,6 +6519,8 @@ export const ITEMS: EquipmentItem[] = [
     "abilities": [
       "Rust"
     ],
+    "entry": "914",
+    "location": "Waldo's wares",
     "careerPreference": "Mage"
   },
   {
@@ -5658,7 +6533,9 @@ export const ITEMS: EquipmentItem[] = [
     },
     "abilities": [
       "Dominate"
-    ]
+    ],
+    "entry": "778",
+    "location": "Ghouls"
   },
   {
     "id": "sinister_shadows",
@@ -5671,7 +6548,9 @@ export const ITEMS: EquipmentItem[] = [
     },
     "abilities": [
       "Vanish"
-    ]
+    ],
+    "entry": "834",
+    "location": "Dark ranger"
   },
   {
     "id": "blood_winter",
@@ -5683,7 +6562,9 @@ export const ITEMS: EquipmentItem[] = [
     },
     "abilities": [
       "Leech"
-    ]
+    ],
+    "entry": "869",
+    "location": "Sammain (normal)"
   },
   {
     "id": "hunger",
@@ -5695,7 +6576,9 @@ export const ITEMS: EquipmentItem[] = [
     },
     "abilities": [
       "Leech"
-    ]
+    ],
+    "entry": "874",
+    "location": "Sammain (special)"
   },
   {
     "id": "tooth_n_claw",
@@ -5709,6 +6592,8 @@ export const ITEMS: EquipmentItem[] = [
     "abilities": [
       "Sideswipe"
     ],
+    "entry": "727",
+    "location": "Brothes' Grimm",
     "careerPreference": "Warrior"
   },
   {
@@ -5722,7 +6607,9 @@ export const ITEMS: EquipmentItem[] = [
     },
     "abilities": [
       "Martyr"
-    ]
+    ],
+    "entry": "735",
+    "location": "Special achievement"
   },
   {
     "id": "seven_stars_r_w_",
@@ -5734,7 +6621,9 @@ export const ITEMS: EquipmentItem[] = [
     },
     "abilities": [
       "Heal"
-    ]
+    ],
+    "entry": "577",
+    "location": "Silleer"
   },
   {
     "id": "wytchwood_thorn_r_w_",
@@ -5746,7 +6635,9 @@ export const ITEMS: EquipmentItem[] = [
     },
     "abilities": [
       "Thorns"
-    ]
+    ],
+    "entry": "577",
+    "location": "Silleer"
   },
   {
     "id": "zuls_zapper",
@@ -5759,7 +6650,9 @@ export const ITEMS: EquipmentItem[] = [
     },
     "abilities": [
       "Zapped!"
-    ]
+    ],
+    "entry": "541",
+    "location": "Zul"
   },
   {
     "id": "band_of_elements_w_m_",
@@ -5771,7 +6664,9 @@ export const ITEMS: EquipmentItem[] = [
     },
     "abilities": [
       "Lightning"
-    ]
+    ],
+    "entry": "724",
+    "location": "Budak"
   },
   {
     "id": "budaks_signet_w_m_",
@@ -5784,7 +6679,9 @@ export const ITEMS: EquipmentItem[] = [
     },
     "abilities": [
       "Steal"
-    ]
+    ],
+    "entry": "724",
+    "location": "Budak"
   },
   {
     "id": "spider_sapphire_r_m_",
@@ -5797,7 +6694,9 @@ export const ITEMS: EquipmentItem[] = [
     },
     "abilities": [
       "Webbed"
-    ]
+    ],
+    "entry": "726",
+    "location": "Tor knight"
   },
   {
     "id": "serpentine_spiral_r_m_",
@@ -5810,7 +6709,9 @@ export const ITEMS: EquipmentItem[] = [
     },
     "abilities": [
       "Immobilise"
-    ]
+    ],
+    "entry": "726",
+    "location": "Tor knight"
   },
   {
     "id": "conduit_of_shadow",
@@ -5823,6 +6724,8 @@ export const ITEMS: EquipmentItem[] = [
     "abilities": [
       "Overload"
     ],
+    "entry": "865",
+    "location": "Daarko",
     "careerPreference": "Mage"
   },
   {
@@ -5837,6 +6740,8 @@ export const ITEMS: EquipmentItem[] = [
     "abilities": [
       "Shock!"
     ],
+    "entry": "826",
+    "location": "Doom orb",
     "careerPreference": "Mage"
   }
 ];

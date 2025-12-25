@@ -58,13 +58,32 @@
     cursor: pointer;
 }
 
+.search-input {
+    width: 100%;
+    padding: 8px;
+    background: var(--dq-black);
+    border: 1px solid var(--dq-gold-dim);
+    border-radius: 4px;
+    color: var(--dq-light-grey);
+    font-size: 1rem;
+    outline: none;
+    margin-top: 10px;
+    /* Added from the instruction's orphaned block */
+    margin-bottom: 10px;
+    /* Added from the instruction's orphaned block */
+}
+
+.search-input:focus {
+    border-color: var(--dq-gold);
+}
+
 .items-list {
     flex: 1;
     overflow-y: auto;
-    padding: var(--spacing-md);
+    padding: 10px;
     display: flex;
     flex-direction: column;
-    gap: var(--spacing-sm);
+    gap: 10px;
 }
 
 .item-card {
