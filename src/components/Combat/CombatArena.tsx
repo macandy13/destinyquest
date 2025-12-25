@@ -9,10 +9,10 @@ interface CombatArenaProps {
 }
 
 const CombatArena: React.FC<CombatArenaProps> = ({ hero }) => {
-    const { combat, startCombat, nextRound, resolveSpeedRound, resolveDamageAndArmour } = useCombat(hero.stats);
+    const { combat, startCombat, nextRound, activateAbility, resolveSpeedRound, resolveDamageAndArmour } = useCombat(hero);
     const [, setDiceTotal] = useState<number | undefined>(undefined);
 
-    if (combat.phase === 'idle' && !combat.enemy) {
+    if (combat.phase === 'combat-start' && !combat.enemy) {
         return (
             <div className="dq-card combat">
                 <h2 className="dq-card-title">Combat</h2>
@@ -27,7 +27,6 @@ const CombatArena: React.FC<CombatArenaProps> = ({ hero }) => {
     // Auto-advance checking for combat-start might be needed, or we show a "Fight!" screen.
     // For now, let's treat 'combat-start' similar to 'speed-roll' but maybe with a "FIGHT" overlay or button.
     // To keep it simple and working: if phase is 'combat-start', show a "Start Round 1" button.
-
 
     const handleRoll = (total: number, rolls: number[]) => {
         setDiceTotal(total);
@@ -46,7 +45,7 @@ const CombatArena: React.FC<CombatArenaProps> = ({ hero }) => {
 
     const getPhaseInstruction = () => {
         switch (combat.phase) {
-            case 'idle': return "Enemy Found! Prepare to fight!";
+            case 'combat-start': return "Enemy Found! Prepare to fight!";
             case 'speed-roll': return "Roll Speed (2d6) to execute turn";
             case 'damage-roll': return combat.winner === 'hero' ? "You won! Roll Damage (1d6)" : "Enemy won! Their Damage Roll...";
             case 'round-end': return "Round Complete. Proceed?";
@@ -91,6 +90,46 @@ const CombatArena: React.FC<CombatArenaProps> = ({ hero }) => {
             </div>
 
             <div className="arena-center">
+                {/* Active Abilities */}
+                {combat.activeAbilities.length > 0 && (
+                    <div className="mb-4" style={{ marginBottom: '1rem' }}>
+                        <h4 className="text-sm uppercase tracking-wide text-dim mb-2" style={{ fontSize: '0.75rem', color: 'var(--dq-dim)', marginBottom: '0.5rem' }}>Abilities</h4>
+                        <div className="flex flex-wrap gap-2" style={{ display: 'flex', flexWrap: 'wrap', gap: '0.5rem', justifyContent: 'center' }}>
+                            {combat.activeAbilities.map((ability, index) => (
+                                <div key={index} className={`p-2 border rounded text-sm ${ability.used ? 'opacity-50' : ''}`} style={{ padding: '0.5rem', border: '1px solid var(--dq-border)', borderRadius: '4px', background: 'var(--dq-bg-card)', opacity: ability.used ? 0.5 : 1 }}>
+                                    <div className="flex justify-between items-center gap-2" style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+                                        <span className="font-bold text-accent" style={{ color: 'var(--dq-gold)', fontWeight: 'bold' }}>{ability.name}</span>
+                                        <span className="text-xs text-dim" style={{ fontSize: '0.7rem', color: 'var(--dq-dim)' }}>({ability.source})</span>
+                                    </div>
+                                    {!ability.used && (
+                                        <button
+                                            className="mt-1 text-xs px-2 py-1 rounded w-full"
+                                            style={{ marginTop: '0.25rem', width: '100%', fontSize: '0.75rem', background: '#334155', color: 'white', border: 'none', cursor: 'pointer' }}
+                                            onClick={() => activateAbility(ability.name)}
+                                        >
+                                            Use
+                                        </button>
+                                    )}
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+                )}
+
+                {/* Modifiers Display */}
+                {combat.modifiers.length > 0 && (
+                    <div className="mb-4" style={{ marginBottom: '1rem', textAlign: 'center' }}>
+                        <h4 className="text-sm uppercase tracking-wide text-dim mb-2" style={{ fontSize: '0.75rem', color: 'var(--dq-dim)', marginBottom: '0.5rem' }}>Active Effects</h4>
+                        <div className="space-y-1" style={{ display: 'flex', flexDirection: 'column', gap: '0.25rem', alignItems: 'center' }}>
+                            {combat.modifiers.map((mod, i) => (
+                                <div key={i} className="text-xs text-info bg-slate-900/50 p-1 rounded" style={{ fontSize: '0.75rem', color: '#60a5fa', background: 'rgba(15, 23, 42, 0.5)', padding: '0.25rem 0.5rem', borderRadius: '4px' }}>
+                                    {mod.name}: +{mod.value} {mod.type.split('-')[0]} ({mod.duration} rounds left)
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+                )}
+
                 {/* Phase Instruction */}
                 <div style={{ margin: '10px 0', textAlign: 'center', color: 'var(--dq-gold)' }}>
                     {getPhaseInstruction()}
@@ -174,8 +213,8 @@ const CombatArena: React.FC<CombatArenaProps> = ({ hero }) => {
                     </div>
                 )}
 
-                {(combat.phase === 'round-end' || combat.phase === 'idle') && (
-                    <button className="btn-primary btn-next-round" onClick={nextRound}>{combat.phase === 'idle' ? 'Fight!' : 'Next Round'}</button>
+                {(combat.phase === 'round-end' || combat.phase === 'combat-start') && (
+                    <button className="btn-primary btn-next-round" onClick={nextRound}>{combat.phase === 'combat-start' ? 'Fight!' : 'Next Round'}</button>
                 )}
             </div>
 

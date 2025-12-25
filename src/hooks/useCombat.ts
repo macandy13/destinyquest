@@ -1,6 +1,7 @@
 import { useState, useCallback } from 'react';
-import { CombatState, Enemy, CombatLog } from '../types/combat';
-import { HeroStats } from '../types/hero';
+import { CombatState, Enemy, CombatLog, ActiveAbility } from '../types/combat';
+import { Hero } from '../types/hero';
+import { getAbilityDefinition } from '../mechanics/abilityDefinitions';
 
 const INITIAL_STATE: CombatState = {
     round: 0,
@@ -8,6 +9,8 @@ const INITIAL_STATE: CombatState = {
     enemy: null,
     heroHealth: 0,
     winner: null,
+    activeAbilities: [],
+    modifiers: [],
     logs: []
 };
 
@@ -23,23 +26,69 @@ const MOCK_ENEMY: Enemy = {
     abilities: []
 };
 
-export function useCombat(heroStats: HeroStats) {
+export function useCombat(hero: Hero) {
     const [combat, setCombat] = useState<CombatState>(INITIAL_STATE);
 
     const startCombat = useCallback(() => {
+        // Extract abilities from equipped items
+        const abilities: ActiveAbility[] = [];
+        Object.values(hero.equipment).forEach(item => {
+            if (item && item.abilities && item.abilities.length > 0) {
+                item.abilities.forEach(abilityName => {
+                    if (abilityName !== 'None') {
+                        abilities.push({
+                            name: abilityName,
+                            source: item.name,
+                            used: false
+                        });
+                    }
+                });
+            }
+        });
+
         setCombat({
             round: 1,
             phase: 'combat-start',
             enemy: { ...MOCK_ENEMY },
-            heroHealth: heroStats.health,
+            heroHealth: hero.stats.health,
             winner: null,
+            activeAbilities: abilities,
+            modifiers: [],
             logs: [{ round: 1, message: 'Combat started!', type: 'info' }]
         });
-    }, [heroStats]);
+    }, [hero]);
 
     const endCombat = useCallback(() => {
         setCombat(INITIAL_STATE);
     }, []);
+
+    const activateAbility = (abilityName: string) => {
+        setCombat(prev => {
+            const ability = prev.activeAbilities.find(a => a.name === abilityName);
+            if (!ability || ability.used) return prev; // Cannot use
+
+            const definition = getAbilityDefinition(abilityName);
+            if (!definition || !definition.onActivate) return prev; // No active effect defined
+
+            const updates = definition.onActivate(prev, hero);
+            if (!updates) return prev; // Activation decided no effect or invalid
+
+            // Mark ability as used
+            const newActiveAbilities = prev.activeAbilities.map(a =>
+                a.name === abilityName ? { ...a, used: true } : a
+            );
+
+            return {
+                ...prev,
+                ...updates,
+                activeAbilities: newActiveAbilities,
+                // Logs are typically handled inside 'updates' from the hook if they want to explain effect,
+                // but we can ensure they are appended if merging array logic isn't perfect.
+                // In our registry implementation, we return { logs: [...prev.logs, newLog] }.
+                // So spread ...updates overwrites logs, which is correct.
+            };
+        });
+    };
 
     const addLog = (message: string, type: CombatLog['type']) => {
         setCombat(prev => ({
@@ -60,10 +109,17 @@ export function useCombat(heroStats: HeroStats) {
         const heroRoll = heroRolls.reduce((a, b) => a + b, 0);
         const enemyRoll = enemyRolls.reduce((a, b) => a + b, 0);
 
-        const heroTotal = heroRoll + heroStats.speed;
+        // Apply modifiers
+        const speedModifiers = combat.modifiers
+            .filter(m => m.type === 'speed-bonus')
+            .reduce((sum, m) => sum + m.value, 0);
+
+        const heroTotal = heroRoll + hero.stats.speed + speedModifiers;
         const enemyTotal = enemyRoll + combat.enemy.speed;
         let winner: 'hero' | 'enemy' | null = null;
-        let message = `Speed: Hero ${heroTotal} vs Enemy ${enemyTotal}. `;
+
+        let modText = speedModifiers > 0 ? ` (+${speedModifiers} mod)` : '';
+        let message = `Speed: Hero ${heroTotal}${modText} vs Enemy ${enemyTotal}. `;
 
         if (heroTotal > enemyTotal) {
             winner = 'hero';
@@ -102,29 +158,76 @@ export function useCombat(heroStats: HeroStats) {
             let newEnemyHealth = prev.enemy.health;
             let type: CombatLog['type'] = 'info';
 
+            // Hook call for Acid and other damage modifiers
+            let modifiersFromHooks = 0;
+            let hookLogMsg = '';
+
             if (prev.winner === 'hero') {
-                const modifier = Math.max(heroStats.brawn, heroStats.magic);
-                const rawDamage = damageRoll + modifier;
+                prev.activeAbilities.forEach(ability => {
+                    const def = getAbilityDefinition(ability.name);
+                    if (def && def.onDamageCalculate) {
+                        const mod = def.onDamageCalculate(prev, hero, damageRoll, rolls);
+                        if (mod !== 0) {
+                            modifiersFromHooks += mod;
+                            hookLogMsg += ` (+${mod} ${ability.name})`;
+                        }
+                    }
+                });
+
+                const modifier = Math.max(hero.stats.brawn, hero.stats.magic);
+                const rawDamage = damageRoll + modifier + modifiersFromHooks;
                 const actualDamage = Math.max(0, rawDamage - prev.enemy.armour);
                 newEnemyHealth = Math.max(0, prev.enemy.health - actualDamage);
 
-                logMsg = `Hero hits for ${rawDamage} (Rolled ${damageRoll} + ${modifier}). Enemy armour absorbs ${prev.enemy.armour}. 💥 ${actualDamage} Damage!`;
+                logMsg = `Hero hits for ${rawDamage}${hookLogMsg} (Rolled ${damageRoll} + ${modifier}). Enemy armour absorbs ${prev.enemy.armour}. 💥 ${actualDamage} Damage!`;
                 type = 'damage-enemy';
             } else {
                 const modifier = Math.max(prev.enemy.brawn, prev.enemy.magic);
                 const rawDamage = damageRoll + modifier;
-                const actualDamage = Math.max(0, rawDamage - heroStats.armour);
+                const actualDamage = Math.max(0, rawDamage - hero.stats.armour);
                 newHeroHealth = Math.max(0, prev.heroHealth - actualDamage);
 
-                logMsg = `Enemy hits for ${rawDamage} (Rolled ${damageRoll} + ${modifier}). Hero armour absorbs ${heroStats.armour}. 💔 ${actualDamage} Damage taken!`;
+                logMsg = `Enemy hits for ${rawDamage} (Rolled ${damageRoll} + ${modifier}). Hero armour absorbs ${hero.stats.armour}. 💔 ${actualDamage} Damage taken!`;
                 type = 'damage-hero';
             }
+
+            // Apply end-of-round passives via hooks
+            let passiveLogMsg = '';
+
+            // Temporary state for hooks to see valid health
+            let currentStateForHooks = {
+                ...prev,
+                heroHealth: newHeroHealth,
+                enemy: { ...prev.enemy!, health: newEnemyHealth }
+            } as CombatState;
+
+            prev.activeAbilities.forEach(ability => {
+                const def = getAbilityDefinition(ability.name);
+                if (def && def.onRoundEnd) {
+                    const updates = def.onRoundEnd(currentStateForHooks, hero);
+
+                    if (updates.enemy) {
+                        newEnemyHealth = updates.enemy.health;
+                        currentStateForHooks.enemy = updates.enemy;
+                    }
+                    if (updates.heroHealth !== undefined) {
+                        newHeroHealth = updates.heroHealth;
+                        currentStateForHooks.heroHealth = newHeroHealth;
+                    }
+
+                    if (updates.logs) {
+                        updates.logs.forEach(l => {
+                            if (l.round === prev.round) passiveLogMsg += ' ' + l.message;
+                        });
+                    }
+                }
+            });
 
             // Check for defeat
             const isFinished = newHeroHealth <= 0 || newEnemyHealth <= 0;
             const nextPhase = isFinished ? 'combat-end' : 'round-end';
 
-            const logs = [...prev.logs, { round: prev.round, message: logMsg, type }];
+            const logs = [...prev.logs, { round: prev.round, message: logMsg + passiveLogMsg, type }];
 
             if (newHeroHealth <= 0) logs.push({ round: prev.round, message: 'Hero Defeated!', type: 'loss' });
             if (newEnemyHealth <= 0) logs.push({ round: prev.round, message: 'Enemy Defeated!', type: 'win' });
@@ -141,16 +244,27 @@ export function useCombat(heroStats: HeroStats) {
     };
 
     const nextRound = () => {
-        setCombat(prev => ({
-            ...prev,
-            round: prev.round + 1,
-            winner: null,
-            heroSpeedRolls: undefined,
-            enemySpeedRolls: undefined,
-            damageRolls: undefined,
-            phase: 'speed-roll',
-            logs: [...prev.logs, { round: prev.round + 1, message: `Round ${prev.round + 1}`, type: 'info' }]
-        }));
+        setCombat(prev => {
+            // Update modifiers (decrease duration, remove expired)
+            // If just starting combat, don't decrement yet as the ability was just used
+            const shouldDecrement = prev.phase !== 'combat-start';
+
+            const activeModifiers = prev.modifiers
+                .map(m => shouldDecrement ? { ...m, duration: m.duration - 1 } : m)
+                .filter(m => m.duration > 0);
+
+            return {
+                ...prev,
+                round: prev.round + 1,
+                winner: null,
+                heroSpeedRolls: undefined,
+                enemySpeedRolls: undefined,
+                damageRolls: undefined,
+                phase: 'speed-roll',
+                modifiers: activeModifiers,
+                logs: [...prev.logs, { round: prev.round + 1, message: `Round ${prev.round + 1}`, type: 'info' }]
+            };
+        });
     };
 
     return {
@@ -158,6 +272,7 @@ export function useCombat(heroStats: HeroStats) {
         startCombat,
         endCombat,
         nextRound,
+        activateAbility,
         resolveSpeedRound,
         resolveDamageAndArmour,
         addLog
