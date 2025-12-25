@@ -17,10 +17,11 @@ const CombatAbilityItem: React.FC<CombatAbilityItemProps> = ({ ability, onActiva
                 <span className="ability-name">{ability.name}</span>
                 <span className="ability-source">({ability.source})</span>
             </div>
-            {definition?.description ?
+            {definition?.description && (
                 <div className="ability-description">
                     {definition.description}
-                </div> : null}
+                </div>
+            )}
             <button
                 className="ability-use-btn"
                 onClick={() => onActivate(ability.name)}

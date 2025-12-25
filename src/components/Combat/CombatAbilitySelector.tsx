@@ -17,8 +17,15 @@ const CombatAbilitySelector: React.FC<CombatAbilitySelectorProps> = ({ combat, o
         return true;
     };
 
-    const availableAbilities = combat.activeAbilities.filter(a => canActivateAbility(a.name, a.used));
-
+    const alreadySeenAbilities = new Set<string>();
+    const availableAbilities = combat.activeAbilities
+        .filter(a => canActivateAbility(a.name, a.used))
+        .sort((a, b) => a.name.localeCompare(b.name))
+        .filter(a => {
+            if (alreadySeenAbilities.has(a.name)) return false;
+            alreadySeenAbilities.add(a.name);
+            return true;
+        });
     if (availableAbilities.length === 0) return null;
 
     return (
