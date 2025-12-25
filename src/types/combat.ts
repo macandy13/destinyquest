@@ -53,4 +53,9 @@ export interface CombatState {
     activeAbilities: ActiveAbility[];
     modifiers: CombatModifier[];
     logs: CombatLog[];
+    pendingInteraction?: {
+        abilityName: string;
+        type: 'reroll';
+        target: 'hero-speed' | 'damage';
+    };
 }

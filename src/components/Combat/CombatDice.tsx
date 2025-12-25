@@ -7,9 +7,10 @@ interface CombatDiceProps {
     values?: number[]; // Controlled mode: display these specific dice
     count?: number; // Number of dice (default 2)
     label?: string;
+    onDieClick?: (index: number) => void;
 }
 
-const CombatDice: React.FC<CombatDiceProps> = ({ onRoll, result, values, count = 2, label }) => {
+const CombatDice: React.FC<CombatDiceProps> = ({ onRoll, result, values, count = 2, label, onDieClick }) => {
     const [isRolling, setIsRolling] = useState(false);
     const [internalDice, setInternalDice] = useState<number[]>(new Array(count).fill(1));
 
@@ -34,12 +35,25 @@ const CombatDice: React.FC<CombatDiceProps> = ({ onRoll, result, values, count =
         }, 600);
     };
 
+    const handleDieClick = (index: number) => {
+        if (onDieClick && !isRolling) {
+            onDieClick(index);
+        } else if (!onDieClick && onRoll) {
+            roll(); // Fallback to roll behavior if click handler isn't specific
+        }
+    };
+
     return (
         <div className="dice-wrapper" style={{ textAlign: 'center' }}>
             {label && <div className="dice-label" style={{ marginBottom: '4px', fontSize: '0.9rem', color: '#888' }}>{label}</div>}
             <div className="dice-container" style={{ justifyContent: 'center' }}>
                 {currentDice.map((val, i) => (
-                    <div key={i} className={`die d6 ${isRolling ? 'rolling' : ''}`} onClick={roll}>
+                    <div
+                        key={i}
+                        className={`die d6 ${isRolling ? 'rolling' : ''} ${onDieClick ? 'interactive' : ''}`}
+                        onClick={() => handleDieClick(i)}
+                        style={{ cursor: onDieClick ? 'pointer' : (onRoll ? 'pointer' : 'default') }}
+                    >
                         <span className="die-result">{val}</span>
                     </div>
                 ))}

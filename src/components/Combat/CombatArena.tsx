@@ -11,7 +11,7 @@ interface CombatArenaProps {
 }
 
 const CombatArena: React.FC<CombatArenaProps> = ({ hero }) => {
-    const { combat, startCombat, nextRound, activateAbility, resolveSpeedRound, resolveDamageAndArmour } = useCombat(hero);
+    const { combat, startCombat, nextRound, activateAbility, resolveSpeedRound, resolveDamageAndArmour, handleReroll } = useCombat(hero);
 
     if (combat.phase === 'combat-start' && !combat.enemy) {
         return (
@@ -143,7 +143,8 @@ const CombatArena: React.FC<CombatArenaProps> = ({ hero }) => {
                             label="Your Speed"
                             count={2}
                             values={combat.heroSpeedRolls} // Persist if exists
-                            onRoll={combat.phase === 'speed-roll' ? handleSpeedRoll : undefined} // Only interactive in speed phase and if not already rolled (implied by lack of values check but onRoll handles it)
+                            onRoll={combat.phase === 'speed-roll' ? handleSpeedRoll : undefined} // Only interactive in speed phase
+                            onDieClick={combat.pendingInteraction?.target === 'hero-speed' ? (i) => handleReroll(i) : undefined}
                             result={combat.heroSpeedRolls ? combat.heroSpeedRolls.reduce((a, b) => a + b, 0) + hero.stats.speed : undefined}
                         />
                         {/* Only show result modifier text if rolled */}
@@ -186,6 +187,7 @@ const CombatArena: React.FC<CombatArenaProps> = ({ hero }) => {
                                     count={1}
                                     values={combat.damageRolls} // Show result if exists
                                     onRoll={combat.phase === 'damage-roll' ? (rolls) => resolveDamageAndArmour(rolls) : undefined}
+                                    onDieClick={combat.pendingInteraction?.target === 'damage' ? (i) => handleReroll(i) : undefined}
                                 />
                             </div>
                         )}

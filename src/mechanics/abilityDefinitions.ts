@@ -21,6 +21,9 @@ export interface AbilityHooks {
 
     // Returns partial state updates (e.g. passive damage at end of round)
     onRoundEnd?: (state: CombatState) => Partial<CombatState>;
+
+    // Handles reroll interactions. Returns state updates.
+    onReroll?: (state: CombatState, dieIndex: number) => Partial<CombatState>;
 }
 
 export interface AbilityDefinition extends AbilityHooks {
@@ -80,6 +83,50 @@ registerAbility({
 // They are identical in effect description in the code so far.
 
 // --- SPEED ABILITIES ---
+
+registerAbility({
+    name: 'Charm',
+    type: 'modifier',
+    description: 'Re-roll one of your hero\'s dice; you must accept the second result.',
+    canActivate: (state) => {
+        // Can only reroll if we have valid rolls for the current phase
+        if (state.phase === 'speed-roll' && state.heroSpeedRolls) return true;
+        if (state.phase === 'damage-roll' && state.winner === 'hero' && state.damageRolls) return true;
+        return false;
+    },
+    onActivate: (state) => {
+        return {
+            pendingInteraction: {
+                abilityName: 'Charm',
+                type: 'reroll',
+                target: state.phase === 'speed-roll' ? 'hero-speed' : 'damage'
+            },
+            logs: [...state.logs, { round: state.round, message: 'Select a die to re-roll.', type: 'info' }]
+        };
+    },
+    onReroll: (state, index) => {
+        if (state.pendingInteraction?.target === 'hero-speed' && state.heroSpeedRolls) {
+            const newRoll = Math.floor(Math.random() * 6) + 1;
+            const newRolls = [...state.heroSpeedRolls];
+            newRolls[index] = newRoll;
+            return {
+                heroSpeedRolls: newRolls,
+                pendingInteraction: undefined,
+                logs: [...state.logs, { round: state.round, message: `Re-rolled die ${index + 1} to ${newRoll}.`, type: 'info' }]
+            };
+        } else if (state.pendingInteraction?.target === 'damage' && state.damageRolls) {
+            const newRoll = Math.floor(Math.random() * 6) + 1;
+            const newRolls = [...state.damageRolls];
+            newRolls[index] = newRoll;
+            return {
+                damageRolls: newRolls,
+                pendingInteraction: undefined,
+                logs: [...state.logs, { round: state.round, message: `Re-rolled damage die to ${newRoll}.`, type: 'info' }]
+            };
+        }
+        return {};
+    }
+});
 
 registerAbility({
     name: 'Adrenaline',

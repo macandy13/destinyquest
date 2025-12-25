@@ -1,4 +1,4 @@
-import { describe, it, expect } from 'vitest';
+import { describe, it, expect, vi } from 'vitest';
 import { getAbilityDefinition, registerAbility, AbilityDefinition } from './abilityDefinitions';
 import { CombatState, Enemy } from '../types/combat';
 import { Hero } from '../types/hero';
@@ -7,20 +7,13 @@ import { Hero } from '../types/hero';
 const MOCK_HERO: Hero = {
     name: 'Test Hero',
     path: 'Warrior',
-    career: 'Test Class',
-    stats: {
-        speed: 4,
-        brawn: 4,
-        magic: 4,
-        armour: 0,
-        health: 20,
-        maxHealth: 20
-    },
+    career: 'Gladiator',
+    stats: { speed: 3, brawn: 5, magic: 1, armour: 2, health: 30, maxHealth: 30 },
     equipment: {
-        mainHand: { id: 'sword', name: 'Sword', type: 'mainHand', act: 1, stats: {}, abilities: [] },
+        mainHand: { id: 'sword1', name: 'Sword', type: 'mainHand', act: 1, stats: { brawn: 2 }, abilities: ['Sunder'] },
     },
     backpack: [],
-    money: 0
+    money: 100
 };
 
 const MOCK_ENEMY: Enemy = {
@@ -34,12 +27,16 @@ const MOCK_ENEMY: Enemy = {
     abilities: []
 };
 
+// Generic mock state for ability testing
 const INITIAL_STATE: CombatState = {
-    round: 1,
-    phase: 'combat-start',
+    hero: MOCK_HERO,
     enemy: MOCK_ENEMY,
-    hero: MOCK_HERO, // In tests we might want a hero present by default?
-    winner: null,
+    round: 1,
+    phase: 'speed-roll',
+    heroSpeedRolls: undefined,
+    enemySpeedRolls: undefined,
+    damageRolls: undefined,
+    winner: 'hero',
     activeAbilities: [],
     modifiers: [],
     logs: []
@@ -100,13 +97,64 @@ describe('Ability Implementations', () => {
         });
     });
 
+    describe('Charm', () => {
+        it('should allow activation when rolls exist', () => {
+            const charm = getAbilityDefinition('Charm');
+            // Speed phase
+            const speedState: CombatState = { ...INITIAL_STATE, phase: 'speed-roll', heroSpeedRolls: [2, 3] };
+            expect(charm?.canActivate?.(speedState)).toBe(true);
+
+            // Damage phase (hero winning)
+            const damageState: CombatState = { ...INITIAL_STATE, phase: 'damage-roll', winner: 'hero', damageRolls: [4] };
+            expect(charm?.canActivate?.(damageState)).toBe(true);
+
+            // Invalid phases
+            const startState: CombatState = { ...INITIAL_STATE, phase: 'combat-start' };
+            expect(charm?.canActivate?.(startState)).toBe(false);
+        });
+
+        it('should set pendingInteraction on activate', () => {
+            const charm = getAbilityDefinition('Charm');
+            const speedState: CombatState = { ...INITIAL_STATE, phase: 'speed-roll', heroSpeedRolls: [2, 3], logs: [] };
+
+            const result = charm?.onActivate?.(speedState);
+            expect(result?.pendingInteraction).toEqual({
+                abilityName: 'Charm',
+                type: 'reroll',
+                target: 'hero-speed'
+            });
+        });
+
+        it('should reroll speed die on interaction', () => {
+            const charm = getAbilityDefinition('Charm');
+            const state: CombatState = {
+                ...INITIAL_STATE,
+                phase: 'speed-roll',
+                heroSpeedRolls: [1, 1],
+                pendingInteraction: { abilityName: 'Charm', type: 'reroll', target: 'hero-speed' },
+                logs: []
+            };
+
+            // Mock Math.random to roll a 6
+            const spy = vi.spyOn(Math, 'random').mockReturnValue(0.99); // 6
+
+            const updates = charm?.onReroll?.(state, 0);
+
+            expect(updates?.heroSpeedRolls).toEqual([6, 1]);
+            expect(updates?.pendingInteraction).toBeUndefined();
+
+            spy.mockRestore();
+        });
+    });
+
     describe('Adrenaline', () => {
         it('should add speed bonus modifier on activation', () => {
             const adrenaline = getAbilityDefinition('Adrenaline');
-            const updates = adrenaline?.onActivate?.(INITIAL_STATE);
+            const state: CombatState = { ...INITIAL_STATE, logs: [] };
+            const result = adrenaline?.onActivate?.(state);
 
-            expect(updates?.modifiers).toHaveLength(1);
-            expect(updates?.modifiers?.[0]).toMatchObject({
+            expect(result?.modifiers).toHaveLength(1);
+            expect(result?.modifiers![0]).toMatchObject({
                 name: 'Adrenaline',
                 type: 'speed-bonus',
                 value: 2,
@@ -155,18 +203,18 @@ describe('Ability Implementations', () => {
             const heal = getAbilityDefinition('Heal');
             const mildDamageState = {
                 ...INITIAL_STATE,
-                hero: { ...MOCK_HERO, stats: { ...MOCK_HERO.stats, health: 19 } }
+                hero: { ...MOCK_HERO, stats: { ...MOCK_HERO.stats, health: 29 } }
             };
 
             const updates = heal?.onActivate?.(mildDamageState);
-            expect(updates?.hero?.stats.health).toBe(20);
+            expect(updates?.hero?.stats.health).toBe(30);
         });
 
         it('should return false for canActivate if health is full', () => {
             const heal = getAbilityDefinition('Heal');
             const fullHealthState = {
                 ...INITIAL_STATE,
-                hero: { ...MOCK_HERO, stats: { ...MOCK_HERO.stats, health: 20 } }
+                hero: { ...MOCK_HERO, stats: { ...MOCK_HERO.stats, health: 30 } }
             };
             expect(heal?.canActivate?.(fullHealthState)).toBe(false);
         });
