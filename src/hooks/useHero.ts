@@ -71,11 +71,23 @@ export function useHero() {
         }));
     };
 
+    const unequipItem = (slot: EquipmentSlot) => {
+        setHero(prev => {
+            const newEquipment = { ...prev.equipment };
+            delete newEquipment[slot];
+            return {
+                ...prev,
+                equipment: newEquipment
+            };
+        });
+    };
+
     return {
         hero: effectiveHero,
         updateHealth,
         updateName,
         updatePath,
-        equipItem
+        equipItem,
+        unequipItem
     };
 }

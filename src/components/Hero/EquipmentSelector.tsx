@@ -5,7 +5,7 @@ import './EquipmentSelector.css';
 
 interface EquipmentSelectorProps {
     slot: EquipmentSlot;
-    onSelect: (item: EquipmentItem) => void;
+    onSelect: (item: EquipmentItem | null) => void;
     onClose: () => void;
 }
 
@@ -28,7 +28,16 @@ const EquipmentSelector: React.FC<EquipmentSelectorProps> = ({ slot, onSelect, o
                 <div className="selector-header">
                     <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                         <h3 className="selector-title">Select {slot}</h3>
-                        <button className="close-btn" onClick={onClose}>&times;</button>
+                        <div style={{ display: 'flex', gap: '10px' }}>
+                            <button
+                                className="action-btn-secondary"
+                                onClick={() => onSelect(null)}
+                                style={{ padding: '4px 8px', fontSize: '0.8rem' }}
+                            >
+                                Clear
+                            </button>
+                            <button className="close-btn" onClick={onClose}>&times;</button>
+                        </div>
                     </div>
                     <input
                         type="text"

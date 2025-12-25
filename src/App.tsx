@@ -12,12 +12,16 @@ import { EquipmentSlot, EquipmentItem } from './types/hero';
 
 function App() {
     const [activeTab, setActiveTab] = useState<'hero' | 'combat'>('hero');
-    const { hero, updateHealth, equipItem } = useHero();
+    const { hero, updateHealth, equipItem, unequipItem } = useHero();
     const [selectedSlot, setSelectedSlot] = useState<EquipmentSlot | null>(null); // New state
 
-    const handleEquip = (item: EquipmentItem) => {
+    const handleEquip = (item: EquipmentItem | null) => {
         if (selectedSlot) {
-            equipItem(item, selectedSlot);
+            if (item) {
+                equipItem(item, selectedSlot);
+            } else {
+                unequipItem(selectedSlot);
+            }
             setSelectedSlot(null);
         }
     };
