@@ -3,9 +3,13 @@ import './index.css';
 import './App.css';
 import MobileLayout from './components/Layout/MobileLayout';
 import BottomNav from './components/Navigation/BottomNav';
+import HeroStats from './components/Hero/HeroStats';
+import EquipmentSlots from './components/Hero/EquipmentSlots';
+import { useHero } from './hooks/useHero';
 
 function App() {
     const [activeTab, setActiveTab] = useState<'hero' | 'combat'>('hero');
+    const { hero, updateStat, updateHealth } = useHero();
 
     return (
         <MobileLayout>
@@ -16,16 +20,29 @@ function App() {
             <main className="app-main">
                 {activeTab === 'hero' ? (
                     <div className="dq-card">
-                        <h2 className="dq-card-title">Hero Sheet</h2>
-                        <div className="hero-stats-grid">
-                            <div>
-                                <span className="text-dim">Name</span>
-                                <div>Unknown</div>
+                        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '16px' }}>
+                            <h2 className="dq-card-title">Hero Sheet</h2>
+                            <div style={{ textAlign: 'right' }}>
+                                <div style={{ fontWeight: 'bold', color: 'var(--dq-gold)' }}>{hero.name}</div>
+                                <div className="text-dim" style={{ fontSize: '0.8rem' }}>{hero.path || 'Novice'}</div>
                             </div>
-                            <div>
-                                <span className="text-dim">Class</span>
-                                <div>Novice</div>
-                            </div>
+                        </div>
+
+                        <HeroStats
+                            stats={hero.stats}
+                            onUpdate={(stat, val) => {
+                                if (stat === 'health') updateHealth(val);
+                                else updateStat(stat, val);
+                            }}
+                        />
+
+                        <div style={{ marginTop: '24px' }}>
+                            <h3 style={{ fontSize: '1rem', color: 'var(--dq-light-grey)', marginBottom: '8px' }}>Equipment</h3>
+                            <EquipmentSlots
+                                hero={hero}
+                                onSlotClick={(slot) => console.log('Clicked slot:', slot)}
+                                onBackpackClick={(index) => console.log('Clicked backpack:', index)}
+                            />
                         </div>
                     </div>
                 ) : (
