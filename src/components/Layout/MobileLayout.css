@@ -1,0 +1,18 @@
+.mobile-layout {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    max-width: 480px;
+    /* Restrict width on desktop for mobile simulation */
+    margin: 0 auto;
+    background-color: var(--dq-dark-grey);
+    border-left: 1px solid var(--dq-grey);
+    border-right: 1px solid var(--dq-grey);
+    position: relative;
+}
+
+.mobile-layout-content {
+    flex: 1;
+    padding-bottom: 80px;
+    /* Space for bottom nav */
+}

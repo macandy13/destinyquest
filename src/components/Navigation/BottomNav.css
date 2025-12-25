@@ -1,0 +1,49 @@
+.bottom-nav {
+    position: fixed;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    /* Center relative to viewport */
+    width: 100%;
+    max-width: 480px;
+    /* Match layout */
+    background-color: var(--dq-black);
+    border-top: 1px solid var(--dq-gold-dim);
+    display: flex;
+    justify-content: space-around;
+    padding: var(--spacing-sm) 0;
+    z-index: 100;
+}
+
+.nav-button {
+    background: none;
+    border: none;
+    color: var(--dq-light-grey);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    transition: color 0.2s ease;
+}
+
+.nav-button.active {
+    color: var(--dq-gold);
+}
+
+.nav-button-icon {
+    font-size: 20px;
+}
+
+.nav-button-label {
+    font-size: 12px;
+    font-weight: normal;
+}
+
+.nav-button.active .nav-button-label {
+    font-weight: bold;
+}
+
+.nav-divider {
+    width: 1px;
+    background-color: var(--dq-grey);
+}

@@ -1,0 +1,49 @@
+.app-header {
+    padding: var(--spacing-md);
+}
+
+.app-title {
+    font-size: 1.5rem;
+    text-align: center;
+}
+
+.app-main {
+    padding: 0 var(--spacing-md);
+}
+
+.dq-card {
+    background: var(--dq-grey);
+    padding: var(--spacing-md);
+    border-radius: var(--radius-md);
+    border: 1px solid var(--dq-gold-dim);
+}
+
+.dq-card.combat {
+    border-color: var(--dq-crimson);
+}
+
+.dq-card-title {
+    color: var(--dq-gold);
+}
+
+.dq-card.combat .dq-card-title {
+    color: var(--dq-crimson);
+}
+
+.hero-stats-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+}
+
+.btn-primary {
+    width: 100%;
+    margin-top: 16px;
+    padding: 12px;
+    background: var(--dq-crimson);
+    border: none;
+    border-radius: 4px;
+    color: white;
+    font-weight: bold;
+    text-transform: uppercase;
+}
