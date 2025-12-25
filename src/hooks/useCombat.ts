@@ -53,14 +53,15 @@ export function useCombat(heroStats: HeroStats) {
     // Phase 1: Speed Roll
     // Phase 1: Speed Roll
     interface SpeedRoundParams {
-        heroRoll: number;
         heroRolls: number[];
-        enemyRoll: number;
         enemyRolls: number[];
     }
 
-    const resolveSpeedRound = ({ heroRoll, heroRolls, enemyRoll, enemyRolls }: SpeedRoundParams) => {
+    const resolveSpeedRound = ({ heroRolls, enemyRolls }: SpeedRoundParams) => {
         if (!combat.enemy) return;
+
+        const heroRoll = heroRolls.reduce((a, b) => a + b, 0);
+        const enemyRoll = enemyRolls.reduce((a, b) => a + b, 0);
 
         const heroTotal = heroRoll + heroStats.speed;
         const enemyTotal = enemyRoll + combat.enemy.speed;

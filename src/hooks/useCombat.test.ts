@@ -44,7 +44,7 @@ describe('useCombat Hook', () => {
         // Hero wins clearly
 
         act(() => {
-            result.current.resolveSpeedRound({ heroRoll: 6, heroRolls: [3, 3], enemyRoll: 2, enemyRolls: [1, 1] });
+            result.current.resolveSpeedRound({ heroRolls: [3, 3], enemyRolls: [1, 1] });
         });
 
         expect(result.current.combat.phase).toBe('damage-roll');
@@ -61,7 +61,7 @@ describe('useCombat Hook', () => {
 
         // Speed round win for Hero
         act(() => {
-            result.current.resolveSpeedRound({ heroRoll: 20, heroRolls: [6, 6], enemyRoll: 0, enemyRolls: [0, 0] });
+            result.current.resolveSpeedRound({ heroRolls: [6, 6], enemyRolls: [0, 0] });
         });
 
         const initialEnemyHealth = result.current.combat.enemy!.health;
