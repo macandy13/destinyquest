@@ -44,19 +44,21 @@ const CombatDice: React.FC<CombatDiceProps> = ({ onRoll, result, values, count =
     };
 
     return (
-        <div className="dice-wrapper" style={{ textAlign: 'center' }}>
-            {label && <div className="dice-label" style={{ marginBottom: '4px', fontSize: '0.9rem', color: '#888' }}>{label}</div>}
-            <div className="dice-container" style={{ justifyContent: 'center' }}>
-                {currentDice.map((val, i) => (
-                    <div
-                        key={i}
-                        className={`die d6 ${isRolling ? 'rolling' : ''} ${onDieClick ? 'interactive' : ''}`}
-                        onClick={() => handleDieClick(i)}
-                        style={{ cursor: onDieClick ? 'pointer' : (onRoll ? 'pointer' : 'default') }}
-                    >
-                        <span className="die-result">{val}</span>
-                    </div>
-                ))}
+        <div className="dice-wrapper">
+            {label && <div className="dice-label">{label}</div>}
+            <div className="dice-container">
+                {currentDice.map((val, i) => {
+                    const isInteractive = !!onDieClick || !!onRoll;
+                    return (
+                        <div
+                            key={i}
+                            className={`die d6 ${isRolling ? 'rolling' : ''} ${onDieClick ? 'interactive' : ''} ${!isInteractive ? 'static' : ''}`}
+                            onClick={() => handleDieClick(i)}
+                        >
+                            <span className="die-result">{val}</span>
+                        </div>
+                    );
+                })}
             </div>
             {result !== undefined && !isRolling && (
                 <div className="dice-result-total">

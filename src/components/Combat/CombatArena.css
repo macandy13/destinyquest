@@ -76,3 +76,59 @@
     opacity: 0;
     transition: opacity 0.3s;
 }
+
+/* Refactored inline styles */
+
+.phase-instruction {
+    margin: 10px 0;
+    text-align: center;
+    color: var(--dq-gold);
+}
+
+.speed-rolls-container {
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-start;
+    margin-bottom: 20px;
+    transition: all 0.5s ease;
+}
+
+.speed-result-text {
+    text-align: center;
+    font-size: 0.8rem;
+    color: var(--dq-dim);
+}
+
+.speed-confirm-container {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.damage-section {
+    border-top: 1px solid #333;
+    padding-top: 20px;
+    margin-top: 10px;
+}
+
+.damage-title {
+    text-align: center;
+    margin-bottom: 10px;
+    color: var(--dq-gold);
+}
+
+.damage-dice-container {
+    display: flex;
+    justify-content: center;
+}
+
+.enemy-damage-container {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+
+.damage-confirm-container {
+    text-align: center;
+    margin-bottom: 20px;
+}

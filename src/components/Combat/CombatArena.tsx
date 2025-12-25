@@ -103,13 +103,9 @@ const CombatArena: React.FC<CombatArenaProps> = ({ hero }) => {
             <div className="arena-center">
                 {/* SPEED PHASE: Dual Dice Display */}
                 {/* Only show if we have rolls and not in start phase */}
-                <div className={`speed-rolls ${combat.phase !== 'speed-roll' ? 'speed-rolls-mini' : ''}`}
+                <div className={`speed-rolls-container speed-rolls ${combat.phase !== 'speed-roll' ? 'speed-rolls-mini' : ''}`}
                     style={{
-                        display: showSpeedDice ? 'flex' : 'none',
-                        justifyContent: 'space-around',
-                        alignItems: 'flex-start',
-                        marginBottom: '20px',
-                        transition: 'all 0.5s ease'
+                        display: showSpeedDice ? 'flex' : 'none'
                     }}>
                     <div className="hero-dice">
                         <CombatDice
@@ -122,7 +118,7 @@ const CombatArena: React.FC<CombatArenaProps> = ({ hero }) => {
                         />
                         {/* Only show result modifier text if rolled */}
                         {combat.heroSpeedRolls && (
-                            <div className="text-center text-dim" style={{ fontSize: '0.8rem' }}>
+                            <div className="speed-result-text">
                                 {combat.heroSpeedRolls.reduce((a, b) => a + b, 0)} + {hero.stats.speed} (Spd)
                             </div>
                         )}
@@ -136,7 +132,7 @@ const CombatArena: React.FC<CombatArenaProps> = ({ hero }) => {
                             result={combat.enemySpeedRolls ? combat.enemySpeedRolls.reduce((a, b) => a + b, 0) + combat.enemy.speed : undefined}
                         />
                         {combat.enemySpeedRolls && (
-                            <div className="text-center text-dim" style={{ fontSize: '0.8rem' }}>
+                            <div className="speed-result-text">
                                 {combat.enemySpeedRolls.reduce((a, b) => a + b, 0)} + {combat.enemy.speed} (Spd)
                             </div>
                         )}
@@ -145,8 +141,8 @@ const CombatArena: React.FC<CombatArenaProps> = ({ hero }) => {
 
                 {/* DAMAGE PHASE: Single Die Display */}
                 {showDamageSection && (
-                    <div className="damage-roll-container" style={{ borderTop: '1px solid #333', paddingTop: '20px', marginTop: '10px' }}>
-                        <div style={{ textAlign: 'center', marginBottom: '10px', color: 'var(--dq-gold)' }}>
+                    <div className="damage-roll-container damage-section">
+                        <div className="damage-title">
                             {combat.phase === 'damage-roll'
                                 ? (combat.winner === 'hero' ? '💥 ROLL FOR DAMAGE!' : '🛡️ BRACE FOR IMPACT!')
                                 : (combat.winner === 'hero' ? '💥 HERO HIT:' : '🛡️ ENEMY HIT:')
@@ -154,7 +150,7 @@ const CombatArena: React.FC<CombatArenaProps> = ({ hero }) => {
                         </div>
 
                         {combat.winner === 'hero' && (
-                            <div style={{ display: 'flex', justifyContent: 'center' }}>
+                            <div className="damage-dice-container">
                                 <CombatDice
                                     label="Damage (1d6)"
                                     count={1}
@@ -166,7 +162,7 @@ const CombatArena: React.FC<CombatArenaProps> = ({ hero }) => {
                         )}
 
                         {combat.winner === 'enemy' && (
-                            <div style={{ display: 'flex', justifyContent: 'center', flexDirection: 'column', alignItems: 'center' }}>
+                            <div className="enemy-damage-container">
                                 {combat.phase === 'damage-roll' && !combat.damageRolls ? (
                                     <>
                                         <p className="text-dim">Enemy is attacking...</p>
@@ -188,7 +184,7 @@ const CombatArena: React.FC<CombatArenaProps> = ({ hero }) => {
 
                         {/* Confirm Damage Button */}
                         {showDamageConfirm && (
-                            <div style={{ textAlign: 'center', marginBottom: '20px' }}>
+                            <div className="damage-confirm-container">
                                 <button className="btn-primary" onClick={commitDamageResult}>
                                     Confirm Damage & End Round
                                 </button>
@@ -198,13 +194,13 @@ const CombatArena: React.FC<CombatArenaProps> = ({ hero }) => {
                 )}
 
                 {/* Phase Instruction */}
-                <div style={{ margin: '10px 0', textAlign: 'center', color: 'var(--dq-gold)' }}>
+                <div className="phase-instruction">
                     {getPhaseInstruction()}
                 </div>
 
                 {/* Speed or Damage Result Confirmation / Proceed Button */}
                 {combat.phase === 'speed-roll' && combat.heroSpeedRolls && (
-                    <div style={{ textAlign: 'center', marginBottom: '20px' }}>
+                    <div className="speed-confirm-container">
                         <button className="btn-primary" onClick={commitSpeedResult}>
                             {combat.winner ? 'Proceed' : 'End Round (Draw)'}
                         </button>
