@@ -41,8 +41,27 @@ const EquipmentSlots: React.FC<EquipmentSlotsProps> = ({ hero, onSlotClick, onBa
               onClick={() => onSlotClick(slot)}
             >
               <span className="slot-icon">{icon}</span>
-              <span className="slot-label">{label}</span>
-              {item && <div className="equipment-name">{item.name}</div>}
+              {item ? (
+                <div style={{ display: 'flex', flexDirection: 'column', width: '100%', alignItems: 'center' }}>
+                  <span className="equipment-name-visible">{item.name}</span>
+                  {item.stats && Object.keys(item.stats).length > 0 && (
+                    <span className="equipment-stats-display">
+                      {Object.entries(item.stats)
+                        .map(([stat, value]) => {
+                          const icon = stat === 'speed' ? '⚡' :
+                            stat === 'brawn' ? '💪' :
+                              stat === 'magic' ? '✨' :
+                                stat === 'armour' ? '🛡️' :
+                                  stat === 'health' ? '❤️' : '';
+                          return `${value > 0 ? '+' : ''}${value} ${icon}`;
+                        })
+                        .join(' ')}
+                    </span>
+                  )}
+                </div>
+              ) : (
+                <span className="slot-label">{label}</span>
+              )}
             </div>
           );
         })}
