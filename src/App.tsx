@@ -44,7 +44,7 @@ function App() {
                         </div>
 
                         <HeroStats
-                            stats={hero.stats}
+                            hero={hero}
                             onHealthChange={updateHealth}
                         />
 

@@ -68,6 +68,11 @@ const EquipmentSelector: React.FC<EquipmentSelectorProps> = ({ slot, onSelect, o
                                         {item.stats?.brawn ? `💪 ${item.stats.brawn} ` : ''}
                                         {item.stats?.magic ? `✨ ${item.stats.magic} ` : ''}
                                         {item.stats?.armour ? `🛡️ ${item.stats.armour} ` : ''}
+                                        {item.abilities && item.abilities.length > 0 && (
+                                            <div className="item-abilities-tag">
+                                                {item.abilities.map(a => `★ ${a}`).join(', ')}
+                                            </div>
+                                        )}
                                     </div>
                                 )}
 

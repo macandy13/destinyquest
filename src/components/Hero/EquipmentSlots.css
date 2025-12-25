@@ -78,7 +78,16 @@
     width: 100%;
 }
 
-
+.equipment-abilities-display {
+    font-size: 0.6rem;
+    color: var(--dq-green);
+    margin-top: 2px;
+    text-align: center;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 100%;
+}
 
 .equipment-container {
     display: flex;

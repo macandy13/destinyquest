@@ -1,9 +1,9 @@
 import React from 'react';
-import { HeroStats as HeroStatsType } from '../../types/hero';
+import { HeroStats as HeroStatsType, Hero } from '../../types/hero';
 import './HeroStats.css';
 
 interface HeroStatsProps {
-    stats: HeroStatsType;
+    hero: Hero;
     onHealthChange: (value: number) => void;
 }
 
@@ -14,7 +14,20 @@ const STAT_CONFIG: Array<{ key: keyof HeroStatsType; label: string; icon: string
     { key: 'armour', label: 'Armour', icon: '🛡️' },
 ];
 
-const HeroStats: React.FC<HeroStatsProps> = ({ stats, onHealthChange }) => {
+const HeroStats: React.FC<HeroStatsProps> = ({ hero, onHealthChange }) => {
+    const { stats } = hero;
+
+    // Collect unique abilities from all equipment
+    const activeAbilities = React.useMemo(() => {
+        const abilities = new Map<string, number>();
+        Object.values(hero.equipment).forEach(item => {
+            if (item && item.abilities) {
+                item.abilities.forEach(a => abilities.set(a, (abilities.get(a) || 0) + 1));
+            }
+        });
+        return Array.from(abilities).sort((a, b) => a[1] - b[1]);
+    }, [hero.equipment]);
+
     return (
         <div className="hero-stats-container">
             {/* Health is special - Editable */}
@@ -47,6 +60,18 @@ const HeroStats: React.FC<HeroStatsProps> = ({ stats, onHealthChange }) => {
                     </div>
                 </div>
             ))}
+
+            {/* Active Abilities Section */}
+            {activeAbilities.length > 0 && (
+                <div className="abilities-section">
+                    <div className="abilities-header">Active Abilities</div>
+                    <div className="abilities-list">
+                        {activeAbilities.map(([ability, count]) => (
+                            <span key={ability} className="ability-badge">★ {ability} {count > 1 ? `(x${count})` : ''}</span>
+                        ))}
+                    </div>
+                </div>
+            )}
         </div>
     );
 };

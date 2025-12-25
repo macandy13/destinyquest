@@ -58,6 +58,11 @@ const EquipmentSlots: React.FC<EquipmentSlotsProps> = ({ hero, onSlotClick, onBa
                         .join(' ')}
                     </span>
                   )}
+                  {item.abilities && item.abilities.length > 0 && (
+                    <span className="equipment-abilities-display">
+                      {item.abilities.map(a => `★ ${a}`).join(', ')}
+                    </span>
+                  )}
                 </div>
               ) : (
                 <span className="slot-label">{label}</span>
