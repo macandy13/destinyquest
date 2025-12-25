@@ -5,6 +5,7 @@ import MobileLayout from './components/Layout/MobileLayout';
 import BottomNav from './components/Navigation/BottomNav';
 import HeroStats from './components/Hero/HeroStats';
 import EquipmentSlots from './components/Hero/EquipmentSlots';
+import CombatArena from './components/Combat/CombatArena';
 import { useHero } from './hooks/useHero';
 
 function App() {
@@ -46,11 +47,7 @@ function App() {
                         </div>
                     </div>
                 ) : (
-                    <div className="dq-card combat">
-                        <h2 className="dq-card-title">Combat</h2>
-                        <p className="text-dim">No active combat.</p>
-                        <button className="btn-primary">Start Fight</button>
-                    </div>
+                    <CombatArena hero={hero} />
                 )}
             </main>
 

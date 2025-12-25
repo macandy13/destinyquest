@@ -1,0 +1,62 @@
+.dice-container {
+    display: flex;
+    gap: var(--spacing-md);
+    justify-content: center;
+    margin: var(--spacing-md) 0;
+}
+
+.die {
+    width: 60px;
+    height: 60px;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 0 #ccc;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    font-weight: bold;
+    color: #333;
+    cursor: pointer;
+    user-select: none;
+    transition: transform 0.1s;
+}
+
+.die:active {
+    transform: translateY(4px);
+    box-shadow: 0 0 0 #ccc;
+}
+
+.die.rolling {
+    animation: shake 0.5s infinite;
+}
+
+.die.d6 {
+    border: 2px solid var(--dq-black);
+}
+
+.die-result {
+    font-family: var(--font-heading);
+}
+
+@keyframes shake {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    25% {
+        transform: rotate(10deg);
+    }
+
+    50% {
+        transform: rotate(-10deg);
+    }
+
+    75% {
+        transform: rotate(5deg);
+    }
+
+    100% {
+        transform: rotate(0deg);
+    }
+}
