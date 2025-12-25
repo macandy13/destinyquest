@@ -101,16 +101,6 @@ const CombatArena: React.FC<CombatArenaProps> = ({ hero }) => {
             </div>
 
             <div className="arena-center">
-                <CombatAbilitySelector
-                    combat={combat}
-                    onActivate={activateAbility}
-                />
-
-                {/* Phase Instruction */}
-                <div style={{ margin: '10px 0', textAlign: 'center', color: 'var(--dq-gold)' }}>
-                    {getPhaseInstruction()}
-                </div>
-
                 {/* SPEED PHASE: Dual Dice Display */}
                 {/* Only show if we have rolls and not in start phase */}
                 <div className={`speed-rolls ${combat.phase !== 'speed-roll' ? 'speed-rolls-mini' : ''}`}
@@ -152,15 +142,6 @@ const CombatArena: React.FC<CombatArenaProps> = ({ hero }) => {
                         )}
                     </div>
                 </div>
-
-                {/* Result Confirmation / Proceed Button */}
-                {combat.phase === 'speed-roll' && combat.heroSpeedRolls && (
-                    <div style={{ textAlign: 'center', marginBottom: '20px' }}>
-                        <button className="btn-primary" onClick={commitSpeedResult}>
-                            {combat.winner ? 'Proceed' : 'End Round (Draw)'}
-                        </button>
-                    </div>
-                )}
 
                 {/* DAMAGE PHASE: Single Die Display */}
                 {showDamageSection && (
@@ -216,11 +197,29 @@ const CombatArena: React.FC<CombatArenaProps> = ({ hero }) => {
                     </div>
                 )}
 
+                {/* Phase Instruction */}
+                <div style={{ margin: '10px 0', textAlign: 'center', color: 'var(--dq-gold)' }}>
+                    {getPhaseInstruction()}
+                </div>
+
+                {/* Speed or Damage Result Confirmation / Proceed Button */}
+                {combat.phase === 'speed-roll' && combat.heroSpeedRolls && (
+                    <div style={{ textAlign: 'center', marginBottom: '20px' }}>
+                        <button className="btn-primary" onClick={commitSpeedResult}>
+                            {combat.winner ? 'Proceed' : 'End Round (Draw)'}
+                        </button>
+                    </div>
+                )}
                 {(combat.phase === 'round-end' || combat.phase === 'combat-start') && (
                     <button className="btn-primary btn-next-round" onClick={combat.phase === 'combat-start' ? executeSpeedRoll : nextRound}>
                         {combat.phase === 'combat-start' ? 'Fight!' : 'Next Round'}
                     </button>
                 )}
+
+                <CombatAbilitySelector
+                    combat={combat}
+                    onActivate={activateAbility}
+                />
             </div>
 
             <CombatLog logs={combat.logs} />
