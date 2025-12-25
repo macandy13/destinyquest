@@ -50,123 +50,127 @@ const CombatArena: React.FC<CombatArenaProps> = ({ hero }) => {
 
     return (
         <div className="combat-arena">
-            <div className="text-dim round-indicator">Round {combat.round}</div>
+            <div className="arena-header">
+                <div className="text-dim round-indicator">Round {combat.round}</div>
 
-            <div className="combatants">
-                {/* Hero Card */}
-                <div className="combatant-card">
-                    <div className="combatant-name">{hero.name}</div>
-                    <div className="health-bar-container">
-                        <div className="health-bar" style={{ width: `${heroHealthPct}%` }}></div>
+                <div className="combatants">
+                    {/* Hero Card */}
+                    <div className="combatant-card">
+                        <div className="combatant-name">{hero.name}</div>
+                        <div className="health-bar-container">
+                            <div className="health-bar" style={{ width: `${heroHealthPct}%` }}></div>
+                        </div>
+                        <div className="combatant-stats">
+                            <div>{combat.heroHealth} / {hero.stats.maxHealth} HP</div>
+                            <div>⚡ {hero.stats.speed} 💪 {hero.stats.brawn}</div>
+                        </div>
                     </div>
-                    <div className="combatant-stats">
-                        <div>{combat.heroHealth} / {hero.stats.maxHealth} HP</div>
-                        <div>⚡ {hero.stats.speed} 💪 {hero.stats.brawn}</div>
-                    </div>
-                </div>
 
-                {/* VS Separator */}
-                <div className="vs-separator">VS</div>
+                    {/* VS Separator */}
+                    <div className="vs-separator">VS</div>
 
-                {/* Enemy Card */}
-                <div className="combatant-card enemy">
-                    <div className="combatant-name">{combat.enemy.name}</div>
-                    <div className="health-bar-container">
-                        <div className="health-bar" style={{ width: `${enemyHealthPct}%` }}></div>
-                    </div>
-                    <div className="combatant-stats">
-                        <div>{combat.enemy.health} / {combat.enemy.maxHealth} HP</div>
-                        <div>⚡ {combat.enemy.speed} 💪 {combat.enemy.brawn}</div>
+                    {/* Enemy Card */}
+                    <div className="combatant-card enemy">
+                        <div className="combatant-name">{combat.enemy.name}</div>
+                        <div className="health-bar-container">
+                            <div className="health-bar" style={{ width: `${enemyHealthPct}%` }}></div>
+                        </div>
+                        <div className="combatant-stats">
+                            <div>{combat.enemy.health} / {combat.enemy.maxHealth} HP</div>
+                            <div>⚡ {combat.enemy.speed} 💪 {combat.enemy.brawn}</div>
+                        </div>
                     </div>
                 </div>
             </div>
 
-            {/* Phase Instruction */}
-            <div style={{ margin: '10px 0', textAlign: 'center', color: 'var(--dq-gold)' }}>
-                {getPhaseInstruction()}
-            </div>
-
-            {/* SPEED PHASE: Dual Dice Display */}
-            {/* Class speed-rolls-mini shrinks dice when not in speed-roll phase */}
-            <div className={`speed-rolls ${combat.phase !== 'speed-roll' ? 'speed-rolls-mini' : ''}`} style={{ display: 'flex', justifyContent: 'space-around', alignItems: 'flex-start', marginBottom: '20px', transition: 'all 0.5s ease' }}>
-                <div className="hero-dice">
-                    <CombatDice
-                        label="Your Speed"
-                        count={2}
-                        values={combat.heroSpeedRolls} // Persist if exists
-                        onRoll={combat.phase === 'speed-roll' ? handleRoll : undefined} // Only interactive in speed phase and if not already rolled (implied by lack of values check but onRoll handles it)
-                        result={combat.heroSpeedRolls ? combat.heroSpeedRolls.reduce((a, b) => a + b, 0) + hero.stats.speed : undefined}
-                    />
-                    {/* Only show result modifier text if rolled */}
-                    {combat.heroSpeedRolls && (
-                        <div className="text-center text-dim" style={{ fontSize: '0.8rem' }}>
-                            {combat.heroSpeedRolls.reduce((a, b) => a + b, 0)} + {hero.stats.speed} (Spd)
-                        </div>
-                    )}
+            <div className="arena-center">
+                {/* Phase Instruction */}
+                <div style={{ margin: '10px 0', textAlign: 'center', color: 'var(--dq-gold)' }}>
+                    {getPhaseInstruction()}
                 </div>
 
-                <div className="enemy-dice">
-                    <CombatDice
-                        label="Enemy Speed"
-                        count={2}
-                        values={combat.enemySpeedRolls}
-                        result={combat.enemySpeedRolls ? combat.enemySpeedRolls.reduce((a, b) => a + b, 0) + combat.enemy.speed : undefined}
-                    />
-                    {combat.enemySpeedRolls && (
-                        <div className="text-center text-dim" style={{ fontSize: '0.8rem' }}>
-                            {combat.enemySpeedRolls.reduce((a, b) => a + b, 0)} + {combat.enemy.speed} (Spd)
-                        </div>
-                    )}
-                </div>
-            </div>
-
-            {/* DAMAGE PHASE: Single Die Display */}
-            {(combat.phase === 'damage-roll' || (combat.phase === 'round-end' && combat.damageRolls)) && (
-                <div className="damage-roll-container" style={{ borderTop: '1px solid #333', paddingTop: '20px', marginTop: '10px' }}>
-                    <div style={{ textAlign: 'center', marginBottom: '10px', color: 'var(--dq-gold)' }}>
-                        {combat.phase === 'damage-roll'
-                            ? (combat.winner === 'hero' ? '💥 ROLL FOR DAMAGE!' : '🛡️ BRACE FOR IMPACT!')
-                            : (combat.winner === 'hero' ? '💥 HERO HIT:' : '🛡️ ENEMY HIT:')
-                        }
+                {/* SPEED PHASE: Dual Dice Display */}
+                {/* Class speed-rolls-mini shrinks dice when not in speed-roll phase */}
+                <div className={`speed-rolls ${combat.phase !== 'speed-roll' ? 'speed-rolls-mini' : ''}`} style={{ display: 'flex', justifyContent: 'space-around', alignItems: 'flex-start', marginBottom: '20px', transition: 'all 0.5s ease' }}>
+                    <div className="hero-dice">
+                        <CombatDice
+                            label="Your Speed"
+                            count={2}
+                            values={combat.heroSpeedRolls} // Persist if exists
+                            onRoll={combat.phase === 'speed-roll' ? handleRoll : undefined} // Only interactive in speed phase and if not already rolled (implied by lack of values check but onRoll handles it)
+                            result={combat.heroSpeedRolls ? combat.heroSpeedRolls.reduce((a, b) => a + b, 0) + hero.stats.speed : undefined}
+                        />
+                        {/* Only show result modifier text if rolled */}
+                        {combat.heroSpeedRolls && (
+                            <div className="text-center text-dim" style={{ fontSize: '0.8rem' }}>
+                                {combat.heroSpeedRolls.reduce((a, b) => a + b, 0)} + {hero.stats.speed} (Spd)
+                            </div>
+                        )}
                     </div>
 
-                    {combat.winner === 'hero' && (
-                        <div style={{ display: 'flex', justifyContent: 'center' }}>
-                            <CombatDice
-                                label="Damage (1d6)"
-                                count={1}
-                                values={combat.damageRolls} // Show result if exists
-                                onRoll={combat.phase === 'damage-roll' ? (total, rolls) => handleRoll(total, rolls) : undefined}
-                            />
-                        </div>
-                    )}
+                    <div className="enemy-dice">
+                        <CombatDice
+                            label="Enemy Speed"
+                            count={2}
+                            values={combat.enemySpeedRolls}
+                            result={combat.enemySpeedRolls ? combat.enemySpeedRolls.reduce((a, b) => a + b, 0) + combat.enemy.speed : undefined}
+                        />
+                        {combat.enemySpeedRolls && (
+                            <div className="text-center text-dim" style={{ fontSize: '0.8rem' }}>
+                                {combat.enemySpeedRolls.reduce((a, b) => a + b, 0)} + {combat.enemy.speed} (Spd)
+                            </div>
+                        )}
+                    </div>
+                </div>
 
-                    {combat.winner === 'enemy' && (
-                        <div style={{ display: 'flex', justifyContent: 'center', flexDirection: 'column', alignItems: 'center' }}>
-                            {combat.phase === 'damage-roll' ? (
-                                <>
-                                    <p className="text-dim">Enemy is attacking...</p>
-                                    <button className="btn-primary" onClick={() => {
-                                        const dmg = Math.floor(Math.random() * 6) + 1;
-                                        handleRoll(dmg, [dmg]);
-                                    }}>Resolve Enemy Attack</button>
-                                </>
-                            ) : (
-                                // Show enemy result in round-end
+                {/* DAMAGE PHASE: Single Die Display */}
+                {(combat.phase === 'damage-roll' || (combat.phase === 'round-end' && combat.damageRolls)) && (
+                    <div className="damage-roll-container" style={{ borderTop: '1px solid #333', paddingTop: '20px', marginTop: '10px' }}>
+                        <div style={{ textAlign: 'center', marginBottom: '10px', color: 'var(--dq-gold)' }}>
+                            {combat.phase === 'damage-roll'
+                                ? (combat.winner === 'hero' ? '💥 ROLL FOR DAMAGE!' : '🛡️ BRACE FOR IMPACT!')
+                                : (combat.winner === 'hero' ? '💥 HERO HIT:' : '🛡️ ENEMY HIT:')
+                            }
+                        </div>
+
+                        {combat.winner === 'hero' && (
+                            <div style={{ display: 'flex', justifyContent: 'center' }}>
                                 <CombatDice
-                                    label="Enemy Damage"
+                                    label="Damage (1d6)"
                                     count={1}
-                                    values={combat.damageRolls}
+                                    values={combat.damageRolls} // Show result if exists
+                                    onRoll={combat.phase === 'damage-roll' ? (total, rolls) => handleRoll(total, rolls) : undefined}
                                 />
-                            )}
-                        </div>
-                    )}
-                </div>
-            )}
+                            </div>
+                        )}
 
-            {combat.phase === 'round-end' && (
-                <button className="btn-primary btn-next-round" onClick={nextRound}>Next Round</button>
-            )}
+                        {combat.winner === 'enemy' && (
+                            <div style={{ display: 'flex', justifyContent: 'center', flexDirection: 'column', alignItems: 'center' }}>
+                                {combat.phase === 'damage-roll' ? (
+                                    <>
+                                        <p className="text-dim">Enemy is attacking...</p>
+                                        <button className="btn-primary" onClick={() => {
+                                            const dmg = Math.floor(Math.random() * 6) + 1;
+                                            handleRoll(dmg, [dmg]);
+                                        }}>Resolve Enemy Attack</button>
+                                    </>
+                                ) : (
+                                    // Show enemy result in round-end
+                                    <CombatDice
+                                        label="Enemy Damage"
+                                        count={1}
+                                        values={combat.damageRolls}
+                                    />
+                                )}
+                            </div>
+                        )}
+                    </div>
+                )}
+
+                {combat.phase === 'round-end' && (
+                    <button className="btn-primary btn-next-round" onClick={nextRound}>Next Round</button>
+                )}
+            </div>
 
             <div className="combat-log">
                 {[...combat.logs].reverse().map((log, i) => (

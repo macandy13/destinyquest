@@ -1,23 +1,35 @@
 .combat-arena {
-    display: flex;
-    flex-direction: column;
+    display: grid;
+    grid-template-rows: auto 1fr 20%;
+    /* Fixed height for log area to prevent jump */
     gap: var(--spacing-md);
     height: 100%;
-    min-height: calc(100vh - 120px);
-    /* Adjust based on nav bars */
-    padding-bottom: 20px;
-    /* Ensure it takes up space even if empty */
+    /* Remove padding-bottom as the grid height handles it */
 }
 
-/* ... existing styles ... */
+.arena-header {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-sm);
+}
+
+.arena-center {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    position: relative;
+    /* Stabilize positioning */
+}
 
 .combat-log {
-    margin-top: auto;
-    /* Push to bottom */
+    /* Removed margin-top auto as Grid handles placement */
     background: rgba(0, 0, 0, 0.5);
     border-radius: var(--radius-sm);
     padding: var(--spacing-sm);
-    max-height: 150px;
+    /* height is handled by grid row */
+    height: 100%;
     overflow-y: auto;
     font-size: 0.8rem;
     font-family: monospace;
@@ -136,6 +148,10 @@
     margin-top: 8px;
 }
 
+.speed-rolls {
+    gap: calc(2* var(--spacing-md));
+}
+
 /* Mini dice for non-focus phases */
 .speed-rolls-mini {
     transform: scale(0.8);
@@ -144,6 +160,8 @@
 
 .speed-rolls-mini .dice-label,
 .speed-rolls-mini .text-dim {
-    display: none;
-    /* Hide clutter when minimized */
+    visibility: hidden;
+    /* Reserve space to prevent layout jump */
+    opacity: 0;
+    transition: opacity 0.3s;
 }
