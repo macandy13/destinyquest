@@ -10,7 +10,7 @@ import { useHero } from './hooks/useHero';
 
 function App() {
     const [activeTab, setActiveTab] = useState<'hero' | 'combat'>('hero');
-    const { hero, updateStat, updateHealth } = useHero();
+    const { hero, updateHealth } = useHero();
 
     return (
         <MobileLayout>
@@ -31,10 +31,7 @@ function App() {
 
                         <HeroStats
                             stats={hero.stats}
-                            onUpdate={(stat, val) => {
-                                if (stat === 'health') updateHealth(val);
-                                else updateStat(stat, val);
-                            }}
+                            onHealthChange={updateHealth}
                         />
 
                         <div className="equipment-section">

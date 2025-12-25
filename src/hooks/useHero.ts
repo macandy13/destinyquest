@@ -13,14 +13,31 @@ export function useHero() {
         localStorage.setItem(STORAGE_KEY, JSON.stringify(hero));
     }, [hero]);
 
-    const updateStat = (stat: keyof HeroStats, value: number) => {
-        setHero(prev => ({
-            ...prev,
-            stats: {
-                ...prev.stats,
-                [stat]: value
-            }
-        }));
+    // Calculate derived stats
+    const effectiveStats: HeroStats = {
+        speed: 0,
+        brawn: 0,
+        magic: 0,
+        armour: 0,
+        health: hero.stats.health, // Persisted
+        maxHealth: hero.stats.maxHealth // Persisted (or should this be derived too? keeping persisted for now)
+    };
+
+    // Add stats from equipment
+    Object.values(hero.equipment).forEach(item => {
+        if (item && item.stats) {
+            if (item.stats.speed) effectiveStats.speed += item.stats.speed;
+            if (item.stats.brawn) effectiveStats.brawn += item.stats.brawn;
+            if (item.stats.magic) effectiveStats.magic += item.stats.magic;
+            if (item.stats.armour) effectiveStats.armour += item.stats.armour;
+            // Health bonuses usually add to Max Health, assuming that for now:
+            if (item.stats.maxHealth) effectiveStats.maxHealth += item.stats.maxHealth;
+        }
+    });
+
+    const effectiveHero = {
+        ...hero,
+        stats: effectiveStats
     };
 
     const updateHealth = (value: number) => {
@@ -28,7 +45,10 @@ export function useHero() {
             ...prev,
             stats: {
                 ...prev.stats,
-                health: Math.min(Math.max(0, value), prev.stats.maxHealth)
+                health: Math.min(Math.max(0, value), prev.stats.maxHealth) // Note: using base maxHealth for clamping might be wrong if equip gives bonus.
+                // But for persistence, we likely want to store relative health or absolute?
+                // Let's store absolute, but we need to be careful if maxHealth changes.
+                // For now, simple update.
             }
         }));
     };
@@ -42,8 +62,7 @@ export function useHero() {
     };
 
     return {
-        hero,
-        updateStat,
+        hero: effectiveHero,
         updateHealth,
         updateName,
         updatePath

@@ -4,7 +4,7 @@ import './HeroStats.css';
 
 interface HeroStatsProps {
     stats: HeroStatsType;
-    onUpdate: (stat: keyof HeroStatsType, value: number) => void;
+    onHealthChange: (value: number) => void;
 }
 
 const STAT_CONFIG: Array<{ key: keyof HeroStatsType; label: string; icon: string }> = [
@@ -14,10 +14,10 @@ const STAT_CONFIG: Array<{ key: keyof HeroStatsType; label: string; icon: string
     { key: 'armour', label: 'Armour', icon: '🛡️' },
 ];
 
-const HeroStats: React.FC<HeroStatsProps> = ({ stats, onUpdate }) => {
+const HeroStats: React.FC<HeroStatsProps> = ({ stats, onHealthChange }) => {
     return (
         <div className="hero-stats-container">
-            {/* Health is special */}
+            {/* Health is special - Editable */}
             <div className="stat-row health">
                 <span className="stat-label">
                     <span className="stat-icon">❤️</span> Health
@@ -25,32 +25,25 @@ const HeroStats: React.FC<HeroStatsProps> = ({ stats, onUpdate }) => {
                 <div className="stat-controls">
                     <button
                         className="stat-btn"
-                        onClick={() => onUpdate('health', stats.health - 1)}
+                        onClick={() => onHealthChange(stats.health - 1)}
                     >-</button>
                     <span className="stat-value">{stats.health}</span>
                     <span className="text-dim stat-max">/ {stats.maxHealth}</span>
                     <button
                         className="stat-btn"
-                        onClick={() => onUpdate('health', stats.health + 1)}
+                        onClick={() => onHealthChange(stats.health + 1)}
                     >+</button>
                 </div>
             </div>
 
+            {/* Attributes - Read Only */}
             {STAT_CONFIG.map(({ key, label, icon }) => (
                 <div key={key} className="stat-row">
                     <span className="stat-label">
                         <span className="stat-icon">{icon}</span> {label}
                     </span>
-                    <div className="stat-controls">
-                        <button
-                            className="stat-btn"
-                            onClick={() => onUpdate(key, stats[key] - 1)}
-                        >-</button>
+                    <div className="stat-controls" style={{ justifyContent: 'center', width: '100%' }}>
                         <span className="stat-value">{stats[key]}</span>
-                        <button
-                            className="stat-btn"
-                            onClick={() => onUpdate(key, stats[key] + 1)}
-                        >+</button>
                     </div>
                 </div>
             ))}
