@@ -29,9 +29,9 @@ const CombatArena: React.FC<CombatArenaProps> = ({ hero }) => {
             const enemyRoll1 = Math.floor(Math.random() * 6) + 1;
             const enemyRoll2 = Math.floor(Math.random() * 6) + 1;
             const enemyTotal = enemyRoll1 + enemyRoll2;
-            resolveSpeedRound(total, rolls, enemyTotal, [enemyRoll1, enemyRoll2]);
+            resolveSpeedRound({ heroRoll: total, heroRolls: rolls, enemyRoll: enemyTotal, enemyRolls: [enemyRoll1, enemyRoll2] });
         } else if (combat.phase === 'damage-roll') {
-            resolveDamageAndArmour(rolls[0], rolls);
+            resolveDamageAndArmour({ damageRoll: rolls[0], rolls: rolls });
         }
     };
 

@@ -51,7 +51,15 @@ export function useCombat(heroStats: HeroStats) {
     };
 
     // Phase 1: Speed Roll
-    const resolveSpeedRound = (heroRoll: number, heroRolls: number[], enemyRoll: number, enemyRolls: number[]) => {
+    // Phase 1: Speed Roll
+    interface SpeedRoundParams {
+        heroRoll: number;
+        heroRolls: number[];
+        enemyRoll: number;
+        enemyRolls: number[];
+    }
+
+    const resolveSpeedRound = ({ heroRoll, heroRolls, enemyRoll, enemyRolls }: SpeedRoundParams) => {
         if (!combat.enemy) return;
 
         const heroTotal = heroRoll + heroStats.speed;
@@ -80,7 +88,12 @@ export function useCombat(heroStats: HeroStats) {
     };
 
     // Phase 2: Damage Roll
-    const resolveDamageAndArmour = (damageRoll: number, rolls: number[]) => {
+    interface DamageRoundParams {
+        damageRoll: number;
+        rolls: number[];
+    }
+
+    const resolveDamageAndArmour = ({ damageRoll, rolls }: DamageRoundParams) => {
         if (!combat.enemy || !combat.winner) return;
 
         setCombat(prev => {
