@@ -5,12 +5,22 @@ import MobileLayout from './components/Layout/MobileLayout';
 import BottomNav from './components/Navigation/BottomNav';
 import HeroStats from './components/Hero/HeroStats';
 import EquipmentSlots from './components/Hero/EquipmentSlots';
+import EquipmentSelector from './components/Hero/EquipmentSelector';
 import CombatArena from './components/Combat/CombatArena';
 import { useHero } from './hooks/useHero';
+import { EquipmentSlot, EquipmentItem } from './types/hero';
 
 function App() {
     const [activeTab, setActiveTab] = useState<'hero' | 'combat'>('hero');
-    const { hero, updateHealth } = useHero();
+    const { hero, updateHealth, equipItem } = useHero();
+    const [selectedSlot, setSelectedSlot] = useState<EquipmentSlot | null>(null); // New state
+
+    const handleEquip = (item: EquipmentItem) => {
+        if (selectedSlot) {
+            equipItem(item, selectedSlot);
+            setSelectedSlot(null);
+        }
+    };
 
     return (
         <MobileLayout>
@@ -38,10 +48,18 @@ function App() {
                             <h3 className="equipment-heading">Equipment</h3>
                             <EquipmentSlots
                                 hero={hero}
-                                onSlotClick={(slot) => console.log('Clicked slot:', slot)}
+                                onSlotClick={(slot) => setSelectedSlot(slot)} // Modified
                                 onBackpackClick={(index) => console.log('Clicked backpack:', index)}
                             />
                         </div>
+
+                        {selectedSlot && ( // New conditional render
+                            <EquipmentSelector
+                                slot={selectedSlot}
+                                onSelect={handleEquip}
+                                onClose={() => setSelectedSlot(null)}
+                            />
+                        )}
                     </div>
                 ) : (
                     <CombatArena hero={hero} />

@@ -13,10 +13,17 @@ export type EquipmentSlot =
     | 'feet' | 'necklace' | 'ring1' | 'ring2';
 
 export interface EquipmentItem {
+    id: string;
     name: string;
+    type: EquipmentSlot; // Maps to slot
+    act: number;
+    cost?: number;
+    description?: string;
     stats?: Partial<HeroStats>;
     abilities?: string[];
-    slot: EquipmentSlot;
+    slot: EquipmentSlot; // Redundant with type, but keeping for compatibility for now or should I unify? 
+    // actually type usually refers to 'sword', 'axe' etc. slot is where it goes.
+    // Let's stick to slot.
 }
 
 export type HeroPath = '' | 'Warrior' | 'Mage' | 'Rogue';

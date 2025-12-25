@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Hero, INITIAL_HERO, HeroStats } from '../types/hero';
+import { Hero, INITIAL_HERO, HeroStats, EquipmentItem, EquipmentSlot } from '../types/hero';
 
 const STORAGE_KEY = 'dq-hero-v1';
 
@@ -61,10 +61,21 @@ export function useHero() {
         setHero(prev => ({ ...prev, path }));
     };
 
+    const equipItem = (item: EquipmentItem, slot: EquipmentSlot) => {
+        setHero(prev => ({
+            ...prev,
+            equipment: {
+                ...prev.equipment,
+                [slot]: item
+            }
+        }));
+    };
+
     return {
         hero: effectiveHero,
         updateHealth,
         updateName,
-        updatePath
+        updatePath,
+        equipItem
     };
 }
