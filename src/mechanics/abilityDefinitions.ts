@@ -5,6 +5,9 @@ export interface AbilityHooks {
     // For active abilities: returns partial state or null if activation failed/invalid
     onActivate?: (state: CombatState, hero: Hero) => Partial<CombatState> | null;
 
+    // Checks if ability can be activated in current state
+    canActivate?: (state: CombatState, hero: Hero) => boolean;
+
     onCombatStart?: (state: CombatState, hero: Hero) => Partial<CombatState>;
 
     // Returns the modifier amount to add to speed total
@@ -142,6 +145,9 @@ registerAbility({
     name: 'Parry',
     type: 'combat',
     description: 'Stop an opponent from rolling for damage after they win a round.',
+    canActivate: (state, _hero) => {
+        return state.phase === 'damage-roll' && state.winner === 'enemy';
+    },
     onActivate: (state, _hero) => {
         // Can only be used in damage-roll phase if enemy won
         if (state.phase === 'damage-roll' && state.winner === 'enemy') {
