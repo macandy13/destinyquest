@@ -5,6 +5,7 @@ import CombatDice from './CombatDice';
 import CombatLog from './CombatLog';
 import CombatantCard from './CombatantCard';
 import CombatAbilitySelector from './CombatAbilitySelector';
+import CombatModifiers from './CombatModifiers';
 import './CombatArena.css';
 
 interface CombatArenaProps {
@@ -95,6 +96,8 @@ const CombatArena: React.FC<CombatArenaProps> = ({ hero }) => {
                         isEnemy={true}
                     />
                 </div>
+
+                <CombatModifiers modifiers={combat.modifiers} />
             </div>
 
             <div className="arena-center">
@@ -102,19 +105,6 @@ const CombatArena: React.FC<CombatArenaProps> = ({ hero }) => {
                     combat={combat}
                     onActivate={activateAbility}
                 />
-                {/* Modifiers Display */}
-                {combat.modifiers.length > 0 && (
-                    <div className="mb-4" style={{ marginBottom: '1rem', textAlign: 'center' }}>
-                        <h4 className="text-sm uppercase tracking-wide text-dim mb-2" style={{ fontSize: '0.75rem', color: 'var(--dq-dim)', marginBottom: '0.5rem' }}>Active Effects</h4>
-                        <div className="space-y-1" style={{ display: 'flex', flexDirection: 'column', gap: '0.25rem', alignItems: 'center' }}>
-                            {combat.modifiers.map((mod, i) => (
-                                <div key={i} className="text-xs text-info bg-slate-900/50 p-1 rounded" style={{ fontSize: '0.75rem', color: '#60a5fa', background: 'rgba(15, 23, 42, 0.5)', padding: '0.25rem 0.5rem', borderRadius: '4px' }}>
-                                    {mod.name}: +{mod.value} {mod.type.split('-')[0]} ({mod.duration} rounds left)
-                                </div>
-                            ))}
-                        </div>
-                    </div>
-                )}
 
                 {/* Phase Instruction */}
                 <div style={{ margin: '10px 0', textAlign: 'center', color: 'var(--dq-gold)' }}>
