@@ -2,6 +2,26 @@
     display: flex;
     flex-direction: column;
     gap: var(--spacing-md);
+    height: 100%;
+    min-height: calc(100vh - 120px);
+    /* Adjust based on nav bars */
+    padding-bottom: 20px;
+    /* Ensure it takes up space even if empty */
+}
+
+/* ... existing styles ... */
+
+.combat-log {
+    margin-top: auto;
+    /* Push to bottom */
+    background: rgba(0, 0, 0, 0.5);
+    border-radius: var(--radius-sm);
+    padding: var(--spacing-sm);
+    max-height: 150px;
+    overflow-y: auto;
+    font-size: 0.8rem;
+    font-family: monospace;
+    border-top: 2px solid var(--dq-gold-dim);
 }
 
 .combatants {
@@ -61,13 +81,15 @@
 }
 
 .combat-log {
-    background: rgba(0, 0, 0, 0.3);
+    margin-top: auto;
+    background: rgba(0, 0, 0, 0.5);
     border-radius: var(--radius-sm);
     padding: var(--spacing-sm);
     max-height: 150px;
     overflow-y: auto;
     font-size: 0.8rem;
     font-family: monospace;
+    border-top: 1px solid var(--dq-gold-dim);
 }
 
 .log-entry {

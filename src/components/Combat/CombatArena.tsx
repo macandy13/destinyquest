@@ -9,7 +9,7 @@ interface CombatArenaProps {
 }
 
 const CombatArena: React.FC<CombatArenaProps> = ({ hero }) => {
-    const { combat, startCombat, nextRound, damageEnemy, damageHero, addLog } = useCombat(hero.stats);
+    const { combat, startCombat, nextRound, resolveSpeedRound, resolveDamageAndArmour } = useCombat(hero.stats);
     const [diceTotal, setDiceTotal] = useState<number | undefined>(undefined);
 
     if (!combat.isActive || !combat.enemy) {
@@ -24,12 +24,29 @@ const CombatArena: React.FC<CombatArenaProps> = ({ hero }) => {
 
     const handleRoll = (total: number, rolls: number[]) => {
         setDiceTotal(total);
-        // Placeholder logic for now - typically you'd compare vs speed/brawn etc
-        addLog(`Rolled ${total} (${rolls.join(' + ')})`, 'info');
+        // Phase logic
+        if (combat.phase === 'speed-roll') {
+            const enemyRoll1 = Math.floor(Math.random() * 6) + 1;
+            const enemyRoll2 = Math.floor(Math.random() * 6) + 1;
+            const enemyTotal = enemyRoll1 + enemyRoll2;
+            resolveSpeedRound(total, rolls, enemyTotal, [enemyRoll1, enemyRoll2]);
+        } else if (combat.phase === 'damage-roll') {
+            resolveDamageAndArmour(rolls[0]);
+        }
     };
 
     const enemyHealthPct = (combat.enemy.health / combat.enemy.maxHealth) * 100;
     const heroHealthPct = (combat.heroHealth / hero.stats.maxHealth) * 100;
+
+    const getPhaseInstruction = () => {
+        switch (combat.phase) {
+            case 'speed-roll': return "Roll Speed (2d6) to execute turn";
+            case 'damage-roll': return combat.winner === 'hero' ? "You won! Roll Damage (1d6)" : "Enemy won! Their Damage Roll...";
+            case 'round-end': return "Round Complete. Proceed?";
+            case 'combat-end': return "Combat Finished";
+            default: return "";
+        }
+    };
 
     return (
         <div className="combat-arena">
@@ -64,14 +81,77 @@ const CombatArena: React.FC<CombatArenaProps> = ({ hero }) => {
                 </div>
             </div>
 
-            <CombatDice onRoll={handleRoll} result={diceTotal} />
-
-            <div className="combat-controls">
-                <button className="btn-primary btn-hit-enemy" onClick={() => damageEnemy(1)}>Hit Enemy</button>
-                <button className="btn-primary" onClick={() => damageHero(1)}>Hit Hero</button>
+            {/* Phase Instruction */}
+            <div style={{ margin: '10px 0', textAlign: 'center', color: 'var(--dq-gold)' }}>
+                {getPhaseInstruction()}
             </div>
 
-            <button className="btn-primary btn-next-round" onClick={nextRound}>Next Round</button>
+            {/* SPEED PHASE: Dual Dice Display */}
+            {/* Always show speed dice if we have rolls, to persist them into damage phase */}
+            <div className="speed-rolls" style={{ display: 'flex', justifyContent: 'space-around', alignItems: 'flex-start', marginBottom: '20px' }}>
+                <div className="hero-dice">
+                    <CombatDice
+                        label="Your Speed"
+                        count={2}
+                        values={combat.heroSpeedRolls} // Persist if exists
+                        onRoll={combat.phase === 'speed-roll' ? handleRoll : undefined} // Only interactive in speed phase and if not already rolled (implied by lack of values check but onRoll handles it)
+                        result={combat.heroSpeedRolls ? combat.heroSpeedRolls.reduce((a, b) => a + b, 0) + hero.stats.speed : undefined}
+                    />
+                    {/* Only show result modifier text if rolled */}
+                    {combat.heroSpeedRolls && (
+                        <div className="text-center text-dim" style={{ fontSize: '0.8rem' }}>
+                            {combat.heroSpeedRolls.reduce((a, b) => a + b, 0)} + {hero.stats.speed} (Spd)
+                        </div>
+                    )}
+                </div>
+
+                <div className="enemy-dice">
+                    <CombatDice
+                        label="Enemy Speed"
+                        count={2}
+                        values={combat.enemySpeedRolls}
+                        result={combat.enemySpeedRolls ? combat.enemySpeedRolls.reduce((a, b) => a + b, 0) + combat.enemy.speed : undefined}
+                    />
+                    {combat.enemySpeedRolls && (
+                        <div className="text-center text-dim" style={{ fontSize: '0.8rem' }}>
+                            {combat.enemySpeedRolls.reduce((a, b) => a + b, 0)} + {combat.enemy.speed} (Spd)
+                        </div>
+                    )}
+                </div>
+            </div>
+
+            {/* DAMAGE PHASE: Single Die Display */}
+            {combat.phase === 'damage-roll' && (
+                <div className="damage-roll-container" style={{ borderTop: '1px solid #333', paddingTop: '20px', marginTop: '10px' }}>
+                    <div style={{ textAlign: 'center', marginBottom: '10px', color: 'var(--dq-gold)' }}>
+                        {combat.winner === 'hero' ? '💥 ROLL FOR DAMAGE!' : '🛡️ BRACE FOR IMPACT!'}
+                    </div>
+
+                    {combat.winner === 'hero' && (
+                        <div style={{ display: 'flex', justifyContent: 'center' }}>
+                            <CombatDice
+                                label="Damage (1d6)"
+                                count={1}
+                                onRoll={(total, rolls) => handleRoll(total, rolls)}
+                            />
+                        </div>
+                    )}
+
+                    {combat.winner === 'enemy' && (
+                        <div style={{ display: 'flex', justifyContent: 'center', flexDirection: 'column', alignItems: 'center' }}>
+                            <p className="text-dim">Enemy is attacking...</p>
+                            <button className="btn-primary" onClick={() => {
+                                const dmg = Math.floor(Math.random() * 6) + 1;
+                                handleRoll(dmg, [dmg]);
+                            }}>Resolve Enemy Attack</button>
+                        </div>
+                    )}
+                </div>
+            )}
+
+            {combat.phase === 'round-end' && (
+                <button className="btn-primary btn-next-round" onClick={nextRound}>Next Round</button>
+            )}
 
             <div className="combat-log">
                 {[...combat.logs].reverse().map((log, i) => (

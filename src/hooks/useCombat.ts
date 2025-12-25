@@ -5,8 +5,10 @@ import { HeroStats } from '../types/hero';
 const INITIAL_STATE: CombatState = {
     isActive: false,
     round: 0,
+    phase: 'combat-end', // Start inactive
     enemy: null,
     heroHealth: 0,
+    winner: null,
     logs: []
 };
 
@@ -29,9 +31,11 @@ export function useCombat(heroStats: HeroStats) {
         setCombat({
             isActive: true,
             round: 1,
-            enemy: { ...MOCK_ENEMY }, // Clone to avoid mutation
+            phase: 'speed-roll',
+            enemy: { ...MOCK_ENEMY },
             heroHealth: heroStats.health,
-            logs: [{ round: 1, message: 'Combat started vs Training Dummy!', type: 'info' }]
+            winner: null,
+            logs: [{ round: 1, message: 'Combat started!', type: 'info' }]
         });
     }, [heroStats]);
 
@@ -46,35 +50,95 @@ export function useCombat(heroStats: HeroStats) {
         }));
     };
 
+    // Phase 1: Speed Roll
+    const resolveSpeedRound = (heroRoll: number, heroRolls: number[], enemyRoll: number, enemyRolls: number[]) => {
+        if (!combat.enemy) return;
+
+        const heroTotal = heroRoll + heroStats.speed;
+        const enemyTotal = enemyRoll + combat.enemy.speed;
+        let winner: 'hero' | 'enemy' | null = null;
+        let message = `Speed: Hero ${heroTotal} vs Enemy ${enemyTotal}. `;
+
+        if (heroTotal > enemyTotal) {
+            winner = 'hero';
+            message += 'Hero wins execution round!';
+        } else if (enemyTotal > heroTotal) {
+            winner = 'enemy';
+            message += 'Enemy wins execution round!';
+        } else {
+            message += 'Draw! No damage this round.';
+        }
+
+        setCombat(prev => ({
+            ...prev,
+            phase: winner ? 'damage-roll' : 'round-end',
+            winner,
+            heroSpeedRolls: heroRolls,
+            enemySpeedRolls: enemyRolls,
+            logs: [...prev.logs, { round: prev.round, message, type: 'info' }]
+        }));
+    };
+
+    // Phase 2: Damage Roll
+    const resolveDamageAndArmour = (damageRoll: number) => {
+        if (!combat.enemy || !combat.winner) return;
+
+        setCombat(prev => {
+            if (!prev.enemy || !prev.winner) return prev;
+
+            // Keeping for potential extensions like passive damage logic later
+            let logMsg = '';
+            let newHeroHealth = prev.heroHealth;
+            let newEnemyHealth = prev.enemy.health;
+            let type: CombatLog['type'] = 'info';
+
+            if (prev.winner === 'hero') {
+                const modifier = Math.max(heroStats.brawn, heroStats.magic);
+                const rawDamage = damageRoll + modifier;
+                const actualDamage = Math.max(0, rawDamage - prev.enemy.armour);
+                newEnemyHealth = Math.max(0, prev.enemy.health - actualDamage);
+
+                logMsg = `Hero hits for ${rawDamage} (Rolled ${damageRoll} + ${modifier}). Enemy armour absorbs ${prev.enemy.armour}. 💥 ${actualDamage} Damage!`;
+                type = 'damage-enemy';
+            } else {
+                const modifier = Math.max(prev.enemy.brawn, prev.enemy.magic);
+                const rawDamage = damageRoll + modifier;
+                const actualDamage = Math.max(0, rawDamage - heroStats.armour);
+                newHeroHealth = Math.max(0, prev.heroHealth - actualDamage);
+
+                logMsg = `Enemy hits for ${rawDamage} (Rolled ${damageRoll} + ${modifier}). Hero armour absorbs ${heroStats.armour}. 💔 ${actualDamage} Damage taken!`;
+                type = 'damage-hero';
+            }
+
+            // Check for defeat
+            const isFinished = newHeroHealth <= 0 || newEnemyHealth <= 0;
+            const nextPhase = isFinished ? 'combat-end' : 'round-end';
+
+            const logs = [...prev.logs, { round: prev.round, message: logMsg, type }];
+
+            if (newHeroHealth <= 0) logs.push({ round: prev.round, message: 'Hero Defeated!', type: 'loss' });
+            if (newEnemyHealth <= 0) logs.push({ round: prev.round, message: 'Enemy Defeated!', type: 'win' });
+
+            return {
+                ...prev,
+                heroHealth: newHeroHealth,
+                enemy: { ...prev.enemy, health: newEnemyHealth },
+                phase: nextPhase,
+                logs
+            };
+        });
+    };
+
     const nextRound = () => {
         setCombat(prev => ({
             ...prev,
             round: prev.round + 1,
+            winner: null,
+            heroSpeedRolls: undefined,
+            enemySpeedRolls: undefined,
+            phase: 'speed-roll',
             logs: [...prev.logs, { round: prev.round + 1, message: `Round ${prev.round + 1}`, type: 'info' }]
         }));
-    };
-
-    const damageEnemy = (amount: number) => {
-        setCombat(prev => {
-            if (!prev.enemy) return prev;
-            const newHealth = Math.max(0, prev.enemy.health - amount);
-            return {
-                ...prev,
-                enemy: { ...prev.enemy, health: newHealth },
-                logs: [...prev.logs, { round: prev.round, message: `Enemy took ${amount} damage!`, type: 'damage-enemy' }]
-            };
-        });
-    };
-
-    const damageHero = (amount: number) => {
-        setCombat(prev => {
-            const newHealth = Math.max(0, prev.heroHealth - amount);
-            return {
-                ...prev,
-                heroHealth: newHealth,
-                logs: [...prev.logs, { round: prev.round, message: `Hero took ${amount} damage!`, type: 'damage-hero' }]
-            };
-        });
     };
 
     return {
@@ -82,8 +146,8 @@ export function useCombat(heroStats: HeroStats) {
         startCombat,
         endCombat,
         nextRound,
-        damageEnemy,
-        damageHero,
+        resolveSpeedRound,
+        resolveDamageAndArmour,
         addLog
     };
 }

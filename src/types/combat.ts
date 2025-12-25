@@ -15,10 +15,16 @@ export interface CombatLog {
     type: 'info' | 'damage-hero' | 'damage-enemy' | 'win' | 'loss';
 }
 
+export type CombatPhase = 'speed-roll' | 'damage-roll' | 'passive-damage' | 'round-end' | 'combat-end';
+
 export interface CombatState {
     isActive: boolean;
     round: number;
+    phase: CombatPhase;
     enemy: Enemy | null;
     heroHealth: number;
+    winner: 'hero' | 'enemy' | null; // Winner of the current speed round
+    heroSpeedRolls?: number[];
+    enemySpeedRolls?: number[];
     logs: CombatLog[];
 }
