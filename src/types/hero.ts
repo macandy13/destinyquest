@@ -10,20 +10,25 @@ export interface HeroStats {
 export type EquipmentSlot =
     | 'head' | 'cloak' | 'chest' | 'gloves'
     | 'mainHand' | 'leftHand' | 'talisman'
+    | 'head' | 'cloak' | 'chest' | 'gloves'
+    | 'mainHand' | 'leftHand' | 'talisman'
     | 'feet' | 'necklace' | 'ring1' | 'ring2';
+
+export type EquipmentType =
+    | 'head' | 'cloak' | 'chest' | 'gloves'
+    | 'mainHand' | 'leftHand' | 'talisman'
+    | 'feet' | 'necklace' | 'ring';
 
 export interface EquipmentItem {
     id: string;
     name: string;
-    type: EquipmentSlot; // Maps to slot
+    type: EquipmentType; // The type of item (e.g., 'ring')
     act: number;
-    cost?: number;
+    cost?: number; // Cost in gold (if applicable)
+    careerPreference?: HeroPath; // W/M/R requirement
     description?: string;
     stats?: Partial<HeroStats>;
     abilities?: string[];
-    slot: EquipmentSlot; // Redundant with type, but keeping for compatibility for now or should I unify? 
-    // actually type usually refers to 'sword', 'axe' etc. slot is where it goes.
-    // Let's stick to slot.
 }
 
 export type HeroPath = '' | 'Warrior' | 'Mage' | 'Rogue';

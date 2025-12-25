@@ -1,0 +1,454 @@
+# Item Box,Act,Item name,Speed,Brawn,Magic,Armour,Special ability,Entry no.,Location/enemy
+Cloak,Act 1: Tithebury Cross,Patchwork cloak,1,0,0,0,None,68,Vendor/Tithebury Cross
+Cloak,Act 1: Tithebury Cross,Bat cape,1,0,0,1,None,114,Vendor/Tithebury Cross
+Cloak,Act 1: Tithebury Cross,Spindlesilk cloak,1,0,0,2,Spindlesilk set,132,Vendor/Tithebury Cross
+Cloak,Act 1: Tithebury Cross,Chieftain's furs,0,0,0,1,None,260,Goblin chief
+Cloak,Act 1: Tithebury Cross,Traveller's cloak,0,0,1,1,Charm,251,Farmhouse bedroom
+Cloak,Act 1: Tithebury Cross,Moth-eaten blanket,1,0,0,0,None,40,Ruffians
+Cloak,Act 1: Tithebury Cross,Crusader's mantle,1,0,0,0,Charm,160,Valadin Roth
+Cloak,Act 1: Tithebury Cross,Hag's shawl,0,0,1,1,Charm,155,Witch
+Cloak,Act 1: Tithebury Cross,Savage pelt,0,1,1,0,Savagery,26,Mauler
+Cloak,Act 2: Mistwood & Black Marsh,Mottled cloak,1,0,0,1,None,283,Mud golem
+Cloak,Act 2: Mistwood & Black Marsh,Diaphanous wings,1,0,1,0,Haste,314,Hive queen
+Cloak,Act 2: Mistwood & Black Marsh,Cloak of white winter,1,2,0,0,Piercing,385,Baron Greylock
+Cloak,Act 2: Mistwood & Black Marsh,Cloak of shadows,1,0,0,2,Feint,487,Count(special)
+Cloak,Act 2: Mistwood & Black Marsh,Golden fleece,1,0,0,2,Radiance,548,Treasure vault
+Cloak,Act 2: Mistwood & Black Marsh,Phoenix feathers,1,0,0,1,Charm,565,Phoenix
+Cloak,Act 2: Mistwood & Black Marsh,Destroyer's drape,2,0,0,1,Backfire,568,Inferno
+Cloak,Act 2: Mistwood & Black Marsh,Majestic shoulders (W),2,0,0,2,Royal regalia set,397,Puzzle chest
+Cloak,Act 2: Mistwood & Black Marsh,Sparkcraft mantle (M),2,0,2,0,Lifespark,509,Swamp giant
+Cloak,Act 2: (Continued),Kaggadour's cloak,2,2,0,0,Savagery,443,Stone giant
+Cloak,Act 2: (Continued),Mantle of spite (M),2,0,3,0,Curse,713,Gargoyle chest
+Cloak,Act 2: (Continued),Mane of the Black Lion,1,3,0,0,Fearless,379,Nalsa
+Cloak,Act 2: (Continued),Winter pelt,2,0,0,2,Savagery,359,King Louis
+Cloak,Act 2: (Continued),Flame mantle,2,0,0,1,Fire aura,377,Vesuvius
+Cloak,Act 2: (Continued),Dragonscale cloak,2,0,0,2,Second skin,708,Kindle
+Cloak,Act 3: The Bone Fields,Slipstream silk (M),3,0,2,0,Surge,914,Waldo's wares
+Cloak,Act 3: The Bone Fields,Valiant spaulders (W),2,2,0,0,Overpower,815,Waldo's wares
+Cloak,Act 3: The Bone Fields,Spiked boneguards,2,0,0,2,Piercing,759,Flesh golem
+Cloak,Act 3: The Bone Fields,Broken wings,2,2,0,0,Fearless,906,Bone angel
+Cloak,Act 3: The Bone Fields,Cloak of ceremonies,2,0,2,0,Radiance,892,Arthurian's vault
+Cloak,Act 3: The Bone Fields,Stalwart shoulders,2,0,0,2,Might of stone,565,Yorvic
+Cloak,Act 3: The Bone Fields,Gloom shade (R),2,3,0,0,Steal,622,Brothers' Grimm
+Cloak,Act 3: The Bone Fields,Pauldrons of might (W),2,3,0,0,Fortitude,727,Brothers' Grimm
+Cloak,Act 3: The Bone Fields,Cloak of the wind (M),3,0,0,1,Surge,762,Scout
+Cloak,Act 3: The Bone Fields,Nemesis shroud,2,3,0,0,Dark pact,765,Malcontent
+Cloak,Act 3: The Bone Fields,Veil of dark synergies (M),2,0,3,0,Second wind,865,Daarko
+Cloak,Act 3: The Bone Fields,Spore shoulders (M),2,0,3,0,Spore cloud,845,Decayers
+Cloak,Act 3: The Bone Fields,Hulking shoulders (R),2,3,0,0,Barbs,847,The wrecker
+Head,Act 1: Tithebury Cross,Simple coif,0,1,0,1,None,175,Vendor/Tithebury Cross
+Head,Act 1: Tithebury Cross,All-weather hat,1,0,0,0,None,243,Weather wizard
+Head,Act 1: Tithebury Cross,Rusted helm,1,0,0,0,None,166,Skeletons
+Head,Act 1: Tithebury Cross,Mauler's maw,1,0,0,1,Fearless,26,Mauler
+Head,Act 1: Tithebury Cross,Troll's nose-ring,0,2,0,0,Charm,122,Bridge troll
+Head,Act 2: Mistwood & Black Marsh,Ramrod helm,1,0,0,2,Haste,311,No Hope tinker
+Head,Act 2: Mistwood & Black Marsh,Footpad's cover (R),0,2,0,1,None,338,Thievies' guild
+Head,Act 2: Mistwood & Black Marsh,Skull cap,1,0,0,1,None,287,Mushroom forest
+Head,Act 2: Mistwood & Black Marsh,Great helm,1,1,0,0,None,494,Slime
+Head,Act 2: Mistwood & Black Marsh,Wyrm crest,0,0,1,2,None,517,Wormwood (normal)
+Head,Act 2: Mistwood & Black Marsh,Wyrm crown,0,0,2,2,None,533,Wormwood (special)
+Head,Act 2: Mistwood & Black Marsh,Nightguard cover,1,0,0,2,Steadfast,548,Treasure vault
+Head,Act 2: Mistwood & Black Marsh,Flame-bathed cowl,0,2,0,1,Sear,655,Inferno
+Head,Act 2: Mistwood & Black Marsh,Jester's cap,1,1,0,0,Last laugh,374,Jester
+Head,Act 2: Mistwood & Black Marsh,Masque of deceit,1,0,0,2,Deceieve,422,Count (normal)
+Head,Act 2: Mistwood & Black Marsh,Pirate's bandanna,1,2,0,0,None,716,Kalimari
+Head,Act 2: Mistwood & Black Marsh,Vanquisher's helm (W),0,2,0,2,Vanquish,581,Armoury
+Head,Act 2: Mistwood & Black Marsh,Night watch (R),1,2,0,0,Steadfast,583,Raptor pit
+Head,Act 2: Mistwood & Black Marsh,Cover of darkness (R),1,2,0,0,Evade,744,Gargoyle chest
+Head,Act 2: (Continued),Crown of command,0,1,1,0,Command,689,Stone giant
+Head,Act 2: (Continued),Crown of command (upgrade 1),0,3,3,0,Command,689,Stone giant
+Head,Act 2: (Continued),Crown of command (upgrade 2),0,5,5,0,Command,689,Stone giant
+Head,Act 2: (Continued),Tri-horned hat,0,0,1,2,Charm,277,Left-hook Luke
+Head,Act 2: (Continued),Horns of the bull,1,0,0,2,Charge,216,Zen
+Head,Act 2: (Continued),Simian crown,1,2,0,0,Chill touch,359,King Louis
+Head,Act 2: (Continued),Desert Keffiyeh,1,2,0,0,None,370,Nasareim
+Head,Act 2: (Continued),Agal of shifting sands,0,0,2,2,None,370,Nasareim
+Head,Act 2: (Continued),Wreath of woe,1,0,3,0,Barbs,346,Snapjaw
+Head,Act 2: (Continued),Firewalker's faceguard (W),1,0,0,3,Overpower,400,Magmageddon
+Head,Act 3: The Bone Fields,Total eclipse (R),2,3,0,0,Vanish,839,Waldo's wares
+Head,Act 3: The Bone Fields,Wyvern jaws,0,0,3,2,None,776,Bone wyvern
+Head,Act 3: The Bone Fields,Knuckle head (W),1,2,0,0,Slam,695,Bone construct
+Head,Act 3: The Bone Fields,Hood of night,2,0,3,0,Charm,649,Necromancer
+Head,Act 3: The Bone Fields,Enchanted coif (M),2,0,0,2,Deceive,677,Tor knight
+Head,Act 3: The Bone Fields,Forked crest,1,3,0,0,Charge,775,Skeleton horde
+Head,Act 3: The Bone Fields,Bone headdress,0,0,3,2,Charm,778,Ghoul pack
+Head,Act 3: The Bone Fields,Cracked spectacles,2,0,2,0,Focus,923,Apprentice
+Head,Act 3: The Bone Fields,Crown of ice,2,0,3,0,Barbs,874,Sammain (special)
+Head,Act 3: The Bone Fields,Bone halo,2,0,3,0,Focus,906,Bone angel
+Head,Act 3: The Bone Fields,Black widow,2,2,0,0,Webbed,929,Dark Arthurian
+Head,Act 3: The Bone Fields,Diadem of mastery (M),2,0,3,0,Dominate,664,Brothers' Grimm
+Head,Act 3: (Continued),Ghoul's collar,2,0,0,3,Piercing,702,Ghoulash
+Head,Act 3: (Continued),Budak's blindfold (R),2,3,0,0,Second sight,733,Budak
+Head,Act 3: (Continued),Brain infusers,2,0,0,3,Lightning,642,Lichenstein
+Head,Act 3: (Continued),The morgue (M),2,0,3,0,Leech,765,Malcontent
+Head,Act 3: (Continued),Cerebral helm (M),2,0,3,0,Overload,765,Death orb
+Head,Act 3: (Continued),Cranium plate,0,2,0,3,Fortitide,665,Lord of pain
+Head,Act 3: (Continued),Dread mask (W),2,3,0,0,Overpower,893,Daarko
+Head,Act 3: (Continued),Drape of shadow,2,4,0,0,Chill touch,813,Ghasts
+Head,Act 3: (Continued),Thalamus tiara (M),2,0,5,0,Haste,826,Doom orb
+Gloves,Act 1: Tithebury Cross,Embroidered gloves,1,0,1,0,None,68,Vendor/Tithebury Cross
+Gloves,Act 1: Tithebury Cross,Rat-bitten gloves,0,1,1,0,None,161,Rat swarm
+Gloves,Act 1: Tithebury Cross,Half-digested gauntlets,0,1,0,1,Acid,258,Burrower wyrm
+Gloves,Act 1: Tithebury Cross,Mason's gloves,1,0,0,0,First cut,209,Crypt chest
+Gloves,Act 2: Mistwood & Black Marsh,Stone fists,0,2,0,1,None,522,Treasure vault
+Gloves,Act 2: Mistwood & Black Marsh,Diamond gauntlets,0,2,0,0,Piercing,540,Rumbler
+Gloves,Act 2: (Continued),Vambraces of might,1,0,0,2,Parry,568,Inferno
+Gloves,Act 2: (Continued),Prophet's handwraps,0,1,0,1,Trickster,550,Jenlar's cabin
+Gloves,Act 2: (Continued),Nightguard gloves (R),1,0,0,2,Steadfast,642,Armoury
+Gloves,Act 2: (Continued),Nightwalker gloves (R),1,2,0,0,Nightwalker set,765,Gargoyle chest
+Gloves,Act 2: (Continued),Battlemage's fists (M),0,0,3,3,Dominate,414,Arena champion
+Gloves,Act 2: (Continued),Barbed bracers,1,0,0,2,Barbs,346,Snapjaw
+Gloves,Act 2: (Continued),Gardener's gloves,1,0,0,2,Thorns,516,Alchemist bonus quest
+Gloves,Act 2: (Continued),Hydra-scaled gloves (M),0,0,2,2,Regrowth,389,Snapjaw
+Gloves,Act 2: (Continued),Hydra-scaled fists (M),0,0,3,2,Regrowth,418,Snapjaw
+Gloves,Act 2: (Continued),Molten gauntlets (W),0,2,0,1,Fire aura,377,Vesuvius
+Gloves,Act 2: (Continued),Crimson cuffs,1,0,4,0,Sear,400,Magmageddon
+Gloves,Act 3: The Bone Fields,Mortuary gauntlets (W),1,0,0,3,Acid,803,Waldo's wares
+Gloves,Act 3: The Bone Fields,Reaper's fists (R),1,3,0,0,Critical strike,903,Waldo's wares
+Gloves,Act 3: The Bone Fields,Bestial gloves,0,2,0,2,Adrenaline,620,Packmaster
+Gloves,Act 3: The Bone Fields,Gauntlets of the fallen (W),0,3,0,2,Finery of the fallen,617,Tor knight
+Gloves,Act 3: The Bone Fields,Bone bracers,1,2,0,0,Bleed,759,Flesh golem
+Gloves,Act 3: The Bone Fields,Branded bracers,0,2,0,2,Regrowth,880,Branded brute
+Gloves,Act 3: The Bone Fields,Tainted wraps,1,0,3,0,Curse,912,Malaise
+Gloves,Act 3: The Bone Fields,Devourer's grips (M),1,0,4,0,Rust,664,Brothers'Grimm
+Gloves,Act 3: The Bone Fields,Bracelet of iron,0,2,0,3,Might of stone,736,Ghoulash chains
+Gloves,Act 3: The Bone Fields,Bracelet of fire (M),1,0,3,0,Embers,736,Ghoulash chains
+Gloves,Act 3: The Bone Fields,Bracelet of fury,1,4,0,0,Adrenaline,736,Ghoulash chains
+Gloves,Act 3: (Continued),Bracelet of power (M),1,0,3,0,Focus,702,Ghoulash
+Gloves,Act 3: (Continued),Razor fists,0,1,0,3,Rake,722,Bone giant
+Gloves,Act 3: (Continued),Abattoir gloves (M),1,0,4,0,Bleed,642,Lichenstein
+Chest,Act 1: Tithebury Cross,Silk robe,0,0,1,0,None,68,Vendor/Tithebury Cross
+Chest,Act 1: Tithebury Cross,Goblin leathers,0,0,0,1,None,150,Goblin
+Chest,Act 1: Tithebury Cross,Huntsman's jerkin,0,0,0,1,None,228,Huntsman
+Chest,Act 1: Tithebury Cross,Studded leather,0,0,0,2,None,125/174,Were rat
+Chest,Act 1: Tithebury Cross,Rain-soaked robe,0,0,1,1,None,243,Weather wizard
+Chest,Act 1: Tithebury Cross,Web-coated jerkin,0,1,0,1,Webbed,206,Water cave
+Chest,Act 1: Tithebury Cross,Spindlesilk mantle,0,0,1,1,Spindlesilk set,91,Spindle
+Chest,Act 1: Tithebury Cross,Crusader's vestments,0,1,0,1,Heal,160,Valadin Roth
+Chest,Act 1: Tithebury Cross,Hellfire robes,1,0,1,0,Trickster,133,Changeling
+Chest,Act 1: Tithebury Cross,Duskleaf doubloon,1,1,0,0,Charm,80,Zalladrel
+Chest,Act 2: Mistwood & Black Marsh,Chitinous carapace,1,0,0,2,Charm,368,Kerklick
+Chest,Act 2: Mistwood & Black Marsh,Patchwork jerkin,1,1,0,0,Evade,374,Jester
+Chest,Act 2: (Continued),Gown of midnight,1,0,2,0,Evade,445,Elvera
+Chest,Act 2: (Continued),Sanguine gown,1,0,2,0,Evade,460,Clymonistra
+Chest,Act 2: (Continued),Cinder's gown (M),1,0,3,0,Sear,655,Cinders
+Chest,Act 2: (Continued),Scorched tunic,1,0,0,2,Charm,568,Inferno
+Chest,Act 2: (Continued),Nightwalker tunic (R),1,2,0,0,Nightwalker set,497,Boggart
+Chest,Act 2: (Continued),Vigilant chestguard (W),1,0,0,3,None,509,Swamp giant
+Chest,Act 2: (Continued),Scaled vest,1,0,2,0,Swamp legs,452,Angler's cave
+Chest,Act 2: (Continued),Ink-stained vest,2,1,0,0,None,716,Kalimari
+Chest,Act 2: (Continued),Navigator's waistcoat,2,0,0,2,Charm,544,Leviathan
+Chest,Act 2: (Continued),Channeler's robes (M),0,0,3,2,Focus,434,Raptor pit
+Chest,Act 2: (Continued),Lincoln green (W),2,2,0,0,Charm,590,Raptor pit
+Chest,Act 2: (Continued),Skulker's coat (R),1,0,0,3,Evade,583,Raptor pit
+Chest,Act 2: (Continued),Spellplate,1,0,0,3,Focus,598,Armoury
+Chest,Act 2: (Continued),Stone coat (W),2,0,0,2,Might of stone,706,Gargoyle chest
+Chest,Act 2: (Continued),Breastplate of the bull,0,3,0,2,Charge,216,Zen
+Chest,Act 2: (Continued),Hunter's hide,1,0,0,2,Immobilise,379,Nalsa
+Chest,Act 2: (Continued),The cage (W),2,0,0,3,Iron will,414,Arena champion
+Chest,Act 2: (Continued),Dragonscale mail (W),2,0,0,3,Second skin,708,Kindle
+Chest,Act 3: The Bone Fields,Raider's tunic (W),2,4,0,0,Retaliation,803,Waldo's wares
+Chest,Act 3: The Bone Fields,Slipstream gown (M),2,0,4,0,Overload,881,Waldo's wares
+Chest,Act 3: The Bone Fields,Confessor's coat (R),2,4,0,0,Fortitude,903,Waldo's wares
+Chest,Act 3: The Bone Fields,Titan plate,1,0,0,2,Fearless,730,Bone giants
+Chest,Act 3: (Continued),Deathgrip robes,2,0,3,0,Corruption,770,Rotterghast
+Chest,Act 3: (Continued),Lion's tabard,1,2,0,0,Fearless,892,Arthurian's vault
+Chest,Act 3: (Continued),Skullplate,2,0,0,3,Dominate,906,Bone angel
+Chest,Act 3: (Continued),Funeral gown,1,0,3,0,Charm,916,Yorvic
+Chest,Act 3: (Continued),Redguard's tabard,2,0,0,4,Iron will,735,Special achievement
+Chest,Act 3: (Continued),Stalker's jerkin (R),2,0,0,3,Evade,733,Budak
+Chest,Act 3: (Continued),Silleer's robe (M),2,0,3,0,Curse,570,Silleer
+Chest,Act 3: (Continued),Plate of the fallen (W),2,0,0,4,finery of the fallen,719,Tor knight
+Chest,Act 3: (Continued),Funeral wraps,2,3,0,0,Bleed,765,Malcontent
+Chest,Act 3: (Continued),Pacemaker (W),2,0,0,4,Kick start,716,The blob
+Chest,Act 3: (Continued),Shadow bindings (R),2,3,0,0,Evade,631,Mage hunter
+Chest,Act 3: (Continued),Dark slayer vest (R),2,4,0,0,Dominate,843,Daarko
+Chest,Act 3: (Continued),Decayer's wraps,2,3,0,0,Disease,845,Decayers
+Chest,Act 3: (Continued),Beast's harness (W),2,0,0,4,Knockdown,801,The wrecker
+Chest,Act 3: (Continued),Beast's backbone (R),2,4,0,0,Savagery,847,The wrecker
+Chest,Act 3: (Continued),Bloodied chestguard (W),2,0,0,4,Bleed,882,Sannrah
+Feet,Act 1: Tithebury Cross,Buckled boots,1,1,0,0,None,175,Vendor/Tithebury Cross
+Feet,Act 1: Tithebury Cross,Spindlesilk boots,1,0,1,0,Spindlesilk set,110,Vendor/Tithebury Cross
+Feet,Act 1: Tithebury Cross,Crow's feet,1,0,1,0,None,204,Scarecrow
+Feet,Act 1: (Continued),Goblin kickers,1,1,0,0,None,199,Hobgoblin
+Feet,Act 1: (Continued),Rat-skin boots,1,0,0,0,None,260,Goblin chief
+Feet,Act 1: (Continued),Dusty footpads,1,0,0,0,Charm,206,Water cave
+Feet,Act 1: (Continued),Ruby slippers,1,0,0,1,Click your heels,155,Witch
+Feet,Act 1: (Continued),Boar-hide boots,1,0,0,1,Steadfast,44,Humbaroth
+Feet,Act 1: (Continued),Reed-woven sandals,1,0,1,0,Charm,122,Bridge troll
+Feet,Act 2: Mistwood & Black Marsh,Rune-forged greaves,2,0,2,0,None,311,No Hope tinker
+Feet,Act 2: Mistwood & Black Marsh,Boots of swift flight (R),1,2,0,0,None,338,Thievies' guild
+Feet,Act 2: Mistwood & Black Marsh,Deerskin boots,1,1,0,0,None,287,Mushroom forest
+Feet,Act 2: Mistwood & Black Marsh,Sludge waders,1,0,0,1,None,494,Slime
+Feet,Act 2: Mistwood & Black Marsh,Baron's boots,1,0,0,1,Dominate,385,Baron Greylock
+Feet,Act 2: Mistwood & Black Marsh,Velvet slippers,1,0,3,0,Haste,487,Count (special)
+Feet,Act 2: Mistwood & Black Marsh,Scarab sandals (M),2,0,0,2,None,446,Treasure cave
+Feet,Act 2: Mistwood & Black Marsh,Bright greaves,1,2,0,0,Steadfast,497,Boggart
+Feet,Act 2: Mistwood & Black Marsh,Sanguine slippers (M),2,0,2,0,Charm,497,Boggart
+Feet,Act 2: Mistwood & Black Marsh,Captain's boots,2,0,0,1,None,716,Kalimari
+Feet,Act 2: Mistwood & Black Marsh,Scout's longboots (W),1,3,0,0,Sideswipe,590,Raptor pit
+Feet,Act 2: Mistwood & Black Marsh,Quicksilver boots (M),2,0,1,0,Quicksilver,434,Raptor pit
+Feet,Act 2: Mistwood & Black Marsh,Majestic greaves (W),2,2,0,0,Royal regalia,581,Armoury
+Feet,Act 2: Mistwood & Black Marsh,Shadow treads (R),1,2,0,0,Sidestep,744,Gargoyle chest
+Feet,Act 2: Mistwood & Black Marsh,Logan's runners (R),2,1,0,0,Sidestep,394,Logan
+Feet,Act 2: (Continued),Barkskin greaves,1,0,0,2,Steadfast,341,Barkrot
+Feet,Act 2: (Continued),Marsh striders,2,2,0,0,Sideswipe,389,Hydra (normal)
+Feet,Act 2: (Continued),Marsh stalkers,2,3,0,0,Sideswipe,418,Hydra (special)
+Feet,Act 3: The Bone Fields,Boots of shielding (M),2,0,0,1,Deflect,881,Waldo's wares
+Feet,Act 3: The Bone Fields,Barbarous boots (W),2,3,0,0,Savagery,815,Waldo's wares
+Feet,Act 3: The Bone Fields,Vagabond boots,2,0,0,2,Steadfast,620,Packmaster
+Feet,Act 3: The Bone Fields,Herald's spurs,2,1,0,0,Charge,617,Tor knight
+Feet,Act 3: The Bone Fields,Ebon boots,2,1,0,0,Fearless,649,Necromancer
+Feet,Act 3: The Bone Fields,Bewitched boots,2,0,2,0,Dominate,802,Tomb
+Feet,Act 3: The Bone Fields,Twisted treads,2,2,0,0,Trickster,912,Malaise
+Feet,Act 3: The Bone Fields,Rumble thumpers,1,3,0,0,Knockdown,616,The blob
+Feet,Act 3: The Bone Fields,Elemental greaves (M),2,0,0,2,Fire aura,865,Daarko
+Feet,Act 3: The Bone Fields,Boots of black fortune (W),2,0,0,2,Feint,893,Daarko
+Main hand,Act 1: Tithebury Cross,The apprentice,0,1,1,0,None,,Prologue
+Main hand,Act 1: Tithebury Cross,Notched blade,1,1,0,0,None,175,Vendor/Tithebury Cross
+Main hand,Act 1: Tithebury Cross,Curved blade,1,0,0,0,None,199,Hobgoblin
+Main hand,Act 1: (Continued),Goblin hewer,1,0,0,1,None,82,Woodsman
+Main hand,Act 1: (Continued),Huntsman's axe,0,2,0,0,None,228,Huntsman
+Main hand,Act 1: (Continued),Meat cleaver,1,0,0,0,Bleed,260,Goblin chief
+Main hand,Act 1: (Continued),Crone's dagger,1,0,1,0,None,40,Ruffians
+Main hand,Act 1: (Continued),Gilbert's club,0,3,0,0,None,40,Ruffians
+Main hand,Act 1: (Continued),Leader's edge,1,1,0,0,None,125/174,Were rat
+Main hand,Act 1: (Continued),Acid-coated battle axe,1,1,0,0,Acid,258,Burrower wyrm
+Main hand,Act 1: (Continued),Venomous fang,1,1,0,0,Venom,91,Spindle
+Main hand,Act 1: (Continued),Nightbringer,1,4,0,0,Might of stone,52,Noldor (special)
+Main hand,Act 1: (Continued),Nightfall,1,0,4,0,Might of stone,52,Noldor (special)
+Main hand,Act 1: (Continued),Ancient sword,1,1,0,0,Bleed,222,Skeleton knight
+Main hand,Act 1: (Continued),Dirk of deceit,1,1,0,0,Corruption,271,Fetch
+Main hand,Act 1: (Continued),Silver silence,1,0,1,0,Immobilise,271,Fetch
+Main hand,Act 1: (Continued),Skullbreaker,1,2,0,0,Pound,44,Humbaroth
+Main hand,Act 2: Mistwood & Black Marsh,Dark crystal (R),1,2,0,0,Venom,311,No Hope tinker
+Main hand,Act 2: Mistwood & Black Marsh,Black jack (R),1,3,0,0,Slam,338,Thievies' guild
+Main hand,Act 2: Mistwood & Black Marsh,Abyssal blade (R),2,3,0,0,Deep wound,432,Sea spray Steve
+Main hand,Act 2: Mistwood & Black Marsh,Ashen staff,1,0,2,0,None,283,Mud golem
+Main hand,Act 2: Mistwood & Black Marsh,Shiny dirk,1,2,0,0,None,287,Mushroom forest
+Main hand,Act 2: Mistwood & Black Marsh,Trog spear (W),1,3,0,0,None,327,Trogs
+Main hand,Act 2: Mistwood & Black Marsh,Black fang,1,2,0,0,Parry,517,Wormwood (normal)
+Main hand,Act 2: (Continued),Lacerator,1,3,0,0,Parry,533,Wormwood (special)
+Main hand,Act 2: (Continued),Bone scythe,1,2,0,0,Retaliation,368,Kerklick
+Main hand,Act 2: (Continued),Winter's bite (W),2,2,0,0,Bleed,385,Baron Greylock
+Main hand,Act 2: (Continued),Blood harvest (M),2,0,1,0,Leech,455,Lady Roe
+Main hand,Act 2: (Continued),Silk cut (R),2,2,0,0,Riposte,487,Count (special)
+Main hand,Act 2: (Continued),The rock (W),0,4,0,0,Slam,540,Rumbler
+Main hand,Act 2: (Continued),Illumanti rod (M),2,0,1,0,Overload,548,Treasure vault
+Main hand,Act 2: (Continued),Phoenix claw,1,2,0,0,Immobilise,565,Phoenix
+Main hand,Act 2: (Continued),Lucky fishing rod,2,1,0,0,Charm,452,Angler's cave
+Main hand,Act 2: (Continued),Magician's crook (M),2,0,3,0,Radiance,446,Treasure cave
+Main hand,Act 2: (Continued),Trident of the seven seas,1,0,3,0,None,479,Wreekin
+Main hand,Act 2: (Continued),Dark malice (W),2,3,0,0,Impale,506,Scorpios
+Main hand,Act 2: (Continued),Scorpion stinger (R),2,1,0,0,Venom,506,Scorpios
+Main hand,Act 2: (Continued),Betsy blue anchor (W),1,4,0,0,Stun,544,Leviathan
+Main hand,Act 2: (Continued),Spellbreaker (R),2,4,0,0,Disrupt,567,Armoury
+Main hand,Act 2: (Continued),Frenzy (W),2,4,0,0,Cleave,581,Armoury
+Main hand,Act 2: (Continued),Swordbreaker (M),2,0,3,0,Retaliation,593,Armoury
+Main hand,Act 2: (Continued),Pulveriser (W),2,4,0,0,Knockdown,706,Gargoyle chest
+Main hand,Act 2: (Continued),Torturer's rod (M),2,2,0,0,Stun,713,Gargoyle chest
+Main hand,Act 2: (Continued),Buccaneer's rapier,1,1,0,0,Riposte,277,Left-hook Luke
+Main hand,Act 2: (Continued),Nalsa's claws,1,2,0,0,Piercing,379,Nalsa
+Main hand,Act 2: (Continued),Ebony,2,3,0,0,Ebony and ivory,370,Nasareim
+Main hand,Act 2: (Continued),Brawler's shiv (R),2,4,0,0,Venom,414,Arena champion
+Main hand,Act 2: (Continued),Fire brand (M),2,0,2,0,Fire aura,377,Vesuvius
+Main hand,Act 2: (Continued),Burning heretic (R),3,3,0,0,Critical strike,400,Magmageddon
+Main hand,Act 2: (Continued),Velocifero,3,3,0,0,Riposte,729,Shadowstalker
+Main hand,Act 3: The Bone Fields,Sliver of shadow (R),2,4,0,0,Chill touch,839,Waldo's wares
+Main hand,Act 3: The Bone Fields,Talanost's edge (R),3,5,0,0,Sear,903,Waldo's wares
+Main hand,Act 3: The Bone Fields,Wicked claw,1,3,0,0,Critical strike,776,Bone wyvern
+Main hand,Act 3: The Bone Fields,Bone claw,2,3,0,0,Rake,695,Bone construct
+Main hand,Act 3: The Bone Fields,Lasher,3,3,0,0,Bleed,620,Packmaster
+Main hand,Act 3: The Bone Fields,Tainted striker (M),3,0,3,0,Corruption,677,Tor knight
+Main hand,Act 3: The Bone Fields,Spinal tap (W),3,4,0,0,Impale,759,Flesh golem
+Main hand,Act 3: The Bone Fields,Bone gavel (W),3,4,0,0,Knockdown,730,Bone giants
+Main hand,Act 3: The Bone Fields,Tenacity (R),2,5,0,0,Deep wound,770,Rotterghast
+Main hand,Act 3: The Bone Fields,Scorn (R),2,3,0,0,Immobilise,912,Malaise
+Main hand,Act 3: The Bone Fields,Ever-sharp (W),3,4,0,0,Deep wound,916,Yorvic
+Main hand,Act 3: The Bone Fields,Deep freeze,2,0,3,0,Stun,869,Sammain (normal)
+Main hand,Act 3: The Bone Fields,Hoarfrost,2,0,3,0,Chill touch,874,Sammain (special)
+Main hand,Act 3: The Bone Fields,Grimm reaper (W),3,5,0,0,Brutality,727,Brothers' Grimm
+Main hand,Act 3: The Bone Fields,Serenity (R),2,4,0,0,Deep wound,733,Budak
+Main hand,Act 3: The Bone Fields,Wand of lightning (M),2,0,4,0,Shock!,570,Silleer
+Main hand,Act 3: The Bone Fields,Pain in chains,2,4,0,0,Pound,722,Bone giants
+Main hand,Act 3: The Bone Fields,Frost burn (M),2,0,4,0,Piercing,584,Chilblain
+Main hand,Act 3: The Bone Fields,Belching bludger,2,4,0,0,Disease,616,The blob
+Main hand,Act 3: The Bone Fields,Mortician's scalpel (R),3,4,0,0,Disease,642,Lichenstein
+Main hand,Act 3: The Bone Fields,Tempest's fury,2,0,5,0,Windblast,754,Flay
+Main hand,Act 3: The Bone Fields,Blood crescent (W),3,5,0,0,Cleave,631,Mage hunter
+Main hand,Act 3: The Bone Fields,Orb stinger (R),3,4,0,0,Shock!,665,Death orb
+Main hand,Act 3: The Bone Fields,Trickster's maul,3,4,0,0,Trickster,711,Lord of pain
+Main hand,Act 3: The Bone Fields,Shadow-woven kris (R),3,5,0,0,Deep wound,843,Daarko
+Main hand,Act 3: The Bone Fields,Sacrum of carnage (R),2,5,0,0,Fatal blow,847,The wrecker
+Main hand,Act 3: (Continued),Aged acronium (M),2,0,5,0,Rust,878,The wrecker
+Main hand,Act 3: (Continued),The sting (W),3,5,0,0,Impale,868,Scarrons
+Main hand,Act 3: (Continued),Fortune's favour (M),2,0,5,0,Radiance,871,Sannrah
+Main hand,Act 3: (Continued),Retribution (W),3,6,0,0,Feral fury,882,Sannrah
+Left hand,Act 1: Tithebury Cross,Scaled defender,0,2,0,1,None,191,Vendor/Tithebury Cross
+Left hand,Act 1: Tithebury Cross,Murder of crows,1,1,0,0,None,204,Scarecrow
+Left hand,Act 1: Tithebury Cross,Crock's tooth,0,1,0,0,None,118,Crocodile
+Left hand,Act 1: Tithebury Cross,Rennie's slicer,1,1,0,0,First cut,55/247,Rennie the rat
+Left hand,Act 1: Tithebury Cross,Stone shield,1,0,0,2,Slam,41,Noldor (normal)
+Left hand,Act 1: Tithebury Cross,Essence of shadow,1,0,1,0,Chill touch,43,Shadow
+Left hand,Act 1: Tithebury Cross,Ghoul claw,1,1,0,0,Piercing,106/127 /157,Ghouls
+Left hand,Act 1: Tithebury Cross,Dented buckler,1,0,0,1,None,166,Skeletons
+Left hand,Act 1: Tithebury Cross,Spider's spinneret,1,0,1,0,Webbed,179,Spiders
+Left hand,Act 1: Tithebury Cross,Rage claw,1,1,0,0,Dominate,26,Mauler
+Left hand,Act 2: Mistwood & Black Marsh,Ardent edge,1,2,0,0,Parry,494,Slime
+Left hand,Act 2: Mistwood & Black Marsh,Champion's blade,2,1,0,0,Bleed,283,Mud golem
+Left hand,Act 2: Mistwood & Black Marsh,Ridgeback (W),1,0,0,2,Slam,517,Wormwood (normal)
+Left hand,Act 2: Mistwood & Black Marsh,Razorback (W),2,0,0,2,Slam,533,Wormwood (special)
+Left hand,Act 2: Mistwood & Black Marsh,Rockbiter,1,2,0,0,Piercing,522,Treasure vault
+Left hand,Act 2: Mistwood & Black Marsh,Shrink ray,1,0,1,0,Zapped!,477/585,Hal Arbuckle
+Left hand,Act 2: Mistwood & Black Marsh,Book of black deeds (M),2,0,2,0,None,445,Treasure vault
+Left hand,Act 2: Mistwood & Black Marsh,Vampire's kiss,1,2,0,0,Leech,422,Treasure vault
+Left hand,Act 2: Mistwood & Black Marsh,Ivory (R+W),2,2,0,0,Ebony and ivory,333,Treasure cave
+Left hand,Act 2: Mistwood & Black Marsh,T-Bone wand (M),1,1,0,0,Bolt,449/529,Wreekin
+Left hand,Act 2: Mistwood & Black Marsh,Wreekin net,1,2,0,0,Webbed,479,Wreekin
+Left hand,Act 2: Mistwood & Black Marsh,Twin furies (R),1,3,0,0,None,452,Angler's cave
+Left hand,Act 2: Mistwood & Black Marsh,Blackout,2,2,0,0,Stun,509,Swamp giant
+Left hand,Act 2: Mistwood & Black Marsh,Tome of deep thought (M),2,0,3,0,None,550,Jenlar's cabin
+Left hand,Act 2: Mistwood & Black Marsh,Deliverance (W),1,3,0,0,Deep wound,590,Raptor pit
+Left hand,Act 2: Mistwood & Black Marsh,Witching hour (R),2,3,0,0,Bull's eye,583,Raptor pit
+Left hand,Act 2: Mistwood & Black Marsh,Ebenezer's spellbook (M),2,0,2,0,Sear,434,Raptor pit
+Left hand,Act 2: Mistwood & Black Marsh,St Elmo's fire,2,0,2,0,Lightning,544,Leviathan
+Left hand,Act 2: Mistwood & Black Marsh,Vorpal sword (R),2,3,0,0,Vanquish,567,Armoury
+Left hand,Act 2: Mistwood & Black Marsh,Dour claws (W),1,4,0,0,Rake,706,Gargoyle chest
+Left hand,Act 2: Mistwood & Black Marsh,Tome of intellect (M),2,0,2,0,Focus,713,Gargoyle chest
+Left hand,Act 2: Mistwood & Black Marsh,Stone crescent (W),2,0,0,2,Slam,443,Stone giant
+Left hand,Act 2: Mistwood & Black Marsh,Left hook,1,2,0,0,Immobilise,277,Left-hook Luke
+Left hand,Act 2: Mistwood & Black Marsh,Deathstrike,1,3,0,0,Bull's eye,394,Logan
+Left hand,Act 2: Mistwood & Black Marsh,Sprig of corruption,2,0,3,0,Corruption,341,Barkrot
+Left hand,Act 2: Mistwood & Black Marsh,Spine tooth (R),2,2,0,0,Critical strike,346,Snapjaw
+Left hand,Act 2: (Continued),Hydra's wing (W),2,0,0,2,Deflect,389,Hydra (normal)
+Left hand,Act 2: (Continued),Hydra's guard (W),2,0,0,3,Deflect,418,Hydra (special)
+Left hand,Act 2: (Continued),Dragonslayer,2,4,0,0,Deep wound,708,Kindle
+Left hand,Act 2: (Continued),Shadowblade,2,0,3,0,Retaliation,729,Shadowstalker
+Left hand,Act 3: The Bone Fields,Talanost's wall (W),2,0,0,5,Deflect,803,Waldo's wares
+Left hand,Act 3: The Bone Fields,Talanost's reach (M),3,0,4,0,Critical strike,881,Waldo's wares
+Left hand,Act 3: The Bone Fields,Tor shield,2,0,0,2,Deflect,617,Tor knight
+Left hand,Act 3: The Bone Fields,Spite,2,3,0,0,Venom,649,Necromancer
+Left hand,Act 3: The Bone Fields,Iron curtain (W),0,3,0,2,Iron will,775,Skeleton horde
+Left hand,Act 3: The Bone Fields,Chains of binding (M),2,0,3,0,Shackle,778,Ghouls
+Left hand,Act 3: The Bone Fields,Shallow grave,2,3,0,0,Savagery,827,Tomb robber
+Left hand,Act 3: The Bone Fields,Raven eye,2,3,0,0,Bolt,834,Dark ranger
+Left hand,Act 3: The Bone Fields,Witch's finger,2,0,3,0,Curse,869,Sammain (normal)
+Left hand,Act 3: The Bone Fields,Meat grinder,2,3,0,0,Pound,891,Clockwerk
+Left hand,Act 3: The Bone Fields,Steel gear solid (W),2,0,0,3,Retaliation,891,Clockwerk
+Left hand,Act 3: The Bone Fields,Justice,2,3,0,0,Knockdown,892,Arthurian's vault
+Left hand,Act 3: The Bone Fields,Twilight claw,2,3,0,0,Rake,929,Dark arthurian
+Left hand,Act 3: The Bone Fields,Black death (R),2,4,0,0,Critical strike,622,Brothers' Grimm
+Left hand,Act 3: The Bone Fields,Grasping grimm (M),3,0,3,0,Rake,664,Brothers'Grimm
+Left hand,Act 3: The Bone Fields,Grimoire of entropy (M),3,0,3,0,Sear,570,Silleer
+Left hand,Act 3: The Bone Fields,Dark tower (W),2,0,0,4,Impale,719,Tor knight
+Left hand,Act 3: (Continued),Thunder hammer (W),2,4,0,0,Shock!,719,Tor knight
+Left hand,Act 3: (Continued),Shield of bones (W),0,4,0,2,Piercing,722,Bone giant
+Left hand,Act 3: (Continued),Shield of bones (M),3,0,3,0,Dominate,762,Scout
+Left hand,Act 3: (Continued),Shield of bones (R),2,4,0,0,Sear,762,Scout
+Left hand,Act 3: (Continued),Bone splinter (R),2,4,0,0,Piercing,584,Chilblain
+Left hand,Act 3: (Continued),Shield of angels,1,5,0,0,Windblast,754,Flay
+Left hand,Act 3: (Continued),Shield of blasting (W),2,0,0,3,Lightning,665,Death orb
+Left hand,Act 3: (Continued),Torment,2,0,4,0,Disease,711,Lord of pain
+Left hand,Act 3: (Continued),Fang of Vengos (R),2,4,0,0,Venom,868,Scarrons
+Left hand,Act 3: (Continued),Parasitic plate (W),2,0,0,4,Leech,845,Decayers
+Left hand,Act 3: (Continued),Lexicon of bones (M),2,0,5,0,Haunt,813,Ghasts
+Left hand,Act 3: (Continued),Wrecking ball (W),2,5,0,0,Demolish,801,The wrecker
+Left hand,Act 3: (Continued),Cortical bulb (M),3,0,5,0,Brain drain,826,Doom orb
+Left hand,Act 3: (Continued),Bone bow of grief (W),2,5,0,0,Puncture,882,Sannrah
+Left hand,Act 3: (Continued),Final solution (R),2,5,0,0,Acid,887,Sannrah
+Talisman,Act 1: Tithebury Cross,Stone ward,0,0,0,0,Might of stone,41,Noldor (normal)
+Talisman,Act 1: Tithebury Cross,Spindle's eye,1,0,0,0,Charm,91,Spindle
+Talisman,Act 1: Tithebury Cross,Third eye,1,0,0,0,Charm,155,Witch
+Talisman,Act 1: Tithebury Cross,Demon's heart,1,0,0,0,Trickster,133,Changeling
+Talisman,Act 2: Mistwood & Black Marsh,Avian's crest,0,1,1,0,Charm,275,Act 2 prologue
+Talisman,Act 2: Mistwood & Black Marsh,Sap-filled gland,1,0,0,0,Heal,283,Kerklick
+Talisman,Act 2: Mistwood & Black Marsh,Elemental dust,0,0,1,0,Might of stone,540,Rumbler
+Talisman,Act 2: Mistwood & Black Marsh,Phoenix ashes,0,0,1,0,Heal,565,Phoenix
+Talisman,Act 2: Mistwood & Black Marsh,Dour's whetstone (R+W),1,0,0,0,Piercing,593,Stone puzzle
+Talisman,Act 2: Mistwood & Black Marsh,Seal of war,1,0,0,0,Fearless,593,Stone puzzle
+Talisman,Act 2: Mistwood & Black Marsh,Braids of the bull,1,0,0,0,Charge,216,Zen
+Talisman,Act 2: Mistwood & Black Marsh,Tiger's heart,1,0,0,0,Cat's speed,162,Shara Khana
+Talisman,Act 2: Mistwood & Black Marsh,Tiger's fury (W),1,0,0,0,Berserker,162,Shara Khana
+Talisman,Act 2: Mistwood & Black Marsh,Core of flame (M),0,0,1,0,Pyromancer,407,Vesuvius
+Talisman,Act 3: The Bone Fields,Lady of the lamp (M),0,0,0,1,Medic,680,Lansbury/medic tent
+Talisman,Act 3: The Bone Fields,Bone fetish (M),0,0,0,1,Necromancer,692/850,Necromancer
+Talisman,Act 3: The Bone Fields,Blinding dust,1,0,0,0,Deceive,730,Bone giants
+Talisman,Act 3: The Bone Fields,Bag o' bones,0,0,1,0,Curse,775,Skeleton horde
+Talisman,Act 3: The Bone Fields,Dark therapy,1,0,0,0,Regrowth,802,Tomb
+Talisman,Act 3: The Bone Fields,Grimm ichor (R),1,0,0,0,Poison mastery,622,Brothers' Grimm
+Talisman,Act 3: The Bone Fields,Survivor's pennant,1,1,0,0,Fortitude,735,Special achievement
+Talisman,Act 3: The Bone Fields,Heart of the beast,1,1,0,0,Savagery,702,Ghoulash
+Talisman,Act 3: The Bone Fields,Sands of time,1,0,0,0,Time shift,754,Flay
+Talisman,Act 3: The Bone Fields,Winter's heart (M),0,0,1,0,Icelock,761,Chilblain
+Talisman,Act 3: The Bone Fields,The craven's head (R),1,1,0,0,Sidestep,843,Daarko
+Talisman,Act 3: The Bone Fields,Seed of rage (M),0,0,2,0,Dominate,878,The wrecker
+Necklace,Act 1: Tithebury Cross,Granny's locket,0,0,1,0,None,199,Hobgoblin
+Necklace,Act 1: Tithebury Cross,Stone collar,0,0,0,1,Charm,41,Noldor (normal)
+Necklace,Act 1: Tithebury Cross,Beads of brilliance,0,1,1,0,None,193,Flooded cave
+Necklace,Act 1: Tithebury Cross,Clymonistra's sorrow,0,0,1,0,Cly's adornments,112,Catacombs
+Necklace,Act 1: Tithebury Cross,Trophy of bones,0,0,1,1,Charm,44,Humbaroth
+Necklace,Act 2: Mistwood & Black Marsh,Black pearl,0,0,2,0,Curse,432,Sea spray Steve
+Necklace,Act 2: Mistwood & Black Marsh,Amber-coated collar,0,0,0,1,Heal,314,Hive queen
+Necklace,Act 2: Mistwood & Black Marsh,Beetle-shell garland,1,0,0,0,Charm,327,Trogs
+Necklace,Act 2: Mistwood & Black Marsh,Channeler's prism,0,0,1,0,Focus,522,Treasure vault
+Necklace,Act 2: Mistwood & Black Marsh,Silver cross,1,0,1,0,Heal,291,Dead traveller
+Necklace,Act 2: Mistwood & Black Marsh,Vermillion heart,1,0,0,0,Life spark,455,Lady Roe
+Necklace,Act 2: Mistwood & Black Marsh,Dour's fury,1,0,0,0,Savagery,397,Treasure chest
+Necklace,Act 2: Mistwood & Black Marsh,Marsh pendant,0,0,1,1,Steadfast,506,Scorpios
+Necklace,Act 2: Mistwood & Black Marsh,Pendant of foresight,1,0,0,0,Evade,550,Jenlar's cabin
+Necklace,Act 2: Mistwood & Black Marsh,Lodestone,0,0,2,0,Rust,593,Stone puzzle
+Necklace,Act 2: Mistwood & Black Marsh,Warder's collar (M),0,0,1,2,Might of stone,598,Armoury
+Necklace,Act 2: Mistwood & Black Marsh,Diamond of the tundra,1,0,0,0,Piercing,359,King Louis
+Necklace,Act 2: Mistwood & Black Marsh,Eye of shadow,1,0,0,0,Haste,729,Shadowstalker
+Necklace,Act 3: The Bone Fields,Ghoul's teeth (R),1,0,0,0,Piercing,839,Waldo's wares
+Necklace,Act 3: The Bone Fields,Chilblain's tears (M),0,0,1,1,Piercing,914,Waldo's wares
+Necklace,Act 3: The Bone Fields,Leap of faith,1,0,0,0,Radiance,677,Tor knight
+Necklace,Act 3: The Bone Fields,Horn of courage (W),1,1,0,0,Courage,770,Rotterghast
+Necklace,Act 3: The Bone Fields,Dark queen,0,0,2,0,Heal,834,Dark ranger
+Necklace,Act 3: The Bone Fields,Charged core,0,0,2,0,Lifespark,891,Clockwerk
+Necklace,Act 3: The Bone Fields,Stolen hope,0,1,1,0,Deceive,929,Dark Arthurian
+Necklace,Act 3: The Bone Fields,Inner circle,0,0,0,0,(+5 health) Curse,541,Zul
+Necklace,Act 3: The Bone Fields,Glacial shards (W),1,1,0,0,Piercing,584,Chilblain
+Necklace,Act 3: The Bone Fields,Winged locket,0,0,0,1,(+5 health) Courage,777,Rune chest
+Ring,Act 1: Tithebury Cross,Widow's band,0,0,1,0,Heal,104,Martha
+Ring,Act 1: Tithebury Cross,Missing link,0,1,1,0,None,180,Barricaded room
+Ring,Act 1: Tithebury Cross,Traveller's band,0,1,1,0,Charm,251,Farm bedroom
+Ring,Act 1: Tithebury Cross,Lightning ring,0,0,0,0,Lightning,243,Weather wizard
+Ring,Act 1: Tithebury Cross,Grave dust ring,0,1,0,0,None,106/127,Ghouls
+Ring,Act 1: Tithebury Cross,Scholar's circle,0,0,0,0,Eureka!,170,Perinold
+Ring,Act 1: Tithebury Cross,Blackfire ring,0,0,0,0,Sear,133,Changeling
+Ring,Act 1: Tithebury Cross,Circle of thorns,0,0,0,0,Thorns,80,Zaladrell
+Ring,Act 2: Mistwood & Black Marsh,Splintered band (W),0,2,0,0,Retaliation,432,Sea spray Steve
+Ring,Act 2: Mistwood & Black Marsh,My precious,0,0,0,1,Vanish,327,Trogs
+Ring,Act 2: Mistwood & Black Marsh,Wayfarer's ring,0,1,1,0,Charm,291,Dead traveller
+Ring,Act 2: Mistwood & Black Marsh,Vermillion rage,0,0,1,0,Bleed,422,Count (normal)
+Ring,Act 2: Mistwood & Black Marsh,Clymonistra's folly,0,0,1,1,Cly's adornments,460,Clymonistra
+Ring,Act 2: Mistwood & Black Marsh,Finger of fire,0,1,0,0,Sear,655,Cinders
+Ring,Act 2: Mistwood & Black Marsh,Ring of the marshes,0,1,1,0,Swamp legs,449/529,Wreekin
+Ring,Act 2: Mistwood & Black Marsh,Steadfast ring (M),0,0,0,1,Steadfast,446,Treasure cave
+Ring,Act 2: Mistwood & Black Marsh,Serpent's coil (R+W),0,1,0,0,Immobilise,333,Treasure cave
+Ring,Act 2: Mistwood & Black Marsh,Band of conquest (R+W),0,0,0,1,Fortitude,333,Treasure cave
+Ring,Act 2: Mistwood & Black Marsh,Abyssal brimstone,0,0,1,0,Cauterise,397,Treasure chest
+Ring,Act 2: Mistwood & Black Marsh,Avatar's circle (M),0,0,1,0,Overload,443,Stone giant
+Ring,Act 2: Mistwood & Black Marsh,Lupine lapis,0,1,0,0,Bleed,696,Raolin Storm
+Ring,Act 2: Mistwood & Black Marsh,Mender's marcasite,0,0,1,0,Regrowth,696,Raolin Storm
+Ring,Act 2: Mistwood & Black Marsh,Cutter's cornelian,0,0,0,1,Piercing,696,Raolin Storm
+Ring,Act 2: Mistwood & Black Marsh,Magpie's mischief,0,0,0,1,Steal,394,Logan
+Ring,Act 2: Mistwood & Black Marsh,Dryad's band,0,1,0,0,Thorn armour,341,Barkrot
+Ring,Act 3: The Bone Fields,Khana's revenge (W),0,2,0,0,Bleed,815,Waldo's wares
+Ring,Act 3: The Bone Fields,Wrath of ages (M),0,0,2,0,Rust,914,Waldo's wares
+Ring,Act 3: The Bone Fields,Leader of the pack,0,1,0,0,Dominate,778,Ghouls
+Ring,Act 3: The Bone Fields,Sinister shadows,0,1,1,0,Vanish,834,Dark ranger
+Ring,Act 3: The Bone Fields,Blood winter,0,1,0,0,Leech,869,Sammain (normal)
+Ring,Act 3: (Continued),Hunger,0,2,0,0,Leech,874,Sammain (special)
+Ring,Act 3: (Continued),Tooth 'n claw (W),1,1,0,0,Sideswipe,727,Brothes' Grimm
+Ring,Act 3: (Continued),Martyr's blood,0,0,1,1,Martyr,735,Special achievement
+Ring,Act 3: (Continued),Seven stars (R+W),0,2,0,0,Heal,577,Silleer
+Ring,Act 3: (Continued),Wytchwood thorn (R+W),0,1,0,0,Thorns,577,Silleer
+Ring,Act 3: (Continued),Zul's zapper,0,1,1,0,Zapped!,541,Zul
+Ring,Act 3: (Continued),Band of elements (W+M),0,0,2,0,Lightning,724,Budak
+Ring,Act 3: (Continued),Budak's signet (W+M),0,1,1,0,Steal,724,Budak
+Ring,Act 3: (Continued),Spider sapphire (R+M),0,0,1,1,Webbed,726,Tor knight
+Ring,Act 3: (Continued),Serpentine spiral (R+M),0,1,0,1,Immobilise,726,Tor knight
+Ring,Act 3: (Continued),Conduit of shadow (M),0,0,3,0,Overload,865,Daarko
+Ring,Act 3: (Continued),Stria of Genna (M),0,0,1,2,Shock!,826,Doom orb
