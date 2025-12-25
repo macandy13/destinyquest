@@ -1,0 +1,15 @@
+# Standard set of Bazel options for JavaScript/TypeScript development
+
+# Debugging
+build --verbose_failures
+build --sandbox_debug
+
+# Performance
+build --nocheck_visibility
+
+# NodeJS
+# Enable managed_directories for npm_translate_lock to share the node_modules directory
+common --noexperimental_check_output_files
+
+# Symlink node_modules to the source tree for better IDE support
+build --symlink_prefix=/
