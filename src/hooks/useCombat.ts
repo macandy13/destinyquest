@@ -106,6 +106,8 @@ export function useCombat(hero: Hero) {
         enemyRolls: number[];
     }
 
+    // Resolves the winner but does NOT advance phase automatically
+    // This allows the user to see results and reroll if needed before committing
     const resolveSpeedRound = ({ heroRolls, enemyRolls }: SpeedRoundParams) => {
         if (!combat.enemy) return;
 
@@ -136,7 +138,7 @@ export function useCombat(hero: Hero) {
 
         setCombat(prev => ({
             ...prev,
-            phase: winner ? 'damage-roll' : 'round-end',
+            phase: 'speed-roll', // Stay in speed-roll to allow viewing/rerolling
             winner,
             heroSpeedRolls: heroRolls,
             enemySpeedRolls: enemyRolls,
@@ -144,18 +146,118 @@ export function useCombat(hero: Hero) {
         }));
     };
 
-    const resolveDamageAndArmour = (rolls: Array<number>) => {
-        if (!combat.enemy || !combat.winner || !combat.hero) return;
+    // New function to proceed after speed results are accepted
+    const commitSpeedResult = () => {
+        setCombat(prev => {
+            const nextPhase = prev.winner ? 'damage-roll' : 'round-end';
+            let damageRolls: number[] | undefined = undefined;
+
+            if (nextPhase === 'damage-roll') {
+                // Auto-roll damage (1d6 for now, for both hero and enemy)
+                damageRolls = [Math.floor(Math.random() * 6) + 1];
+            }
+
+            return {
+                ...prev,
+                phase: nextPhase,
+                damageRolls
+            };
+        });
+    };
+
+    // Helper to generate rolls
+    const generateSpeedRolls = () => {
+        return {
+            hero: [Math.floor(Math.random() * 6) + 1, Math.floor(Math.random() * 6) + 1],
+            enemy: [Math.floor(Math.random() * 6) + 1, Math.floor(Math.random() * 6) + 1]
+        };
+    };
+
+    // Called by "Fight" button in Round 1
+    const executeSpeedRoll = () => {
+        const rolls = generateSpeedRolls();
+        resolveSpeedRound({ heroRolls: rolls.hero, enemyRolls: rolls.enemy });
+    };
+
+    // Called by "Next Round" button
+    const nextRound = () => {
+        setCombat(prev => {
+            // Update modifiers (decrease duration, remove expired)
+            const shouldDecrement = prev.phase !== 'combat-start';
+
+            const activeModifiers = prev.modifiers
+                .map(m => shouldDecrement ? { ...m, duration: m.duration - 1 } : m)
+                .filter(m => m.duration > 0);
+
+            // Auto-roll for the new round
+            const rolls = generateSpeedRolls();
+            // We need to duplicate resolve logic here since we are inside setCombat
+            // OR we can just set the rolls and phase, and rely on resolveSpeedRound logic separately?
+            // No, we need to determine winner to set the state correctly in one go.
+
+            // Duplicating core calc logic briefly for atomicity in nextRound
+            // (Or we could extract the calculation to a pure function, but inline is fine for now)
+
+            const heroRoll = rolls.hero.reduce((a, b) => a + b, 0);
+            const enemyRoll = rolls.enemy.reduce((a, b) => a + b, 0);
+            const speedModifiers = activeModifiers
+                .filter(m => m.type === 'speed-bonus')
+                .reduce((sum, m) => sum + m.value, 0);
+
+            // Need enemy stats from prev.enemy
+            const enemySpeed = prev.enemy?.speed || 0;
+            const heroSpeed = prev.hero?.stats.speed || 0; // Using prev.hero to be safe
+
+            const heroTotal = heroRoll + heroSpeed + speedModifiers;
+            const enemyTotal = enemyRoll + enemySpeed;
+
+            let winner: 'hero' | 'enemy' | null = null;
+            let modText = speedModifiers > 0 ? ` (+${speedModifiers} mod)` : '';
+            let message = `Speed: Hero ${heroTotal}${modText} vs Enemy ${enemyTotal}. `;
+
+            if (heroTotal > enemyTotal) {
+                winner = 'hero';
+                message += 'Hero wins execution round!';
+            } else if (enemyTotal > heroTotal) {
+                winner = 'enemy';
+                message += 'Enemy wins execution round!';
+            } else {
+                message += 'Draw! No damage this round.';
+            }
+
+            return {
+                ...prev,
+                round: prev.round + 1,
+                winner,
+                heroSpeedRolls: rolls.hero,
+                enemySpeedRolls: rolls.enemy,
+                damageRolls: undefined,
+                phase: 'speed-roll',
+                modifiers: activeModifiers,
+                logs: [...prev.logs, { round: prev.round + 1, message: `Round ${prev.round + 1}`, type: 'info' }, { round: prev.round + 1, message, type: 'info' }]
+            };
+        });
+    };
+
+    const executeDamageRoll = (rolls: Array<number>) => {
+        setCombat(prev => ({
+            ...prev,
+            damageRolls: rolls,
+            phase: 'damage-roll' // Explicitly state phase (though likely already there)
+        }));
+    };
+
+    const commitDamageResult = () => {
+        if (!combat.enemy || !combat.winner || !combat.hero || !combat.damageRolls) return;
+
+        const rolls = combat.damageRolls;
 
         setCombat(prev => {
             if (!prev.enemy || !prev.winner || !prev.hero) return prev;
 
             let logMsg = '';
-            // We drive logic from these local vars, then apply to objects at the end or incrementally
-            let currentHero = { ...prev.hero! }; // Shallow, but we'll update stats deeply if needed
-            // Deep clone stats to be safe for mutations
+            let currentHero = { ...prev.hero! };
             currentHero.stats = { ...currentHero.stats };
-
             let currentEnemy = { ...prev.enemy };
 
             let newHeroHealth = currentHero.stats.health;
@@ -203,11 +305,12 @@ export function useCombat(hero: Hero) {
             // Apply end-of-round passives via hooks
             let passiveLogMsg = '';
 
-            // Temporary state for hooks to see valid health
+            // Temporary state for hooks to see valid health in this immediate transition
             let currentStateForHooks = {
                 ...prev,
                 hero: currentHero,
-                enemy: currentEnemy
+                enemy: currentEnemy,
+                phase: 'round-end' // Simulate round-end for hooks
             } as CombatState;
 
             prev.activeAbilities.forEach(ability => {
@@ -254,50 +357,72 @@ export function useCombat(hero: Hero) {
         });
     };
 
-    const nextRound = () => {
-        setCombat(prev => {
-            // Update modifiers (decrease duration, remove expired)
-            // If just starting combat, don't decrement yet as the ability was just used
-            const shouldDecrement = prev.phase !== 'combat-start';
 
-            const activeModifiers = prev.modifiers
-                .map(m => shouldDecrement ? { ...m, duration: m.duration - 1 } : m)
-                .filter(m => m.duration > 0);
 
-            return {
-                ...prev,
-                round: prev.round + 1,
-                winner: null,
-                heroSpeedRolls: undefined,
-                enemySpeedRolls: undefined,
-                damageRolls: undefined,
-                phase: 'speed-roll',
-                modifiers: activeModifiers,
-                logs: [...prev.logs, { round: prev.round + 1, message: `Round ${prev.round + 1}`, type: 'info' }]
-            };
-        });
-    };
+    // Helper to re-evaluate speed winner if rolls changed (manual call if needed, or effect?)
+    // Actually, `resolveSpeedRound` sets the state including winner.
+    // If handleReroll updates `heroSpeedRolls`, the `winner` in state remains the OLD one unless updated.
+    // Charm implementation returns `heroSpeedRolls`. It does NOT calculating winner.
+    // So if I reroll speed, the winner might be wrong in the UI until something updates it.
+
+    // We should probably just call resolveSpeedRound with the new rolls?
+    // But `updates` came from `def.onReroll`.
+
+    // Quick patch for Speed Reroll to ensure winner is correct:
+    // This duplicates logic but is safe:
+    /* 
+       const newSpeedRolls = updates.heroSpeedRolls;
+       if (newSpeedRolls) {
+           const heroTotal = ...
+           const enemyTotal = ...
+           const winner = ...
+           updates.winner = winner; 
+       }
+    */
+    // I will leave Speed Reroll logic 'as is' (it might be broken regarding winner update, but I am fixing Damage).
+    // Actually, the previous code called resolveSpeedRound.
+    // I should probably keep calling it if I can?
+    // `resolveSpeedRound` calls `setCombat`. `handleReroll` calls `setCombat`.
+    // `handleReroll` was merging `updates`.
+    // If I remove `resolveSpeedRound` call, winner won't update.
+
+    // FIX: In handleReroll, after getting updates, IF speed involved, calculate winner and merge into updates.
+    // IF damage involved, just set rolls (which updates did).
 
     const handleReroll = (dieIndex: number) => {
         if (!combat.pendingInteraction) return;
         const def = getAbilityDefinition(combat.pendingInteraction.abilityName);
         if (!def || !def.onReroll) return;
 
-        // Use current combat state
         const updates = def.onReroll(combat, dieIndex);
 
-        // Apply updates
-        setCombat(prev => ({ ...prev, ...updates, pendingInteraction: undefined }));
-
-        // Re-resolve if needed - using the NEW rolls from updates
+        // If speed changed, re-evaluate winner
         if (updates.heroSpeedRolls && combat.enemySpeedRolls) {
-            resolveSpeedRound({ heroRolls: updates.heroSpeedRolls, enemyRolls: combat.enemySpeedRolls });
-        } else if (updates.damageRolls) {
-            resolveDamageAndArmour(updates.damageRolls);
-        }
-    };
+            const heroRoll = updates.heroSpeedRolls.reduce((a, b) => a + b, 0);
+            const enemyRoll = combat.enemySpeedRolls.reduce((a, b) => a + b, 0);
 
-    // handleInteraction removed as it was unused and causing lint errors
+            // Speed modifiers
+            const speedModifiers = combat.modifiers
+                .filter(m => m.type === 'speed-bonus')
+                .reduce((sum, m) => sum + m.value, 0);
+
+            const heroTotal = heroRoll + hero.stats.speed + speedModifiers;
+            const enemyTotal = enemyRoll + (combat.enemy?.speed || 0); // Enemy might be null in type but logic implies existence
+
+            let winner: 'hero' | 'enemy' | null = null;
+            if (heroTotal > enemyTotal) winner = 'hero';
+            else if (enemyTotal > heroTotal) winner = 'enemy';
+
+            updates.winner = winner;
+
+            // Also need to update message? 
+            // "Re-rolled die..." log is added by onReroll.
+            // We won't re-log the speed result log to avoid spam, or finding/replacing it is hard.
+            // The UI shows the numbers, so it's fine.
+        }
+
+        setCombat(prev => ({ ...prev, ...updates, pendingInteraction: undefined }));
+    };
 
     return {
         combat,
@@ -306,8 +431,13 @@ export function useCombat(hero: Hero) {
         nextRound,
         activateAbility,
         resolveSpeedRound,
-        resolveDamageAndArmour,
+
+        executeDamageRoll, // New export
+        commitDamageResult, // New export
+
         handleReroll,
-        addLog
+        addLog,
+        commitSpeedResult,
+        executeSpeedRoll
     };
 }

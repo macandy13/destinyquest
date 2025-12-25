@@ -11,7 +11,20 @@ interface CombatArenaProps {
 }
 
 const CombatArena: React.FC<CombatArenaProps> = ({ hero }) => {
-    const { combat, startCombat, nextRound, activateAbility, resolveSpeedRound, resolveDamageAndArmour, handleReroll } = useCombat(hero);
+    const {
+        combat,
+        startCombat,
+        nextRound,
+        activateAbility,
+        // resolveSpeedRound, // Removed as we use auto-rolls now
+        // resolveDamageAndArmour, // Replaced by execute/commit split
+        executeDamageRoll,
+        commitDamageResult,
+        handleReroll,
+        executeSpeedRoll,
+        commitSpeedResult,
+        // resolveSpeedRound // Kept if needed for manual calls or tests, but UI primarily uses execute/commit
+    } = useCombat(hero);
 
     if (combat.phase === 'combat-start' && !combat.enemy) {
         return (
@@ -25,25 +38,20 @@ const CombatArena: React.FC<CombatArenaProps> = ({ hero }) => {
 
     if (!combat.enemy) return null;
 
-    // Auto-advance checking for combat-start might be needed, or we show a "Fight!" screen.
-    // For now, let's treat 'combat-start' similar to 'speed-roll' but maybe with a "FIGHT" overlay or button.
-    // To keep it simple and working: if phase is 'combat-start', show a "Start Round 1" button.
-
-    const handleSpeedRoll = (rolls: number[]) => {
-        const enemyRoll1 = Math.floor(Math.random() * 6) + 1;
-        const enemyRoll2 = Math.floor(Math.random() * 6) + 1;
-        resolveSpeedRound({ heroRolls: rolls, enemyRolls: [enemyRoll1, enemyRoll2] });
-    };
-
     const enemyHealthPct = (combat.enemy.health / combat.enemy.maxHealth) * 100;
     const heroHealthPct = ((combat.hero?.stats.health ?? 0) / hero.stats.maxHealth) * 100;
 
     const getPhaseInstruction = () => {
         switch (combat.phase) {
             case 'combat-start': return "Enemy Found! Prepare to fight!";
-            case 'speed-roll': return "Roll Speed (2d6) to execute turn";
-            case 'damage-roll': return combat.winner === 'hero' ? "You won! Roll Damage (1d6)" : "Enemy won! Their Damage Roll...";
-            case 'round-end': return "Round Complete. Proceed?";
+            case 'speed-roll':
+                if (combat.heroSpeedRolls) return combat.winner === 'hero' ? "Hero wins speed! Proceed to damage?" : (combat.winner === 'enemy' ? "Enemy wins speed! Brace for impact." : "Draw! No damage.");
+                return "Rolling Speed...";
+            case 'damage-roll':
+                if (combat.damageRolls) return "Confirm Damage?";
+                return combat.winner === 'hero' ? "Roll Damage (1d6)" : "Enemy Attacking...";
+
+            case 'round-end': return "Round Complete.";
             case 'combat-end': return "Combat Finished";
             default: return "";
         }
@@ -55,6 +63,18 @@ const CombatArena: React.FC<CombatArenaProps> = ({ hero }) => {
         if (def.canActivate) return def.canActivate(combat);
         return true;
     };
+
+    // Derived states
+    // speed-rolls are shown if we have rolls (phase might be speed-roll or damage-roll or round-end if we want to keep them visible)
+    // Actually, usually we keep speed dice visible until round ends for context.
+    const showSpeedDice = !!combat.heroSpeedRolls && combat.phase !== 'combat-start';
+
+    // Damage section shown only in damage-roll phase or if we have damage rolls in round-end
+    const showDamageSection = combat.phase === 'damage-roll' || (combat.phase === 'round-end' && combat.damageRolls);
+
+    // Should we show proceed button for Damage?
+    // Only if damage rolls exist and we are in damage-roll phase
+    const showDamageConfirm = combat.phase === 'damage-roll' && !!combat.damageRolls;
 
     return (
         <div className="combat-arena">
@@ -136,14 +156,21 @@ const CombatArena: React.FC<CombatArenaProps> = ({ hero }) => {
                 </div>
 
                 {/* SPEED PHASE: Dual Dice Display */}
-                {/* Class speed-rolls-mini shrinks dice when not in speed-roll phase */}
-                <div className={`speed-rolls ${combat.phase !== 'speed-roll' ? 'speed-rolls-mini' : ''}`} style={{ display: 'flex', justifyContent: 'space-around', alignItems: 'flex-start', marginBottom: '20px', transition: 'all 0.5s ease' }}>
+                {/* Only show if we have rolls and not in start phase */}
+                <div className={`speed-rolls ${combat.phase !== 'speed-roll' ? 'speed-rolls-mini' : ''}`}
+                    style={{
+                        display: showSpeedDice ? 'flex' : 'none',
+                        justifyContent: 'space-around',
+                        alignItems: 'flex-start',
+                        marginBottom: '20px',
+                        transition: 'all 0.5s ease'
+                    }}>
                     <div className="hero-dice">
                         <CombatDice
                             label="Your Speed"
                             count={2}
                             values={combat.heroSpeedRolls} // Persist if exists
-                            onRoll={combat.phase === 'speed-roll' ? handleSpeedRoll : undefined} // Only interactive in speed phase
+                            onRoll={undefined} // Fully automated now, no manual roll
                             onDieClick={combat.pendingInteraction?.target === 'hero-speed' ? (i) => handleReroll(i) : undefined}
                             result={combat.heroSpeedRolls ? combat.heroSpeedRolls.reduce((a, b) => a + b, 0) + hero.stats.speed : undefined}
                         />
@@ -170,8 +197,17 @@ const CombatArena: React.FC<CombatArenaProps> = ({ hero }) => {
                     </div>
                 </div>
 
+                {/* Result Confirmation / Proceed Button */}
+                {combat.phase === 'speed-roll' && combat.heroSpeedRolls && (
+                    <div style={{ textAlign: 'center', marginBottom: '20px' }}>
+                        <button className="btn-primary" onClick={commitSpeedResult}>
+                            {combat.winner ? 'Proceed' : 'End Round (Draw)'}
+                        </button>
+                    </div>
+                )}
+
                 {/* DAMAGE PHASE: Single Die Display */}
-                {(combat.phase === 'damage-roll' || (combat.phase === 'round-end' && combat.damageRolls)) && (
+                {showDamageSection && (
                     <div className="damage-roll-container" style={{ borderTop: '1px solid #333', paddingTop: '20px', marginTop: '10px' }}>
                         <div style={{ textAlign: 'center', marginBottom: '10px', color: 'var(--dq-gold)' }}>
                             {combat.phase === 'damage-roll'
@@ -186,7 +222,7 @@ const CombatArena: React.FC<CombatArenaProps> = ({ hero }) => {
                                     label="Damage (1d6)"
                                     count={1}
                                     values={combat.damageRolls} // Show result if exists
-                                    onRoll={combat.phase === 'damage-roll' ? (rolls) => resolveDamageAndArmour(rolls) : undefined}
+                                    onRoll={undefined}
                                     onDieClick={combat.pendingInteraction?.target === 'damage' ? (i) => handleReroll(i) : undefined}
                                 />
                             </div>
@@ -194,12 +230,12 @@ const CombatArena: React.FC<CombatArenaProps> = ({ hero }) => {
 
                         {combat.winner === 'enemy' && (
                             <div style={{ display: 'flex', justifyContent: 'center', flexDirection: 'column', alignItems: 'center' }}>
-                                {combat.phase === 'damage-roll' ? (
+                                {combat.phase === 'damage-roll' && !combat.damageRolls ? (
                                     <>
                                         <p className="text-dim">Enemy is attacking...</p>
                                         <button className="btn-primary" onClick={() => {
                                             const enemyDamageRoll = Math.floor(Math.random() * 6) + 1;
-                                            resolveDamageAndArmour([enemyDamageRoll]);
+                                            executeDamageRoll([enemyDamageRoll]);
                                         }}>Resolve Enemy Attack</button>
                                     </>
                                 ) : (
@@ -212,11 +248,22 @@ const CombatArena: React.FC<CombatArenaProps> = ({ hero }) => {
                                 )}
                             </div>
                         )}
+
+                        {/* Confirm Damage Button */}
+                        {showDamageConfirm && (
+                            <div style={{ textAlign: 'center', marginTop: '15px' }}>
+                                <button className="btn-primary" onClick={commitDamageResult}>
+                                    Confirm Damage & End Round
+                                </button>
+                            </div>
+                        )}
                     </div>
                 )}
 
                 {(combat.phase === 'round-end' || combat.phase === 'combat-start') && (
-                    <button className="btn-primary btn-next-round" onClick={nextRound}>{combat.phase === 'combat-start' ? 'Fight!' : 'Next Round'}</button>
+                    <button className="btn-primary btn-next-round" onClick={combat.phase === 'combat-start' ? executeSpeedRoll : nextRound}>
+                        {combat.phase === 'combat-start' ? 'Fight!' : 'Next Round'}
+                    </button>
                 )}
             </div>
 

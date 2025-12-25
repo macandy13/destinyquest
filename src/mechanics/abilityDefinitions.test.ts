@@ -104,8 +104,8 @@ describe('Ability Implementations', () => {
             const speedState: CombatState = { ...INITIAL_STATE, phase: 'speed-roll', heroSpeedRolls: [2, 3] };
             expect(charm?.canActivate?.(speedState)).toBe(true);
 
-            // Damage phase (hero winning)
-            const damageState: CombatState = { ...INITIAL_STATE, phase: 'damage-roll', winner: 'hero', damageRolls: [4] };
+            // Damage phase (hero winning) -> implicitly round-end after resolution
+            const damageState: CombatState = { ...INITIAL_STATE, phase: 'round-end', winner: 'hero', damageRolls: [4] };
             expect(charm?.canActivate?.(damageState)).toBe(true);
 
             // Invalid phases

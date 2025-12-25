@@ -27,9 +27,7 @@ describe('useCombat Hook', () => {
     it('should start combat correctly', () => {
         const { result } = renderHook(() => useCombat(MOCK_HERO));
 
-        act(() => {
-            result.current.startCombat();
-        });
+        act(() => result.current.startCombat());
 
         expect(result.current.combat.phase).toBe('combat-start');
         expect(result.current.combat.round).toBe(1);
@@ -39,13 +37,9 @@ describe('useCombat Hook', () => {
     it('should resolve speed round where hero wins', () => {
         const { result } = renderHook(() => useCombat(MOCK_HERO));
 
-        act(() => {
-            result.current.startCombat();
-        });
+        act(() => result.current.startCombat());
 
-        act(() => {
-            result.current.nextRound();
-        });
+        act(() => result.current.nextRound());
 
         // Hero total: 6 + 5(spd) = 11
         // Enemy total: 2 + enemySpd (dummy 2) = 4
@@ -55,7 +49,7 @@ describe('useCombat Hook', () => {
             result.current.resolveSpeedRound({ heroRolls: [3, 3], enemyRolls: [1, 1] });
         });
 
-        expect(result.current.combat.phase).toBe('damage-roll');
+        expect(result.current.combat.phase).toBe('speed-roll');
         expect(result.current.combat.winner).toBe('hero');
         expect(result.current.combat.heroSpeedRolls).toEqual([3, 3]);
     });
@@ -63,22 +57,17 @@ describe('useCombat Hook', () => {
     it('should resolve damage correctly (applying armour)', () => {
         const { result } = renderHook(() => useCombat(MOCK_HERO));
 
-        act(() => {
-            result.current.startCombat();
-        });
+        act(() => result.current.startCombat());
 
         // Speed round win for Hero
-        act(() => {
-            result.current.resolveSpeedRound({ heroRolls: [6, 6], enemyRolls: [0, 0] });
-        });
+        act(() => result.current.resolveSpeedRound({ heroRolls: [6, 6], enemyRolls: [0, 0] }));
 
         const initialEnemyHealth = result.current.combat.enemy!.health;
 
         // Damage roll 6 + 5(brawn) = 11 damage
-        // Enemy armour 0
-        act(() => {
-            result.current.resolveDamageAndArmour([6]);
-        });
+        // Enemy armour 2
+        act(() => result.current.executeDamageRoll([6]));
+        act(() => result.current.commitDamageResult());
 
         expect(result.current.combat.enemy!.health).toBe(initialEnemyHealth - 11);
         expect(result.current.combat.phase).toBe('round-end');
@@ -98,9 +87,7 @@ describe('useCombat Hook', () => {
 
         const { result } = renderHook(() => useCombat(ACIC_HERO));
 
-        act(() => {
-            result.current.startCombat();
-        });
+        act(() => result.current.startCombat());
 
         act(() => {
             result.current.nextRound(); // Speed roll logic would happen here
@@ -112,9 +99,8 @@ describe('useCombat Hook', () => {
         // Damage roll 3 (1 die) + 5(brawn) = 8 damage
         // Acid adds +1 per die = +1
         // Total = 9
-        act(() => {
-            result.current.resolveDamageAndArmour([3]);
-        });
+        act(() => result.current.executeDamageRoll([3]));
+        act(() => result.current.commitDamageResult());
 
         // 20 - 9 = 11
         expect(result.current.combat.enemy!.health).toBe(initialEnemyHealth - 9);
@@ -134,26 +120,18 @@ describe('useCombat Hook', () => {
 
         const { result } = renderHook(() => useCombat(BARBS_HERO));
 
-        act(() => {
-            result.current.startCombat();
-        });
+        act(() => result.current.startCombat());
 
         const initialEnemyHealth = result.current.combat.enemy!.health;
 
         // Simulate combat flow
-        act(() => {
-            result.current.nextRound();
-        });
-
-        act(() => {
-            result.current.resolveSpeedRound({ heroRolls: [6, 6], enemyRolls: [1, 1] });
-        });
+        act(() => result.current.nextRound());
+        act(() => result.current.resolveSpeedRound({ heroRolls: [6, 6], enemyRolls: [1, 1] }));
 
         // Damage phase
         // Damage: 3 + 5(brawn) = 8.
-        act(() => {
-            result.current.resolveDamageAndArmour([3]);
-        });
+        act(() => result.current.executeDamageRoll([3]));
+        act(() => result.current.commitDamageResult());
 
         // 8 combat damage + 1 Barbs damage = 9 total
         expect(result.current.combat.enemy!.health).toBe(initialEnemyHealth - 9);
@@ -173,30 +151,22 @@ describe('useCombat Hook', () => {
 
         const { result } = renderHook(() => useCombat(ADRENALINE_HERO));
 
-        act(() => {
-            result.current.startCombat();
-        });
+        act(() => result.current.startCombat());
 
         // Activate Ability
-        act(() => {
-            result.current.activateAbility('Adrenaline');
-        });
+        act(() => result.current.activateAbility('Adrenaline'));
 
         expect(result.current.combat.modifiers).toHaveLength(1);
         expect(result.current.combat.modifiers[0].value).toBe(2);
         expect(result.current.combat.modifiers[0].duration).toBe(2);
 
         // Round 1
-        act(() => {
-            result.current.nextRound(); // Phase: speed-roll
-        });
+        act(() => result.current.nextRound()); // Phase: speed-roll
 
         // Speed: 5 (base) + 2 (mod) + 2 (roll) = 9
         // Enemy: 2 (base) + 2 (roll) = 4
         // Hero wins
-        act(() => {
-            result.current.resolveSpeedRound({ heroRolls: [1, 1], enemyRolls: [1, 1] });
-        });
+        act(() => result.current.resolveSpeedRound({ heroRolls: [1, 1], enemyRolls: [1, 1] }));
 
         expect(result.current.combat.heroSpeedRolls).toEqual([1, 1]);
         // Hero Total calculation isn't exposed directly but inferred from log or winner logic
@@ -205,9 +175,7 @@ describe('useCombat Hook', () => {
         expect(result.current.combat.logs.slice(-1)[0].message).toContain('Hero 9 (+2 mod)');
 
         // Round 2 (Duration should decrease)
-        act(() => {
-            result.current.nextRound();
-        });
+        act(() => result.current.nextRound());
 
         expect(result.current.combat.modifiers[0].duration).toBe(1);
 
@@ -218,17 +186,13 @@ describe('useCombat Hook', () => {
         expect(result.current.combat.logs.slice(-1)[0].message).toContain('Hero 9 (+2 mod)');
 
         // Round 3 (Duration should expire)
-        act(() => {
-            result.current.nextRound();
-        });
+        act(() => result.current.nextRound());
 
         expect(result.current.combat.modifiers).toHaveLength(0);
 
         // Speed check - modifier gone
         // Speed: 5 (base) + 2 (roll) = 7
-        act(() => {
-            result.current.resolveSpeedRound({ heroRolls: [1, 1], enemyRolls: [1, 1] });
-        });
+        act(() => result.current.resolveSpeedRound({ heroRolls: [1, 1], enemyRolls: [1, 1] }));
         expect(result.current.combat.logs.slice(-1)[0].message).toContain('Hero 7 vs'); // No mod text
     });
 
@@ -245,29 +209,26 @@ describe('useCombat Hook', () => {
 
         const { result } = renderHook(() => useCombat(PARRY_HERO));
 
-        act(() => {
-            result.current.startCombat();
-        });
+        act(() => result.current.startCombat());
 
         // Advance to Speed Round
-        act(() => {
-            result.current.nextRound();
-        });
+        act(() => result.current.nextRound());
 
         // Enemy wins speed round
         // Hero: 5(spd) + 1(roll) = 6
         // Enemy: 2(spd) + 5(roll) = 7
-        act(() => {
-            result.current.resolveSpeedRound({ heroRolls: [1, 0], enemyRolls: [2, 3] });
-        });
+        act(() => result.current.resolveSpeedRound({ heroRolls: [1, 0], enemyRolls: [2, 3] }));
 
-        expect(result.current.combat.phase).toBe('damage-roll');
+        expect(result.current.combat.phase).toBe('speed-roll');
         expect(result.current.combat.winner).toBe('enemy');
 
+        // Proceed to damage phase confirmed
+        act(() => result.current.commitSpeedResult());
+
+        expect(result.current.combat.phase).toBe('damage-roll');
+
         // Activate Parry
-        act(() => {
-            result.current.activateAbility('Parry');
-        });
+        act(() => result.current.activateAbility('Parry'));
 
         expect(result.current.combat.phase).toBe('round-end');
         expect(result.current.combat.logs.slice(-1)[0].message).toContain('Parry');
@@ -289,9 +250,7 @@ describe('useCombat Hook', () => {
 
         const { result } = renderHook(() => useCombat(HEAL_HERO));
 
-        act(() => {
-            result.current.startCombat();
-        });
+        act(() => result.current.startCombat());
 
         // Simulate taking damage
         act(() => {
@@ -300,7 +259,9 @@ describe('useCombat Hook', () => {
             // Since we can't easily force damage without full round, we can test it at start but full health caps it.
             // However, startCombat sets health to max.
             // We need to simulate damage first.
-            result.current.resolveDamageAndArmour([10]); // Enemy hits hero
+            result.current.commitSpeedResult();
+            result.current.executeDamageRoll([10]);
+            result.current.commitDamageResult();
             // Wait, I need to set phase to damage-roll and winner to enemy manually or through flow?
             // Easier: Manually activate Heal after a round where Hero took damage?
             // Or just trust state update?
@@ -313,16 +274,18 @@ describe('useCombat Hook', () => {
             // Hero takes damage
             // Enemy stats: Brawn 2 + Roll 10 = 12. Hero armour 2. Dmg 10.
             // Hero Health 20 -> 10.
-            result.current.resolveDamageAndArmour([10]);
+            result.current.commitSpeedResult(); // Proceed from speed to damage
+            result.current.executeDamageRoll([10]);
+        });
+        act(() => {
+            result.current.commitDamageResult();
         });
 
         const healthBefore = result.current.combat.hero!.stats.health;
         expect(healthBefore).toBeLessThan(MOCK_HERO_STATS.maxHealth);
 
         // Activate Heal
-        act(() => {
-            result.current.activateAbility('Heal');
-        });
+        act(() => result.current.activateAbility('Heal'));
 
         expect(result.current.combat.hero!.stats.health).toBe(healthBefore + 4);
         expect(result.current.combat.logs.slice(-1)[0].message).toContain('Restored 4 health');
