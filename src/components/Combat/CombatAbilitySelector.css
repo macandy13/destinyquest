@@ -1,0 +1,64 @@
+/* CombatAbilitySelector.css */
+
+.ability-selector-container {
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+.ability-selector-title {
+    font-size: 0.75rem;
+    color: var(--dq-dim);
+    margin-bottom: 0.5rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.ability-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    justify-content: center;
+}
+
+.ability-card {
+    padding: 0.5rem;
+    border: 1px solid var(--dq-border);
+    border-radius: 4px;
+    background: var(--dq-bg-card);
+    min-width: 120px;
+}
+
+.ability-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.5rem;
+}
+
+.ability-name {
+    color: var(--dq-gold);
+    font-weight: bold;
+    font-size: 0.9rem;
+}
+
+.ability-source {
+    font-size: 0.7rem;
+    color: var(--dq-dim);
+}
+
+.ability-use-btn {
+    margin-top: 0.25rem;
+    width: 100%;
+    font-size: 0.75rem;
+    background: #334155;
+    color: white;
+    border: none;
+    cursor: pointer;
+    padding: 4px 8px;
+    border-radius: 4px;
+    transition: background 0.2s;
+}
+
+.ability-use-btn:hover {
+    background: #475569;
+}

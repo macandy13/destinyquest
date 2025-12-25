@@ -1,12 +1,11 @@
 import React from 'react';
 import { useCombat } from '../../hooks/useCombat';
-import { getAbilityDefinition } from '../../mechanics/abilityDefinitions';
 import { Hero } from '../../types/hero';
 import CombatDice from './CombatDice';
 import CombatLog from './CombatLog';
 import CombatantCard from './CombatantCard';
+import CombatAbilitySelector from './CombatAbilitySelector';
 import './CombatArena.css';
-import { ActiveAbility } from '../../types/combat';
 
 interface CombatArenaProps {
     hero: Hero;
@@ -56,13 +55,6 @@ const CombatArena: React.FC<CombatArenaProps> = ({ hero }) => {
         }
     };
 
-    const canActivateAbility = (ability: ActiveAbility) => {
-        const def = getAbilityDefinition(ability.name);
-        if (!def || def.type === 'passive' || !def.onActivate || ability.used) return false;
-        if (def.canActivate) return def.canActivate(combat);
-        return true;
-    };
-
     // Derived states
     // speed-rolls are shown if we have rolls (phase might be speed-roll or damage-roll or round-end if we want to keep them visible)
     // Actually, usually we keep speed dice visible until round ends for context.
@@ -106,30 +98,10 @@ const CombatArena: React.FC<CombatArenaProps> = ({ hero }) => {
             </div>
 
             <div className="arena-center">
-                {/* Active Abilities */}
-                {combat.activeAbilities.filter(canActivateAbility).length > 0 && (
-                    <div className="mb-4" style={{ marginBottom: '1rem' }}>
-                        <h4 className="text-sm uppercase tracking-wide text-dim mb-2" style={{ fontSize: '0.75rem', color: 'var(--dq-dim)', marginBottom: '0.5rem' }}>Abilities</h4>
-                        <div className="flex flex-wrap gap-2" style={{ display: 'flex', flexWrap: 'wrap', gap: '0.5rem', justifyContent: 'center' }}>
-                            {combat.activeAbilities.filter(canActivateAbility).map((ability, index) => (
-                                <div key={index} className="p-2 border rounded text-sm" style={{ padding: '0.5rem', border: '1px solid var(--dq-border)', borderRadius: '4px', background: 'var(--dq-bg-card)' }}>
-                                    <div className="flex justify-between items-center gap-2" style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-                                        <span className="font-bold text-accent" style={{ color: 'var(--dq-gold)', fontWeight: 'bold' }}>{ability.name}</span>
-                                        <span className="text-xs text-dim" style={{ fontSize: '0.7rem', color: 'var(--dq-dim)' }}>({ability.source})</span>
-                                    </div>
-                                    <button
-                                        className="mt-1 text-xs px-2 py-1 rounded w-full"
-                                        style={{ marginTop: '0.25rem', width: '100%', fontSize: '0.75rem', background: '#334155', color: 'white', border: 'none', cursor: 'pointer' }}
-                                        onClick={() => activateAbility(ability.name)}
-                                    >
-                                        Use
-                                    </button>
-                                </div>
-                            ))}
-                        </div>
-                    </div>
-                )}
-
+                <CombatAbilitySelector
+                    combat={combat}
+                    onActivate={activateAbility}
+                />
                 {/* Modifiers Display */}
                 {combat.modifiers.length > 0 && (
                     <div className="mb-4" style={{ marginBottom: '1rem', textAlign: 'center' }}>
