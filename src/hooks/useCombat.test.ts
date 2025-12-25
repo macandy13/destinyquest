@@ -15,8 +15,7 @@ const MOCK_HERO_STATS: HeroStats = {
 describe('useCombat Hook', () => {
     it('should initialize in inactive state', () => {
         const { result } = renderHook(() => useCombat(MOCK_HERO_STATS));
-        expect(result.current.combat.isActive).toBe(false);
-        expect(result.current.combat.phase).toBe('combat-end');
+        expect(result.current.combat.phase).toBe('combat-start');
     });
 
     it('should start combat correctly', () => {
@@ -26,8 +25,7 @@ describe('useCombat Hook', () => {
             result.current.startCombat();
         });
 
-        expect(result.current.combat.isActive).toBe(true);
-        expect(result.current.combat.phase).toBe('speed-roll');
+        expect(result.current.combat.phase).toBe('combat-start');
         expect(result.current.combat.round).toBe(1);
         expect(result.current.combat.enemy).toBeDefined();
     });
@@ -37,6 +35,10 @@ describe('useCombat Hook', () => {
 
         act(() => {
             result.current.startCombat();
+        });
+
+        act(() => {
+            result.current.nextRound();
         });
 
         // Hero total: 6 + 5(spd) = 11

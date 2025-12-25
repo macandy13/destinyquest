@@ -12,7 +12,7 @@ const CombatArena: React.FC<CombatArenaProps> = ({ hero }) => {
     const { combat, startCombat, nextRound, resolveSpeedRound, resolveDamageAndArmour } = useCombat(hero.stats);
     const [, setDiceTotal] = useState<number | undefined>(undefined);
 
-    if (!combat.isActive || !combat.enemy) {
+    if (combat.phase === 'idle' && !combat.enemy) {
         return (
             <div className="dq-card combat">
                 <h2 className="dq-card-title">Combat</h2>
@@ -21,6 +21,13 @@ const CombatArena: React.FC<CombatArenaProps> = ({ hero }) => {
             </div>
         );
     }
+
+    if (!combat.enemy) return null;
+
+    // Auto-advance checking for combat-start might be needed, or we show a "Fight!" screen.
+    // For now, let's treat 'combat-start' similar to 'speed-roll' but maybe with a "FIGHT" overlay or button.
+    // To keep it simple and working: if phase is 'combat-start', show a "Start Round 1" button.
+
 
     const handleRoll = (total: number, rolls: number[]) => {
         setDiceTotal(total);
@@ -39,6 +46,7 @@ const CombatArena: React.FC<CombatArenaProps> = ({ hero }) => {
 
     const getPhaseInstruction = () => {
         switch (combat.phase) {
+            case 'idle': return "Enemy Found! Prepare to fight!";
             case 'speed-roll': return "Roll Speed (2d6) to execute turn";
             case 'damage-roll': return combat.winner === 'hero' ? "You won! Roll Damage (1d6)" : "Enemy won! Their Damage Roll...";
             case 'round-end': return "Round Complete. Proceed?";
@@ -166,8 +174,8 @@ const CombatArena: React.FC<CombatArenaProps> = ({ hero }) => {
                     </div>
                 )}
 
-                {combat.phase === 'round-end' && (
-                    <button className="btn-primary btn-next-round" onClick={nextRound}>Next Round</button>
+                {(combat.phase === 'round-end' || combat.phase === 'idle') && (
+                    <button className="btn-primary btn-next-round" onClick={nextRound}>{combat.phase === 'idle' ? 'Fight!' : 'Next Round'}</button>
                 )}
             </div>
 

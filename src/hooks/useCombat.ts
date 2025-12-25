@@ -3,9 +3,8 @@ import { CombatState, Enemy, CombatLog } from '../types/combat';
 import { HeroStats } from '../types/hero';
 
 const INITIAL_STATE: CombatState = {
-    isActive: false,
     round: 0,
-    phase: 'combat-end', // Start inactive
+    phase: 'combat-start', // Start inactive
     enemy: null,
     heroHealth: 0,
     winner: null,
@@ -29,9 +28,8 @@ export function useCombat(heroStats: HeroStats) {
 
     const startCombat = useCallback(() => {
         setCombat({
-            isActive: true,
             round: 1,
-            phase: 'speed-roll',
+            phase: 'combat-start',
             enemy: { ...MOCK_ENEMY },
             heroHealth: heroStats.health,
             winner: null,
@@ -50,7 +48,6 @@ export function useCombat(heroStats: HeroStats) {
         }));
     };
 
-    // Phase 1: Speed Roll
     // Phase 1: Speed Roll
     interface SpeedRoundParams {
         heroRolls: number[];

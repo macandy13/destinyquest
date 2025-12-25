@@ -20,4 +20,4 @@ Instead of taking multiple arguments using plain old datatypes, prefer to create
 
 ## Tests
 
-Always write tests for new code.
+Always write tests for new code. Always run tests using Bazel.
