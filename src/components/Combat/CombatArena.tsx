@@ -4,6 +4,7 @@ import { getAbilityDefinition } from '../../mechanics/abilityDefinitions';
 import { Hero } from '../../types/hero';
 import CombatDice from './CombatDice';
 import CombatLog from './CombatLog';
+import CombatantCard from './CombatantCard';
 import './CombatArena.css';
 import { ActiveAbility } from '../../types/combat';
 
@@ -38,9 +39,6 @@ const CombatArena: React.FC<CombatArenaProps> = ({ hero }) => {
     }
 
     if (!combat.enemy) return null;
-
-    const enemyHealthPct = (combat.enemy.health / combat.enemy.maxHealth) * 100;
-    const heroHealthPct = ((combat.hero?.stats.health ?? 0) / hero.stats.maxHealth) * 100;
 
     const getPhaseInstruction = () => {
         switch (combat.phase) {
@@ -84,31 +82,26 @@ const CombatArena: React.FC<CombatArenaProps> = ({ hero }) => {
 
                 <div className="combatants">
                     {/* Hero Card */}
-                    <div className="combatant-card">
-                        <div className="combatant-name">{hero.name}</div>
-                        <div className="health-bar-container">
-                            <div className="health-bar" style={{ width: `${heroHealthPct}%` }}></div>
-                        </div>
-                        <div className="combatant-stats">
-                            <div>{combat.hero?.stats.health ?? 0} / {hero.stats.maxHealth} HP</div>
-                            <div>⚡ {hero.stats.speed} 💪 {hero.stats.brawn}</div>
-                        </div>
-                    </div>
+                    <CombatantCard
+                        name={hero.name}
+                        currentHealth={combat.hero?.stats.health ?? 0}
+                        maxHealth={hero.stats.maxHealth}
+                        speed={hero.stats.speed}
+                        brawn={hero.stats.brawn}
+                    />
 
                     {/* VS Separator */}
                     <div className="vs-separator">VS</div>
 
                     {/* Enemy Card */}
-                    <div className="combatant-card enemy">
-                        <div className="combatant-name">{combat.enemy.name}</div>
-                        <div className="health-bar-container">
-                            <div className="health-bar" style={{ width: `${enemyHealthPct}%` }}></div>
-                        </div>
-                        <div className="combatant-stats">
-                            <div>{combat.enemy.health} / {combat.enemy.maxHealth} HP</div>
-                            <div>⚡ {combat.enemy.speed} 💪 {combat.enemy.brawn}</div>
-                        </div>
-                    </div>
+                    <CombatantCard
+                        name={combat.enemy.name}
+                        currentHealth={combat.enemy.health}
+                        maxHealth={combat.enemy.maxHealth}
+                        speed={combat.enemy.speed}
+                        brawn={combat.enemy.brawn}
+                        isEnemy={true}
+                    />
                 </div>
             </div>
 
@@ -252,7 +245,7 @@ const CombatArena: React.FC<CombatArenaProps> = ({ hero }) => {
 
                         {/* Confirm Damage Button */}
                         {showDamageConfirm && (
-                            <div style={{ textAlign: 'center', marginTop: '15px' }}>
+                            <div style={{ textAlign: 'center', marginBottom: '20px' }}>
                                 <button className="btn-primary" onClick={commitDamageResult}>
                                     Confirm Damage & End Round
                                 </button>
