@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import './CombatDice.css';
 
 interface CombatDiceProps {
-    onRoll?: (total: number, rolls: number[]) => void;
+    onRoll?: (rolls: number[]) => void;
     result?: number; // Total result text
     values?: number[]; // Controlled mode: display these specific dice
     count?: number; // Number of dice (default 2)
@@ -30,8 +30,7 @@ const CombatDice: React.FC<CombatDiceProps> = ({ onRoll, result, values, count =
             const newRolls = new Array(count).fill(0).map(() => Math.ceil(Math.random() * 6));
             setInternalDice(newRolls);
             setIsRolling(false);
-            const total = newRolls.reduce((a, b) => a + b, 0);
-            onRoll(total, newRolls);
+            onRoll(newRolls);
         }, 600);
     };
 

@@ -73,7 +73,7 @@ describe('Ability Implementations', () => {
     describe('Acid', () => {
         it('should add 1 damage per die rolled', () => {
             const acid = getAbilityDefinition('Acid');
-            const bonus = acid?.onDamageCalculate?.(INITIAL_STATE, 10, [1, 4, 6]);
+            const bonus = acid?.onDamageCalculate?.(INITIAL_STATE, { total: 10, rolls: [1, 4, 6] });
             expect(bonus).toBe(3);
         });
     });

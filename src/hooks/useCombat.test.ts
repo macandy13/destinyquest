@@ -77,7 +77,7 @@ describe('useCombat Hook', () => {
         // Damage roll 6 + 5(brawn) = 11 damage
         // Enemy armour 0
         act(() => {
-            result.current.resolveDamageAndArmour({ damageRoll: 6, rolls: [6] });
+            result.current.resolveDamageAndArmour([6]);
         });
 
         expect(result.current.combat.enemy!.health).toBe(initialEnemyHealth - 11);
@@ -113,7 +113,7 @@ describe('useCombat Hook', () => {
         // Acid adds +1 per die = +1
         // Total = 9
         act(() => {
-            result.current.resolveDamageAndArmour({ damageRoll: 3, rolls: [3] });
+            result.current.resolveDamageAndArmour([3]);
         });
 
         // 20 - 9 = 11
@@ -152,7 +152,7 @@ describe('useCombat Hook', () => {
         // Damage phase
         // Damage: 3 + 5(brawn) = 8.
         act(() => {
-            result.current.resolveDamageAndArmour({ damageRoll: 3, rolls: [3] });
+            result.current.resolveDamageAndArmour([3]);
         });
 
         // 8 combat damage + 1 Barbs damage = 9 total
@@ -300,7 +300,7 @@ describe('useCombat Hook', () => {
             // Since we can't easily force damage without full round, we can test it at start but full health caps it.
             // However, startCombat sets health to max.
             // We need to simulate damage first.
-            result.current.resolveDamageAndArmour({ damageRoll: 10, rolls: [10] }); // Enemy hits hero
+            result.current.resolveDamageAndArmour([10]); // Enemy hits hero
             // Wait, I need to set phase to damage-roll and winner to enemy manually or through flow?
             // Easier: Manually activate Heal after a round where Hero took damage?
             // Or just trust state update?
@@ -313,7 +313,7 @@ describe('useCombat Hook', () => {
             // Hero takes damage
             // Enemy stats: Brawn 2 + Roll 10 = 12. Hero armour 2. Dmg 10.
             // Hero Health 20 -> 10.
-            result.current.resolveDamageAndArmour({ damageRoll: 10, rolls: [10] });
+            result.current.resolveDamageAndArmour([10]);
         });
 
         const healthBefore = result.current.combat.hero!.stats.health;

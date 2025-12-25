@@ -10,7 +10,6 @@ interface CombatArenaProps {
 
 const CombatArena: React.FC<CombatArenaProps> = ({ hero }) => {
     const { combat, startCombat, nextRound, activateAbility, resolveSpeedRound, resolveDamageAndArmour } = useCombat(hero);
-    const [, setDiceTotal] = useState<number | undefined>(undefined);
 
     if (combat.phase === 'combat-start' && !combat.enemy) {
         return (
@@ -28,16 +27,10 @@ const CombatArena: React.FC<CombatArenaProps> = ({ hero }) => {
     // For now, let's treat 'combat-start' similar to 'speed-roll' but maybe with a "FIGHT" overlay or button.
     // To keep it simple and working: if phase is 'combat-start', show a "Start Round 1" button.
 
-    const handleRoll = (total: number, rolls: number[]) => {
-        setDiceTotal(total);
-        // Phase logic
-        if (combat.phase === 'speed-roll') {
-            const enemyRoll1 = Math.floor(Math.random() * 6) + 1;
-            const enemyRoll2 = Math.floor(Math.random() * 6) + 1;
-            resolveSpeedRound({ heroRolls: rolls, enemyRolls: [enemyRoll1, enemyRoll2] });
-        } else if (combat.phase === 'damage-roll') {
-            resolveDamageAndArmour({ damageRoll: rolls[0], rolls: rolls });
-        }
+    const handleSpeedRoll = (rolls: number[]) => {
+        const enemyRoll1 = Math.floor(Math.random() * 6) + 1;
+        const enemyRoll2 = Math.floor(Math.random() * 6) + 1;
+        resolveSpeedRound({ heroRolls: rolls, enemyRolls: [enemyRoll1, enemyRoll2] });
     };
 
     const enemyHealthPct = (combat.enemy.health / combat.enemy.maxHealth) * 100;
@@ -143,7 +136,7 @@ const CombatArena: React.FC<CombatArenaProps> = ({ hero }) => {
                             label="Your Speed"
                             count={2}
                             values={combat.heroSpeedRolls} // Persist if exists
-                            onRoll={combat.phase === 'speed-roll' ? handleRoll : undefined} // Only interactive in speed phase and if not already rolled (implied by lack of values check but onRoll handles it)
+                            onRoll={combat.phase === 'speed-roll' ? handleSpeedRoll : undefined} // Only interactive in speed phase and if not already rolled (implied by lack of values check but onRoll handles it)
                             result={combat.heroSpeedRolls ? combat.heroSpeedRolls.reduce((a, b) => a + b, 0) + hero.stats.speed : undefined}
                         />
                         {/* Only show result modifier text if rolled */}
@@ -185,7 +178,7 @@ const CombatArena: React.FC<CombatArenaProps> = ({ hero }) => {
                                     label="Damage (1d6)"
                                     count={1}
                                     values={combat.damageRolls} // Show result if exists
-                                    onRoll={combat.phase === 'damage-roll' ? (total, rolls) => handleRoll(total, rolls) : undefined}
+                                    onRoll={combat.phase === 'damage-roll' ? (rolls) => resolveDamageAndArmour(rolls) : undefined}
                                 />
                             </div>
                         )}
@@ -196,8 +189,8 @@ const CombatArena: React.FC<CombatArenaProps> = ({ hero }) => {
                                     <>
                                         <p className="text-dim">Enemy is attacking...</p>
                                         <button className="btn-primary" onClick={() => {
-                                            const dmg = Math.floor(Math.random() * 6) + 1;
-                                            handleRoll(dmg, [dmg]);
+                                            const enemyDamageRoll = Math.floor(Math.random() * 6) + 1;
+                                            resolveDamageAndArmour([enemyDamageRoll]);
                                         }}>Resolve Enemy Attack</button>
                                     </>
                                 ) : (

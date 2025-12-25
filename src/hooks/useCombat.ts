@@ -141,13 +141,7 @@ export function useCombat(hero: Hero) {
         }));
     };
 
-    // Phase 2: Damage Roll
-    interface DamageRoundParams {
-        damageRoll: number;
-        rolls: number[];
-    }
-
-    const resolveDamageAndArmour = ({ damageRoll, rolls }: DamageRoundParams) => {
+    const resolveDamageAndArmour = (rolls: Array<number>) => {
         if (!combat.enemy || !combat.winner || !combat.hero) return;
 
         setCombat(prev => {
@@ -169,11 +163,15 @@ export function useCombat(hero: Hero) {
             let modifiersFromHooks = 0;
             let hookLogMsg = '';
 
+            const rollTotal = rolls.reduce((a, b) => a + b, 0);
             if (prev.winner === 'hero') {
+                const modifier = Math.max(hero.stats.brawn, hero.stats.magic);
+                const rawDamage = rollTotal + modifier + modifiersFromHooks;
+
                 prev.activeAbilities.forEach(ability => {
                     const def = getAbilityDefinition(ability.name);
                     if (def && def.onDamageCalculate) {
-                        const mod = def.onDamageCalculate(prev, damageRoll, rolls);
+                        const mod = def.onDamageCalculate(prev, { total: rawDamage, rolls });
                         if (mod !== 0) {
                             modifiersFromHooks += mod;
                             hookLogMsg += ` (+${mod} ${ability.name})`;
@@ -181,22 +179,21 @@ export function useCombat(hero: Hero) {
                     }
                 });
 
-                const modifier = Math.max(hero.stats.brawn, hero.stats.magic);
-                const rawDamage = damageRoll + modifier + modifiersFromHooks;
-                const actualDamage = Math.max(0, rawDamage - currentEnemy.armour);
+                const totalDamage = rawDamage + modifiersFromHooks;
+                const actualDamage = Math.max(0, totalDamage - currentEnemy.armour);
                 newEnemyHealth = Math.max(0, currentEnemy.health - actualDamage);
                 currentEnemy.health = newEnemyHealth;
 
-                logMsg = `Hero hits for ${rawDamage}${hookLogMsg} (Rolled ${damageRoll} + ${modifier}). Enemy armour absorbs ${currentEnemy.armour}. 💥 ${actualDamage} Damage!`;
+                logMsg = `Hero hits for 💥 ${totalDamage}: Rolled ${rollTotal}, Modifier ${modifier}, Hooks ${hookLogMsg}. Enemy armour absorbs ${currentEnemy.armour}.`;
                 type = 'damage-enemy';
             } else {
                 const modifier = Math.max(currentEnemy.brawn, currentEnemy.magic);
-                const rawDamage = damageRoll + modifier;
+                const rawDamage = rollTotal + modifier;
                 const actualDamage = Math.max(0, rawDamage - currentHero.stats.armour);
                 newHeroHealth = Math.max(0, currentHero.stats.health - actualDamage);
                 currentHero.stats.health = newHeroHealth;
 
-                logMsg = `Enemy hits for ${rawDamage} (Rolled ${damageRoll} + ${modifier}). Hero armour absorbs ${currentHero.stats.armour}. 💔 ${actualDamage} Damage taken!`;
+                logMsg = `Enemy hits for 💔 ${rawDamage}: Rolled ${rollTotal}, Modifier ${modifier}. Hero armour absorbs ${currentHero.stats.armour}.`;
                 type = 'damage-hero';
             }
 

@@ -14,7 +14,7 @@ export interface AbilityHooks {
     onSpeedCalculate?: (state: CombatState) => number;
 
     // Returns the modifier amount to add to damage total
-    onDamageCalculate?: (state: CombatState, damageRoll: number, rolls: number[]) => number;
+    onDamageCalculate?: (state: CombatState, damage: { total: number, rolls: number[] }) => number;
 
     // Returns partial state updates (e.g. log messages, health updates)
     onPostDamage?: (state: CombatState, damageDealt: number) => Partial<CombatState>;
@@ -49,7 +49,7 @@ registerAbility({
     name: 'Acid',
     type: 'passive',
     description: 'Add 1 to the result of each die you roll for your damage score.',
-    onDamageCalculate: (_state, _damageRoll, rolls) => {
+    onDamageCalculate: (_state, { rolls }) => {
         // Add 1 per die rolled
         return rolls.length;
     }
