@@ -62,3 +62,26 @@
 .equipment-slot:hover .equipment-name {
     display: block;
 }
+
+.equipment-container {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-md);
+}
+
+.backpack-title {
+    color: var(--dq-light-grey);
+    margin-bottom: 8px;
+    font-size: 0.9rem;
+}
+
+.backpack-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 8px;
+}
+
+.backpack-slot-wrapper {
+    aspect-ratio: 1;
+    width: 100%;
+}

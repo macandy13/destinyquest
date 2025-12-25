@@ -73,3 +73,8 @@
 .stat-row.health .stat-value {
     color: var(--dq-crimson);
 }
+
+.stat-max {
+    font-size: 0.9rem;
+    align-self: center;
+}

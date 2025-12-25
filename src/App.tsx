@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import './index.css';
 import './App.css';
 import MobileLayout from './components/Layout/MobileLayout';
@@ -21,11 +21,11 @@ function App() {
             <main className="app-main">
                 {activeTab === 'hero' ? (
                     <div className="dq-card">
-                        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '16px' }}>
+                        <div className="hero-header">
                             <h2 className="dq-card-title">Hero Sheet</h2>
-                            <div style={{ textAlign: 'right' }}>
-                                <div style={{ fontWeight: 'bold', color: 'var(--dq-gold)' }}>{hero.name}</div>
-                                <div className="text-dim" style={{ fontSize: '0.8rem' }}>{hero.path || 'Novice'}</div>
+                            <div className="hero-details">
+                                <div className="hero-name">{hero.name}</div>
+                                <div className="text-dim hero-path">{hero.path || 'Novice'}</div>
                             </div>
                         </div>
 
@@ -37,8 +37,8 @@ function App() {
                             }}
                         />
 
-                        <div style={{ marginTop: '24px' }}>
-                            <h3 style={{ fontSize: '1rem', color: 'var(--dq-light-grey)', marginBottom: '8px' }}>Equipment</h3>
+                        <div className="equipment-section">
+                            <h3 className="equipment-heading">Equipment</h3>
                             <EquipmentSlots
                                 hero={hero}
                                 onSlotClick={(slot) => console.log('Clicked slot:', slot)}

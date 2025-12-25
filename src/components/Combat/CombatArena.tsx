@@ -33,7 +33,7 @@ const CombatArena: React.FC<CombatArenaProps> = ({ hero }) => {
 
     return (
         <div className="combat-arena">
-            <div className="text-dim" style={{ textAlign: 'center' }}>Round {combat.round}</div>
+            <div className="text-dim round-indicator">Round {combat.round}</div>
 
             <div className="combatants">
                 {/* Hero Card */}
@@ -49,7 +49,7 @@ const CombatArena: React.FC<CombatArenaProps> = ({ hero }) => {
                 </div>
 
                 {/* VS Separator */}
-                <div style={{ display: 'flex', alignItems: 'center', fontWeight: 'bold', color: 'var(--dq-gold-dim)' }}>VS</div>
+                <div className="vs-separator">VS</div>
 
                 {/* Enemy Card */}
                 <div className="combatant-card enemy">
@@ -67,11 +67,11 @@ const CombatArena: React.FC<CombatArenaProps> = ({ hero }) => {
             <CombatDice onRoll={handleRoll} result={diceTotal} />
 
             <div className="combat-controls">
-                <button className="btn-primary" style={{ background: 'var(--dq-gold-dim)' }} onClick={() => damageEnemy(1)}>Hit Enemy</button>
+                <button className="btn-primary btn-hit-enemy" onClick={() => damageEnemy(1)}>Hit Enemy</button>
                 <button className="btn-primary" onClick={() => damageHero(1)}>Hit Hero</button>
             </div>
 
-            <button className="btn-primary" style={{ background: '#333', marginTop: '8px' }} onClick={nextRound}>Next Round</button>
+            <button className="btn-primary btn-next-round" onClick={nextRound}>Next Round</button>
 
             <div className="combat-log">
                 {[...combat.logs].reverse().map((log, i) => (

@@ -41,13 +41,7 @@ const CombatDice: React.FC<CombatDiceProps> = ({ onRoll, result }) => {
                 <span className="die-result">{die2}</span>
             </div>
             {result !== undefined && !isRolling && (
-                <div style={{
-                    display: 'flex',
-                    alignItems: 'center',
-                    fontSize: '1.5rem',
-                    fontWeight: 'bold',
-                    color: 'var(--dq-gold)'
-                }}>
+                <div className="dice-result-total">
                     = {result}
                 </div>
             )}

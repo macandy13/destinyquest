@@ -93,3 +93,23 @@
     grid-template-columns: 1fr 1fr;
     gap: 8px;
 }
+
+.round-indicator {
+    text-align: center;
+}
+
+.vs-separator {
+    display: flex;
+    align-items: center;
+    font-weight: bold;
+    color: var(--dq-gold-dim);
+}
+
+.btn-hit-enemy {
+    background: var(--dq-gold-dim);
+}
+
+.btn-next-round {
+    background: #333;
+    margin-top: 8px;
+}

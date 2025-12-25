@@ -29,7 +29,7 @@ const BACKPACK_CAPACITY = 5;
 
 const EquipmentSlots: React.FC<EquipmentSlotsProps> = ({ hero, onSlotClick, onBackpackClick }) => {
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--spacing-md)' }}>
+    <div className="equipment-container">
       {/* Main Equipment */}
       <div className="equipment-grid">
         {SLOT_CONFIG.map(({ slot, label, icon }) => {
@@ -50,15 +50,14 @@ const EquipmentSlots: React.FC<EquipmentSlotsProps> = ({ hero, onSlotClick, onBa
 
       {/* Backpack */}
       <div>
-        <h4 style={{ color: 'var(--dq-light-grey)', marginBottom: '8px', fontSize: '0.9rem' }}>Backpack ({hero.backpack.length}/{BACKPACK_CAPACITY})</h4>
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(5, 1fr)', gap: '8px' }}>
+        <h4 className="backpack-title">Backpack ({hero.backpack.length}/{BACKPACK_CAPACITY})</h4>
+        <div className="backpack-grid">
           {Array.from({ length: BACKPACK_CAPACITY }).map((_, index) => {
             const item = hero.backpack[index];
             return (
               <div
                 key={`backpack-${index}`}
-                className={`equipment-slot ${item ? 'equipped' : ''}`}
-                style={{ aspectRatio: '1', width: '100%' }}
+                className={`equipment-slot backpack-slot-wrapper ${item ? 'equipped' : ''}`}
                 onClick={() => onBackpackClick(index)}
               >
                 <span className="slot-icon">🎒</span>

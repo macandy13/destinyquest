@@ -28,7 +28,7 @@ const HeroStats: React.FC<HeroStatsProps> = ({ stats, onUpdate }) => {
                         onClick={() => onUpdate('health', stats.health - 1)}
                     >-</button>
                     <span className="stat-value">{stats.health}</span>
-                    <span className="text-dim" style={{ fontSize: '0.9rem', alignSelf: 'center' }}>/ {stats.maxHealth}</span>
+                    <span className="text-dim stat-max">/ {stats.maxHealth}</span>
                     <button
                         className="stat-btn"
                         onClick={() => onUpdate('health', stats.health + 1)}
