@@ -44,6 +44,17 @@
     align-items: center;
 }
 
+.selector-header-inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.selector-actions-wrapper {
+    display: flex;
+    gap: 10px;
+}
+
 .selector-title {
     color: var(--dq-gold);
     font-family: var(--font-heading);
@@ -100,6 +111,11 @@
     background: rgba(212, 175, 55, 0.05);
 }
 
+.item-card-header {
+    display: flex;
+    justify-content: space-between;
+}
+
 .item-name {
     font-weight: bold;
     color: var(--dq-light-grey);
@@ -116,4 +132,14 @@
     color: #888;
     font-style: italic;
     margin-top: 4px;
+}
+
+.item-meta-container {
+    margin-top: 4px;
+    font-size: 0.75rem;
+    color: #888;
+}
+
+.meta-entry {
+    margin-right: 8px;
 }

@@ -60,6 +60,13 @@
     width: 100%;
 }
 
+.equipment-item-container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-items: center;
+}
+
 .equipment-stats-display {
     font-size: 0.6rem;
     color: var(--dq-green);

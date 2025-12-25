@@ -16,7 +16,6 @@ vite_bin.vite_binary(
         "package.json",
         "vite.config.ts",
         "tsconfig.json",
-        "tsconfig.node.json",
         ":node_modules",
     ],
 )
@@ -29,7 +28,6 @@ vitest_bin.vitest_test(
         "package.json",
         "vite.config.ts",
         "tsconfig.json",
-        "tsconfig.node.json",
         ":node_modules",
     ],
 )

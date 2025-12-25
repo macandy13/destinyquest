@@ -26,9 +26,9 @@ const EquipmentSelector: React.FC<EquipmentSelectorProps> = ({ slot, onSelect, o
         <div className="equipment-selector-overlay" onClick={onClose}>
             <div className="equipment-selector-modal" onClick={e => e.stopPropagation()}>
                 <div className="selector-header">
-                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                    <div className="selector-header-inner">
                         <h3 className="selector-title">Select {slot}</h3>
-                        <div style={{ display: 'flex', gap: '10px' }}>
+                        <div className="selector-actions-wrapper">
                             <button
                                 className="action-btn-secondary"
                                 onClick={() => onSelect(null)}
@@ -57,7 +57,7 @@ const EquipmentSelector: React.FC<EquipmentSelectorProps> = ({ slot, onSelect, o
                     ) : (
                         filteredItems.map(item => (
                             <div key={item.id} className="item-card" onClick={() => onSelect(item)}>
-                                <div className="item-header" style={{ display: 'flex', justifyContent: 'space-between' }}>
+                                <div className="item-card-header">
                                     <div className="item-name">{item.name}</div>
                                     <div className="text-dim" style={{ fontSize: '0.8rem' }}>Act {item.act}</div>
                                 </div>
@@ -73,8 +73,8 @@ const EquipmentSelector: React.FC<EquipmentSelectorProps> = ({ slot, onSelect, o
 
                                 {item.description && <div className="item-desc">{item.description}</div>}
 
-                                <div className="item-meta" style={{ marginTop: '4px', fontSize: '0.75rem', color: '#888' }}>
-                                    {item.entry && <span style={{ marginRight: '8px' }}>📖 {item.entry}</span>}
+                                <div className="item-meta-container">
+                                    {item.entry && <span className="meta-entry">📖 {item.entry}</span>}
                                     {item.location && <span>📍 {item.location}</span>}
                                 </div>
                             </div>

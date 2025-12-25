@@ -13,3 +13,7 @@ Always use Bazel for building, testing and running the project. Do not use npm o
 ### Styling needs to be separated from code
 
 Put all styling into css files, do not use the style attribute in HTML elements.
+
+## Tests
+
+Always write tests for new code.

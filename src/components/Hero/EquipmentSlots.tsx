@@ -42,7 +42,7 @@ const EquipmentSlots: React.FC<EquipmentSlotsProps> = ({ hero, onSlotClick, onBa
             >
               <span className="slot-icon">{icon}</span>
               {item ? (
-                <div style={{ display: 'flex', flexDirection: 'column', width: '100%', alignItems: 'center' }}>
+                <div className="equipment-item-container">
                   <span className="equipment-name-visible">{item.name}</span>
                   {item.stats && Object.keys(item.stats).length > 0 && (
                     <span className="equipment-stats-display">
