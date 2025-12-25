@@ -9,6 +9,7 @@
     border-left: 1px solid var(--dq-grey);
     border-right: 1px solid var(--dq-grey);
     position: relative;
+    width: 100%;
 }
 
 .mobile-layout-content {
