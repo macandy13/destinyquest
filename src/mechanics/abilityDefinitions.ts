@@ -89,19 +89,31 @@ registerAbility({
     type: 'modifier',
     description: 'Re-roll one of your hero\'s dice; you must accept the second result.',
     canActivate: (state) => {
-        // Can only reroll if we have valid rolls for the current phase
-        if (state.phase === 'speed-roll' && state.heroSpeedRolls) return true;
-        if (state.phase === 'damage-roll' && state.winner === 'hero' && state.damageRolls) return true;
+        // Can reroll speed if rolls exist (allows backtracking if we lost or want to improve before damage)
+        if (state.heroSpeedRolls && state.phase !== 'combat-end') return true;
+        // Can reroll damage if hero won and rolled damage
+        if (state.phase === 'round-end' && state.winner === 'hero' && state.damageRolls) return true;
         return false;
     },
     onActivate: (state) => {
+        let target: 'damage' | 'hero-speed' | null = null;
+
+        // Prioritize damage reroll if available and valid (Hero won)
+        if (state.winner === 'hero' && state.damageRolls) {
+            target = 'damage';
+        } else if (state.heroSpeedRolls) {
+            target = 'hero-speed';
+        }
+
+        if (!target) return null;
+
         return {
             pendingInteraction: {
                 abilityName: 'Charm',
                 type: 'reroll',
-                target: state.phase === 'speed-roll' ? 'hero-speed' : 'damage'
+                target
             },
-            logs: [...state.logs, { round: state.round, message: 'Select a die to re-roll.', type: 'info' }]
+            logs: [...state.logs, { round: state.round, message: `Select a ${target === 'damage' ? 'damage' : 'speed'} die to re-roll.`, type: 'info' }]
         };
     },
     onReroll: (state, index) => {

@@ -64,8 +64,8 @@ export function useCombat(hero: Hero) {
 
     const activateAbility = (abilityName: string) => {
         setCombat(prev => {
-            const ability = prev.activeAbilities.find(a => a.name === abilityName);
-            if (!ability || ability.used) return prev; // Cannot use
+            const ability = prev.activeAbilities.find(a => a.name === abilityName && !a.used);
+            if (!ability) return prev; // No unused ability found
 
             const definition = getAbilityDefinition(abilityName);
             if (!definition || !definition.onActivate) return prev; // No active effect defined
@@ -74,9 +74,12 @@ export function useCombat(hero: Hero) {
             if (!updates) return prev; // Activation decided no effect or invalid
 
             // Mark ability as used
-            const newActiveAbilities = prev.activeAbilities.map(a =>
-                a.name === abilityName ? { ...a, used: true } : a
-            );
+            // Mark specific ability instance as used
+            const abilityIndex = prev.activeAbilities.indexOf(ability);
+            const newActiveAbilities = [...prev.activeAbilities];
+            if (abilityIndex !== -1) {
+                newActiveAbilities[abilityIndex] = { ...ability, used: true };
+            }
 
             return {
                 ...prev,
@@ -294,55 +297,7 @@ export function useCombat(hero: Hero) {
         }
     };
 
-    const handleInteraction = (data: any) => {
-        if (!combat.pendingInteraction) return;
-        const def = getAbilityDefinition(combat.pendingInteraction.abilityName);
-        if (!def || !def.onInteraction) return;
-
-        setCombat(prev => {
-            if (!def.onInteraction) return prev; // Type guard
-            const updates = def.onInteraction(prev, data);
-            const nextState = { ...prev, ...updates };
-
-            // Re-resolve if rolls changed
-            // We can't call resolve functions here as they set state.
-            // But we can trigger immediate effects by returning a state that *looks* like it needs resolution?
-            // No, easiest way is to apply roll updates, AND THEN invoke the logic.
-            // But we are inside setCombat.
-
-            // Solution: We update the state with new rolls.
-            // THEN, we detect this change in an effect? Or just manually trigger the next step?
-            // Since we can't chain state updates easily, we will do:
-            // 1. Calculate new rolls.
-            // 2. Return new state with new rolls AND cleared pendingInteraction.
-            return nextState;
-        });
-
-        // After state update, we might need to re-resolve.
-        // But we don't know the new rolls outside setCombat easily without race conditions.
-        // Actually, onInteraction returns the updates. We can capture them!
-
-        // Let's rely on the fact that we can call setCombat(updater).
-        // But to re-resolve, we need the *result* of the update.
-
-        // BETTER APPROACH for this hook:
-        // Don't put handleInteraction inside setCombat.
-        // Read current state (closure might be stale, but typically OK for click handlers).
-        // OR better: use functional update to get state, compute updates, then decides what to do.
-
-        // For now, let's just use the `combat` from state. It should be fresh enough for a click handler.
-        const updates = def.onInteraction(combat, data);
-
-        // Apply updates
-        setCombat(prev => ({ ...prev, ...updates, pendingInteraction: undefined }));
-
-        // Re-resolve if needed
-        if (updates.heroSpeedRolls && combat.enemySpeedRolls) {
-            resolveSpeedRound({ heroRolls: updates.heroSpeedRolls, enemyRolls: combat.enemySpeedRolls });
-        } else if (updates.damageRolls) {
-            resolveDamageAndArmour(updates.damageRolls);
-        }
-    };
+    // handleInteraction removed as it was unused and causing lint errors
 
     return {
         combat,
