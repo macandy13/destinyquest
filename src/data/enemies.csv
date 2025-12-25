@@ -1,0 +1,27 @@
+# Act,Enemy Name,Entry,S,B,M,A,H,Special Abilities / Logic Hooks
+1,Ruffians,40,3,2,-,0,15,None (Intro/Tutorial)
+1,Mauler,26,5,4,-,0,25,Savagery: +1 Brawn for combat
+1,Zombie,68,2,4,-,0,20,Undead: Immune to psychology
+1,Spindlesilk,132,7,5,-,1,35,Webbed: -1 Speed to hero on hit
+1,The Witch (Hag),155,4,-,5,0,20,Charm: Re-roll 1 die
+1,Valadin Roth,160,6,6,-,1,40,Boss: Hero-type abilities
+1,Ratling,233,4,3,-,0,18,Tail Lash: 1 dmg for every 1 rolled
+1,Goblin Chieftain,260,5,5,-,2,30,Command: Cancel 1 hero attack
+1,Trog Spearman,327,5,6,-,1,25,Impale: Bonus dmg on winning round
+2,Mud Golem,283,4,7,-,3,50,Body of Stone: Immune to Bleed/Venom
+2,Logan,313,10,9,-,2,50,Legendary: High baseline stats
+2,Hive Queen,314,8,-,8,2,65,Infest: Passive round-end damage
+2,King Louis,359,8,9,-,2,55,Agility: Avoids 1st hit of combat
+2,Vesuvius,377,7,-,11,2,60,Sear: Bonus magic damage
+2,Nalsa,379,9,9,-,2,55,Roar: -2 Brawn/Magic to hero
+2,Zen,382,9,10,-,3,65,Counter: Damage hero on a tie
+2,Baron Greyloc,385,10,12,-,4,80,Legendary: Multi-phase boss logic
+2,Shara Khana,386,10,11,-,2,70,Swift: Re-roll speed dice
+2,Stone Giant,443,5,11,-,8,75,Body of Rock: Immune to piercing
+2,The Count,487,9,10,-,3,60,Feint: Force hero Speed re-roll
+2,Swamp Giant,509,6,10,-,7,70,Knockdown: -1 Speed to hero
+2,Phoenix,565,9,-,10,1,60,Fire Aura: 2 passive dmg / round
+3,Kindle,454,12,11,-,9,90,Haste: Permanent speed buff
+3,Grindle,708,10,12,-,5,85,Dragonscale: Dmg mitigation
+3,Magmageddon,738,11,12,12,10,100,Hybrid: Brawn and Magic attacks
+3,Sharroth,782,12,15,15,6,150,Final Boss: Multi-turn mechanics
