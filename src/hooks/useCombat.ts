@@ -7,7 +7,7 @@ const INITIAL_STATE: CombatState = {
     round: 0,
     phase: 'combat-start', // Start inactive
     enemy: null,
-    heroHealth: 0,
+    hero: null,
     winner: null,
     activeAbilities: [],
     modifiers: [],
@@ -50,7 +50,7 @@ export function useCombat(hero: Hero) {
             round: 1,
             phase: 'combat-start',
             enemy: { ...MOCK_ENEMY },
-            heroHealth: hero.stats.health,
+            hero: { ...hero }, // Clone hero state for combat
             winner: null,
             activeAbilities: abilities,
             modifiers: [],
@@ -70,7 +70,7 @@ export function useCombat(hero: Hero) {
             const definition = getAbilityDefinition(abilityName);
             if (!definition || !definition.onActivate) return prev; // No active effect defined
 
-            const updates = definition.onActivate(prev, hero);
+            const updates = definition.onActivate(prev);
             if (!updates) return prev; // Activation decided no effect or invalid
 
             // Mark ability as used
@@ -148,14 +148,21 @@ export function useCombat(hero: Hero) {
     }
 
     const resolveDamageAndArmour = ({ damageRoll, rolls }: DamageRoundParams) => {
-        if (!combat.enemy || !combat.winner) return;
+        if (!combat.enemy || !combat.winner || !combat.hero) return;
 
         setCombat(prev => {
-            if (!prev.enemy || !prev.winner) return prev;
+            if (!prev.enemy || !prev.winner || !prev.hero) return prev;
 
             let logMsg = '';
-            let newHeroHealth = prev.heroHealth;
-            let newEnemyHealth = prev.enemy.health;
+            // We drive logic from these local vars, then apply to objects at the end or incrementally
+            let currentHero = { ...prev.hero! }; // Shallow, but we'll update stats deeply if needed
+            // Deep clone stats to be safe for mutations
+            currentHero.stats = { ...currentHero.stats };
+
+            let currentEnemy = { ...prev.enemy };
+
+            let newHeroHealth = currentHero.stats.health;
+            let newEnemyHealth = currentEnemy.health;
             let type: CombatLog['type'] = 'info';
 
             // Hook call for Acid and other damage modifiers
@@ -166,7 +173,7 @@ export function useCombat(hero: Hero) {
                 prev.activeAbilities.forEach(ability => {
                     const def = getAbilityDefinition(ability.name);
                     if (def && def.onDamageCalculate) {
-                        const mod = def.onDamageCalculate(prev, hero, damageRoll, rolls);
+                        const mod = def.onDamageCalculate(prev, damageRoll, rolls);
                         if (mod !== 0) {
                             modifiersFromHooks += mod;
                             hookLogMsg += ` (+${mod} ${ability.name})`;
@@ -176,18 +183,20 @@ export function useCombat(hero: Hero) {
 
                 const modifier = Math.max(hero.stats.brawn, hero.stats.magic);
                 const rawDamage = damageRoll + modifier + modifiersFromHooks;
-                const actualDamage = Math.max(0, rawDamage - prev.enemy.armour);
-                newEnemyHealth = Math.max(0, prev.enemy.health - actualDamage);
+                const actualDamage = Math.max(0, rawDamage - currentEnemy.armour);
+                newEnemyHealth = Math.max(0, currentEnemy.health - actualDamage);
+                currentEnemy.health = newEnemyHealth;
 
-                logMsg = `Hero hits for ${rawDamage}${hookLogMsg} (Rolled ${damageRoll} + ${modifier}). Enemy armour absorbs ${prev.enemy.armour}. 💥 ${actualDamage} Damage!`;
+                logMsg = `Hero hits for ${rawDamage}${hookLogMsg} (Rolled ${damageRoll} + ${modifier}). Enemy armour absorbs ${currentEnemy.armour}. 💥 ${actualDamage} Damage!`;
                 type = 'damage-enemy';
             } else {
-                const modifier = Math.max(prev.enemy.brawn, prev.enemy.magic);
+                const modifier = Math.max(currentEnemy.brawn, currentEnemy.magic);
                 const rawDamage = damageRoll + modifier;
-                const actualDamage = Math.max(0, rawDamage - hero.stats.armour);
-                newHeroHealth = Math.max(0, prev.heroHealth - actualDamage);
+                const actualDamage = Math.max(0, rawDamage - currentHero.stats.armour);
+                newHeroHealth = Math.max(0, currentHero.stats.health - actualDamage);
+                currentHero.stats.health = newHeroHealth;
 
-                logMsg = `Enemy hits for ${rawDamage} (Rolled ${damageRoll} + ${modifier}). Hero armour absorbs ${hero.stats.armour}. 💔 ${actualDamage} Damage taken!`;
+                logMsg = `Enemy hits for ${rawDamage} (Rolled ${damageRoll} + ${modifier}). Hero armour absorbs ${currentHero.stats.armour}. 💔 ${actualDamage} Damage taken!`;
                 type = 'damage-hero';
             }
 
@@ -197,22 +206,24 @@ export function useCombat(hero: Hero) {
             // Temporary state for hooks to see valid health
             let currentStateForHooks = {
                 ...prev,
-                heroHealth: newHeroHealth,
-                enemy: { ...prev.enemy!, health: newEnemyHealth }
+                hero: currentHero,
+                enemy: currentEnemy
             } as CombatState;
 
             prev.activeAbilities.forEach(ability => {
                 const def = getAbilityDefinition(ability.name);
                 if (def && def.onRoundEnd) {
-                    const updates = def.onRoundEnd(currentStateForHooks, hero);
+                    const updates = def.onRoundEnd(currentStateForHooks);
 
                     if (updates.enemy) {
-                        newEnemyHealth = updates.enemy.health;
-                        currentStateForHooks.enemy = updates.enemy;
+                        currentEnemy = updates.enemy;
+                        newEnemyHealth = currentEnemy.health;
+                        currentStateForHooks.enemy = currentEnemy;
                     }
-                    if (updates.heroHealth !== undefined) {
-                        newHeroHealth = updates.heroHealth;
-                        currentStateForHooks.heroHealth = newHeroHealth;
+                    if (updates.hero) {
+                        currentHero = updates.hero;
+                        newHeroHealth = currentHero.stats.health;
+                        currentStateForHooks.hero = currentHero;
                     }
 
                     if (updates.logs) {
@@ -234,8 +245,8 @@ export function useCombat(hero: Hero) {
 
             return {
                 ...prev,
-                heroHealth: newHeroHealth,
-                enemy: { ...prev.enemy, health: newEnemyHealth },
+                hero: currentHero,
+                enemy: currentEnemy,
                 phase: nextPhase,
                 damageRolls: rolls,
                 logs

@@ -273,7 +273,7 @@ describe('useCombat Hook', () => {
         expect(result.current.combat.logs.slice(-1)[0].message).toContain('Parry');
         expect(result.current.combat.damageRolls).toEqual([0]);
         // Hero should not have taken damage
-        expect(result.current.combat.heroHealth).toBe(MOCK_HERO_STATS.health);
+        expect(result.current.combat.hero!.stats.health).toBe(MOCK_HERO_STATS.health);
     });
 
     it('should apply Heal modifier ability (restore 4 health)', () => {
@@ -316,7 +316,7 @@ describe('useCombat Hook', () => {
             result.current.resolveDamageAndArmour({ damageRoll: 10, rolls: [10] });
         });
 
-        const healthBefore = result.current.combat.heroHealth;
+        const healthBefore = result.current.combat.hero!.stats.health;
         expect(healthBefore).toBeLessThan(MOCK_HERO_STATS.maxHealth);
 
         // Activate Heal
@@ -324,7 +324,7 @@ describe('useCombat Hook', () => {
             result.current.activateAbility('Heal');
         });
 
-        expect(result.current.combat.heroHealth).toBe(healthBefore + 4);
+        expect(result.current.combat.hero!.stats.health).toBe(healthBefore + 4);
         expect(result.current.combat.logs.slice(-1)[0].message).toContain('Restored 4 health');
     });
 });

@@ -1,26 +1,26 @@
 import { CombatState } from '../types/combat';
-import { Hero } from '../types/hero';
+
 
 export interface AbilityHooks {
     // For active abilities: returns partial state or null if activation failed/invalid
-    onActivate?: (state: CombatState, hero: Hero) => Partial<CombatState> | null;
+    onActivate?: (state: CombatState) => Partial<CombatState> | null;
 
     // Checks if ability can be activated in current state
-    canActivate?: (state: CombatState, hero: Hero) => boolean;
+    canActivate?: (state: CombatState) => boolean;
 
-    onCombatStart?: (state: CombatState, hero: Hero) => Partial<CombatState>;
+    onCombatStart?: (state: CombatState) => Partial<CombatState>;
 
     // Returns the modifier amount to add to speed total
-    onSpeedCalculate?: (state: CombatState, hero: Hero) => number;
+    onSpeedCalculate?: (state: CombatState) => number;
 
     // Returns the modifier amount to add to damage total
-    onDamageCalculate?: (state: CombatState, hero: Hero, damageRoll: number, rolls: number[]) => number;
+    onDamageCalculate?: (state: CombatState, damageRoll: number, rolls: number[]) => number;
 
     // Returns partial state updates (e.g. log messages, health updates)
-    onPostDamage?: (state: CombatState, hero: Hero, damageDealt: number) => Partial<CombatState>;
+    onPostDamage?: (state: CombatState, damageDealt: number) => Partial<CombatState>;
 
     // Returns partial state updates (e.g. passive damage at end of round)
-    onRoundEnd?: (state: CombatState, hero: Hero) => Partial<CombatState>;
+    onRoundEnd?: (state: CombatState) => Partial<CombatState>;
 }
 
 export interface AbilityDefinition extends AbilityHooks {
@@ -49,7 +49,7 @@ registerAbility({
     name: 'Acid',
     type: 'passive',
     description: 'Add 1 to the result of each die you roll for your damage score.',
-    onDamageCalculate: (_state, _hero, _damageRoll, rolls) => {
+    onDamageCalculate: (_state, _damageRoll, rolls) => {
         // Add 1 per die rolled
         return rolls.length;
     }
@@ -59,7 +59,7 @@ registerAbility({
     name: 'Barbs',
     type: 'passive',
     description: 'At the end of every combat round, automatically inflict 1 damage to all opponents.',
-    onRoundEnd: (state, _hero) => {
+    onRoundEnd: (state) => {
         if (!state.enemy) return {};
         const newEnemyHealth = Math.max(0, state.enemy.health - 1);
         if (newEnemyHealth < state.enemy.health) {
@@ -85,7 +85,7 @@ registerAbility({
     name: 'Adrenaline',
     type: 'speed',
     description: 'Increase your speed by 2 for two combat rounds.',
-    onActivate: (state, _hero) => {
+    onActivate: (state) => {
         const newModifiers = [...state.modifiers, {
             name: 'Adrenaline',
             source: 'Adrenaline', // Ideally source comes from item but we might lose that context here unless passed
@@ -104,7 +104,7 @@ registerAbility({
     name: 'Charge',
     type: 'speed',
     description: 'Increase speed by 2 in the first round of combat.',
-    onActivate: (state, _hero) => {
+    onActivate: (state) => {
         const newModifiers = [...state.modifiers, {
             name: 'Charge',
             source: 'Charge',
@@ -123,7 +123,7 @@ registerAbility({
     name: 'Quicksilver',
     type: 'speed',
     description: 'Increase speed by 2 for one round.',
-    onActivate: (state, _hero) => {
+    onActivate: (state) => {
         const newModifiers = [...state.modifiers, {
             name: 'Quicksilver',
             source: 'Quicksilver',
@@ -145,10 +145,10 @@ registerAbility({
     name: 'Parry',
     type: 'combat',
     description: 'Stop an opponent from rolling for damage after they win a round.',
-    canActivate: (state, _hero) => {
+    canActivate: (state) => {
         return state.phase === 'damage-roll' && state.winner === 'enemy';
     },
-    onActivate: (state, _hero) => {
+    onActivate: (state) => {
         // Can only be used in damage-roll phase if enemy won
         if (state.phase === 'damage-roll' && state.winner === 'enemy') {
             return {
@@ -167,13 +167,17 @@ registerAbility({
     name: 'Heal',
     type: 'modifier',
     description: 'Instantly restore 4 health.',
-    canActivate: (state, hero) => {
-        return state.heroHealth < hero.stats.maxHealth;
+    canActivate: (state) => {
+        if (!state.hero) return false;
+        return state.hero.stats.health < state.hero.stats.maxHealth;
     },
-    onActivate: (state, hero) => {
-        const newHealth = Math.min(hero.stats.maxHealth, state.heroHealth + 4);
+    onActivate: (state) => {
+        if (!state.hero) return null;
+        const currentHealth = state.hero.stats.health;
+        const newHealth = Math.min(state.hero.stats.maxHealth, currentHealth + 4);
+
         return {
-            heroHealth: newHealth,
+            hero: { ...state.hero, stats: { ...state.hero.stats, health: newHealth } },
             logs: [...state.logs, { round: state.round, message: 'Used ability: Heal. Restored 4 health.', type: 'info' }]
         };
     }

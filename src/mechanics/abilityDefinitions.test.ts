@@ -38,7 +38,7 @@ const INITIAL_STATE: CombatState = {
     round: 1,
     phase: 'combat-start',
     enemy: MOCK_ENEMY,
-    heroHealth: 20,
+    hero: MOCK_HERO, // In tests we might want a hero present by default?
     winner: null,
     activeAbilities: [],
     modifiers: [],
@@ -73,7 +73,7 @@ describe('Ability Implementations', () => {
     describe('Acid', () => {
         it('should add 1 damage per die rolled', () => {
             const acid = getAbilityDefinition('Acid');
-            const bonus = acid?.onDamageCalculate?.(INITIAL_STATE, MOCK_HERO, 10, [1, 4, 6]);
+            const bonus = acid?.onDamageCalculate?.(INITIAL_STATE, 10, [1, 4, 6]);
             expect(bonus).toBe(3);
         });
     });
@@ -83,7 +83,7 @@ describe('Ability Implementations', () => {
             const barbs = getAbilityDefinition('Barbs');
             const state = { ...INITIAL_STATE, enemy: { ...MOCK_ENEMY, health: 10 } };
 
-            const updates = barbs?.onRoundEnd?.(state, MOCK_HERO);
+            const updates = barbs?.onRoundEnd?.(state);
 
             expect(updates?.enemy?.health).toBe(9);
             expect(updates?.logs?.[0].message).toContain('Barbs inflicts 1 damage');
@@ -95,7 +95,7 @@ describe('Ability Implementations', () => {
 
             // The implementation checks if newHealth < oldHealth. If health is 0, max(0, -1) is 0. 
             // 0 < 0 is false, so it returns {}.
-            const updates = barbs?.onRoundEnd?.(state, MOCK_HERO);
+            const updates = barbs?.onRoundEnd?.(state);
             expect(updates).toEqual({});
         });
     });
@@ -103,7 +103,7 @@ describe('Ability Implementations', () => {
     describe('Adrenaline', () => {
         it('should add speed bonus modifier on activation', () => {
             const adrenaline = getAbilityDefinition('Adrenaline');
-            const updates = adrenaline?.onActivate?.(INITIAL_STATE, MOCK_HERO);
+            const updates = adrenaline?.onActivate?.(INITIAL_STATE);
 
             expect(updates?.modifiers).toHaveLength(1);
             expect(updates?.modifiers?.[0]).toMatchObject({
@@ -121,22 +121,17 @@ describe('Ability Implementations', () => {
 
             // Valid state
             const validState: CombatState = { ...INITIAL_STATE, phase: 'damage-roll', winner: 'enemy' };
-            expect(parry?.canActivate?.(validState, MOCK_HERO)).toBe(true);
+            expect(parry?.canActivate?.(validState)).toBe(true);
 
             // Invalid phase
             const invalidPhase: CombatState = { ...INITIAL_STATE, phase: 'speed-roll', winner: 'enemy' };
-            expect(parry?.canActivate?.(invalidPhase, MOCK_HERO)).toBe(false);
+            expect(parry?.canActivate?.(invalidPhase)).toBe(false);
 
             // Invalid winner
             const invalidWinner: CombatState = { ...INITIAL_STATE, phase: 'damage-roll', winner: 'hero' };
-            expect(parry?.canActivate?.(invalidWinner, MOCK_HERO)).toBe(false);
-        });
+            expect(parry?.canActivate?.(invalidWinner)).toBe(false);
 
-        it('should cancel damage rolls on activation', () => {
-            const parry = getAbilityDefinition('Parry');
-            const validState: CombatState = { ...INITIAL_STATE, phase: 'damage-roll', winner: 'enemy' };
-
-            const updates = parry?.onActivate?.(validState, MOCK_HERO);
+            const updates = parry?.onActivate?.(validState);
 
             expect(updates?.phase).toBe('round-end');
             expect(updates?.damageRolls).toEqual([0]);
@@ -147,30 +142,42 @@ describe('Ability Implementations', () => {
     describe('Heal', () => {
         it('should restore 4 health up to max', () => {
             const heal = getAbilityDefinition('Heal');
-            const damagedState = { ...INITIAL_STATE, heroHealth: 10 };
+            const damagedState = {
+                ...INITIAL_STATE,
+                hero: { ...MOCK_HERO, stats: { ...MOCK_HERO.stats, health: 10 } }
+            };
 
-            const updates = heal?.onActivate?.(damagedState, MOCK_HERO);
-            expect(updates?.heroHealth).toBe(14);
+            const updates = heal?.onActivate?.(damagedState);
+            expect(updates?.hero?.stats.health).toBe(14);
         });
 
         it('should execute clamping to max health', () => {
             const heal = getAbilityDefinition('Heal');
-            const mildDamageState = { ...INITIAL_STATE, heroHealth: 19 };
+            const mildDamageState = {
+                ...INITIAL_STATE,
+                hero: { ...MOCK_HERO, stats: { ...MOCK_HERO.stats, health: 19 } }
+            };
 
-            const updates = heal?.onActivate?.(mildDamageState, MOCK_HERO);
-            expect(updates?.heroHealth).toBe(20);
+            const updates = heal?.onActivate?.(mildDamageState);
+            expect(updates?.hero?.stats.health).toBe(20);
         });
 
         it('should return false for canActivate if health is full', () => {
             const heal = getAbilityDefinition('Heal');
-            const fullHealthState = { ...INITIAL_STATE, heroHealth: 20 };
-            expect(heal?.canActivate?.(fullHealthState, MOCK_HERO)).toBe(false);
+            const fullHealthState = {
+                ...INITIAL_STATE,
+                hero: { ...MOCK_HERO, stats: { ...MOCK_HERO.stats, health: 20 } }
+            };
+            expect(heal?.canActivate?.(fullHealthState)).toBe(false);
         });
 
         it('should return true for canActivate if health is not full', () => {
             const heal = getAbilityDefinition('Heal');
-            const damagedState = { ...INITIAL_STATE, heroHealth: 10 };
-            expect(heal?.canActivate?.(damagedState, MOCK_HERO)).toBe(true);
+            const damagedState = {
+                ...INITIAL_STATE,
+                hero: { ...MOCK_HERO, stats: { ...MOCK_HERO.stats, health: 10 } }
+            };
+            expect(heal?.canActivate?.(damagedState)).toBe(true);
         });
     });
 });

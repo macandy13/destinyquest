@@ -41,7 +41,7 @@ const CombatArena: React.FC<CombatArenaProps> = ({ hero }) => {
     };
 
     const enemyHealthPct = (combat.enemy.health / combat.enemy.maxHealth) * 100;
-    const heroHealthPct = (combat.heroHealth / hero.stats.maxHealth) * 100;
+    const heroHealthPct = ((combat.hero?.stats.health ?? 0) / hero.stats.maxHealth) * 100;
 
     const getPhaseInstruction = () => {
         switch (combat.phase) {
@@ -67,7 +67,7 @@ const CombatArena: React.FC<CombatArenaProps> = ({ hero }) => {
                             <div className="health-bar" style={{ width: `${heroHealthPct}%` }}></div>
                         </div>
                         <div className="combatant-stats">
-                            <div>{combat.heroHealth} / {hero.stats.maxHealth} HP</div>
+                            <div>{combat.hero?.stats.health ?? 0} / {hero.stats.maxHealth} HP</div>
                             <div>⚡ {hero.stats.speed} 💪 {hero.stats.brawn}</div>
                         </div>
                     </div>

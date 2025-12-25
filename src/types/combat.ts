@@ -1,3 +1,5 @@
+import { Hero } from './hero';
+
 export interface Enemy {
     name: string;
     speed: number;
@@ -43,7 +45,7 @@ export interface CombatState {
     round: number;
     phase: CombatPhase;
     enemy: Enemy | null;
-    heroHealth: number;
+    hero: Hero | null;
     winner: 'hero' | 'enemy' | null; // Winner of the current speed round
     heroSpeedRolls?: number[];
     enemySpeedRolls?: number[];
