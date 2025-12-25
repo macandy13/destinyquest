@@ -1,6 +1,8 @@
+load("@aspect_rules_js//js:defs.bzl", "js_library")
+
 package(default_visibility = ["//visibility:public"])
 
-filegroup(
+js_library(
     name = "src",
     srcs = glob(["**/*"]),
 )
