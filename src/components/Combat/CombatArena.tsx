@@ -31,7 +31,7 @@ const CombatArena: React.FC<CombatArenaProps> = ({ hero }) => {
             const enemyTotal = enemyRoll1 + enemyRoll2;
             resolveSpeedRound(total, rolls, enemyTotal, [enemyRoll1, enemyRoll2]);
         } else if (combat.phase === 'damage-roll') {
-            resolveDamageAndArmour(rolls[0]);
+            resolveDamageAndArmour(rolls[0], rolls);
         }
     };
 
@@ -87,8 +87,8 @@ const CombatArena: React.FC<CombatArenaProps> = ({ hero }) => {
             </div>
 
             {/* SPEED PHASE: Dual Dice Display */}
-            {/* Always show speed dice if we have rolls, to persist them into damage phase */}
-            <div className="speed-rolls" style={{ display: 'flex', justifyContent: 'space-around', alignItems: 'flex-start', marginBottom: '20px' }}>
+            {/* Class speed-rolls-mini shrinks dice when not in speed-roll phase */}
+            <div className={`speed-rolls ${combat.phase !== 'speed-roll' ? 'speed-rolls-mini' : ''}`} style={{ display: 'flex', justifyContent: 'space-around', alignItems: 'flex-start', marginBottom: '20px', transition: 'all 0.5s ease' }}>
                 <div className="hero-dice">
                     <CombatDice
                         label="Your Speed"
@@ -121,10 +121,13 @@ const CombatArena: React.FC<CombatArenaProps> = ({ hero }) => {
             </div>
 
             {/* DAMAGE PHASE: Single Die Display */}
-            {combat.phase === 'damage-roll' && (
+            {(combat.phase === 'damage-roll' || (combat.phase === 'round-end' && combat.damageRolls)) && (
                 <div className="damage-roll-container" style={{ borderTop: '1px solid #333', paddingTop: '20px', marginTop: '10px' }}>
                     <div style={{ textAlign: 'center', marginBottom: '10px', color: 'var(--dq-gold)' }}>
-                        {combat.winner === 'hero' ? '💥 ROLL FOR DAMAGE!' : '🛡️ BRACE FOR IMPACT!'}
+                        {combat.phase === 'damage-roll'
+                            ? (combat.winner === 'hero' ? '💥 ROLL FOR DAMAGE!' : '🛡️ BRACE FOR IMPACT!')
+                            : (combat.winner === 'hero' ? '💥 HERO HIT:' : '🛡️ ENEMY HIT:')
+                        }
                     </div>
 
                     {combat.winner === 'hero' && (
@@ -132,18 +135,30 @@ const CombatArena: React.FC<CombatArenaProps> = ({ hero }) => {
                             <CombatDice
                                 label="Damage (1d6)"
                                 count={1}
-                                onRoll={(total, rolls) => handleRoll(total, rolls)}
+                                values={combat.damageRolls} // Show result if exists
+                                onRoll={combat.phase === 'damage-roll' ? (total, rolls) => handleRoll(total, rolls) : undefined}
                             />
                         </div>
                     )}
 
                     {combat.winner === 'enemy' && (
                         <div style={{ display: 'flex', justifyContent: 'center', flexDirection: 'column', alignItems: 'center' }}>
-                            <p className="text-dim">Enemy is attacking...</p>
-                            <button className="btn-primary" onClick={() => {
-                                const dmg = Math.floor(Math.random() * 6) + 1;
-                                handleRoll(dmg, [dmg]);
-                            }}>Resolve Enemy Attack</button>
+                            {combat.phase === 'damage-roll' ? (
+                                <>
+                                    <p className="text-dim">Enemy is attacking...</p>
+                                    <button className="btn-primary" onClick={() => {
+                                        const dmg = Math.floor(Math.random() * 6) + 1;
+                                        handleRoll(dmg, [dmg]);
+                                    }}>Resolve Enemy Attack</button>
+                                </>
+                            ) : (
+                                // Show enemy result in round-end
+                                <CombatDice
+                                    label="Enemy Damage"
+                                    count={1}
+                                    values={combat.damageRolls}
+                                />
+                            )}
                         </div>
                     )}
                 </div>

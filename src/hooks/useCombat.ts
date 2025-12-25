@@ -80,13 +80,12 @@ export function useCombat(heroStats: HeroStats) {
     };
 
     // Phase 2: Damage Roll
-    const resolveDamageAndArmour = (damageRoll: number) => {
+    const resolveDamageAndArmour = (damageRoll: number, rolls: number[]) => {
         if (!combat.enemy || !combat.winner) return;
 
         setCombat(prev => {
             if (!prev.enemy || !prev.winner) return prev;
 
-            // Keeping for potential extensions like passive damage logic later
             let logMsg = '';
             let newHeroHealth = prev.heroHealth;
             let newEnemyHealth = prev.enemy.health;
@@ -124,6 +123,7 @@ export function useCombat(heroStats: HeroStats) {
                 heroHealth: newHeroHealth,
                 enemy: { ...prev.enemy, health: newEnemyHealth },
                 phase: nextPhase,
+                damageRolls: rolls,
                 logs
             };
         });
@@ -136,6 +136,7 @@ export function useCombat(heroStats: HeroStats) {
             winner: null,
             heroSpeedRolls: undefined,
             enemySpeedRolls: undefined,
+            damageRolls: undefined,
             phase: 'speed-roll',
             logs: [...prev.logs, { round: prev.round + 1, message: `Round ${prev.round + 1}`, type: 'info' }]
         }));

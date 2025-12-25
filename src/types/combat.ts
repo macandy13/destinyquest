@@ -26,5 +26,6 @@ export interface CombatState {
     winner: 'hero' | 'enemy' | null; // Winner of the current speed round
     heroSpeedRolls?: number[];
     enemySpeedRolls?: number[];
+    damageRolls?: number[];
     logs: CombatLog[];
 }
