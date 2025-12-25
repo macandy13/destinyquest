@@ -1,8 +1,10 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useCombat } from '../../hooks/useCombat';
+import { getAbilityDefinition } from '../../mechanics/abilityDefinitions';
 import { Hero } from '../../types/hero';
 import CombatDice from './CombatDice';
 import './CombatArena.css';
+import { ActiveAbility } from '../../types/combat';
 
 interface CombatArenaProps {
     hero: Hero;
@@ -47,6 +49,13 @@ const CombatArena: React.FC<CombatArenaProps> = ({ hero }) => {
         }
     };
 
+    const canActivateAbility = (ability: ActiveAbility) => {
+        const def = getAbilityDefinition(ability.name);
+        if (!def || def.type === 'passive' || !def.onActivate || ability.used) return false;
+        if (def.canActivate) return def.canActivate(combat);
+        return true;
+    };
+
     return (
         <div className="combat-arena">
             <div className="arena-header">
@@ -84,25 +93,23 @@ const CombatArena: React.FC<CombatArenaProps> = ({ hero }) => {
 
             <div className="arena-center">
                 {/* Active Abilities */}
-                {combat.activeAbilities.length > 0 && (
+                {combat.activeAbilities.filter(canActivateAbility).length > 0 && (
                     <div className="mb-4" style={{ marginBottom: '1rem' }}>
                         <h4 className="text-sm uppercase tracking-wide text-dim mb-2" style={{ fontSize: '0.75rem', color: 'var(--dq-dim)', marginBottom: '0.5rem' }}>Abilities</h4>
                         <div className="flex flex-wrap gap-2" style={{ display: 'flex', flexWrap: 'wrap', gap: '0.5rem', justifyContent: 'center' }}>
-                            {combat.activeAbilities.map((ability, index) => (
-                                <div key={index} className={`p-2 border rounded text-sm ${ability.used ? 'opacity-50' : ''}`} style={{ padding: '0.5rem', border: '1px solid var(--dq-border)', borderRadius: '4px', background: 'var(--dq-bg-card)', opacity: ability.used ? 0.5 : 1 }}>
+                            {combat.activeAbilities.filter(canActivateAbility).map((ability, index) => (
+                                <div key={index} className="p-2 border rounded text-sm" style={{ padding: '0.5rem', border: '1px solid var(--dq-border)', borderRadius: '4px', background: 'var(--dq-bg-card)' }}>
                                     <div className="flex justify-between items-center gap-2" style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
                                         <span className="font-bold text-accent" style={{ color: 'var(--dq-gold)', fontWeight: 'bold' }}>{ability.name}</span>
                                         <span className="text-xs text-dim" style={{ fontSize: '0.7rem', color: 'var(--dq-dim)' }}>({ability.source})</span>
                                     </div>
-                                    {!ability.used && (
-                                        <button
-                                            className="mt-1 text-xs px-2 py-1 rounded w-full"
-                                            style={{ marginTop: '0.25rem', width: '100%', fontSize: '0.75rem', background: '#334155', color: 'white', border: 'none', cursor: 'pointer' }}
-                                            onClick={() => activateAbility(ability.name)}
-                                        >
-                                            Use
-                                        </button>
-                                    )}
+                                    <button
+                                        className="mt-1 text-xs px-2 py-1 rounded w-full"
+                                        style={{ marginTop: '0.25rem', width: '100%', fontSize: '0.75rem', background: '#334155', color: 'white', border: 'none', cursor: 'pointer' }}
+                                        onClick={() => activateAbility(ability.name)}
+                                    >
+                                        Use
+                                    </button>
                                 </div>
                             ))}
                         </div>
