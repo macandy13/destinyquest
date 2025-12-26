@@ -3,18 +3,18 @@ import { Hero } from '../types/hero';
 
 export const MOCK_HERO: Hero = {
     name: 'Test Hero',
-    path: 'Warrior',
-    career: 'Gladiator',
-    stats: { speed: 3, brawn: 5, magic: 1, armour: 2, health: 30, maxHealth: 30 },
+    path: '',
+    career: '',
+    stats: { speed: 0, brawn: 0, magic: 0, armour: 0, health: 30, maxHealth: 30 },
     equipment: {},
     backpack: [],
-    money: 100
+    money: 0
 };
 
 export const MOCK_ENEMY: Enemy = {
     name: 'Test Enemy',
-    speed: 3,
-    brawn: 3,
+    speed: 0,
+    brawn: 0,
     magic: 0,
     armour: 0,
     health: 20,
@@ -36,3 +36,11 @@ export const INITIAL_STATE: CombatState = {
     modifiers: [],
     logs: []
 };
+
+export const heroWithStats = (stats: Partial<Hero['stats']>) => ({
+    ...MOCK_HERO,
+    stats: {
+        ...MOCK_HERO.stats,
+        ...stats
+    }
+});

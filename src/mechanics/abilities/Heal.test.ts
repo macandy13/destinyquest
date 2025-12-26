@@ -2,6 +2,8 @@ import { describe, it, expect } from 'vitest';
 import { getAbilityDefinition } from '../abilityRegistry';
 import './Heal';
 import { INITIAL_STATE, MOCK_HERO } from '../../tests/testUtils';
+import { renderHook, act } from '@testing-library/react';
+import { useCombat } from '../../hooks/useCombat';
 
 describe('Heal', () => {
     it('should restore 4 health up to max', () => {
@@ -42,5 +44,50 @@ describe('Heal', () => {
             hero: { ...MOCK_HERO, stats: { ...MOCK_HERO.stats, health: 10 } }
         };
         expect(heal?.canActivate?.(damagedState)).toBe(true);
+    });
+
+    it('should apply Heal modifier ability via hook (restore 4 health)', () => {
+        const HEAL_HERO = {
+            ...MOCK_HERO,
+            equipment: {
+                accessory: {
+                    name: 'Healing Potion',
+                    abilities: ['Heal']
+                }
+            }
+        };
+
+        const { result } = renderHook(() => useCombat(HEAL_HERO));
+
+        act(() => result.current.startCombat());
+
+        // Simulate taking damage
+        act(() => {
+            // Need to progress to a state where we can take damage or forcing it?
+            // Simulating a round where enemy wins and deals damage.
+            result.current.nextRound();
+            result.current.resolveSpeedRolls({
+                heroRolls: [{ value: 1, isRerolled: false }, { value: 1, isRerolled: false }],
+                enemyRolls: [{ value: 6, isRerolled: false }, { value: 6, isRerolled: false }]
+            }); // Enemy wins
+        });
+
+        act(() => {
+            // Hero takes damage
+            result.current.commitSpeedResult(); // Proceed from speed to damage
+            result.current.resolveDamageRolls([{ value: 10, isRerolled: false }]);
+        });
+        act(() => {
+            result.current.commitDamageResult();
+        });
+
+        const healthBefore = result.current.combat.hero!.stats.health;
+        expect(healthBefore).toBeLessThan(MOCK_HERO.stats.maxHealth);
+
+        // Activate Heal
+        act(() => result.current.activateAbility('Heal'));
+
+        expect(result.current.combat.hero!.stats.health).toBe(healthBefore + 4);
+        expect(result.current.combat.logs.slice(-1)[0].message).toContain('Restored 4 health');
     });
 });
