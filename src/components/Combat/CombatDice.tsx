@@ -5,19 +5,18 @@ import './CombatDice.css';
 
 interface CombatDiceProps {
     values?: DiceRoll[]; // Controlled mode: display these specific dice
-    count?: number; // Number of dice (default 2)
     label?: string;
     baseValue?: number; // Base stat value (e.g. speed, brawn)
     modifierValue?: number; // Additional modifiers
     onDieClick?: (index: number) => void;
 }
 
-const CombatDice: React.FC<CombatDiceProps> = ({ values, count = 2, label, baseValue = 0, modifierValue = 0, onDieClick }) => {
+const CombatDice: React.FC<CombatDiceProps> = ({ values, label, baseValue = 0, modifierValue = 0, onDieClick }) => {
     // Track which specific dice indices are currently "rolling" (animating)
     const [rollingIndices, setRollingIndices] = useState<number[]>([]);
 
     // Internal dice is just numbers for animation
-    const [internalDice, setInternalDice] = useState<number[]>(new Array(count).fill(1));
+    const [internalDice, setInternalDice] = useState<number[]>(values ? new Array(values.length).fill(1) : []);
     const prevValuesRef = useRef<string>('');
 
     // Effect to trigger animation when external values change
@@ -74,29 +73,7 @@ const CombatDice: React.FC<CombatDiceProps> = ({ values, count = 2, label, baseV
             }
             return val;
         })
-        : internalDice.map((val) => ( // Fallback for uncontrolled mode
-            { value: val, isRerolled: false } as DiceRoll
-        ));
-
-    // Fallback manual roll for uncontrolled mode
-    const roll = () => {
-        // If controlled, do nothing (logic handled by prop change)
-        if (values) return;
-
-        // Rolling all
-        setRollingIndices(new Array(count).fill(0).map((_, i) => i));
-
-        const interval = setInterval(() => {
-            setInternalDice(new Array(count).fill(0).map(() => Math.ceil(Math.random() * 6)));
-        }, 50);
-
-        setTimeout(() => {
-            clearInterval(interval);
-            const newRolls = new Array(count).fill(0).map(() => Math.ceil(Math.random() * 6));
-            setInternalDice(newRolls);
-            setRollingIndices([]);
-        }, 600);
-    };
+        : [];
 
     const handleDieClick = (index: number, diceRoll: DiceRoll) => {
         const isDieRolling = rollingIndices.includes(index);
@@ -107,9 +84,6 @@ const CombatDice: React.FC<CombatDiceProps> = ({ values, count = 2, label, baseV
         if (onDieClick) {
             if (diceRoll.isRerolled) return;
             onDieClick(index);
-        } else if (!values) {
-            // Uncontrolled interactive
-            roll();
         }
     };
 

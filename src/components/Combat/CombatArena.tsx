@@ -112,7 +112,6 @@ const CombatArena: React.FC<CombatArenaProps> = ({ hero }) => {
                     <div className="hero-dice">
                         <CombatDice
                             label="Hero Speed"
-                            count={2}
                             values={combat.heroSpeedRolls} // Persist if exists
                             onDieClick={combat.rerollState?.target === 'hero-speed' ? (i) => handleReroll(i) : undefined}
                             baseValue={hero.stats.speed}
@@ -123,7 +122,6 @@ const CombatArena: React.FC<CombatArenaProps> = ({ hero }) => {
                     <div className="enemy-dice">
                         <CombatDice
                             label="Enemy Speed"
-                            count={2}
                             values={combat.enemySpeedRolls}
                             baseValue={combat.enemy.speed}
                         />
@@ -144,7 +142,6 @@ const CombatArena: React.FC<CombatArenaProps> = ({ hero }) => {
                             <div className="damage-dice-container">
                                 <CombatDice
                                     label="Damage"
-                                    count={1}
                                     values={combat.damageRolls} // Show result if exists
                                     onDieClick={combat.rerollState?.target === 'damage' ? (i) => handleReroll(i) : undefined}
                                     baseValue={Math.max(hero.stats.brawn, hero.stats.magic)}
@@ -165,9 +162,9 @@ const CombatArena: React.FC<CombatArenaProps> = ({ hero }) => {
                                     </>
                                 ) : (
                                     // Show enemy result in round-end
+                                    // Show enemy result in round-end
                                     <CombatDice
                                         label="Enemy Damage"
-                                        count={1}
                                         values={combat.damageRolls}
                                         baseValue={Math.max(combat.enemy.brawn, combat.enemy.magic)}
                                     />

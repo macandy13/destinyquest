@@ -13,7 +13,7 @@ describe('CombatDice', () => {
         ];
 
         const { rerender, container } = render(
-            <CombatDice values={initialValues} count={2} baseValue={5} />
+            <CombatDice values={initialValues} baseValue={5} />
         );
 
         // Advance timers to finish initial animation (since mount triggers animation)
@@ -31,7 +31,7 @@ describe('CombatDice', () => {
             { value: 1, isRerolled: false }
         ];
 
-        rerender(<CombatDice values={newValues} count={2} />);
+        rerender(<CombatDice values={newValues} />);
 
         await act(async () => {
             // Allow effects to flush
@@ -62,7 +62,7 @@ describe('CombatDice', () => {
         ];
 
         const { getByText } = render(
-            <CombatDice values={values} count={2} baseValue={5} modifierValue={2} />
+            <CombatDice values={values} baseValue={5} modifierValue={2} />
         );
 
         // Advance timers to finish animation
