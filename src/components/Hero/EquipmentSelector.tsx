@@ -70,7 +70,10 @@ const EquipmentSelector: React.FC<EquipmentSelectorProps> = ({ slot, onSelect, o
                             <div key={item.id} className="item-card" onClick={() => onSelect(item)}>
                                 <div className="item-card-header">
                                     <div className="item-name">{item.name}</div>
-                                    <div className="text-dim" style={{ fontSize: '0.8rem' }}>Act {item.act}</div>
+                                    <div className="item-source">
+                                        <div className="text-dim" style={{ fontSize: '0.8rem' }}>Act {item.act}</div>
+                                        {item.entry && <div className="text-dim" style={{ fontSize: '0.8rem' }}>📖 {item.entry}</div>}
+                                    </div>
                                 </div>
 
                                 {(item.stats || item.abilities) && (
@@ -90,7 +93,6 @@ const EquipmentSelector: React.FC<EquipmentSelectorProps> = ({ slot, onSelect, o
                                 {item.description && <div className="item-desc">{item.description}</div>}
 
                                 <div className="item-meta-container">
-                                    {item.entry && <span className="meta-entry">📖 {item.entry}</span>}
                                     {item.location && <span>📍 {item.location}</span>}
                                 </div>
                             </div>
