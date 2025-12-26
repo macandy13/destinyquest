@@ -38,7 +38,11 @@
 }
 
 body {
-  background-color: var(--dq-black);
+  /*background-color: var(--dq-black);*/
+  background-image: url('/bg-destiny.jpg');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
   color: var(--dq-light-grey);
   font-family: var(--font-body), sans-serif;
   font-size: 16px;

@@ -29,7 +29,7 @@ function App() {
     return (
         <MobileLayout>
             <header className="app-header">
-                <h1 className="app-title">Destiny Quest</h1>
+                <img src="/logo-destiny.png" alt="Destiny Quest" className="app-logo" />
             </header>
 
             <main className="app-main">

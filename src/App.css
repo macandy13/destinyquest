@@ -2,9 +2,12 @@
     padding: var(--spacing-md);
 }
 
-.app-title {
-    font-size: 1.5rem;
-    text-align: center;
+.app-logo {
+    max-width: 300px;
+    width: 100%;
+    height: auto;
+    display: block;
+    margin: 0 auto;
 }
 
 .app-main {
