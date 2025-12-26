@@ -1,5 +1,6 @@
 import { useState, useCallback } from 'react';
-import { CombatState, Enemy, CombatLog, ActiveAbility } from '../types/combat';
+import { CombatState, Enemy, CombatLog, ActiveAbility, DiceRoll } from '../types/combat';
+import { sumDice, rollDice } from '../utils/dice';
 import { Hero } from '../types/hero';
 import { getAbilityDefinition } from '../mechanics/abilityDefinitions';
 
@@ -102,8 +103,8 @@ export function useCombat(hero: Hero) {
 
     // Phase 1: Speed Roll
     interface SpeedRoundParams {
-        heroRolls: number[];
-        enemyRolls: number[];
+        heroRolls: DiceRoll[];
+        enemyRolls: DiceRoll[];
     }
 
     // Resolves the winner but does NOT advance phase automatically
@@ -111,8 +112,8 @@ export function useCombat(hero: Hero) {
     const resolveSpeedRound = ({ heroRolls, enemyRolls }: SpeedRoundParams) => {
         if (!combat.enemy) return;
 
-        const heroRoll = heroRolls.reduce((a, b) => a + b, 0);
-        const enemyRoll = enemyRolls.reduce((a, b) => a + b, 0);
+        const heroRoll = sumDice(heroRolls);
+        const enemyRoll = sumDice(enemyRolls);
 
         // Apply modifiers
         const speedModifiers = combat.modifiers
@@ -150,7 +151,7 @@ export function useCombat(hero: Hero) {
     const commitSpeedResult = () => {
         setCombat(prev => {
             const nextPhase = prev.winner ? 'damage-roll' : 'round-end';
-            let damageRolls: number[] | undefined = undefined;
+            let damageRolls: DiceRoll[] | undefined = undefined;
 
             if (nextPhase === 'damage-roll') {
                 // Check where damageDice lives. Hero: stats.damageDice. Enemy: damageDice.
@@ -159,7 +160,7 @@ export function useCombat(hero: Hero) {
                     : (prev.enemy?.damageDice ?? 1);
 
                 // Auto-roll damage based on dice count
-                damageRolls = new Array(diceCount).fill(0).map(() => Math.floor(Math.random() * 6) + 1);
+                damageRolls = rollDice(diceCount);
             }
 
             return {
@@ -174,10 +175,9 @@ export function useCombat(hero: Hero) {
     const generateSpeedRolls = () => {
         const heroDice = hero.stats.speedDice ?? 2;
         const enemyDice = combat.enemy?.speedDice ?? 2;
-
         return {
-            hero: new Array(heroDice).fill(0).map(() => Math.floor(Math.random() * 6) + 1),
-            enemy: new Array(enemyDice).fill(0).map(() => Math.floor(Math.random() * 6) + 1)
+            hero: rollDice(heroDice),
+            enemy: rollDice(enemyDice)
         };
     };
 
@@ -206,8 +206,8 @@ export function useCombat(hero: Hero) {
             // Duplicating core calc logic briefly for atomicity in nextRound
             // (Or we could extract the calculation to a pure function, but inline is fine for now)
 
-            const heroRoll = rolls.hero.reduce((a, b) => a + b, 0);
-            const enemyRoll = rolls.enemy.reduce((a, b) => a + b, 0);
+            const heroRoll = sumDice(rolls.hero);
+            const enemyRoll = sumDice(rolls.enemy);
             const speedModifiers = activeModifiers
                 .filter(m => m.type === 'speed-bonus')
                 .reduce((sum, m) => sum + m.value, 0);
@@ -247,7 +247,7 @@ export function useCombat(hero: Hero) {
         });
     };
 
-    const executeDamageRoll = (rolls: Array<number>) => {
+    const executeDamageRoll = (rolls: DiceRoll[]) => {
         setCombat(prev => ({
             ...prev,
             damageRolls: rolls,
@@ -276,7 +276,7 @@ export function useCombat(hero: Hero) {
             let modifiersFromHooks = 0;
             let hookLogMsg = '';
 
-            const rollTotal = rolls.reduce((a, b) => a + b, 0);
+            const rollTotal = sumDice(rolls);
             if (prev.winner === 'hero') {
                 const modifier = Math.max(hero.stats.brawn, hero.stats.magic);
                 const rawDamage = rollTotal + modifier + modifiersFromHooks;
@@ -398,16 +398,16 @@ export function useCombat(hero: Hero) {
     // IF damage involved, just set rolls (which updates did).
 
     const handleReroll = (dieIndex: number) => {
-        if (!combat.pendingInteraction) return;
-        const def = getAbilityDefinition(combat.pendingInteraction.abilityName);
+        if (!combat.rerollState) return;
+        const def = getAbilityDefinition(combat.rerollState.source);
         if (!def || !def.onReroll) return;
 
         const updates = def.onReroll(combat, dieIndex);
 
         // If speed changed, re-evaluate winner
         if (updates.heroSpeedRolls && combat.enemySpeedRolls) {
-            const heroRoll = updates.heroSpeedRolls.reduce((a, b) => a + b, 0);
-            const enemyRoll = combat.enemySpeedRolls.reduce((a, b) => a + b, 0);
+            const heroRoll = sumDice(updates.heroSpeedRolls);
+            const enemyRoll = sumDice(combat.enemySpeedRolls);
 
             // Speed modifiers
             const speedModifiers = combat.modifiers
@@ -415,21 +415,16 @@ export function useCombat(hero: Hero) {
                 .reduce((sum, m) => sum + m.value, 0);
 
             const heroTotal = heroRoll + hero.stats.speed + speedModifiers;
-            const enemyTotal = enemyRoll + (combat.enemy?.speed || 0); // Enemy might be null in type but logic implies existence
+            const enemyTotal = enemyRoll + (combat.enemy?.speed || 0);
 
             let winner: 'hero' | 'enemy' | null = null;
             if (heroTotal > enemyTotal) winner = 'hero';
             else if (enemyTotal > heroTotal) winner = 'enemy';
 
             updates.winner = winner;
-
-            // Also need to update message? 
-            // "Re-rolled die..." log is added by onReroll.
-            // We won't re-log the speed result log to avoid spam, or finding/replacing it is hard.
-            // The UI shows the numbers, so it's fine.
         }
 
-        setCombat(prev => ({ ...prev, ...updates, pendingInteraction: undefined }));
+        setCombat(prev => ({ ...prev, ...updates, rerollState: undefined }));
     };
 
     return {

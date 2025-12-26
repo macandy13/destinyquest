@@ -49,15 +49,19 @@ export interface CombatState {
     enemy: Enemy | null;
     hero: Hero | null;
     winner: 'hero' | 'enemy' | null; // Winner of the current speed round
-    heroSpeedRolls?: number[];
-    enemySpeedRolls?: number[];
-    damageRolls?: number[];
+    heroSpeedRolls?: DiceRoll[];
+    enemySpeedRolls?: DiceRoll[];
+    damageRolls?: DiceRoll[];
     activeAbilities: ActiveAbility[];
     modifiers: CombatModifier[];
     logs: CombatLog[];
-    pendingInteraction?: {
-        abilityName: string;
-        type: 'reroll';
+    rerollState?: {
+        source: string; // Ability name (e.g. 'Charm')
         target: 'hero-speed' | 'damage';
     };
+}
+
+export interface DiceRoll {
+    value: number;
+    isRerolled: boolean;
 }

@@ -1,6 +1,7 @@
 import React from 'react';
 import { useCombat } from '../../hooks/useCombat';
 import { Hero } from '../../types/hero';
+import { sumDice, rollDice } from '../../utils/dice';
 import CombatDice from './CombatDice';
 import CombatLog from './CombatLog';
 import CombatantCard from './CombatantCard';
@@ -116,13 +117,13 @@ const CombatArena: React.FC<CombatArenaProps> = ({ hero }) => {
                             label="Hero Speed"
                             count={2}
                             values={combat.heroSpeedRolls} // Persist if exists
-                            onDieClick={combat.pendingInteraction?.target === 'hero-speed' ? (i) => handleReroll(i) : undefined}
-                            result={combat.heroSpeedRolls ? combat.heroSpeedRolls.reduce((a, b) => a + b, 0) + hero.stats.speed : undefined}
+                            onDieClick={combat.rerollState?.target === 'hero-speed' ? (i) => handleReroll(i) : undefined}
+                            result={combat.heroSpeedRolls ? sumDice(combat.heroSpeedRolls) + hero.stats.speed : undefined}
                         />
                         {/* Only show result modifier text if rolled */}
                         {combat.heroSpeedRolls && (
                             <div className="speed-result-text">
-                                {combat.heroSpeedRolls.reduce((a, b) => a + b, 0)} + {hero.stats.speed} (Spd)
+                                {sumDice(combat.heroSpeedRolls)} + {hero.stats.speed} (Spd)
                             </div>
                         )}
                     </div>
@@ -132,11 +133,11 @@ const CombatArena: React.FC<CombatArenaProps> = ({ hero }) => {
                             label="Enemy Speed"
                             count={2}
                             values={combat.enemySpeedRolls}
-                            result={combat.enemySpeedRolls ? combat.enemySpeedRolls.reduce((a, b) => a + b, 0) + combat.enemy.speed : undefined}
+                            result={combat.enemySpeedRolls ? sumDice(combat.enemySpeedRolls) + combat.enemy.speed : undefined}
                         />
                         {combat.enemySpeedRolls && (
                             <div className="speed-result-text">
-                                {combat.enemySpeedRolls.reduce((a, b) => a + b, 0)} + {combat.enemy.speed} (Spd)
+                                {sumDice(combat.enemySpeedRolls)} + {combat.enemy.speed} (Spd)
                             </div>
                         )}
                     </div>
@@ -158,7 +159,7 @@ const CombatArena: React.FC<CombatArenaProps> = ({ hero }) => {
                                     label="Damage"
                                     count={1}
                                     values={combat.damageRolls} // Show result if exists
-                                    onDieClick={combat.pendingInteraction?.target === 'damage' ? (i) => handleReroll(i) : undefined}
+                                    onDieClick={combat.rerollState?.target === 'damage' ? (i) => handleReroll(i) : undefined}
                                 />
                             </div>
                         )}
@@ -169,8 +170,8 @@ const CombatArena: React.FC<CombatArenaProps> = ({ hero }) => {
                                     <>
                                         <p className="text-dim">Enemy is attacking...</p>
                                         <button className="btn-primary" onClick={() => {
-                                            const enemyDamageRoll = Math.floor(Math.random() * 6) + 1;
-                                            executeDamageRoll([enemyDamageRoll]);
+                                            const enemyDamageRoll = rollDice(combat.enemy ? (combat.enemy.damageDice ?? 1) : 1);
+                                            executeDamageRoll(enemyDamageRoll);
                                         }}>Resolve Enemy Attack</button>
                                     </>
                                 ) : (

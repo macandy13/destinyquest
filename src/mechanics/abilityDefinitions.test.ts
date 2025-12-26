@@ -70,7 +70,8 @@ describe('Ability Implementations', () => {
     describe('Acid', () => {
         it('should add 1 damage per die rolled', () => {
             const acid = getAbilityDefinition('Acid');
-            const bonus = acid?.onDamageCalculate?.(INITIAL_STATE, { total: 10, rolls: [1, 4, 6] });
+            const rolls = [{ value: 1, isRerolled: false }, { value: 4, isRerolled: false }, { value: 6, isRerolled: false }];
+            const bonus = acid?.onDamageCalculate?.(INITIAL_STATE, { total: 10, rolls });
             expect(bonus).toBe(3);
         });
     });
@@ -101,11 +102,20 @@ describe('Ability Implementations', () => {
         it('should allow activation when rolls exist', () => {
             const charm = getAbilityDefinition('Charm');
             // Speed phase
-            const speedState: CombatState = { ...INITIAL_STATE, phase: 'speed-roll', heroSpeedRolls: [2, 3] };
+            const speedState: CombatState = {
+                ...INITIAL_STATE,
+                phase: 'speed-roll',
+                heroSpeedRolls: [{ value: 2, isRerolled: false }, { value: 3, isRerolled: false }]
+            };
             expect(charm?.canActivate?.(speedState)).toBe(true);
 
             // Damage phase (hero winning) -> implicitly round-end after resolution
-            const damageState: CombatState = { ...INITIAL_STATE, phase: 'round-end', winner: 'hero', damageRolls: [4] };
+            const damageState: CombatState = {
+                ...INITIAL_STATE,
+                phase: 'round-end',
+                winner: 'hero',
+                damageRolls: [{ value: 4, isRerolled: false }]
+            };
             expect(charm?.canActivate?.(damageState)).toBe(true);
 
             // Invalid phases
@@ -113,14 +123,18 @@ describe('Ability Implementations', () => {
             expect(charm?.canActivate?.(startState)).toBe(false);
         });
 
-        it('should set pendingInteraction on activate', () => {
+        it('should set rerollState on activate', () => {
             const charm = getAbilityDefinition('Charm');
-            const speedState: CombatState = { ...INITIAL_STATE, phase: 'speed-roll', heroSpeedRolls: [2, 3], logs: [] };
+            const speedState: CombatState = {
+                ...INITIAL_STATE,
+                phase: 'speed-roll',
+                heroSpeedRolls: [{ value: 2, isRerolled: false }, { value: 3, isRerolled: false }],
+                logs: []
+            };
 
             const result = charm?.onActivate?.(speedState);
-            expect(result?.pendingInteraction).toEqual({
-                abilityName: 'Charm',
-                type: 'reroll',
+            expect(result?.rerollState).toEqual({
+                source: 'Charm',
                 target: 'hero-speed'
             });
         });
@@ -130,8 +144,8 @@ describe('Ability Implementations', () => {
             const state: CombatState = {
                 ...INITIAL_STATE,
                 phase: 'speed-roll',
-                heroSpeedRolls: [1, 1],
-                pendingInteraction: { abilityName: 'Charm', type: 'reroll', target: 'hero-speed' },
+                heroSpeedRolls: [{ value: 1, isRerolled: false }, { value: 1, isRerolled: false }],
+                rerollState: { source: 'Charm', target: 'hero-speed' },
                 logs: []
             };
 
@@ -140,8 +154,11 @@ describe('Ability Implementations', () => {
 
             const updates = charm?.onReroll?.(state, 0);
 
-            expect(updates?.heroSpeedRolls).toEqual([6, 1]);
-            expect(updates?.pendingInteraction).toBeUndefined();
+            expect(updates?.heroSpeedRolls).toEqual([
+                { value: 6, isRerolled: true },
+                { value: 1, isRerolled: false }
+            ]);
+            expect(updates?.rerollState).toBeUndefined();
 
             spy.mockRestore();
         });
@@ -182,7 +199,7 @@ describe('Ability Implementations', () => {
             const updates = parry?.onActivate?.(validState);
 
             expect(updates?.phase).toBe('round-end');
-            expect(updates?.damageRolls).toEqual([0]);
+            expect(updates?.damageRolls).toEqual([{ value: 0, isRerolled: false }]);
             expect(updates?.logs?.[0].message).toContain('blocked');
         });
     });

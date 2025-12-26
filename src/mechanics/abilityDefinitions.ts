@@ -1,4 +1,4 @@
-import { CombatState } from '../types/combat';
+import { CombatState, DiceRoll } from '../types/combat';
 
 
 export interface AbilityHooks {
@@ -14,7 +14,7 @@ export interface AbilityHooks {
     onSpeedCalculate?: (state: CombatState) => number;
 
     // Returns the modifier amount to add to damage total
-    onDamageCalculate?: (state: CombatState, damage: { total: number, rolls: number[] }) => number;
+    onDamageCalculate?: (state: CombatState, damage: { total: number, rolls: DiceRoll[] }) => number;
 
     // Returns partial state updates (e.g. log messages, health updates)
     onPostDamage?: (state: CombatState, damageDealt: number) => Partial<CombatState>;
@@ -111,32 +111,44 @@ registerAbility({
         if (!target) return null;
 
         return {
-            pendingInteraction: {
-                abilityName: 'Charm',
-                type: 'reroll',
+            rerollState: {
+                source: 'Charm',
                 target
             },
             logs: [...state.logs, { round: state.round, message: `Select a ${target === 'damage' ? 'damage' : 'speed'} die to re-roll.`, type: 'info' }]
         };
     },
     onReroll: (state, index) => {
-        if (state.pendingInteraction?.target === 'hero-speed' && state.heroSpeedRolls) {
-            const newRoll = Math.floor(Math.random() * 6) + 1;
+        if (state.rerollState?.target === 'hero-speed' && state.heroSpeedRolls) {
+            const currentRoll = state.heroSpeedRolls[index];
+            if (currentRoll.isRerolled) return {}; // Already rerolled
+
+            const newRollVal = Math.floor(Math.random() * 6) + 1;
             const newRolls = [...state.heroSpeedRolls];
-            newRolls[index] = newRoll;
+            newRolls[index] = { value: newRollVal, isRerolled: true };
+
             return {
                 heroSpeedRolls: newRolls,
-                pendingInteraction: undefined,
-                logs: [...state.logs, { round: state.round, message: `Re-rolled die ${index + 1} to ${newRoll}.`, type: 'info' }]
+                rerollState: undefined, // Clear reroll state after use? Plan said "max 1 reroll per die" implies we might keep state open? 
+                // Wait, "Every die can only be rerolled once".
+                // "The whole pendingInteraction handling is complicated, we need something easier".
+                // If I clear rerollState, the user can only reroll ONE die total.
+                // Text says "Re-roll one of your hero's dice". ONE. Singular.
+                // So yes, clear state.
+                logs: [...state.logs, { round: state.round, message: `Re-rolled die ${index + 1} to ${newRollVal}.`, type: 'info' }]
             };
-        } else if (state.pendingInteraction?.target === 'damage' && state.damageRolls) {
-            const newRoll = Math.floor(Math.random() * 6) + 1;
+        } else if (state.rerollState?.target === 'damage' && state.damageRolls) {
+            const currentRoll = state.damageRolls[index];
+            if (currentRoll.isRerolled) return {};
+
+            const newRollVal = Math.floor(Math.random() * 6) + 1;
             const newRolls = [...state.damageRolls];
-            newRolls[index] = newRoll;
+            newRolls[index] = { value: newRollVal, isRerolled: true };
+
             return {
                 damageRolls: newRolls,
-                pendingInteraction: undefined,
-                logs: [...state.logs, { round: state.round, message: `Re-rolled damage die to ${newRoll}.`, type: 'info' }]
+                rerollState: undefined,
+                logs: [...state.logs, { round: state.round, message: `Re-rolled damage die to ${newRollVal}.`, type: 'info' }]
             };
         }
         return {};
@@ -216,7 +228,7 @@ registerAbility({
         if (state.phase === 'damage-roll' && state.winner === 'enemy') {
             return {
                 phase: 'round-end',
-                damageRolls: [0], // No damage
+                damageRolls: [{ value: 0, isRerolled: false }], // No damage
                 logs: [...state.logs, { round: state.round, message: "Used ability: Parry. Opponent's attack blocked!", type: 'info' }]
             };
         }
