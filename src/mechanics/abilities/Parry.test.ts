@@ -38,7 +38,10 @@ describe('Parry', () => {
             equipment: {
                 mainHand: {
                     name: 'Parrying Dagger',
-                    abilities: ['Parry']
+                    abilities: ['Parry'],
+                    id: 'parry-dagger',
+                    type: 'mainHand',
+                    act: 1
                 }
             }
         };

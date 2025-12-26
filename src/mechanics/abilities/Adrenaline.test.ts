@@ -11,13 +11,9 @@ describe('Adrenaline', () => {
         const state = { ...INITIAL_STATE, logs: [] };
         const result = adrenaline?.onActivate?.(state);
 
-        expect(result?.modifiers).toHaveLength(1);
-        expect(result?.modifiers![0]).toMatchObject({
-            name: 'Adrenaline',
-            type: 'speed-bonus',
-            value: 2,
-            duration: 2
-        });
+        expect(result?.modifications).toHaveLength(1);
+        expect(result?.modifications![0].modification.stats.speed).toBe(2);
+        expect(result?.modifications![0].duration).toBe(2);
     });
 
     it('should apply Adrenaline speed ability via hook (+2 speed for 2 rounds)', () => {
@@ -26,7 +22,10 @@ describe('Adrenaline', () => {
             equipment: {
                 gloves: {
                     name: 'Adrenaline Gloves',
-                    abilities: ['Adrenaline']
+                    abilities: ['Adrenaline'],
+                    id: 'adr-gloves',
+                    type: 'gloves',
+                    act: 1
                 }
             }
         };
@@ -38,9 +37,9 @@ describe('Adrenaline', () => {
         // Activate Ability
         act(() => result.current.activateAbility('Adrenaline'));
 
-        expect(result.current.combat.modifiers).toHaveLength(1);
-        expect(result.current.combat.modifiers[0].value).toBe(2);
-        expect(result.current.combat.modifiers[0].duration).toBe(2);
+        expect(result.current.combat.modifications).toHaveLength(1);
+        expect(result.current.combat.modifications[0].modification.stats.speed).toBe(2);
+        expect(result.current.combat.modifications[0].duration).toBe(2);
 
         // Round 1
         // Speed: 0 (base) + 2 (mod) + 3 (roll) = 5
@@ -59,7 +58,7 @@ describe('Adrenaline', () => {
         // Round 2 (Duration should decrease)
         act(() => result.current.nextRound());
 
-        expect(result.current.combat.modifiers[0].duration).toBe(1);
+        expect(result.current.combat.modifications[0].duration).toBe(1);
 
         // Speed check again
         act(() => {
@@ -73,7 +72,7 @@ describe('Adrenaline', () => {
         // Round 3 (Duration should expire)
         act(() => result.current.nextRound());
 
-        expect(result.current.combat.modifiers).toHaveLength(0);
+        expect(result.current.combat.modifications).toHaveLength(0);
 
         // Speed check - modifier gone
         // Speed: 0 (base) + 2 (roll) = 2

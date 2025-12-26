@@ -1,17 +1,13 @@
+import { Stats } from './stats';
 import { Hero } from './hero';
+import { StatsModification } from './stats';
 
-export interface Enemy {
+
+export interface Enemy extends Stats {
     name: string;
-    speed: number;
-    brawn: number;
-    magic: number;
-    armour: number;
-    health: number;
-    maxHealth: number;
-    speedDice?: number; // Default 2
-    damageDice?: number; // Default 1
     abilities: string[]; // Placeholder for special rules
 }
+
 
 export interface CombatLog {
     round: number;
@@ -59,7 +55,7 @@ export interface CombatState {
     winner: 'hero' | 'enemy' | null; // Winner of the current speed round
     damageRolls?: DiceRoll[];
     activeAbilities: ActiveAbility[];
-    modifiers: CombatModifier[];
+    modifications: { modification: StatsModification, duration: number, id: string }[];
     logs: CombatLog[];
     additionalEnemyDamage?: AdditionalDamageDescriptor[];
     rerollState?: {

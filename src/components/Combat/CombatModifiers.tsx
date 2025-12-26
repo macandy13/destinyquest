@@ -1,21 +1,31 @@
 import React from 'react';
-import { CombatModifier } from '../../types/combat';
+import { StatsModification } from '../../types/stats';
 import './CombatModifiers.css';
 
-interface CombatModifiersProps {
-    modifiers: CombatModifier[];
+// Helper to format modification text
+const formatMod = (mod: StatsModification) => {
+    const parts = [];
+    if (mod.stats.speed) parts.push(`Speed ${mod.stats.speed > 0 ? '+' : ''}${mod.stats.speed}`);
+    if (mod.stats.damageModifier) parts.push(`Dmg ${mod.stats.damageModifier > 0 ? '+' : ''}${mod.stats.damageModifier}`);
+    if (mod.stats.armour) parts.push(`Armour ${mod.stats.armour > 0 ? '+' : ''}${mod.stats.armour}`);
+    // Add others as needed
+    return parts.join(', ');
 }
 
-const CombatModifiers: React.FC<CombatModifiersProps> = ({ modifiers }) => {
-    if (modifiers.length === 0) return null;
+interface CombatModifiersProps {
+    modifications: { modification: StatsModification, duration: number, id: string }[];
+}
+
+const CombatModifiers: React.FC<CombatModifiersProps> = ({ modifications }) => {
+    if (!modifications || modifications.length === 0) return null;
 
     return (
         <div className="combat-modifiers">
             <h4 className="modifiers-title">Active Effects</h4>
             <div className="modifiers-list">
-                {modifiers.map((mod, i) => (
-                    <div key={i} className="modifier-item">
-                        {mod.name}: +{mod.value} {mod.type.split('-')[0]} ({mod.duration} rounds left)
+                {modifications.map((item, i) => (
+                    <div key={item.id || i} className="modifier-item">
+                        {item.modification.source}: {formatMod(item.modification)} ({item.duration} rounds left)
                     </div>
                 ))}
             </div>

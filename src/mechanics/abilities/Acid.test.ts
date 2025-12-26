@@ -19,7 +19,10 @@ describe('Acid', () => {
             equipment: {
                 gloves: {
                     name: 'Acid Gloves',
-                    abilities: ['Acid']
+                    abilities: ['Acid'],
+                    id: 'acid-gloves',
+                    type: 'gloves',
+                    act: 1
                 }
             }
         };

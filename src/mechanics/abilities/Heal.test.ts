@@ -52,7 +52,10 @@ describe('Heal', () => {
             equipment: {
                 accessory: {
                     name: 'Healing Potion',
-                    abilities: ['Heal']
+                    abilities: ['Heal'],
+                    id: 'heal-potion',
+                    type: 'accessory',
+                    act: 1
                 }
             }
         };

@@ -9,12 +9,8 @@ describe('Quicksilver', () => {
         const state = { ...INITIAL_STATE, logs: [] };
         const result = quicksilver?.onActivate?.(state);
 
-        expect(result?.modifiers).toHaveLength(1);
-        expect(result?.modifiers![0]).toMatchObject({
-            name: 'Quicksilver',
-            type: 'speed-bonus',
-            value: 2,
-            duration: 1
-        });
+        expect(result?.modifications).toHaveLength(1);
+        expect(result?.modifications![0].modification.stats.speed).toBe(2);
+        expect(result?.modifications![0].duration).toBe(1);
     });
 });

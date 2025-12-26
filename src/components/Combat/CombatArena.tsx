@@ -7,6 +7,7 @@ import CombatantCard from './CombatantCard';
 import CombatAbilitySelector from './CombatAbilitySelector';
 import CombatModifiers from './CombatModifiers';
 import EnemySelector from './EnemySelector';
+import { calculateEffectiveStats } from '../../utils/stats';
 import './CombatArena.css';
 
 interface CombatArenaProps {
@@ -94,7 +95,7 @@ const CombatArena: React.FC<CombatArenaProps> = ({ hero }) => {
                     />
                 </div>
 
-                <CombatModifiers modifiers={combat.modifiers} />
+                <CombatModifiers modifications={combat.modifications} />
             </div>
 
             <div className="arena-center">
@@ -107,7 +108,12 @@ const CombatArena: React.FC<CombatArenaProps> = ({ hero }) => {
                                 onDieClick={combat.rerollState?.target === 'hero-speed' ? (i) => handleReroll(i) : undefined}
                                 mode={combat.rerollState?.target === 'hero-speed' ? 'select-die' : (combat.rerollState ? 'disabled' : 'normal')}
                                 baseValue={hero.stats.speed}
-                                modifierValue={combat.modifiers.filter(m => m.type === 'speed-bonus').reduce((sum, m) => sum + m.value, 0)}
+                                modifierValue={
+                                    calculateEffectiveStats(
+                                        hero.stats,
+                                        combat.modifications.filter(m => m.modification.target === 'hero').map(m => m.modification)
+                                    ).speed - hero.stats.speed
+                                }
                             />
                         </div>
 
@@ -138,7 +144,12 @@ const CombatArena: React.FC<CombatArenaProps> = ({ hero }) => {
                                     onDieClick={combat.rerollState?.target === 'damage' ? (i) => handleReroll(i) : undefined}
                                     mode={combat.rerollState?.target === 'damage' ? 'select-die' : (combat.rerollState ? 'disabled' : 'normal')}
                                     baseValue={Math.max(hero.stats.brawn, hero.stats.magic)}
-                                    modifierValue={combat.modifiers.filter(m => m.type === 'damage-bonus').reduce((sum, m) => sum + m.value, 0)}
+                                    modifierValue={
+                                        calculateEffectiveStats(
+                                            hero.stats,
+                                            combat.modifications.filter(m => m.modification.target === 'hero').map(m => m.modification)
+                                        ).damageModifier ?? 0
+                                    }
                                 />
                             </div>
                         )}

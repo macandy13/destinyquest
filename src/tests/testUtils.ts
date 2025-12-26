@@ -33,7 +33,7 @@ export const INITIAL_STATE: CombatState = {
     damageRolls: undefined,
     winner: null,
     activeAbilities: [],
-    modifiers: [],
+    modifications: [],
     logs: []
 };
 

@@ -1,17 +1,8 @@
-export interface HeroStats {
-    speed: number;
-    brawn: number;
-    magic: number;
-    armour: number;
-    health: number;
-    maxHealth: number;
-    speedDice?: number; // Default 2
-    damageDice?: number; // Default 1
-}
+import { Stats } from './stats';
+
+export interface HeroStats extends Stats { }
 
 export type EquipmentSlot =
-    | 'head' | 'cloak' | 'chest' | 'gloves'
-    | 'mainHand' | 'leftHand' | 'talisman'
     | 'head' | 'cloak' | 'chest' | 'gloves'
     | 'mainHand' | 'leftHand' | 'talisman'
     | 'feet' | 'necklace' | 'ring1' | 'ring2';

@@ -30,7 +30,10 @@ describe('Barbs', () => {
             equipment: {
                 gloves: {
                     name: 'Barbed Bracers',
-                    abilities: ['Barbs']
+                    abilities: ['Barbs'],
+                    id: 'barbs-gloves',
+                    type: 'gloves',
+                    act: 1
                 }
             }
         };

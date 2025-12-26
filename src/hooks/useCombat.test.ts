@@ -80,12 +80,14 @@ describe('useCombat Hook', () => {
             type: 'modifier' as const,
             description: 'Adds +3 damage',
             onActivate: (state: any) => ({
-                modifiers: [...state.modifiers, {
-                    name: 'Mock Buff',
-                    source: 'Mock Damage Buff',
-                    type: 'damage-bonus',
-                    value: 3,
-                    duration: 2
+                modifications: [...state.modifications, {
+                    modification: {
+                        stats: { damageModifier: 3 },
+                        source: 'Mock Buff',
+                        target: 'hero'
+                    },
+                    duration: 2,
+                    id: 'mock-buff-id'
                 }],
                 logs: [...state.logs, { round: state.round, message: 'Used Mock Buff', type: 'info' }]
             })
@@ -105,8 +107,8 @@ describe('useCombat Hook', () => {
         act(() => resultWithAbility.current.activateAbility('Mock Damage Buff'));
 
         // Verify modifier is present
-        expect(resultWithAbility.current.combat.modifiers).toHaveLength(1);
-        expect(resultWithAbility.current.combat.modifiers[0].type).toBe('damage-bonus');
+        expect(resultWithAbility.current.combat.modifications).toHaveLength(1);
+        expect(resultWithAbility.current.combat.modifications[0].modification.stats.damageModifier).toBe(3);
 
         // Go to damage phase
         act(() => resultWithAbility.current.nextRound()); // speed phase
@@ -134,12 +136,14 @@ describe('useCombat Hook', () => {
             type: 'modifier' as const,
             description: 'Adds +1 speed die',
             onActivate: (state: any) => ({
-                modifiers: [...state.modifiers, {
-                    name: 'Mock Dice',
-                    source: 'Mock Dice Buff',
-                    type: 'speed-dice',
-                    value: 1,
-                    duration: 2
+                modifications: [...state.modifications, {
+                    modification: {
+                        stats: { speedDice: 1 },
+                        source: 'Mock Dice',
+                        target: 'hero'
+                    },
+                    duration: 2,
+                    id: 'mock-dice-id'
                 }]
             })
         };

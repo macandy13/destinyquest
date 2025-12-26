@@ -5,15 +5,18 @@ registerAbility({
     type: 'speed',
     description: 'Increase speed by 2 for one round.',
     onActivate: (state) => {
-        const newModifiers = [...state.modifiers, {
-            name: 'Quicksilver',
-            source: 'Quicksilver',
-            type: 'speed-bonus' as const,
-            value: 2,
-            duration: 1
-        }];
+        const newMod = {
+            modification: {
+                stats: { speed: 2 },
+                source: 'Quicksilver',
+                target: 'hero' as const
+            },
+            duration: 1,
+            id: `quicksilver-${state.round}`
+        };
+        const newModifications = [...state.modifications, newMod];
         return {
-            modifiers: newModifiers,
+            modifications: newModifications,
             logs: [...state.logs, { round: state.round, message: 'Used ability: Quicksilver', type: 'info' }]
         };
     }

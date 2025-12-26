@@ -1,9 +1,10 @@
 import { useState, useCallback } from 'react';
 import { CombatState, Enemy, CombatLog, ActiveAbility, DiceRoll } from '../types/combat';
 import { sumDice, rollDice } from '../utils/dice';
-import { Hero } from '../types/hero';
+import { Hero, HeroStats } from '../types/hero';
 import { getAbilityDefinition } from '../mechanics/abilityRegistry';
 import '../mechanics/abilities';
+import { calculateEffectiveStatsForType } from '../utils/stats';
 
 const INITIAL_STATE: CombatState = {
     round: 0,
@@ -12,7 +13,7 @@ const INITIAL_STATE: CombatState = {
     hero: null,
     winner: null,
     activeAbilities: [],
-    modifiers: [],
+    modifications: [],
     logs: []
 };
 
@@ -57,18 +58,17 @@ export function useCombat(hero: Hero) {
             hero: { ...hero },
             winner: null,
             activeAbilities: abilities,
-            modifiers: [],
+
+            modifications: [],
             logs: [{ round: 1, message: 'Combat started', type: 'info' }]
         };
     };
 
     const _generateSpeedRolls = (state: CombatState) => {
-        const heroDice = hero.stats.speedDice ?? 2;
-        const speedDiceModifiers = state.modifiers
-            .filter(m => m.type === 'speed-dice')
-            .reduce((sum, m) => sum + m.value, 0);
-        const totalHeroDice = Math.max(1, heroDice + speedDiceModifiers);
-        const enemyDice = state.enemy?.speedDice ?? 2;
+        const { hero, enemy } = _calculateEffectiveStats(state);
+
+        const totalHeroDice = Math.max(1, hero.speedDice ?? 2);
+        const enemyDice = enemy.speedDice ?? 2;
 
         return {
             ...state,
@@ -78,21 +78,29 @@ export function useCombat(hero: Hero) {
         };
     };
 
+    const _calculateEffectiveStats = (state: CombatState): { hero: HeroStats, enemy: Enemy } => {
+        const effectiveHeroStats = calculateEffectiveStatsForType(state.hero!.stats, state.modifications.map(m => m.modification), 'hero') as HeroStats;
+        const effectiveEnemyStats = calculateEffectiveStatsForType(state.enemy!, state.modifications.map(m => m.modification), 'enemy') as Enemy;
+        return { hero: effectiveHeroStats, enemy: effectiveEnemyStats };
+    };
+
     const _calculateWinner = (state: CombatState): CombatState => {
         if (!state.enemy) return state;
 
         const heroRoll = sumDice(state.heroSpeedRolls || []);
         const enemyRoll = sumDice(state.enemySpeedRolls || []);
 
-        const speedModifiers = state.modifiers
-            .filter(m => m.type === 'speed-bonus')
-            .reduce((sum, m) => sum + m.value, 0);
+        const { hero: effectiveHeroStats, enemy: effectiveEnemyStats } = _calculateEffectiveStats(state);
 
-        const heroTotal = heroRoll + hero.stats.speed + speedModifiers;
-        const enemyTotal = enemyRoll + state.enemy.speed;
+        const heroTotal = heroRoll + effectiveHeroStats.speed;
+        const enemyTotal = enemyRoll + effectiveEnemyStats.speed;
         let winner: 'hero' | 'enemy' | null = null;
 
-        let modText = speedModifiers > 0 ? ` (+${speedModifiers} mod)` : '';
+        let modText = '';
+        if (effectiveHeroStats.speed !== hero.stats.speed) {
+            const diff = effectiveHeroStats.speed - hero.stats.speed;
+            modText += diff > 0 ? ` (+${diff} mod)` : ` (${diff} mod)`;
+        }
         let message = `Speed: Hero ${heroTotal}${modText} vs Enemy ${enemyTotal}. `;
 
         if (heroTotal > enemyTotal) {
@@ -113,9 +121,11 @@ export function useCombat(hero: Hero) {
     };
 
     const _generateDamageRolls = (state: CombatState): CombatState => {
+        const { hero: effectiveHeroStats, enemy: effectiveEnemyStats } = _calculateEffectiveStats(state);
+
         const diceCount = state.winner === 'hero'
-            ? (state.hero?.stats.damageDice ?? 1)
-            : (state.enemy?.damageDice ?? 1);
+            ? (effectiveHeroStats.damageDice ?? 1)
+            : (effectiveEnemyStats?.damageDice ?? 1);
         const rolls = rollDice(diceCount);
         return {
             ...state,
@@ -140,17 +150,20 @@ export function useCombat(hero: Hero) {
 
         const rollTotal = sumDice(rolls);
         const logs: CombatLog[] = [];
+
+        // Calculate effective stats for damage phase
+        const { hero: effectiveHeroStats, enemy: effectiveEnemyStats } = _calculateEffectiveStats(state);
+
         if (state.winner === 'hero') {
-            const skill = Math.max(hero.stats.brawn, hero.stats.magic);
-            const damageModifiers = state.modifiers
-                .filter(m => m.type === 'damage-bonus')
-                .reduce((sum, m) => sum + m.value, 0);
-            const rawDamage = rollTotal + skill + modifiersFromHooks + damageModifiers;
+            const skill = Math.max(effectiveHeroStats.brawn, effectiveHeroStats.magic);
+            // damageModifier is handled in effectiveStats now
+            const damageModifiers = effectiveHeroStats.damageModifier ?? 0;
 
             state.activeAbilities.forEach(ability => {
                 const def = getAbilityDefinition(ability.name);
                 if (def && def.onDamageCalculate) {
-                    const mod = def.onDamageCalculate(state, { total: rawDamage, rolls });
+                    const currentTotal = rollTotal + skill + modifiersFromHooks + damageModifiers;
+                    const mod = def.onDamageCalculate(state, { total: currentTotal, rolls });
                     if (mod !== 0) {
                         modifiersFromHooks += mod;
                         hookLogMsg += ` (+${mod} ${ability.name})`;
@@ -158,8 +171,10 @@ export function useCombat(hero: Hero) {
                 }
             });
 
-            const totalDamage = rawDamage + modifiersFromHooks;
-            const actualDamage = Math.max(0, totalDamage - currentEnemy.armour);
+            // Calculate total raw damage after all hooks
+            const totalDamage = rollTotal + skill + modifiersFromHooks + damageModifiers;
+
+            const actualDamage = Math.max(0, totalDamage - effectiveEnemyStats.armour);
             newEnemyHealth = Math.max(0, currentEnemy.health - actualDamage);
             currentEnemy.health = newEnemyHealth;
 
@@ -169,15 +184,15 @@ export function useCombat(hero: Hero) {
                 type: 'damage-enemy'
             });
         } else {
-            const skill = Math.max(currentEnemy.brawn, currentEnemy.magic);
-            const rawDamage = rollTotal + skill;
-            const actualDamage = Math.max(0, rawDamage - currentHero.stats.armour);
+            const skill = Math.max(effectiveEnemyStats.brawn, effectiveEnemyStats.magic);
+            const rawDamage = rollTotal + skill + (effectiveEnemyStats.damageModifier ?? 0);
+            const actualDamage = Math.max(0, rawDamage - effectiveHeroStats.armour);
             newHeroHealth = Math.max(0, currentHero.stats.health - actualDamage);
             currentHero.stats.health = newHeroHealth;
 
             logs.push({
                 round: state.round,
-                message: `Enemy hits for 💔 ${rawDamage}: Rolled ${rollTotal}, Skill ${skill}. Hero armour absorbs ${currentHero.stats.armour}.`,
+                message: `Enemy hits for 💔 ${rawDamage}: Rolled ${rollTotal}, Skill ${skill}. Hero armour absorbs ${effectiveHeroStats.armour}.`,
                 type: 'damage-hero'
             });
         }
@@ -259,7 +274,8 @@ export function useCombat(hero: Hero) {
 
     const _startNewRound = (state: CombatState): CombatState => {
         // 1. Decrement modifiers
-        const activeModifiers = state.modifiers
+        // 1. Decrement modifiers
+        const activeModifications = state.modifications
             .map(m => { return { ...m, duration: m.duration - 1 }; })
             .filter(m => m.duration > 0);
 
@@ -268,7 +284,7 @@ export function useCombat(hero: Hero) {
             ...state,
             round: state.round + 1,
             phase: 'speed-roll',
-            modifiers: activeModifiers,
+            modifications: activeModifications,
             rerollState: undefined,
             heroSpeedRolls: undefined,
             enemySpeedRolls: undefined,
