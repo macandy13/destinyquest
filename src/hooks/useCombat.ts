@@ -1,5 +1,5 @@
 import { useState, useCallback } from 'react';
-import { CombatState, Enemy, CombatLog, ActiveAbility, DiceRoll } from '../types/combat';
+import { CombatState, Enemy, CombatLog, ActiveAbility, DiceRoll, CombatPhase } from '../types/combat';
 import { sumDice, rollDice } from '../utils/dice';
 import { Hero, HeroStats } from '../types/hero';
 import { getAbilityDefinition } from '../mechanics/abilityRegistry';
@@ -207,7 +207,7 @@ export function useCombat(hero: Hero) {
         };
     };
 
-    const _processEndOfRoundDamage = (state: CombatState) => {
+    const _processEndOfRoundDamage = (state: CombatState): CombatState => {
         if (!state.hero || !state.enemy) return state;
 
         state.activeAbilities.forEach(ability => {
@@ -227,7 +227,7 @@ export function useCombat(hero: Hero) {
         });
 
         const isFinished = state.hero!.stats.health <= 0 || state.enemy!.health <= 0;
-        const nextPhase = isFinished ? 'combat-end' : 'round-end';
+        const nextPhase: CombatPhase = isFinished ? 'combat-end' : 'round-end';
 
         let logs = state.logs;
         if (state.hero!.stats.health <= 0) logs.push({ round: state.round, message: 'Hero Defeated!', type: 'loss' });

@@ -3,6 +3,7 @@ import { useCombat } from './useCombat';
 import { describe, it, expect } from 'vitest';
 import { registerAbility } from '../mechanics/abilityRegistry';
 import { MOCK_HERO, heroWithStats } from '../tests/testUtils';
+import { Hero } from '../types/hero';
 
 describe('useCombat Hook', () => {
     it('should initialize in inactive state', () => {
@@ -94,10 +95,16 @@ describe('useCombat Hook', () => {
         };
         registerAbility(MockAbilityDef);
 
-        const HERO_WITH_ABILITY = {
+        const HERO_WITH_ABILITY: Hero = {
             ...DAMAGE_MOD_HERO,
             equipment: {
-                trinket: { name: 'Buff Charm', abilities: ['Mock Damage Buff'] }
+                talisman: {
+                    id: 'buff-charm',
+                    type: 'talisman',
+                    act: 1,
+                    name: 'Buff Charm',
+                    abilities: ['Mock Damage Buff']
+                }
             }
         };
 
@@ -150,10 +157,16 @@ describe('useCombat Hook', () => {
 
         registerAbility(MockDiceAbilityDef);
 
-        const HERO_WITH_DICE = {
+        const HERO_WITH_DICE: Hero = {
             ...MOCK_HERO,
             equipment: {
-                trinket: { name: 'Dice Charm', abilities: ['Mock Dice Buff'] }
+                ring1: {
+                    id: 'dice-charm',
+                    type: 'ring',
+                    act: 1,
+                    name: 'Dice Charm',
+                    abilities: ['Mock Dice Buff']
+                }
             }
         };
 
