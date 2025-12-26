@@ -34,8 +34,8 @@ const EquipmentSelector: React.FC<EquipmentSelectorProps> = ({ slot, onSelect, o
                     <div className="header-row-search">
                         <input
                             type="text"
-                            className="search-input"
-                            placeholder="Search..."
+                            className="dq-input"
+                            placeholder="Search items..."
                             value={searchTerm}
                             onChange={e => setSearchTerm(e.target.value)}
                             autoFocus

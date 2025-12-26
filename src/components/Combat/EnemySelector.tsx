@@ -87,7 +87,7 @@ const EnemySelector: React.FC<EnemySelectorProps> = ({ onSelect }) => {
                     <div className="header-row-search">
                         <input
                             type="text"
-                            className="search-input"
+                            className="dq-input"
                             placeholder="Search enemy..."
                             value={searchTerm}
                             onChange={e => setSearchTerm(e.target.value)}
@@ -152,6 +152,7 @@ const EnemySelector: React.FC<EnemySelectorProps> = ({ onSelect }) => {
                                 <span className="stat-label">Name</span>
                                 <input
                                     type="text"
+                                    className="dq-input"
                                     value={customEnemy.name}
                                     onChange={e => handleCustomChange('name', e.target.value)}
                                 />

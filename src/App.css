@@ -113,7 +113,7 @@
     gap: var(--spacing-sm);
 }
 
-.search-input {
+.dq-input {
     flex: 1;
     padding: 8px;
     background: var(--dq-black);
@@ -125,7 +125,7 @@
     /* margins handled by gap in parent */
 }
 
-.search-input:focus {
+.dq-input:focus {
     border-color: var(--dq-gold);
 }
 
