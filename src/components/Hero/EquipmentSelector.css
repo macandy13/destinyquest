@@ -165,11 +165,11 @@
 
 .unequip-card {
     border: 1px dashed var(--dq-crimson);
-    background: rgba(138, 28, 28, 0.1);
+    background: rgba(227, 52, 47, 0.1);
 }
 
 .unequip-card:hover {
-    background: rgba(138, 28, 28, 0.2);
+    background: rgba(227, 52, 47, 0.2);
     border-color: #ff4d4d;
 }
 
