@@ -14,6 +14,11 @@ registerAbility({
                     round: state.round,
                     message: 'Barbs inflicts 1 damage.',
                     type: 'damage-enemy'
+                }],
+                additionalEnemyDamage: [...state.additionalEnemyDamage ?? [], {
+                    type: 'damage-enemy',
+                    amount: 1,
+                    source: 'Barbs'
                 }]
             };
         }

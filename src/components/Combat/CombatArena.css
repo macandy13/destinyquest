@@ -57,20 +57,24 @@
 }
 
 /* Mini dice for non-focus phases */
-.speed-rolls-mini {
+.rolls-mini {
     transform: scale(0.8);
     opacity: 0.8;
 }
 
-.speed-rolls-mini .dice-label,
-.speed-rolls-mini .text-dim {
+.rolls-mini .dice-label,
+.rolls-mini .text-dim {
     visibility: hidden;
     /* Reserve space to prevent layout jump */
     opacity: 0;
     transition: opacity 0.3s;
 }
 
-/* Refactored inline styles */
+.phase-control {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-md);
+}
 
 .phase-instruction {
     text-align: center;

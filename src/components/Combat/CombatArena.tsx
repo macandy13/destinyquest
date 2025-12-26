@@ -98,36 +98,31 @@ const CombatArena: React.FC<CombatArenaProps> = ({ hero }) => {
             </div>
 
             <div className="arena-center">
-                {/* SPEED PHASE: Dual Dice Display */}
-                {/* Only show if we have rolls and not in start phase */}
-                <div className={`speed-rolls-container speed-rolls ${combat.phase !== 'speed-roll' ? 'speed-rolls-mini' : ''}`}
-                    style={{
-                        display: showSpeedDice ? 'flex' : 'none'
-                    }}>
-                    <div className="hero-dice">
-                        <CombatDice
-                            label="Hero Speed"
-                            values={combat.heroSpeedRolls} // Persist if exists
-                            onDieClick={combat.rerollState?.target === 'hero-speed' ? (i) => handleReroll(i) : undefined}
-                            mode={combat.rerollState?.target === 'hero-speed' ? 'select-die' : (combat.rerollState ? 'disabled' : 'normal')}
-                            baseValue={hero.stats.speed}
-                            modifierValue={combat.modifiers.filter(m => m.type === 'speed-bonus').reduce((sum, m) => sum + m.value, 0)}
-                        />
-                    </div>
+                {showSpeedDice &&
+                    <div className={`speed-rolls-container speed-rolls ${combat.phase !== 'speed-roll' ? 'rolls-mini' : ''}`}>
+                        <div className="hero-dice">
+                            <CombatDice
+                                label="Hero Speed"
+                                values={combat.heroSpeedRolls} // Persist if exists
+                                onDieClick={combat.rerollState?.target === 'hero-speed' ? (i) => handleReroll(i) : undefined}
+                                mode={combat.rerollState?.target === 'hero-speed' ? 'select-die' : (combat.rerollState ? 'disabled' : 'normal')}
+                                baseValue={hero.stats.speed}
+                                modifierValue={combat.modifiers.filter(m => m.type === 'speed-bonus').reduce((sum, m) => sum + m.value, 0)}
+                            />
+                        </div>
 
-                    <div className="enemy-dice">
-                        <CombatDice
-                            label="Enemy Speed"
-                            values={combat.enemySpeedRolls}
-                            baseValue={combat.enemy.speed}
-                            mode={combat.rerollState ? 'disabled' : 'normal'}
-                        />
-                    </div>
-                </div>
+                        <div className="enemy-dice">
+                            <CombatDice
+                                label="Enemy Speed"
+                                values={combat.enemySpeedRolls}
+                                baseValue={combat.enemy.speed}
+                                mode={combat.rerollState ? 'disabled' : 'normal'}
+                            />
+                        </div>
+                    </div>}
 
-                {/* DAMAGE PHASE: Single Die Display */}
                 {showDamageSection && (
-                    <div className="damage-roll-container damage-section">
+                    <div className={`damage-roll-container damage-section ${combat.phase !== 'damage-roll' ? 'rolls-mini' : ''}`}>
                         <div className="damage-title">
                             {combat.phase === 'damage-roll'
                                 ? (combat.winner === 'hero' ? '💥 ROLL FOR DAMAGE!' : '🛡️ BRACE FOR IMPACT!')
@@ -161,42 +156,60 @@ const CombatArena: React.FC<CombatArenaProps> = ({ hero }) => {
                     </div>
                 )}
 
-                {/* Phase Instruction */}
-                <div className="phase-instruction">
-                    {getPhaseInstruction()}
-                </div>
-
-                {/* Speed or Damage Result Confirmation / Proceed Button */}
-                {combat.phase === 'speed-roll' && combat.heroSpeedRolls && (
-                    <div className="speed-confirm-container">
-                        {
-                            combat.winner ?
-                                <button className="btn btn-primary" onClick={commitSpeedResult}>
-                                    Procced to Damage Roll
-                                </button> :
-                                <button className="btn btn-primary" onClick={nextRound}>
-                                    End Round (Draw)
-                                </button>
-                        }
+                {combat.phase === 'round-end' && (
+                    <div className="round-end-container damage-section">
+                        <div className="round-end-content">
+                            <div className="round-end-text">
+                                {combat.additionalEnemyDamage && (
+                                    combat.additionalEnemyDamage.map(d =>
+                                        <div className="additional-damage">
+                                            Bonus: +{d.amount} {d.source}
+                                        </div>)
+                                )}
+                            </div>
+                        </div>
                     </div>
                 )}
-                {combat.phase === 'damage-roll' && showDamageConfirm && (
-                    <div className="damage-confirm-container">
+
+                <div className="phase-control">
+                    <div className="phase-instruction">
+                        {getPhaseInstruction()}
+                    </div>
+
+                    {(combat.phase === 'combat-start') && (
+                        <button className="btn btn-primary" onClick={generateSpeedRolls}>
+                            Fight!
+                        </button>
+                    )}
+
+                    {/* Speed or Damage Result Confirmation / Proceed Button */}
+                    {combat.phase === 'speed-roll' && combat.heroSpeedRolls && (
+                        combat.winner ?
+                            <button className="btn btn-primary" onClick={commitSpeedResult}>
+                                Procced to Damage Roll
+                            </button> :
+                            <button className="btn btn-primary" onClick={nextRound}>
+                                End Round (Draw)
+                            </button>
+                    )}
+
+                    {combat.phase === 'damage-roll' && showDamageConfirm && (
                         <button className="btn btn-primary" onClick={commitDamageResult}>
                             Confirm Damage & End Round
                         </button>
-                    </div>
-                )}
-                {(combat.phase === 'round-end' || combat.phase === 'combat-start') && (
-                    <button className="btn btn-primary" onClick={combat.phase === 'combat-start' ? generateSpeedRolls : nextRound}>
-                        {combat.phase === 'combat-start' ? 'Fight!' : 'Next Round'}
-                    </button>
-                )}
+                    )}
 
-                <CombatAbilitySelector
-                    combat={combat}
-                    onActivate={activateAbility}
-                />
+                    {(combat.phase === 'round-end') && (
+                        <button className="btn btn-primary" onClick={nextRound}>
+                            Next Round
+                        </button>
+                    )}
+
+                    <CombatAbilitySelector
+                        combat={combat}
+                        onActivate={activateAbility}
+                    />
+                </div>
             </div>
 
             <CombatLog logs={combat.logs} />

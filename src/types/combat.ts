@@ -43,18 +43,25 @@ export interface CombatModifier {
 
 export type CombatPhase = 'combat-start' | 'speed-roll' | 'damage-roll' | 'passive-damage' | 'round-end' | 'combat-end';
 
+export interface AdditionalDamageDescriptor {
+    type: 'damage-hero' | 'damage-enemy';
+    amount: number;
+    source: string;
+}
+
 export interface CombatState {
     round: number;
     phase: CombatPhase;
     enemy: Enemy | null;
     hero: Hero | null;
-    winner: 'hero' | 'enemy' | null; // Winner of the current speed round
     heroSpeedRolls?: DiceRoll[];
     enemySpeedRolls?: DiceRoll[];
+    winner: 'hero' | 'enemy' | null; // Winner of the current speed round
     damageRolls?: DiceRoll[];
     activeAbilities: ActiveAbility[];
     modifiers: CombatModifier[];
     logs: CombatLog[];
+    additionalEnemyDamage?: AdditionalDamageDescriptor[];
     rerollState?: {
         source: string; // Ability name (e.g. 'Charm')
         target: 'hero-speed' | 'damage';
