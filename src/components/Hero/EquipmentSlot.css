@@ -41,7 +41,7 @@
 }
 
 .equipment-name-visible {
-    font-size: var(--font-2xs);
+    font-size: var(--font-sm);
     color: var(--dq-gold);
     text-align: center;
     line-height: 1.2;
@@ -57,7 +57,7 @@
 }
 
 .equipment-stats-display {
-    font-size: var(--font-2xs);
+    font-size: var(--font-sm);
     color: var(--dq-green);
     margin-top: var(--spacing-2xs);
     text-align: center;
@@ -68,7 +68,7 @@
 }
 
 .equipment-abilities-display {
-    font-size: var(--font-2xs);
+    font-size: var(--font-sm);
     color: var(--dq-green);
     margin-top: var(--spacing-2xs);
     text-align: center;
