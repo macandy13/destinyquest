@@ -109,10 +109,9 @@ const CombatArena: React.FC<CombatArenaProps> = ({ hero }) => {
                     }}>
                     <div className="hero-dice">
                         <CombatDice
-                            label="Your Speed"
+                            label="Hero Speed"
                             count={2}
                             values={combat.heroSpeedRolls} // Persist if exists
-                            onRoll={undefined} // Fully automated now, no manual roll
                             onDieClick={combat.pendingInteraction?.target === 'hero-speed' ? (i) => handleReroll(i) : undefined}
                             result={combat.heroSpeedRolls ? combat.heroSpeedRolls.reduce((a, b) => a + b, 0) + hero.stats.speed : undefined}
                         />
@@ -152,10 +151,9 @@ const CombatArena: React.FC<CombatArenaProps> = ({ hero }) => {
                         {combat.winner === 'hero' && (
                             <div className="damage-dice-container">
                                 <CombatDice
-                                    label="Damage (1d6)"
+                                    label="Damage"
                                     count={1}
                                     values={combat.damageRolls} // Show result if exists
-                                    onRoll={undefined}
                                     onDieClick={combat.pendingInteraction?.target === 'damage' ? (i) => handleReroll(i) : undefined}
                                 />
                             </div>
@@ -181,15 +179,6 @@ const CombatArena: React.FC<CombatArenaProps> = ({ hero }) => {
                                 )}
                             </div>
                         )}
-
-                        {/* Confirm Damage Button */}
-                        {showDamageConfirm && (
-                            <div className="damage-confirm-container">
-                                <button className="btn-primary" onClick={commitDamageResult}>
-                                    Confirm Damage & End Round
-                                </button>
-                            </div>
-                        )}
                     </div>
                 )}
 
@@ -203,6 +192,13 @@ const CombatArena: React.FC<CombatArenaProps> = ({ hero }) => {
                     <div className="speed-confirm-container">
                         <button className="btn-primary" onClick={commitSpeedResult}>
                             {combat.winner ? 'Proceed' : 'End Round (Draw)'}
+                        </button>
+                    </div>
+                )}
+                {combat.phase === 'damage-roll' && showDamageConfirm && (
+                    <div className="damage-confirm-container">
+                        <button className="btn-primary" onClick={commitDamageResult}>
+                            Confirm Damage & End Round
                         </button>
                     </div>
                 )}
