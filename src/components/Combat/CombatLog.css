@@ -66,7 +66,7 @@
     overflow-y: auto;
     padding: var(--spacing-sm);
     font-size: 0.8rem;
-    font-family: monospace;
+    /* font-family: monospace; removed to consolidate fonts */
 }
 
 /* Scrollbar styling for log */
