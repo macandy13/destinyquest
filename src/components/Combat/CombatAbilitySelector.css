@@ -5,17 +5,123 @@
     text-align: center;
 }
 
-.ability-selector-title {
-    font-size: 0.75rem;
-    color: var(--dq-dim);
-    margin-bottom: 0.5rem;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
+.ability-list-horizontal {
+    display: flex;
+    overflow-x: auto;
+    padding: 4px;
+    gap: 8px;
+    justify-content: flex-start;
+    /* items start from left */
+    -webkit-overflow-scrolling: touch;
+    /* Hide scrollbar for cleaner look if desired, or keep it */
 }
 
-.ability-list {
+/* Modal Styles */
+.ability-modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.85);
+    z-index: 1000;
     display: flex;
-    flex-wrap: wrap;
-    gap: 0.5rem;
     justify-content: center;
+    align-items: center;
+    padding: 20px;
+    animation: fadeIn 0.2s ease-out;
+}
+
+.ability-modal-content {
+    background: var(--dq-black);
+    border: 1px solid var(--dq-gold);
+    border-radius: var(--radius-md);
+    padding: 20px;
+    width: 100%;
+    max-width: 400px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    animation: slideUpFade 0.3s ease-out;
+}
+
+.ability-modal-header {
+    text-align: center;
+    margin-bottom: 16px;
+}
+
+.ability-icon-huge {
+    font-size: 48px;
+    margin-bottom: 8px;
+}
+
+.ability-modal-body {
+    text-align: center;
+    margin-bottom: 24px;
+    color: var(--dq-light-grey);
+}
+
+.ability-modal-description {
+    font-style: italic;
+    line-height: 1.4;
+}
+
+.ability-modal-actions {
+    display: flex;
+    gap: 16px;
+    width: 100%;
+}
+
+.btn-confirm,
+.btn-cancel {
+    flex: 1;
+    padding: 10px;
+    border-radius: 4px;
+    font-weight: bold;
+    border: none;
+    font-size: 0.9rem;
+    transition: all 0.2s;
+}
+
+.btn-confirm {
+    background: var(--dq-gold);
+    color: var(--dq-black);
+}
+
+.btn-confirm:hover {
+    background: var(--dq-gold-dim);
+}
+
+.btn-cancel {
+    background: transparent;
+    border: 1px solid var(--dq-grey);
+    color: var(--dq-light-grey);
+}
+
+.btn-cancel:hover {
+    border-color: var(--dq-light-grey);
+    background: rgba(255, 255, 255, 0.05);
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes slideUpFade {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }

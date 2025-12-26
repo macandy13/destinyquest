@@ -30,6 +30,7 @@ export interface AbilityDefinition extends AbilityHooks {
     name: string;
     description: string;
     type: 'passive' | 'speed' | 'combat' | 'modifier';
+    icon?: string;
 }
 
 export const ABILITY_REGISTRY: Record<string, AbilityDefinition> = {};
@@ -55,7 +56,8 @@ registerAbility({
     onDamageCalculate: (_state, { rolls }) => {
         // Add 1 per die rolled
         return rolls.length;
-    }
+    },
+    icon: '🔥'
 });
 
 registerAbility({
@@ -88,6 +90,7 @@ registerAbility({
     name: 'Charm',
     type: 'modifier',
     description: 'Re-roll one of your hero\'s dice; you must accept the second result.',
+    icon: '🎲',
     canActivate: (state) => {
         // Can reroll speed if rolls exist (allows backtracking if we lost or want to improve before damage)
         if (state.heroSpeedRolls && state.phase !== 'combat-end') return true;
@@ -207,6 +210,7 @@ registerAbility({
     canActivate: (state) => {
         return state.phase === 'damage-roll' && state.winner === 'enemy';
     },
+    icon: '🛡️',
     onActivate: (state) => {
         // Can only be used in damage-roll phase if enemy won
         if (state.phase === 'damage-roll' && state.winner === 'enemy') {
@@ -226,6 +230,7 @@ registerAbility({
     name: 'Heal',
     type: 'modifier',
     description: 'Instantly restore 4 health.',
+    icon: '❤️',
     canActivate: (state) => {
         if (!state.hero) return false;
         return state.hero.stats.health < state.hero.stats.maxHealth;
@@ -241,3 +246,21 @@ registerAbility({
         };
     }
 });
+
+export function getAbilityIcon(definition: AbilityDefinition | undefined): string {
+    if (!definition) return '❓';
+
+    const type = definition.type;
+
+    // Check for explicit icon on the definition
+    if (definition.icon) return definition.icon;
+
+    // Pure type-based defaults
+    switch (type) {
+        case 'speed': return '⚡';
+        case 'combat': return '⚔️';
+        case 'modifier': return '✨';
+        case 'passive': return '👁️';
+        default: return '✨';
+    }
+}
