@@ -16,6 +16,9 @@
     padding: var(--spacing-md);
     border-radius: var(--radius-md);
     border: 1px solid var(--dq-gold-dim);
+    gap: var(--spacing-md);
+    display: flex;
+    flex-direction: column;
 }
 
 .dq-card.combat {
@@ -38,11 +41,10 @@
 
 .btn-primary {
     width: 100%;
-    margin-top: 16px;
-    padding: 12px;
+    padding: var(--spacing-md);
     background: var(--dq-crimson);
     border: none;
-    border-radius: 4px;
+    border-radius: var(--radius-md);
     color: white;
     font-weight: bold;
     text-transform: uppercase;
@@ -52,7 +54,6 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 16px;
 }
 
 .hero-details {
@@ -69,11 +70,12 @@
 }
 
 .equipment-section {
-    margin-top: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-sm);
 }
 
 .equipment-heading {
     font-size: 1rem;
     color: var(--dq-light-grey);
-    margin-bottom: 8px;
 }
