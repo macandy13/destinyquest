@@ -81,6 +81,8 @@ const CombatArena: React.FC<CombatArenaProps> = ({ hero }) => {
                         maxHealth={hero.stats.maxHealth}
                         speed={hero.stats.speed}
                         brawn={hero.stats.brawn}
+                        magic={hero.stats.magic}
+                        armour={hero.stats.armour}
                     />
 
                     {/* VS Separator */}
@@ -93,6 +95,8 @@ const CombatArena: React.FC<CombatArenaProps> = ({ hero }) => {
                         maxHealth={combat.enemy.maxHealth}
                         speed={combat.enemy.speed}
                         brawn={combat.enemy.brawn}
+                        magic={combat.enemy.magic}
+                        armour={combat.enemy.armour}
                         isEnemy={true}
                     />
                 </div>

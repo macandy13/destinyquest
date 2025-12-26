@@ -1,4 +1,5 @@
 import React from 'react';
+import { getStatIcon } from '../../utils/statUtils';
 import './CombatantCard.css';
 
 interface CombatantCardProps {
@@ -7,6 +8,8 @@ interface CombatantCardProps {
     maxHealth: number;
     speed: number;
     brawn: number;
+    magic?: number;
+    armour?: number;
     isEnemy?: boolean;
 }
 
@@ -16,6 +19,8 @@ const CombatantCard: React.FC<CombatantCardProps> = ({
     maxHealth,
     speed,
     brawn,
+    magic = undefined,
+    armour = undefined,
     isEnemy = false
 }) => {
     const healthPct = Math.max(0, Math.min(100, (currentHealth / maxHealth) * 100));
@@ -26,9 +31,12 @@ const CombatantCard: React.FC<CombatantCardProps> = ({
             <div className="health-bar-container">
                 <div className="health-bar" style={{ width: `${healthPct}%` }}></div>
             </div>
+            <div>{currentHealth} / {maxHealth} HP</div>
             <div className="combatant-stats">
-                <div>{currentHealth} / {maxHealth} HP</div>
-                <div>⚡ {speed} 💪 {brawn}</div>
+                <div>{getStatIcon('speed')} {speed}</div>
+                {brawn >= (magic ?? -1) ? <div>{getStatIcon('brawn')} {brawn}</div> : null}
+                {magic && magic > 0 && magic > brawn ? <div>{getStatIcon('magic')} {magic}</div> : null}
+                {armour && armour > 0 ? <div>{getStatIcon('armour')} {armour}</div> : null}
             </div>
         </div>
     );

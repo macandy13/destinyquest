@@ -1,6 +1,7 @@
 import React from 'react';
 import { EquipmentSlot, EquipmentItem } from '../../types/hero';
 import { getItemsBySlot } from '../../data/items';
+import { getStatIcon } from '../../utils/statUtils';
 import './EquipmentSelector.css';
 
 interface EquipmentSelectorProps {
@@ -74,10 +75,10 @@ const EquipmentSelector: React.FC<EquipmentSelectorProps> = ({ slot, onSelect, o
 
                                 {(item.stats || item.abilities) && (
                                     <div className="item-stats">
-                                        {item.stats?.speed ? `⚡ ${item.stats.speed} ` : ''}
-                                        {item.stats?.brawn ? `💪 ${item.stats.brawn} ` : ''}
-                                        {item.stats?.magic ? `✨ ${item.stats.magic} ` : ''}
-                                        {item.stats?.armour ? `🛡️ ${item.stats.armour} ` : ''}
+                                        {item.stats?.speed ? `${getStatIcon('speed')} ${item.stats.speed} ` : ''}
+                                        {item.stats?.brawn ? `${getStatIcon('brawn')} ${item.stats.brawn} ` : ''}
+                                        {item.stats?.magic ? `${getStatIcon('magic')} ${item.stats.magic} ` : ''}
+                                        {item.stats?.armour ? `${getStatIcon('armour')} ${item.stats.armour} ` : ''}
                                         {item.abilities && item.abilities.length > 0 && (
                                             <div className="item-abilities-tag">
                                                 {item.abilities.map(a => `★ ${a}`).join(', ')}

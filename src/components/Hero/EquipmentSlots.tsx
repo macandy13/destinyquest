@@ -1,14 +1,15 @@
 import React from 'react';
-import { Hero, EquipmentSlot } from '../../types/hero';
+import { Hero, EquipmentSlot as EquipmentSlotType } from '../../types/hero';
+import EquipmentSlot from './EquipmentSlot';
 import './EquipmentSlots.css';
 
 interface EquipmentSlotsProps {
   hero: Hero;
-  onSlotClick: (slot: EquipmentSlot) => void;
+  onSlotClick: (slot: EquipmentSlotType) => void;
   onBackpackClick: (index: number) => void;
 }
 
-const SLOT_CONFIG: Array<{ slot: EquipmentSlot; label: string; icon: string }> = [
+const SLOT_CONFIG: Array<{ slot: EquipmentSlotType; label: string; icon: string }> = [
   { slot: 'head', label: 'Head', icon: '⛑️' },
   { slot: 'cloak', label: 'Cloak', icon: '🧥' },
   { slot: 'necklace', label: 'Neck', icon: '📿' },
@@ -35,39 +36,13 @@ const EquipmentSlots: React.FC<EquipmentSlotsProps> = ({ hero, onSlotClick, onBa
         {SLOT_CONFIG.map(({ slot, label, icon }) => {
           const item = hero.equipment[slot];
           return (
-            <div
+            <EquipmentSlot
               key={slot}
-              className={`equipment-slot ${item ? 'equipped' : ''}`}
+              label={label}
+              icon={icon}
+              item={item}
               onClick={() => onSlotClick(slot)}
-            >
-              <span className="slot-icon">{icon}</span>
-              {item ? (
-                <div className="equipment-item-container">
-                  <span className="equipment-name-visible">{item.name}</span>
-                  {item.stats && Object.keys(item.stats).length > 0 && (
-                    <span className="equipment-stats-display">
-                      {Object.entries(item.stats)
-                        .map(([stat, value]) => {
-                          const icon = stat === 'speed' ? '⚡' :
-                            stat === 'brawn' ? '💪' :
-                              stat === 'magic' ? '✨' :
-                                stat === 'armour' ? '🛡️' :
-                                  stat === 'health' ? '❤️' : '';
-                          return `${value > 0 ? '+' : ''}${value} ${icon}`;
-                        })
-                        .join(' ')}
-                    </span>
-                  )}
-                  {item.abilities && item.abilities.length > 0 && (
-                    <span className="equipment-abilities-display">
-                      {item.abilities.map(a => `★ ${a}`).join(', ')}
-                    </span>
-                  )}
-                </div>
-              ) : (
-                <span className="slot-label">{label}</span>
-              )}
-            </div>
+            />
           );
         })}
       </div>
@@ -79,15 +54,14 @@ const EquipmentSlots: React.FC<EquipmentSlotsProps> = ({ hero, onSlotClick, onBa
           {Array.from({ length: BACKPACK_CAPACITY }).map((_, index) => {
             const item = hero.backpack[index];
             return (
-              <div
+              <EquipmentSlot
                 key={`backpack-${index}`}
-                className={`equipment-slot backpack-slot-wrapper ${item ? 'equipped' : ''}`}
+                label={`${index + 1}`}
+                icon="🎒"
+                item={item}
                 onClick={() => onBackpackClick(index)}
-              >
-                <span className="slot-icon">🎒</span>
-                <span className="slot-label">{index + 1}</span>
-                {item && <div className="equipment-name">{item.name}</div>}
-              </div>
+                className="backpack-slot-wrapper"
+              />
             );
           })}
         </div>
