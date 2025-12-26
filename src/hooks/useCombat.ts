@@ -2,7 +2,8 @@ import { useState, useCallback } from 'react';
 import { CombatState, Enemy, CombatLog, ActiveAbility, DiceRoll } from '../types/combat';
 import { sumDice, rollDice } from '../utils/dice';
 import { Hero } from '../types/hero';
-import { getAbilityDefinition } from '../mechanics/abilityDefinitions';
+import { getAbilityDefinition } from '../mechanics/abilityRegistry';
+import '../mechanics/abilities';
 
 const INITIAL_STATE: CombatState = {
     round: 0,

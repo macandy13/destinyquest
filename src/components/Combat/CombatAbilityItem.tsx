@@ -1,6 +1,6 @@
 import React from 'react';
 import { ActiveAbility } from '../../types/combat';
-import { getAbilityDefinition, getAbilityIcon } from '../../mechanics/abilityDefinitions';
+import { getAbilityDefinition, getAbilityIcon } from '../../mechanics/abilityRegistry';
 import './CombatAbilityItem.css';
 
 interface CombatAbilityItemProps {

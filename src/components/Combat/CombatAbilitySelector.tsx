@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { CombatState } from '../../types/combat';
-import { getAbilityDefinition, AbilityDefinition, getAbilityIcon } from '../../mechanics/abilityDefinitions';
+import { getAbilityDefinition, AbilityDefinition, getAbilityIcon } from '../../mechanics/abilityRegistry';
 import CombatAbilityItem from './CombatAbilityItem';
 import './CombatAbilitySelector.css';
 
