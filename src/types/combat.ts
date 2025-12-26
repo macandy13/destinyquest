@@ -8,6 +8,8 @@ export interface Enemy {
     armour: number;
     health: number;
     maxHealth: number;
+    speedDice?: number; // Default 2
+    damageDice?: number; // Default 1
     abilities: string[]; // Placeholder for special rules
 }
 

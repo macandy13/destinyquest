@@ -153,8 +153,13 @@ export function useCombat(hero: Hero) {
             let damageRolls: number[] | undefined = undefined;
 
             if (nextPhase === 'damage-roll') {
-                // Auto-roll damage (1d6 for now, for both hero and enemy)
-                damageRolls = [Math.floor(Math.random() * 6) + 1];
+                // Check where damageDice lives. Hero: stats.damageDice. Enemy: damageDice.
+                const diceCount = prev.winner === 'hero'
+                    ? (prev.hero?.stats.damageDice ?? 1)
+                    : (prev.enemy?.damageDice ?? 1);
+
+                // Auto-roll damage based on dice count
+                damageRolls = new Array(diceCount).fill(0).map(() => Math.floor(Math.random() * 6) + 1);
             }
 
             return {
@@ -167,9 +172,12 @@ export function useCombat(hero: Hero) {
 
     // Helper to generate rolls
     const generateSpeedRolls = () => {
+        const heroDice = hero.stats.speedDice ?? 2;
+        const enemyDice = combat.enemy?.speedDice ?? 2;
+
         return {
-            hero: [Math.floor(Math.random() * 6) + 1, Math.floor(Math.random() * 6) + 1],
-            enemy: [Math.floor(Math.random() * 6) + 1, Math.floor(Math.random() * 6) + 1]
+            hero: new Array(heroDice).fill(0).map(() => Math.floor(Math.random() * 6) + 1),
+            enemy: new Array(enemyDice).fill(0).map(() => Math.floor(Math.random() * 6) + 1)
         };
     };
 

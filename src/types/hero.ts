@@ -5,6 +5,8 @@ export interface HeroStats {
     armour: number;
     health: number;
     maxHealth: number;
+    speedDice?: number; // Default 2
+    damageDice?: number; // Default 1
 }
 
 export type EquipmentSlot =
