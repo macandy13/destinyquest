@@ -36,23 +36,21 @@
     }
 }
 
+/* CSS Update for new layout */
+
 .selector-header {
     padding: var(--spacing-md);
     border-bottom: 1px solid var(--dq-grey);
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.selector-header-inner {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.selector-actions-wrapper {
-    display: flex;
+    flex-direction: column;
     gap: 10px;
+}
+
+.header-row-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
 }
 
 .selector-title {
@@ -69,8 +67,14 @@
     cursor: pointer;
 }
 
-.search-input {
+.header-row-search {
+    display: flex;
+    align-items: center;
     width: 100%;
+}
+
+.search-input {
+    flex: 1;
     padding: 8px;
     background: var(--dq-black);
     border: 1px solid var(--dq-gold-dim);
@@ -78,10 +82,7 @@
     color: var(--dq-light-grey);
     font-size: 1rem;
     outline: none;
-    margin-top: 10px;
-    /* Added from the instruction's orphaned block */
-    margin-bottom: 10px;
-    /* Added from the instruction's orphaned block */
+    /* margins handled by gap in parent */
 }
 
 .search-input:focus {
@@ -160,4 +161,18 @@
 .action-btn-secondary:hover {
     transform: scale(1.1);
     color: #ff4d4d;
+}
+
+.unequip-card {
+    border: 1px dashed var(--dq-crimson);
+    background: rgba(138, 28, 28, 0.1);
+}
+
+.unequip-card:hover {
+    background: rgba(138, 28, 28, 0.2);
+    border-color: #ff4d4d;
+}
+
+.unequip-card .item-name {
+    color: var(--dq-crimson);
 }

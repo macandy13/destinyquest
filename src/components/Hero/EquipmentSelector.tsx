@@ -26,30 +26,40 @@ const EquipmentSelector: React.FC<EquipmentSelectorProps> = ({ slot, onSelect, o
         <div className="equipment-selector-overlay" onClick={onClose}>
             <div className="equipment-selector-modal" onClick={e => e.stopPropagation()}>
                 <div className="selector-header">
-                    <div className="selector-header-inner">
+                    <div className="header-row-top">
                         <h3 className="selector-title">Select {slot}</h3>
-                        <div className="selector-actions-wrapper">
+                        <button className="close-btn" onClick={onClose}>&times;</button>
+                    </div>
+                    <div className="header-row-search">
+                        <input
+                            type="text"
+                            className="search-input"
+                            placeholder="Search..."
+                            value={searchTerm}
+                            onChange={e => setSearchTerm(e.target.value)}
+                            autoFocus
+                        />
+                        {searchTerm && (
                             <button
                                 className="action-btn-secondary"
-                                onClick={() => onSelect(null)}
-                                style={{ padding: '4px 8px', fontSize: '0.8rem' }}
+                                onClick={() => setSearchTerm('')}
+                                title="Clear search"
                             >
-                                Clear
+                                ✕
                             </button>
-                            <button className="close-btn" onClick={onClose}>&times;</button>
-                        </div>
+                        )}
                     </div>
-                    <input
-                        type="text"
-                        className="search-input"
-                        placeholder="Search name, entry, act..."
-                        value={searchTerm}
-                        onChange={e => setSearchTerm(e.target.value)}
-                        autoFocus
-                    />
                 </div>
 
                 <div className="items-list">
+                    <div className="item-card unequip-card" onClick={() => onSelect(null)}>
+                        <div className="item-card-header">
+                            <div className="item-name">Empty Slot</div>
+                            <div className="item-stats">Unequip</div>
+                        </div>
+                        <div className="item-desc">Clear current equipment from this slot.</div>
+                    </div>
+
                     {filteredItems.length === 0 ? (
                         <div className="text-dim" style={{ textAlign: 'center', padding: '20px' }}>
                             No items found matching "{searchTerm}".
