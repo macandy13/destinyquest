@@ -7,6 +7,7 @@ import CombatLog from './CombatLog';
 import CombatantCard from './CombatantCard';
 import CombatAbilitySelector from './CombatAbilitySelector';
 import CombatModifiers from './CombatModifiers';
+import EnemySelector from './EnemySelector';
 import './CombatArena.css';
 
 interface CombatArenaProps {
@@ -31,11 +32,7 @@ const CombatArena: React.FC<CombatArenaProps> = ({ hero }) => {
 
     if (combat.phase === 'combat-start' && !combat.enemy) {
         return (
-            <div className="dq-card combat">
-                <h2 className="dq-card-title">Combat</h2>
-                <p className="text-dim">Prepare for battle...</p>
-                <button className="btn-primary" onClick={startCombat}>Find Enemy</button>
-            </div>
+            <EnemySelector onSelect={startCombat} />
         );
     }
 

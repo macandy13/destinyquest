@@ -1,0 +1,88 @@
+.number-control {
+    display: flex;
+    align-items: center;
+    justify-content: end;
+    /* Center everything */
+    background: transparent;
+    /* Remove background box to match HeroStats look */
+    border: none;
+    padding: 0;
+    height: auto;
+    width: 100%;
+    gap: 15px;
+    /* Spacing between groups */
+}
+
+.nc-buttons {
+    display: flex;
+    gap: 8px;
+    /* Spacing between buttons */
+    align-items: center;
+}
+
+.nc-btn {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    /* Round buttons */
+    border: 1px solid var(--dq-gold-dim);
+    background: var(--dq-grey);
+    color: var(--dq-gold);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-weight: bold;
+    user-select: none;
+    transition: all 0.2s;
+    font-size: 1.2rem;
+    padding: 0;
+    /* reset */
+}
+
+.nc-btn:hover:not(:disabled) {
+    background: var(--dq-grey-light);
+    border-color: var(--dq-gold);
+}
+
+.nc-btn:active:not(:disabled) {
+    background: var(--dq-gold-dim);
+    color: var(--dq-black);
+    transform: scale(0.95);
+}
+
+.nc-btn:disabled {
+    opacity: 0.3;
+    cursor: not-allowed;
+    border-color: var(--dq-grey-light);
+}
+
+.nc-btn-large {
+    font-size: 0.75rem;
+    /* Smaller text for +10 */
+    width: 36px;
+    height: 36px;
+    /* Slightly larger for emphasis or keeping same? Let's keep distinct */
+}
+
+.nc-display {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    min-width: 50px;
+    justify-content: center;
+}
+
+.nc-value {
+    color: var(--dq-gold);
+    font-weight: bold;
+    font-size: 1.2rem;
+    font-family: var(--font-heading);
+}
+
+.nc-label {
+    color: var(--dq-gold-dim);
+    /* Dim label if present */
+    font-size: 0.9rem;
+    text-transform: uppercase;
+}

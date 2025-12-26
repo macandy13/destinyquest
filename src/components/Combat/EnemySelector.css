@@ -1,0 +1,85 @@
+.enemy-selector-card {
+    padding: 0px;
+    max-height: 800px;
+    border-color: var(--dq-crimson);
+}
+
+.enemy-tabs {
+    display: flex;
+    gap: 10px;
+    border-bottom: 2px solid var(--border-color);
+}
+
+.tab-btn {
+    background: none;
+    border: none;
+    color: var(--text-dim);
+    padding: 10px 15px;
+    font-size: 1rem;
+    cursor: pointer;
+    border-bottom: 3px solid transparent;
+    transition: all 0.2s;
+}
+
+.tab-btn:hover {
+    color: var(--text-color);
+}
+
+.tab-btn.active {
+    color: var(--primary-color);
+    border-bottom-color: var(--primary-color);
+}
+
+.enemy-card {
+    cursor: pointer;
+    transition: transform 0.1s, background-color 0.2s;
+    border-color: var(--dq-crimson);
+}
+
+.enemy-card:hover {
+    background-color: var(--bg-card-hover);
+    transform: translateY(-1px);
+}
+
+.enemy-list-actions {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.custom-enemy-form {
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    background: rgba(255, 255, 255, 0.05);
+    /* Match stat-row bg */
+    padding: 10px;
+    border-radius: 4px;
+}
+
+.form-group label {
+    color: var(--text-dim);
+    font-size: 0.9rem;
+}
+
+.form-group input {
+    background: var(--bg-input);
+    border: 1px solid var(--border-color);
+    color: var(--text-color);
+    padding: 8px;
+    border-radius: 4px;
+    font-size: 1rem;
+}
+
+.stats-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}

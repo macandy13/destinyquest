@@ -31,7 +31,7 @@ const MOCK_ENEMY: Enemy = {
 export function useCombat(hero: Hero) {
     const [combat, setCombat] = useState<CombatState>(INITIAL_STATE);
 
-    const startCombat = useCallback(() => {
+    const startCombat = useCallback((initialEnemy?: Enemy) => {
         // Extract abilities from equipped items
         const abilities: ActiveAbility[] = [];
         Object.values(hero.equipment).forEach(item => {
@@ -48,10 +48,13 @@ export function useCombat(hero: Hero) {
             }
         });
 
+        // Use provided enemy or fallback to MOCK_ENEMY if none provided (for existing calls compatibility if any, or just fail safe)
+        const enemyToUse = initialEnemy || MOCK_ENEMY;
+
         setCombat({
             round: 1,
             phase: 'combat-start',
-            enemy: { ...MOCK_ENEMY },
+            enemy: { ...enemyToUse },
             hero: { ...hero }, // Clone hero state for combat
             winner: null,
             activeAbilities: abilities,
