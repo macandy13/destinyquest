@@ -49,7 +49,7 @@ describe('useCombat Hook', () => {
 
         act(() => result.current.startCombat());
         act(() => {
-            result.current.resolveSpeedRound({
+            result.current.resolveSpeedRolls({
                 heroRolls: [{ value: 3, isRerolled: false }, { value: 3, isRerolled: false }],
                 enemyRolls: [{ value: 1, isRerolled: false }, { value: 1, isRerolled: false }]
             });
@@ -69,7 +69,7 @@ describe('useCombat Hook', () => {
         act(() => result.current.startCombat());
 
         // Speed round win for Hero
-        act(() => result.current.resolveSpeedRound({
+        act(() => result.current.resolveSpeedRolls({
             heroRolls: [{ value: 6, isRerolled: false }, { value: 6, isRerolled: false }],
             enemyRolls: [{ value: 0, isRerolled: false }, { value: 0, isRerolled: false }]
         }));
@@ -78,7 +78,7 @@ describe('useCombat Hook', () => {
 
         // Damage roll 6 + 5(brawn) = 11 damage
         // Enemy armour 2
-        act(() => result.current.executeDamageRoll([{ value: 6, isRerolled: false }]));
+        act(() => result.current.resolveDamageRolls([{ value: 6, isRerolled: false }]));
         act(() => result.current.commitDamageResult());
 
         expect(result.current.combat.enemy!.health).toBe(initialEnemyHealth - 11);
@@ -103,7 +103,7 @@ describe('useCombat Hook', () => {
 
         act(() => {
             result.current.nextRound(); // Speed roll logic would happen here
-            result.current.resolveSpeedRound({
+            result.current.resolveSpeedRolls({
                 heroRolls: [{ value: 6, isRerolled: false }, { value: 6, isRerolled: false }],
                 enemyRolls: [{ value: 1, isRerolled: false }, { value: 1, isRerolled: false }]
             }); // Hero wins
@@ -114,7 +114,7 @@ describe('useCombat Hook', () => {
         // Damage roll 3 (1 die) + 0(brawn) = 3 damage
         // Acid adds +1 per die = +2
         // Total = 5
-        act(() => result.current.executeDamageRoll([{ value: 2, isRerolled: false }, { value: 1, isRerolled: false }]));
+        act(() => result.current.resolveDamageRolls([{ value: 2, isRerolled: false }, { value: 1, isRerolled: false }]));
         act(() => result.current.commitDamageResult());
 
         expect(result.current.combat.enemy!.health).toBe(initialEnemyHealth - 5);
@@ -140,14 +140,14 @@ describe('useCombat Hook', () => {
 
         // Simulate combat flow
         act(() => result.current.nextRound());
-        act(() => result.current.resolveSpeedRound({
+        act(() => result.current.resolveSpeedRolls({
             heroRolls: [{ value: 6, isRerolled: false }, { value: 6, isRerolled: false }],
             enemyRolls: [{ value: 1, isRerolled: false }, { value: 1, isRerolled: false }]
         }));
 
         // Damage phase
         // Damage: 3 + 0(brawn) = 3.
-        act(() => result.current.executeDamageRoll([{ value: 3, isRerolled: false }]));
+        act(() => result.current.resolveDamageRolls([{ value: 3, isRerolled: false }]));
         act(() => result.current.commitDamageResult());
 
         // 3 combat damage + 1 Barbs damage = 4 total
@@ -181,7 +181,7 @@ describe('useCombat Hook', () => {
         // Speed: 0 (base) + 2 (mod) + 3 (roll) = 5
         // Enemy: 2 (base) + 2 (roll) = 4
         // Hero wins
-        act(() => result.current.resolveSpeedRound({
+        act(() => result.current.resolveSpeedRolls({
             heroRolls: [{ value: 2, isRerolled: false }, { value: 1, isRerolled: false }],
             enemyRolls: [{ value: 1, isRerolled: false }, { value: 1, isRerolled: false }]
         }));
@@ -198,7 +198,7 @@ describe('useCombat Hook', () => {
 
         // Speed check again
         act(() => {
-            result.current.resolveSpeedRound({
+            result.current.resolveSpeedRolls({
                 heroRolls: [{ value: 1, isRerolled: false }, { value: 1, isRerolled: false }],
                 enemyRolls: [{ value: 1, isRerolled: false }, { value: 1, isRerolled: false }]
             });
@@ -212,7 +212,7 @@ describe('useCombat Hook', () => {
 
         // Speed check - modifier gone
         // Speed: 5 (base) + 2 (roll) = 7
-        act(() => result.current.resolveSpeedRound({
+        act(() => result.current.resolveSpeedRolls({
             heroRolls: [{ value: 1, isRerolled: false }, { value: 1, isRerolled: false }],
             enemyRolls: [{ value: 1, isRerolled: false }, { value: 1, isRerolled: false }]
         }));
@@ -240,7 +240,7 @@ describe('useCombat Hook', () => {
         // Enemy wins speed round
         // Hero: 5(spd) + 1(roll) = 6
         // Enemy: 2(spd) + 5(roll) = 7
-        act(() => result.current.resolveSpeedRound({
+        act(() => result.current.resolveSpeedRolls({
             heroRolls: [{ value: 1, isRerolled: false }, { value: 0, isRerolled: false }],
             enemyRolls: [{ value: 2, isRerolled: false }, { value: 3, isRerolled: false }]
         }));
@@ -286,14 +286,14 @@ describe('useCombat Hook', () => {
             // However, startCombat sets health to max.
             // We need to simulate damage first.
             result.current.commitSpeedResult();
-            result.current.executeDamageRoll([{ value: 10, isRerolled: false }]);
+            result.current.resolveDamageRolls([{ value: 10, isRerolled: false }]);
             result.current.commitDamageResult();
             // Wait, I need to set phase to damage-roll and winner to enemy manually or through flow?
             // Easier: Manually activate Heal after a round where Hero took damage?
             // Or just trust state update?
             // I'll simulate a round where enemy wins and deals damage.
             result.current.nextRound();
-            result.current.resolveSpeedRound({
+            result.current.resolveSpeedRolls({
                 heroRolls: [{ value: 1, isRerolled: false }, { value: 1, isRerolled: false }],
                 enemyRolls: [{ value: 6, isRerolled: false }, { value: 6, isRerolled: false }]
             }); // Enemy wins
@@ -304,7 +304,7 @@ describe('useCombat Hook', () => {
             // Enemy stats: Brawn 2 + Roll 10 = 12. Hero armour 2. Dmg 10.
             // Hero Health 20 -> 10.
             result.current.commitSpeedResult(); // Proceed from speed to damage
-            result.current.executeDamageRoll([{ value: 10, isRerolled: false }]);
+            result.current.resolveDamageRolls([{ value: 10, isRerolled: false }]);
         });
         act(() => {
             result.current.commitDamageResult();
@@ -373,7 +373,7 @@ describe('useCombat Hook', () => {
 
         // Go to damage phase
         act(() => resultWithAbility.current.nextRound()); // speed phase
-        act(() => resultWithAbility.current.resolveSpeedRound({
+        act(() => resultWithAbility.current.resolveSpeedRolls({
             heroRolls: [{ value: 6, isRerolled: false }, { value: 6, isRerolled: false }],
             enemyRolls: [{ value: 1, isRerolled: false }, { value: 1, isRerolled: false }]
         }));
@@ -382,7 +382,7 @@ describe('useCombat Hook', () => {
         // Execute damage
         // Roll = 10. Brawn = 5. Mod = 3. Total = 18.
         const initialEnemyHealth = resultWithAbility.current.combat.enemy!.health;
-        act(() => resultWithAbility.current.executeDamageRoll([{ value: 10, isRerolled: false }]));
+        act(() => resultWithAbility.current.resolveDamageRolls([{ value: 10, isRerolled: false }]));
         act(() => resultWithAbility.current.commitDamageResult());
 
         // Enemy has 0 armour in mock.

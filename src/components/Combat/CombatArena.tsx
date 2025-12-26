@@ -17,12 +17,12 @@ const CombatArena: React.FC<CombatArenaProps> = ({ hero }) => {
     const {
         combat,
         startCombat,
-        nextRound,
         activateAbility,
-        commitDamageResult,
-        handleReroll,
-        executeSpeedRoll,
+        generateSpeedRolls,
         commitSpeedResult,
+        handleReroll,
+        commitDamageResult,
+        nextRound,
     } = useCombat(hero);
 
     if (combat.phase === 'combat-start' && !combat.enemy) {
@@ -188,7 +188,7 @@ const CombatArena: React.FC<CombatArenaProps> = ({ hero }) => {
                     </div>
                 )}
                 {(combat.phase === 'round-end' || combat.phase === 'combat-start') && (
-                    <button className="btn btn-primary" onClick={combat.phase === 'combat-start' ? executeSpeedRoll : nextRound}>
+                    <button className="btn btn-primary" onClick={combat.phase === 'combat-start' ? generateSpeedRolls : nextRound}>
                         {combat.phase === 'combat-start' ? 'Fight!' : 'Next Round'}
                     </button>
                 )}
