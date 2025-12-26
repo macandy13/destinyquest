@@ -86,7 +86,7 @@
 
 .speed-result-text {
     text-align: center;
-    font-size: 0.8rem;
+    font-size: var(--font-sm);
     color: var(--dq-dim);
 }
 

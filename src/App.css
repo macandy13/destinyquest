@@ -35,7 +35,7 @@
 .hero-stats-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 8px;
+    gap: var(--spacing-sm);
 }
 
 .btn {
@@ -95,7 +95,7 @@
 }
 
 .hero-path {
-    font-size: 0.8rem;
+    font-size: var(--font-sm);
 }
 
 .equipment-section {
@@ -105,7 +105,7 @@
 }
 
 .equipment-heading {
-    font-size: 1rem;
+    font-size: var(--font-base);
     color: var(--dq-light-grey);
 }
 
@@ -127,14 +127,14 @@
 .selector-title {
     color: var(--dq-gold);
     font-family: var(--font-heading);
-    font-size: 1.2rem;
+    font-size: var(--font-xl);
 }
 
 .close-btn {
     background: none;
     border: none;
     color: var(--dq-light-grey);
-    font-size: 1.5rem;
+    font-size: var(--font-2xl);
     cursor: pointer;
 }
 
@@ -153,7 +153,7 @@
     border: 1px solid var(--dq-gold-dim);
     border-radius: 4px;
     color: var(--dq-light-grey);
-    font-size: 1rem;
+    font-size: var(--font-base);
     outline: none;
     /* margins handled by gap in parent */
 }
@@ -193,24 +193,24 @@
 .item-name {
     font-weight: bold;
     color: var(--dq-light-grey);
-    margin-bottom: 4px;
+    margin-bottom: var(--spacing-xs);
 }
 
 .item-stats {
-    font-size: 0.8rem;
+    font-size: var(--font-sm);
     color: var(--dq-gold);
 }
 
 .item-desc {
-    font-size: 0.8rem;
+    font-size: var(--font-sm);
     color: #888;
     font-style: italic;
-    margin-top: 4px;
+    margin-top: var(--spacing-xs);
 }
 
 .item-meta-container {
-    margin-top: 4px;
-    font-size: 0.75rem;
+    margin-top: var(--spacing-xs);
+    font-size: var(--font-xs);
     border: 1px solid transparent;
     transition: border-color 0.2s;
 }
@@ -218,7 +218,7 @@
 .stats-grid {
     display: flex;
     flex-direction: column;
-    gap: 15px;
+    gap: var(--spacing-md);
 }
 
 .stat-row {
@@ -243,12 +243,12 @@
     font-weight: bold;
     color: var(--dq-light-grey);
     text-transform: uppercase;
-    font-size: 0.9rem;
+    font-size: var(--font-sm);
     min-width: 100px;
 }
 
 .stat-icon {
-    font-size: 1.2rem;
+    font-size: var(--font-xl);
     width: 24px;
     text-align: center;
 }

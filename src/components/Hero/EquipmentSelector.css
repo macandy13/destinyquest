@@ -37,17 +37,17 @@
 }
 
 .meta-entry {
-    margin-right: 8px;
+    margin-right: var(--spacing-sm);
 }
 
 .action-btn-secondary {
     background: none;
     border: none;
-    font-size: 1.2rem;
+    font-size: var(--font-xl);
     cursor: pointer;
     color: var(--dq-crimson);
     transition: transform 0.2s;
-    padding: 4px;
+    padding: var(--spacing-xs);
     display: flex;
     align-items: center;
     justify-content: center;

@@ -35,7 +35,7 @@
     font-weight: bold;
     user-select: none;
     transition: all 0.2s;
-    font-size: 1.2rem;
+    font-size: var(--font-xl);
     padding: 0;
     /* reset */
 }
@@ -58,7 +58,7 @@
 }
 
 .nc-btn-large {
-    font-size: 0.75rem;
+    font-size: var(--font-xs);
     /* Smaller text for +10 */
     width: 36px;
     height: 36px;
@@ -68,7 +68,7 @@
 .nc-display {
     display: flex;
     align-items: center;
-    gap: 5px;
+    gap: var(--spacing-xs);
     min-width: 50px;
     justify-content: center;
 }
@@ -76,13 +76,13 @@
 .nc-value {
     color: var(--dq-gold);
     font-weight: bold;
-    font-size: 1.2rem;
+    font-size: var(--font-xl);
     font-family: var(--font-heading);
 }
 
 .nc-label {
     color: var(--dq-gold-dim);
     /* Dim label if present */
-    font-size: 0.9rem;
+    font-size: var(--font-sm);
     text-transform: uppercase;
 }

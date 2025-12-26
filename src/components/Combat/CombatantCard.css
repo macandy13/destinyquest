@@ -18,7 +18,7 @@
 }
 
 .combatant-name {
-    font-size: 0.9rem;
+    font-size: var(--font-sm);
     font-weight: bold;
     text-align: center;
 }
@@ -42,7 +42,7 @@
 }
 
 .combatant-stats {
-    font-size: 0.8rem;
+    font-size: var(--font-sm);
     color: var(--dq-light-grey);
     display: flex;
     flex-direction: row;

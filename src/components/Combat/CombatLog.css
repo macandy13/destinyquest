@@ -40,7 +40,7 @@
 
 .log-title {
     color: var(--dq-gold);
-    font-size: 0.8rem;
+    font-size: var(--font-sm);
     font-weight: bold;
     text-transform: uppercase;
 }
@@ -49,8 +49,8 @@
     background: transparent;
     border: 1px solid var(--dq-gold-dim);
     color: var(--dq-gold-dim);
-    font-size: 0.7rem;
-    padding: 2px 8px;
+    font-size: var(--font-xs);
+    padding: 2px var(--spacing-sm);
     border-radius: 4px;
     cursor: pointer;
     transition: all 0.2s;
@@ -65,7 +65,7 @@
     flex: 1;
     overflow-y: auto;
     padding: var(--spacing-sm);
-    font-size: 0.8rem;
+    font-size: var(--font-sm);
     /* font-family: monospace; removed to consolidate fonts */
 }
 
@@ -84,7 +84,7 @@
 }
 
 .log-entry {
-    margin-bottom: 4px;
+    margin-bottom: var(--spacing-xs);
     border-bottom: 1px solid rgba(255, 255, 255, 0.05);
     padding-bottom: 2px;
 }

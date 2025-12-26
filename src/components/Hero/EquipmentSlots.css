@@ -17,14 +17,14 @@
 
 .backpack-title {
     color: var(--dq-light-grey);
-    margin-bottom: 8px;
-    font-size: 0.9rem;
+    margin-bottom: var(--spacing-sm);
+    font-size: var(--font-sm);
 }
 
 .backpack-grid {
     display: grid;
     grid-template-columns: repeat(5, 1fr);
-    gap: 8px;
+    gap: var(--spacing-sm);
 }
 
 .backpack-slot-wrapper {
