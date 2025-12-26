@@ -5,6 +5,7 @@ export function getStatIcon(stat: string): string {
         case 'magic': return '✨';
         case 'armour': return '🛡️';
         case 'health': return '❤️';
+        case 'money': return '💰';
         default: return '';
     }
 }

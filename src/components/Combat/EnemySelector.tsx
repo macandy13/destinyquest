@@ -147,50 +147,52 @@ const EnemySelector: React.FC<EnemySelectorProps> = ({ onSelect }) => {
             {
                 mode === 'custom' && (
                     <div className="custom-enemy-form">
-                        <div className="form-group">
-                            <label>Name</label>
-                            <input
-                                type="text"
-                                value={customEnemy.name}
-                                onChange={e => handleCustomChange('name', e.target.value)}
-                            />
+                        <div className="stats-grid">
+                            <div className="stat-row">
+                                <span className="stat-label">Name</span>
+                                <input
+                                    type="text"
+                                    value={customEnemy.name}
+                                    onChange={e => handleCustomChange('name', e.target.value)}
+                                />
+                            </div>
                         </div>
 
                         <div className="stats-grid">
-                            <div className="form-group">
-                                <label>Speed</label>
+                            <div className="stat-row">
+                                <span className="stat-label">{getStatIcon('speed')} Speed</span>
                                 <NumberControl
                                     value={customEnemy.speed}
                                     onChange={v => handleCustomChange('speed', v)}
                                     min={0}
                                 />
                             </div>
-                            <div className="form-group">
-                                <label>Brawn</label>
+                            <div className="stat-row">
+                                <span className="stat-label">{getStatIcon('brawn')} Brawn</span>
                                 <NumberControl
                                     value={customEnemy.brawn}
                                     onChange={v => handleCustomChange('brawn', v)}
                                     min={0}
                                 />
                             </div>
-                            <div className="form-group">
-                                <label>Magic</label>
+                            <div className="stat-row">
+                                <span className="stat-label">{getStatIcon('magic')} Magic</span>
                                 <NumberControl
                                     value={customEnemy.magic}
                                     onChange={v => handleCustomChange('magic', v)}
                                     min={0}
                                 />
                             </div>
-                            <div className="form-group">
-                                <label>Armour</label>
+                            <div className="stat-row">
+                                <span className="stat-label">{getStatIcon('armour')} Armour</span>
                                 <NumberControl
                                     value={customEnemy.armour}
                                     onChange={v => handleCustomChange('armour', v)}
                                     min={0}
                                 />
                             </div>
-                            <div className="form-group">
-                                <label>Health</label>
+                            <div className="stat-row">
+                                <span className="stat-label">{getStatIcon('health')} Health</span>
                                 <NumberControl
                                     value={customEnemy.health}
                                     onChange={v => handleCustomChange('health', v)}

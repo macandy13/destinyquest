@@ -9,13 +9,13 @@
     padding: 0;
     height: auto;
     width: 100%;
-    gap: 15px;
+    gap: var(--spacing-md);
     /* Spacing between groups */
 }
 
 .nc-buttons {
     display: flex;
-    gap: 8px;
+    gap: var(--spacing-sm);
     /* Spacing between buttons */
     align-items: center;
 }

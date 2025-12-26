@@ -47,39 +47,8 @@
 }
 
 .custom-enemy-form {
-    padding: 10px;
+    padding: var(--spacing-sm);
     display: flex;
     flex-direction: column;
-    gap: 15px;
-}
-
-.form-group {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-    background: rgba(255, 255, 255, 0.05);
-    /* Match stat-row bg */
-    padding: 10px;
-    border-radius: 4px;
-}
-
-.form-group label {
-    color: var(--text-dim);
-    font-size: 0.9rem;
-}
-
-.form-group input {
-    background: var(--bg-input);
-    border: 1px solid var(--border-color);
-    color: var(--text-color);
-    padding: 8px;
-    border-radius: 4px;
-    font-size: 1rem;
-}
-
-.stats-grid {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
+    gap: var(--spacing-md);
 }

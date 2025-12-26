@@ -1,21 +1,24 @@
 import React from 'react';
 import { HeroStats as HeroStatsType, Hero } from '../../types/hero';
+import NumberControl from '../Shared/NumberControl';
 import './HeroStats.css';
+import { getStatIcon } from '../../utils/statUtils';
 
 interface HeroStatsProps {
     hero: Hero;
     onHealthChange: (value: number) => void;
+    onMoneyChange: (value: number) => void;
 }
 
-const STAT_CONFIG: Array<{ key: keyof HeroStatsType; label: string; icon: string }> = [
-    { key: 'speed', label: 'Speed', icon: '⚡' },
-    { key: 'brawn', label: 'Brawn', icon: '💪' },
-    { key: 'magic', label: 'Magic', icon: '✨' },
-    { key: 'armour', label: 'Armour', icon: '🛡️' },
+const STAT_CONFIG: Array<{ key: keyof HeroStatsType; label: string }> = [
+    { key: 'speed', label: 'Speed' },
+    { key: 'brawn', label: 'Brawn' },
+    { key: 'magic', label: 'Magic' },
+    { key: 'armour', label: 'Armour' },
 ];
 
-const HeroStats: React.FC<HeroStatsProps> = ({ hero, onHealthChange }) => {
-    const { stats } = hero;
+const HeroStats: React.FC<HeroStatsProps> = ({ hero, onHealthChange, onMoneyChange }) => {
+    const { stats, money } = hero;
 
     // Collect unique abilities from all equipment
     const activeAbilities = React.useMemo(() => {
@@ -33,27 +36,38 @@ const HeroStats: React.FC<HeroStatsProps> = ({ hero, onHealthChange }) => {
             {/* Health is special - Editable */}
             <div className="stat-row health">
                 <span className="stat-label">
-                    <span className="stat-icon">❤️</span> Health
+                    <span className="stat-icon">{getStatIcon('health')}</span> Health
                 </span>
                 <div className="stat-controls">
-                    <button
-                        className="stat-btn"
-                        onClick={() => onHealthChange(stats.health - 1)}
-                    >-</button>
-                    <span className="stat-value">{stats.health}</span>
-                    <span className="text-dim stat-max">/ {stats.maxHealth}</span>
-                    <button
-                        className="stat-btn"
-                        onClick={() => onHealthChange(stats.health + 1)}
-                    >+</button>
+                    <NumberControl
+                        value={stats.health}
+                        onChange={onHealthChange}
+                        max={stats.maxHealth}
+                        min={0}
+                        label={`/ ${stats.maxHealth}`}
+                    />
+                </div>
+            </div>
+
+            {/* Money - Editable */}
+            <div className="stat-row money">
+                <span className="stat-label">
+                    <span className="stat-icon">{getStatIcon('money')}</span> Money
+                </span>
+                <div className="stat-controls">
+                    <NumberControl
+                        value={money}
+                        onChange={onMoneyChange}
+                        min={0}
+                    />
                 </div>
             </div>
 
             {/* Attributes - Read Only */}
-            {STAT_CONFIG.map(({ key, label, icon }) => (
+            {STAT_CONFIG.map(({ key, label }) => (
                 <div key={key} className="stat-row">
                     <span className="stat-label">
-                        <span className="stat-icon">{icon}</span> {label}
+                        <span className="stat-icon">{getStatIcon(key)}</span> {label}
                     </span>
                     <div className="stat-controls">
                         <span className="stat-value">{stats[key]}</span>

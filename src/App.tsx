@@ -12,7 +12,7 @@ import { EquipmentSlot, EquipmentItem } from './types/hero';
 
 function App() {
     const [activeTab, setActiveTab] = useState<'hero' | 'combat'>('hero');
-    const { hero, updateHealth, equipItem, unequipItem } = useHero();
+    const { hero, updateHealth, updateMoney, equipItem, unequipItem } = useHero();
     const [selectedSlot, setSelectedSlot] = useState<EquipmentSlot | null>(null); // New state
 
     const handleEquip = (item: EquipmentItem | null) => {
@@ -46,6 +46,7 @@ function App() {
                         <HeroStats
                             hero={hero}
                             onHealthChange={updateHealth}
+                            onMoneyChange={updateMoney}
                         />
 
                         <div className="equipment-section">

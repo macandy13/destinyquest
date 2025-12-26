@@ -61,6 +61,13 @@ export function useHero() {
         setHero(prev => ({ ...prev, path }));
     };
 
+    const updateMoney = (value: number) => {
+        setHero(prev => ({
+            ...prev,
+            money: Math.max(0, value)
+        }));
+    };
+
     const equipItem = (item: EquipmentItem, slot: EquipmentSlot) => {
         setHero(prev => ({
             ...prev,
@@ -87,6 +94,7 @@ export function useHero() {
         updateHealth,
         updateName,
         updatePath,
+        updateMoney,
         equipItem,
         unequipItem
     };
