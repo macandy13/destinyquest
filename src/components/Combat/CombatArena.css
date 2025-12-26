@@ -16,11 +16,11 @@
 .arena-center {
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
     width: 100%;
     position: relative;
     /* Stabilize positioning */
+    gap: var(--spacing-sm);
 }
 
 .combatants {
@@ -36,7 +36,7 @@
 .combat-controls {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 8px;
+    gap: var(--spacing-sm);
 }
 
 .round-indicator {
@@ -56,11 +56,10 @@
 
 .btn-next-round {
     background: #333;
-    margin-top: 8px;
 }
 
 .speed-rolls {
-    gap: calc(2* var(--spacing-md));
+    gap: calc(2 * var(--spacing-md));
 }
 
 /* Mini dice for non-focus phases */
@@ -80,7 +79,6 @@
 /* Refactored inline styles */
 
 .phase-instruction {
-    margin: 10px 0;
     text-align: center;
     color: var(--dq-gold);
 }
@@ -89,7 +87,6 @@
     display: flex;
     justify-content: space-around;
     align-items: flex-start;
-    margin-bottom: 20px;
     transition: all 0.5s ease;
 }
 
@@ -101,18 +98,20 @@
 
 .speed-confirm-container {
     text-align: center;
-    margin-bottom: 20px;
 }
 
 .damage-section {
     border-top: 1px solid #333;
-    padding-top: 20px;
-    margin-top: 10px;
+    padding-top: var(--spacing-md);
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-md);
+    width: 100%;
+    align-items: center;
 }
 
 .damage-title {
     text-align: center;
-    margin-bottom: 10px;
     color: var(--dq-gold);
 }
 
@@ -130,5 +129,4 @@
 
 .damage-confirm-container {
     text-align: center;
-    margin-bottom: 20px;
 }
