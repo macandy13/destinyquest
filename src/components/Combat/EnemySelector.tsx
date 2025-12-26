@@ -202,8 +202,8 @@ const EnemySelector: React.FC<EnemySelectorProps> = ({ onSelect }) => {
                             </div>
                         </div>
 
-                        <button className="btn-primary" onClick={confirmCustomEnemy}>Start Fight</button>
-                        <button className="btn-secondary" onClick={selectTrainingDummy} style={{ marginTop: '10px' }}>Fight Dummy</button>
+                        <button className="btn btn-primary" onClick={confirmCustomEnemy}>Start Fight</button>
+                        <button className="btn btn-secondary" onClick={selectTrainingDummy} style={{ marginTop: '10px' }}>Fight Dummy</button>
                     </div>
                 )
             }

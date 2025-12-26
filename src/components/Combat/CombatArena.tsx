@@ -166,7 +166,7 @@ const CombatArena: React.FC<CombatArenaProps> = ({ hero }) => {
                                 {combat.phase === 'damage-roll' && !combat.damageRolls ? (
                                     <>
                                         <p className="text-dim">Enemy is attacking...</p>
-                                        <button className="btn-primary" onClick={() => {
+                                        <button className="btn btn-primary" onClick={() => {
                                             const enemyDamageRoll = rollDice(combat.enemy ? (combat.enemy.damageDice ?? 1) : 1);
                                             executeDamageRoll(enemyDamageRoll);
                                         }}>Resolve Enemy Attack</button>
@@ -192,20 +192,20 @@ const CombatArena: React.FC<CombatArenaProps> = ({ hero }) => {
                 {/* Speed or Damage Result Confirmation / Proceed Button */}
                 {combat.phase === 'speed-roll' && combat.heroSpeedRolls && (
                     <div className="speed-confirm-container">
-                        <button className="btn-primary" onClick={commitSpeedResult}>
+                        <button className="btn btn-primary" onClick={commitSpeedResult}>
                             {combat.winner ? 'Proceed' : 'End Round (Draw)'}
                         </button>
                     </div>
                 )}
                 {combat.phase === 'damage-roll' && showDamageConfirm && (
                     <div className="damage-confirm-container">
-                        <button className="btn-primary" onClick={commitDamageResult}>
+                        <button className="btn btn-primary" onClick={commitDamageResult}>
                             Confirm Damage & End Round
                         </button>
                     </div>
                 )}
                 {(combat.phase === 'round-end' || combat.phase === 'combat-start') && (
-                    <button className="btn-primary btn-next-round" onClick={combat.phase === 'combat-start' ? executeSpeedRoll : nextRound}>
+                    <button className="btn btn-primary" onClick={combat.phase === 'combat-start' ? executeSpeedRoll : nextRound}>
                         {combat.phase === 'combat-start' ? 'Fight!' : 'Next Round'}
                     </button>
                 )}

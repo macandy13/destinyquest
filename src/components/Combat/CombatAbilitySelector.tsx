@@ -79,10 +79,10 @@ const CombatAbilitySelector: React.FC<CombatAbilitySelectorProps> = ({ combat, o
                         </div>
 
                         <div className="ability-modal-actions">
-                            <button className="btn-cancel" onClick={() => setSelectedAbility(null)}>
+                            <button className="btn btn-secondary" onClick={() => setSelectedAbility(null)}>
                                 Cancel
                             </button>
-                            <button className="btn-confirm" onClick={handleConfirm}>
+                            <button className="btn btn-primary" onClick={handleConfirm}>
                                 Use Ability
                             </button>
                         </div>

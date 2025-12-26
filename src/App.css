@@ -35,15 +35,45 @@
     gap: 8px;
 }
 
-.btn-primary {
-    width: 100%;
+.btn {
     padding: var(--spacing-md);
-    background: var(--dq-crimson);
     border: none;
     border-radius: var(--radius-md);
-    color: white;
     font-weight: bold;
     text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.2s;
+    width: 100%;
+    font-family: inherit;
+}
+
+.btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.btn:active:not(:disabled) {
+    transform: scale(0.98);
+}
+
+.btn-primary {
+    background: var(--dq-gold);
+    color: var(--dq-black);
+}
+
+.btn-primary:hover:not(:disabled) {
+    background: var(--dq-gold-dim);
+}
+
+.btn-secondary {
+    background: var(--dq-grey);
+    border: 1px solid var(--dq-gold-dim);
+    color: var(--dq-gold);
+}
+
+.btn-secondary:hover:not(:disabled) {
+    border-color: var(--dq-gold);
+    background: rgba(212, 175, 55, 0.1);
 }
 
 .hero-header {

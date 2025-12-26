@@ -73,36 +73,7 @@
     width: 100%;
 }
 
-.btn-confirm,
-.btn-cancel {
-    flex: 1;
-    padding: 10px;
-    border-radius: 4px;
-    font-weight: bold;
-    border: none;
-    font-size: 0.9rem;
-    transition: all 0.2s;
-}
-
-.btn-confirm {
-    background: var(--dq-gold);
-    color: var(--dq-black);
-}
-
-.btn-confirm:hover {
-    background: var(--dq-gold-dim);
-}
-
-.btn-cancel {
-    background: transparent;
-    border: 1px solid var(--dq-grey);
-    color: var(--dq-light-grey);
-}
-
-.btn-cancel:hover {
-    border-color: var(--dq-light-grey);
-    background: rgba(255, 255, 255, 0.05);
-}
+/* Button styles moved to App.css as global utilities */
 
 @keyframes fadeIn {
     from {

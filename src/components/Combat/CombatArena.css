@@ -50,13 +50,7 @@
     color: var(--dq-gold-dim);
 }
 
-.btn-hit-enemy {
-    background: var(--dq-gold-dim);
-}
-
-.btn-next-round {
-    background: #333;
-}
+/* Button styles moved to App.css as global utilities */
 
 .speed-rolls {
     gap: calc(2 * var(--spacing-md));
