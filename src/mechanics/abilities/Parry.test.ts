@@ -4,6 +4,7 @@ import './Parry';
 import { INITIAL_STATE, MOCK_HERO } from '../../tests/testUtils';
 import { renderHook, act } from '@testing-library/react';
 import { useCombat } from '../../hooks/useCombat';
+import { Hero } from '../../types/hero';
 
 describe('Parry', () => {
     it('should be activatable only in damage-roll phase when enemy won', () => {
@@ -33,7 +34,7 @@ describe('Parry', () => {
     });
 
     it('should apply Parry combat ability via hook (cancel enemy damage)', () => {
-        const PARRY_HERO = {
+        const PARRY_HERO: Hero = {
             ...MOCK_HERO,
             equipment: {
                 mainHand: {

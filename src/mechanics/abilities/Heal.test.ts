@@ -4,6 +4,7 @@ import './Heal';
 import { INITIAL_STATE, MOCK_HERO } from '../../tests/testUtils';
 import { renderHook, act } from '@testing-library/react';
 import { useCombat } from '../../hooks/useCombat';
+import { Hero } from '../../types/hero';
 
 describe('Heal', () => {
     it('should restore 4 health up to max', () => {
@@ -47,14 +48,14 @@ describe('Heal', () => {
     });
 
     it('should apply Heal modifier ability via hook (restore 4 health)', () => {
-        const HEAL_HERO = {
+        const HEAL_HERO: Hero = {
             ...MOCK_HERO,
             equipment: {
-                accessory: {
-                    name: 'Healing Potion',
+                necklace: {
+                    name: 'Healing Necklace',
                     abilities: ['Heal'],
-                    id: 'heal-potion',
-                    type: 'accessory',
+                    id: 'heal-necklace',
+                    type: 'necklace' as const,
                     act: 1
                 }
             }

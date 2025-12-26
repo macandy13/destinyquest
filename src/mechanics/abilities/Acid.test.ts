@@ -1,4 +1,4 @@
-import { describe, it, expect } from 'vitest';
+import { Hero } from '../../types/hero';
 import { getAbilityDefinition } from '../abilityRegistry';
 import './Acid';
 import { INITIAL_STATE, heroWithStats } from '../../tests/testUtils';
@@ -14,7 +14,7 @@ describe('Acid', () => {
     });
 
     it('should apply Acid passive ability via hook (add +1 per damage die)', () => {
-        const ACIC_HERO = {
+        const ACID_HERO: Hero = {
             ...heroWithStats({ damageDice: 2, brawn: 0, magic: 0 }),
             equipment: {
                 gloves: {
@@ -27,7 +27,7 @@ describe('Acid', () => {
             }
         };
 
-        const { result } = renderHook(() => useCombat(ACIC_HERO));
+        const { result } = renderHook(() => useCombat(ACID_HERO));
 
         act(() => result.current.startCombat());
 

@@ -4,6 +4,7 @@ import './Adrenaline';
 import { INITIAL_STATE, heroWithStats } from '../../tests/testUtils';
 import { renderHook, act } from '@testing-library/react';
 import { useCombat } from '../../hooks/useCombat';
+import { Hero } from '../../types/hero';
 
 describe('Adrenaline', () => {
     it('should add speed bonus modifier on activation', () => {
@@ -17,14 +18,14 @@ describe('Adrenaline', () => {
     });
 
     it('should apply Adrenaline speed ability via hook (+2 speed for 2 rounds)', () => {
-        const ADRENALINE_HERO = {
+        const ADRENALINE_HERO: Hero = {
             ...heroWithStats({ speed: 0 }),
             equipment: {
                 gloves: {
                     name: 'Adrenaline Gloves',
                     abilities: ['Adrenaline'],
                     id: 'adr-gloves',
-                    type: 'gloves',
+                    type: 'gloves' as const,
                     act: 1
                 }
             }

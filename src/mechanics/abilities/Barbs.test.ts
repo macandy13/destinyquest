@@ -4,6 +4,7 @@ import './Barbs';
 import { INITIAL_STATE, MOCK_ENEMY, heroWithStats } from '../../tests/testUtils';
 import { renderHook, act } from '@testing-library/react';
 import { useCombat } from '../../hooks/useCombat';
+import { Hero } from '../../types/hero';
 
 describe('Barbs', () => {
     it('should inflict 1 damage to enemy on round end', () => {
@@ -25,7 +26,7 @@ describe('Barbs', () => {
     });
 
     it('should apply Barbs passive ability via hook (1 damage at end of round)', () => {
-        const BARBS_HERO = {
+        const BARBS_HERO: Hero = {
             ...heroWithStats({ brawn: 0, magic: 0 }),
             equipment: {
                 gloves: {
