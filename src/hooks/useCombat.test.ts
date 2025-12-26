@@ -2,6 +2,7 @@ import { renderHook, act } from '@testing-library/react';
 import { useCombat } from '../hooks/useCombat';
 import { HeroStats } from '../types/hero';
 import { describe, it, expect } from 'vitest';
+import { registerAbility } from '../mechanics/abilityRegistry';
 
 const MOCK_HERO_STATS: HeroStats = {
     speed: 5,
@@ -322,5 +323,117 @@ describe('useCombat Hook', () => {
 
         expect(result.current.combat.hero!.stats.health).toBe(healthBefore + 4);
         expect(result.current.combat.logs.slice(-1)[0].message).toContain('Restored 4 health');
+    });
+
+    it('should apply damage-bonus modifier', () => {
+        // This test simulates a custom ability that adds a damage modifier
+        const DAMAGE_MOD_HERO = { ...MOCK_HERO };
+
+        const { result } = renderHook(() => useCombat(DAMAGE_MOD_HERO));
+
+        act(() => result.current.startCombat());
+
+        // Manually inject a modifier for testing purposes
+        // In a real scenario, this would come from an ability's onActivate
+        act(() => {
+            // We can't easily inject into state without an ability, 
+            // so let's mock an ability that does it or use a trick.
+            // Actually, we can just use the internal setCombat if we exposed it, but we don't.
+            // We'll use a registered ability.
+        });
+
+        // Let's register a temporary mock ability
+        const MockAbilityDef = {
+            name: 'Mock Damage Buff',
+            type: 'modifier' as const,
+            description: 'Adds +3 damage',
+            onActivate: (state: any) => ({
+                modifiers: [...state.modifiers, {
+                    name: 'Mock Buff',
+                    source: 'Mock Damage Buff',
+                    type: 'damage-bonus',
+                    value: 3,
+                    duration: 2
+                }],
+                logs: [...state.logs, { round: state.round, message: 'Used Mock Buff', type: 'info' }]
+            })
+        };
+        registerAbility(MockAbilityDef);
+
+        const HERO_WITH_ABILITY = {
+            ...MOCK_HERO,
+            equipment: {
+                trinket: { name: 'Buff Charm', abilities: ['Mock Damage Buff'] }
+            }
+        };
+
+        const resultWithAbility = renderHook(() => useCombat(HERO_WITH_ABILITY)).result;
+
+        act(() => resultWithAbility.current.startCombat());
+        act(() => resultWithAbility.current.activateAbility('Mock Damage Buff'));
+
+        // Verify modifier is present
+        expect(resultWithAbility.current.combat.modifiers).toHaveLength(1);
+        expect(resultWithAbility.current.combat.modifiers[0].type).toBe('damage-bonus');
+
+        // Go to damage phase
+        act(() => resultWithAbility.current.nextRound()); // speed phase
+        act(() => resultWithAbility.current.resolveSpeedRound({
+            heroRolls: [{ value: 6, isRerolled: false }, { value: 6, isRerolled: false }],
+            enemyRolls: [{ value: 1, isRerolled: false }, { value: 1, isRerolled: false }]
+        }));
+        act(() => resultWithAbility.current.commitSpeedResult()); // damage phase
+
+        // Execute damage
+        // Roll = 10. Brawn = 5. Mod = 3. Total = 18.
+        const initialEnemyHealth = resultWithAbility.current.combat.enemy!.health;
+        act(() => resultWithAbility.current.executeDamageRoll([{ value: 10, isRerolled: false }]));
+        act(() => resultWithAbility.current.commitDamageResult());
+
+        // Enemy has 0 armour in mock.
+        // Expected damage: 10 (roll) + 5 (brawn) + 3 (mod) = 18.
+        const expectedHealth = initialEnemyHealth - 18;
+        expect(resultWithAbility.current.combat.enemy!.health).toBe(expectedHealth);
+    });
+
+    it('should apply speed-dice modifier', () => {
+        const MockDiceAbilityDef = {
+            name: 'Mock Dice Buff',
+            type: 'modifier' as const,
+            description: 'Adds +1 speed die',
+            onActivate: (state: any) => ({
+                modifiers: [...state.modifiers, {
+                    name: 'Mock Dice',
+                    source: 'Mock Dice Buff',
+                    type: 'speed-dice',
+                    value: 1,
+                    duration: 2
+                }]
+            })
+        };
+        // Mock is already registered via abilityRegistry but we need to do it cleaner or just rely on the import
+        // Since we cannot dynamic import easily here without being async or using await import, 
+        // and we are already importing getAbilityDefinition in the hook, 
+        // let's just use the imported registerAbility.
+
+        registerAbility(MockDiceAbilityDef);
+
+        const HERO_WITH_DICE = {
+            ...MOCK_HERO,
+            equipment: {
+                trinket: { name: 'Dice Charm', abilities: ['Mock Dice Buff'] }
+            }
+        };
+
+        const { result } = renderHook(() => useCombat(HERO_WITH_DICE));
+
+        act(() => result.current.startCombat());
+        act(() => result.current.activateAbility('Mock Dice Buff'));
+
+        // Next round to checking rolling
+        act(() => result.current.nextRound());
+
+        // Check the rolls in state. Hero should have speedDice (def 2) + 1 = 3 rolls.
+        expect(result.current.combat.heroSpeedRolls).toHaveLength(3);
     });
 });

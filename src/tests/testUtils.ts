@@ -27,11 +27,11 @@ export const INITIAL_STATE: CombatState = {
     hero: MOCK_HERO,
     enemy: MOCK_ENEMY,
     round: 1,
-    phase: 'speed-roll',
+    phase: 'combat-start',
     heroSpeedRolls: undefined,
     enemySpeedRolls: undefined,
     damageRolls: undefined,
-    winner: 'hero',
+    winner: null,
     activeAbilities: [],
     modifiers: [],
     logs: []

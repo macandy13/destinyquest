@@ -175,9 +175,17 @@ export function useCombat(hero: Hero) {
     // Helper to generate rolls
     const generateSpeedRolls = () => {
         const heroDice = hero.stats.speedDice ?? 2;
+
+        // Apply speed-dice modifiers
+        const speedDiceModifiers = combat.modifiers
+            .filter(m => m.type === 'speed-dice')
+            .reduce((sum, m) => sum + m.value, 0);
+
+        const totalHeroDice = Math.max(1, heroDice + speedDiceModifiers);
         const enemyDice = combat.enemy?.speedDice ?? 2;
+
         return {
-            hero: rollDice(heroDice),
+            hero: rollDice(totalHeroDice),
             enemy: rollDice(enemyDice)
         };
     };
@@ -279,8 +287,11 @@ export function useCombat(hero: Hero) {
 
             const rollTotal = sumDice(rolls);
             if (prev.winner === 'hero') {
-                const modifier = Math.max(hero.stats.brawn, hero.stats.magic);
-                const rawDamage = rollTotal + modifier + modifiersFromHooks;
+                const skill = Math.max(hero.stats.brawn, hero.stats.magic);
+                const damageModifiers = prev.modifiers
+                    .filter(m => m.type === 'damage-bonus')
+                    .reduce((sum, m) => sum + m.value, 0);
+                const rawDamage = rollTotal + skill + modifiersFromHooks + damageModifiers;
 
                 prev.activeAbilities.forEach(ability => {
                     const def = getAbilityDefinition(ability.name);
@@ -298,16 +309,16 @@ export function useCombat(hero: Hero) {
                 newEnemyHealth = Math.max(0, currentEnemy.health - actualDamage);
                 currentEnemy.health = newEnemyHealth;
 
-                logMsg = `Hero hits for 💥 ${totalDamage}: Rolled ${rollTotal}, Modifier ${modifier}, Hooks ${hookLogMsg}. Enemy armour absorbs ${currentEnemy.armour}.`;
+                logMsg = `Hero hits for 💥 ${totalDamage}: Rolled ${rollTotal}, Skill ${skill}, Hooks ${hookLogMsg}${damageModifiers ? `, Bonus +${damageModifiers}` : ''}. Enemy armour absorbs ${currentEnemy.armour}.`;
                 type = 'damage-enemy';
             } else {
-                const modifier = Math.max(currentEnemy.brawn, currentEnemy.magic);
-                const rawDamage = rollTotal + modifier;
+                const skill = Math.max(currentEnemy.brawn, currentEnemy.magic);
+                const rawDamage = rollTotal + skill;
                 const actualDamage = Math.max(0, rawDamage - currentHero.stats.armour);
                 newHeroHealth = Math.max(0, currentHero.stats.health - actualDamage);
                 currentHero.stats.health = newHeroHealth;
 
-                logMsg = `Enemy hits for 💔 ${rawDamage}: Rolled ${rollTotal}, Modifier ${modifier}. Hero armour absorbs ${currentHero.stats.armour}.`;
+                logMsg = `Enemy hits for 💔 ${rawDamage}: Rolled ${rollTotal}, Skill ${skill}. Hero armour absorbs ${currentHero.stats.armour}.`;
                 type = 'damage-hero';
             }
 
@@ -365,38 +376,6 @@ export function useCombat(hero: Hero) {
             };
         });
     };
-
-
-
-    // Helper to re-evaluate speed winner if rolls changed (manual call if needed, or effect?)
-    // Actually, `resolveSpeedRound` sets the state including winner.
-    // If handleReroll updates `heroSpeedRolls`, the `winner` in state remains the OLD one unless updated.
-    // Charm implementation returns `heroSpeedRolls`. It does NOT calculating winner.
-    // So if I reroll speed, the winner might be wrong in the UI until something updates it.
-
-    // We should probably just call resolveSpeedRound with the new rolls?
-    // But `updates` came from `def.onReroll`.
-
-    // Quick patch for Speed Reroll to ensure winner is correct:
-    // This duplicates logic but is safe:
-    /* 
-       const newSpeedRolls = updates.heroSpeedRolls;
-       if (newSpeedRolls) {
-           const heroTotal = ...
-           const enemyTotal = ...
-           const winner = ...
-           updates.winner = winner; 
-       }
-    */
-    // I will leave Speed Reroll logic 'as is' (it might be broken regarding winner update, but I am fixing Damage).
-    // Actually, the previous code called resolveSpeedRound.
-    // I should probably keep calling it if I can?
-    // `resolveSpeedRound` calls `setCombat`. `handleReroll` calls `setCombat`.
-    // `handleReroll` was merging `updates`.
-    // If I remove `resolveSpeedRound` call, winner won't update.
-
-    // FIX: In handleReroll, after getting updates, IF speed involved, calculate winner and merge into updates.
-    // IF damage involved, just set rolls (which updates did).
 
     const handleReroll = (dieIndex: number) => {
         if (!combat.rerollState) return;

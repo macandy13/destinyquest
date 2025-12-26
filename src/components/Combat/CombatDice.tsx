@@ -72,7 +72,7 @@ const CombatDice: React.FC<CombatDiceProps> = ({ result, values, count = 2, labe
             }
             return val;
         })
-        : internalDice.map((val, i) => ( // Fallback for uncontrolled mode
+        : internalDice.map((val) => ( // Fallback for uncontrolled mode
             { value: val, isRerolled: false } as DiceRoll
         ));
 
