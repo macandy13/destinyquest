@@ -151,30 +151,6 @@ export function useCombat(hero: Hero) {
         }));
     };
 
-    // New function to proceed after speed results are accepted
-    const commitSpeedResult = () => {
-        setCombat(prev => {
-            const nextPhase = prev.winner ? 'damage-roll' : 'round-end';
-            let damageRolls: DiceRoll[] | undefined = undefined;
-
-            if (nextPhase === 'damage-roll') {
-                // Check where damageDice lives. Hero: stats.damageDice. Enemy: damageDice.
-                const diceCount = prev.winner === 'hero'
-                    ? (prev.hero?.stats.damageDice ?? 1)
-                    : (prev.enemy?.damageDice ?? 1);
-
-                // Auto-roll damage based on dice count
-                damageRolls = rollDice(diceCount);
-            }
-
-            return {
-                ...prev,
-                phase: nextPhase,
-                damageRolls
-            };
-        });
-    };
-
     // Helper to generate rolls
     const generateSpeedRolls = () => {
         const heroDice = hero.stats.speedDice ?? 2;
@@ -199,23 +175,27 @@ export function useCombat(hero: Hero) {
         resolveSpeedRound({ heroRolls: rolls.hero, enemyRolls: rolls.enemy });
     };
 
-    // Called by "Next Round" button
-    const nextRound = () => {
-        startNewRound();
-        // Immediately trigger the speed roll.
-        const rolls = generateSpeedRolls();
-        return resolveSpeedRound({ heroRolls: rolls.hero, enemyRolls: rolls.enemy });
-    };
+    const generateDamageRolls = () => {
+        const diceCount = combat.winner === 'hero'
+            ? (combat.hero?.stats.damageDice ?? 1)
+            : (combat.enemy?.damageDice ?? 1);
 
-    const startNewRound = () => {
+        // Auto-roll damage based on dice count
+        return rollDice(diceCount);
+    }
+
+    const commitSpeedResult = () => {
         setCombat(prev => {
-            const activeModifiers = prev.modifiers
-                .map(m => { return { ...m, duration: m.duration - 1 }; })
-                .filter(m => m.duration > 0);
+            if (!prev.winner) {
+                return {
+                    ...prev,
+                    phase: 'round-end'
+                }
+            }
             return {
                 ...prev,
-                round: prev.round + 1,
-                modifiers: activeModifiers,
+                phase: 'damage-roll',
+                damageRolls: generateDamageRolls()
             };
         });
     };
@@ -341,6 +321,31 @@ export function useCombat(hero: Hero) {
         });
     };
 
+    // Called by "Next Round" button
+    const nextRound = () => {
+        startNewRound();
+        executeSpeedRoll();
+    };
+
+    const startNewRound = () => {
+        setCombat(prev => {
+            const activeModifiers = prev.modifiers
+                .map(m => { return { ...m, duration: m.duration - 1 }; })
+                .filter(m => m.duration > 0);
+            return {
+                ...prev,
+                round: prev.round + 1,
+                phase: 'speed-roll',
+                modifiers: activeModifiers,
+                rerollState: undefined,
+                heroSpeedRolls: undefined,
+                enemySpeedRolls: undefined,
+                damageRolls: undefined,
+                winner: null,
+            };
+        });
+    };
+
     const handleReroll = (dieIndex: number) => {
         if (!combat.rerollState) return;
         const def = getAbilityDefinition(combat.rerollState.source);
@@ -378,10 +383,8 @@ export function useCombat(hero: Hero) {
         nextRound,
         activateAbility,
         resolveSpeedRound,
-
-        executeDamageRoll, // New export
-        commitDamageResult, // New export
-
+        executeDamageRoll,
+        commitDamageResult,
         handleReroll,
         addLog,
         commitSpeedResult,

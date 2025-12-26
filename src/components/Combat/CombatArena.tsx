@@ -1,7 +1,6 @@
 import React from 'react';
 import { useCombat } from '../../hooks/useCombat';
 import { Hero } from '../../types/hero';
-import { rollDice } from '../../utils/dice';
 import CombatDice from './CombatDice';
 import CombatLog from './CombatLog';
 import CombatantCard from './CombatantCard';
@@ -20,14 +19,10 @@ const CombatArena: React.FC<CombatArenaProps> = ({ hero }) => {
         startCombat,
         nextRound,
         activateAbility,
-        // resolveSpeedRound, // Removed as we use auto-rolls now
-        // resolveDamageAndArmour, // Replaced by execute/commit split
-        executeDamageRoll,
         commitDamageResult,
         handleReroll,
         executeSpeedRoll,
         commitSpeedResult,
-        // resolveSpeedRound // Kept if needed for manual calls or tests, but UI primarily uses execute/commit
     } = useCombat(hero);
 
     if (combat.phase === 'combat-start' && !combat.enemy) {
@@ -155,24 +150,12 @@ const CombatArena: React.FC<CombatArenaProps> = ({ hero }) => {
 
                         {combat.winner === 'enemy' && (
                             <div className="enemy-damage-container">
-                                {combat.phase === 'damage-roll' && !combat.damageRolls ? (
-                                    <>
-                                        <p className="text-dim">Enemy is attacking...</p>
-                                        <button className="btn btn-primary" onClick={() => {
-                                            const enemyDamageRoll = rollDice(combat.enemy ? (combat.enemy.damageDice ?? 1) : 1);
-                                            executeDamageRoll(enemyDamageRoll);
-                                        }}>Resolve Enemy Attack</button>
-                                    </>
-                                ) : (
-                                    // Show enemy result in round-end
-                                    // Show enemy result in round-end
-                                    <CombatDice
-                                        label="Enemy Damage"
-                                        values={combat.damageRolls}
-                                        baseValue={Math.max(combat.enemy.brawn, combat.enemy.magic)}
-                                        mode={combat.rerollState ? 'disabled' : 'normal'}
-                                    />
-                                )}
+                                <CombatDice
+                                    label="Enemy Damage"
+                                    values={combat.damageRolls}
+                                    baseValue={Math.max(combat.enemy.brawn, combat.enemy.magic)}
+                                    mode={combat.rerollState ? 'disabled' : 'normal'}
+                                />
                             </div>
                         )}
                     </div>
@@ -186,9 +169,15 @@ const CombatArena: React.FC<CombatArenaProps> = ({ hero }) => {
                 {/* Speed or Damage Result Confirmation / Proceed Button */}
                 {combat.phase === 'speed-roll' && combat.heroSpeedRolls && (
                     <div className="speed-confirm-container">
-                        <button className="btn btn-primary" onClick={commitSpeedResult}>
-                            {combat.winner ? 'Proceed' : 'End Round (Draw)'}
-                        </button>
+                        {
+                            combat.winner ?
+                                <button className="btn btn-primary" onClick={commitSpeedResult}>
+                                    Procced to Damage Roll
+                                </button> :
+                                <button className="btn btn-primary" onClick={nextRound}>
+                                    End Round (Draw)
+                                </button>
+                        }
                     </div>
                 )}
                 {combat.phase === 'damage-roll' && showDamageConfirm && (
