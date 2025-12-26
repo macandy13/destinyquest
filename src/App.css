@@ -196,6 +196,12 @@
     margin-bottom: var(--spacing-xs);
 }
 
+.item-source {
+    display: flex;
+    flex-direction: row;
+    gap: var(--spacing-xs);
+}
+
 .item-stats {
     font-size: var(--font-sm);
     color: var(--dq-gold);

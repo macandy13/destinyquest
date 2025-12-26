@@ -117,7 +117,10 @@ const EnemySelector: React.FC<EnemySelectorProps> = ({ onSelect }) => {
                                 <div key={idx} className="item-card enemy-card" onClick={() => onSelect(enemy)}>
                                     <div className="item-card-header">
                                         <div className="item-name">{enemy.name}</div>
-                                        <div className="text-dim" style={{ fontSize: '0.8rem' }}>Act {enemy.act}</div>
+                                        <div className="item-source">
+                                            <div className="text-dim" style={{ fontSize: '0.8rem' }}>Act {enemy.act}</div>
+                                            {enemy.entry && <div className="text-dim" style={{ fontSize: '0.8rem' }}>📖 {enemy.entry}</div>}
+                                        </div>
                                     </div>
 
                                     <div className="item-stats">
@@ -133,10 +136,6 @@ const EnemySelector: React.FC<EnemySelectorProps> = ({ onSelect }) => {
                                             {enemy.abilities.map(a => `★ ${a}`).join(', ')}
                                         </div>
                                     )}
-
-                                    <div className="item-meta-container">
-                                        {enemy.entry && <span className="meta-entry">📖 {enemy.entry}</span>}
-                                    </div>
                                 </div>
                             ))
                         )}
