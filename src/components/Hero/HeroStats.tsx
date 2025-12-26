@@ -55,7 +55,7 @@ const HeroStats: React.FC<HeroStatsProps> = ({ hero, onHealthChange }) => {
                     <span className="stat-label">
                         <span className="stat-icon">{icon}</span> {label}
                     </span>
-                    <div className="stat-controls" style={{ justifyContent: 'center', width: '100%' }}>
+                    <div className="stat-controls">
                         <span className="stat-value">{stats[key]}</span>
                     </div>
                 </div>

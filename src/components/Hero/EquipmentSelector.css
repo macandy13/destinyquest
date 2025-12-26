@@ -143,3 +143,21 @@
 .meta-entry {
     margin-right: 8px;
 }
+
+.action-btn-secondary {
+    background: none;
+    border: none;
+    font-size: 1.2rem;
+    cursor: pointer;
+    color: var(--dq-crimson);
+    transition: transform 0.2s;
+    padding: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.action-btn-secondary:hover {
+    transform: scale(1.1);
+    color: #ff4d4d;
+}
