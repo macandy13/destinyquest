@@ -1,95 +1,157 @@
+.dice-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--spacing-sm);
+    padding: var(--spacing-sm);
+    border-radius: 8px;
+    transition: opacity 0.3s ease, background-color 0.3s ease;
+}
+
+.dice-wrapper--disabled {
+    opacity: 0.5;
+    pointer-events: none;
+}
+
+.dice-wrapper--select-die {
+    background-color: rgba(255, 255, 255, 0.05);
+    /* Subtle highlight */
+    border: 1px dashed rgba(255, 255, 255, 0.2);
+    cursor: pointer;
+}
+
+.dice-label {
+    font-size: var(--font-size-sm);
+    color: var(--text-dim);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    font-weight: 600;
+}
+
 .dice-container {
     display: flex;
-    gap: var(--spacing-md);
+    gap: var(--spacing-sm);
     justify-content: center;
-    margin: var(--spacing-md) 0;
 }
 
 .die {
-    width: 60px;
-    height: 60px;
-    background: white;
-    border-radius: 8px;
-    box-shadow: 0 4px 0 #ccc;
+    width: 62px;
+    height: 62px;
+    background: radial-gradient(circle at 30% 30%, #ffffff, #e0e0e0);
+    border: 1px solid #d0d0d0;
+    border-radius: 10px;
+    /* Slightly more rounded for a die look */
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: var(--font-3xl);
-    font-weight: bold;
-    color: #333;
-    cursor: pointer;
+    font-size: var(--font-2xl);
+    font-weight: 800;
+    /* Bolder text for visibility */
+    color: #222;
+    /* Black/Dark text */
+    transition: all 0.2s ease;
     user-select: none;
-    transition: transform 0.1s;
+    position: relative;
+    box-shadow:
+        inset -2px -2px 6px rgba(0, 0, 0, 0.1),
+        /* Inner depth */
+        inset 2px 2px 6px rgba(255, 255, 255, 1),
+        /* Highlight */
+        2px 2px 5px rgba(0, 0, 0, 0.2);
+    /* Drop shadow */
 }
 
-.die:active {
-    transform: translateY(4px);
-    box-shadow: 0 0 0 #ccc;
+.die.interactive {
+    cursor: pointer;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 5px rgba(var(--primary-rgb), 0.3);
+}
+
+.die.interactive:hover {
+    transform: translateY(-2px);
+    box-shadow:
+        inset -2px -2px 6px rgba(0, 0, 0, 0.1),
+        inset 2px 2px 6px rgba(255, 255, 255, 1),
+        0 6px 12px rgba(var(--primary-rgb), 0.4);
+    background: radial-gradient(circle at 30% 30%, #fff, #efefef);
+    border-color: var(--primary-color);
+}
+
+/* Rerolled state styling - darkened to show "used" or "locked" but still visible */
+.die.rerolled {
+    opacity: 0.7;
+    filter: grayscale(0.8);
+    border-color: var(--text-dim);
 }
 
 .die.rolling {
     animation: shake 0.5s infinite;
+    color: var(--accent-color);
+    border-color: var(--accent-color);
 }
 
-.die.d6 {
-    border: 2px solid var(--dq-black);
+.dice-result-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.25rem;
+    min-height: 2.5rem;
+    /* Reserve space */
 }
 
-.die-result {
-    font-family: var(--font-heading);
+.dice-result-breakdown {
+    font-size: var(--font-md);
+    white-space: nowrap;
+}
+
+.dice-result-total {
+    font-size: var(--font-md);
+    font-weight: bold;
+    color: var(--text-light);
 }
 
 @keyframes shake {
     0% {
-        transform: rotate(0deg);
+        transform: translate(1px, 1px) rotate(0deg);
     }
 
-    25% {
-        transform: rotate(10deg);
+    10% {
+        transform: translate(-1px, -2px) rotate(-1deg);
+    }
+
+    20% {
+        transform: translate(-3px, 0px) rotate(1deg);
+    }
+
+    30% {
+        transform: translate(3px, 2px) rotate(0deg);
+    }
+
+    40% {
+        transform: translate(1px, -1px) rotate(1deg);
     }
 
     50% {
-        transform: rotate(-10deg);
+        transform: translate(-1px, 2px) rotate(-1deg);
     }
 
-    75% {
-        transform: rotate(5deg);
+    60% {
+        transform: translate(-3px, 1px) rotate(0deg);
+    }
+
+    70% {
+        transform: translate(3px, 1px) rotate(-1deg);
+    }
+
+    80% {
+        transform: translate(-1px, -1px) rotate(1deg);
+    }
+
+    90% {
+        transform: translate(1px, 2px) rotate(0deg);
     }
 
     100% {
-        transform: rotate(0deg);
+        transform: translate(1px, -2px) rotate(-1deg);
     }
-}
-
-.dice-wrapper {
-    text-align: center;
-}
-
-.dice-label {
-    margin-bottom: var(--spacing-xs);
-    font-size: var(--font-sm);
-    color: #888;
-}
-
-.die.static {
-    cursor: default;
-}
-
-.dice-result-container {
-    margin-top: 0.5rem;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 0.2rem;
-}
-
-.dice-result-total {
-    font-size: var(--font-xl);
-    font-weight: bold;
-    color: var(--dq-text-bright);
-}
-
-.dice-result-breakdown {
-    font-size: var(--font-sm);
-    color: var(--dq-text-dim);
 }

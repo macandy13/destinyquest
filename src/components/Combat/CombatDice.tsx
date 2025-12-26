@@ -9,9 +9,10 @@ interface CombatDiceProps {
     baseValue?: number; // Base stat value (e.g. speed, brawn)
     modifierValue?: number; // Additional modifiers
     onDieClick?: (index: number) => void;
+    mode?: 'normal' | 'select-die' | 'disabled';
 }
 
-const CombatDice: React.FC<CombatDiceProps> = ({ values, label, baseValue = 0, modifierValue = 0, onDieClick }) => {
+const CombatDice: React.FC<CombatDiceProps> = ({ values, label, baseValue = 0, modifierValue = 0, onDieClick, mode = 'normal' }) => {
     // Track which specific dice indices are currently "rolling" (animating)
     const [rollingIndices, setRollingIndices] = useState<number[]>([]);
 
@@ -77,23 +78,20 @@ const CombatDice: React.FC<CombatDiceProps> = ({ values, label, baseValue = 0, m
 
     const handleDieClick = (index: number, diceRoll: DiceRoll) => {
         const isDieRolling = rollingIndices.includes(index);
-
-        // Only allow clicking if NOT rolling and onDieClick is provided
-        if (isDieRolling) return;
-
-        if (onDieClick) {
-            if (diceRoll.isRerolled) return;
-            onDieClick(index);
-        }
+        if (isDieRolling || mode !== 'select-die' || !onDieClick) return;
+        if (diceRoll.isRerolled) return;
+        onDieClick(index);
     };
 
     return (
-        <div className="dice-wrapper">
+        <div className={`dice-wrapper dice-wrapper--${mode}`}>
             {label && <div className="dice-label">{label}</div>}
             <div className="dice-container">
                 {currentDice.map((diceRoll, i) => {
                     const isDieRolling = rollingIndices.includes(i);
-                    const isInteractive = !!onDieClick && !isDieRolling && !diceRoll.isRerolled;
+                    // Interactive only if mode is select-die, not rolling, and not already rerolled (if relevant)
+                    // The user requirement says "reroll mode should allow for selecting a specific die".
+                    const isInteractive = mode === 'select-die' && !!onDieClick && !isDieRolling && !diceRoll.isRerolled;
 
                     return (
                         <div
@@ -123,7 +121,7 @@ const CombatDice: React.FC<CombatDiceProps> = ({ values, label, baseValue = 0, m
                     </div>
                 )
             }
-        </div >
+        </div>
     );
 };
 

@@ -79,4 +79,52 @@ describe('CombatDice', () => {
         expect(getByText(/\+ 5\s*\(Base\)/)).toBeDefined();
         expect(getByText(/\+ 2\s*\(Mod\)/)).toBeDefined();
     });
+
+    it('should apply correct classes based on mode', () => {
+        const values: DiceRoll[] = [{ value: 1, isRerolled: false }];
+        const { container, rerender } = render(<CombatDice values={values} mode="normal" />);
+        expect(container.firstChild).toHaveClass('dice-wrapper--normal');
+
+        rerender(<CombatDice values={values} mode="select-die" />);
+        expect(container.firstChild).toHaveClass('dice-wrapper--select-die');
+
+        rerender(<CombatDice values={values} mode="disabled" />);
+        expect(container.firstChild).toHaveClass('dice-wrapper--disabled');
+    });
+
+    it('should handle interaction based on mode', async () => {
+        vi.useFakeTimers();
+        const onDieClick = vi.fn();
+        const values: DiceRoll[] = [{ value: 1, isRerolled: false }];
+        const { getByText, rerender } = render(
+            <CombatDice values={values} onDieClick={onDieClick} mode="normal" />
+        );
+
+        // Advance timers to finish animation
+        act(() => {
+            vi.advanceTimersByTime(700);
+        });
+
+        // Mode normal: click should ignore
+        getByText('1').click();
+        expect(onDieClick).not.toHaveBeenCalled();
+
+        // Mode disabled: click should ignore
+        rerender(<CombatDice values={values} onDieClick={onDieClick} mode="disabled" />);
+        act(() => {
+            vi.advanceTimersByTime(700); // Wait for potential re-animation or just safety
+        });
+        getByText('1').click();
+        expect(onDieClick).not.toHaveBeenCalled();
+
+        // Mode select-die: click should trigger
+        rerender(<CombatDice values={values} onDieClick={onDieClick} mode="select-die" />);
+        act(() => {
+            vi.advanceTimersByTime(700);
+        });
+        getByText('1').click();
+        expect(onDieClick).toHaveBeenCalledWith(0);
+
+        vi.useRealTimers();
+    });
 });

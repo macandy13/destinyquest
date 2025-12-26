@@ -114,6 +114,7 @@ const CombatArena: React.FC<CombatArenaProps> = ({ hero }) => {
                             label="Hero Speed"
                             values={combat.heroSpeedRolls} // Persist if exists
                             onDieClick={combat.rerollState?.target === 'hero-speed' ? (i) => handleReroll(i) : undefined}
+                            mode={combat.rerollState?.target === 'hero-speed' ? 'select-die' : (combat.rerollState ? 'disabled' : 'normal')}
                             baseValue={hero.stats.speed}
                             modifierValue={combat.modifiers.filter(m => m.type === 'speed-bonus').reduce((sum, m) => sum + m.value, 0)}
                         />
@@ -124,6 +125,7 @@ const CombatArena: React.FC<CombatArenaProps> = ({ hero }) => {
                             label="Enemy Speed"
                             values={combat.enemySpeedRolls}
                             baseValue={combat.enemy.speed}
+                            mode={combat.rerollState ? 'disabled' : 'normal'}
                         />
                     </div>
                 </div>
@@ -144,6 +146,7 @@ const CombatArena: React.FC<CombatArenaProps> = ({ hero }) => {
                                     label="Damage"
                                     values={combat.damageRolls} // Show result if exists
                                     onDieClick={combat.rerollState?.target === 'damage' ? (i) => handleReroll(i) : undefined}
+                                    mode={combat.rerollState?.target === 'damage' ? 'select-die' : (combat.rerollState ? 'disabled' : 'normal')}
                                     baseValue={Math.max(hero.stats.brawn, hero.stats.magic)}
                                     modifierValue={combat.modifiers.filter(m => m.type === 'damage-bonus').reduce((sum, m) => sum + m.value, 0)}
                                 />
@@ -167,6 +170,7 @@ const CombatArena: React.FC<CombatArenaProps> = ({ hero }) => {
                                         label="Enemy Damage"
                                         values={combat.damageRolls}
                                         baseValue={Math.max(combat.enemy.brawn, combat.enemy.magic)}
+                                        mode={combat.rerollState ? 'disabled' : 'normal'}
                                     />
                                 )}
                             </div>
