@@ -36,7 +36,7 @@
     background: var(--dq-black);
     border: 1px solid var(--dq-gold);
     border-radius: var(--radius-md);
-    padding: 20px;
+    padding: var(--spacing-md);
     width: 100%;
     max-width: 400px;
     display: flex;
@@ -44,11 +44,35 @@
     align-items: center;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
     animation: slideUpFade 0.3s ease-out;
+    /* Establishes positioning context for the close button */
+    position: relative;
+}
+
+/* Pin to top-right of the modal content */
+.ability-modal-close {
+    position: absolute;
+    top: var(--spacing-md);
+    right: var(--spacing-md);
+    /* Keep clickable */
+    z-index: 10;
+    line-height: 1;
+}
+
+.ability-modal-close:hover {
+    color: var(--dq-gold);
+    transform: scale(1.1);
 }
 
 .ability-modal-header {
     text-align: center;
     margin-bottom: 16px;
+}
+
+.ability-modal-title {
+    display: flex;
+    flex-direction: row;
+    align-items: baseline;
+    gap: var(--spacing-sm);
 }
 
 .ability-icon-huge {

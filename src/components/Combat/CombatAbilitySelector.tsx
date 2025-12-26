@@ -37,15 +37,18 @@ const CombatAbilitySelector: React.FC<CombatAbilitySelectorProps> = ({ combat, o
         ? combat.activeAbilities.find(a => a.name === selectedAbility.name)
         : null;
 
-    const alreadySeenAbilities = new Set<string>();
+    const abilityCounts: Record<string, number> = {};
     const availableAbilities = combat.activeAbilities
         .filter(a => canActivateAbility(a.name, a.used))
-        .sort((a, b) => a.name.localeCompare(b.name))
-        .filter(a => {
-            if (alreadySeenAbilities.has(a.name)) return false;
-            alreadySeenAbilities.add(a.name);
-            return true;
-        });
+        .reduce((acc, a) => {
+            if (!abilityCounts[a.name]) {
+                abilityCounts[a.name] = 0;
+                acc.push(a);
+            }
+            abilityCounts[a.name]++;
+            return acc;
+        }, [] as typeof combat.activeAbilities)
+        .sort((a, b) => a.name.localeCompare(b.name));
 
     if (availableAbilities.length === 0) return null;
 
@@ -66,7 +69,11 @@ const CombatAbilitySelector: React.FC<CombatAbilitySelectorProps> = ({ combat, o
                     <div className="ability-modal-content" onClick={e => e.stopPropagation()}>
                         <div className="ability-modal-header">
                             <div className="ability-icon-huge">{getAbilityIcon(selectedAbility)}</div>
-                            <h3>{selectedAbility.name}</h3>
+                            <span className="ability-modal-title">
+                                <h3>{selectedAbility.name}</h3>
+                                <span>{abilityCounts[selectedAbility.name] > 1 ? `(x${abilityCounts[selectedAbility.name]})` : ''}</span>
+                            </span>
+                            <button className="close-btn ability-modal-close" onClick={() => setSelectedAbility(null)}>&times;</button>
                         </div>
 
                         <div className="ability-modal-body">
@@ -79,10 +86,7 @@ const CombatAbilitySelector: React.FC<CombatAbilitySelectorProps> = ({ combat, o
                         </div>
 
                         <div className="ability-modal-actions">
-                            <button className="btn btn-secondary" onClick={() => setSelectedAbility(null)}>
-                                Cancel
-                            </button>
-                            <button className="btn btn-primary" onClick={handleConfirm}>
+                            <button className="btn btn-primary" onClick={handleConfirm} style={{ width: '100%' }}>
                                 Use Ability
                             </button>
                         </div>
