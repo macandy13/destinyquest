@@ -130,10 +130,10 @@ export function useCombat(hero: Hero) {
 
         if (heroTotal > enemyTotal) {
             winner = 'hero';
-            message += 'Hero wins execution round!';
+            message += 'Hero wins speed round!';
         } else if (enemyTotal > heroTotal) {
             winner = 'enemy';
-            message += 'Enemy wins execution round!';
+            message += 'Enemy wins speed round!';
         } else {
             message += 'Draw! No damage this round.';
         }
@@ -198,60 +198,21 @@ export function useCombat(hero: Hero) {
 
     // Called by "Next Round" button
     const nextRound = () => {
+        startNewRound();
+        // Immediately trigger the speed roll.
+        const rolls = generateSpeedRolls();
+        return resolveSpeedRound({ heroRolls: rolls.hero, enemyRolls: rolls.enemy });
+    };
+
+    const startNewRound = () => {
         setCombat(prev => {
-            // Update modifiers (decrease duration, remove expired)
-            const shouldDecrement = prev.phase !== 'combat-start';
-
             const activeModifiers = prev.modifiers
-                .map(m => shouldDecrement ? { ...m, duration: m.duration - 1 } : m)
+                .map(m => { return { ...m, duration: m.duration - 1 }; })
                 .filter(m => m.duration > 0);
-
-            // Auto-roll for the new round
-            const rolls = generateSpeedRolls();
-            // We need to duplicate resolve logic here since we are inside setCombat
-            // OR we can just set the rolls and phase, and rely on resolveSpeedRound logic separately?
-            // No, we need to determine winner to set the state correctly in one go.
-
-            // Duplicating core calc logic briefly for atomicity in nextRound
-            // (Or we could extract the calculation to a pure function, but inline is fine for now)
-
-            const heroRoll = sumDice(rolls.hero);
-            const enemyRoll = sumDice(rolls.enemy);
-            const speedModifiers = activeModifiers
-                .filter(m => m.type === 'speed-bonus')
-                .reduce((sum, m) => sum + m.value, 0);
-
-            // Need enemy stats from prev.enemy
-            const enemySpeed = prev.enemy?.speed || 0;
-            const heroSpeed = prev.hero?.stats.speed || 0; // Using prev.hero to be safe
-
-            const heroTotal = heroRoll + heroSpeed + speedModifiers;
-            const enemyTotal = enemyRoll + enemySpeed;
-
-            let winner: 'hero' | 'enemy' | null = null;
-            let modText = speedModifiers > 0 ? ` (+${speedModifiers} mod)` : '';
-            let message = `Speed: Hero ${heroTotal}${modText} vs Enemy ${enemyTotal}. `;
-
-            if (heroTotal > enemyTotal) {
-                winner = 'hero';
-                message += 'Hero wins execution round!';
-            } else if (enemyTotal > heroTotal) {
-                winner = 'enemy';
-                message += 'Enemy wins execution round!';
-            } else {
-                message += 'Draw! No damage this round.';
-            }
-
             return {
                 ...prev,
                 round: prev.round + 1,
-                winner,
-                heroSpeedRolls: rolls.hero,
-                enemySpeedRolls: rolls.enemy,
-                damageRolls: undefined,
-                phase: 'speed-roll',
                 modifiers: activeModifiers,
-                logs: [...prev.logs, { round: prev.round + 1, message: `Round ${prev.round + 1}`, type: 'info' }, { round: prev.round + 1, message, type: 'info' }]
             };
         });
     };

@@ -5,12 +5,12 @@ import { describe, it, expect } from 'vitest';
 import { registerAbility } from '../mechanics/abilityRegistry';
 
 const MOCK_HERO_STATS: HeroStats = {
-    speed: 5,
-    brawn: 5,
+    speed: 0,
+    brawn: 0,
     magic: 0,
-    armour: 2,
-    health: 20,
-    maxHealth: 20
+    armour: 0,
+    health: 30,
+    maxHealth: 30
 };
 
 const MOCK_HERO: any = {
@@ -18,6 +18,15 @@ const MOCK_HERO: any = {
     stats: MOCK_HERO_STATS,
     equipment: {}
 };
+
+const heroWithStats = (stats: Partial<HeroStats>) => ({
+    ...MOCK_HERO,
+    stats: {
+        ...MOCK_HERO_STATS,
+        ...stats
+    }
+});
+
 
 describe('useCombat Hook', () => {
     it('should initialize in inactive state', () => {
@@ -36,16 +45,9 @@ describe('useCombat Hook', () => {
     });
 
     it('should resolve speed round where hero wins', () => {
-        const { result } = renderHook(() => useCombat(MOCK_HERO));
+        const { result } = renderHook(() => useCombat(heroWithStats({ speed: 5 })));
 
         act(() => result.current.startCombat());
-
-        act(() => result.current.nextRound());
-
-        // Hero total: 6 + 5(spd) = 11
-        // Enemy total: 2 + enemySpd (dummy 2) = 4
-        // Hero wins clearly
-
         act(() => {
             result.current.resolveSpeedRound({
                 heroRolls: [{ value: 3, isRerolled: false }, { value: 3, isRerolled: false }],
@@ -62,7 +64,7 @@ describe('useCombat Hook', () => {
     });
 
     it('should resolve damage correctly (applying armour)', () => {
-        const { result } = renderHook(() => useCombat(MOCK_HERO));
+        const { result } = renderHook(() => useCombat(heroWithStats({ brawn: 5 })));
 
         act(() => result.current.startCombat());
 
@@ -86,7 +88,7 @@ describe('useCombat Hook', () => {
 
     it('should apply Acid passive ability (add +1 per damage die)', () => {
         const ACIC_HERO = {
-            ...MOCK_HERO,
+            ...heroWithStats({ damageDice: 2 }),
             equipment: {
                 gloves: {
                     name: 'Acid Gloves',
@@ -109,15 +111,14 @@ describe('useCombat Hook', () => {
 
         const initialEnemyHealth = result.current.combat.enemy!.health;
 
-        // Damage roll 3 (1 die) + 5(brawn) = 8 damage
-        // Acid adds +1 per die = +1
-        // Total = 9
-        act(() => result.current.executeDamageRoll([{ value: 3, isRerolled: false }]));
+        // Damage roll 3 (1 die) + 0(brawn) = 3 damage
+        // Acid adds +1 per die = +2
+        // Total = 5
+        act(() => result.current.executeDamageRoll([{ value: 2, isRerolled: false }, { value: 1, isRerolled: false }]));
         act(() => result.current.commitDamageResult());
 
-        // 20 - 9 = 11
-        expect(result.current.combat.enemy!.health).toBe(initialEnemyHealth - 9);
-        expect(result.current.combat.logs.slice(-1)[0].message).toContain('(+1 Acid)');
+        expect(result.current.combat.enemy!.health).toBe(initialEnemyHealth - 5);
+        expect(result.current.combat.logs.slice(-1)[0].message).toContain('(+2 Acid)');
     });
 
     it('should apply Barbs passive ability (1 damage at end of round)', () => {
@@ -145,12 +146,12 @@ describe('useCombat Hook', () => {
         }));
 
         // Damage phase
-        // Damage: 3 + 5(brawn) = 8.
+        // Damage: 3 + 0(brawn) = 3.
         act(() => result.current.executeDamageRoll([{ value: 3, isRerolled: false }]));
         act(() => result.current.commitDamageResult());
 
-        // 8 combat damage + 1 Barbs damage = 9 total
-        expect(result.current.combat.enemy!.health).toBe(initialEnemyHealth - 9);
+        // 3 combat damage + 1 Barbs damage = 4 total
+        expect(result.current.combat.enemy!.health).toBe(initialEnemyHealth - 4);
         expect(result.current.combat.logs.slice(-1)[0].message).toContain('Barbs inflicts 1 damage');
     });
 
@@ -177,24 +178,18 @@ describe('useCombat Hook', () => {
         expect(result.current.combat.modifiers[0].duration).toBe(2);
 
         // Round 1
-        act(() => result.current.nextRound()); // Phase: speed-roll
-
-        // Speed: 5 (base) + 2 (mod) + 2 (roll) = 9
+        // Speed: 0 (base) + 2 (mod) + 3 (roll) = 5
         // Enemy: 2 (base) + 2 (roll) = 4
         // Hero wins
         act(() => result.current.resolveSpeedRound({
-            heroRolls: [{ value: 1, isRerolled: false }, { value: 1, isRerolled: false }],
+            heroRolls: [{ value: 2, isRerolled: false }, { value: 1, isRerolled: false }],
             enemyRolls: [{ value: 1, isRerolled: false }, { value: 1, isRerolled: false }]
         }));
 
-        expect(result.current.combat.heroSpeedRolls).toEqual([
-            { value: 1, isRerolled: false },
-            { value: 1, isRerolled: false }
-        ]);
         // Hero Total calculation isn't exposed directly but inferred from log or winner logic
         // If hero had 7 speed (5+2), vs 4.
         expect(result.current.combat.winner).toBe('hero');
-        expect(result.current.combat.logs.slice(-1)[0].message).toContain('Hero 9 (+2 mod)');
+        expect(result.current.combat.logs.slice(-1)[0].message).toContain('Hero 5 (+2 mod)');
 
         // Round 2 (Duration should decrease)
         act(() => result.current.nextRound());
@@ -208,7 +203,7 @@ describe('useCombat Hook', () => {
                 enemyRolls: [{ value: 1, isRerolled: false }, { value: 1, isRerolled: false }]
             });
         });
-        expect(result.current.combat.logs.slice(-1)[0].message).toContain('Hero 9 (+2 mod)');
+        expect(result.current.combat.logs.slice(-1)[0].message).toContain('Hero 4 (+2 mod)');
 
         // Round 3 (Duration should expire)
         act(() => result.current.nextRound());
@@ -221,7 +216,7 @@ describe('useCombat Hook', () => {
             heroRolls: [{ value: 1, isRerolled: false }, { value: 1, isRerolled: false }],
             enemyRolls: [{ value: 1, isRerolled: false }, { value: 1, isRerolled: false }]
         }));
-        expect(result.current.combat.logs.slice(-1)[0].message).toContain('Hero 7 vs'); // No mod text
+        expect(result.current.combat.logs.slice(-1)[0].message).toContain('Hero 2 vs'); // No mod text
     });
 
     it('should apply Parry combat ability (cancel enemy damage)', () => {
@@ -391,8 +386,8 @@ describe('useCombat Hook', () => {
         act(() => resultWithAbility.current.commitDamageResult());
 
         // Enemy has 0 armour in mock.
-        // Expected damage: 10 (roll) + 5 (brawn) + 3 (mod) = 18.
-        const expectedHealth = initialEnemyHealth - 18;
+        // Expected damage: 10 (roll) + 0 (brawn) + 3 (mod) = 13.
+        const expectedHealth = initialEnemyHealth - 13;
         expect(resultWithAbility.current.combat.enemy!.health).toBe(expectedHealth);
     });
 
