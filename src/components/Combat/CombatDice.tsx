@@ -1,16 +1,18 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { DiceRoll } from '../../types/combat';
+import { sumDice } from '../../utils/dice';
 import './CombatDice.css';
 
 interface CombatDiceProps {
-    result?: number; // Total result text
     values?: DiceRoll[]; // Controlled mode: display these specific dice
     count?: number; // Number of dice (default 2)
     label?: string;
+    baseValue?: number; // Base stat value (e.g. speed, brawn)
+    modifierValue?: number; // Additional modifiers
     onDieClick?: (index: number) => void;
 }
 
-const CombatDice: React.FC<CombatDiceProps> = ({ result, values, count = 2, label, onDieClick }) => {
+const CombatDice: React.FC<CombatDiceProps> = ({ values, count = 2, label, baseValue = 0, modifierValue = 0, onDieClick }) => {
     // Track which specific dice indices are currently "rolling" (animating)
     const [rollingIndices, setRollingIndices] = useState<number[]>([]);
 
@@ -128,14 +130,26 @@ const CombatDice: React.FC<CombatDiceProps> = ({ result, values, count = 2, labe
                             <span className="die-result">{diceRoll.value}</span>
                         </div>
                     );
+
                 })}
             </div>
-            {result !== undefined && rollingIndices.length === 0 && (
-                <div className="dice-result-total">
-                    = {result}
-                </div>
-            )}
-        </div>
+            {
+                rollingIndices.length === 0 && (
+                    <div className="dice-result-container">
+                        {(baseValue !== 0 || modifierValue !== 0) && (
+                            <div className="dice-result-breakdown text-dim">
+                                {sumDice(currentDice)} (Roll)
+                                {baseValue !== 0 && ` + ${baseValue} (Base)`}
+                                {modifierValue !== 0 && ` + ${modifierValue} (Mod)`}
+                            </div>
+                        )}
+                        <div className="dice-result-total">
+                            = {sumDice(currentDice) + baseValue + modifierValue}
+                        </div>
+                    </div>
+                )
+            }
+        </div >
     );
 };
 
