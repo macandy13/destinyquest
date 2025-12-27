@@ -5,14 +5,14 @@
     transform: translateX(-50%);
     /* Center relative to viewport */
     width: 100%;
-    max-width: 480px;
     /* Match layout */
     background-color: var(--dq-black);
     border-top: 1px solid var(--dq-gold-dim);
     display: flex;
-    justify-content: space-around;
+    justify-content: space-evenly;
     padding: var(--spacing-sm) 0;
     z-index: 100;
+    height: var(--nav-height);
 }
 
 .nav-button {
@@ -44,6 +44,6 @@
 }
 
 .nav-divider {
-    width: 1px;
+    width: var(--border-sm);
     background-color: var(--dq-grey);
 }

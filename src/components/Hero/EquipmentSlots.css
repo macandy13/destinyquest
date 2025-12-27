@@ -6,7 +6,7 @@
     padding: var(--spacing-sm);
     background: var(--dq-black);
     border-radius: var(--radius-md);
-    border: 1px solid var(--dq-grey);
+    border: var(--border-sm) solid var(--dq-grey);
 }
 
 .equipment-container {

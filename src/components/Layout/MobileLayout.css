@@ -2,18 +2,19 @@
     display: flex;
     flex-direction: column;
     min-height: 100vh;
-    max-width: 480px;
+    min-width: var(--min-width);
+    max-width: var(--max-width);
     /* Restrict width on desktop for mobile simulation */
     margin: 0 auto;
     background-color: var(--dq-dark-grey);
-    border-left: 1px solid var(--dq-grey);
-    border-right: 1px solid var(--dq-grey);
+    border-left: var(--border-sm) solid var(--dq-grey);
+    border-right: var(--border-sm) solid var(--dq-grey);
     position: relative;
     width: 100%;
 }
 
 .mobile-layout-content {
     flex: 1;
-    padding-bottom: 80px;
+    padding-bottom: var(--spacing-lg);
     /* Space for bottom nav */
 }

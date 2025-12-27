@@ -1,4 +1,8 @@
 :root {
+  --min-width: 440px;
+  /* iPhone 11 */
+  --max-width: clamp(480px, 100vw, 540px);
+
   /* Premium Destiny Quest Palette */
   --dq-gold: #d4af37;
   --dq-gold-dim: #aa8c2c;
@@ -16,37 +20,85 @@
   --font-body: Georgia, "Times New Roman", Times, serif;
 
   /* Spacing */
-  --spacing-2xs: 2px;
-  --spacing-xs: 4px;
-  --spacing-sm: 8px;
-  --spacing-md: 16px;
-  --spacing-lg: 24px;
-  --spacing-xl: 32px;
+  /* Spacing - clamp(min, preferred, max) */
+  --spacing-2xs: clamp(2px, 0.5vw, 4px);
+  --spacing-xs: clamp(4px, 1vw, 8px);
+  --spacing-sm: clamp(8px, 2vw, 12px);
+  --spacing-md: clamp(16px, 3vw, 24px);
+  --spacing-lg: clamp(24px, 5vw, 32px);
+  --spacing-xl: clamp(32px, 7vw, 48px);
 
   /* Font Sizes */
-  --font-2xs: 0.625rem;
-  /* 10px */
-  --font-xs: 0.75rem;
-  /* 12px */
-  --font-sm: 0.875rem;
-  /* 14px */
-  --font-base: 1rem;
-  /* 16px */
-  --font-lg: 1.125rem;
-  /* 18px */
-  --font-xl: 1.25rem;
-  /* 20px */
-  --font-2xl: 1.5rem;
-  /* 24px */
-  --font-3xl: 2rem;
-  /* 32px */
-  --font-4xl: 3rem;
-  /* 48px */
+  --font-2xs: clamp(7px, 2vw, 12px);
+  --font-xs: clamp(8px, 2.5vw, 14px);
+  --font-sm: clamp(9px, 3vw, 16px);
+  --font-base: clamp(10px, 3.5vw, 18px);
+  --font-lg: clamp(11px, 4vw, 22px);
+  --font-xl: clamp(12px, 4.5vw, 26px);
+  --font-2xl: clamp(14px, 5vw, 32px);
+  --font-3xl: clamp(18px, 6vw, 40px);
+  --font-4xl: clamp(24px, 8vw, 64px);
 
+  /* Borders and border line thickness*/
   /* Borders */
-  --radius-sm: 4px;
-  --radius-md: 8px;
-  --radius-lg: 16px;
+  --radius-sm: clamp(2px, 0.5vw, 4px);
+  --radius-md: clamp(4px, 1vw, 8px);
+  --radius-lg: clamp(8px, 2vw, 16px);
+
+  --border-sm: clamp(1px, 0.1vw, 2px);
+  --border-md: clamp(2px, 0.2vw, 3px);
+  --border-lg: clamp(3px, 0.5vw, 4px);
+
+  --icon-sm: clamp(16px, 4vw, 20px);
+  --icon-md: clamp(24px, 6vw, 32px);
+  --icon-lg: clamp(32px, 8vw, 48px);
+  --icon-xl: clamp(48px, 10vw, 64px);
+
+  --button-sm: clamp(24px, 6vw, 40px);
+  --button-md: clamp(32px, 10vw, 48px);
+  --button-lg: clamp(48px, 12vw, 64px);
+  --button-xl: clamp(64px, 15vw, 80px);
+  --button-2xl: clamp(80px, 18vw, 110px);
+
+  --nav-height: clamp(64px, 15vw, 80px);
+}
+
+@media (max-width: 360px) {
+  :root {
+    --min-width: 320px;
+    --max-width: 350px;
+    --font-base: 9px;
+
+  }
+}
+
+@media (max-width: 400px) {
+  :root {
+    --min-width: 360px;
+    --max-width: 380px;
+  }
+}
+
+@media (max-width: 440px) {
+  :root {
+    --min-width: 380px;
+    --max-width: 420px;
+  }
+}
+
+@media (max-width: 480px) {
+  :root {
+    --min-width: 420px;
+    --max-width: 460px;
+  }
+}
+
+@media (max-width: 480px) and (orientation: landscape) {
+  :root {
+    /* Adjust for mobile landscape - reducing vertical heights if needed */
+    --spacing-md: clamp(8px, 2vh, 16px);
+    --spacing-lg: clamp(16px, 4vh, 24px);
+  }
 }
 
 /* Reset & Base */
@@ -66,10 +118,16 @@ body {
   background-attachment: fixed;
   color: var(--dq-light-grey);
   font-family: var(--font-body), sans-serif;
-  font-size: 16px;
+  font-size: var(--font-base);
   line-height: 1.5;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+html {
+  overflow-y: auto;
 }
 
 /* Typography Utility */
@@ -81,7 +139,6 @@ h5,
 h6 {
   font-family: var(--font-heading), serif;
   color: var(--dq-gold);
-  margin-bottom: var(--spacing-sm);
 }
 
 button {

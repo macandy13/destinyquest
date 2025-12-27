@@ -8,11 +8,12 @@
     background: var(--dq-bg-card);
     /* Fallback or use standard var */
     background-color: var(--dq-grey);
-    border: 1px solid var(--dq-gold-dim);
+    border: var(--border-sm) solid var(--dq-gold-dim);
     border-radius: var(--radius-sm);
-    padding: var(--spacing-sm);
-    min-width: 80px;
-    height: 80px;
+    padding: var(--spacing-xs);
+    width: var(--button-2xl);
+    height: var(--button-2xl);
+    overflow: clip;
     cursor: pointer;
     transition: all 0.2s ease;
     flex-shrink: 0;
@@ -27,7 +28,7 @@
 }
 
 .ability-icon-large {
-    font-size: var(--font-2xl);
+    font-size: var(--font-xl);
     margin-bottom: var(--spacing-xs);
 }
 

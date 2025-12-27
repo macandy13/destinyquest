@@ -1,6 +1,7 @@
 import React from 'react';
 import { HeroStats } from '../../types/hero';
 import './EquipmentSlot.css';
+import { getStatIcon } from '../../utils/statUtils';
 
 interface SlotDisplayItem {
     name: string;
@@ -30,11 +31,7 @@ const EquipmentSlot: React.FC<EquipmentSlotProps> = ({ label, icon, item, onClic
                         <span className="equipment-stats-display">
                             {Object.entries(item.stats)
                                 .map(([stat, value]) => {
-                                    const statIcon = stat === 'speed' ? '⚡' :
-                                        stat === 'brawn' ? '💪' :
-                                            stat === 'magic' ? '✨' :
-                                                stat === 'armour' ? '🛡️' :
-                                                    stat === 'health' ? '❤️' : '';
+                                    const statIcon = getStatIcon(stat);
                                     return `${value > 0 ? '+' : ''}${value} ${statIcon}`;
                                 })
                                 .join(' ')}

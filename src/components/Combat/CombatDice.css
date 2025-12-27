@@ -4,7 +4,7 @@
     align-items: center;
     gap: var(--spacing-sm);
     padding: var(--spacing-sm);
-    border-radius: 8px;
+    border-radius: var(--radius-md);
     transition: opacity 0.3s ease, background-color 0.3s ease;
 }
 
@@ -35,11 +35,11 @@
 }
 
 .die {
-    width: 62px;
-    height: 62px;
+    width: var(--button-lg);
+    height: var(--button-lg);
     background: radial-gradient(circle at 30% 30%, #ffffff, #e0e0e0);
-    border: 1px solid #d0d0d0;
-    border-radius: 10px;
+    border: var(--border-lg) solid #d0d0d0;
+    border-radius: var(--radius-lg);
     /* Slightly more rounded for a die look */
     display: flex;
     align-items: center;
@@ -94,9 +94,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 0.25rem;
-    min-height: 2.5rem;
-    /* Reserve space */
+    gap: var(--spacing-sm);
 }
 
 .dice-result-breakdown {
