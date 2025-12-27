@@ -33,9 +33,10 @@
   --font-xs: clamp(8px, 2.5vw, 14px);
   --font-sm: clamp(9px, 3vw, 16px);
   --font-base: clamp(10px, 3.5vw, 18px);
-  --font-lg: clamp(11px, 4vw, 22px);
-  --font-xl: clamp(12px, 4.5vw, 26px);
-  --font-2xl: clamp(14px, 5vw, 32px);
+  --font-md: clamp(11px, 4vw, 22px);
+  --font-lg: clamp(12px, 4.5vw, 26px);
+  --font-xl: clamp(14px, 5vw, 32px);
+  --font-2xl: clamp(16px, 6vw, 40px);
   --font-3xl: clamp(18px, 6vw, 40px);
   --font-4xl: clamp(24px, 8vw, 64px);
 
@@ -142,27 +143,30 @@ h6 {
 }
 
 h1 {
-  font-size: var(--font-4xl);
-}
-
-h2 {
-  font-size: var(--font-3xl);
-}
-
-h3 {
-  font-size: var(--font-2xl);
-}
-
-h4 {
   font-size: var(--font-xl);
 }
 
-h5 {
+h2 {
   font-size: var(--font-lg);
+  font-weight: bold;
+}
+
+h3 {
+  font-size: var(--font-lg);
+}
+
+h4 {
+  font-size: var(---font-md);
+  font-weight: bold;
+}
+
+h5 {
+  font-size: var(--font-md);
 }
 
 h6 {
   font-size: var(--font-base);
+  font-weight: bold;
 }
 
 button {
