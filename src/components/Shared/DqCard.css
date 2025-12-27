@@ -1,0 +1,18 @@
+.dq-card {
+    background: var(--dq-grey);
+    padding: var(--spacing-md);
+    border-radius: var(--radius-md);
+    border: 1px solid var(--dq-gold-dim);
+    gap: var(--spacing-md);
+    display: flex;
+    flex-direction: column;
+}
+
+.dq-card-title {
+    color: var(--dq-gold);
+    margin: 0;
+}
+
+.dq-card.combat .dq-card-title {
+    color: var(--dq-crimson);
+}

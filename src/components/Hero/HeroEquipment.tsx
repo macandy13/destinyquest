@@ -3,6 +3,8 @@ import { Hero, EquipmentSlot, EquipmentItem } from '../../types/hero';
 import EquipmentSlots from './EquipmentSlots';
 import EquipmentSelector from './EquipmentSelector';
 
+import DqCard from '../Shared/DqCard';
+
 interface HeroEquipmentProps {
     hero: Hero;
     onEquip: (item: EquipmentItem, slot: EquipmentSlot) => void;
@@ -24,8 +26,7 @@ const HeroEquipment: React.FC<HeroEquipmentProps> = ({ hero, onEquip, onUnequip 
     };
 
     return (
-        <div className="equipment-section">
-            <h3 className="equipment-heading">Equipment</h3>
+        <DqCard title="Equipment" className="equipment-section">
             <EquipmentSlots
                 hero={hero}
                 onSlotClick={(slot) => setSelectedSlot(slot)}
@@ -39,7 +40,7 @@ const HeroEquipment: React.FC<HeroEquipmentProps> = ({ hero, onEquip, onUnequip 
                     onClose={() => setSelectedSlot(null)}
                 />
             )}
-        </div>
+        </DqCard>
     );
 };
 

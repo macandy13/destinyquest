@@ -20,34 +20,19 @@ function App() {
 
             <main className="app-main">
                 {activeTab === 'stats' && (
-                    <div className="dq-card">
-                        <div className="hero-header">
-                            <h2 className="dq-card-title">Hero Sheet</h2>
-                            <div className="hero-details">
-                                <div className="hero-name">{hero.name}</div>
-                                <div className="text-dim hero-path">{hero.path || 'Novice'}</div>
-                            </div>
-                        </div>
-
-                        <HeroStats
-                            hero={hero}
-                            onHealthChange={updateHealth}
-                            onMoneyChange={updateMoney}
-                        />
-                    </div>
+                    <HeroStats
+                        hero={hero}
+                        onHealthChange={updateHealth}
+                        onMoneyChange={updateMoney}
+                    />
                 )}
 
                 {activeTab === 'equipment' && (
-                    <div className="dq-card">
-                        <div className="hero-header">
-                            <h2 className="dq-card-title">Equipment</h2>
-                        </div>
-                        <HeroEquipment
-                            hero={hero}
-                            onEquip={equipItem}
-                            onUnequip={unequipItem}
-                        />
-                    </div>
+                    <HeroEquipment
+                        hero={hero}
+                        onEquip={equipItem}
+                        onUnequip={unequipItem}
+                    />
                 )}
 
                 {activeTab === 'combat' && (
