@@ -1,5 +1,5 @@
 import React from 'react';
-import { EquipmentSlot, EquipmentItem } from '../../types/hero';
+import { EquipmentSlot, EquipmentItem, BackpackItem } from '../../types/hero';
 import { getItemsBySlot, ITEMS } from '../../data/items';
 import { getStatIcon } from '../../utils/statUtils';
 import DqCard from '../Shared/DqCard';
@@ -9,16 +9,24 @@ import './InventorySelector.css';
 
 interface InventorySelectorProps {
     slot?: EquipmentSlot;
-    onSelect: (item: EquipmentItem | null) => void;
+    onSelect: (item: EquipmentItem | BackpackItem | null) => void;
     onClose: () => void;
     showAllItems?: boolean;
+    customItems?: (EquipmentItem | BackpackItem)[]; // Allow passing specific list (e.g. backpack items)
 }
 
-const InventorySelector: React.FC<InventorySelectorProps> = ({ slot, onSelect, onClose, showAllItems = false }) => {
+const InventorySelector: React.FC<InventorySelectorProps> = ({ slot, onSelect, onClose, showAllItems = false, customItems }) => {
     const [searchTerm, setSearchTerm] = React.useState('');
 
-    // If showAllItems is true, use all ITEMS. Otherwise get by slot.
-    const items = showAllItems ? ITEMS : (slot ? getItemsBySlot(slot) : []);
+    // Determine source items
+    let items: (EquipmentItem | BackpackItem)[] = [];
+    if (customItems) {
+        items = customItems;
+    } else if (showAllItems) {
+        items = ITEMS;
+    } else if (slot) {
+        items = getItemsBySlot(slot);
+    }
 
     const filteredItems = items.filter(item => {
         const term = searchTerm.toLowerCase();
@@ -91,7 +99,7 @@ const InventorySelector: React.FC<InventorySelectorProps> = ({ slot, onSelect, o
                                         {item.stats?.armour ? `${getStatIcon('armour')} ${item.stats.armour} ` : ''}
                                         {item.abilities && item.abilities.length > 0 && (
                                             <div className="item-abilities-tag">
-                                                {item.abilities.map(a => `★ ${a}`).join(', ')}
+                                                {item.abilities.map(a => `★ ${a} `).join(', ')}
                                             </div>
                                         )}
                                     </div>

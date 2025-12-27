@@ -20,8 +20,6 @@
     max-width: 500px;
     max-height: 80vh;
     animation: slideUp 0.3s ease-out;
-    padding: 0;
-    /* Let DqCard handle padding if needed, or override */
 }
 
 @keyframes slideUp {

@@ -28,13 +28,27 @@ export interface EquipmentItem {
 
 export type HeroPath = '' | 'Warrior' | 'Mage' | 'Rogue';
 
+export interface BackpackItem {
+    type: 'backpack';
+    id: string;
+    name: string;
+    effect?: string;
+    modifier?: string; // Full modifier string (e.g. "+2 speed")
+    stats?: Partial<HeroStats>; // Structured stats
+    duration?: number; // Duration in rounds (0 = immediate/permanent/one-time)
+    uses?: number;
+    notes?: string;
+    act: number;
+    referenceNumber?: number;
+}
+
 export interface Hero {
     name: string;
     path: HeroPath;
     career: string;
     stats: HeroStats;
     equipment: Partial<Record<EquipmentSlot, EquipmentItem>>;
-    backpack: (EquipmentItem | null)[];
+    backpack: (BackpackItem | null)[];
     money: number;
 }
 

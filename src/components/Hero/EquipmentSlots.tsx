@@ -63,7 +63,7 @@ const EquipmentSlots: React.FC<EquipmentSlotsProps> = ({ hero, onEquip, onUnequi
       {selectedSlot && (
         <InventorySelector
           slot={selectedSlot}
-          onSelect={handleEquip}
+          onSelect={(item) => handleEquip(item as EquipmentItem)}
           onClose={() => setSelectedSlot(null)}
         />
       )}

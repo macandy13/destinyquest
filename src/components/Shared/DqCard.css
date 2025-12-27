@@ -6,6 +6,7 @@
     gap: var(--spacing-md);
     display: flex;
     flex-direction: column;
+    padding-bottom: var(--spacing-md);
 }
 
 .dq-card-title {

@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Hero, INITIAL_HERO, HeroStats, EquipmentItem, EquipmentSlot } from '../types/hero';
+import { Hero, INITIAL_HERO, HeroStats, EquipmentItem, EquipmentSlot, BackpackItem } from '../types/hero';
 
 const STORAGE_KEY = 'dq-hero-v1';
 
@@ -89,7 +89,7 @@ export function useHero() {
         });
     };
 
-    const setBackpackItem = (item: EquipmentItem, index: number) => {
+    const setBackpackItem = (item: BackpackItem, index: number) => {
         setHero(prev => {
             const newBackpack = [...prev.backpack];
             newBackpack[index] = item;

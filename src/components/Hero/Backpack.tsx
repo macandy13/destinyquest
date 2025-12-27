@@ -1,25 +1,24 @@
 import React, { useState } from 'react';
-import { Hero, EquipmentItem } from '../../types/hero';
+import { Hero, BackpackItem } from '../../types/hero';
 import EquipmentSlot from './EquipmentSlot';
 import InventorySelector from './InventorySelector';
+import { BACKPACK_ITEMS } from '../../data/backpackItems';
 import './Backpack.css';
 
 interface BackpackProps {
     hero: Hero;
-    onSetItem: (item: EquipmentItem, index: number) => void;
+    onSetItem: (item: BackpackItem, index: number) => void;
     onDeleteItem: (index: number) => void;
 }
-
-const BACKPACK_CAPACITY = 5;
 
 const Backpack: React.FC<BackpackProps> = ({ hero, onSetItem, onDeleteItem }) => {
     const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
 
     return (
         <div className="backpack-container">
-            <h4>Backpack ({hero.backpack.filter(i => i !== null).length}/{BACKPACK_CAPACITY})</h4>
+            <h4>Backpack ({hero.backpack.filter(i => i !== null).length}/{hero.backpack.length})</h4>
             <div className="backpack-grid">
-                {Array.from({ length: BACKPACK_CAPACITY }).map((_, index) => {
+                {Array.from({ length: hero.backpack.length }).map((_, index) => {
                     const item = hero.backpack[index];
                     return (
                         <EquipmentSlot
@@ -38,14 +37,14 @@ const Backpack: React.FC<BackpackProps> = ({ hero, onSetItem, onDeleteItem }) =>
                 <InventorySelector
                     onSelect={(item) => {
                         if (item) {
-                            onSetItem(item, selectedIndex);
+                            onSetItem(item as BackpackItem, selectedIndex);
                         } else {
                             onDeleteItem(selectedIndex);
                         }
                         setSelectedIndex(null);
                     }}
                     onClose={() => setSelectedIndex(null)}
-                    showAllItems={true}
+                    customItems={BACKPACK_ITEMS}
                 />
             )}
         </div>

@@ -7,6 +7,8 @@ interface SlotDisplayItem {
     name: string;
     stats?: Partial<HeroStats>;
     abilities?: string[];
+    description?: string;
+    effect?: string;
 }
 
 interface EquipmentSlotProps {
@@ -40,6 +42,11 @@ const EquipmentSlot: React.FC<EquipmentSlotProps> = ({ label, icon, item, onClic
                     {item.abilities && item.abilities.length > 0 && (
                         <span className="equipment-abilities-display">
                             {item.abilities.map(a => `★ ${a}`).join(', ')}
+                        </span>
+                    )}
+                    {(item.description || item.effect) && (
+                        <span className="equipment-effect-display">
+                            {item.description || item.effect}
                         </span>
                     )}
                 </div>

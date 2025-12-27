@@ -1,5 +1,5 @@
 import React from 'react';
-import { Hero, EquipmentSlot, EquipmentItem } from '../../types/hero';
+import { Hero, EquipmentSlot, EquipmentItem, BackpackItem } from '../../types/hero';
 import EquipmentSlots from './EquipmentSlots';
 import Backpack from './Backpack';
 
@@ -9,7 +9,7 @@ interface HeroEquipmentProps {
     hero: Hero;
     onEquip: (item: EquipmentItem, slot: EquipmentSlot) => void;
     onUnequip: (slot: EquipmentSlot) => void;
-    onSetBackpackItem: (item: EquipmentItem, index: number) => void;
+    onSetBackpackItem: (item: BackpackItem, index: number) => void;
     onDeleteBackpackItem: (index: number) => void;
 }
 
