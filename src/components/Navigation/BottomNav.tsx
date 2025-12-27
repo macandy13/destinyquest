@@ -2,19 +2,29 @@ import React from 'react';
 import './BottomNav.css';
 
 interface BottomNavProps {
-    activeTab: 'hero' | 'combat';
-    onTabChange: (tab: 'hero' | 'combat') => void;
+    activeTab: 'stats' | 'equipment' | 'combat';
+    onTabChange: (tab: 'stats' | 'equipment' | 'combat') => void;
 }
 
 const BottomNav: React.FC<BottomNavProps> = ({ activeTab, onTabChange }) => {
     return (
         <nav className="bottom-nav">
             <button
-                onClick={() => onTabChange('hero')}
-                className={`nav-button ${activeTab === 'hero' ? 'active' : ''}`}
+                onClick={() => onTabChange('stats')}
+                className={`nav-button ${activeTab === 'stats' ? 'active' : ''}`}
+            >
+                <span className="nav-button-icon">📊</span>
+                <span className="nav-button-label">Stats</span>
+            </button>
+
+            <div className="nav-divider"></div>
+
+            <button
+                onClick={() => onTabChange('equipment')}
+                className={`nav-button ${activeTab === 'equipment' ? 'active' : ''}`}
             >
                 <span className="nav-button-icon">⚔️</span>
-                <span className="nav-button-label">Hero</span>
+                <span className="nav-button-label">Equip</span>
             </button>
 
             <div className="nav-divider"></div>
@@ -31,3 +41,4 @@ const BottomNav: React.FC<BottomNavProps> = ({ activeTab, onTabChange }) => {
 };
 
 export default BottomNav;
+

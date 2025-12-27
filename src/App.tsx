@@ -4,27 +4,13 @@ import './App.css';
 import MobileLayout from './components/Layout/MobileLayout';
 import BottomNav from './components/Navigation/BottomNav';
 import HeroStats from './components/Hero/HeroStats';
-import EquipmentSlots from './components/Hero/EquipmentSlots';
-import EquipmentSelector from './components/Hero/EquipmentSelector';
+import HeroEquipment from './components/Hero/HeroEquipment';
 import CombatArena from './components/Combat/CombatArena';
 import { useHero } from './hooks/useHero';
-import { EquipmentSlot, EquipmentItem } from './types/hero';
 
 function App() {
-    const [activeTab, setActiveTab] = useState<'hero' | 'combat'>('hero');
+    const [activeTab, setActiveTab] = useState<'stats' | 'equipment' | 'combat'>('stats');
     const { hero, updateHealth, updateMoney, equipItem, unequipItem } = useHero();
-    const [selectedSlot, setSelectedSlot] = useState<EquipmentSlot | null>(null); // New state
-
-    const handleEquip = (item: EquipmentItem | null) => {
-        if (selectedSlot) {
-            if (item) {
-                equipItem(item, selectedSlot);
-            } else {
-                unequipItem(selectedSlot);
-            }
-            setSelectedSlot(null);
-        }
-    };
 
     return (
         <MobileLayout>
@@ -33,7 +19,7 @@ function App() {
             </header>
 
             <main className="app-main">
-                {activeTab === 'hero' ? (
+                {activeTab === 'stats' && (
                     <div className="dq-card">
                         <div className="hero-header">
                             <h2 className="dq-card-title">Hero Sheet</h2>
@@ -48,25 +34,23 @@ function App() {
                             onHealthChange={updateHealth}
                             onMoneyChange={updateMoney}
                         />
-
-                        <div className="equipment-section">
-                            <h3 className="equipment-heading">Equipment</h3>
-                            <EquipmentSlots
-                                hero={hero}
-                                onSlotClick={(slot) => setSelectedSlot(slot)} // Modified
-                                onBackpackClick={(index) => console.log('Clicked backpack:', index)}
-                            />
-                        </div>
-
-                        {selectedSlot && ( // New conditional render
-                            <EquipmentSelector
-                                slot={selectedSlot}
-                                onSelect={handleEquip}
-                                onClose={() => setSelectedSlot(null)}
-                            />
-                        )}
                     </div>
-                ) : (
+                )}
+
+                {activeTab === 'equipment' && (
+                    <div className="dq-card">
+                        <div className="hero-header">
+                            <h2 className="dq-card-title">Equipment</h2>
+                        </div>
+                        <HeroEquipment
+                            hero={hero}
+                            onEquip={equipItem}
+                            onUnequip={unequipItem}
+                        />
+                    </div>
+                )}
+
+                {activeTab === 'combat' && (
                     <CombatArena hero={hero} />
                 )}
             </main>
