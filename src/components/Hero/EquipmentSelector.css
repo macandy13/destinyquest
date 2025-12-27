@@ -14,16 +14,14 @@
 }
 
 .equipment-selector-modal {
-    background: var(--dq-black);
-    border: 1px solid var(--dq-gold);
+    /* Background and border handled by DqCard */
     border-radius: var(--radius-md) var(--radius-md) 0 0;
     width: 100%;
     max-width: 500px;
     max-height: 80vh;
-    display: flex;
-    flex-direction: column;
-    box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.5);
     animation: slideUp 0.3s ease-out;
+    padding: 0;
+    /* Let DqCard handle padding if needed, or override */
 }
 
 @keyframes slideUp {

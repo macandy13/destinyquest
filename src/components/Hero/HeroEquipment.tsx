@@ -26,7 +26,7 @@ const HeroEquipment: React.FC<HeroEquipmentProps> = ({ hero, onEquip, onUnequip 
     };
 
     return (
-        <DqCard title="Equipment" className="equipment-section">
+        <DqCard title="Inventory" className="equipment-section">
             <EquipmentSlots
                 hero={hero}
                 onSlotClick={(slot) => setSelectedSlot(slot)}

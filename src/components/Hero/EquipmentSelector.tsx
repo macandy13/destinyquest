@@ -2,6 +2,7 @@ import React from 'react';
 import { EquipmentSlot, EquipmentItem } from '../../types/hero';
 import { getItemsBySlot } from '../../data/items';
 import { getStatIcon } from '../../utils/statUtils';
+import DqCard from '../Shared/DqCard';
 import './EquipmentSelector.css';
 
 interface EquipmentSelectorProps {
@@ -25,12 +26,13 @@ const EquipmentSelector: React.FC<EquipmentSelectorProps> = ({ slot, onSelect, o
 
     return (
         <div className="equipment-selector-overlay" onClick={onClose}>
-            <div className="equipment-selector-modal" onClick={e => e.stopPropagation()}>
+            <DqCard
+                className="equipment-selector-modal"
+                onClick={(e: React.MouseEvent) => e.stopPropagation()}
+                title={`Select ${slot}`}
+                onClose={onClose}
+            >
                 <div className="selector-header">
-                    <div className="header-row-top">
-                        <h3 className="selector-title">Select {slot}</h3>
-                        <button className="close-btn" onClick={onClose}>&times;</button>
-                    </div>
                     <div className="header-row-search">
                         <input
                             type="text"
@@ -99,7 +101,7 @@ const EquipmentSelector: React.FC<EquipmentSelectorProps> = ({ slot, onSelect, o
                         ))
                     )}
                 </div>
-            </div>
+            </DqCard>
         </div>
     );
 };

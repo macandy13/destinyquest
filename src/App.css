@@ -93,7 +93,6 @@
 }
 
 .selector-header {
-    padding: var(--spacing-md);
     border-bottom: var(--border-sm) solid var(--dq-grey);
     display: flex;
     flex-direction: column;
@@ -148,7 +147,6 @@
 .items-list {
     flex: 1;
     overflow-y: auto;
-    padding: var(--spacing-sm);
     display: flex;
     flex-direction: column;
     gap: var(--spacing-sm);

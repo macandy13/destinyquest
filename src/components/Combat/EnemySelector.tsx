@@ -3,6 +3,7 @@ import { Enemy } from '../../types/combat';
 import { ENEMIES } from '../../data/enemies';
 import { getStatIcon } from '../../utils/statUtils';
 import NumberControl from '../Shared/NumberControl';
+import DqCard from '../Shared/DqCard';
 import './EnemySelector.css';
 
 interface EnemySelectorProps {
@@ -37,14 +38,14 @@ const EnemySelector: React.FC<EnemySelectorProps> = ({ onSelect }) => {
         setCustomEnemy(prev => ({
             ...prev,
             [field]: value,
-            maxHealth: field === 'health' ? Number(value) : prev.maxHealth // Sync maxHealth if health changes manually? Or just let user set both if needed, but for simplicity let's assume setting health sets max.
+            maxHealth: field === 'health' ? Number(value) : prev.maxHealth
         }));
     };
 
     const confirmCustomEnemy = () => {
         onSelect({
             ...customEnemy,
-            maxHealth: customEnemy.health // Ensure max health is consistent
+            maxHealth: customEnemy.health
         });
     };
 
@@ -62,12 +63,8 @@ const EnemySelector: React.FC<EnemySelectorProps> = ({ onSelect }) => {
     };
 
     return (
-        <div className="dq-card enemy-selector-card">
+        <DqCard title="Select Opponent" className="enemy-selector-card">
             <div className='selector-header'>
-                <div className="header-row-top">
-                    <h2 className="selector-title">Select Opponent</h2>
-                </div>
-
                 <div className="enemy-tabs">
                     <button
                         className={`tab-btn ${mode === 'list' ? 'active' : ''}`}
@@ -196,7 +193,7 @@ const EnemySelector: React.FC<EnemySelectorProps> = ({ onSelect }) => {
                                 <NumberControl
                                     value={customEnemy.health}
                                     onChange={v => handleCustomChange('health', v)}
-                                    min={1} // Health starts at 1
+                                    min={1}
                                 />
                             </div>
                         </div>
@@ -206,7 +203,7 @@ const EnemySelector: React.FC<EnemySelectorProps> = ({ onSelect }) => {
                     </div>
                 )
             }
-        </div>
+        </DqCard>
     );
 };
 

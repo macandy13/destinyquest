@@ -13,8 +13,8 @@ const BottomNav: React.FC<BottomNavProps> = ({ activeTab, onTabChange }) => {
                 onClick={() => onTabChange('stats')}
                 className={`nav-button ${activeTab === 'stats' ? 'active' : ''}`}
             >
-                <span className="nav-button-icon">📊</span>
-                <span className="nav-button-label">Stats</span>
+                <span className="nav-button-icon">🦸</span>
+                <span className="nav-button-label">Hero</span>
             </button>
 
             <div className="nav-divider"></div>
@@ -24,7 +24,7 @@ const BottomNav: React.FC<BottomNavProps> = ({ activeTab, onTabChange }) => {
                 className={`nav-button ${activeTab === 'equipment' ? 'active' : ''}`}
             >
                 <span className="nav-button-icon">⚔️</span>
-                <span className="nav-button-label">Equip</span>
+                <span className="nav-button-label">Inventory</span>
             </button>
 
             <div className="nav-divider"></div>

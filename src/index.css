@@ -24,9 +24,9 @@
   --spacing-2xs: clamp(2px, 0.5vw, 4px);
   --spacing-xs: clamp(4px, 1vw, 8px);
   --spacing-sm: clamp(8px, 2vw, 12px);
-  --spacing-md: clamp(16px, 3vw, 24px);
-  --spacing-lg: clamp(24px, 5vw, 32px);
-  --spacing-xl: clamp(32px, 7vw, 48px);
+  --spacing-md: clamp(12px, 2.5vw, 18px);
+  --spacing-lg: clamp(16px, 3vw, 24px);
+  --spacing-xl: clamp(24px, 4vw, 32px);
 
   /* Font Sizes */
   --font-2xs: clamp(7px, 2vw, 12px);
@@ -139,6 +139,30 @@ h5,
 h6 {
   font-family: var(--font-heading), serif;
   color: var(--dq-gold);
+}
+
+h1 {
+  font-size: var(--font-4xl);
+}
+
+h2 {
+  font-size: var(--font-3xl);
+}
+
+h3 {
+  font-size: var(--font-2xl);
+}
+
+h4 {
+  font-size: var(--font-xl);
+}
+
+h5 {
+  font-size: var(--font-lg);
+}
+
+h6 {
+  font-size: var(--font-base);
 }
 
 button {

@@ -31,6 +31,7 @@ const BACKPACK_CAPACITY = 5;
 const EquipmentSlots: React.FC<EquipmentSlotsProps> = ({ hero, onSlotClick, onBackpackClick }) => {
   return (
     <div className="equipment-container">
+      <h4>Equipment</h4>
       {/* Main Equipment */}
       <div className="equipment-grid">
         {SLOT_CONFIG.map(({ slot, label, icon }) => {
@@ -49,7 +50,7 @@ const EquipmentSlots: React.FC<EquipmentSlotsProps> = ({ hero, onSlotClick, onBa
 
       {/* Backpack */}
       <div>
-        <h4 className="backpack-title">Backpack ({hero.backpack.length}/{BACKPACK_CAPACITY})</h4>
+        <h4>Backpack ({hero.backpack.length}/{BACKPACK_CAPACITY})</h4>
         <div className="backpack-grid">
           {Array.from({ length: BACKPACK_CAPACITY }).map((_, index) => {
             const item = hero.backpack[index];
