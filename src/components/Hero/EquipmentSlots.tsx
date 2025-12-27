@@ -1,12 +1,13 @@
-import React from 'react';
-import { Hero, EquipmentSlot as EquipmentSlotType } from '../../types/hero';
+import React, { useState } from 'react';
+import { Hero, EquipmentSlot as EquipmentSlotType, EquipmentItem } from '../../types/hero';
 import EquipmentSlot from './EquipmentSlot';
+import InventorySelector from './InventorySelector';
 import './EquipmentSlots.css';
 
 interface EquipmentSlotsProps {
   hero: Hero;
-  onSlotClick: (slot: EquipmentSlotType) => void;
-  onBackpackClick: (index: number) => void;
+  onEquip: (item: EquipmentItem, slot: EquipmentSlotType) => void;
+  onUnequip: (slot: EquipmentSlotType) => void;
 }
 
 const SLOT_CONFIG: Array<{ slot: EquipmentSlotType; label: string; icon: string }> = [
@@ -26,9 +27,20 @@ const SLOT_CONFIG: Array<{ slot: EquipmentSlotType; label: string; icon: string 
   { slot: 'talisman', label: 'Talisman', icon: '🧿' },
 ];
 
-const BACKPACK_CAPACITY = 5;
+const EquipmentSlots: React.FC<EquipmentSlotsProps> = ({ hero, onEquip, onUnequip }) => {
+  const [selectedSlot, setSelectedSlot] = useState<EquipmentSlotType | null>(null);
 
-const EquipmentSlots: React.FC<EquipmentSlotsProps> = ({ hero, onSlotClick, onBackpackClick }) => {
+  const handleEquip = (item: EquipmentItem | null) => {
+    if (selectedSlot) {
+      if (item) {
+        onEquip(item, selectedSlot);
+      } else {
+        onUnequip(selectedSlot);
+      }
+      setSelectedSlot(null);
+    }
+  };
+
   return (
     <div className="equipment-container">
       <h4>Equipment</h4>
@@ -42,31 +54,19 @@ const EquipmentSlots: React.FC<EquipmentSlotsProps> = ({ hero, onSlotClick, onBa
               label={label}
               icon={icon}
               item={item}
-              onClick={() => onSlotClick(slot)}
+              onClick={() => setSelectedSlot(slot)}
             />
           );
         })}
       </div>
 
-      {/* Backpack */}
-      <div>
-        <h4>Backpack ({hero.backpack.length}/{BACKPACK_CAPACITY})</h4>
-        <div className="backpack-grid">
-          {Array.from({ length: BACKPACK_CAPACITY }).map((_, index) => {
-            const item = hero.backpack[index];
-            return (
-              <EquipmentSlot
-                key={`backpack-${index}`}
-                label={`${index + 1}`}
-                icon="🎒"
-                item={item}
-                onClick={() => onBackpackClick(index)}
-                className="backpack-slot-wrapper"
-              />
-            );
-          })}
-        </div>
-      </div>
+      {selectedSlot && (
+        <InventorySelector
+          slot={selectedSlot}
+          onSelect={handleEquip}
+          onClose={() => setSelectedSlot(null)}
+        />
+      )}
     </div>
   );
 };

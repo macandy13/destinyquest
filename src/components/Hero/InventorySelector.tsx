@@ -1,19 +1,24 @@
 import React from 'react';
 import { EquipmentSlot, EquipmentItem } from '../../types/hero';
-import { getItemsBySlot } from '../../data/items';
+import { getItemsBySlot, ITEMS } from '../../data/items';
 import { getStatIcon } from '../../utils/statUtils';
 import DqCard from '../Shared/DqCard';
-import './EquipmentSelector.css';
+import './InventorySelector.css';
 
-interface EquipmentSelectorProps {
-    slot: EquipmentSlot;
+
+
+interface InventorySelectorProps {
+    slot?: EquipmentSlot;
     onSelect: (item: EquipmentItem | null) => void;
     onClose: () => void;
+    showAllItems?: boolean;
 }
 
-const EquipmentSelector: React.FC<EquipmentSelectorProps> = ({ slot, onSelect, onClose }) => {
+const InventorySelector: React.FC<InventorySelectorProps> = ({ slot, onSelect, onClose, showAllItems = false }) => {
     const [searchTerm, setSearchTerm] = React.useState('');
-    const items = getItemsBySlot(slot);
+
+    // If showAllItems is true, use all ITEMS. Otherwise get by slot.
+    const items = showAllItems ? ITEMS : (slot ? getItemsBySlot(slot) : []);
 
     const filteredItems = items.filter(item => {
         const term = searchTerm.toLowerCase();
@@ -29,7 +34,7 @@ const EquipmentSelector: React.FC<EquipmentSelectorProps> = ({ slot, onSelect, o
             <DqCard
                 className="equipment-selector-modal"
                 onClick={(e: React.MouseEvent) => e.stopPropagation()}
-                title={`Select ${slot}`}
+                title={slot ? `Select ${slot}` : 'Select Item'}
                 onClose={onClose}
             >
                 <div className="selector-header">
@@ -106,4 +111,4 @@ const EquipmentSelector: React.FC<EquipmentSelectorProps> = ({ slot, onSelect, o
     );
 };
 
-export default EquipmentSelector;
+export default InventorySelector;

@@ -8,9 +8,11 @@ import HeroEquipment from './components/Hero/HeroEquipment';
 import CombatArena from './components/Combat/CombatArena';
 import { useHero } from './hooks/useHero';
 
+
+
 function App() {
     const [activeTab, setActiveTab] = useState<'stats' | 'equipment' | 'combat'>('stats');
-    const { hero, updateHealth, updateMoney, equipItem, unequipItem } = useHero();
+    const { hero, updateHealth, updateMoney, equipItem, unequipItem, setBackpackItem, deleteBackpackItem } = useHero();
 
     return (
         <MobileLayout>
@@ -32,6 +34,8 @@ function App() {
                         hero={hero}
                         onEquip={equipItem}
                         onUnequip={unequipItem}
+                        onSetBackpackItem={setBackpackItem}
+                        onDeleteBackpackItem={deleteBackpackItem}
                     />
                 )}
 

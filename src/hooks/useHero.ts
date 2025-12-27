@@ -89,6 +89,28 @@ export function useHero() {
         });
     };
 
+    const setBackpackItem = (item: EquipmentItem, index: number) => {
+        setHero(prev => {
+            const newBackpack = [...prev.backpack];
+            newBackpack[index] = item;
+            return {
+                ...prev,
+                backpack: newBackpack
+            };
+        });
+    };
+
+    const deleteBackpackItem = (index: number) => {
+        setHero(prev => {
+            const newBackpack = [...prev.backpack];
+            newBackpack[index] = null;
+            return {
+                ...prev,
+                backpack: newBackpack
+            };
+        });
+    };
+
     return {
         hero: effectiveHero,
         updateHealth,
@@ -96,6 +118,8 @@ export function useHero() {
         updatePath,
         updateMoney,
         equipItem,
-        unequipItem
+        unequipItem,
+        setBackpackItem,
+        deleteBackpackItem
     };
 }

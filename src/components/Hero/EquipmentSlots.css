@@ -14,20 +14,3 @@
     flex-direction: column;
     gap: var(--spacing-md);
 }
-
-.backpack-title {
-    color: var(--dq-light-grey);
-    margin-bottom: var(--spacing-sm);
-    font-size: var(--font-sm);
-}
-
-.backpack-grid {
-    display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    gap: var(--spacing-sm);
-}
-
-.backpack-slot-wrapper {
-    aspect-ratio: 1;
-    width: 100%;
-}

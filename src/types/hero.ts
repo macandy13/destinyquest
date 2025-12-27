@@ -28,17 +28,13 @@ export interface EquipmentItem {
 
 export type HeroPath = '' | 'Warrior' | 'Mage' | 'Rogue';
 
-export interface Item {
-    name: string;
-}
-
 export interface Hero {
     name: string;
     path: HeroPath;
     career: string;
     stats: HeroStats;
     equipment: Partial<Record<EquipmentSlot, EquipmentItem>>;
-    backpack: Item[];
+    backpack: (EquipmentItem | null)[];
     money: number;
 }
 
@@ -55,6 +51,6 @@ export const INITIAL_HERO: Hero = {
         maxHealth: 30
     },
     equipment: {},
-    backpack: [],
+    backpack: [null, null, null, null, null],
     money: 0
 };
