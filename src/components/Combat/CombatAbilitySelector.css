@@ -1,17 +1,8 @@
-/* CombatAbilitySelector.css */
-
 .ability-selector-container {
     margin-bottom: 1rem;
     text-align: center;
-    max-width: calc(var(--max-width) - 2 * var(--spacing-md));
+    max-width: calc(100vw - 2 * var(--spacing-md));
 }
-
-/*
-@media (max-width: 480px) {
-    .ability-selector-container {
-        max-width: var(--min-width);
-    }
-}*/
 
 .ability-list-horizontal {
     display: flex;

@@ -1,6 +1,7 @@
 .equipment-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
     gap: var(--spacing-sm);
     border-radius: var(--radius-md);
     border: var(--border-sm) solid var(--dq-grey);

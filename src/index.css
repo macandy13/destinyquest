@@ -156,7 +156,7 @@ h3 {
 }
 
 h4 {
-  font-size: var(---font-md);
+  font-size: var(--font-md);
   font-weight: bold;
 }
 
