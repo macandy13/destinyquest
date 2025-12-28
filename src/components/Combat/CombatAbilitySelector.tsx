@@ -2,14 +2,16 @@ import React, { useState } from 'react';
 import { CombatState } from '../../types/combat';
 import { getAbilityDefinition, AbilityDefinition, getAbilityIcon } from '../../mechanics/abilityRegistry';
 import CombatAbilityItem from './CombatAbilityItem';
+import CombatBackpackItem from './CombatBackpackItem';
 import './CombatAbilitySelector.css';
 
 interface CombatAbilitySelectorProps {
     combat: CombatState;
-    onActivate: (abilityName: string) => void;
+    onActivateAbility: (abilityName: string) => void;
+    onUseBackbackItem: (itemIndex: number) => void;
 }
 
-const CombatAbilitySelector: React.FC<CombatAbilitySelectorProps> = ({ combat, onActivate }) => {
+const CombatAbilitySelector: React.FC<CombatAbilitySelectorProps> = ({ combat, onActivateAbility, onUseBackbackItem }) => {
     const [selectedAbility, setSelectedAbility] = useState<AbilityDefinition | null>(null);
 
     const canActivateAbility = (abilityName: string, used?: boolean) => {
@@ -26,9 +28,13 @@ const CombatAbilitySelector: React.FC<CombatAbilitySelectorProps> = ({ combat, o
         }
     };
 
+    const handleBackpackClick = (itemIndex: number) => {
+        onUseBackbackItem(itemIndex);
+    };
+
     const handleConfirm = () => {
         if (selectedAbility) {
-            onActivate(selectedAbility.name);
+            onActivateAbility(selectedAbility.name);
             setSelectedAbility(null);
         }
     };
@@ -60,6 +66,13 @@ const CombatAbilitySelector: React.FC<CombatAbilitySelectorProps> = ({ combat, o
                         key={index}
                         ability={ability}
                         onClick={() => handleAbilityClick(ability.name)}
+                    />
+                ))}
+                {combat.hero?.backpack?.map((item, index) => (
+                    item && (item.uses === undefined || item.uses > 0) && <CombatBackpackItem
+                        key={`backpack-${index}`}
+                        item={item}
+                        onClick={() => handleBackpackClick(index)}
                     />
                 ))}
             </div>

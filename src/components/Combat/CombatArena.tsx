@@ -19,6 +19,7 @@ const CombatArena: React.FC<CombatArenaProps> = ({ hero }) => {
         combat,
         startCombat,
         activateAbility,
+        useBackpackItem,
         generateSpeedRolls,
         commitSpeedResult,
         handleReroll,
@@ -218,7 +219,8 @@ const CombatArena: React.FC<CombatArenaProps> = ({ hero }) => {
 
                     <CombatAbilitySelector
                         combat={combat}
-                        onActivate={activateAbility}
+                        onActivateAbility={activateAbility}
+                        onUseBackbackItem={useBackpackItem}
                     />
                 </div>
             </div>

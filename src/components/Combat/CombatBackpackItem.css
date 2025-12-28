@@ -1,0 +1,61 @@
+.combat-backpack-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(180deg, #3d342b 0%, #2a221b 100%);
+    /* Distinct border for backpack items */
+    border: var(--border-sm) solid #f59e0b;
+    border-radius: var(--radius-sm);
+    padding: var(--spacing-xs);
+    width: var(--button-2xl);
+    height: var(--button-2xl);
+    overflow: visible;
+    /* To allow badge to overflow */
+    cursor: pointer;
+    transition: all 0.2s ease;
+    flex-shrink: 0;
+    position: relative;
+    color: var(--dq-text-primary);
+}
+
+.combat-backpack-item:hover {
+    border-color: #fbbf24;
+    background: linear-gradient(180deg, #4d443b 0%, #3a322b 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(245, 158, 11, 0.2);
+}
+
+.backpack-icon-large {
+    font-size: var(--font-xl);
+    margin-bottom: var(--spacing-xs);
+}
+
+.backpack-name-compact {
+    font-size: var(--font-xs);
+    color: var(--dq-light-grey);
+    text-align: center;
+    line-height: 1.1;
+    max-width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.backpack-uses-badge {
+    position: absolute;
+    top: -6px;
+    right: -6px;
+    background-color: #b91c1c;
+    color: white;
+    font-size: 0.7rem;
+    font-weight: bold;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #7f1d1d;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+    z-index: 2;
+}

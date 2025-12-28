@@ -5,6 +5,7 @@ import { Hero, HeroStats } from '../types/hero';
 import { getAbilityDefinition } from '../mechanics/abilityRegistry';
 import '../mechanics/abilities';
 import { calculateEffectiveStatsForType } from '../utils/stats';
+import { StatsModification } from '../types/stats';
 
 const INITIAL_STATE: CombatState = {
     round: 0,
@@ -14,6 +15,7 @@ const INITIAL_STATE: CombatState = {
     winner: null,
     activeAbilities: [],
     modifications: [],
+    backpack: [],
     logs: []
 };
 
@@ -58,6 +60,7 @@ export function useCombat(hero: Hero) {
             hero: { ...hero },
             winner: null,
             activeAbilities: abilities,
+            backpack: hero.backpack.filter(i => i?.uses && i.uses > 0) as any[],
 
             modifications: [],
             logs: [{ round: 1, message: 'Combat started', type: 'info' }]
@@ -272,6 +275,59 @@ export function useCombat(hero: Hero) {
         return nextState;
     };
 
+    const _useBackpackItem = (state: CombatState, index: number) => {
+        if (!state.hero) return state;
+
+        // Check for backpack item first
+        const item = state.hero.backpack[index];
+        if (!item) return state;
+
+        // Apply effects
+        let newState = { ...state };
+        let logMessage = `Used ${item.name}: `;
+
+        // Immediate Health Restore
+        if (item.stats?.health) {
+            const oldHealth = newState.hero!.stats.health;
+            const newHealth = Math.min(newState.hero!.stats.maxHealth, oldHealth + item.stats.health);
+            newState.hero = {
+                ...newState.hero!,
+                stats: { ...newState.hero!.stats, health: newHealth }
+            };
+            logMessage += `Healed ${newHealth - oldHealth} HP. `;
+        }
+
+        // Stat Modifiers (Duration)
+        if (item.duration !== undefined && item.duration >= 1 && item.stats) {
+            newState.modifications = [
+                ...newState.modifications,
+                {
+                    modification: {
+                        source: item.name,
+                        target: 'hero',
+                        stats: item.stats || {}
+                    }, duration: item.duration, id: `backpack-${item.id}-${state.round}`
+                }
+            ];
+            logMessage += `${item.effect || item.modifier}. `;
+        }
+
+        const newBackpack = [...newState.hero!.backpack];
+        if (item.uses !== undefined) {
+            newBackpack[index] = {
+                ...item,
+                uses: item.uses - 1
+            };
+            if (newBackpack[index].uses === 0) {
+                newBackpack[index] = null;
+            }
+        }
+        newState.hero!.backpack = newBackpack;
+
+        newState.logs = [...newState.logs, { round: newState.round, message: logMessage, type: 'info' }];
+        return newState;
+    };
+
     const _startNewRound = (state: CombatState): CombatState => {
         // 1. Decrement modifiers
         // 1. Decrement modifiers
@@ -315,6 +371,13 @@ export function useCombat(hero: Hero) {
             return _activateAbility(prev, abilityName);
         });
     };
+
+    const useBackpackItem = (itemIndex: number) => {
+        setCombat(prev => {
+            return _useBackpackItem(prev, itemIndex);
+        });
+    };
+
 
     const generateSpeedRolls = () => {
         setCombat(prev => {
@@ -392,6 +455,7 @@ export function useCombat(hero: Hero) {
         combat,
         startCombat,
         activateAbility,
+        useBackpackItem,
         generateSpeedRolls,
         resolveSpeedRolls,
         commitSpeedResult,
