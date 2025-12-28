@@ -63,11 +63,11 @@ describe('useCombat - Backpack Items', () => {
         expect(result.current.combat.hero?.stats.health).toBe(10);
 
         act(() => {
-            result.current.activateAbility('Healing Potion');
+            result.current.useBackpackItem(0);
         });
 
         expect(result.current.combat.hero?.stats.health).toBe(16); // 10 + 6
-        expect(result.current.combat.backpack[0].uses).toBe(0);
+        expect(result.current.combat.backpack).toHaveLength(0); // Removed after use
         expect(result.current.combat.logs.some(l => l.message.includes('Used Healing Potion'))).toBe(true);
     });
 
@@ -85,11 +85,11 @@ describe('useCombat - Backpack Items', () => {
         });
 
         act(() => {
-            result.current.activateAbility('Speed Potion');
+            result.current.useBackpackItem(0);
         });
 
         expect(result.current.combat.modifications).toHaveLength(1);
         expect(result.current.combat.modifications[0].modification.stats.speed).toBe(2);
-        expect(result.current.combat.backpack[0].uses).toBe(0);
+        expect(result.current.combat.backpack).toHaveLength(0); // Removed after use
     });
 });

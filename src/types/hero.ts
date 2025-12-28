@@ -12,34 +12,33 @@ export type EquipmentType =
     | 'mainHand' | 'leftHand' | 'talisman'
     | 'feet' | 'necklace' | 'ring';
 
-export interface EquipmentItem {
+export interface Item {
     id: string;
     name: string;
-    type: EquipmentType; // The type of item (e.g., 'ring')
     act: number;
+    referenceNumber?: number;
+    location?: string;
+}
+
+export interface EquipmentItem extends Item {
+    type: EquipmentType; // The type of item (e.g., 'ring')
     cost?: number; // Cost in gold (if applicable)
     careerPreference?: HeroPath; // W/M/R requirement
     description?: string;
     stats?: Partial<HeroStats>;
     abilities?: string[];
-    entry?: string; // Entry number (e.g., "123")
-    location?: string; // Location or enemy where found
 }
 
 export type HeroPath = '' | 'Warrior' | 'Mage' | 'Rogue';
 
-export interface BackpackItem {
+export interface BackpackItem extends Item {
     type: 'backpack';
-    id: string;
-    name: string;
     effect?: string;
     modifier?: string; // Full modifier string (e.g. "+2 speed")
     stats?: Partial<HeroStats>; // Structured stats
     duration?: number; // Duration in rounds (0 = immediate/permanent/one-time)
     uses?: number;
     notes?: string;
-    act: number;
-    referenceNumber?: number;
 }
 
 export interface Hero {

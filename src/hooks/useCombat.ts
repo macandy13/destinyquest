@@ -1,11 +1,10 @@
 import { useState, useCallback } from 'react';
 import { CombatState, Enemy, CombatLog, ActiveAbility, DiceRoll, CombatPhase } from '../types/combat';
 import { sumDice, rollDice } from '../utils/dice';
-import { Hero, HeroStats } from '../types/hero';
+import { Hero, HeroStats, BackpackItem } from '../types/hero';
 import { getAbilityDefinition } from '../mechanics/abilityRegistry';
 import '../mechanics/abilities';
 import { calculateEffectiveStatsForType } from '../utils/stats';
-import { StatsModification } from '../types/stats';
 
 const INITIAL_STATE: CombatState = {
     round: 0,
@@ -323,6 +322,7 @@ export function useCombat(hero: Hero) {
             }
         }
         newState.hero!.backpack = newBackpack;
+        newState.backpack = newBackpack.filter(i => i?.uses && i.uses > 0) as BackpackItem[];
 
         newState.logs = [...newState.logs, { round: newState.round, message: logMessage, type: 'info' }];
         return newState;

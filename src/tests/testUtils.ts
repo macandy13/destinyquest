@@ -34,6 +34,7 @@ export const INITIAL_STATE: CombatState = {
     winner: null,
     activeAbilities: [],
     modifications: [],
+    backpack: [],
     logs: []
 };
 

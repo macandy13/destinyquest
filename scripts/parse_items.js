@@ -57,7 +57,7 @@ const processedItems = rawData.slice(1).map((line, index) => {
     const magic = parseInt(parts[5]) || 0;
     const armour = parseInt(parts[6]) || 0;
     const ability = parts[7].trim();
-    const entry = parts[8] ? parts[8].trim() : undefined;
+    const entry = parts[8] ? parseInt(parts[8].trim()) : undefined;
     const location = parts[9] ? parts[9].trim() : undefined;
 
     const actMatch = actRaw.match(/Act (\d+)/);
@@ -73,7 +73,7 @@ const processedItems = rawData.slice(1).map((line, index) => {
         act: act,
         stats: {},
         abilities: [],
-        entry: entry,
+        referenceNumber: entry, // Renamed from entry
         location: location,
         careerPreference: career
     };

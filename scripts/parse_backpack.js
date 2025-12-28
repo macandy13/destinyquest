@@ -47,6 +47,7 @@ const processedItems = rawData.slice(1).map((line, index) => {
 
     const actMatch = actRaw.match(/Act (\d+)/i) || actRaw.match(/(\d+)/);
     const act = actMatch ? parseInt(actMatch[1]) : 1;
+    const location = parts[6] ? parts[6].trim() : undefined;
 
     // Parse Effect
     // "Speed Potion,+2 speed / 1 rd" -> modifier: "+2 speed", duration: 1
@@ -91,6 +92,7 @@ const processedItems = rawData.slice(1).map((line, index) => {
         uses: uses,
         notes: notes,
         referenceNumber: referenceNumber,
+        location: location,
     };
 
     return item;

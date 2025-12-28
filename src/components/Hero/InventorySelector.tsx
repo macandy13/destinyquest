@@ -32,7 +32,7 @@ const InventorySelector: React.FC<InventorySelectorProps> = ({ slot, onSelect, o
         const term = searchTerm.toLowerCase();
         return (
             item.name.toLowerCase().includes(term) ||
-            (item.entry && item.entry.toLowerCase().includes(term)) ||
+            (item.referenceNumber && item.referenceNumber.toString().includes(term)) ||
             (item.location && item.location.toLowerCase().includes(term))
         );
     });
@@ -87,25 +87,31 @@ const InventorySelector: React.FC<InventorySelectorProps> = ({ slot, onSelect, o
                                     <div className="item-name">{item.name}</div>
                                     <div className="item-source">
                                         <div className="text-dim" style={{ fontSize: '0.8rem' }}>Act {item.act}</div>
-                                        {item.entry && <div className="text-dim" style={{ fontSize: '0.8rem' }}>📖 {item.entry}</div>}
+                                        {item.referenceNumber && <div className="text-dim" style={{ fontSize: '0.8rem' }}>📖 {item.referenceNumber}</div>}
                                     </div>
                                 </div>
 
-                                {(item.stats || item.abilities) && (
+                                {(item.stats || ('abilities' in item && (item as EquipmentItem).abilities) || ('effect' in item)) && (
                                     <div className="item-stats">
                                         {item.stats?.speed ? `${getStatIcon('speed')} ${item.stats.speed} ` : ''}
                                         {item.stats?.brawn ? `${getStatIcon('brawn')} ${item.stats.brawn} ` : ''}
                                         {item.stats?.magic ? `${getStatIcon('magic')} ${item.stats.magic} ` : ''}
                                         {item.stats?.armour ? `${getStatIcon('armour')} ${item.stats.armour} ` : ''}
-                                        {item.abilities && item.abilities.length > 0 && (
+                                        {'abilities' in item && (item as EquipmentItem).abilities && (item as EquipmentItem).abilities!.length > 0 && (
                                             <div className="item-abilities-tag">
-                                                {item.abilities.map(a => `★ ${a} `).join(', ')}
+                                                {(item as EquipmentItem).abilities!.map(a => `★ ${a} `).join(', ')}
+                                            </div>
+                                        )}
+                                        {'effect' in item && (
+                                            <div className="item-abilities-tag">
+                                                {(item as BackpackItem).effect}
                                             </div>
                                         )}
                                     </div>
                                 )}
 
-                                {item.description && <div className="item-desc">{item.description}</div>}
+                                {'description' in item && (item as EquipmentItem).description && <div className="item-desc">{(item as EquipmentItem).description}</div>}
+                                {'notes' in item && (item as BackpackItem).notes && <div className="item-desc">{(item as BackpackItem).notes}</div>}
 
                                 <div className="item-meta-container">
                                     {item.location && <span>📍 {item.location}</span>}

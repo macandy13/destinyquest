@@ -1,5 +1,5 @@
 import { Stats } from './stats';
-import { Hero } from './hero';
+import { Hero, BackpackItem } from './hero';
 import { StatsModification } from './stats';
 
 
@@ -57,6 +57,7 @@ export interface CombatState {
     damageRolls?: DiceRoll[];
     activeAbilities: ActiveAbility[];
     modifications: { modification: StatsModification, duration: number, id: string }[];
+    backpack: BackpackItem[];
     logs: CombatLog[];
     additionalEnemyDamage?: AdditionalDamageDescriptor[];
     rerollState?: {
