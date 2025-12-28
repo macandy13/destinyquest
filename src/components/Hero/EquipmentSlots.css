@@ -5,6 +5,7 @@
     gap: var(--spacing-sm);
     border-radius: var(--radius-md);
     border: var(--border-sm) solid var(--dq-grey);
+    max-width: calc(3 * var(--button-2xl) + 2 * var(--spacing-sm));
 }
 
 .equipment-container {

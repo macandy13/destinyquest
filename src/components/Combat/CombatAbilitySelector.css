@@ -1,7 +1,7 @@
 .ability-selector-container {
     margin-bottom: 1rem;
     text-align: center;
-    max-width: calc(100vw - 2 * var(--spacing-md));
+    max-width: calc(min(100vw, var(--max-width) - 2 * var(--spacing-md)));
 }
 
 .ability-list-horizontal {
