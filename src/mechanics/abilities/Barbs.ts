@@ -1,3 +1,4 @@
+import { addLog } from '../../utils/statUtils';
 import { registerAbility } from '../abilityRegistry';
 
 registerAbility({
@@ -10,11 +11,11 @@ registerAbility({
         if (newEnemyHealth < state.enemy.health) {
             return {
                 enemy: { ...state.enemy, health: newEnemyHealth },
-                logs: [...state.logs, {
+                logs: addLog(state.logs, {
                     round: state.round,
                     message: 'Barbs inflicts 1 damage.',
                     type: 'damage-enemy'
-                }],
+                }),
                 additionalEnemyDamage: [...state.additionalEnemyDamage ?? [], {
                     type: 'damage-enemy',
                     amount: 1,

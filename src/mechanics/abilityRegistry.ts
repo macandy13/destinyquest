@@ -1,4 +1,5 @@
 import { CombatState, DiceRoll } from '../types/combat';
+import { Target } from '../types/stats';
 
 
 export interface AbilityHooks {
@@ -10,17 +11,23 @@ export interface AbilityHooks {
 
     onCombatStart?: (state: CombatState) => Partial<CombatState>;
 
+    // Triggered after speed dice are rolled
+    onSpeedRoll?: (state: CombatState, rolls: DiceRoll[]) => Partial<CombatState>;
+
     // Returns the modifier amount to add to speed total
     onSpeedCalculate?: (state: CombatState) => number;
+
+    // Triggered after damage dice are rolled
+    onDamageRoll?: (state: CombatState, rolls: DiceRoll[]) => Partial<CombatState>;
 
     // Returns the modifier amount to add to damage total
     onDamageCalculate?: (state: CombatState, damage: { total: number, rolls: DiceRoll[] }) => number;
 
     // Returns partial state updates (e.g. log messages, health updates)
-    onPostDamage?: (state: CombatState, damageDealt: number) => Partial<CombatState>;
+    onDamageDealt?: (state: CombatState, target: Target, damageDealt: number) => Partial<CombatState>;
 
     // Returns partial state updates (e.g. passive damage at end of round)
-    onRoundEnd?: (state: CombatState) => Partial<CombatState>;
+    onRoundEnd?: (state: CombatState, target: Target) => Partial<CombatState>;
 
     // Handles reroll interactions. Returns state updates.
     onReroll?: (state: CombatState, dieIndex: number) => Partial<CombatState>;

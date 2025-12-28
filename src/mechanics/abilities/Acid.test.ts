@@ -48,6 +48,10 @@ describe('Acid', () => {
         act(() => result.current.commitDamageResult());
 
         expect(result.current.combat.enemy!.health).toBe(initialEnemyHealth - 5);
-        expect(result.current.combat.logs.slice(-1)[0].message).toContain('(+2 Acid)');
+        expect(result.current.combat.logs).toEqual(expect.arrayContaining([
+            expect.objectContaining({
+                message: expect.stringContaining('(+2 Acid)')
+            })
+        ]));
     });
 });

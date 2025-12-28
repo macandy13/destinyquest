@@ -1,6 +1,6 @@
 import { Stats } from './stats';
 import { Hero, BackpackItem } from './hero';
-import { StatsModification } from './stats';
+import { StatsModification, Target } from './stats';
 
 
 export interface Enemy extends Stats {
@@ -27,6 +27,7 @@ export interface AbilityDefinition {
 export interface ActiveAbility {
     name: string;
     source: string; // Item name
+    target: Target;
     used: boolean;
 }
 
@@ -46,6 +47,18 @@ export interface AdditionalDamageDescriptor {
     source: string;
 }
 
+export interface DamageDealtDescriptor {
+    target: Target;
+    amount: number;
+    source: string;
+}
+
+export interface Modification {
+    id: string;
+    modification: StatsModification;
+    duration?: number; // undefined means infinite
+}
+
 export interface CombatState {
     round: number;
     phase: CombatPhase;
@@ -55,8 +68,10 @@ export interface CombatState {
     enemySpeedRolls?: DiceRoll[];
     winner: 'hero' | 'enemy' | null; // Winner of the current speed round
     damageRolls?: DiceRoll[];
+    damageDealt: DamageDealtDescriptor[];
     activeAbilities: ActiveAbility[];
-    modifications: { modification: StatsModification, duration: number, id: string }[];
+    activeEffects: Modification[];
+    modifications: Modification[];
     backpack: BackpackItem[];
     logs: CombatLog[];
     additionalEnemyDamage?: AdditionalDamageDescriptor[];

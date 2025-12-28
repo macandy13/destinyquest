@@ -1,3 +1,5 @@
+import { CombatLog } from "../types/combat";
+
 export function getStatIcon(stat: string): string {
     switch (stat.toLowerCase()) {
         case 'speed': return '⚡';
@@ -8,4 +10,9 @@ export function getStatIcon(stat: string): string {
         case 'money': return '💰';
         default: return '';
     }
+}
+
+export function addLog(logs: CombatLog[], log: CombatLog): CombatLog[] {
+    console.log(`${log.round}: ${log.message}`);
+    return [...logs, log];
 }

@@ -35,7 +35,9 @@ export const INITIAL_STATE: CombatState = {
     activeAbilities: [],
     modifications: [],
     backpack: [],
-    logs: []
+    logs: [],
+    damageDealt: [],
+    activeEffects: []
 };
 
 export const heroWithStats = (stats: Partial<Hero['stats']>) => ({

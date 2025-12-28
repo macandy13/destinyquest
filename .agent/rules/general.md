@@ -10,9 +10,14 @@ Always use Bazel for building, testing and running the project. Do not use npm o
 
 ## Code Style
 
-### Styling needs to be separated from code
+### CSS Styling needs to be separated from code
 
 Put all styling into css files, do not use the style attribute in HTML elements.
+
+### Line length
+
+Maximum line length should be 80, unless there is no real good alternative (eg, long HTML link, single line of information) so reformat JSON structures especially.
+
 
 ### Prefer property bags (interfaces) over individual arguments
 

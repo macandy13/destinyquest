@@ -11,7 +11,7 @@ describe('Barbs', () => {
         const barbs = getAbilityDefinition('Barbs');
         const state = { ...INITIAL_STATE, enemy: { ...MOCK_ENEMY, health: 10 } };
 
-        const updates = barbs?.onRoundEnd?.(state);
+        const updates = barbs?.onRoundEnd?.(state, 'enemy');
 
         expect(updates?.enemy?.health).toBe(9);
         expect(updates?.logs?.[0].message).toContain('Barbs inflicts 1 damage');
@@ -21,7 +21,7 @@ describe('Barbs', () => {
         const barbs = getAbilityDefinition('Barbs');
         const state = { ...INITIAL_STATE, enemy: { ...MOCK_ENEMY, health: 0 } };
 
-        const updates = barbs?.onRoundEnd?.(state);
+        const updates = barbs?.onRoundEnd?.(state, 'enemy');
         expect(updates).toEqual({});
     });
 
@@ -59,6 +59,10 @@ describe('Barbs', () => {
 
         // 3 combat damage + 1 Barbs damage = 4 total
         expect(result.current.combat.enemy!.health).toBe(initialEnemyHealth - 4);
-        expect(result.current.combat.logs.slice(-1)[0].message).toContain('Barbs inflicts 1 damage');
+        expect(result.current.combat.logs).toEqual(expect.arrayContaining([
+            expect.objectContaining({
+                message: expect.stringContaining('Barbs inflicts 1 damage')
+            })
+        ]));
     });
 });
