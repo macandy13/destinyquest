@@ -11,8 +11,8 @@
     border: var(--border-sm) solid var(--dq-gold-dim);
     border-radius: var(--radius-sm);
     padding: var(--spacing-xs);
-    width: var(--button-2xl);
-    height: var(--button-2xl);
+    width: var(--button-xl);
+    height: var(--button-xl);
     overflow: clip;
     cursor: pointer;
     transition: all 0.2s ease;

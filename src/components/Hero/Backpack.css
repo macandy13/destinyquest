@@ -1,5 +1,8 @@
 .backpack-container {
     margin-top: var(--spacing-md);
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-sm);
 }
 
 .backpack-title {
@@ -9,12 +12,16 @@
 }
 
 .backpack-grid {
-    display: grid;
-    grid-template-columns: repeat(5, 1fr);
+    display: flex;
+    overflow-x: auto;
     gap: var(--spacing-sm);
+    padding-bottom: var(--spacing-sm);
+    /* space for scrollbar */
 }
 
 .backpack-slot-wrapper {
     aspect-ratio: 1;
-    width: 100%;
+    flex: 0 0 var(--button-2xl);
+    width: var(--button-2xl);
+    height: var(--button-2xl);
 }

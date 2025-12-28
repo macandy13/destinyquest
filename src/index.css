@@ -59,7 +59,7 @@
   --button-md: clamp(32px, 10vw, 48px);
   --button-lg: clamp(48px, 12vw, 64px);
   --button-xl: clamp(64px, 15vw, 80px);
-  --button-2xl: clamp(80px, 18vw, 110px);
+  --button-2xl: clamp(100px, 20vw, 120px);
 
   --nav-height: clamp(64px, 15vw, 80px);
 }

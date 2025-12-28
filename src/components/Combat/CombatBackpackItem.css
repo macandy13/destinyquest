@@ -8,8 +8,8 @@
     border: var(--border-sm) solid #f59e0b;
     border-radius: var(--radius-sm);
     padding: var(--spacing-xs);
-    width: var(--button-2xl);
-    height: var(--button-2xl);
+    width: var(--button-xl);
+    height: var(--button-xl);
     overflow: visible;
     /* To allow badge to overflow */
     cursor: pointer;
