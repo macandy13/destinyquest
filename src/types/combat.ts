@@ -6,6 +6,7 @@ import { StatsModification } from './stats';
 export interface Enemy extends Stats {
     name: string;
     abilities: string[]; // Placeholder for special rules
+    preventHealing?: boolean;
 }
 
 

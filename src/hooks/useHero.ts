@@ -111,6 +111,13 @@ export function useHero() {
         });
     };
 
+    const updateBackpack = (newBackpack: (BackpackItem | null)[]) => {
+        setHero(prev => ({
+            ...prev,
+            backpack: newBackpack
+        }));
+    };
+
     return {
         hero: effectiveHero,
         updateHealth,
@@ -120,6 +127,7 @@ export function useHero() {
         equipItem,
         unequipItem,
         setBackpackItem,
-        deleteBackpackItem
+        deleteBackpackItem,
+        updateBackpack
     };
 }

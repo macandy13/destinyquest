@@ -12,7 +12,13 @@ import { useHero } from './hooks/useHero';
 
 function App() {
     const [activeTab, setActiveTab] = useState<'stats' | 'equipment' | 'combat'>('stats');
-    const { hero, updateHealth, updateMoney, equipItem, unequipItem, setBackpackItem, deleteBackpackItem } = useHero();
+    const { hero, updateHealth, updateMoney, equipItem, unequipItem, setBackpackItem, deleteBackpackItem, updateBackpack } = useHero();
+
+    const handleCombatFinish = (results: { health: number, backpack: (any)[] }) => {
+        updateHealth(results.health);
+        updateBackpack(results.backpack);
+        setActiveTab('stats');
+    };
 
     return (
         <MobileLayout>
@@ -40,7 +46,7 @@ function App() {
                 )}
 
                 {activeTab === 'combat' && (
-                    <CombatArena hero={hero} />
+                    <CombatArena hero={hero} onCombatFinish={handleCombatFinish} />
                 )}
             </main>
 

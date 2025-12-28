@@ -7,14 +7,17 @@ import CombatantCard from './CombatantCard';
 import CombatAbilitySelector from './CombatAbilitySelector';
 import CombatModifiers from './CombatModifiers';
 import EnemySelector from './EnemySelector';
+import CombatResultDialog from './CombatResultDialog';
 import { calculateEffectiveStats } from '../../utils/stats';
+import { BackpackItem } from '../../types/hero';
 import './CombatArena.css';
 
 interface CombatArenaProps {
     hero: Hero;
+    onCombatFinish: (results: { health: number, backpack: (BackpackItem | null)[] }) => void;
 }
 
-const CombatArena: React.FC<CombatArenaProps> = ({ hero }) => {
+const CombatArena: React.FC<CombatArenaProps> = ({ hero, onCombatFinish }) => {
     const {
         combat,
         startCombat,
@@ -226,6 +229,35 @@ const CombatArena: React.FC<CombatArenaProps> = ({ hero }) => {
             </div>
 
             <CombatLog logs={combat.logs} />
+
+            {combat.phase === 'combat-end' && (
+                <CombatResultDialog
+                    result={combat.hero?.stats.health! <= 0 ? 'defeat' : 'victory'}
+                    onAccept={() => {
+                        if (!combat.hero) return;
+
+                        let newHealth = 0;
+                        if (combat.hero.stats.health <= 0) {
+                            newHealth = 0; // Defeat
+                        } else if (combat.enemy?.preventHealing) {
+                            newHealth = combat.hero.stats.health; // Prevent Healing
+                        } else {
+                            newHealth = hero.stats.maxHealth; // Full Restore
+                        }
+
+                        onCombatFinish({
+                            health: newHealth,
+                            backpack: combat.hero.backpack
+                        });
+                    }}
+                    onRetry={() => {
+                        // Restart combat with the same enemy, but fresh hero state (from props)
+                        if (combat.enemy) {
+                            startCombat(combat.enemy);
+                        }
+                    }}
+                />
+            )}
         </div>
     );
 };
