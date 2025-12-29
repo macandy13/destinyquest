@@ -1,5 +1,6 @@
 import { CombatState, Enemy } from '../types/combat';
 import { Hero } from '../types/hero';
+import { Combatant } from '../types/combatant';
 
 export const MOCK_HERO: Hero = {
     name: 'Test Hero',
@@ -13,19 +14,37 @@ export const MOCK_HERO: Hero = {
 
 export const MOCK_ENEMY: Enemy = {
     name: 'Test Enemy',
-    speed: 0,
-    brawn: 0,
-    magic: 0,
-    armour: 0,
-    health: 20,
-    maxHealth: 20,
+    stats: {
+        speed: 0,
+        brawn: 0,
+        magic: 0,
+        armour: 0,
+        health: 20,
+        maxHealth: 20,
+    },
     abilities: []
+};
+
+const heroCombatant: Combatant<Hero> = {
+    type: 'hero',
+    id: 'hero',
+    name: MOCK_HERO.name,
+    stats: { ...MOCK_HERO.stats },
+    original: MOCK_HERO
+};
+
+const enemyCombatant: Combatant<Enemy> = {
+    type: 'enemy',
+    id: 'enemy',
+    name: MOCK_ENEMY.name,
+    stats: { ...MOCK_ENEMY.stats },
+    original: MOCK_ENEMY
 };
 
 // Generic mock state for ability testing
 export const INITIAL_STATE: CombatState = {
-    hero: MOCK_HERO,
-    enemy: MOCK_ENEMY,
+    hero: heroCombatant,
+    enemy: enemyCombatant,
     round: 1,
     phase: 'combat-start',
     heroSpeedRolls: undefined,
@@ -40,10 +59,38 @@ export const INITIAL_STATE: CombatState = {
     activeEffects: []
 };
 
-export const heroWithStats = (stats: Partial<Hero['stats']>) => ({
-    ...MOCK_HERO,
-    stats: {
-        ...MOCK_HERO.stats,
-        ...stats
-    }
-});
+export const heroWithStats = (stats: Partial<Hero['stats']>): Combatant<Hero> => {
+    const hero = {
+        ...MOCK_HERO,
+        stats: {
+            ...MOCK_HERO.stats,
+            ...stats
+        }
+    };
+    return {
+        type: 'hero',
+        id: 'hero',
+        name: hero.name,
+        stats: { ...hero.stats },
+        original: hero
+    };
+};
+
+export const createHeroCombatant = heroWithStats;
+
+export const createEnemyCombatant = (stats: Partial<Enemy['stats']> = {}): Combatant<Enemy> => {
+    const enemy = {
+        ...MOCK_ENEMY,
+        stats: {
+            ...MOCK_ENEMY.stats,
+            ...stats
+        }
+    };
+    return {
+        type: 'enemy',
+        id: 'enemy',
+        name: enemy.name,
+        stats: { ...enemy.stats },
+        original: enemy
+    };
+};

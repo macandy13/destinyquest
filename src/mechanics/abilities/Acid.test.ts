@@ -39,7 +39,7 @@ describe('Acid', () => {
             }); // Hero wins
         });
 
-        const initialEnemyHealth = result.current.combat.enemy!.health;
+        const initialEnemyHealth = result.current.combat.enemy!.stats.health;
 
         // Damage roll 3 (1 die) + 0(brawn) = 3 damage
         // Acid adds +1 per die = +2
@@ -47,7 +47,7 @@ describe('Acid', () => {
         act(() => result.current.resolveDamageRolls([{ value: 2, isRerolled: false }, { value: 1, isRerolled: false }]));
         act(() => result.current.commitDamageResult());
 
-        expect(result.current.combat.enemy!.health).toBe(initialEnemyHealth - 5);
+        expect(result.current.combat.enemy!.stats.health).toBe(initialEnemyHealth - 5);
         expect(result.current.combat.logs).toEqual(expect.arrayContaining([
             expect.objectContaining({
                 message: expect.stringContaining('(+2 Acid)')

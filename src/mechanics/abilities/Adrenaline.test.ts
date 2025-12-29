@@ -1,7 +1,7 @@
 import { describe, it, expect } from 'vitest';
 import { getAbilityDefinition } from '../abilityRegistry';
 import './Adrenaline';
-import { INITIAL_STATE, heroWithStats } from '../../tests/testUtils';
+import { INITIAL_STATE, MOCK_HERO } from '../../tests/testUtils';
 import { renderHook, act } from '@testing-library/react';
 import { useCombat } from '../../hooks/useCombat';
 import { Hero } from '../../types/hero';
@@ -19,7 +19,8 @@ describe('Adrenaline', () => {
 
     it('should apply Adrenaline speed ability via hook (+2 speed for 2 rounds)', () => {
         const ADRENALINE_HERO: Hero = {
-            ...heroWithStats({ speed: 0 }),
+            ...MOCK_HERO,
+            stats: { ...MOCK_HERO.stats, speed: 0 },
             equipment: {
                 gloves: {
                     name: 'Adrenaline Gloves',

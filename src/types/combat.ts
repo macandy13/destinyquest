@@ -1,12 +1,13 @@
-import { Stats } from './stats';
 import { Hero, BackpackItem } from './hero';
 import { StatsModification, Target } from './stats';
+import { Character } from './character';
+import { Combatant } from './combatant';
 
-
-export interface Enemy extends Stats {
+export interface Enemy extends Character {
     name: string;
     abilities: string[]; // Placeholder for special rules
     preventHealing?: boolean;
+    entry?: string;
 }
 
 
@@ -62,8 +63,8 @@ export interface Modification {
 export interface CombatState {
     round: number;
     phase: CombatPhase;
-    enemy: Enemy | null;
-    hero: Hero | null;
+    enemy: Combatant<Enemy> | null;
+    hero: Combatant<Hero> | null;
     heroSpeedRolls?: DiceRoll[];
     enemySpeedRolls?: DiceRoll[];
     winner: 'hero' | 'enemy' | null; // Winner of the current speed round

@@ -29,7 +29,7 @@ registerAbility({
         if (!hasBleed) return { activeEffects, logs };
 
         let enemy = state.enemy;
-        if (target === 'enemy') enemy!.health -= 1;
+        if (target === 'enemy') enemy!.stats.health -= 1;
         let hero = state.hero;
         if (target === 'hero') hero!.stats.health -= 1;
 

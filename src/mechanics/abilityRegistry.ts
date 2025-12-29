@@ -9,7 +9,7 @@ export interface AbilityHooks {
     // Checks if ability can be activated in current state
     canActivate?: (state: CombatState) => boolean;
 
-    onCombatStart?: (state: CombatState) => Partial<CombatState>;
+    onCombatStart?: (state: CombatState, target: Target) => Partial<CombatState>;
 
     // Triggered after speed dice are rolled
     onSpeedRoll?: (state: CombatState, rolls: DiceRoll[]) => Partial<CombatState>;

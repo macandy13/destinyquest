@@ -1,4 +1,5 @@
 import { Stats } from './stats';
+import { Character } from './character';
 
 export interface HeroStats extends Stats { }
 
@@ -41,7 +42,7 @@ export interface BackpackItem extends Item {
     notes?: string;
 }
 
-export interface Hero {
+export interface Hero extends Character {
     name: string;
     path: HeroPath;
     career: string;

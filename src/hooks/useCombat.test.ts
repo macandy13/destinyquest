@@ -45,7 +45,7 @@ describe('useCombat Hook', () => {
 
         act(() => {
             // Pass explicitly tough enemy to test armour
-            result.current.startCombat({ name: 'Armoured dummy', speed: 1, brawn: 1, magic: 1, armour: 2, health: 20, maxHealth: 20, abilities: [] });
+            result.current.startCombat({ name: 'Armoured dummy', stats: { speed: 1, brawn: 1, magic: 1, armour: 2, health: 20, maxHealth: 20 }, abilities: [] });
         });
 
         // Speed round win for Hero
@@ -54,7 +54,7 @@ describe('useCombat Hook', () => {
             enemyRolls: [{ value: 0, isRerolled: false }, { value: 0, isRerolled: false }]
         }));
 
-        const initialEnemyHealth = result.current.combat.enemy!.health;
+        const initialEnemyHealth = result.current.combat.enemy!.stats.health;
 
         // Damage roll 6 + 5(brawn) = 11 damage OR if magic is > 5? MOCK_HERO magic is 1. So 5 used.
         // Enemy armour 2
@@ -62,7 +62,7 @@ describe('useCombat Hook', () => {
         act(() => result.current.resolveDamageRolls([{ value: 6, isRerolled: false }]));
         act(() => result.current.commitDamageResult());
 
-        expect(result.current.combat.enemy!.health).toBe(initialEnemyHealth - 9);
+        expect(result.current.combat.enemy!.stats.health).toBe(initialEnemyHealth - 9);
         expect(result.current.combat.phase).toBe('round-end');
         expect(result.current.combat.damageRolls).toEqual([{ value: 6, isRerolled: false }]);
     });
@@ -127,14 +127,14 @@ describe('useCombat Hook', () => {
 
         // Execute damage
         // Roll = 10. Brawn = 0. Mod = 3. Total = 13.
-        const initialEnemyHealth = resultWithAbility.current.combat.enemy!.health;
+        const initialEnemyHealth = resultWithAbility.current.combat.enemy!.stats.health;
         act(() => resultWithAbility.current.resolveDamageRolls([{ value: 10, isRerolled: false }]));
         act(() => resultWithAbility.current.commitDamageResult());
 
         // Enemy has 0 armour in mock.
         // Expected damage: 10 (roll) + 0 (brawn) + 3 (mod) = 13.
         const expectedHealth = initialEnemyHealth - 13;
-        expect(resultWithAbility.current.combat.enemy!.health).toBe(expectedHealth);
+        expect(resultWithAbility.current.combat.enemy!.stats.health).toBe(expectedHealth);
     });
 
     it('should apply speed-dice modifier', () => {

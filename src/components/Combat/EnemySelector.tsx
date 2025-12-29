@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Enemy } from '../../types/combat';
+import { Stats } from '../../types/stats';
 import { ENEMIES } from '../../data/enemies';
 import { getStatIcon } from '../../utils/statUtils';
 import NumberControl from '../Shared/NumberControl';
@@ -17,12 +18,14 @@ const EnemySelector: React.FC<EnemySelectorProps> = ({ onSelect }) => {
     // Custom Enemy State
     const [customEnemy, setCustomEnemy] = useState<Enemy>({
         name: 'Custom Enemy',
-        speed: 2,
-        brawn: 2,
-        magic: 2,
-        armour: 0,
-        health: 20,
-        maxHealth: 20,
+        stats: {
+            speed: 2,
+            brawn: 2,
+            magic: 2,
+            armour: 0,
+            health: 20,
+            maxHealth: 20,
+        },
         abilities: []
     });
 
@@ -34,30 +37,42 @@ const EnemySelector: React.FC<EnemySelectorProps> = ({ onSelect }) => {
         );
     });
 
-    const handleCustomChange = (field: keyof Enemy, value: any) => {
-        setCustomEnemy(prev => ({
-            ...prev,
-            [field]: value,
-            maxHealth: field === 'health' ? Number(value) : prev.maxHealth
-        }));
+    const handleCustomChange = (field: keyof Enemy | keyof Stats, value: any) => {
+        if (field === 'name') {
+            setCustomEnemy(prev => ({ ...prev, name: value }));
+        } else if (field === 'entry' || field === 'abilities' || field === 'preventHealing' || field === 'stats') {
+            // Ignore or handle specific root fields if needed, simplified for name
+        } else {
+            // Assume stat
+            setCustomEnemy(prev => ({
+                ...prev,
+                stats: {
+                    ...prev.stats,
+                    [field]: value,
+                    maxHealth: field === 'health' ? Number(value) : prev.stats.maxHealth
+                }
+            }));
+        }
     };
 
     const confirmCustomEnemy = () => {
         onSelect({
             ...customEnemy,
-            maxHealth: customEnemy.health
+            stats: { ...customEnemy.stats, maxHealth: customEnemy.stats.health }
         });
     };
 
     const selectTrainingDummy = () => {
         onSelect({
             name: 'Training Dummy',
-            speed: 2,
-            brawn: 2,
-            magic: 0,
-            armour: 0,
-            health: 20,
-            maxHealth: 20,
+            stats: {
+                speed: 2,
+                brawn: 2,
+                magic: 0,
+                armour: 0,
+                health: 20,
+                maxHealth: 20,
+            },
             abilities: []
         });
     };
@@ -121,11 +136,11 @@ const EnemySelector: React.FC<EnemySelectorProps> = ({ onSelect }) => {
                                     </div>
 
                                     <div className="item-stats">
-                                        {`${getStatIcon('speed')} ${enemy.speed} `}
-                                        {`${getStatIcon('brawn')} ${enemy.brawn} `}
-                                        {`${getStatIcon('magic')} ${enemy.magic} `}
-                                        {`${getStatIcon('armour')} ${enemy.armour} `}
-                                        {`${getStatIcon('health')} ${enemy.health}`}
+                                        {`${getStatIcon('speed')} ${enemy.stats.speed} `}
+                                        {`${getStatIcon('brawn')} ${enemy.stats.brawn} `}
+                                        {`${getStatIcon('magic')} ${enemy.stats.magic} `}
+                                        {`${getStatIcon('armour')} ${enemy.stats.armour} `}
+                                        {`${getStatIcon('health')} ${enemy.stats.health}`}
                                     </div>
 
                                     {enemy.abilities && enemy.abilities.length > 0 && (
@@ -159,7 +174,7 @@ const EnemySelector: React.FC<EnemySelectorProps> = ({ onSelect }) => {
                             <div className="stat-row">
                                 <span className="stat-label">{getStatIcon('speed')} Speed</span>
                                 <NumberControl
-                                    value={customEnemy.speed}
+                                    value={customEnemy.stats.speed}
                                     onChange={v => handleCustomChange('speed', v)}
                                     min={0}
                                 />
@@ -167,7 +182,7 @@ const EnemySelector: React.FC<EnemySelectorProps> = ({ onSelect }) => {
                             <div className="stat-row">
                                 <span className="stat-label">{getStatIcon('brawn')} Brawn</span>
                                 <NumberControl
-                                    value={customEnemy.brawn}
+                                    value={customEnemy.stats.brawn}
                                     onChange={v => handleCustomChange('brawn', v)}
                                     min={0}
                                 />
@@ -175,7 +190,7 @@ const EnemySelector: React.FC<EnemySelectorProps> = ({ onSelect }) => {
                             <div className="stat-row">
                                 <span className="stat-label">{getStatIcon('magic')} Magic</span>
                                 <NumberControl
-                                    value={customEnemy.magic}
+                                    value={customEnemy.stats.magic}
                                     onChange={v => handleCustomChange('magic', v)}
                                     min={0}
                                 />
@@ -183,7 +198,7 @@ const EnemySelector: React.FC<EnemySelectorProps> = ({ onSelect }) => {
                             <div className="stat-row">
                                 <span className="stat-label">{getStatIcon('armour')} Armour</span>
                                 <NumberControl
-                                    value={customEnemy.armour}
+                                    value={customEnemy.stats.armour}
                                     onChange={v => handleCustomChange('armour', v)}
                                     min={0}
                                 />
@@ -191,7 +206,7 @@ const EnemySelector: React.FC<EnemySelectorProps> = ({ onSelect }) => {
                             <div className="stat-row">
                                 <span className="stat-label">{getStatIcon('health')} Health</span>
                                 <NumberControl
-                                    value={customEnemy.health}
+                                    value={customEnemy.stats.health}
                                     onChange={v => handleCustomChange('health', v)}
                                     min={1}
                                 />

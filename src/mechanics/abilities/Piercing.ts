@@ -12,7 +12,7 @@ registerAbility({
                     source: 'Piercing',
                     target: 'enemy',
                     stats: {
-                        armour: -(state.enemy?.armour || 0)
+                        armour: -(state.enemy?.stats.armour || 0)
                     }
                 },
                 duration: 1,

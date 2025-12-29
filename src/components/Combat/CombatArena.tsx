@@ -89,12 +89,12 @@ const CombatArena: React.FC<CombatArenaProps> = ({ hero, onCombatFinish }) => {
                     {/* Enemy Card */}
                     <CombatantCard
                         name={combat.enemy.name}
-                        currentHealth={combat.enemy.health}
-                        maxHealth={combat.enemy.maxHealth}
-                        speed={combat.enemy.speed}
-                        brawn={combat.enemy.brawn}
-                        magic={combat.enemy.magic}
-                        armour={combat.enemy.armour}
+                        currentHealth={combat.enemy.stats.health}
+                        maxHealth={combat.enemy.stats.maxHealth}
+                        speed={combat.enemy.stats.speed}
+                        brawn={combat.enemy.stats.brawn}
+                        magic={combat.enemy.stats.magic}
+                        armour={combat.enemy.stats.armour}
                         isEnemy={true}
                     />
                 </div>
@@ -125,7 +125,7 @@ const CombatArena: React.FC<CombatArenaProps> = ({ hero, onCombatFinish }) => {
                             <CombatDice
                                 label="Enemy Speed"
                                 values={combat.enemySpeedRolls}
-                                baseValue={combat.enemy.speed}
+                                baseValue={combat.enemy.stats.speed}
                                 mode={combat.rerollState ? 'disabled' : 'normal'}
                             />
                         </div>
@@ -163,7 +163,7 @@ const CombatArena: React.FC<CombatArenaProps> = ({ hero, onCombatFinish }) => {
                                 <CombatDice
                                     label="Enemy Damage"
                                     values={combat.damageRolls}
-                                    baseValue={Math.max(combat.enemy.brawn, combat.enemy.magic)}
+                                    baseValue={Math.max(combat.enemy.stats.brawn, combat.enemy.stats.magic)}
                                     mode={combat.rerollState ? 'disabled' : 'normal'}
                                 />
                             </div>
@@ -239,7 +239,7 @@ const CombatArena: React.FC<CombatArenaProps> = ({ hero, onCombatFinish }) => {
                         let newHealth = 0;
                         if (combat.hero.stats.health <= 0) {
                             newHealth = 0; // Defeat
-                        } else if (combat.enemy?.preventHealing) {
+                        } else if (combat.enemy?.original?.preventHealing) {
                             newHealth = combat.hero.stats.health; // Prevent Healing
                         } else {
                             newHealth = hero.stats.maxHealth; // Full Restore
@@ -247,13 +247,13 @@ const CombatArena: React.FC<CombatArenaProps> = ({ hero, onCombatFinish }) => {
 
                         onCombatFinish({
                             health: newHealth,
-                            backpack: combat.hero.backpack
+                            backpack: combat.hero.original.backpack
                         });
                     }}
                     onRetry={() => {
                         // Restart combat with the same enemy, but fresh hero state (from props)
                         if (combat.enemy) {
-                            startCombat(combat.enemy);
+                            startCombat(combat.enemy.original);
                         }
                     }}
                 />

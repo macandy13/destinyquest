@@ -39,13 +39,14 @@ const BEN_NEVIS: Hero = {
 
 const MINORIAN: Enemy = {
     name: 'Minorian',
-    speed: 11,
-    brawn: 10,
-    magic: 0,
-    armour: 8,
-    health: 80,
-    maxHealth: 80,
-    speedDice: 2,
+    stats: {
+        speed: 11,
+        brawn: 10,
+        magic: 0,
+        armour: 8,
+        health: 80,
+        maxHealth: 80,
+    },
     abilities: ['Charge', 'Trample', 'Bleed^']
 };
 
@@ -60,7 +61,7 @@ describe('Full Battle Flow', () => {
         act(() => result.current.startCombat(MINORIAN));
         randomSpy.mockRestore();
 
-        expect(result.current.combat.enemy!.health).toBe(78); // 80 - 2 (First Strike)
+        expect(result.current.combat.enemy!.stats.health).toBe(78); // 80 - 2 (First Strike)
 
         // --- ROUND 1 ---
         act(() => result.current.resolveSpeedRolls({
@@ -75,7 +76,7 @@ describe('Full Battle Flow', () => {
         act(() => result.current.commitDamageResult());
 
         expect(result.current.combat.hero!.stats.health).toBe(35); // Sidestep avoids damage.
-        expect(result.current.combat.enemy!.health).toBe(74); // -2 (Bleed & Venom)
+        expect(result.current.combat.enemy!.stats.health).toBe(74); // -2 (Bleed & Venom)
 
         // --- ROUND 2 ---
         act(() => result.current.nextRound());
@@ -94,7 +95,7 @@ describe('Full Battle Flow', () => {
         act(() => result.current.commitDamageResult());
 
         expect(result.current.combat.hero!.stats.health).toBe(26); // 35 - 9 (dmg) - 1 (bleed) when enemy abilities are handled
-        expect(result.current.combat.enemy!.health).toBe(70); // 74 - 4 (Bleed & Venom)
+        expect(result.current.combat.enemy!.stats.health).toBe(70); // 74 - 4 (Bleed & Venom)
 
         // --- ROUND 3 ---
         act(() => result.current.nextRound());
@@ -112,7 +113,7 @@ describe('Full Battle Flow', () => {
         act(() => result.current.commitDamageResult());
 
         // Dmg: 5 + 12(Brawn) + 2(Pot) = 19. Armour 0 (Piercing).
-        expect(result.current.combat.enemy!.health).toBe(47); // 70 - 19 - 4
+        expect(result.current.combat.enemy!.stats.health).toBe(47); // 70 - 19 - 4
         expect(result.current.combat.hero!.stats.health).toBe(26); // 26 (No damage)
 
         // --- ROUND 4 ---
@@ -135,7 +136,7 @@ describe('Full Battle Flow', () => {
 
         // Dmg: 3 + 10 = 13. Armour 3. 10 Dmg.
         expect(result.current.combat.hero!.stats.health).toBe(16); // 26 - 10
-        expect(result.current.combat.enemy!.health).toBe(43); // 47 - 4
+        expect(result.current.combat.enemy!.stats.health).toBe(43); // 47 - 4
 
         // --- POST R4 HEAL ---
         act(() => result.current.useBackpackItem(0)); // Gourd +6
@@ -167,7 +168,7 @@ describe('Full Battle Flow', () => {
         act(() => result.current.commitDamageResult());
 
         // Dmg: 6+6 + 12 = 24. Armour 8. 16 Dmg.
-        expect(result.current.combat.enemy!.health).toBe(23); // 43 - 16 - 4
+        expect(result.current.combat.enemy!.stats.health).toBe(23); // 43 - 16 - 4
         expect(result.current.combat.hero!.stats.health).toBe(30); // 26+4 = 30
 
         // --- ROUND 6 ---
@@ -201,7 +202,7 @@ describe('Full Battle Flow', () => {
         // Dmg: 6 + 10 + 5(Trample) = 21. Armour 3. 18 Dmg.
         // HP: 34 (30+4) - 18 = 16.
         expect(result.current.combat.hero!.stats.health).toBe(16);
-        expect(result.current.combat.enemy!.health).toBe(19); // 23 - 4
+        expect(result.current.combat.enemy!.stats.health).toBe(19); // 23 - 4
 
         // --- ROUND 7 ---
         act(() => result.current.nextRound());
@@ -216,7 +217,7 @@ describe('Full Battle Flow', () => {
         act(() => result.current.commitDamageResult());
 
         // Dmg: 1 + 12 = 13. Armour 8. 5 Dmg.
-        expect(result.current.combat.enemy!.health).toBe(10); // 19 - 5 - 4
+        expect(result.current.combat.enemy!.stats.health).toBe(10); // 19 - 5 - 4
         expect(result.current.combat.hero!.stats.health).toBe(16); // 16 (Winner)
 
         // --- ROUND 8 ---
@@ -232,7 +233,7 @@ describe('Full Battle Flow', () => {
         act(() => result.current.commitDamageResult());
 
         // Dmg: 2 + 12 = 14. Armour 8. 6 Dmg.
-        expect(result.current.combat.enemy!.health).toBe(0); // 10 - 6 - 4 => 0.
+        expect(result.current.combat.enemy!.stats.health).toBe(0); // 10 - 6 - 4 => 0.
         expect(result.current.combat.hero!.stats.health).toBe(16); // 16 (Winner)
 
         // Victory!

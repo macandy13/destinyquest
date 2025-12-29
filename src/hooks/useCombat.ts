@@ -1,5 +1,6 @@
 import { useState, useCallback } from 'react';
 import { CombatState, Enemy, CombatLog, ActiveAbility, DiceRoll } from '../types/combat';
+import { Combatant } from '../types/combatant';
 import { sumDice, rollDice } from '../utils/dice';
 import { Hero, HeroStats, BackpackItem } from '../types/hero';
 import { getAbilityDefinition } from '../mechanics/abilityRegistry';
@@ -25,16 +26,19 @@ const INITIAL_STATE: CombatState = {
 // Default easy enemy for testing
 const MOCK_ENEMY: Enemy = {
     name: 'Training Dummy',
-    speed: 2,
-    brawn: 2,
-    magic: 0,
-    armour: 0,
-    health: 20,
-    maxHealth: 20,
+    stats: {
+        speed: 2,
+        brawn: 2,
+        magic: 0,
+        armour: 0,
+        health: 20,
+        maxHealth: 20,
+    },
     abilities: []
 };
 
-export function useCombat(hero: Hero) {
+export function useCombat(heroInput: Hero | Combatant<Hero>) {
+    const hero: Hero = 'original' in heroInput ? heroInput.original : heroInput;
     const [combat, setCombat] = useState<CombatState>(INITIAL_STATE);
 
     /**
@@ -59,7 +63,7 @@ export function useCombat(hero: Hero) {
         logs = addLog([], { round: 1, message: `Active hero abilities: ${abilities.map(a => a.name).join(', ')}`, type: 'info' });
 
         const enemyToUse = initialEnemy || MOCK_ENEMY;
-        Object.values(enemyToUse.abilities).forEach(abilityName => {
+        enemyToUse.abilities.forEach(abilityName => {
             abilities.push({
                 name: abilityName,
                 source: 'Enemy Special Ability',
@@ -69,10 +73,26 @@ export function useCombat(hero: Hero) {
         });
         logs = addLog([], { round: 1, message: `Active enemy abilities: ${abilities.filter(a => a.target === 'hero').map(a => a.name).join(', ')}`, type: 'info' });
 
+        const heroCombatant: Combatant<Hero> = {
+            type: 'hero',
+            id: 'hero',
+            name: hero.name,
+            stats: { ...hero.stats },
+            original: { ...hero }
+        };
+
+        const enemyCombatant: Combatant<Enemy> = {
+            type: 'enemy',
+            id: 'enemy',
+            name: enemyToUse.name,
+            stats: { ...enemyToUse.stats },
+            original: { ...enemyToUse }
+        };
+
         let state: CombatState = {
             ...INITIAL_STATE,
-            enemy: { ...enemyToUse },
-            hero: { ...hero },
+            enemy: enemyCombatant,
+            hero: heroCombatant,
             activeAbilities: abilities,
             backpack: hero.backpack.filter(i => i?.uses && i.uses > 0) as any[],
             logs,
@@ -80,7 +100,7 @@ export function useCombat(hero: Hero) {
 
         state.activeAbilities.forEach(ability => {
             const def = getAbilityDefinition(ability.name);
-            const updates = def?.onCombatStart ? def.onCombatStart(state) : {};
+            const updates = def?.onCombatStart ? def.onCombatStart(state, abilty.target) : {};
             state = { ...state, ...updates };
         });
 
@@ -108,9 +128,9 @@ export function useCombat(hero: Hero) {
         return newState;
     };
 
-    const _calculateEffectiveStats = (state: CombatState): { hero: HeroStats, enemy: Enemy } => {
+    const _calculateEffectiveStats = (state: CombatState): { hero: HeroStats, enemy: Stats } => {
         const effectiveHeroStats = calculateEffectiveStatsForType(state.hero!.stats, state.modifications.map(m => m.modification), 'hero') as HeroStats;
-        const effectiveEnemyStats = calculateEffectiveStatsForType(state.enemy!, state.modifications.map(m => m.modification), 'enemy') as Enemy;
+        const effectiveEnemyStats = calculateEffectiveStatsForType(state.enemy!.stats, state.modifications.map(m => m.modification), 'enemy');
         return { hero: effectiveHeroStats, enemy: effectiveEnemyStats };
     };
 
@@ -199,12 +219,11 @@ export function useCombat(hero: Hero) {
     const _processDamagePhase = (state: CombatState, rolls: DiceRoll[]): CombatState => {
         if (!state.enemy || !state.winner || !state.hero) return state;
 
-        let currentHero = { ...state.hero };
-        currentHero.stats = { ...currentHero.stats };
-        let currentEnemy = { ...state.enemy };
+        let currentHero = { ...state.hero, stats: { ...state.hero.stats } } as Combatant<Hero>;
+        let currentEnemy = { ...state.enemy, stats: { ...state.enemy.stats } } as Combatant<Enemy>;
 
         let newHeroHealth = currentHero.stats.health;
-        let newEnemyHealth = currentEnemy.health;
+        let newEnemyHealth = currentEnemy.stats.health;
 
         let modifiersFromHooks = 0;
         let hookLogMsg = '';
@@ -236,11 +255,11 @@ export function useCombat(hero: Hero) {
             const totalDamage = rollTotal + skill + modifiersFromHooks + damageModifiers;
 
             const actualDamage = Math.max(0, totalDamage - effectiveEnemyStats.armour);
-            const damageDealt = Math.min(currentEnemy.health, actualDamage);
+            const damageDealt = Math.min(currentEnemy.stats.health, actualDamage);
             state = _dealDamage(state, 'enemy', damageDealt);
 
-            newEnemyHealth = currentEnemy.health - damageDealt;
-            currentEnemy.health = newEnemyHealth;
+            newEnemyHealth = currentEnemy.stats.health - damageDealt;
+            currentEnemy.stats.health = newEnemyHealth;
 
             logs = addLog(logs, {
                 round: state.round,
@@ -252,7 +271,7 @@ export function useCombat(hero: Hero) {
             let damageModifiers = effectiveEnemyStats.damageModifier ?? 0;
             let currentTotal = rollTotal + skill + damageModifiers;
 
-            state.enemy.abilities.forEach(abilityName => {
+            state.enemy.original.abilities.forEach(abilityName => {
                 const def = getAbilityDefinition(abilityName);
                 const mod = def?.onDamageCalculate ? def.onDamageCalculate(state, { total: currentTotal, rolls }) : 0;
                 if (mod !== 0) {
@@ -291,8 +310,8 @@ export function useCombat(hero: Hero) {
     const _processEndOfRoundDamage = (state: CombatState): CombatState => {
         if (!state.hero || !state.enemy) return state;
 
-        let isFinished = state.hero!.stats.health <= 0 || state.enemy!.health <= 0;
-        
+        let isFinished = state.hero!.stats.health <= 0 || state.enemy!.stats.health <= 0;
+
         state.activeAbilities.forEach(ability => {
             if (isFinished) return;
             const def = getAbilityDefinition(ability.name);
@@ -311,7 +330,7 @@ export function useCombat(hero: Hero) {
                 };
                 isFinished = true;
             }
-            if (state.enemy!.health <= 0) {
+            if (state.enemy!.stats.health <= 0) {
                 state = {
                     ...state,
                     logs: addLog(state.logs, {
@@ -330,7 +349,7 @@ export function useCombat(hero: Hero) {
             phase: isFinished ? 'combat-end' : 'round-end',
             logs: addLog(state.logs, {
                 round: state.round,
-                message: `Round ended, Hero: ${state.hero!.stats.health}, Enemy: ${state.enemy!.health}`, type: 'info'
+                message: `Round ended, Hero: ${state.hero!.stats.health}, Enemy: ${state.enemy!.stats.health}`, type: 'info'
             })
         };
     };
@@ -371,7 +390,7 @@ export function useCombat(hero: Hero) {
         if (!state.hero) return state;
 
         // Check for backpack item first
-        const item = state.hero.backpack[index];
+        const item = state.hero.original.backpack[index];
         if (!item) return state;
 
         // Apply effects
@@ -404,7 +423,7 @@ export function useCombat(hero: Hero) {
             logMessage += `${item.effect || item.modifier}. `;
         }
 
-        const newBackpack = [...newState.hero!.backpack];
+        const newBackpack = [...newState.hero!.original.backpack];
         if (item.uses !== undefined) {
             newBackpack[index] = {
                 ...item,
@@ -414,7 +433,7 @@ export function useCombat(hero: Hero) {
                 newBackpack[index] = null;
             }
         }
-        newState.hero!.backpack = newBackpack;
+        newState.hero!.original.backpack = newBackpack;
         newState.backpack = newBackpack.filter(i => i?.uses && i.uses > 0) as BackpackItem[];
 
         newState.logs = [...newState.logs, { round: newState.round, message: logMessage, type: 'info' }];
