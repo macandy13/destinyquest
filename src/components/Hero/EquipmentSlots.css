@@ -1,15 +1,74 @@
-.equipment-grid {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: var(--spacing-sm);
-    border-radius: var(--radius-md);
-    border: var(--border-sm) solid var(--dq-grey);
-    max-width: calc(3 * var(--button-2xl) + 2 * var(--spacing-sm));
-}
-
 .equipment-container {
     display: flex;
     flex-direction: column;
     gap: var(--spacing-sm);
+    width: 100%;
+}
+
+.equipment-slots {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--spacing-sm);
+    width: 100%;
+}
+
+.human-figure-container {
+    position: relative;
+    width: 100%;
+    min-height: 600px;
+    aspect-ratio: 0.6;
+    /* Trimmed aspect ratio to remove empty side space */
+    background-size: cover;
+    /* Cover ensures we zoom in to the center, effectively cropping sides */
+    background-repeat: no-repeat;
+    background-position: center;
+    border: var(--border-sm) solid var(--dq-grey-dim);
+    border-radius: var(--radius-lg);
+    background-color: var(--dq-black-alpha);
+    margin: 0 auto;
+    mix-blend-mode: screen;
+    /* screen blend mode makes black pixels transparent */
+}
+
+.positioned-slot {
+    position: absolute;
+    transform: translate(-50%, -50%);
+    width: auto;
+    height: auto;
+    z-index: 10;
+}
+
+/* Adjustments for EquipmentSlot within this context */
+.positioned-slot .equipment-slot {
+    width: var(--button-xl);
+    height: var(--button-xl);
+    font-size: var(--font-xs);
+    border-width: 2px;
+    background: rgba(0, 0, 0, 0.7);
+}
+
+.positioned-slot .slot-icon {
+    font-size: var(--font-xs);
+    line-height: 20px;
+}
+
+.positioned-slot .equipment-slot:hover {
+    z-index: 20;
+    transform: scale(1.1);
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 600px) {
+    .human-figure-container {
+        /* Let it shrink but maintain aspect ratio */
+        width: 100%;
+    }
+
+    .equipment-name-visible,
+    .equipment-stats-display,
+    .equipment-abilities-display {
+        font-size: 0.65rem;
+        /* Smaller text on mobile */
+    }
 }

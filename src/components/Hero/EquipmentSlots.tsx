@@ -3,6 +3,7 @@ import { Hero, EquipmentSlot as EquipmentSlotType, EquipmentItem } from '../../t
 import EquipmentSlot from './EquipmentSlot';
 import InventorySelector from './InventorySelector';
 import './EquipmentSlots.css';
+import heroSilhouette from '../../assets/hero_silhouette.png';
 
 interface EquipmentSlotsProps {
   hero: Hero;
@@ -10,28 +11,19 @@ interface EquipmentSlotsProps {
   onUnequip: (slot: EquipmentSlotType) => void;
 }
 
-const HEAD_CONFIG: Array<{ slot: EquipmentSlotType; label: string; icon: string }> = [
-  { slot: 'head', label: 'Head', icon: '⛑️' },
-  { slot: 'cloak', label: 'Cloak', icon: '🧥' },
-];
-
-const CENTER_CONFIG: Array<{ slot: EquipmentSlotType; label: string; icon: string }> = [
-  { slot: 'mainHand', label: 'Main', icon: '⚔️' },
-  { slot: 'chest', label: 'Chest', icon: '👕' },
-  { slot: 'leftHand', label: 'Off', icon: '🛡️' },
-  { slot: 'gloves', label: 'Hands', icon: '🧤' },
-];
-
-const JEWELRY_CONFIG: Array<{ slot: EquipmentSlotType; label: string; icon: string }> = [
-  { slot: 'ring1', label: 'Ring 1', icon: '💍' },
-  { slot: 'ring2', label: 'Ring 2', icon: '💍' },
-  { slot: 'necklace', label: 'Neck', icon: '📿' },
-  { slot: 'talisman', label: 'Talisman', icon: '🧿' },
-];
-
-const FOOT_CONFIG: Array<{ slot: EquipmentSlotType; label: string; icon: string }> = [
-  { slot: 'feet', label: 'Feet', icon: '👢' },
-];
+const SLOT_CONFIG: Record<EquipmentSlotType, { top: string; left: string; label: string; icon: string }> = {
+  head: { top: '10%', left: '50%', label: 'Head', icon: '⛑️' },
+  necklace: { top: '22%', left: '70%', label: 'Neck', icon: '📿' },
+  talisman: { top: '22%', left: '30%', label: 'Talisman', icon: '🧿' },
+  leftHand: { top: '15%', left: '90%', label: 'Off', icon: '🛡️' },
+  ring2: { top: '28%', left: '90%', label: 'Ring 2', icon: '💍' },
+  cloak: { top: '40%', left: '20%', label: 'Cloak', icon: '🧥' },
+  chest: { top: '40%', left: '50%', label: 'Chest', icon: '👕' },
+  mainHand: { top: '55%', left: '10%', label: 'Main', icon: '⚔️' },
+  gloves: { top: '65%', left: '70%', label: 'Hands', icon: '🧤' },
+  ring1: { top: '65%', left: '35%', label: 'Ring 1', icon: '💍' },
+  feet: { top: '88%', left: '50%', label: 'Feet', icon: '👢' },
+};
 
 const EquipmentSlots: React.FC<EquipmentSlotsProps> = ({ hero, onEquip, onUnequip }) => {
   const [selectedSlot, setSelectedSlot] = useState<EquipmentSlotType | null>(null);
@@ -51,68 +43,26 @@ const EquipmentSlots: React.FC<EquipmentSlotsProps> = ({ hero, onEquip, onUnequi
     <div className="equipment-container">
       <h4>Equipment</h4>
 
-      <h6>Head</h6>
-      <div className="equipment-grid">
-        {HEAD_CONFIG.map(({ slot, label, icon }) => {
-          const item = hero.equipment[slot];
-          return (
-            <EquipmentSlot
-              key={slot}
-              label={label}
-              icon={icon}
-              item={item}
-              onClick={() => setSelectedSlot(slot)}
-            />
-          );
-        })}
-      </div>
-
-      <h6>Body</h6>
-      <div className="equipment-grid">
-        {CENTER_CONFIG.map(({ slot, label, icon }) => {
-          const item = hero.equipment[slot];
-          return (
-            <EquipmentSlot
-              key={slot}
-              label={label}
-              icon={icon}
-              item={item}
-              onClick={() => setSelectedSlot(slot)}
-            />
-          );
-        })}
-      </div>
-
-      <h6>Foot</h6>
-      <div className="equipment-grid">
-        {FOOT_CONFIG.map(({ slot, label, icon }) => {
-          const item = hero.equipment[slot];
-          return (
-            <EquipmentSlot
-              key={slot}
-              label={label}
-              icon={icon}
-              item={item}
-              onClick={() => setSelectedSlot(slot)}
-            />
-          );
-        })}
-      </div>
-
-      <h6>Jewelry</h6>
-      <div className="equipment-grid">
-        {JEWELRY_CONFIG.map(({ slot, label, icon }) => {
-          const item = hero.equipment[slot];
-          return (
-            <EquipmentSlot
-              key={slot}
-              label={label}
-              icon={icon}
-              item={item}
-              onClick={() => setSelectedSlot(slot)}
-            />
-          );
-        })}
+      <div className="equipment-slots">
+        <div className="human-figure-container" style={{ backgroundImage: `url(${heroSilhouette})` }}>
+          {(Object.entries(SLOT_CONFIG) as [EquipmentSlotType, typeof SLOT_CONFIG[EquipmentSlotType]][]).map(([slot, config]) => {
+            const item = hero.equipment[slot];
+            return (
+              <div
+                key={slot}
+                className="positioned-slot"
+                style={{ top: config.top, left: config.left }}
+              >
+                <EquipmentSlot
+                  label={config.label}
+                  icon={config.icon}
+                  item={item}
+                  onClick={() => setSelectedSlot(slot)}
+                />
+              </div>
+            );
+          })}
+        </div>
       </div>
 
       {selectedSlot && (
