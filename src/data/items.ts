@@ -5,6 +5,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "patchwork_cloak",
     "name": "Patchwork cloak",
     "type": "cloak",
+    "book": "Legions of Shadows",
     "act": 1,
     "stats": {
       "speed": 1
@@ -17,6 +18,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "bat_cape",
     "name": "Bat cape",
     "type": "cloak",
+    "book": "Legions of Shadows",
     "act": 1,
     "stats": {
       "speed": 1,
@@ -30,6 +32,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "spindlesilk_cloak",
     "name": "Spindlesilk cloak",
     "type": "cloak",
+    "book": "Legions of Shadows",
     "act": 1,
     "stats": {
       "speed": 1,
@@ -45,6 +48,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "chieftains_furs",
     "name": "Chieftain's furs",
     "type": "cloak",
+    "book": "Legions of Shadows",
     "act": 1,
     "stats": {
       "armour": 1
@@ -57,6 +61,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "travellers_cloak",
     "name": "Traveller's cloak",
     "type": "cloak",
+    "book": "Legions of Shadows",
     "act": 1,
     "stats": {
       "magic": 1,
@@ -72,6 +77,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "moth_eaten_blanket",
     "name": "Moth-eaten blanket",
     "type": "cloak",
+    "book": "Legions of Shadows",
     "act": 1,
     "stats": {
       "speed": 1
@@ -84,6 +90,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "crusaders_mantle",
     "name": "Crusader's mantle",
     "type": "cloak",
+    "book": "Legions of Shadows",
     "act": 1,
     "stats": {
       "speed": 1
@@ -98,6 +105,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "hags_shawl",
     "name": "Hag's shawl",
     "type": "cloak",
+    "book": "Legions of Shadows",
     "act": 1,
     "stats": {
       "magic": 1,
@@ -113,6 +121,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "savage_pelt",
     "name": "Savage pelt",
     "type": "cloak",
+    "book": "Legions of Shadows",
     "act": 1,
     "stats": {
       "brawn": 1,
@@ -128,6 +137,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "mottled_cloak",
     "name": "Mottled cloak",
     "type": "cloak",
+    "book": "Legions of Shadows",
     "act": 2,
     "stats": {
       "speed": 1,
@@ -141,6 +151,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "diaphanous_wings",
     "name": "Diaphanous wings",
     "type": "cloak",
+    "book": "Legions of Shadows",
     "act": 2,
     "stats": {
       "speed": 1,
@@ -156,6 +167,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "cloak_of_white_winter",
     "name": "Cloak of white winter",
     "type": "cloak",
+    "book": "Legions of Shadows",
     "act": 2,
     "stats": {
       "speed": 1,
@@ -171,6 +183,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "cloak_of_shadows",
     "name": "Cloak of shadows",
     "type": "cloak",
+    "book": "Legions of Shadows",
     "act": 2,
     "stats": {
       "speed": 1,
@@ -186,6 +199,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "golden_fleece",
     "name": "Golden fleece",
     "type": "cloak",
+    "book": "Legions of Shadows",
     "act": 2,
     "stats": {
       "speed": 1,
@@ -201,6 +215,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "phoenix_feathers",
     "name": "Phoenix feathers",
     "type": "cloak",
+    "book": "Legions of Shadows",
     "act": 2,
     "stats": {
       "speed": 1,
@@ -216,6 +231,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "destroyers_drape",
     "name": "Destroyer's drape",
     "type": "cloak",
+    "book": "Legions of Shadows",
     "act": 2,
     "stats": {
       "speed": 2,
@@ -231,6 +247,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "majestic_shoulders",
     "name": "Majestic shoulders",
     "type": "cloak",
+    "book": "Legions of Shadows",
     "act": 2,
     "stats": {
       "speed": 2,
@@ -247,6 +264,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "sparkcraft_mantle",
     "name": "Sparkcraft mantle",
     "type": "cloak",
+    "book": "Legions of Shadows",
     "act": 2,
     "stats": {
       "speed": 2,
@@ -263,6 +281,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "kaggadours_cloak",
     "name": "Kaggadour's cloak",
     "type": "cloak",
+    "book": "Legions of Shadows",
     "act": 2,
     "stats": {
       "speed": 2,
@@ -278,6 +297,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "mantle_of_spite",
     "name": "Mantle of spite",
     "type": "cloak",
+    "book": "Legions of Shadows",
     "act": 2,
     "stats": {
       "speed": 2,
@@ -294,6 +314,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "mane_of_the_black_lion",
     "name": "Mane of the Black Lion",
     "type": "cloak",
+    "book": "Legions of Shadows",
     "act": 2,
     "stats": {
       "speed": 1,
@@ -309,6 +330,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "winter_pelt",
     "name": "Winter pelt",
     "type": "cloak",
+    "book": "Legions of Shadows",
     "act": 2,
     "stats": {
       "speed": 2,
@@ -324,6 +346,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "flame_mantle",
     "name": "Flame mantle",
     "type": "cloak",
+    "book": "Legions of Shadows",
     "act": 2,
     "stats": {
       "speed": 2,
@@ -339,6 +362,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "dragonscale_cloak",
     "name": "Dragonscale cloak",
     "type": "cloak",
+    "book": "Legions of Shadows",
     "act": 2,
     "stats": {
       "speed": 2,
@@ -354,6 +378,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "slipstream_silk",
     "name": "Slipstream silk",
     "type": "cloak",
+    "book": "Legions of Shadows",
     "act": 3,
     "stats": {
       "speed": 3,
@@ -370,6 +395,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "valiant_spaulders",
     "name": "Valiant spaulders",
     "type": "cloak",
+    "book": "Legions of Shadows",
     "act": 3,
     "stats": {
       "speed": 2,
@@ -386,6 +412,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "spiked_boneguards",
     "name": "Spiked boneguards",
     "type": "cloak",
+    "book": "Legions of Shadows",
     "act": 3,
     "stats": {
       "speed": 2,
@@ -401,6 +428,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "broken_wings",
     "name": "Broken wings",
     "type": "cloak",
+    "book": "Legions of Shadows",
     "act": 3,
     "stats": {
       "speed": 2,
@@ -416,6 +444,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "cloak_of_ceremonies",
     "name": "Cloak of ceremonies",
     "type": "cloak",
+    "book": "Legions of Shadows",
     "act": 3,
     "stats": {
       "speed": 2,
@@ -431,6 +460,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "stalwart_shoulders",
     "name": "Stalwart shoulders",
     "type": "cloak",
+    "book": "Legions of Shadows",
     "act": 3,
     "stats": {
       "speed": 2,
@@ -446,6 +476,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "gloom_shade",
     "name": "Gloom shade",
     "type": "cloak",
+    "book": "Legions of Shadows",
     "act": 3,
     "stats": {
       "speed": 2,
@@ -462,6 +493,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "pauldrons_of_might",
     "name": "Pauldrons of might",
     "type": "cloak",
+    "book": "Legions of Shadows",
     "act": 3,
     "stats": {
       "speed": 2,
@@ -478,6 +510,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "cloak_of_the_wind",
     "name": "Cloak of the wind",
     "type": "cloak",
+    "book": "Legions of Shadows",
     "act": 3,
     "stats": {
       "speed": 3,
@@ -494,6 +527,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "nemesis_shroud",
     "name": "Nemesis shroud",
     "type": "cloak",
+    "book": "Legions of Shadows",
     "act": 3,
     "stats": {
       "speed": 2,
@@ -509,6 +543,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "veil_of_dark_synergies",
     "name": "Veil of dark synergies",
     "type": "cloak",
+    "book": "Legions of Shadows",
     "act": 3,
     "stats": {
       "speed": 2,
@@ -525,6 +560,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "spore_shoulders",
     "name": "Spore shoulders",
     "type": "cloak",
+    "book": "Legions of Shadows",
     "act": 3,
     "stats": {
       "speed": 2,
@@ -541,6 +577,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "hulking_shoulders",
     "name": "Hulking shoulders",
     "type": "cloak",
+    "book": "Legions of Shadows",
     "act": 3,
     "stats": {
       "speed": 2,
@@ -557,6 +594,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "simple_coif",
     "name": "Simple coif",
     "type": "head",
+    "book": "Legions of Shadows",
     "act": 1,
     "stats": {
       "brawn": 1,
@@ -570,6 +608,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "all_weather_hat",
     "name": "All-weather hat",
     "type": "head",
+    "book": "Legions of Shadows",
     "act": 1,
     "stats": {
       "speed": 1
@@ -582,6 +621,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "rusted_helm",
     "name": "Rusted helm",
     "type": "head",
+    "book": "Legions of Shadows",
     "act": 1,
     "stats": {
       "speed": 1
@@ -594,6 +634,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "maulers_maw",
     "name": "Mauler's maw",
     "type": "head",
+    "book": "Legions of Shadows",
     "act": 1,
     "stats": {
       "speed": 1,
@@ -609,6 +650,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "trolls_nose_ring",
     "name": "Troll's nose-ring",
     "type": "head",
+    "book": "Legions of Shadows",
     "act": 1,
     "stats": {
       "brawn": 2
@@ -623,6 +665,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "ramrod_helm",
     "name": "Ramrod helm",
     "type": "head",
+    "book": "Legions of Shadows",
     "act": 2,
     "stats": {
       "speed": 1,
@@ -638,6 +681,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "footpads_cover",
     "name": "Footpad's cover",
     "type": "head",
+    "book": "Legions of Shadows",
     "act": 2,
     "stats": {
       "brawn": 2,
@@ -652,6 +696,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "skull_cap",
     "name": "Skull cap",
     "type": "head",
+    "book": "Legions of Shadows",
     "act": 2,
     "stats": {
       "speed": 1,
@@ -665,6 +710,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "great_helm",
     "name": "Great helm",
     "type": "head",
+    "book": "Legions of Shadows",
     "act": 2,
     "stats": {
       "speed": 1,
@@ -678,6 +724,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "wyrm_crest",
     "name": "Wyrm crest",
     "type": "head",
+    "book": "Legions of Shadows",
     "act": 2,
     "stats": {
       "magic": 1,
@@ -691,6 +738,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "wyrm_crown",
     "name": "Wyrm crown",
     "type": "head",
+    "book": "Legions of Shadows",
     "act": 2,
     "stats": {
       "magic": 2,
@@ -704,6 +752,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "nightguard_cover",
     "name": "Nightguard cover",
     "type": "head",
+    "book": "Legions of Shadows",
     "act": 2,
     "stats": {
       "speed": 1,
@@ -719,6 +768,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "flame_bathed_cowl",
     "name": "Flame-bathed cowl",
     "type": "head",
+    "book": "Legions of Shadows",
     "act": 2,
     "stats": {
       "brawn": 2,
@@ -734,6 +784,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "jesters_cap",
     "name": "Jester's cap",
     "type": "head",
+    "book": "Legions of Shadows",
     "act": 2,
     "stats": {
       "speed": 1,
@@ -749,6 +800,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "masque_of_deceit",
     "name": "Masque of deceit",
     "type": "head",
+    "book": "Legions of Shadows",
     "act": 2,
     "stats": {
       "speed": 1,
@@ -764,6 +816,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "pirates_bandanna",
     "name": "Pirate's bandanna",
     "type": "head",
+    "book": "Legions of Shadows",
     "act": 2,
     "stats": {
       "speed": 1,
@@ -777,6 +830,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "vanquishers_helm",
     "name": "Vanquisher's helm",
     "type": "head",
+    "book": "Legions of Shadows",
     "act": 2,
     "stats": {
       "brawn": 2,
@@ -793,6 +847,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "night_watch",
     "name": "Night watch",
     "type": "head",
+    "book": "Legions of Shadows",
     "act": 2,
     "stats": {
       "speed": 1,
@@ -809,6 +864,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "cover_of_darkness",
     "name": "Cover of darkness",
     "type": "head",
+    "book": "Legions of Shadows",
     "act": 2,
     "stats": {
       "speed": 1,
@@ -825,6 +881,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "crown_of_command",
     "name": "Crown of command",
     "type": "head",
+    "book": "Legions of Shadows",
     "act": 2,
     "stats": {
       "brawn": 1,
@@ -840,6 +897,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "crown_of_command_upgrade_1_",
     "name": "Crown of command (upgrade 1)",
     "type": "head",
+    "book": "Legions of Shadows",
     "act": 2,
     "stats": {
       "brawn": 3,
@@ -855,6 +913,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "crown_of_command_upgrade_2_",
     "name": "Crown of command (upgrade 2)",
     "type": "head",
+    "book": "Legions of Shadows",
     "act": 2,
     "stats": {
       "brawn": 5,
@@ -870,6 +929,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "tri_horned_hat",
     "name": "Tri-horned hat",
     "type": "head",
+    "book": "Legions of Shadows",
     "act": 2,
     "stats": {
       "magic": 1,
@@ -885,6 +945,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "horns_of_the_bull",
     "name": "Horns of the bull",
     "type": "head",
+    "book": "Legions of Shadows",
     "act": 2,
     "stats": {
       "speed": 1,
@@ -900,6 +961,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "simian_crown",
     "name": "Simian crown",
     "type": "head",
+    "book": "Legions of Shadows",
     "act": 2,
     "stats": {
       "speed": 1,
@@ -915,6 +977,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "desert_keffiyeh",
     "name": "Desert Keffiyeh",
     "type": "head",
+    "book": "Legions of Shadows",
     "act": 2,
     "stats": {
       "speed": 1,
@@ -928,6 +991,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "agal_of_shifting_sands",
     "name": "Agal of shifting sands",
     "type": "head",
+    "book": "Legions of Shadows",
     "act": 2,
     "stats": {
       "magic": 2,
@@ -941,6 +1005,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "wreath_of_woe",
     "name": "Wreath of woe",
     "type": "head",
+    "book": "Legions of Shadows",
     "act": 2,
     "stats": {
       "speed": 1,
@@ -956,6 +1021,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "firewalkers_faceguard",
     "name": "Firewalker's faceguard",
     "type": "head",
+    "book": "Legions of Shadows",
     "act": 2,
     "stats": {
       "speed": 1,
@@ -972,6 +1038,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "total_eclipse",
     "name": "Total eclipse",
     "type": "head",
+    "book": "Legions of Shadows",
     "act": 3,
     "stats": {
       "speed": 2,
@@ -988,6 +1055,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "wyvern_jaws",
     "name": "Wyvern jaws",
     "type": "head",
+    "book": "Legions of Shadows",
     "act": 3,
     "stats": {
       "magic": 3,
@@ -1001,6 +1069,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "knuckle_head",
     "name": "Knuckle head",
     "type": "head",
+    "book": "Legions of Shadows",
     "act": 3,
     "stats": {
       "speed": 1,
@@ -1017,6 +1086,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "hood_of_night",
     "name": "Hood of night",
     "type": "head",
+    "book": "Legions of Shadows",
     "act": 3,
     "stats": {
       "speed": 2,
@@ -1032,6 +1102,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "enchanted_coif",
     "name": "Enchanted coif",
     "type": "head",
+    "book": "Legions of Shadows",
     "act": 3,
     "stats": {
       "speed": 2,
@@ -1048,6 +1119,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "forked_crest",
     "name": "Forked crest",
     "type": "head",
+    "book": "Legions of Shadows",
     "act": 3,
     "stats": {
       "speed": 1,
@@ -1063,6 +1135,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "bone_headdress",
     "name": "Bone headdress",
     "type": "head",
+    "book": "Legions of Shadows",
     "act": 3,
     "stats": {
       "magic": 3,
@@ -1078,6 +1151,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "cracked_spectacles",
     "name": "Cracked spectacles",
     "type": "head",
+    "book": "Legions of Shadows",
     "act": 3,
     "stats": {
       "speed": 2,
@@ -1093,6 +1167,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "crown_of_ice",
     "name": "Crown of ice",
     "type": "head",
+    "book": "Legions of Shadows",
     "act": 3,
     "stats": {
       "speed": 2,
@@ -1108,6 +1183,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "bone_halo",
     "name": "Bone halo",
     "type": "head",
+    "book": "Legions of Shadows",
     "act": 3,
     "stats": {
       "speed": 2,
@@ -1123,6 +1199,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "black_widow",
     "name": "Black widow",
     "type": "head",
+    "book": "Legions of Shadows",
     "act": 3,
     "stats": {
       "speed": 2,
@@ -1138,6 +1215,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "diadem_of_mastery",
     "name": "Diadem of mastery",
     "type": "head",
+    "book": "Legions of Shadows",
     "act": 3,
     "stats": {
       "speed": 2,
@@ -1154,6 +1232,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "ghouls_collar",
     "name": "Ghoul's collar",
     "type": "head",
+    "book": "Legions of Shadows",
     "act": 3,
     "stats": {
       "speed": 2,
@@ -1169,6 +1248,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "budaks_blindfold",
     "name": "Budak's blindfold",
     "type": "head",
+    "book": "Legions of Shadows",
     "act": 3,
     "stats": {
       "speed": 2,
@@ -1185,6 +1265,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "brain_infusers",
     "name": "Brain infusers",
     "type": "head",
+    "book": "Legions of Shadows",
     "act": 3,
     "stats": {
       "speed": 2,
@@ -1200,6 +1281,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "the_morgue",
     "name": "The morgue",
     "type": "head",
+    "book": "Legions of Shadows",
     "act": 3,
     "stats": {
       "speed": 2,
@@ -1216,6 +1298,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "cerebral_helm",
     "name": "Cerebral helm",
     "type": "head",
+    "book": "Legions of Shadows",
     "act": 3,
     "stats": {
       "speed": 2,
@@ -1232,6 +1315,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "cranium_plate",
     "name": "Cranium plate",
     "type": "head",
+    "book": "Legions of Shadows",
     "act": 3,
     "stats": {
       "brawn": 2,
@@ -1247,6 +1331,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "dread_mask",
     "name": "Dread mask",
     "type": "head",
+    "book": "Legions of Shadows",
     "act": 3,
     "stats": {
       "speed": 2,
@@ -1263,6 +1348,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "drape_of_shadow",
     "name": "Drape of shadow",
     "type": "head",
+    "book": "Legions of Shadows",
     "act": 3,
     "stats": {
       "speed": 2,
@@ -1278,6 +1364,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "thalamus_tiara",
     "name": "Thalamus tiara",
     "type": "head",
+    "book": "Legions of Shadows",
     "act": 3,
     "stats": {
       "speed": 2,
@@ -1294,6 +1381,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "embroidered_gloves",
     "name": "Embroidered gloves",
     "type": "gloves",
+    "book": "Legions of Shadows",
     "act": 1,
     "stats": {
       "speed": 1,
@@ -1307,6 +1395,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "rat_bitten_gloves",
     "name": "Rat-bitten gloves",
     "type": "gloves",
+    "book": "Legions of Shadows",
     "act": 1,
     "stats": {
       "brawn": 1,
@@ -1320,6 +1409,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "half_digested_gauntlets",
     "name": "Half-digested gauntlets",
     "type": "gloves",
+    "book": "Legions of Shadows",
     "act": 1,
     "stats": {
       "brawn": 1,
@@ -1335,6 +1425,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "masons_gloves",
     "name": "Mason's gloves",
     "type": "gloves",
+    "book": "Legions of Shadows",
     "act": 1,
     "stats": {
       "speed": 1
@@ -1349,6 +1440,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "stone_fists",
     "name": "Stone fists",
     "type": "gloves",
+    "book": "Legions of Shadows",
     "act": 2,
     "stats": {
       "brawn": 2,
@@ -1362,6 +1454,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "diamond_gauntlets",
     "name": "Diamond gauntlets",
     "type": "gloves",
+    "book": "Legions of Shadows",
     "act": 2,
     "stats": {
       "brawn": 2
@@ -1376,6 +1469,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "vambraces_of_might",
     "name": "Vambraces of might",
     "type": "gloves",
+    "book": "Legions of Shadows",
     "act": 2,
     "stats": {
       "speed": 1,
@@ -1391,6 +1485,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "prophets_handwraps",
     "name": "Prophet's handwraps",
     "type": "gloves",
+    "book": "Legions of Shadows",
     "act": 2,
     "stats": {
       "brawn": 1,
@@ -1406,6 +1501,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "nightguard_gloves",
     "name": "Nightguard gloves",
     "type": "gloves",
+    "book": "Legions of Shadows",
     "act": 2,
     "stats": {
       "speed": 1,
@@ -1422,6 +1518,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "nightwalker_gloves",
     "name": "Nightwalker gloves",
     "type": "gloves",
+    "book": "Legions of Shadows",
     "act": 2,
     "stats": {
       "speed": 1,
@@ -1438,6 +1535,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "battlemages_fists",
     "name": "Battlemage's fists",
     "type": "gloves",
+    "book": "Legions of Shadows",
     "act": 2,
     "stats": {
       "magic": 3,
@@ -1454,6 +1552,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "barbed_bracers",
     "name": "Barbed bracers",
     "type": "gloves",
+    "book": "Legions of Shadows",
     "act": 2,
     "stats": {
       "speed": 1,
@@ -1469,6 +1568,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "gardeners_gloves",
     "name": "Gardener's gloves",
     "type": "gloves",
+    "book": "Legions of Shadows",
     "act": 2,
     "stats": {
       "speed": 1,
@@ -1484,6 +1584,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "hydra_scaled_gloves",
     "name": "Hydra-scaled gloves",
     "type": "gloves",
+    "book": "Legions of Shadows",
     "act": 2,
     "stats": {
       "magic": 2,
@@ -1500,6 +1601,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "hydra_scaled_fists",
     "name": "Hydra-scaled fists",
     "type": "gloves",
+    "book": "Legions of Shadows",
     "act": 2,
     "stats": {
       "magic": 3,
@@ -1516,6 +1618,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "molten_gauntlets",
     "name": "Molten gauntlets",
     "type": "gloves",
+    "book": "Legions of Shadows",
     "act": 2,
     "stats": {
       "brawn": 2,
@@ -1532,6 +1635,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "crimson_cuffs",
     "name": "Crimson cuffs",
     "type": "gloves",
+    "book": "Legions of Shadows",
     "act": 2,
     "stats": {
       "speed": 1,
@@ -1547,6 +1651,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "mortuary_gauntlets",
     "name": "Mortuary gauntlets",
     "type": "gloves",
+    "book": "Legions of Shadows",
     "act": 3,
     "stats": {
       "speed": 1,
@@ -1563,6 +1668,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "reapers_fists",
     "name": "Reaper's fists",
     "type": "gloves",
+    "book": "Legions of Shadows",
     "act": 3,
     "stats": {
       "speed": 1,
@@ -1579,6 +1685,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "bestial_gloves",
     "name": "Bestial gloves",
     "type": "gloves",
+    "book": "Legions of Shadows",
     "act": 3,
     "stats": {
       "brawn": 2,
@@ -1594,6 +1701,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "gauntlets_of_the_fallen",
     "name": "Gauntlets of the fallen",
     "type": "gloves",
+    "book": "Legions of Shadows",
     "act": 3,
     "stats": {
       "brawn": 3,
@@ -1610,6 +1718,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "bone_bracers",
     "name": "Bone bracers",
     "type": "gloves",
+    "book": "Legions of Shadows",
     "act": 3,
     "stats": {
       "speed": 1,
@@ -1625,6 +1734,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "branded_bracers",
     "name": "Branded bracers",
     "type": "gloves",
+    "book": "Legions of Shadows",
     "act": 3,
     "stats": {
       "brawn": 2,
@@ -1640,6 +1750,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "tainted_wraps",
     "name": "Tainted wraps",
     "type": "gloves",
+    "book": "Legions of Shadows",
     "act": 3,
     "stats": {
       "speed": 1,
@@ -1655,6 +1766,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "devourers_grips",
     "name": "Devourer's grips",
     "type": "gloves",
+    "book": "Legions of Shadows",
     "act": 3,
     "stats": {
       "speed": 1,
@@ -1671,6 +1783,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "bracelet_of_iron",
     "name": "Bracelet of iron",
     "type": "gloves",
+    "book": "Legions of Shadows",
     "act": 3,
     "stats": {
       "brawn": 2,
@@ -1686,6 +1799,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "bracelet_of_fire",
     "name": "Bracelet of fire",
     "type": "gloves",
+    "book": "Legions of Shadows",
     "act": 3,
     "stats": {
       "speed": 1,
@@ -1702,6 +1816,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "bracelet_of_fury",
     "name": "Bracelet of fury",
     "type": "gloves",
+    "book": "Legions of Shadows",
     "act": 3,
     "stats": {
       "speed": 1,
@@ -1717,6 +1832,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "bracelet_of_power",
     "name": "Bracelet of power",
     "type": "gloves",
+    "book": "Legions of Shadows",
     "act": 3,
     "stats": {
       "speed": 1,
@@ -1733,6 +1849,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "razor_fists",
     "name": "Razor fists",
     "type": "gloves",
+    "book": "Legions of Shadows",
     "act": 3,
     "stats": {
       "brawn": 1,
@@ -1748,6 +1865,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "abattoir_gloves",
     "name": "Abattoir gloves",
     "type": "gloves",
+    "book": "Legions of Shadows",
     "act": 3,
     "stats": {
       "speed": 1,
@@ -1764,6 +1882,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "silk_robe",
     "name": "Silk robe",
     "type": "chest",
+    "book": "Legions of Shadows",
     "act": 1,
     "stats": {
       "magic": 1
@@ -1776,6 +1895,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "goblin_leathers",
     "name": "Goblin leathers",
     "type": "chest",
+    "book": "Legions of Shadows",
     "act": 1,
     "stats": {
       "armour": 1
@@ -1788,6 +1908,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "huntsmans_jerkin",
     "name": "Huntsman's jerkin",
     "type": "chest",
+    "book": "Legions of Shadows",
     "act": 1,
     "stats": {
       "armour": 1
@@ -1800,6 +1921,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "studded_leather",
     "name": "Studded leather",
     "type": "chest",
+    "book": "Legions of Shadows",
     "act": 1,
     "stats": {
       "armour": 2
@@ -1812,6 +1934,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "rain_soaked_robe",
     "name": "Rain-soaked robe",
     "type": "chest",
+    "book": "Legions of Shadows",
     "act": 1,
     "stats": {
       "magic": 1,
@@ -1825,6 +1948,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "web_coated_jerkin",
     "name": "Web-coated jerkin",
     "type": "chest",
+    "book": "Legions of Shadows",
     "act": 1,
     "stats": {
       "brawn": 1,
@@ -1840,6 +1964,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "spindlesilk_mantle",
     "name": "Spindlesilk mantle",
     "type": "chest",
+    "book": "Legions of Shadows",
     "act": 1,
     "stats": {
       "magic": 1,
@@ -1855,6 +1980,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "crusaders_vestments",
     "name": "Crusader's vestments",
     "type": "chest",
+    "book": "Legions of Shadows",
     "act": 1,
     "stats": {
       "brawn": 1,
@@ -1870,6 +1996,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "hellfire_robes",
     "name": "Hellfire robes",
     "type": "chest",
+    "book": "Legions of Shadows",
     "act": 1,
     "stats": {
       "speed": 1,
@@ -1885,6 +2012,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "duskleaf_doubloon",
     "name": "Duskleaf doubloon",
     "type": "chest",
+    "book": "Legions of Shadows",
     "act": 1,
     "stats": {
       "speed": 1,
@@ -1900,6 +2028,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "chitinous_carapace",
     "name": "Chitinous carapace",
     "type": "chest",
+    "book": "Legions of Shadows",
     "act": 2,
     "stats": {
       "speed": 1,
@@ -1915,6 +2044,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "patchwork_jerkin",
     "name": "Patchwork jerkin",
     "type": "chest",
+    "book": "Legions of Shadows",
     "act": 2,
     "stats": {
       "speed": 1,
@@ -1930,6 +2060,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "gown_of_midnight",
     "name": "Gown of midnight",
     "type": "chest",
+    "book": "Legions of Shadows",
     "act": 2,
     "stats": {
       "speed": 1,
@@ -1945,6 +2076,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "sanguine_gown",
     "name": "Sanguine gown",
     "type": "chest",
+    "book": "Legions of Shadows",
     "act": 2,
     "stats": {
       "speed": 1,
@@ -1960,6 +2092,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "cinders_gown",
     "name": "Cinder's gown",
     "type": "chest",
+    "book": "Legions of Shadows",
     "act": 2,
     "stats": {
       "speed": 1,
@@ -1976,6 +2109,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "scorched_tunic",
     "name": "Scorched tunic",
     "type": "chest",
+    "book": "Legions of Shadows",
     "act": 2,
     "stats": {
       "speed": 1,
@@ -1991,6 +2125,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "nightwalker_tunic",
     "name": "Nightwalker tunic",
     "type": "chest",
+    "book": "Legions of Shadows",
     "act": 2,
     "stats": {
       "speed": 1,
@@ -2007,6 +2142,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "vigilant_chestguard",
     "name": "Vigilant chestguard",
     "type": "chest",
+    "book": "Legions of Shadows",
     "act": 2,
     "stats": {
       "speed": 1,
@@ -2021,6 +2157,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "scaled_vest",
     "name": "Scaled vest",
     "type": "chest",
+    "book": "Legions of Shadows",
     "act": 2,
     "stats": {
       "speed": 1,
@@ -2036,6 +2173,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "ink_stained_vest",
     "name": "Ink-stained vest",
     "type": "chest",
+    "book": "Legions of Shadows",
     "act": 2,
     "stats": {
       "speed": 2,
@@ -2049,6 +2187,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "navigators_waistcoat",
     "name": "Navigator's waistcoat",
     "type": "chest",
+    "book": "Legions of Shadows",
     "act": 2,
     "stats": {
       "speed": 2,
@@ -2064,6 +2203,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "channelers_robes",
     "name": "Channeler's robes",
     "type": "chest",
+    "book": "Legions of Shadows",
     "act": 2,
     "stats": {
       "magic": 3,
@@ -2080,6 +2220,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "lincoln_green",
     "name": "Lincoln green",
     "type": "chest",
+    "book": "Legions of Shadows",
     "act": 2,
     "stats": {
       "speed": 2,
@@ -2096,6 +2237,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "skulkers_coat",
     "name": "Skulker's coat",
     "type": "chest",
+    "book": "Legions of Shadows",
     "act": 2,
     "stats": {
       "speed": 1,
@@ -2112,6 +2254,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "spellplate",
     "name": "Spellplate",
     "type": "chest",
+    "book": "Legions of Shadows",
     "act": 2,
     "stats": {
       "speed": 1,
@@ -2127,6 +2270,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "stone_coat",
     "name": "Stone coat",
     "type": "chest",
+    "book": "Legions of Shadows",
     "act": 2,
     "stats": {
       "speed": 2,
@@ -2143,6 +2287,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "breastplate_of_the_bull",
     "name": "Breastplate of the bull",
     "type": "chest",
+    "book": "Legions of Shadows",
     "act": 2,
     "stats": {
       "brawn": 3,
@@ -2158,6 +2303,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "hunters_hide",
     "name": "Hunter's hide",
     "type": "chest",
+    "book": "Legions of Shadows",
     "act": 2,
     "stats": {
       "speed": 1,
@@ -2173,6 +2319,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "the_cage",
     "name": "The cage",
     "type": "chest",
+    "book": "Legions of Shadows",
     "act": 2,
     "stats": {
       "speed": 2,
@@ -2189,6 +2336,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "dragonscale_mail",
     "name": "Dragonscale mail",
     "type": "chest",
+    "book": "Legions of Shadows",
     "act": 2,
     "stats": {
       "speed": 2,
@@ -2205,6 +2353,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "raiders_tunic",
     "name": "Raider's tunic",
     "type": "chest",
+    "book": "Legions of Shadows",
     "act": 3,
     "stats": {
       "speed": 2,
@@ -2221,6 +2370,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "slipstream_gown",
     "name": "Slipstream gown",
     "type": "chest",
+    "book": "Legions of Shadows",
     "act": 3,
     "stats": {
       "speed": 2,
@@ -2237,6 +2387,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "confessors_coat",
     "name": "Confessor's coat",
     "type": "chest",
+    "book": "Legions of Shadows",
     "act": 3,
     "stats": {
       "speed": 2,
@@ -2253,6 +2404,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "titan_plate",
     "name": "Titan plate",
     "type": "chest",
+    "book": "Legions of Shadows",
     "act": 3,
     "stats": {
       "speed": 1,
@@ -2268,6 +2420,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "deathgrip_robes",
     "name": "Deathgrip robes",
     "type": "chest",
+    "book": "Legions of Shadows",
     "act": 3,
     "stats": {
       "speed": 2,
@@ -2283,6 +2436,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "lions_tabard",
     "name": "Lion's tabard",
     "type": "chest",
+    "book": "Legions of Shadows",
     "act": 3,
     "stats": {
       "speed": 1,
@@ -2298,6 +2452,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "skullplate",
     "name": "Skullplate",
     "type": "chest",
+    "book": "Legions of Shadows",
     "act": 3,
     "stats": {
       "speed": 2,
@@ -2313,6 +2468,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "funeral_gown",
     "name": "Funeral gown",
     "type": "chest",
+    "book": "Legions of Shadows",
     "act": 3,
     "stats": {
       "speed": 1,
@@ -2328,6 +2484,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "redguards_tabard",
     "name": "Redguard's tabard",
     "type": "chest",
+    "book": "Legions of Shadows",
     "act": 3,
     "stats": {
       "speed": 2,
@@ -2343,6 +2500,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "stalkers_jerkin",
     "name": "Stalker's jerkin",
     "type": "chest",
+    "book": "Legions of Shadows",
     "act": 3,
     "stats": {
       "speed": 2,
@@ -2359,6 +2517,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "silleers_robe",
     "name": "Silleer's robe",
     "type": "chest",
+    "book": "Legions of Shadows",
     "act": 3,
     "stats": {
       "speed": 2,
@@ -2375,6 +2534,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "plate_of_the_fallen",
     "name": "Plate of the fallen",
     "type": "chest",
+    "book": "Legions of Shadows",
     "act": 3,
     "stats": {
       "speed": 2,
@@ -2391,6 +2551,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "funeral_wraps",
     "name": "Funeral wraps",
     "type": "chest",
+    "book": "Legions of Shadows",
     "act": 3,
     "stats": {
       "speed": 2,
@@ -2406,6 +2567,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "pacemaker",
     "name": "Pacemaker",
     "type": "chest",
+    "book": "Legions of Shadows",
     "act": 3,
     "stats": {
       "speed": 2,
@@ -2422,6 +2584,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "shadow_bindings",
     "name": "Shadow bindings",
     "type": "chest",
+    "book": "Legions of Shadows",
     "act": 3,
     "stats": {
       "speed": 2,
@@ -2438,6 +2601,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "dark_slayer_vest",
     "name": "Dark slayer vest",
     "type": "chest",
+    "book": "Legions of Shadows",
     "act": 3,
     "stats": {
       "speed": 2,
@@ -2454,6 +2618,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "decayers_wraps",
     "name": "Decayer's wraps",
     "type": "chest",
+    "book": "Legions of Shadows",
     "act": 3,
     "stats": {
       "speed": 2,
@@ -2469,6 +2634,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "beasts_harness",
     "name": "Beast's harness",
     "type": "chest",
+    "book": "Legions of Shadows",
     "act": 3,
     "stats": {
       "speed": 2,
@@ -2485,6 +2651,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "beasts_backbone",
     "name": "Beast's backbone",
     "type": "chest",
+    "book": "Legions of Shadows",
     "act": 3,
     "stats": {
       "speed": 2,
@@ -2501,6 +2668,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "bloodied_chestguard",
     "name": "Bloodied chestguard",
     "type": "chest",
+    "book": "Legions of Shadows",
     "act": 3,
     "stats": {
       "speed": 2,
@@ -2517,6 +2685,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "buckled_boots",
     "name": "Buckled boots",
     "type": "feet",
+    "book": "Legions of Shadows",
     "act": 1,
     "stats": {
       "speed": 1,
@@ -2530,6 +2699,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "spindlesilk_boots",
     "name": "Spindlesilk boots",
     "type": "feet",
+    "book": "Legions of Shadows",
     "act": 1,
     "stats": {
       "speed": 1,
@@ -2545,6 +2715,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "crows_feet",
     "name": "Crow's feet",
     "type": "feet",
+    "book": "Legions of Shadows",
     "act": 1,
     "stats": {
       "speed": 1,
@@ -2558,6 +2729,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "goblin_kickers",
     "name": "Goblin kickers",
     "type": "feet",
+    "book": "Legions of Shadows",
     "act": 1,
     "stats": {
       "speed": 1,
@@ -2571,6 +2743,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "rat_skin_boots",
     "name": "Rat-skin boots",
     "type": "feet",
+    "book": "Legions of Shadows",
     "act": 1,
     "stats": {
       "speed": 1
@@ -2583,6 +2756,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "dusty_footpads",
     "name": "Dusty footpads",
     "type": "feet",
+    "book": "Legions of Shadows",
     "act": 1,
     "stats": {
       "speed": 1
@@ -2597,6 +2771,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "ruby_slippers",
     "name": "Ruby slippers",
     "type": "feet",
+    "book": "Legions of Shadows",
     "act": 1,
     "stats": {
       "speed": 1,
@@ -2612,6 +2787,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "boar_hide_boots",
     "name": "Boar-hide boots",
     "type": "feet",
+    "book": "Legions of Shadows",
     "act": 1,
     "stats": {
       "speed": 1,
@@ -2627,6 +2803,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "reed_woven_sandals",
     "name": "Reed-woven sandals",
     "type": "feet",
+    "book": "Legions of Shadows",
     "act": 1,
     "stats": {
       "speed": 1,
@@ -2642,6 +2819,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "rune_forged_greaves",
     "name": "Rune-forged greaves",
     "type": "feet",
+    "book": "Legions of Shadows",
     "act": 2,
     "stats": {
       "speed": 2,
@@ -2655,6 +2833,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "boots_of_swift_flight",
     "name": "Boots of swift flight",
     "type": "feet",
+    "book": "Legions of Shadows",
     "act": 2,
     "stats": {
       "speed": 1,
@@ -2669,6 +2848,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "deerskin_boots",
     "name": "Deerskin boots",
     "type": "feet",
+    "book": "Legions of Shadows",
     "act": 2,
     "stats": {
       "speed": 1,
@@ -2682,6 +2862,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "sludge_waders",
     "name": "Sludge waders",
     "type": "feet",
+    "book": "Legions of Shadows",
     "act": 2,
     "stats": {
       "speed": 1,
@@ -2695,6 +2876,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "barons_boots",
     "name": "Baron's boots",
     "type": "feet",
+    "book": "Legions of Shadows",
     "act": 2,
     "stats": {
       "speed": 1,
@@ -2710,6 +2892,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "velvet_slippers",
     "name": "Velvet slippers",
     "type": "feet",
+    "book": "Legions of Shadows",
     "act": 2,
     "stats": {
       "speed": 1,
@@ -2725,6 +2908,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "scarab_sandals",
     "name": "Scarab sandals",
     "type": "feet",
+    "book": "Legions of Shadows",
     "act": 2,
     "stats": {
       "speed": 2,
@@ -2739,6 +2923,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "bright_greaves",
     "name": "Bright greaves",
     "type": "feet",
+    "book": "Legions of Shadows",
     "act": 2,
     "stats": {
       "speed": 1,
@@ -2754,6 +2939,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "sanguine_slippers",
     "name": "Sanguine slippers",
     "type": "feet",
+    "book": "Legions of Shadows",
     "act": 2,
     "stats": {
       "speed": 2,
@@ -2770,6 +2956,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "captains_boots",
     "name": "Captain's boots",
     "type": "feet",
+    "book": "Legions of Shadows",
     "act": 2,
     "stats": {
       "speed": 2,
@@ -2783,6 +2970,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "scouts_longboots",
     "name": "Scout's longboots",
     "type": "feet",
+    "book": "Legions of Shadows",
     "act": 2,
     "stats": {
       "speed": 1,
@@ -2799,6 +2987,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "quicksilver_boots",
     "name": "Quicksilver boots",
     "type": "feet",
+    "book": "Legions of Shadows",
     "act": 2,
     "stats": {
       "speed": 2,
@@ -2815,6 +3004,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "majestic_greaves",
     "name": "Majestic greaves",
     "type": "feet",
+    "book": "Legions of Shadows",
     "act": 2,
     "stats": {
       "speed": 2,
@@ -2831,6 +3021,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "shadow_treads",
     "name": "Shadow treads",
     "type": "feet",
+    "book": "Legions of Shadows",
     "act": 2,
     "stats": {
       "speed": 1,
@@ -2847,6 +3038,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "logans_runners",
     "name": "Logan's runners",
     "type": "feet",
+    "book": "Legions of Shadows",
     "act": 2,
     "stats": {
       "speed": 2,
@@ -2863,6 +3055,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "barkskin_greaves",
     "name": "Barkskin greaves",
     "type": "feet",
+    "book": "Legions of Shadows",
     "act": 2,
     "stats": {
       "speed": 1,
@@ -2878,6 +3071,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "marsh_striders",
     "name": "Marsh striders",
     "type": "feet",
+    "book": "Legions of Shadows",
     "act": 2,
     "stats": {
       "speed": 2,
@@ -2893,6 +3087,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "marsh_stalkers",
     "name": "Marsh stalkers",
     "type": "feet",
+    "book": "Legions of Shadows",
     "act": 2,
     "stats": {
       "speed": 2,
@@ -2908,6 +3103,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "boots_of_shielding",
     "name": "Boots of shielding",
     "type": "feet",
+    "book": "Legions of Shadows",
     "act": 3,
     "stats": {
       "speed": 2,
@@ -2924,6 +3120,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "barbarous_boots",
     "name": "Barbarous boots",
     "type": "feet",
+    "book": "Legions of Shadows",
     "act": 3,
     "stats": {
       "speed": 2,
@@ -2940,6 +3137,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "vagabond_boots",
     "name": "Vagabond boots",
     "type": "feet",
+    "book": "Legions of Shadows",
     "act": 3,
     "stats": {
       "speed": 2,
@@ -2955,6 +3153,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "heralds_spurs",
     "name": "Herald's spurs",
     "type": "feet",
+    "book": "Legions of Shadows",
     "act": 3,
     "stats": {
       "speed": 2,
@@ -2970,6 +3169,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "ebon_boots",
     "name": "Ebon boots",
     "type": "feet",
+    "book": "Legions of Shadows",
     "act": 3,
     "stats": {
       "speed": 2,
@@ -2985,6 +3185,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "bewitched_boots",
     "name": "Bewitched boots",
     "type": "feet",
+    "book": "Legions of Shadows",
     "act": 3,
     "stats": {
       "speed": 2,
@@ -3000,6 +3201,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "twisted_treads",
     "name": "Twisted treads",
     "type": "feet",
+    "book": "Legions of Shadows",
     "act": 3,
     "stats": {
       "speed": 2,
@@ -3015,6 +3217,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "rumble_thumpers",
     "name": "Rumble thumpers",
     "type": "feet",
+    "book": "Legions of Shadows",
     "act": 3,
     "stats": {
       "speed": 1,
@@ -3030,6 +3233,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "elemental_greaves",
     "name": "Elemental greaves",
     "type": "feet",
+    "book": "Legions of Shadows",
     "act": 3,
     "stats": {
       "speed": 2,
@@ -3046,6 +3250,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "boots_of_black_fortune",
     "name": "Boots of black fortune",
     "type": "feet",
+    "book": "Legions of Shadows",
     "act": 3,
     "stats": {
       "speed": 2,
@@ -3062,6 +3267,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "the_apprentice",
     "name": "The apprentice",
     "type": "mainHand",
+    "book": "Legions of Shadows",
     "act": 1,
     "stats": {
       "brawn": 1,
@@ -3074,6 +3280,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "notched_blade",
     "name": "Notched blade",
     "type": "mainHand",
+    "book": "Legions of Shadows",
     "act": 1,
     "stats": {
       "speed": 1,
@@ -3087,6 +3294,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "curved_blade",
     "name": "Curved blade",
     "type": "mainHand",
+    "book": "Legions of Shadows",
     "act": 1,
     "stats": {
       "speed": 1
@@ -3099,6 +3307,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "goblin_hewer",
     "name": "Goblin hewer",
     "type": "mainHand",
+    "book": "Legions of Shadows",
     "act": 1,
     "stats": {
       "speed": 1,
@@ -3112,6 +3321,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "huntsmans_axe",
     "name": "Huntsman's axe",
     "type": "mainHand",
+    "book": "Legions of Shadows",
     "act": 1,
     "stats": {
       "brawn": 2
@@ -3124,6 +3334,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "meat_cleaver",
     "name": "Meat cleaver",
     "type": "mainHand",
+    "book": "Legions of Shadows",
     "act": 1,
     "stats": {
       "speed": 1
@@ -3138,6 +3349,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "crones_dagger",
     "name": "Crone's dagger",
     "type": "mainHand",
+    "book": "Legions of Shadows",
     "act": 1,
     "stats": {
       "speed": 1,
@@ -3151,6 +3363,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "gilberts_club",
     "name": "Gilbert's club",
     "type": "mainHand",
+    "book": "Legions of Shadows",
     "act": 1,
     "stats": {
       "brawn": 3
@@ -3163,6 +3376,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "leaders_edge",
     "name": "Leader's edge",
     "type": "mainHand",
+    "book": "Legions of Shadows",
     "act": 1,
     "stats": {
       "speed": 1,
@@ -3176,6 +3390,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "acid_coated_battle_axe",
     "name": "Acid-coated battle axe",
     "type": "mainHand",
+    "book": "Legions of Shadows",
     "act": 1,
     "stats": {
       "speed": 1,
@@ -3191,6 +3406,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "venomous_fang",
     "name": "Venomous fang",
     "type": "mainHand",
+    "book": "Legions of Shadows",
     "act": 1,
     "stats": {
       "speed": 1,
@@ -3206,6 +3422,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "nightbringer",
     "name": "Nightbringer",
     "type": "mainHand",
+    "book": "Legions of Shadows",
     "act": 1,
     "stats": {
       "speed": 1,
@@ -3221,6 +3438,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "nightfall",
     "name": "Nightfall",
     "type": "mainHand",
+    "book": "Legions of Shadows",
     "act": 1,
     "stats": {
       "speed": 1,
@@ -3236,6 +3454,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "ancient_sword",
     "name": "Ancient sword",
     "type": "mainHand",
+    "book": "Legions of Shadows",
     "act": 1,
     "stats": {
       "speed": 1,
@@ -3251,6 +3470,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "dirk_of_deceit",
     "name": "Dirk of deceit",
     "type": "mainHand",
+    "book": "Legions of Shadows",
     "act": 1,
     "stats": {
       "speed": 1,
@@ -3266,6 +3486,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "silver_silence",
     "name": "Silver silence",
     "type": "mainHand",
+    "book": "Legions of Shadows",
     "act": 1,
     "stats": {
       "speed": 1,
@@ -3281,6 +3502,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "skullbreaker",
     "name": "Skullbreaker",
     "type": "mainHand",
+    "book": "Legions of Shadows",
     "act": 1,
     "stats": {
       "speed": 1,
@@ -3296,6 +3518,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "dark_crystal",
     "name": "Dark crystal",
     "type": "mainHand",
+    "book": "Legions of Shadows",
     "act": 2,
     "stats": {
       "speed": 1,
@@ -3312,6 +3535,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "black_jack",
     "name": "Black jack",
     "type": "mainHand",
+    "book": "Legions of Shadows",
     "act": 2,
     "stats": {
       "speed": 1,
@@ -3328,6 +3552,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "abyssal_blade",
     "name": "Abyssal blade",
     "type": "mainHand",
+    "book": "Legions of Shadows",
     "act": 2,
     "stats": {
       "speed": 2,
@@ -3344,6 +3569,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "ashen_staff",
     "name": "Ashen staff",
     "type": "mainHand",
+    "book": "Legions of Shadows",
     "act": 2,
     "stats": {
       "speed": 1,
@@ -3357,6 +3583,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "shiny_dirk",
     "name": "Shiny dirk",
     "type": "mainHand",
+    "book": "Legions of Shadows",
     "act": 2,
     "stats": {
       "speed": 1,
@@ -3370,6 +3597,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "trog_spear",
     "name": "Trog spear",
     "type": "mainHand",
+    "book": "Legions of Shadows",
     "act": 2,
     "stats": {
       "speed": 1,
@@ -3384,6 +3612,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "black_fang",
     "name": "Black fang",
     "type": "mainHand",
+    "book": "Legions of Shadows",
     "act": 2,
     "stats": {
       "speed": 1,
@@ -3399,6 +3628,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "lacerator",
     "name": "Lacerator",
     "type": "mainHand",
+    "book": "Legions of Shadows",
     "act": 2,
     "stats": {
       "speed": 1,
@@ -3414,6 +3644,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "bone_scythe",
     "name": "Bone scythe",
     "type": "mainHand",
+    "book": "Legions of Shadows",
     "act": 2,
     "stats": {
       "speed": 1,
@@ -3429,6 +3660,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "winters_bite",
     "name": "Winter's bite",
     "type": "mainHand",
+    "book": "Legions of Shadows",
     "act": 2,
     "stats": {
       "speed": 2,
@@ -3445,6 +3677,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "blood_harvest",
     "name": "Blood harvest",
     "type": "mainHand",
+    "book": "Legions of Shadows",
     "act": 2,
     "stats": {
       "speed": 2,
@@ -3461,6 +3694,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "silk_cut",
     "name": "Silk cut",
     "type": "mainHand",
+    "book": "Legions of Shadows",
     "act": 2,
     "stats": {
       "speed": 2,
@@ -3477,6 +3711,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "the_rock",
     "name": "The rock",
     "type": "mainHand",
+    "book": "Legions of Shadows",
     "act": 2,
     "stats": {
       "brawn": 4
@@ -3492,6 +3727,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "illumanti_rod",
     "name": "Illumanti rod",
     "type": "mainHand",
+    "book": "Legions of Shadows",
     "act": 2,
     "stats": {
       "speed": 2,
@@ -3508,6 +3744,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "phoenix_claw",
     "name": "Phoenix claw",
     "type": "mainHand",
+    "book": "Legions of Shadows",
     "act": 2,
     "stats": {
       "speed": 1,
@@ -3523,6 +3760,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "lucky_fishing_rod",
     "name": "Lucky fishing rod",
     "type": "mainHand",
+    "book": "Legions of Shadows",
     "act": 2,
     "stats": {
       "speed": 2,
@@ -3538,6 +3776,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "magicians_crook",
     "name": "Magician's crook",
     "type": "mainHand",
+    "book": "Legions of Shadows",
     "act": 2,
     "stats": {
       "speed": 2,
@@ -3554,6 +3793,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "trident_of_the_seven_seas",
     "name": "Trident of the seven seas",
     "type": "mainHand",
+    "book": "Legions of Shadows",
     "act": 2,
     "stats": {
       "speed": 1,
@@ -3567,6 +3807,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "dark_malice",
     "name": "Dark malice",
     "type": "mainHand",
+    "book": "Legions of Shadows",
     "act": 2,
     "stats": {
       "speed": 2,
@@ -3583,6 +3824,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "scorpion_stinger",
     "name": "Scorpion stinger",
     "type": "mainHand",
+    "book": "Legions of Shadows",
     "act": 2,
     "stats": {
       "speed": 2,
@@ -3599,6 +3841,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "betsy_blue_anchor",
     "name": "Betsy blue anchor",
     "type": "mainHand",
+    "book": "Legions of Shadows",
     "act": 2,
     "stats": {
       "speed": 1,
@@ -3615,6 +3858,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "spellbreaker",
     "name": "Spellbreaker",
     "type": "mainHand",
+    "book": "Legions of Shadows",
     "act": 2,
     "stats": {
       "speed": 2,
@@ -3631,6 +3875,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "frenzy",
     "name": "Frenzy",
     "type": "mainHand",
+    "book": "Legions of Shadows",
     "act": 2,
     "stats": {
       "speed": 2,
@@ -3647,6 +3892,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "swordbreaker",
     "name": "Swordbreaker",
     "type": "mainHand",
+    "book": "Legions of Shadows",
     "act": 2,
     "stats": {
       "speed": 2,
@@ -3663,6 +3909,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "pulveriser",
     "name": "Pulveriser",
     "type": "mainHand",
+    "book": "Legions of Shadows",
     "act": 2,
     "stats": {
       "speed": 2,
@@ -3679,6 +3926,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "torturers_rod",
     "name": "Torturer's rod",
     "type": "mainHand",
+    "book": "Legions of Shadows",
     "act": 2,
     "stats": {
       "speed": 2,
@@ -3695,6 +3943,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "buccaneers_rapier",
     "name": "Buccaneer's rapier",
     "type": "mainHand",
+    "book": "Legions of Shadows",
     "act": 2,
     "stats": {
       "speed": 1,
@@ -3710,6 +3959,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "nalsas_claws",
     "name": "Nalsa's claws",
     "type": "mainHand",
+    "book": "Legions of Shadows",
     "act": 2,
     "stats": {
       "speed": 1,
@@ -3725,6 +3975,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "ebony",
     "name": "Ebony",
     "type": "mainHand",
+    "book": "Legions of Shadows",
     "act": 2,
     "stats": {
       "speed": 2,
@@ -3740,6 +3991,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "brawlers_shiv",
     "name": "Brawler's shiv",
     "type": "mainHand",
+    "book": "Legions of Shadows",
     "act": 2,
     "stats": {
       "speed": 2,
@@ -3756,6 +4008,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "fire_brand",
     "name": "Fire brand",
     "type": "mainHand",
+    "book": "Legions of Shadows",
     "act": 2,
     "stats": {
       "speed": 2,
@@ -3772,6 +4025,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "burning_heretic",
     "name": "Burning heretic",
     "type": "mainHand",
+    "book": "Legions of Shadows",
     "act": 2,
     "stats": {
       "speed": 3,
@@ -3788,6 +4042,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "velocifero",
     "name": "Velocifero",
     "type": "mainHand",
+    "book": "Legions of Shadows",
     "act": 2,
     "stats": {
       "speed": 3,
@@ -3803,6 +4058,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "sliver_of_shadow",
     "name": "Sliver of shadow",
     "type": "mainHand",
+    "book": "Legions of Shadows",
     "act": 3,
     "stats": {
       "speed": 2,
@@ -3819,6 +4075,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "talanosts_edge",
     "name": "Talanost's edge",
     "type": "mainHand",
+    "book": "Legions of Shadows",
     "act": 3,
     "stats": {
       "speed": 3,
@@ -3835,6 +4092,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "wicked_claw",
     "name": "Wicked claw",
     "type": "mainHand",
+    "book": "Legions of Shadows",
     "act": 3,
     "stats": {
       "speed": 1,
@@ -3850,6 +4108,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "bone_claw",
     "name": "Bone claw",
     "type": "mainHand",
+    "book": "Legions of Shadows",
     "act": 3,
     "stats": {
       "speed": 2,
@@ -3865,6 +4124,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "lasher",
     "name": "Lasher",
     "type": "mainHand",
+    "book": "Legions of Shadows",
     "act": 3,
     "stats": {
       "speed": 3,
@@ -3880,6 +4140,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "tainted_striker",
     "name": "Tainted striker",
     "type": "mainHand",
+    "book": "Legions of Shadows",
     "act": 3,
     "stats": {
       "speed": 3,
@@ -3896,6 +4157,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "spinal_tap",
     "name": "Spinal tap",
     "type": "mainHand",
+    "book": "Legions of Shadows",
     "act": 3,
     "stats": {
       "speed": 3,
@@ -3912,6 +4174,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "bone_gavel",
     "name": "Bone gavel",
     "type": "mainHand",
+    "book": "Legions of Shadows",
     "act": 3,
     "stats": {
       "speed": 3,
@@ -3928,6 +4191,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "tenacity",
     "name": "Tenacity",
     "type": "mainHand",
+    "book": "Legions of Shadows",
     "act": 3,
     "stats": {
       "speed": 2,
@@ -3944,6 +4208,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "scorn",
     "name": "Scorn",
     "type": "mainHand",
+    "book": "Legions of Shadows",
     "act": 3,
     "stats": {
       "speed": 2,
@@ -3960,6 +4225,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "ever_sharp",
     "name": "Ever-sharp",
     "type": "mainHand",
+    "book": "Legions of Shadows",
     "act": 3,
     "stats": {
       "speed": 3,
@@ -3976,6 +4242,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "deep_freeze",
     "name": "Deep freeze",
     "type": "mainHand",
+    "book": "Legions of Shadows",
     "act": 3,
     "stats": {
       "speed": 2,
@@ -3991,6 +4258,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "hoarfrost",
     "name": "Hoarfrost",
     "type": "mainHand",
+    "book": "Legions of Shadows",
     "act": 3,
     "stats": {
       "speed": 2,
@@ -4006,6 +4274,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "grimm_reaper",
     "name": "Grimm reaper",
     "type": "mainHand",
+    "book": "Legions of Shadows",
     "act": 3,
     "stats": {
       "speed": 3,
@@ -4022,6 +4291,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "serenity",
     "name": "Serenity",
     "type": "mainHand",
+    "book": "Legions of Shadows",
     "act": 3,
     "stats": {
       "speed": 2,
@@ -4038,6 +4308,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "wand_of_lightning",
     "name": "Wand of lightning",
     "type": "mainHand",
+    "book": "Legions of Shadows",
     "act": 3,
     "stats": {
       "speed": 2,
@@ -4054,6 +4325,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "pain_in_chains",
     "name": "Pain in chains",
     "type": "mainHand",
+    "book": "Legions of Shadows",
     "act": 3,
     "stats": {
       "speed": 2,
@@ -4069,6 +4341,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "frost_burn",
     "name": "Frost burn",
     "type": "mainHand",
+    "book": "Legions of Shadows",
     "act": 3,
     "stats": {
       "speed": 2,
@@ -4085,6 +4358,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "belching_bludger",
     "name": "Belching bludger",
     "type": "mainHand",
+    "book": "Legions of Shadows",
     "act": 3,
     "stats": {
       "speed": 2,
@@ -4100,6 +4374,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "morticians_scalpel",
     "name": "Mortician's scalpel",
     "type": "mainHand",
+    "book": "Legions of Shadows",
     "act": 3,
     "stats": {
       "speed": 3,
@@ -4116,6 +4391,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "tempests_fury",
     "name": "Tempest's fury",
     "type": "mainHand",
+    "book": "Legions of Shadows",
     "act": 3,
     "stats": {
       "speed": 2,
@@ -4131,6 +4407,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "blood_crescent",
     "name": "Blood crescent",
     "type": "mainHand",
+    "book": "Legions of Shadows",
     "act": 3,
     "stats": {
       "speed": 3,
@@ -4147,6 +4424,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "orb_stinger",
     "name": "Orb stinger",
     "type": "mainHand",
+    "book": "Legions of Shadows",
     "act": 3,
     "stats": {
       "speed": 3,
@@ -4163,6 +4441,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "tricksters_maul",
     "name": "Trickster's maul",
     "type": "mainHand",
+    "book": "Legions of Shadows",
     "act": 3,
     "stats": {
       "speed": 3,
@@ -4178,6 +4457,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "shadow_woven_kris",
     "name": "Shadow-woven kris",
     "type": "mainHand",
+    "book": "Legions of Shadows",
     "act": 3,
     "stats": {
       "speed": 3,
@@ -4194,6 +4474,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "sacrum_of_carnage",
     "name": "Sacrum of carnage",
     "type": "mainHand",
+    "book": "Legions of Shadows",
     "act": 3,
     "stats": {
       "speed": 2,
@@ -4210,6 +4491,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "aged_acronium",
     "name": "Aged acronium",
     "type": "mainHand",
+    "book": "Legions of Shadows",
     "act": 3,
     "stats": {
       "speed": 2,
@@ -4226,6 +4508,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "the_sting",
     "name": "The sting",
     "type": "mainHand",
+    "book": "Legions of Shadows",
     "act": 3,
     "stats": {
       "speed": 3,
@@ -4242,6 +4525,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "fortunes_favour",
     "name": "Fortune's favour",
     "type": "mainHand",
+    "book": "Legions of Shadows",
     "act": 3,
     "stats": {
       "speed": 2,
@@ -4258,6 +4542,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "retribution",
     "name": "Retribution",
     "type": "mainHand",
+    "book": "Legions of Shadows",
     "act": 3,
     "stats": {
       "speed": 3,
@@ -4274,6 +4559,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "scaled_defender",
     "name": "Scaled defender",
     "type": "leftHand",
+    "book": "Legions of Shadows",
     "act": 1,
     "stats": {
       "brawn": 2,
@@ -4287,6 +4573,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "murder_of_crows",
     "name": "Murder of crows",
     "type": "leftHand",
+    "book": "Legions of Shadows",
     "act": 1,
     "stats": {
       "speed": 1,
@@ -4300,6 +4587,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "crocks_tooth",
     "name": "Crock's tooth",
     "type": "leftHand",
+    "book": "Legions of Shadows",
     "act": 1,
     "stats": {
       "brawn": 1
@@ -4312,6 +4600,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "rennies_slicer",
     "name": "Rennie's slicer",
     "type": "leftHand",
+    "book": "Legions of Shadows",
     "act": 1,
     "stats": {
       "speed": 1,
@@ -4327,6 +4616,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "stone_shield",
     "name": "Stone shield",
     "type": "leftHand",
+    "book": "Legions of Shadows",
     "act": 1,
     "stats": {
       "speed": 1,
@@ -4342,6 +4632,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "essence_of_shadow",
     "name": "Essence of shadow",
     "type": "leftHand",
+    "book": "Legions of Shadows",
     "act": 1,
     "stats": {
       "speed": 1,
@@ -4357,6 +4648,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "ghoul_claw",
     "name": "Ghoul claw",
     "type": "leftHand",
+    "book": "Legions of Shadows",
     "act": 1,
     "stats": {
       "speed": 1,
@@ -4372,6 +4664,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "dented_buckler",
     "name": "Dented buckler",
     "type": "leftHand",
+    "book": "Legions of Shadows",
     "act": 1,
     "stats": {
       "speed": 1,
@@ -4385,6 +4678,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "spiders_spinneret",
     "name": "Spider's spinneret",
     "type": "leftHand",
+    "book": "Legions of Shadows",
     "act": 1,
     "stats": {
       "speed": 1,
@@ -4400,6 +4694,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "rage_claw",
     "name": "Rage claw",
     "type": "leftHand",
+    "book": "Legions of Shadows",
     "act": 1,
     "stats": {
       "speed": 1,
@@ -4415,6 +4710,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "ardent_edge",
     "name": "Ardent edge",
     "type": "leftHand",
+    "book": "Legions of Shadows",
     "act": 2,
     "stats": {
       "speed": 1,
@@ -4430,6 +4726,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "champions_blade",
     "name": "Champion's blade",
     "type": "leftHand",
+    "book": "Legions of Shadows",
     "act": 2,
     "stats": {
       "speed": 2,
@@ -4445,6 +4742,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "ridgeback",
     "name": "Ridgeback",
     "type": "leftHand",
+    "book": "Legions of Shadows",
     "act": 2,
     "stats": {
       "speed": 1,
@@ -4461,6 +4759,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "razorback",
     "name": "Razorback",
     "type": "leftHand",
+    "book": "Legions of Shadows",
     "act": 2,
     "stats": {
       "speed": 2,
@@ -4477,6 +4776,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "rockbiter",
     "name": "Rockbiter",
     "type": "leftHand",
+    "book": "Legions of Shadows",
     "act": 2,
     "stats": {
       "speed": 1,
@@ -4492,6 +4792,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "shrink_ray",
     "name": "Shrink ray",
     "type": "leftHand",
+    "book": "Legions of Shadows",
     "act": 2,
     "stats": {
       "speed": 1,
@@ -4507,6 +4808,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "book_of_black_deeds",
     "name": "Book of black deeds",
     "type": "leftHand",
+    "book": "Legions of Shadows",
     "act": 2,
     "stats": {
       "speed": 2,
@@ -4521,6 +4823,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "vampires_kiss",
     "name": "Vampire's kiss",
     "type": "leftHand",
+    "book": "Legions of Shadows",
     "act": 2,
     "stats": {
       "speed": 1,
@@ -4536,6 +4839,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "ivory_r_w_",
     "name": "Ivory (R+W)",
     "type": "leftHand",
+    "book": "Legions of Shadows",
     "act": 2,
     "stats": {
       "speed": 2,
@@ -4551,6 +4855,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "t_bone_wand",
     "name": "T-Bone wand",
     "type": "leftHand",
+    "book": "Legions of Shadows",
     "act": 2,
     "stats": {
       "speed": 1,
@@ -4567,6 +4872,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "wreekin_net",
     "name": "Wreekin net",
     "type": "leftHand",
+    "book": "Legions of Shadows",
     "act": 2,
     "stats": {
       "speed": 1,
@@ -4582,6 +4888,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "twin_furies",
     "name": "Twin furies",
     "type": "leftHand",
+    "book": "Legions of Shadows",
     "act": 2,
     "stats": {
       "speed": 1,
@@ -4596,6 +4903,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "blackout",
     "name": "Blackout",
     "type": "leftHand",
+    "book": "Legions of Shadows",
     "act": 2,
     "stats": {
       "speed": 2,
@@ -4611,6 +4919,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "tome_of_deep_thought",
     "name": "Tome of deep thought",
     "type": "leftHand",
+    "book": "Legions of Shadows",
     "act": 2,
     "stats": {
       "speed": 2,
@@ -4625,6 +4934,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "deliverance",
     "name": "Deliverance",
     "type": "leftHand",
+    "book": "Legions of Shadows",
     "act": 2,
     "stats": {
       "speed": 1,
@@ -4641,6 +4951,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "witching_hour",
     "name": "Witching hour",
     "type": "leftHand",
+    "book": "Legions of Shadows",
     "act": 2,
     "stats": {
       "speed": 2,
@@ -4657,6 +4968,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "ebenezers_spellbook",
     "name": "Ebenezer's spellbook",
     "type": "leftHand",
+    "book": "Legions of Shadows",
     "act": 2,
     "stats": {
       "speed": 2,
@@ -4673,6 +4985,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "st_elmos_fire",
     "name": "St Elmo's fire",
     "type": "leftHand",
+    "book": "Legions of Shadows",
     "act": 2,
     "stats": {
       "speed": 2,
@@ -4688,6 +5001,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "vorpal_sword",
     "name": "Vorpal sword",
     "type": "leftHand",
+    "book": "Legions of Shadows",
     "act": 2,
     "stats": {
       "speed": 2,
@@ -4704,6 +5018,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "dour_claws",
     "name": "Dour claws",
     "type": "leftHand",
+    "book": "Legions of Shadows",
     "act": 2,
     "stats": {
       "speed": 1,
@@ -4720,6 +5035,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "tome_of_intellect",
     "name": "Tome of intellect",
     "type": "leftHand",
+    "book": "Legions of Shadows",
     "act": 2,
     "stats": {
       "speed": 2,
@@ -4736,6 +5052,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "stone_crescent",
     "name": "Stone crescent",
     "type": "leftHand",
+    "book": "Legions of Shadows",
     "act": 2,
     "stats": {
       "speed": 2,
@@ -4752,6 +5069,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "left_hook",
     "name": "Left hook",
     "type": "leftHand",
+    "book": "Legions of Shadows",
     "act": 2,
     "stats": {
       "speed": 1,
@@ -4767,6 +5085,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "deathstrike",
     "name": "Deathstrike",
     "type": "leftHand",
+    "book": "Legions of Shadows",
     "act": 2,
     "stats": {
       "speed": 1,
@@ -4782,6 +5101,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "sprig_of_corruption",
     "name": "Sprig of corruption",
     "type": "leftHand",
+    "book": "Legions of Shadows",
     "act": 2,
     "stats": {
       "speed": 2,
@@ -4797,6 +5117,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "spine_tooth",
     "name": "Spine tooth",
     "type": "leftHand",
+    "book": "Legions of Shadows",
     "act": 2,
     "stats": {
       "speed": 2,
@@ -4813,6 +5134,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "hydras_wing",
     "name": "Hydra's wing",
     "type": "leftHand",
+    "book": "Legions of Shadows",
     "act": 2,
     "stats": {
       "speed": 2,
@@ -4829,6 +5151,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "hydras_guard",
     "name": "Hydra's guard",
     "type": "leftHand",
+    "book": "Legions of Shadows",
     "act": 2,
     "stats": {
       "speed": 2,
@@ -4845,6 +5168,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "dragonslayer",
     "name": "Dragonslayer",
     "type": "leftHand",
+    "book": "Legions of Shadows",
     "act": 2,
     "stats": {
       "speed": 2,
@@ -4860,6 +5184,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "shadowblade",
     "name": "Shadowblade",
     "type": "leftHand",
+    "book": "Legions of Shadows",
     "act": 2,
     "stats": {
       "speed": 2,
@@ -4875,6 +5200,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "talanosts_wall",
     "name": "Talanost's wall",
     "type": "leftHand",
+    "book": "Legions of Shadows",
     "act": 3,
     "stats": {
       "speed": 2,
@@ -4891,6 +5217,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "talanosts_reach",
     "name": "Talanost's reach",
     "type": "leftHand",
+    "book": "Legions of Shadows",
     "act": 3,
     "stats": {
       "speed": 3,
@@ -4907,6 +5234,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "tor_shield",
     "name": "Tor shield",
     "type": "leftHand",
+    "book": "Legions of Shadows",
     "act": 3,
     "stats": {
       "speed": 2,
@@ -4922,6 +5250,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "spite",
     "name": "Spite",
     "type": "leftHand",
+    "book": "Legions of Shadows",
     "act": 3,
     "stats": {
       "speed": 2,
@@ -4937,6 +5266,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "iron_curtain",
     "name": "Iron curtain",
     "type": "leftHand",
+    "book": "Legions of Shadows",
     "act": 3,
     "stats": {
       "brawn": 3,
@@ -4953,6 +5283,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "chains_of_binding",
     "name": "Chains of binding",
     "type": "leftHand",
+    "book": "Legions of Shadows",
     "act": 3,
     "stats": {
       "speed": 2,
@@ -4969,6 +5300,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "shallow_grave",
     "name": "Shallow grave",
     "type": "leftHand",
+    "book": "Legions of Shadows",
     "act": 3,
     "stats": {
       "speed": 2,
@@ -4984,6 +5316,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "raven_eye",
     "name": "Raven eye",
     "type": "leftHand",
+    "book": "Legions of Shadows",
     "act": 3,
     "stats": {
       "speed": 2,
@@ -4999,6 +5332,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "witchs_finger",
     "name": "Witch's finger",
     "type": "leftHand",
+    "book": "Legions of Shadows",
     "act": 3,
     "stats": {
       "speed": 2,
@@ -5014,6 +5348,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "meat_grinder",
     "name": "Meat grinder",
     "type": "leftHand",
+    "book": "Legions of Shadows",
     "act": 3,
     "stats": {
       "speed": 2,
@@ -5029,6 +5364,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "steel_gear_solid",
     "name": "Steel gear solid",
     "type": "leftHand",
+    "book": "Legions of Shadows",
     "act": 3,
     "stats": {
       "speed": 2,
@@ -5045,6 +5381,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "justice",
     "name": "Justice",
     "type": "leftHand",
+    "book": "Legions of Shadows",
     "act": 3,
     "stats": {
       "speed": 2,
@@ -5060,6 +5397,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "twilight_claw",
     "name": "Twilight claw",
     "type": "leftHand",
+    "book": "Legions of Shadows",
     "act": 3,
     "stats": {
       "speed": 2,
@@ -5075,6 +5413,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "black_death",
     "name": "Black death",
     "type": "leftHand",
+    "book": "Legions of Shadows",
     "act": 3,
     "stats": {
       "speed": 2,
@@ -5091,6 +5430,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "grasping_grimm",
     "name": "Grasping grimm",
     "type": "leftHand",
+    "book": "Legions of Shadows",
     "act": 3,
     "stats": {
       "speed": 3,
@@ -5107,6 +5447,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "grimoire_of_entropy",
     "name": "Grimoire of entropy",
     "type": "leftHand",
+    "book": "Legions of Shadows",
     "act": 3,
     "stats": {
       "speed": 3,
@@ -5123,6 +5464,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "dark_tower",
     "name": "Dark tower",
     "type": "leftHand",
+    "book": "Legions of Shadows",
     "act": 3,
     "stats": {
       "speed": 2,
@@ -5139,6 +5481,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "thunder_hammer",
     "name": "Thunder hammer",
     "type": "leftHand",
+    "book": "Legions of Shadows",
     "act": 3,
     "stats": {
       "speed": 2,
@@ -5155,6 +5498,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "shield_of_bones",
     "name": "Shield of bones",
     "type": "leftHand",
+    "book": "Legions of Shadows",
     "act": 3,
     "stats": {
       "brawn": 4,
@@ -5171,6 +5515,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "shield_of_bones",
     "name": "Shield of bones",
     "type": "leftHand",
+    "book": "Legions of Shadows",
     "act": 3,
     "stats": {
       "speed": 3,
@@ -5187,6 +5532,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "shield_of_bones",
     "name": "Shield of bones",
     "type": "leftHand",
+    "book": "Legions of Shadows",
     "act": 3,
     "stats": {
       "speed": 2,
@@ -5203,6 +5549,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "bone_splinter",
     "name": "Bone splinter",
     "type": "leftHand",
+    "book": "Legions of Shadows",
     "act": 3,
     "stats": {
       "speed": 2,
@@ -5219,6 +5566,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "shield_of_angels",
     "name": "Shield of angels",
     "type": "leftHand",
+    "book": "Legions of Shadows",
     "act": 3,
     "stats": {
       "speed": 1,
@@ -5234,6 +5582,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "shield_of_blasting",
     "name": "Shield of blasting",
     "type": "leftHand",
+    "book": "Legions of Shadows",
     "act": 3,
     "stats": {
       "speed": 2,
@@ -5250,6 +5599,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "torment",
     "name": "Torment",
     "type": "leftHand",
+    "book": "Legions of Shadows",
     "act": 3,
     "stats": {
       "speed": 2,
@@ -5265,6 +5615,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "fang_of_vengos",
     "name": "Fang of Vengos",
     "type": "leftHand",
+    "book": "Legions of Shadows",
     "act": 3,
     "stats": {
       "speed": 2,
@@ -5281,6 +5632,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "parasitic_plate",
     "name": "Parasitic plate",
     "type": "leftHand",
+    "book": "Legions of Shadows",
     "act": 3,
     "stats": {
       "speed": 2,
@@ -5297,6 +5649,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "lexicon_of_bones",
     "name": "Lexicon of bones",
     "type": "leftHand",
+    "book": "Legions of Shadows",
     "act": 3,
     "stats": {
       "speed": 2,
@@ -5313,6 +5666,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "wrecking_ball",
     "name": "Wrecking ball",
     "type": "leftHand",
+    "book": "Legions of Shadows",
     "act": 3,
     "stats": {
       "speed": 2,
@@ -5329,6 +5683,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "cortical_bulb",
     "name": "Cortical bulb",
     "type": "leftHand",
+    "book": "Legions of Shadows",
     "act": 3,
     "stats": {
       "speed": 3,
@@ -5345,6 +5700,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "bone_bow_of_grief",
     "name": "Bone bow of grief",
     "type": "leftHand",
+    "book": "Legions of Shadows",
     "act": 3,
     "stats": {
       "speed": 2,
@@ -5361,6 +5717,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "final_solution",
     "name": "Final solution",
     "type": "leftHand",
+    "book": "Legions of Shadows",
     "act": 3,
     "stats": {
       "speed": 2,
@@ -5377,6 +5734,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "stone_ward",
     "name": "Stone ward",
     "type": "talisman",
+    "book": "Legions of Shadows",
     "act": 1,
     "stats": {},
     "abilities": [
@@ -5389,6 +5747,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "spindles_eye",
     "name": "Spindle's eye",
     "type": "talisman",
+    "book": "Legions of Shadows",
     "act": 1,
     "stats": {
       "speed": 1
@@ -5403,6 +5762,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "third_eye",
     "name": "Third eye",
     "type": "talisman",
+    "book": "Legions of Shadows",
     "act": 1,
     "stats": {
       "speed": 1
@@ -5417,6 +5777,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "demons_heart",
     "name": "Demon's heart",
     "type": "talisman",
+    "book": "Legions of Shadows",
     "act": 1,
     "stats": {
       "speed": 1
@@ -5431,6 +5792,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "avians_crest",
     "name": "Avian's crest",
     "type": "talisman",
+    "book": "Legions of Shadows",
     "act": 2,
     "stats": {
       "brawn": 1,
@@ -5440,12 +5802,13 @@ export const ITEMS: EquipmentItem[] = [
       "Charm"
     ],
     "referenceNumber": 275,
-    "location": "Act 2 prologue"
+    "location": "Legions of Shadows"
   },
   {
     "id": "sap_filled_gland",
     "name": "Sap-filled gland",
     "type": "talisman",
+    "book": "Legions of Shadows",
     "act": 2,
     "stats": {
       "speed": 1
@@ -5460,6 +5823,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "elemental_dust",
     "name": "Elemental dust",
     "type": "talisman",
+    "book": "Legions of Shadows",
     "act": 2,
     "stats": {
       "magic": 1
@@ -5474,6 +5838,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "phoenix_ashes",
     "name": "Phoenix ashes",
     "type": "talisman",
+    "book": "Legions of Shadows",
     "act": 2,
     "stats": {
       "magic": 1
@@ -5488,6 +5853,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "dours_whetstone_r_w_",
     "name": "Dour's whetstone (R+W)",
     "type": "talisman",
+    "book": "Legions of Shadows",
     "act": 2,
     "stats": {
       "speed": 1
@@ -5502,6 +5868,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "seal_of_war",
     "name": "Seal of war",
     "type": "talisman",
+    "book": "Legions of Shadows",
     "act": 2,
     "stats": {
       "speed": 1
@@ -5516,6 +5883,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "braids_of_the_bull",
     "name": "Braids of the bull",
     "type": "talisman",
+    "book": "Legions of Shadows",
     "act": 2,
     "stats": {
       "speed": 1
@@ -5530,6 +5898,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "tigers_heart",
     "name": "Tiger's heart",
     "type": "talisman",
+    "book": "Legions of Shadows",
     "act": 2,
     "stats": {
       "speed": 1
@@ -5544,6 +5913,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "tigers_fury",
     "name": "Tiger's fury",
     "type": "talisman",
+    "book": "Legions of Shadows",
     "act": 2,
     "stats": {
       "speed": 1
@@ -5559,6 +5929,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "core_of_flame",
     "name": "Core of flame",
     "type": "talisman",
+    "book": "Legions of Shadows",
     "act": 2,
     "stats": {
       "magic": 1
@@ -5574,6 +5945,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "lady_of_the_lamp",
     "name": "Lady of the lamp",
     "type": "talisman",
+    "book": "Legions of Shadows",
     "act": 3,
     "stats": {
       "armour": 1
@@ -5589,6 +5961,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "bone_fetish",
     "name": "Bone fetish",
     "type": "talisman",
+    "book": "Legions of Shadows",
     "act": 3,
     "stats": {
       "armour": 1
@@ -5604,6 +5977,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "blinding_dust",
     "name": "Blinding dust",
     "type": "talisman",
+    "book": "Legions of Shadows",
     "act": 3,
     "stats": {
       "speed": 1
@@ -5618,6 +5992,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "bag_o_bones",
     "name": "Bag o' bones",
     "type": "talisman",
+    "book": "Legions of Shadows",
     "act": 3,
     "stats": {
       "magic": 1
@@ -5632,6 +6007,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "dark_therapy",
     "name": "Dark therapy",
     "type": "talisman",
+    "book": "Legions of Shadows",
     "act": 3,
     "stats": {
       "speed": 1
@@ -5646,6 +6022,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "grimm_ichor",
     "name": "Grimm ichor",
     "type": "talisman",
+    "book": "Legions of Shadows",
     "act": 3,
     "stats": {
       "speed": 1
@@ -5661,6 +6038,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "survivors_pennant",
     "name": "Survivor's pennant",
     "type": "talisman",
+    "book": "Legions of Shadows",
     "act": 3,
     "stats": {
       "speed": 1,
@@ -5676,6 +6054,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "heart_of_the_beast",
     "name": "Heart of the beast",
     "type": "talisman",
+    "book": "Legions of Shadows",
     "act": 3,
     "stats": {
       "speed": 1,
@@ -5691,6 +6070,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "sands_of_time",
     "name": "Sands of time",
     "type": "talisman",
+    "book": "Legions of Shadows",
     "act": 3,
     "stats": {
       "speed": 1
@@ -5705,6 +6085,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "winters_heart",
     "name": "Winter's heart",
     "type": "talisman",
+    "book": "Legions of Shadows",
     "act": 3,
     "stats": {
       "magic": 1
@@ -5720,6 +6101,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "the_cravens_head",
     "name": "The craven's head",
     "type": "talisman",
+    "book": "Legions of Shadows",
     "act": 3,
     "stats": {
       "speed": 1,
@@ -5736,6 +6118,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "seed_of_rage",
     "name": "Seed of rage",
     "type": "talisman",
+    "book": "Legions of Shadows",
     "act": 3,
     "stats": {
       "magic": 2
@@ -5751,6 +6134,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "grannys_locket",
     "name": "Granny's locket",
     "type": "necklace",
+    "book": "Legions of Shadows",
     "act": 1,
     "stats": {
       "magic": 1
@@ -5763,6 +6147,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "stone_collar",
     "name": "Stone collar",
     "type": "necklace",
+    "book": "Legions of Shadows",
     "act": 1,
     "stats": {
       "armour": 1
@@ -5777,6 +6162,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "beads_of_brilliance",
     "name": "Beads of brilliance",
     "type": "necklace",
+    "book": "Legions of Shadows",
     "act": 1,
     "stats": {
       "brawn": 1,
@@ -5790,6 +6176,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "clymonistras_sorrow",
     "name": "Clymonistra's sorrow",
     "type": "necklace",
+    "book": "Legions of Shadows",
     "act": 1,
     "stats": {
       "magic": 1
@@ -5804,6 +6191,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "trophy_of_bones",
     "name": "Trophy of bones",
     "type": "necklace",
+    "book": "Legions of Shadows",
     "act": 1,
     "stats": {
       "magic": 1,
@@ -5819,6 +6207,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "black_pearl",
     "name": "Black pearl",
     "type": "necklace",
+    "book": "Legions of Shadows",
     "act": 2,
     "stats": {
       "magic": 2
@@ -5833,6 +6222,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "amber_coated_collar",
     "name": "Amber-coated collar",
     "type": "necklace",
+    "book": "Legions of Shadows",
     "act": 2,
     "stats": {
       "armour": 1
@@ -5847,6 +6237,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "beetle_shell_garland",
     "name": "Beetle-shell garland",
     "type": "necklace",
+    "book": "Legions of Shadows",
     "act": 2,
     "stats": {
       "speed": 1
@@ -5861,6 +6252,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "channelers_prism",
     "name": "Channeler's prism",
     "type": "necklace",
+    "book": "Legions of Shadows",
     "act": 2,
     "stats": {
       "magic": 1
@@ -5875,6 +6267,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "silver_cross",
     "name": "Silver cross",
     "type": "necklace",
+    "book": "Legions of Shadows",
     "act": 2,
     "stats": {
       "speed": 1,
@@ -5890,6 +6283,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "vermillion_heart",
     "name": "Vermillion heart",
     "type": "necklace",
+    "book": "Legions of Shadows",
     "act": 2,
     "stats": {
       "speed": 1
@@ -5904,6 +6298,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "dours_fury",
     "name": "Dour's fury",
     "type": "necklace",
+    "book": "Legions of Shadows",
     "act": 2,
     "stats": {
       "speed": 1
@@ -5918,6 +6313,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "marsh_pendant",
     "name": "Marsh pendant",
     "type": "necklace",
+    "book": "Legions of Shadows",
     "act": 2,
     "stats": {
       "magic": 1,
@@ -5933,6 +6329,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "pendant_of_foresight",
     "name": "Pendant of foresight",
     "type": "necklace",
+    "book": "Legions of Shadows",
     "act": 2,
     "stats": {
       "speed": 1
@@ -5947,6 +6344,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "lodestone",
     "name": "Lodestone",
     "type": "necklace",
+    "book": "Legions of Shadows",
     "act": 2,
     "stats": {
       "magic": 2
@@ -5961,6 +6359,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "warders_collar",
     "name": "Warder's collar",
     "type": "necklace",
+    "book": "Legions of Shadows",
     "act": 2,
     "stats": {
       "magic": 1,
@@ -5977,6 +6376,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "diamond_of_the_tundra",
     "name": "Diamond of the tundra",
     "type": "necklace",
+    "book": "Legions of Shadows",
     "act": 2,
     "stats": {
       "speed": 1
@@ -5991,6 +6391,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "eye_of_shadow",
     "name": "Eye of shadow",
     "type": "necklace",
+    "book": "Legions of Shadows",
     "act": 2,
     "stats": {
       "speed": 1
@@ -6005,6 +6406,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "ghouls_teeth",
     "name": "Ghoul's teeth",
     "type": "necklace",
+    "book": "Legions of Shadows",
     "act": 3,
     "stats": {
       "speed": 1
@@ -6020,6 +6422,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "chilblains_tears",
     "name": "Chilblain's tears",
     "type": "necklace",
+    "book": "Legions of Shadows",
     "act": 3,
     "stats": {
       "magic": 1,
@@ -6036,6 +6439,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "leap_of_faith",
     "name": "Leap of faith",
     "type": "necklace",
+    "book": "Legions of Shadows",
     "act": 3,
     "stats": {
       "speed": 1
@@ -6050,6 +6454,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "horn_of_courage",
     "name": "Horn of courage",
     "type": "necklace",
+    "book": "Legions of Shadows",
     "act": 3,
     "stats": {
       "speed": 1,
@@ -6066,6 +6471,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "dark_queen",
     "name": "Dark queen",
     "type": "necklace",
+    "book": "Legions of Shadows",
     "act": 3,
     "stats": {
       "magic": 2
@@ -6080,6 +6486,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "charged_core",
     "name": "Charged core",
     "type": "necklace",
+    "book": "Legions of Shadows",
     "act": 3,
     "stats": {
       "magic": 2
@@ -6094,6 +6501,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "stolen_hope",
     "name": "Stolen hope",
     "type": "necklace",
+    "book": "Legions of Shadows",
     "act": 3,
     "stats": {
       "brawn": 1,
@@ -6109,6 +6517,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "inner_circle",
     "name": "Inner circle",
     "type": "necklace",
+    "book": "Legions of Shadows",
     "act": 3,
     "stats": {},
     "abilities": [
@@ -6121,6 +6530,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "glacial_shards",
     "name": "Glacial shards",
     "type": "necklace",
+    "book": "Legions of Shadows",
     "act": 3,
     "stats": {
       "speed": 1,
@@ -6137,6 +6547,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "winged_locket",
     "name": "Winged locket",
     "type": "necklace",
+    "book": "Legions of Shadows",
     "act": 3,
     "stats": {
       "armour": 1
@@ -6151,6 +6562,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "widows_band",
     "name": "Widow's band",
     "type": "ring",
+    "book": "Legions of Shadows",
     "act": 1,
     "stats": {
       "magic": 1
@@ -6165,6 +6577,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "missing_link",
     "name": "Missing link",
     "type": "ring",
+    "book": "Legions of Shadows",
     "act": 1,
     "stats": {
       "brawn": 1,
@@ -6178,6 +6591,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "travellers_band",
     "name": "Traveller's band",
     "type": "ring",
+    "book": "Legions of Shadows",
     "act": 1,
     "stats": {
       "brawn": 1,
@@ -6193,6 +6607,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "lightning_ring",
     "name": "Lightning ring",
     "type": "ring",
+    "book": "Legions of Shadows",
     "act": 1,
     "stats": {},
     "abilities": [
@@ -6205,6 +6620,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "grave_dust_ring",
     "name": "Grave dust ring",
     "type": "ring",
+    "book": "Legions of Shadows",
     "act": 1,
     "stats": {
       "brawn": 1
@@ -6217,6 +6633,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "scholars_circle",
     "name": "Scholar's circle",
     "type": "ring",
+    "book": "Legions of Shadows",
     "act": 1,
     "stats": {},
     "abilities": [
@@ -6229,6 +6646,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "blackfire_ring",
     "name": "Blackfire ring",
     "type": "ring",
+    "book": "Legions of Shadows",
     "act": 1,
     "stats": {},
     "abilities": [
@@ -6241,6 +6659,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "circle_of_thorns",
     "name": "Circle of thorns",
     "type": "ring",
+    "book": "Legions of Shadows",
     "act": 1,
     "stats": {},
     "abilities": [
@@ -6253,6 +6672,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "splintered_band",
     "name": "Splintered band",
     "type": "ring",
+    "book": "Legions of Shadows",
     "act": 2,
     "stats": {
       "brawn": 2
@@ -6268,6 +6688,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "my_precious",
     "name": "My precious",
     "type": "ring",
+    "book": "Legions of Shadows",
     "act": 2,
     "stats": {
       "armour": 1
@@ -6282,6 +6703,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "wayfarers_ring",
     "name": "Wayfarer's ring",
     "type": "ring",
+    "book": "Legions of Shadows",
     "act": 2,
     "stats": {
       "brawn": 1,
@@ -6297,6 +6719,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "vermillion_rage",
     "name": "Vermillion rage",
     "type": "ring",
+    "book": "Legions of Shadows",
     "act": 2,
     "stats": {
       "magic": 1
@@ -6311,6 +6734,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "clymonistras_folly",
     "name": "Clymonistra's folly",
     "type": "ring",
+    "book": "Legions of Shadows",
     "act": 2,
     "stats": {
       "magic": 1,
@@ -6326,6 +6750,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "finger_of_fire",
     "name": "Finger of fire",
     "type": "ring",
+    "book": "Legions of Shadows",
     "act": 2,
     "stats": {
       "brawn": 1
@@ -6340,6 +6765,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "ring_of_the_marshes",
     "name": "Ring of the marshes",
     "type": "ring",
+    "book": "Legions of Shadows",
     "act": 2,
     "stats": {
       "brawn": 1,
@@ -6355,6 +6781,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "steadfast_ring",
     "name": "Steadfast ring",
     "type": "ring",
+    "book": "Legions of Shadows",
     "act": 2,
     "stats": {
       "armour": 1
@@ -6370,6 +6797,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "serpents_coil_r_w_",
     "name": "Serpent's coil (R+W)",
     "type": "ring",
+    "book": "Legions of Shadows",
     "act": 2,
     "stats": {
       "brawn": 1
@@ -6384,6 +6812,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "band_of_conquest_r_w_",
     "name": "Band of conquest (R+W)",
     "type": "ring",
+    "book": "Legions of Shadows",
     "act": 2,
     "stats": {
       "armour": 1
@@ -6398,6 +6827,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "abyssal_brimstone",
     "name": "Abyssal brimstone",
     "type": "ring",
+    "book": "Legions of Shadows",
     "act": 2,
     "stats": {
       "magic": 1
@@ -6412,6 +6842,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "avatars_circle",
     "name": "Avatar's circle",
     "type": "ring",
+    "book": "Legions of Shadows",
     "act": 2,
     "stats": {
       "magic": 1
@@ -6427,6 +6858,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "lupine_lapis",
     "name": "Lupine lapis",
     "type": "ring",
+    "book": "Legions of Shadows",
     "act": 2,
     "stats": {
       "brawn": 1
@@ -6441,6 +6873,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "menders_marcasite",
     "name": "Mender's marcasite",
     "type": "ring",
+    "book": "Legions of Shadows",
     "act": 2,
     "stats": {
       "magic": 1
@@ -6455,6 +6888,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "cutters_cornelian",
     "name": "Cutter's cornelian",
     "type": "ring",
+    "book": "Legions of Shadows",
     "act": 2,
     "stats": {
       "armour": 1
@@ -6469,6 +6903,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "magpies_mischief",
     "name": "Magpie's mischief",
     "type": "ring",
+    "book": "Legions of Shadows",
     "act": 2,
     "stats": {
       "armour": 1
@@ -6483,6 +6918,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "dryads_band",
     "name": "Dryad's band",
     "type": "ring",
+    "book": "Legions of Shadows",
     "act": 2,
     "stats": {
       "brawn": 1
@@ -6497,6 +6933,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "khanas_revenge",
     "name": "Khana's revenge",
     "type": "ring",
+    "book": "Legions of Shadows",
     "act": 3,
     "stats": {
       "brawn": 2
@@ -6512,6 +6949,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "wrath_of_ages",
     "name": "Wrath of ages",
     "type": "ring",
+    "book": "Legions of Shadows",
     "act": 3,
     "stats": {
       "magic": 2
@@ -6527,6 +6965,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "leader_of_the_pack",
     "name": "Leader of the pack",
     "type": "ring",
+    "book": "Legions of Shadows",
     "act": 3,
     "stats": {
       "brawn": 1
@@ -6541,6 +6980,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "sinister_shadows",
     "name": "Sinister shadows",
     "type": "ring",
+    "book": "Legions of Shadows",
     "act": 3,
     "stats": {
       "brawn": 1,
@@ -6556,6 +6996,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "blood_winter",
     "name": "Blood winter",
     "type": "ring",
+    "book": "Legions of Shadows",
     "act": 3,
     "stats": {
       "brawn": 1
@@ -6570,6 +7011,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "hunger",
     "name": "Hunger",
     "type": "ring",
+    "book": "Legions of Shadows",
     "act": 3,
     "stats": {
       "brawn": 2
@@ -6584,6 +7026,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "tooth_n_claw",
     "name": "Tooth 'n claw",
     "type": "ring",
+    "book": "Legions of Shadows",
     "act": 3,
     "stats": {
       "speed": 1,
@@ -6600,6 +7043,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "martyrs_blood",
     "name": "Martyr's blood",
     "type": "ring",
+    "book": "Legions of Shadows",
     "act": 3,
     "stats": {
       "magic": 1,
@@ -6615,6 +7059,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "seven_stars_r_w_",
     "name": "Seven stars (R+W)",
     "type": "ring",
+    "book": "Legions of Shadows",
     "act": 3,
     "stats": {
       "brawn": 2
@@ -6629,6 +7074,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "wytchwood_thorn_r_w_",
     "name": "Wytchwood thorn (R+W)",
     "type": "ring",
+    "book": "Legions of Shadows",
     "act": 3,
     "stats": {
       "brawn": 1
@@ -6643,6 +7089,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "zuls_zapper",
     "name": "Zul's zapper",
     "type": "ring",
+    "book": "Legions of Shadows",
     "act": 3,
     "stats": {
       "brawn": 1,
@@ -6658,6 +7105,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "band_of_elements_w_m_",
     "name": "Band of elements (W+M)",
     "type": "ring",
+    "book": "Legions of Shadows",
     "act": 3,
     "stats": {
       "magic": 2
@@ -6672,6 +7120,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "budaks_signet_w_m_",
     "name": "Budak's signet (W+M)",
     "type": "ring",
+    "book": "Legions of Shadows",
     "act": 3,
     "stats": {
       "brawn": 1,
@@ -6687,6 +7136,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "spider_sapphire_r_m_",
     "name": "Spider sapphire (R+M)",
     "type": "ring",
+    "book": "Legions of Shadows",
     "act": 3,
     "stats": {
       "magic": 1,
@@ -6702,6 +7152,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "serpentine_spiral_r_m_",
     "name": "Serpentine spiral (R+M)",
     "type": "ring",
+    "book": "Legions of Shadows",
     "act": 3,
     "stats": {
       "brawn": 1,
@@ -6717,6 +7168,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "conduit_of_shadow",
     "name": "Conduit of shadow",
     "type": "ring",
+    "book": "Legions of Shadows",
     "act": 3,
     "stats": {
       "magic": 3
@@ -6732,6 +7184,7 @@ export const ITEMS: EquipmentItem[] = [
     "id": "stria_of_genna",
     "name": "Stria of Genna",
     "type": "ring",
+    "book": "Legions of Shadows",
     "act": 3,
     "stats": {
       "magic": 1,

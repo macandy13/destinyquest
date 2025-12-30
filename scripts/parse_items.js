@@ -50,15 +50,16 @@ const processedItems = rawData.slice(1).map((line, index) => {
     if (parts.length < 9) return null;
 
     const itemBox = parts[0].trim();
-    const actRaw = parts[1].trim();
-    const itemNameRaw = parts[2].trim();
-    const speed = parseInt(parts[3]) || 0;
-    const brawn = parseInt(parts[4]) || 0;
-    const magic = parseInt(parts[5]) || 0;
-    const armour = parseInt(parts[6]) || 0;
-    const ability = parts[7].trim();
-    const entry = parts[8] ? parseInt(parts[8].trim()) : undefined;
-    const location = parts[9] ? parts[9].trim() : undefined;
+    const book = parts[1].trim();
+    const actRaw = parts[2].trim();
+    const itemNameRaw = parts[3].trim();
+    const speed = parseInt(parts[4]) || 0;
+    const brawn = parseInt(parts[5]) || 0;
+    const magic = parseInt(parts[6]) || 0;
+    const armour = parseInt(parts[7]) || 0;
+    const ability = parts[8].trim();
+    const entry = parts[9] ? parseInt(parts[9].trim()) : undefined;
+    const location = parts[10] ? parts[10].trim() : undefined;
 
     const actMatch = actRaw.match(/Act (\d+)/);
     const act = actMatch ? parseInt(actMatch[1]) : 1;
@@ -70,6 +71,7 @@ const processedItems = rawData.slice(1).map((line, index) => {
         id: id,
         name: name,
         type: mapType(itemBox),
+        book: book,
         act: act,
         stats: {},
         abilities: [],

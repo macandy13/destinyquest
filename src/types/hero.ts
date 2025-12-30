@@ -16,6 +16,7 @@ export type EquipmentType =
 export interface Item {
     id: string;
     name: string;
+    book: string;
     act: number;
     referenceNumber?: number;
     location?: string;
