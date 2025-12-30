@@ -45,7 +45,7 @@ describe('useCombat Hook', () => {
 
         act(() => {
             // Pass explicitly tough enemy to test armour
-            result.current.startCombat({ name: 'Armoured dummy', stats: { speed: 1, brawn: 1, magic: 1, armour: 2, health: 20, maxHealth: 20 }, abilities: [] });
+            result.current.startCombat({ name: 'Armoured dummy', stats: { speed: 1, brawn: 1, magic: 1, armour: 2, health: 20, maxHealth: 20 }, act: 1, abilities: [] });
         });
 
         // Speed round win for Hero

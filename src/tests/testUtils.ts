@@ -22,6 +22,7 @@ export const MOCK_ENEMY: Enemy = {
         health: 20,
         maxHealth: 20,
     },
+    act: 1,
     abilities: []
 };
 

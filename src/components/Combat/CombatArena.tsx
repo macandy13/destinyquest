@@ -99,7 +99,7 @@ const CombatArena: React.FC<CombatArenaProps> = ({ hero, onCombatFinish }) => {
                     />
                 </div>
 
-                <CombatModifiers modifications={combat.modifications} />
+                <CombatModifiers modifications={combat.modifications.map(m => ({ ...m, duration: m.duration ?? 0 }))} />
             </div>
 
             <div className="arena-center">

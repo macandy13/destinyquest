@@ -7,6 +7,7 @@ export interface Enemy extends Character {
     name: string;
     abilities: string[]; // Placeholder for special rules
     preventHealing?: boolean;
+    act: number;
     entry?: string;
 }
 

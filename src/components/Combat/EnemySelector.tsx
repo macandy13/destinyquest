@@ -26,6 +26,7 @@ const EnemySelector: React.FC<EnemySelectorProps> = ({ onSelect }) => {
             health: 20,
             maxHealth: 20,
         },
+        act: 1,
         abilities: []
     });
 
@@ -73,6 +74,7 @@ const EnemySelector: React.FC<EnemySelectorProps> = ({ onSelect }) => {
                 health: 20,
                 maxHealth: 20,
             },
+            act: 1,
             abilities: []
         });
     };

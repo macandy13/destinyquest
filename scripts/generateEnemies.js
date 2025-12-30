@@ -49,12 +49,14 @@ function parseCSV(content) {
 
         return {
             name,
-            speed,
-            brawn,
-            magic,
-            armour,
-            health,
-            maxHealth: health, // assuming start at max
+            stats: {
+                speed,
+                brawn,
+                magic,
+                armour,
+                health,
+                maxHealth: health
+            },
             abilities,
             act, // extra metadata helpful for sorting
             entry // extra metadata helpful for searching
@@ -68,7 +70,7 @@ try {
 
     const fileContent = `import { Enemy } from '../types/combat';
 
-export const ENEMIES: (Enemy & { act: number; entry: string })[] = ${JSON.stringify(enemies, null, 2)};
+export const ENEMIES: Enemy[] = ${JSON.stringify(enemies, null, 2)};
 `;
 
     fs.writeFileSync(OUTPUT_PATH, fileContent);

@@ -1,26 +1,30 @@
 import { Enemy } from '../types/combat';
 
-export const ENEMIES: (Enemy & { act: number; entry: string })[] = [
+export const ENEMIES: Enemy[] = [
   {
     "name": "Ruffians",
-    "speed": 3,
-    "brawn": 2,
-    "magic": 0,
-    "armour": 0,
-    "health": 15,
-    "maxHealth": 15,
+    "stats": {
+      "speed": 3,
+      "brawn": 2,
+      "magic": 0,
+      "armour": 0,
+      "health": 15,
+      "maxHealth": 15
+    },
     "abilities": [],
     "act": 1,
     "entry": "40"
   },
   {
     "name": "Mauler",
-    "speed": 5,
-    "brawn": 4,
-    "magic": 0,
-    "armour": 0,
-    "health": 25,
-    "maxHealth": 25,
+    "stats": {
+      "speed": 5,
+      "brawn": 4,
+      "magic": 0,
+      "armour": 0,
+      "health": 25,
+      "maxHealth": 25
+    },
     "abilities": [
       "Savagery"
     ],
@@ -29,12 +33,14 @@ export const ENEMIES: (Enemy & { act: number; entry: string })[] = [
   },
   {
     "name": "Zombie",
-    "speed": 2,
-    "brawn": 4,
-    "magic": 0,
-    "armour": 0,
-    "health": 20,
-    "maxHealth": 20,
+    "stats": {
+      "speed": 2,
+      "brawn": 4,
+      "magic": 0,
+      "armour": 0,
+      "health": 20,
+      "maxHealth": 20
+    },
     "abilities": [
       "Undead"
     ],
@@ -43,12 +49,14 @@ export const ENEMIES: (Enemy & { act: number; entry: string })[] = [
   },
   {
     "name": "Spindlesilk",
-    "speed": 7,
-    "brawn": 5,
-    "magic": 0,
-    "armour": 1,
-    "health": 35,
-    "maxHealth": 35,
+    "stats": {
+      "speed": 7,
+      "brawn": 5,
+      "magic": 0,
+      "armour": 1,
+      "health": 35,
+      "maxHealth": 35
+    },
     "abilities": [
       "Webbed"
     ],
@@ -57,12 +65,14 @@ export const ENEMIES: (Enemy & { act: number; entry: string })[] = [
   },
   {
     "name": "The Witch (Hag)",
-    "speed": 4,
-    "brawn": 0,
-    "magic": 5,
-    "armour": 0,
-    "health": 20,
-    "maxHealth": 20,
+    "stats": {
+      "speed": 4,
+      "brawn": 0,
+      "magic": 5,
+      "armour": 0,
+      "health": 20,
+      "maxHealth": 20
+    },
     "abilities": [
       "Charm"
     ],
@@ -71,12 +81,14 @@ export const ENEMIES: (Enemy & { act: number; entry: string })[] = [
   },
   {
     "name": "Valadin Roth",
-    "speed": 6,
-    "brawn": 6,
-    "magic": 0,
-    "armour": 1,
-    "health": 40,
-    "maxHealth": 40,
+    "stats": {
+      "speed": 6,
+      "brawn": 6,
+      "magic": 0,
+      "armour": 1,
+      "health": 40,
+      "maxHealth": 40
+    },
     "abilities": [
       "Boss"
     ],
@@ -85,12 +97,14 @@ export const ENEMIES: (Enemy & { act: number; entry: string })[] = [
   },
   {
     "name": "Ratling",
-    "speed": 4,
-    "brawn": 3,
-    "magic": 0,
-    "armour": 0,
-    "health": 18,
-    "maxHealth": 18,
+    "stats": {
+      "speed": 4,
+      "brawn": 3,
+      "magic": 0,
+      "armour": 0,
+      "health": 18,
+      "maxHealth": 18
+    },
     "abilities": [
       "Tail Lash"
     ],
@@ -99,12 +113,14 @@ export const ENEMIES: (Enemy & { act: number; entry: string })[] = [
   },
   {
     "name": "Goblin Chieftain",
-    "speed": 5,
-    "brawn": 5,
-    "magic": 0,
-    "armour": 2,
-    "health": 30,
-    "maxHealth": 30,
+    "stats": {
+      "speed": 5,
+      "brawn": 5,
+      "magic": 0,
+      "armour": 2,
+      "health": 30,
+      "maxHealth": 30
+    },
     "abilities": [
       "Command"
     ],
@@ -113,12 +129,14 @@ export const ENEMIES: (Enemy & { act: number; entry: string })[] = [
   },
   {
     "name": "Trog Spearman",
-    "speed": 5,
-    "brawn": 6,
-    "magic": 0,
-    "armour": 1,
-    "health": 25,
-    "maxHealth": 25,
+    "stats": {
+      "speed": 5,
+      "brawn": 6,
+      "magic": 0,
+      "armour": 1,
+      "health": 25,
+      "maxHealth": 25
+    },
     "abilities": [
       "Impale"
     ],
@@ -127,12 +145,14 @@ export const ENEMIES: (Enemy & { act: number; entry: string })[] = [
   },
   {
     "name": "Mud Golem",
-    "speed": 4,
-    "brawn": 7,
-    "magic": 0,
-    "armour": 3,
-    "health": 50,
-    "maxHealth": 50,
+    "stats": {
+      "speed": 4,
+      "brawn": 7,
+      "magic": 0,
+      "armour": 3,
+      "health": 50,
+      "maxHealth": 50
+    },
     "abilities": [
       "Body of Stone"
     ],
@@ -141,12 +161,14 @@ export const ENEMIES: (Enemy & { act: number; entry: string })[] = [
   },
   {
     "name": "Logan",
-    "speed": 10,
-    "brawn": 9,
-    "magic": 0,
-    "armour": 2,
-    "health": 50,
-    "maxHealth": 50,
+    "stats": {
+      "speed": 10,
+      "brawn": 9,
+      "magic": 0,
+      "armour": 2,
+      "health": 50,
+      "maxHealth": 50
+    },
     "abilities": [
       "Legendary"
     ],
@@ -155,12 +177,14 @@ export const ENEMIES: (Enemy & { act: number; entry: string })[] = [
   },
   {
     "name": "Hive Queen",
-    "speed": 8,
-    "brawn": 0,
-    "magic": 8,
-    "armour": 2,
-    "health": 65,
-    "maxHealth": 65,
+    "stats": {
+      "speed": 8,
+      "brawn": 0,
+      "magic": 8,
+      "armour": 2,
+      "health": 65,
+      "maxHealth": 65
+    },
     "abilities": [
       "Infest"
     ],
@@ -169,12 +193,14 @@ export const ENEMIES: (Enemy & { act: number; entry: string })[] = [
   },
   {
     "name": "King Louis",
-    "speed": 8,
-    "brawn": 9,
-    "magic": 0,
-    "armour": 2,
-    "health": 55,
-    "maxHealth": 55,
+    "stats": {
+      "speed": 8,
+      "brawn": 9,
+      "magic": 0,
+      "armour": 2,
+      "health": 55,
+      "maxHealth": 55
+    },
     "abilities": [
       "Agility"
     ],
@@ -183,12 +209,14 @@ export const ENEMIES: (Enemy & { act: number; entry: string })[] = [
   },
   {
     "name": "Vesuvius",
-    "speed": 7,
-    "brawn": 0,
-    "magic": 11,
-    "armour": 2,
-    "health": 60,
-    "maxHealth": 60,
+    "stats": {
+      "speed": 7,
+      "brawn": 0,
+      "magic": 11,
+      "armour": 2,
+      "health": 60,
+      "maxHealth": 60
+    },
     "abilities": [
       "Sear"
     ],
@@ -197,12 +225,14 @@ export const ENEMIES: (Enemy & { act: number; entry: string })[] = [
   },
   {
     "name": "Nalsa",
-    "speed": 9,
-    "brawn": 9,
-    "magic": 0,
-    "armour": 2,
-    "health": 55,
-    "maxHealth": 55,
+    "stats": {
+      "speed": 9,
+      "brawn": 9,
+      "magic": 0,
+      "armour": 2,
+      "health": 55,
+      "maxHealth": 55
+    },
     "abilities": [
       "Roar"
     ],
@@ -211,12 +241,14 @@ export const ENEMIES: (Enemy & { act: number; entry: string })[] = [
   },
   {
     "name": "Zen",
-    "speed": 9,
-    "brawn": 10,
-    "magic": 0,
-    "armour": 3,
-    "health": 65,
-    "maxHealth": 65,
+    "stats": {
+      "speed": 9,
+      "brawn": 10,
+      "magic": 0,
+      "armour": 3,
+      "health": 65,
+      "maxHealth": 65
+    },
     "abilities": [
       "Counter"
     ],
@@ -225,12 +257,14 @@ export const ENEMIES: (Enemy & { act: number; entry: string })[] = [
   },
   {
     "name": "Baron Greyloc",
-    "speed": 10,
-    "brawn": 12,
-    "magic": 0,
-    "armour": 4,
-    "health": 80,
-    "maxHealth": 80,
+    "stats": {
+      "speed": 10,
+      "brawn": 12,
+      "magic": 0,
+      "armour": 4,
+      "health": 80,
+      "maxHealth": 80
+    },
     "abilities": [
       "Legendary"
     ],
@@ -239,12 +273,14 @@ export const ENEMIES: (Enemy & { act: number; entry: string })[] = [
   },
   {
     "name": "Shara Khana",
-    "speed": 10,
-    "brawn": 11,
-    "magic": 0,
-    "armour": 2,
-    "health": 70,
-    "maxHealth": 70,
+    "stats": {
+      "speed": 10,
+      "brawn": 11,
+      "magic": 0,
+      "armour": 2,
+      "health": 70,
+      "maxHealth": 70
+    },
     "abilities": [
       "Swift"
     ],
@@ -253,12 +289,14 @@ export const ENEMIES: (Enemy & { act: number; entry: string })[] = [
   },
   {
     "name": "Stone Giant",
-    "speed": 5,
-    "brawn": 11,
-    "magic": 0,
-    "armour": 8,
-    "health": 75,
-    "maxHealth": 75,
+    "stats": {
+      "speed": 5,
+      "brawn": 11,
+      "magic": 0,
+      "armour": 8,
+      "health": 75,
+      "maxHealth": 75
+    },
     "abilities": [
       "Body of Rock"
     ],
@@ -267,12 +305,14 @@ export const ENEMIES: (Enemy & { act: number; entry: string })[] = [
   },
   {
     "name": "The Count",
-    "speed": 9,
-    "brawn": 10,
-    "magic": 0,
-    "armour": 3,
-    "health": 60,
-    "maxHealth": 60,
+    "stats": {
+      "speed": 9,
+      "brawn": 10,
+      "magic": 0,
+      "armour": 3,
+      "health": 60,
+      "maxHealth": 60
+    },
     "abilities": [
       "Feint"
     ],
@@ -281,12 +321,14 @@ export const ENEMIES: (Enemy & { act: number; entry: string })[] = [
   },
   {
     "name": "Swamp Giant",
-    "speed": 6,
-    "brawn": 10,
-    "magic": 0,
-    "armour": 7,
-    "health": 70,
-    "maxHealth": 70,
+    "stats": {
+      "speed": 6,
+      "brawn": 10,
+      "magic": 0,
+      "armour": 7,
+      "health": 70,
+      "maxHealth": 70
+    },
     "abilities": [
       "Knockdown"
     ],
@@ -295,12 +337,14 @@ export const ENEMIES: (Enemy & { act: number; entry: string })[] = [
   },
   {
     "name": "Phoenix",
-    "speed": 9,
-    "brawn": 0,
-    "magic": 10,
-    "armour": 1,
-    "health": 60,
-    "maxHealth": 60,
+    "stats": {
+      "speed": 9,
+      "brawn": 0,
+      "magic": 10,
+      "armour": 1,
+      "health": 60,
+      "maxHealth": 60
+    },
     "abilities": [
       "Fire Aura"
     ],
@@ -309,12 +353,14 @@ export const ENEMIES: (Enemy & { act: number; entry: string })[] = [
   },
   {
     "name": "Kindle",
-    "speed": 12,
-    "brawn": 11,
-    "magic": 0,
-    "armour": 9,
-    "health": 90,
-    "maxHealth": 90,
+    "stats": {
+      "speed": 12,
+      "brawn": 11,
+      "magic": 0,
+      "armour": 9,
+      "health": 90,
+      "maxHealth": 90
+    },
     "abilities": [
       "Haste"
     ],
@@ -323,12 +369,14 @@ export const ENEMIES: (Enemy & { act: number; entry: string })[] = [
   },
   {
     "name": "Grindle",
-    "speed": 10,
-    "brawn": 12,
-    "magic": 0,
-    "armour": 5,
-    "health": 85,
-    "maxHealth": 85,
+    "stats": {
+      "speed": 10,
+      "brawn": 12,
+      "magic": 0,
+      "armour": 5,
+      "health": 85,
+      "maxHealth": 85
+    },
     "abilities": [
       "Dragonscale"
     ],
@@ -337,12 +385,14 @@ export const ENEMIES: (Enemy & { act: number; entry: string })[] = [
   },
   {
     "name": "Magmageddon",
-    "speed": 11,
-    "brawn": 12,
-    "magic": 12,
-    "armour": 10,
-    "health": 100,
-    "maxHealth": 100,
+    "stats": {
+      "speed": 11,
+      "brawn": 12,
+      "magic": 12,
+      "armour": 10,
+      "health": 100,
+      "maxHealth": 100
+    },
     "abilities": [
       "Hybrid"
     ],
@@ -351,12 +401,14 @@ export const ENEMIES: (Enemy & { act: number; entry: string })[] = [
   },
   {
     "name": "Sharroth",
-    "speed": 12,
-    "brawn": 15,
-    "magic": 15,
-    "armour": 6,
-    "health": 150,
-    "maxHealth": 150,
+    "stats": {
+      "speed": 12,
+      "brawn": 15,
+      "magic": 15,
+      "armour": 6,
+      "health": 150,
+      "maxHealth": 150
+    },
     "abilities": [
       "Final Boss"
     ],
