@@ -18,3 +18,12 @@ export function rollDice(count: number): DiceRoll[] {
         isRerolled: false
     }));
 }
+
+/**
+ * Checks if the given set of dice contains any duplicates (doubles).
+ */
+export function hasDouble(rolls: DiceRoll[] | number[]): boolean {
+    if (!rolls || rolls.length < 2) return false;
+    const values = rolls.map(r => (typeof r === 'number' ? r : r.value));
+    return new Set(values).size !== values.length;
+}

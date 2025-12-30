@@ -14,7 +14,7 @@ export interface Enemy extends Character {
 export interface CombatLog {
     round: number;
     message: string;
-    type: 'info' | 'damage-hero' | 'damage-enemy' | 'win' | 'loss';
+    type: 'info' | 'damage-hero' | 'damage-enemy' | 'win' | 'loss' | 'warning';
 }
 
 export type AbilityType = 'speed' | 'combat' | 'modifier' | 'passive';

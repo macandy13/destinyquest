@@ -1,16 +1,12 @@
 import { registerAbility } from '../abilityRegistry';
-
-const hasDoubles = (rolls: { value: number }[]) => {
-    const values = rolls.map(r => r.value);
-    return new Set(values).size !== values.length;
-};
+import { hasDouble } from '../../utils/dice';
 
 registerAbility({
     name: 'Life Spark',
     type: 'passive',
     description: 'Heal 4 health every time you roll a double.',
     onSpeedRoll: (state, rolls) => {
-        if (state.hero && hasDoubles(rolls)) {
+        if (state.hero && hasDouble(rolls)) {
             const newHealth = Math.min(state.hero.stats.maxHealth, state.hero.stats.health + 4);
             return {
                 hero: { ...state.hero, stats: { ...state.hero.stats, health: newHealth } },
@@ -20,7 +16,7 @@ registerAbility({
         return {};
     },
     onDamageRoll: (state, rolls) => {
-        if (state.hero && hasDoubles(rolls)) {
+        if (state.hero && hasDouble(rolls)) {
             const newHealth = Math.min(state.hero.stats.maxHealth, state.hero.stats.health + 4);
             return {
                 hero: { ...state.hero, stats: { ...state.hero.stats, health: newHealth } },

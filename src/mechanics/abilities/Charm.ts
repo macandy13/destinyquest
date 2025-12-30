@@ -1,18 +1,23 @@
 import { registerAbility } from '../abilityRegistry';
+import { CombatState } from '../../types/combat';
+
+function canActivate(state: CombatState): boolean {
+    // Can reroll speed if rolls exist (allows backtracking if we lost or want to improve before damage)
+    if (state.heroSpeedRolls && state.phase !== 'combat-end') return true;
+    // Can reroll damage if hero won and rolled damage
+    if (state.phase === 'round-end' && state.winner === 'hero' && state.damageRolls) return true;
+    return false;
+}
 
 registerAbility({
     name: 'Charm',
     type: 'modifier',
     description: 'Re-roll one of your hero\'s dice; you must accept the second result.',
     icon: '🎲',
-    canActivate: (state) => {
-        // Can reroll speed if rolls exist (allows backtracking if we lost or want to improve before damage)
-        if (state.heroSpeedRolls && state.phase !== 'combat-end') return true;
-        // Can reroll damage if hero won and rolled damage
-        if (state.phase === 'round-end' && state.winner === 'hero' && state.damageRolls) return true;
-        return false;
-    },
+    canActivate: canActivate,
     onActivate: (state) => {
+        if (!canActivate(state)) return null;
+
         let target: 'damage' | 'hero-speed' | null = null;
 
         // Prioritize damage reroll if available and valid (Hero won)

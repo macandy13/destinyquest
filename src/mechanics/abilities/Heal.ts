@@ -1,17 +1,23 @@
 import { registerAbility } from '../abilityRegistry';
 import { addLog } from '../../utils/statUtils';
+import { CombatState } from '../../types/combat';
+
+function canActivate(state: CombatState): boolean {
+    if (!state.hero) return false;
+    return state.hero.stats.health < state.hero.stats.maxHealth;
+}
 
 registerAbility({
     name: 'Heal',
     type: 'modifier',
     description: 'Instantly restore 4 health.',
     icon: '❤️',
-    canActivate: (state) => {
-        if (!state.hero) return false;
-        return state.hero.stats.health < state.hero.stats.maxHealth;
-    },
+    canActivate: canActivate,
     onActivate: (state) => {
-        if (!state.hero) return null;
+        if (!canActivate(state)) return null;
+        if (!state.hero) return null; // TS narrowing again or trust canActivate? canActivate checks it.
+        // But TS might lose context. state.hero is checked in canActivate but compiler doesn't know it persists?
+        // Let's keep explicit check or use ! assertion if confident. Explicit check is safer/cleaner for TS.
         const currentHealth = state.hero.stats.health;
         const newHealth = Math.min(state.hero.stats.maxHealth, currentHealth + 4);
 

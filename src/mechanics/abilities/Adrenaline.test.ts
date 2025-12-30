@@ -27,6 +27,7 @@ describe('Adrenaline', () => {
                     abilities: ['Adrenaline'],
                     id: 'adr-gloves',
                     type: 'gloves' as const,
+                    book: 'book1',
                     act: 1
                 }
             }

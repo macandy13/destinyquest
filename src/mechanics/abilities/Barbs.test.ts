@@ -35,6 +35,7 @@ describe('Barbs', () => {
                     abilities: ['Barbs'],
                     id: 'barbs-gloves',
                     type: 'gloves',
+                    book: 'book1',
                     act: 1
                 }
             }

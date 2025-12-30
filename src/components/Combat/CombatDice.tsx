@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { DiceRoll } from '../../types/combat';
-import { sumDice } from '../../utils/dice';
+import { rollDice, sumDice } from '../../utils/dice';
 import './CombatDice.css';
 
 interface CombatDiceProps {
@@ -48,7 +48,7 @@ const CombatDice: React.FC<CombatDiceProps> = ({ values, label, baseValue = 0, m
 
                 // Animation loop
                 const interval = setInterval(() => {
-                    setInternalDice(new Array(values.length).fill(0).map(() => Math.ceil(Math.random() * 6)));
+                    setInternalDice(rollDice(values.length).map(d => d.value));
                 }, 50);
 
                 // Finish animation
