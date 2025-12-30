@@ -113,7 +113,7 @@
 
 body {
   /*background-color: var(--dq-black);*/
-  background-image: url('/bg-destiny.jpg');
+  background-image: url('./assets/bg-destiny.jpg');
   background-size: cover;
   background-position: center;
   background-attachment: fixed;

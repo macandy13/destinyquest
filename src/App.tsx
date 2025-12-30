@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import './index.css';
 import './App.css';
+import logo from './assets/logo-destiny.png';
 import MobileLayout from './components/Layout/MobileLayout';
 import BottomNav from './components/Navigation/BottomNav';
 import HeroStats from './components/Hero/HeroStats';
@@ -23,7 +24,7 @@ function App() {
     return (
         <MobileLayout>
             <header className="app-header">
-                <img src="/logo-destiny.png" alt="Destiny Quest" className="app-logo" />
+                <img src={logo} alt="Destiny Quest" className="app-logo" />
             </header>
 
             <main className="app-main">
