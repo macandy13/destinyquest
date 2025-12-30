@@ -452,3 +452,441 @@ Ring,Legions of Shadows,Act 3: (Continued),Spider sapphire (R+M),0,0,1,1,Webbed,
 Ring,Legions of Shadows,Act 3: (Continued),Serpentine spiral (R+M),0,1,0,1,Immobilise,726,Tor knight
 Ring,Legions of Shadows,Act 3: (Continued),Conduit of shadow (M),0,0,3,0,Overload,865,Daarko
 Ring,Legions of Shadows,Act 3: (Continued),Stria of Genna (M),0,0,1,2,Shock!,826,Doom orb
+Item Box,Book Title,Act,Item Name,Speed,Brawn,Magic,Armour,Special Ability,Entry No.,Location/Enemy
+Cloak,The Heart of Fire,Act 1: Fenstone Moors,Saddle blanket,0,0,0,1,None,,Prologue
+Cloak,The Heart of Fire,Act 1: Fenstone Moors,Inscribed mantle,0,0,1,1,Iron will,22,Vendor/Carvel
+Cloak,The Heart of Fire,Act 1: Fenstone Moors,Shadow-dyed cloak,0,0,1,0,Wisdom,50,Barrow
+Cloak,The Heart of Fire,Act 1: Fenstone Moors,Predator's pelt,0,1,0,1,None,106,Dire wolf
+Cloak,The Heart of Fire,Act 1: Fenstone Moors,Cardinal's cappa,0,1,0,1,None,359,Bishop
+Cloak,The Heart of Fire,Act 1: Fenstone Moors,Ghost cloth,0,0,0,1,Charm,367,Zombie horde (special)
+Cloak,The Heart of Fire,Act 1: Fenstone Moors,Spectral shawl,0,1,0,0,Vanish,218,Reverend
+Cloak,The Heart of Fire,Act 1: Fenstone Moors,Grizzly mantle,0,1,0,0,Savagery,105,Cuddles
+Cloak,The Heart of Fire,Act 1: Fenstone Moors,Rock shoulders,0,0,0,1,Might of stone,228,Toymaker's golems
+Cloak,The Heart of Fire,Act 1: Fenstone Moors,Wildfire weave,0,0,1,1,Backdraft,231,Black shuck
+Cloak,The Heart of Fire,Act 2: Terral Jungle,Chibacha,1,2,0,0,Gorilla rage,612,Vendor/Emerald Isle
+Cloak,The Heart of Fire,Act 2: Terral Jungle,Lice-ridden pelt (W),1,1,0,0,Parasite,232,Lycanth
+Cloak,The Heart of Fire,Act 2: Terral Jungle,Shade's mantle (W),1,1,0,0,Trickster,556,Umbra
+Cloak,The Heart of Fire,Act 2: Terral Jungle,Hair of the wolf (R),1,1,0,0,Cunning,507,Lycanth
+Cloak,The Heart of Fire,Act 2: Terral Jungle,Stole of shadow (R),1,1,0,0,Steal,255,Umbra
+Cloak,The Heart of Fire,Act 2: Terral Jungle,Twister (M),1,0,1,0,Confound,346,Zephyr
+Cloak,The Heart of Fire,Act 2: Terral Jungle,Conch shoulders,1,0,0,1,Timeshift,634,Yootha (side quest)
+Cloak,The Heart of Fire,Act 2: (Continued),Coronado's pride,1,0,1,0,Reckless,501,Dead explorer
+Cloak,The Heart of Fire,Act 2: (Continued),Shroud of nightmares,1,2,0,0,Confound,748,Succubus
+Cloak,The Heart of Fire,Act 2: (Continued),Net of snares,1,0,1,0,Immobilise,720,Perez
+Cloak,The Heart of Fire,Act 2: (Continued),Hunter's burden (M),1,0,0,2,Feint,369,Buckmaster Bill (side quest)
+Cloak,The Heart of Fire,Act 2: (Continued),Cope of rituals (R),1,2,0,0,Heal,511,Sun vault
+Cloak,The Heart of Fire,Act 2: (Continued),Shredded drape (M),1,0,0,2,Channel,666,Lich
+Cloak,The Heart of Fire,Act 2: (Continued),Cape of the savage (M),1,0,2,0,Primal,714,Gheira
+Cloak,The Heart of Fire,Act 2: (Continued),Back to the wild (W/R),1,2,0,0,Fearless,729,Gheira
+Cloak,The Heart of Fire,Act 2: (Continued),Mantle of the deceiver,1,3,0,2,Deceive,383,Kaala
+Cloak,The Heart of Fire,Act 2: (Continued),Shawl of skulls (M),1,0,0,2,Purge,657,Siren sisters (side quest)
+Cloak,The Heart of Fire,Act 2: (Continued),Drake-skin epaulets (M),2,0,4,0,Backdraft,761,Issachar
+Cloak,The Heart of Fire,Act 3: Tartarus,Cloak of the undying,2,0,0,0,(+3 health) Gr. heal,682,Vendor/Haunted shop
+Cloak,The Heart of Fire,Act 3: Tartarus,Wings of fury (M),2,0,3,0,Surge,790,Furies
+Cloak,The Heart of Fire,Act 3: Tartarus,Sentry shoulders (W),2,0,0,2,Heavy blow,546,Bridge sentries
+Cloak,The Heart of Fire,Act 3: Tartarus,Patchwork pulp,2,2,0,0,Slick,554,Book wyrm
+Cloak,The Heart of Fire,Act 3: Tartarus,Nemesis shawl (M),2,0,3,0,Wither,787,Nephele
+Cloak,The Heart of Fire,Act 3: Tartarus,Cape of the unseen (R),2,3,0,0,Coup de grace,723,Nephele
+Cloak,The Heart of Fire,Act 3: Tartarus,Runeplate pauldrons (W),2,0,0,2,Last defence,834,Erkil
+Cloak,The Heart of Fire,Act 3: Tartarus,Mesh of sinew (R),2,4,0,0,Dark pact,608,Evin Daala
+Cloak,The Heart of Fire,Act 3: Tartarus,Blackrock shoulders (W),2,4,0,0,Retaliation,637,Krakatoa
+Head,The Heart of Fire,Act 1: Fenstone Moors,Plumed helm,0,0,0,1,None,,Prologue
+Head,The Heart of Fire,Act 1: Fenstone Moors,Dark-scale war helm,1,0,0,1,Deflect,230,Vendor/Carvel
+Head,The Heart of Fire,Act 1: Fenstone Moors,White mane,0,1,1,0,Charm,292,Manticore
+Head,The Heart of Fire,Act 1: Fenstone Moors,Chieftain's guard,0,1,0,0,Might of stone,34,Barrow
+Head,The Heart of Fire,Act 1: Fenstone Moors,Assassin's veil,0,0,1,0,Vanish,198,Assassin ant
+Head,The Heart of Fire,Act 1: Fenstone Moors,Sniper's goggles,0,0,0,1,Focus,258,Pirates
+Head,The Heart of Fire,Act 1: Fenstone Moors,Marauder's bandanna,0,1,0,0,None,79,Crews' quarters
+Head,The Heart of Fire,Act 1: Fenstone Moors,Crown of spite,0,0,0,1,Curse,381,Queen Ballona
+Head,The Heart of Fire,Act 1: Fenstone Moors,Lock jaw,0,1,0,1,Slam,219,Saw
+Head,The Heart of Fire,Act 1: Fenstone Moors,Hat of stars,0,1,1,0,Charm,279,Stitches puzzle
+Head,The Heart of Fire,Act 1: Fenstone Moors,Hood of the night fiend,0,1,0,1,Fiend's finest,493,Custodian
+Head,The Heart of Fire,Act 1: Fenstone Moors,Garland of sacrifice,1,2,0,0,Atonement,155,Wickerman
+Head,The Heart of Fire,Act 2: Terral Jungle,Cobwebbed capotain (R),1,1,0,0,Missionary's calling,255,Umbra
+Head,The Heart of Fire,Act 2: Terral Jungle,Umbra's cowl (M),1,0,1,0,Trickster,534,Umbra
+Head,The Heart of Fire,Act 2: Terral Jungle,Braids of the outcast (M),1,0,1,0,Fearless,350,Lycanth
+Head,The Heart of Fire,Act 2: Terral Jungle,Coif of waning,1,0,0,2,Dominate,455,Grub knight
+Head,The Heart of Fire,Act 2: Terral Jungle,Totem mask,1,2,0,0,Might of stone,621,Totem
+Head,The Heart of Fire,Act 2: Terral Jungle,Monkey brain,1,0,2,0,Disrupt,634,Yootha (side quest)
+Head,The Heart of Fire,Act 2: Terral Jungle,Hammerhead (W),1,0,0,2,Charge,470,Guano chest
+Head,The Heart of Fire,Act 2: Terral Jungle,Dark vine pith (M),1,0,0,2,Thorns,479,Buckmaster Bill
+Head,The Heart of Fire,Act 2: (Continued),Maiden's mask,1,0,2,0,Sear,699,Sun maidens
+Head,The Heart of Fire,Act 2: (Continued),Wings of gold,1,0,0,1,Time shift,524,Golden guards
+Head,The Heart of Fire,Act 2: (Continued),King of the pond (M),1,0,2,0,Overload,575,Fisher King
+Head,The Heart of Fire,Act 2: (Continued),Anansi's hood (M),1,0,3,0,Webbed,685,Anansi
+Head,The Heart of Fire,Act 2: (Continued),Eyes of the serpent (W/R),1,0,0,2,Hypnotise,383/473,Kaala
+Head,The Heart of Fire,Act 2: (Continued),Crown of Gandhara,1,2,0,0,Command,737,Hanuman
+Head,The Heart of Fire,Act 2: (Continued),Black talon hood (R),2,3,0,0,Vanish,770,Issachar
+Head,The Heart of Fire,Act 3: Tartarus,Troll tusks,2,0,0,2,Charge,724,Nergal
+Head,The Heart of Fire,Act 3: Tartarus,Helm of reflection (M),2,0,0,2,Deflect,546,Bridge sentries
+Head,The Heart of Fire,Act 3: Tartarus,Mourn helm (W),2,2,0,0,Impale,789,Nyx the dark wind
+Head,The Heart of Fire,Act 3: Tartarus,Wastrel's guise (R),2,2,0,0,Blind,730,Kuderas
+Head,The Heart of Fire,Act 3: Tartarus,Mordant shroud (M),2,0,3,0,Acid,781,Chilopoda
+Head,The Heart of Fire,Act 3: Tartarus,Crimson cover (R),2,2,0,0,Bleed,598,Joss
+Head,The Heart of Fire,Act 3: Tartarus,Blood-sworn crown (W),2,0,0,3,Iron will,615,Erkil (hexed)
+Head,The Heart of Fire,Act 3: Tartarus,Volcanist's hood (M),2,0,3,0,Overload,803,Erkil (hexed)
+Head,The Heart of Fire,Act 3: Tartarus,Prowler's cowl (R),2,4,0,0,Vanish,878,Erkil (hexed)
+Head,The Heart of Fire,Act 3: Tartarus,Gore mask (R),2,3,0,0,Mangle,608,Evin Daala
+Head,The Heart of Fire,Act 3: Tartarus,Puritan's peak,2,0,0,2,"Charm, Heal",871,Virgil
+Head,The Heart of Fire,Act 3: Tartarus,Krakka's crown (M),2,0,5,0,Command,873,Krakatoa
+Gloves,The Heart of Fire,Act 1: Fenstone Moors,Troll-skin gloves,0,0,0,1,None,50,Barrow
+Gloves,The Heart of Fire,Act 1: Fenstone Moors,Gloves of the night fiend,0,1,0,0,Fiend's finest,48,Highwayman
+Gloves,The Heart of Fire,Act 1: Fenstone Moors,Dark vein bracers,1,0,0,1,None,91,Margoyle
+Gloves,The Heart of Fire,Act 1: Fenstone Moors,Dread forge gauntlets,0,1,1,0,Retaliation,23,Forger
+Gloves,The Heart of Fire,Act 1: Fenstone Moors,Patchwork gloves,0,0,1,1,Charm,228,Toymaker's golems
+Gloves,The Heart of Fire,Act 1: Fenstone Moors,Janitor's safety gloves,0,1,0,1,None,236,Poltergeist
+Gloves,The Heart of Fire,Act 1: Fenstone Moors,Armbands of living flame,1,0,1,0,Sear,301,Dagona
+Gloves,The Heart of Fire,Act 1: Fenstone Moors,Phantom gauntlets,1,1,0,0,Curse,124,Gairn
+Gloves,The Heart of Fire,Act 2: Terral Jungle,Don's fists,1,3,0,0,Sideswipe,492,Scholar (side quest)
+Gloves,The Heart of Fire,Act 2: Terral Jungle,Rusted armbands (W),0,1,0,1,Counter,232,Lycanth
+Gloves,The Heart of Fire,Act 2: Terral Jungle,Bracers of frenzy (W),1,1,0,0,Compulsion,160,Zephyr
+Gloves,The Heart of Fire,Act 2: Terral Jungle,Fingerless gloves (R),1,1,0,0,Crawlers,246,Gaia
+Gloves,The Heart of Fire,Act 2: Terral Jungle,Shocking scales (M),1,0,1,0,Shock!,158,Boogaloo
+Gloves,The Heart of Fire,Act 2: Terral Jungle,Armbands of attraction (M),1,0,1,0,Confound,544,Gaia
+Gloves,The Heart of Fire,Act 2: Terral Jungle,Weeper's blooms (M),1,0,2,0,Call of nature,709,The weeper
+Gloves,The Heart of Fire,Act 2: Terral Jungle,Bone bracelets,1,1,0,0,Trickster,765,Witch
+Gloves,The Heart of Fire,Act 2: Terral Jungle,Rainbow-skin brassard (M),1,0,1,0,Regrowth,660/693,Drecko
+Gloves,The Heart of Fire,Act 2: Terral Jungle,The untouchables,1,2,0,0,Shunt,501,Coronado
+Gloves,The Heart of Fire,Act 2: Terral Jungle,Leather long arms,1,2,0,0,Sure grip,479,Buckmaster Bill
+Gloves,The Heart of Fire,Act 2: (Continued),Burnished gauntlets,0,2,0,2,Knockdown,524,Golden guards
+Gloves,The Heart of Fire,Act 2: (Continued),Prickle pair (R),1,2,0,0,Barbs,683,Sitadell
+Gloves,The Heart of Fire,Act 2: (Continued),Waxen wilds (M),1,0,0,2,Surge,714,Gheira
+Gloves,The Heart of Fire,Act 2: (Continued),Spider grips (W/R),1,2,0,0,Sure grip,840,Anansi
+Gloves,The Heart of Fire,Act 2: (Continued),Drake's scales (W),1,4,0,0,Rake,745,Issachar
+Gloves,The Heart of Fire,Act 3: Tartarus,Nergal's splinters (M),1,0,0,2,Rake,724,Nergal
+Gloves,The Heart of Fire,Act 3: Tartarus,Warfists of fury (W),1,3,0,0,Knockdown,790,Furies
+Gloves,The Heart of Fire,Act 3: Tartarus,Deft hands,1,2,0,0,"Stun, steal",642,Imp
+Gloves,The Heart of Fire,Act 3: Tartarus,Fortune's seekers (W),1,4,0,0,Unstoppable,730,Kuderas
+Gloves,The Heart of Fire,Act 3: Tartarus,Gloves of the firmament (M),1,0,4,0,Resolve,728,Evin Daala
+Gloves,The Heart of Fire,Act 3: Tartarus,Gore-soaked fists (W),1,4,0,0,Slam,791,Evin Daala
+Gloves,The Heart of Fire,Act 3: Tartarus,Grips of living stone (R),1,0,0,4,Might of stone,794,Erkil
+Gloves,The Heart of Fire,Act 3: Tartarus,Blood-sworn gauntlets (W),1,4,0,0,Resolve,679,Nephele (hexed)
+Gloves,The Heart of Fire,Act 3: Tartarus,Prowler's handguards (R),1,4,0,0,Sneak,838,Nephele (hexed)
+Gloves,The Heart of Fire,Act 3: Tartarus,Volcanist's handwraps (M),1,0,4,0,Melt,708,Nephele (hexed)
+Chest,The Heart of Fire,Act 1: Fenstone Moors,Rider's jerkin,1,0,0,0,None,,Prologue
+Chest,The Heart of Fire,Act 1: Fenstone Moors,Joseph's coat,1,0,0,1,"Second skin, charm",,(side quest)
+Chest,The Heart of Fire,Act 1: Fenstone Moors,Wolf-bone vest,1,0,0,1,None,106,Direwolf
+Chest,The Heart of Fire,Act 1: Fenstone Moors,Highwayman's coat,1,0,1,0,Fear,48,Highwayman
+Chest,The Heart of Fire,Act 1: Fenstone Moors,Green blaze,1,0,0,1,Haste,198,Assassin ant
+Chest,The Heart of Fire,Act 1: Fenstone Moors,Rusted chainmail,1,0,0,1,None,205,Cannon crew
+Chest,The Heart of Fire,Act 1: Fenstone Moors,Knot of knives,1,1,0,0,Flurry,286,Lazlo (special)
+Chest,The Heart of Fire,Act 1: Fenstone Moors,Medic's uniform,1,0,1,0,Heal,279,Stitches puzzle
+Chest,The Heart of Fire,Act 1: Fenstone Moors,Barbarian's chest wig,1,1,0,0,Fear,279,Stitches puzzle
+Chest,The Heart of Fire,Act 1: Fenstone Moors,Sawdust 'n stitches,1,0,0,1,Heartless,105,Cuddles
+Chest,The Heart of Fire,Act 1: Fenstone Moors,Charged breastplate,0,1,0,1,Lightning,44,Stone giants
+Chest,The Heart of Fire,Act 1: Fenstone Moors,Shockwave,0,2,0,1,Lightning,188,Stone giants (special)
+Chest,The Heart of Fire,Act 1: Fenstone Moors,Barkskin barding,1,0,0,1,Thorn armour,308,Orgorath
+Chest,The Heart of Fire,Act 1: Fenstone Moors,Hound-master's tunic,1,1,0,0,Sideswipe,231,Black shuck
+Chest,The Heart of Fire,Act 2: Terral Jungle,Stoneguard chest (W),1,2,0,0,Might of stone,528,Gaia
+Chest,The Heart of Fire,Act 2: Terral Jungle,Gravedirt girdle (M),1,0,1,0,Parasite,544,Gaia
+Chest,The Heart of Fire,Act 2: Terral Jungle,Preacher's coat (R),1,1,0,0,Missionary's calling,246,Gaia
+Chest,The Heart of Fire,Act 2: Terral Jungle,Nocturnal leathers (W),1,2,0,0,Savagery,556,Umbra
+Chest,The Heart of Fire,Act 2: Terral Jungle,Electrified vest (R),1,1,0,0,Shock!,325,Boogaloo
+Chest,The Heart of Fire,Act 2: (Continued),Forest cuirass (W),0,2,0,2,Thorn armour,709,The weeper
+Chest,The Heart of Fire,Act 2: (Continued),Gator aid,1,0,0,2,Second skin,742,Alligator
+Chest,The Heart of Fire,Act 2: (Continued),Bright scale hauberk (W),0,2,0,2,Radiance,660/693,Drecko
+Chest,The Heart of Fire,Act 2: (Continued),Desolation robes,2,0,2,0,Siphon,748,Succubus
+Chest,The Heart of Fire,Act 2: (Continued),Buckmaster's jacket (W),0,3,0,1,Cunning,479,Buckmaster Bill
+Chest,The Heart of Fire,Act 2: (Continued),Sniper's jacket,1,0,1,0,Focus,243,Sniper
+Chest,The Heart of Fire,Act 2: (Continued),Tracker's chestguard,1,0,0,2,Critical strike,678,Tigris
+Chest,The Heart of Fire,Act 2: (Continued),Safari cams (W),1,0,0,2,Vanish,421,Buckmaster Bill (side quest)
+Chest,The Heart of Fire,Act 2: (Continued),Burnished breastplate,0,3,0,2,Blind,699,Golden guards
+Chest,The Heart of Fire,Act 2: (Continued),Gilded chasuble (M),2,0,2,0,Channel,531,Sun vault
+Chest,The Heart of Fire,Act 2: (Continued),Widow's weave (M),2,0,3,0,Weaver,685,Anansi
+Chest,The Heart of Fire,Act 2: (Continued),Snakeskin coat (R),2,2,0,0,Deceive,473,Kaala
+Chest,The Heart of Fire,Act 2: (Continued),Drakefire raiment (M),2,0,3,0,Fire aura,761,Issachar
+Chest,The Heart of Fire,Act 2: (Continued),Drakefire chestguard (W),0,4,0,3,Barbs,745,Issachar
+Chest,The Heart of Fire,Act 3: Tartarus,Brace of fury (R),2,3,0,0,Critical strike,790,Furies
+Chest,The Heart of Fire,Act 3: Tartarus,Magma hide (W),1,3,0,0,Backdraft,783,Magma hounds
+Chest,The Heart of Fire,Act 3: Tartarus,Sanguine surcoat (M),2,0,4,0,Dark pact,598,Joss
+Chest,The Heart of Fire,Act 3: Tartarus,Mucus membrane (W),2,0,0,2,Immobilise,781,Chilopoda
+Chest,The Heart of Fire,Act 3: Tartarus,Glutton's robes (M),2,0,4,0,Leech,730,Kuderas
+Chest,The Heart of Fire,Act 3: Tartarus,Titan-forged hauberk (M),2,0,0,3,Thorn armour,716,Erkil
+Chest,The Heart of Fire,Act 3: Tartarus,Crystal plate (W),2,4,0,0,Overpower,818,Nephele
+Chest,The Heart of Fire,Act 3: Tartarus,Blood-sworn chestguard (W),1,0,0,2,Unstoppable,800,Ixion (hexed)
+Chest,The Heart of Fire,Act 3: (Continued),Prowler's tunic,2,4,0,0,Critical strike,732,Ixion (hexed)
+Chest,The Heart of Fire,Act 3: (Continued),Volcanist's vestment,2,0,0,4,Reaper,808,Ixion (hexed)
+Chest,The Heart of Fire,Act 3: (Continued),Rock spine coat (R),2,4,0,0,Gouge,830,Krakatoa
+Chest,The Heart of Fire,Act 3: (Continued),Krakka's casing (W),2,0,0,4,Thorn armour,637,Krakatoa
+Feet,The Heart of Fire,Act 1: Fenstone Moors,Pilgrim's progress,1,0,0,1,Surefooted,235,Vendor/Raven's Rest
+Feet,The Heart of Fire,Act 1: Fenstone Moors,Ghost rider's spurs,1,0,0,0,Reckless,48,Highwayman
+Feet,The Heart of Fire,Act 1: Fenstone Moors,Bile-coated boots,0,1,1,0,None,300,Number 13
+Feet,The Heart of Fire,Act 1: Fenstone Moors,Tarsus boots,0,1,1,0,Surefooted,336,Konga
+Feet,The Heart of Fire,Act 1: Fenstone Moors,Sailor's sandals,1,0,0,0,Surefooted,205,Cannon crew
+Feet,The Heart of Fire,Act 1: Fenstone Moors,Iron stompers,1,0,0,1,Knockdown,219,Saw
+Feet,The Heart of Fire,Act 1: Fenstone Moors,Grounded boots,1,0,1,0,Insulated,236,Poltergeist
+Feet,The Heart of Fire,Act 1: Fenstone Moors,Firewalker's boots,1,1,0,0,Turn up the heat,431,Furnace
+Feet,The Heart of Fire,Act 1: Fenstone Moors,Shaggy mukluks,1,0,0,1,Haste,231,Black shuck
+Feet,The Heart of Fire,Act 2: Terral Jungle,Mud sliders (W),1,1,0,0,Unstoppable,528,Gaia
+Feet,The Heart of Fire,Act 2: Terral Jungle,Storm riders (R),1,0,0,1,Pagan's spirit,297,Zephyr
+Feet,The Heart of Fire,Act 2: (Continued),Conga kickers (R),0,1,0,1,Lightning,325,Boogaloo
+Feet,The Heart of Fire,Act 2: (Continued),Lightning loafers (M),1,0,1,0,Lightning,458,Boogaloo
+Feet,The Heart of Fire,Act 2: (Continued),Stone walkers,1,0,1,0,Might of stone,621,Totem
+Feet,The Heart of Fire,Act 2: (Continued),Jungle runners,1,0,0,0,(+2 health) Haste,780,Zambezi
+Feet,The Heart of Fire,Act 2: (Continued),Bug grinders (W),1,2,0,0,Compulsion,421,Buckmaster Bill (side quest)
+Feet,The Heart of Fire,Act 2: (Continued),Rough pelt moccasins (M),1,0,0,2,Dominate,641,Terral devil
+Feet,The Heart of Fire,Act 2: (Continued),Golden greaves (W),1,2,0,0,Charm,550,Sun vault
+Feet,The Heart of Fire,Act 2: (Continued),Enchanted boots,1,0,0,1,Heal,575,Fisher king
+Feet,The Heart of Fire,Act 2: (Continued),Slither steps,1,2,0,0,Charm,473,Kaala
+Feet,The Heart of Fire,Act 2: (Continued),Death blades (R),2,3,0,0,Fatal blow,770,Issachar
+Feet,The Heart of Fire,Act 3: Tartarus,Lava pads (M),2,0,2,0,Fire shield,783,Magma hounds
+Feet,The Heart of Fire,Act 3: Tartarus,Slime skimmers,2,2,0,0,Webbed,781,Chilopoda
+Feet,The Heart of Fire,Act 3: Tartarus,Scarlet sabatons (W),2,3,0,0,Haste,598,Joss
+Feet,The Heart of Fire,Act 3: Tartarus,Singed footpads (R),2,3,0,0,Sidestep,812,Ixion
+Feet,The Heart of Fire,Act 3: Tartarus,Ixion's shackles (M),2,0,3,0,Immobilise,592,Ixion
+Feet,The Heart of Fire,Act 3: Tartarus,Frost spike boots (W),2,0,0,2,Barbs,818,Nephele
+Feet,The Heart of Fire,Act 3: Tartarus,Cornerstone boots (M),2,0,0,2,Insulated,716,Erkil
+Main hand,The Heart of Fire,Act 1: Fenstone Moors,Knight's folly,0,1,1,0,None,,Prologue
+Main hand,The Heart of Fire,Act 1: Fenstone Moors,Duty,1,1,0,0,"Charm, Faith & duty",221,Farmers (side quest)
+Main hand,The Heart of Fire,Act 1: Fenstone Moors,Headsplitter,1,2,0,0,Savagery,22,Vendor/Carvel
+Main hand,The Heart of Fire,Act 1: Fenstone Moors,Midnight's edge,1,2,0,0,Dominate,230,Vendor/Carvel
+Main hand,The Heart of Fire,Act 1: Fenstone Moors,Walking stick,1,0,1,0,Charm,235,Vendor/Raven's Rest
+Main hand,The Heart of Fire,Act 1: Fenstone Moors,Cut throat's carver,0,1,1,0,Bleed,26,Anna
+Main hand,The Heart of Fire,Act 1: Fenstone Moors,Great divider,1,1,0,0,Bleed,50,Barrow
+Main hand,The Heart of Fire,Act 1: Fenstone Moors,Splintered claw,0,1,0,1,None,133,Sinister sprigs
+Main hand,The Heart of Fire,Act 1: Fenstone Moors,Ivory spire,0,0,1,0,Focus,359,Bishop
+Main hand,The Heart of Fire,Act 1: Fenstone Moors,Rusted knife,1,0,0,0,Bleed,20,Zombie goblin
+Main hand,The Heart of Fire,Act 1: Fenstone Moors,Stalker's stiletto,1,0,1,0,Silverfrost,372,Falks
+Main hand,The Heart of Fire,Act 1: Fenstone Moors,Flint knife,1,0,0,0,Gouge,336,Konga
+Main hand,The Heart of Fire,Act 1: Fenstone Moors,Mighty claw,1,1,0,0,Sideswipe,198,Assassin ant
+Main hand,The Heart of Fire,Act 1: Fenstone Moors,Winter's fall,1,1,0,0,Silverfrost,30,Jeeves
+Main hand,The Heart of Fire,Act 1: Fenstone Moors,Red mist,0,2,2,0,Bleed,174,Lazlo (special)
+Main hand,The Heart of Fire,Act 1: Fenstone Moors,Buzz saw,1,0,0,0,Cleave,219,Saw
+Main hand,The Heart of Fire,Act 1: Fenstone Moors,Forger's hammer,0,2,0,0,Pound,23,Forger
+Main hand,The Heart of Fire,Act 1: Fenstone Moors,Furnace fire,1,0,1,0,Sear,431,Furnace
+Main hand,The Heart of Fire,Act 1: Fenstone Moors,Gratuitous maximus,1,1,0,0,Bleed,498,Maximus
+Main hand,The Heart of Fire,Act 1: Fenstone Moors,Stone spike (R),0,2,0,0,Critical strike,44,Stone giants
+Main hand,The Heart of Fire,Act 1: Fenstone Moors,Black peak (R),0,2,0,0,Deep wound,188,Stone giants (special)
+Main hand,The Heart of Fire,Act 1: Fenstone Moors,Twilight scepter (M),1,0,2,0,Wither,493,Custodian
+Main hand,The Heart of Fire,Act 1: Fenstone Moors,Inscribed fist (W),1,2,0,0,Knockdown,502,White abbot
+Main hand,The Heart of Fire,Act 1: (Continued),Frost reaver's tongue,1,2,0,0,Frost bite,124,Gairn
+Main hand,The Heart of Fire,Act 1: (Continued),Bramble blade,1,2,0,0,Bleed,308,Orgorath
+Main hand,The Heart of Fire,Act 1: (Continued),Solstice,1,0,3,0,Channel,155,Wicker man
+Main hand,The Heart of Fire,Act 2: Terral Jungle,Wangimbo (W),2,2,0,0,Impale,612,Vendor/Emerald Isle
+Main hand,The Heart of Fire,Act 2: Terral Jungle,Abracabamba (M),2,0,2,0,Blink,612,Vendor/Emerald Isle
+Main hand,The Heart of Fire,Act 2: Terral Jungle,Thunder (W),1,2,0,0,Savage arms,528,Gaia
+Main hand,The Heart of Fire,Act 2: Terral Jungle,Broken blade (M),1,0,2,0,Bleed,544,Gaia
+Main hand,The Heart of Fire,Act 2: Terral Jungle,Tremor stick (W),1,2,0,0,Shock!,569,Boogaloo
+Main hand,The Heart of Fire,Act 2: Terral Jungle,Wind baton (M),1,0,2,0,Windblast,346,Zephyr
+Main hand,The Heart of Fire,Act 2: Terral Jungle,Glaive of souls,2,2,2,0,Vampirism,602,Mortzilla
+Main hand,The Heart of Fire,Act 2: Terral Jungle,Grub's glory,1,2,0,0,Crawlers,455,Grub knight
+Main hand,The Heart of Fire,Act 2: Terral Jungle,Lone wolf,1,2,0,0,Bleed,757,Travellers' shelter
+Main hand,The Heart of Fire,Act 2: Terral Jungle,Shrunken hand,2,1,0,0,Sideswipe,634,Yootha (side quest)
+Main hand,The Heart of Fire,Act 2: Terral Jungle,Voodoo doll,2,0,2,0,Curse,765,Witch
+Main hand,The Heart of Fire,Act 2: Terral Jungle,Fang of the fearless,2,1,0,0,Deep wound,660/693,Drecko
+Main hand,The Heart of Fire,Act 2: Terral Jungle,Nelson's column (W),1,3,0,0,Knockdown,421,Buckmaster Bill (side quest)
+Main hand,The Heart of Fire,Act 2: Terral Jungle,Nelson's column (W),1,3,0,0,Knockdown,427,Nelson
+Main hand,The Heart of Fire,Act 2: Terral Jungle,Bone wild,1,2,0,0,Deep wound,780,Zambezi
+Main hand,The Heart of Fire,Act 2: Terral Jungle,Bloodied claws,2,2,0,0,Rake,678,Tigris
+Main hand,The Heart of Fire,Act 2: Terral Jungle,Jade teeth (W),2,2,0,0,Rake,720,Perez
+Main hand,The Heart of Fire,Act 2: Terral Jungle,Crystal dagger (R),2,3,0,0,Gut ripper,499,Buckmaster Bill (side quest)
+Main hand,The Heart of Fire,Act 2: Terral Jungle,Ebon cutlass (R),2,3,0,0,Deep wound,499,Buckmaster Bill (side quest)
+Main hand,The Heart of Fire,Act 2: (Continued),Sun blaze,2,3,0,0,Sear,699,Sun maidens
+Main hand,The Heart of Fire,Act 2: (Continued),Ancestral spear (W),2,3,0,0,Spirt hunter,461,Font of souls
+Main hand,The Heart of Fire,Act 2: (Continued),Ancestral blade (R),2,3,0,0,"Piercing, bleed",526,Font of souls
+Main hand,The Heart of Fire,Act 2: (Continued),Ancestral stave (M),2,0,3,0,"Overload, focus",514,Font of souls
+Main hand,The Heart of Fire,Act 2: (Continued),Ceremonial dagger,2,2,2,0,Bleed,508,Ziggurat
+Main hand,The Heart of Fire,Act 2: (Continued),Burnished knuckles (W),2,2,0,0,Fatal blow,524,Golden guards
+Main hand,The Heart of Fire,Act 2: (Continued),Mortal coil (R),2,2,0,0,Reaper,666,Lich
+Main hand,The Heart of Fire,Act 2: (Continued),Hunting fork (W),1,3,0,0,Skewer,575,Fisher king
+Main hand,The Heart of Fire,Act 2: (Continued),Untamed will (R),2,3,0,0,Piercing,729,Gheira
+Main hand,The Heart of Fire,Act 2: (Continued),Death rattle (M),2,0,3,0,Near death,383,Kaala
+Main hand,The Heart of Fire,Act 2: (Continued),Comb of sailors' fingers,2,2,0,0,Disease,657,Siren sisters (side quest)
+Main hand,The Heart of Fire,Act 2: (Continued),Wishing staff (M),2,0,3,0,Wish master,737,Hanuman
+Main hand,The Heart of Fire,Act 3: Tartarus,Doom's harbinger,2,5,0,0,Doom,682,Vendor/Haunted shop
+Main hand,The Heart of Fire,Act 3: Tartarus,"Oculus, eye of pain",2,0,5,0,"Lightning, focus",649,Rune forge
+Main hand,The Heart of Fire,Act 3: Tartarus,"Ravenos, bringer of ruin",2,5,0,0,"Deep wound, sear",796,Rune forge
+Main hand,The Heart of Fire,Act 3: Tartarus,Fist of fury,2,3,0,0,Knockdown,455,Furies
+Main hand,The Heart of Fire,Act 3: Tartarus,Acheron's war glaive (W/R),2,4,0,0,Cleave,777,Treasure vault
+Main hand,The Heart of Fire,Act 3: Tartarus,Acheron's tower (M),2,0,4,0,Might of stone,176,Treasure vault
+Main hand,The Heart of Fire,Act 3: Tartarus,Crystal hammer (W),2,5,0,0,Stagger,893,Tourmalus
+Main hand,The Heart of Fire,Act 3: Tartarus,Serrated scapula (W),2,5,0,0,Fallen hero,791,Evin Daala
+Main hand,The Heart of Fire,Act 3: (Continued),Spoke of the wheel (R),2,4,0,0,Deep wound,812,Ixion
+Main hand,The Heart of Fire,Act 3: (Continued),Abandoned hope (R),3,4,0,0,Gut ripper,723,Nephele
+Main hand,The Heart of Fire,Act 3: (Continued),Azure embers (M),2,0,4,0,Disrupt,787,Nephele
+Main hand,The Heart of Fire,Act 3: (Continued),Hellslide halberd (W),2,6,0,0,Impale,637,Krakatoa
+Main hand,The Heart of Fire,Act 3: (Continued),Avalanche (M),2,0,6,0,Shatter,873,Krakatoa
+Left hand,The Heart of Fire,Act 1: Fenstone Moors,Silver leaf,1,0,1,0,Focus,22,Vendor/Carvel
+Left hand,The Heart of Fire,Act 1: Fenstone Moors,Black heart,1,0,0,2,Deflect,230,Vendor/Carvel
+Left hand,The Heart of Fire,Act 1: Fenstone Moors,Faith,1,2,0,0,"Immobilise, Faith & duty",276,Fallen knight (side quest)
+Left hand,The Heart of Fire,Act 1: Fenstone Moors,Colt phoenix,1,1,0,0,Volley,305,Raven's Rest (side quest)
+Left hand,The Heart of Fire,Act 1: Fenstone Moors,Greenstone axe,0,1,0,0,None,74,Drust the defiled
+Left hand,The Heart of Fire,Act 1: Fenstone Moors,Dire claw,0,1,1,0,None,106,Direwolf
+Left hand,The Heart of Fire,Act 1: Fenstone Moors,Manticore's tooth,0,1,0,0,Savagery,292,Manticore
+Left hand,The Heart of Fire,Act 1: Fenstone Moors,Doorman,0,0,0,1,Slam,234,Gutless
+Left hand,The Heart of Fire,Act 1: Fenstone Moors,Cruel cleaver,0,2,0,0,None,234,Gutless
+Left hand,The Heart of Fire,Act 1: Fenstone Moors,Repentance,1,0,0,0,Channel,218,Reverend
+Left hand,The Heart of Fire,Act 1: Fenstone Moors,Falk's firestarter,1,1,0,0,Head shot,372,Falks
+Left hand,The Heart of Fire,Act 1: Fenstone Moors,Sword of the dales,0,1,1,0,Heal,109,Loggers' camp
+Left hand,The Heart of Fire,Act 1: Fenstone Moors,Bugsplatter,1,1,0,0,None,164,Goblins
+Left hand,The Heart of Fire,Act 1: Fenstone Moors,Flint knife,1,0,0,0,Gouge,336,Konga
+Left hand,The Heart of Fire,Act 1: (Continued),Cutlass of the seven seas,1,0,0,0,Parry,264,Captain's cabin
+Left hand,The Heart of Fire,Act 1: (Continued),Celeste's anchor,0,1,0,0,Pound,189,Ship's hold
+Left hand,The Heart of Fire,Act 1: (Continued),Windbreaker,1,0,0,1,None,91,Margoyle
+Left hand,The Heart of Fire,Act 1: (Continued),Jeeve's juicer,1,1,0,0,Gouge,286,Lazlo (special)
+Left hand,The Heart of Fire,Act 1: (Continued),Quill of Aquila,1,1,0,0,Bleed,303,Inkheart
+Left hand,The Heart of Fire,Act 1: (Continued),Ink-blotted tome,1,0,1,0,Dominate,303,Inkheart
+Left hand,The Heart of Fire,Act 1: (Continued),Defendus maximus,1,0,0,1,Deflect,498,Maximus
+Left hand,The Heart of Fire,Act 1: (Continued),Rock fist,1,0,1,0,Surge,44,Stone giants
+Left hand,The Heart of Fire,Act 1: (Continued),Stone fury,1,0,2,0,Surge,188,Stone giants (special)
+Left hand,The Heart of Fire,Act 1: (Continued),Inscribed fist (W),1,2,0,0,Pound,706,White abbot
+Left hand,The Heart of Fire,Act 1: (Continued),Dawnlight,1,1,0,0,Blind,502,Custodian
+Left hand,The Heart of Fire,Act 2: Terral Jungle,Fer-de-lance (R),1,2,0,0,Venom,467,Vendor/Emerald Isle
+Left hand,The Heart of Fire,Act 2: Terral Jungle,Monarch viper (R),2,2,0,0,Venom,467,Vendor/Emerald Isle
+Left hand,The Heart of Fire,Act 2: Terral Jungle,Lesser bushmaster (R),2,3,0,0,Constrictor,467,Vendor/Emerald Isle
+Left hand,The Heart of Fire,Act 2: Terral Jungle,Bogglespiff's digest,2,0,2,0,Insight,492,Scholar (side quest)
+Left hand,The Heart of Fire,Act 2: Terral Jungle,Squall (W),1,2,0,0,Savage arms,160,Zephyr
+Left hand,The Heart of Fire,Act 2: Terral Jungle,Silver flight (R),1,2,0,0,Charm,297,Zephyr
+Left hand,The Heart of Fire,Act 2: Terral Jungle,Lost scriptures (M),1,0,2,0,Cistene's chattels,346,Zephyr
+Left hand,The Heart of Fire,Act 2: Terral Jungle,Feral falcate (R),1,2,0,0,Pagan's spirit,507,Lycanth
+Left hand,The Heart of Fire,Act 2: Terral Jungle,Bone shaker (M),2,0,1,0,Fear,765,Witch
+Left hand,The Heart of Fire,Act 2: Terral Jungle,Creek guard (W),2,0,0,1,Retaliation,742,Alligator
+Left hand,The Heart of Fire,Act 2: Terral Jungle,Shrunken hand,2,1,0,0,Sideswipe,634,Yootha (side quest)
+Left hand,The Heart of Fire,Act 2: (Continued),Cart wheel (W),2,0,0,1,Roll with it,697,Tigris cages (special)
+Left hand,The Heart of Fire,Act 2: (Continued),Brazen bar,2,0,2,0,Knockdown,697,Tigris cages (special)
+Left hand,The Heart of Fire,Act 2: (Continued),Rip spleen,2,1,0,0,Bleed,780,Zambezi
+Left hand,The Heart of Fire,Act 2: (Continued),Scarlet hunter (R),2,2,0,0,Critical strike,447,Nelson
+Left hand,The Heart of Fire,Act 2: (Continued),The nosepicker,2,0,2,0,Bleed,447,Nelson
+Left hand,The Heart of Fire,Act 2: (Continued),Bark whip,2,2,0,0,Bleed,720,Perez
+Left hand,The Heart of Fire,Act 2: (Continued),Stormbound,1,2,0,0,Volley,243,Sniper
+Left hand,The Heart of Fire,Act 2: (Continued),Emerald taipan (R),2,3,0,0,Venom,499,Buckmaster Bill (side quest)
+Left hand,The Heart of Fire,Act 2: (Continued),Medicine staff (M),2,0,3,0,Greater heal,369,Buckmaster Bill (side quest)
+Left hand,The Heart of Fire,Act 2: (Continued),High priest's scepter,2,0,2,0,Resolve,531,Sun vault
+Left hand,The Heart of Fire,Act 2: (Continued),Embalming razor,2,2,0,0,Blindstrike,511,Sun vault
+Left hand,The Heart of Fire,Act 2: (Continued),Sol shield,2,0,0,2,Radiance,550,Sun vault
+Left hand,The Heart of Fire,Act 2: (Continued),Rodent's scratchers,2,2,0,0,Piercing,641,Terral devil
+Left hand,The Heart of Fire,Act 2: (Continued),Devil's incisor,2,2,0,0,Fatal blow,641,Terral devil
+Left hand,The Heart of Fire,Act 2: (Continued),Black taipan,2,3,0,0,Convulsions,885,Lecture room
+Left hand,The Heart of Fire,Act 2: (Continued),Widow's needle (R),2,3,0,0,Piercing,840,Anansi
+Left hand,The Heart of Fire,Act 2: (Continued),Carapace crest (W),2,0,0,2,Webbed,840,Anansi
+Left hand,The Heart of Fire,Act 2: (Continued),Spinneret of shadows (M),2,0,3,0,Webbed,685,Anansi
+Left hand,The Heart of Fire,Act 2: (Continued),Drake's defender (W),2,0,0,4,Piercing,745,Issachar
+Left hand,The Heart of Fire,Act 3: Tartarus,Self-published grimoire (M),2,0,3,0,Dark pact,600,Printing press
+Left hand,The Heart of Fire,Act 3: Tartarus,Self-published grimoire (M),2,0,3,0,Surge,539,Printing press
+Left hand,The Heart of Fire,Act 3: Tartarus,Self-published grimoire (M),2,0,3,0,Regrowth,816,Printing press
+Left hand,The Heart of Fire,Act 3: (Continued),Self-published grimoire (M),2,0,3,0,Trickster,876,Printing press
+Left hand,The Heart of Fire,Act 3: (Continued),Self-published tome (M),2,0,0,3,Dark pact,380,Printing press
+Left hand,The Heart of Fire,Act 3: (Continued),Self-published tome (M),2,0,0,3,Trickster,806,Printing press
+Left hand,The Heart of Fire,Act 3: (Continued),Self-published tome (M),2,0,0,3,Regrowth,826,Printing press
+Left hand,The Heart of Fire,Act 3: (Continued),Self-published tome (M),2,0,0,3,Surge,845,Printing press
+Left hand,The Heart of Fire,Act 3: (Continued),"Mortis, shard of doom (W/R)",2,5,0,0,"Bleed, lightning",536,Rune forge
+Left hand,The Heart of Fire,Act 3: (Continued),"Scriva, nimbus of nightmares (M)",3,0,4,0,"Curse, sear",474,Rune forge
+Left hand,The Heart of Fire,Act 3: (Continued),Light-forged bulwark (W),2,0,0,4,Defender,682,Vendor/Haunted shop
+Left hand,The Heart of Fire,Act 3: (Continued),Hound hook (R),2,3,0,0,Gouge,783,Magma hounds
+Left hand,The Heart of Fire,Act 3: (Continued),Bone rot (W),2,3,0,0,Leech,724,Nergal
+Left hand,The Heart of Fire,Act 3: (Continued),Dark star,2,0,3,0,Barbs,789,Nyx the dark wind
+Left hand,The Heart of Fire,Act 3: (Continued),Dull gladius,2,3,0,0,Slam,883,Sparkacus
+Left hand,The Heart of Fire,Act 3: (Continued),Calcite claw,2,4,0,0,Piercing,893,Tourmalus
+Left hand,The Heart of Fire,Act 3: (Continued),"Agilax, the string of tears (R)",2,3,0,0,Blood archer,846,Joss
+Left hand,The Heart of Fire,Act 3: (Continued),Blood thorn (R),2,5,0,0,Gouge,608,Evin Daala
+Left hand,The Heart of Fire,Act 3: (Continued),Ixion's wheel (W),2,0,0,4,Fire aura,823,Ixion
+Left hand,The Heart of Fire,Act 3: (Continued),B is for Banshee (M),2,0,4,0,Windblast,787,Nephele
+Left hand,The Heart of Fire,Act 3: (Continued),Shiverspine (R),2,3,0,0,frostbite,723,Nephele
+Left hand,The Heart of Fire,Act 3: (Continued),Erkil's hacker (W),2,4,0,0,Compulsion,834,Erkil
+Left hand,The Heart of Fire,Act 3: (Continued),Blackthorn twister (R),2,4,0,0,Cruel twist,794,Erkil
+Left hand,The Heart of Fire,Act 3: (Continued),Krakka's vengeance (R),2,5,0,0,Piercing,830,Krakatoa
+Left hand,The Heart of Fire,Act 3: (Continued),Stones of dissolution (M),3,0,5,0,Confound,873,Krakatoa
+Talisman,The Heart of Fire,Act 1: Fenstone Moors,Wolf's paw,1,0,0,0,None,235,Vendor/Raven's Rest
+Talisman,The Heart of Fire,Act 1: Fenstone Moors,Crow feather,0,0,1,0,None,7,Wiccan witch
+Talisman,The Heart of Fire,Act 1: Fenstone Moors,Wishing well coin,0,0,0,0,Charm,20,Zombie goblin
+Talisman,The Heart of Fire,Act 1: Fenstone Moors,Luke's left hand,0,0,0,0,High five!,79,Crews' quarters
+Talisman,The Heart of Fire,Act 1: Fenstone Moors,Stone blood,0,0,0,1,Heal,91,Margoyle
+Talisman,The Heart of Fire,Act 1: Fenstone Moors,Maker's button,1,0,0,0,None,105,Cuddles
+Talisman,The Heart of Fire,Act 1: Fenstone Moors,Adam's core,0,1,0,0,Heal,498,Maximus
+Talisman,The Heart of Fire,Act 1: Fenstone Moors,Elder seed (M),0,0,1,0,Druid,403,Damaris
+Talisman,The Heart of Fire,Act 1: Fenstone Moors,Benediction (M),0,0,1,0,Acolyte,487,Benin
+Talisman,The Heart of Fire,Act 1: Fenstone Moors,Earthen ashes,0,1,0,0,Cauterise,301,Dagona
+Talisman,The Heart of Fire,Act 2: Terral Jungle,The mind's eye,0,0,1,0,Scholar,275,Andos (side quest)
+Talisman,The Heart of Fire,Act 2: Terral Jungle,Lightning whetstone (W/R),1,0,0,0,Sure edge,325/569,Boogaloo
+Talisman,The Heart of Fire,Act 2: Terral Jungle,Spook chi (R),1,0,0,0,Trickster,255,Umbra
+Talisman,The Heart of Fire,Act 2: Terral Jungle,Screaming skull,1,0,0,0,(+4 health) Charm,629,Mortzilla
+Talisman,The Heart of Fire,Act 2: Terral Jungle,Khana's pride,1,0,0,1,Sideswipe,636,Greyhair
+Talisman,The Heart of Fire,Act 2: Terral Jungle,Tigris paw,1,0,0,0,Evade,678,Tigris
+Talisman,The Heart of Fire,Act 2: Terral Jungle,Stone of the sitadell (W),1,0,0,0,Disrupt,683,Sitadell
+Talisman,The Heart of Fire,Act 2: Terral Jungle,Lich stone (M),0,0,1,0,Runecaster,778,Lich
+Talisman,The Heart of Fire,Act 2: Terral Jungle,Eye of a kraken (W/R),1,0,0,0,Greater heal,657,Siren sisters (side quest)
+Talisman,The Heart of Fire,Act 2: Terral Jungle,Kaala's scale (R),1,0,0,0,Venommancer,745,Kaala
+Talisman,The Heart of Fire,Act 2: Terral Jungle,Drake spirit (W),1,0,0,0,Drake,473,Kaala
+Talisman,The Heart of Fire,Act 3: Tartarus,"Fade, splinter of shadow",1,0,0,0,"Charm, trickster",674,Rune forge
+Talisman,The Heart of Fire,Act 3: Tartarus,Angel's despair,1,0,0,0,Dirge,546,Bridge sentries
+Talisman,The Heart of Fire,Act 3: Tartarus,Rock idol (M),0,0,0,1,Geomancer,750,Secure vault
+Talisman,The Heart of Fire,Act 3: Tartarus,Blood soul (W),1,1,0,0,Weaver,791,Evin Daala
+Talisman,The Heart of Fire,Act 3: Tartarus,Frozen heart,1,0,0,0,Shatter,818,Nephele
+Talisman,The Heart of Fire,Act 3: Tartarus,Titan stone (W),1,0,0,0,Titan,834,Erkil
+Necklace,The Heart of Fire,Act 1: Fenstone Moors,Wanderer's wytchstone,0,0,1,0,Charm,59,Vendor/Carvel
+Necklace,The Heart of Fire,Act 1: Fenstone Moors,Drust's medallion,0,0,1,0,None,74,Drust the defiled
+Necklace,The Heart of Fire,Act 1: Fenstone Moors,Blood iron knot,0,0,0,1,Charm,34,Barrow
+Necklace,The Heart of Fire,Act 1: Fenstone Moors,Prayer beads,0,0,0,0,Heal,359,Bishop
+Necklace,The Heart of Fire,Act 1: Fenstone Moors,Number of the beast,0,1,1,0,None,300,Number 13
+Necklace,The Heart of Fire,Act 1: Fenstone Moors,Silver whistler,0,0,0,0,Faithful friend,170,Loggers' camp
+Necklace,The Heart of Fire,Act 1: Fenstone Moors,Eye of the swarm,0,1,1,0,Swarm,381,Queen Ballona
+Necklace,The Heart of Fire,Act 1: Fenstone Moors,Betsy's second compass,0,0,0,0,Safe path,264,Captain's cabin
+Necklace,The Heart of Fire,Act 1: Fenstone Moors,Torque of iron,0,1,1,0,Rust,228,Toymaker's golems
+Necklace,The Heart of Fire,Act 1: Fenstone Moors,Dagona's heart,0,1,1,0,Radiance,313,Dagona (side quest)
+Necklace,The Heart of Fire,Act 1: Fenstone Moors,Graven chill,0,1,1,0,Frostbite,124,Gairn
+Necklace,The Heart of Fire,Act 1: Fenstone Moors,Providence,0,1,1,0,Faith,411,Orgorath (special)
+Necklace,The Heart of Fire,Act 2: Terral Jungle,Sanctified scale (W),0,0,0,1,Seraphim's symbols,569,Boogaloo
+Necklace,The Heart of Fire,Act 2: Terral Jungle,Silver bullet (M),0,0,1,0,Quicksilver,350,Lycanth
+Necklace,The Heart of Fire,Act 2: Terral Jungle,Black pearl rosary (M),0,0,1,0,Cistene's chattels,534,Umbra
+Necklace,The Heart of Fire,Act 2: Terral Jungle,Wish bone,0,1,0,0,(+4 health) Charm,629,Mortzilla
+Necklace,The Heart of Fire,Act 2: Terral Jungle,Maggot finger (M),0,0,1,0,Wither,455,Grub knight
+Necklace,The Heart of Fire,Act 2: Terral Jungle,Brock's medallion,0,1,0,0,Fearless,742,Alligator
+Necklace,The Heart of Fire,Act 2: Terral Jungle,Dreamcatcher,1,0,0,0,Immobilise,748,Succubus
+Necklace,The Heart of Fire,Act 2: Terral Jungle,Captive's collar,1,0,0,0,Bleed,697,Tigris cages (special)
+Necklace,The Heart of Fire,Act 2: Terral Jungle,Lucky crown,1,0,0,0,Charm,243,Sniper
+Necklace,The Heart of Fire,Act 2: Terral Jungle,Corroded pendant,1,0,0,0,Rust,524,Golden guards
+Necklace,The Heart of Fire,Act 2: Terral Jungle,Obsidian shard (M),1,0,0,0,Piercing,683,Sitadell
+Necklace,The Heart of Fire,Act 2: Terral Jungle,Hanuman's hair,1,0,0,0,Monkey mob,737,Hanuman
+Necklace,The Heart of Fire,Act 2: Terral Jungle,Sea spray garland (M),1,0,1,0,Wave,575,Fisher king
+Necklace,The Heart of Fire,Act 2: Terral Jungle,Hunter's heart (W),1,0,0,0,Savage call,729,Gheira
+Necklace,The Heart of Fire,Act 3: Tartarus,Illumanti circlet (M),1,0,0,1,Confound,620,Goblin looters
+Necklace,The Heart of Fire,Act 3: Tartarus,Gullet scales,1,0,0,1,Charm,554,Book wyrm
+Necklace,The Heart of Fire,Act 3: Tartarus,Tendon rope (M),1,0,0,0,Greater heal,728,Evin Daala
+Necklace,The Heart of Fire,Act 3: Tartarus,Soldering iron (W),1,1,0,0,Dominate,823,Ixion
+Necklace,The Heart of Fire,Act 3: Tartarus,Chained heart (M),1,0,1,0,Channel,592,Ixion
+Necklace,The Heart of Fire,Act 3: Tartarus,Garm's whistle,1,0,1,0,Packmaster,716,Erkil
+Necklace,The Heart of Fire,Act 3: Tartarus,Collar of correction (R),1,1,0,0,Sweet spot,929,Krakatoa
+Ring,The Heart of Fire,Act 1: Fenstone Moors,Puritan's band,0,1,0,0,Charm,59,Vendor/Carvel
+Ring,The Heart of Fire,Act 1: Fenstone Moors,Epona's blessing,0,0,0,1,Charm,59,Vendor/Carvel
+Ring,The Heart of Fire,Act 1: Fenstone Moors,All Hallows ring,0,1,0,0,None,201,Jack'o Lantern
+Ring,The Heart of Fire,Act 1: Fenstone Moors,Warded wood,0,1,1,0,None,133,Sinister sprigs
+Ring,The Heart of Fire,Act 1: Fenstone Moors,Pilfered ring,0,0,1,0,None,20,Zombie goblin
+Ring,The Heart of Fire,Act 1: Fenstone Moors,Signet of sorrow,0,1,1,0,Suppress,218,Reverend
+Ring,The Heart of Fire,Act 1: Fenstone Moors,Motley band,0,1,1,0,Sneak,79,Crews' quarters
+Ring,The Heart of Fire,Act 1: Fenstone Moors,Pins 'n needles,0,0,0,0,Thorns,381,Queen Ballona
+Ring,The Heart of Fire,Act 1: Fenstone Moors,After burn,0,0,0,1,Turn up the heat,431,Furnace
+Ring,The Heart of Fire,Act 1: Fenstone Moors,The fellowship ring,0,1,1,0,Charm,145,Tree house
+Ring,The Heart of Fire,Act 1: Fenstone Moors,Black hole,0,1,1,0,Dark pact,477,Toymaker's box
+Ring,The Heart of Fire,Act 1: Fenstone Moors,Grieving soul,0,0,0,1,Fire aura,301,Dagona
+Ring,The Heart of Fire,Act 1: Fenstone Moors,Briar star,0,0,0,1,Thorns,308,Orgorath
+Ring,The Heart of Fire,Act 1: Fenstone Moors,Harvester,0,2,2,0,Regrowth,155,Wicker man
+Ring,The Heart of Fire,Act 2: Terral Jungle,Scholar's seal,0,0,1,1,Confound,492,Scholar (side quest)
+Ring,The Heart of Fire,Act 2: Terral Jungle,Lycanth's teeth (W/R),0,1,0,0,Bleed,232/507,Lycanth
+Ring,The Heart of Fire,Act 2: Terral Jungle,Gravedigger's ring (R),0,1,0,0,Underhand,246,Gaia
+Ring,The Heart of Fire,Act 2: Terral Jungle,Pious halo (W),0,2,0,0,Seraphim's symbols,556,Umbra
+Ring,The Heart of Fire,Act 2: Terral Jungle,Shard of sky (R),0,1,0,0,Blind,297,Zephyr
+Ring,The Heart of Fire,Act 2: Terral Jungle,Circle of storms (W),0,0,0,1,Lightning,160,Zephyr
+Ring,The Heart of Fire,Act 2: (Continued),Weirdstone (M),0,0,1,0,Focus,350,Lycanth
+Ring,The Heart of Fire,Act 2: (Continued),Rain dance (M),0,0,0,1,Call of nature,458,Boogaloo
+Ring,The Heart of Fire,Act 2: (Continued),Seal of shadows (M),0,0,1,1,Veil,534,Umbra
+Ring,The Heart of Fire,Act 2: (Continued),Zilla bling,0,0,1,0,(+4 health) Charm,629,Mortzilla
+Ring,The Heart of Fire,Act 2: (Continued),Tangle knot,0,1,1,0,Barbs,709,The weeper
+Ring,The Heart of Fire,Act 2: (Continued),Iron recluse,0,0,2,0,Corrode,757,Travellers' shelter
+Ring,The Heart of Fire,Act 2: (Continued),Shaper's stone (M),0,0,1,1,Might of stone,470,Guano chest
+Ring,The Heart of Fire,Act 2: (Continued),Ring of remedies (M),0,0,2,0,Cauterise,369,Buckmaster Bill (side quest)
+Ring,The Heart of Fire,Act 2: (Continued),Fyre fiend,0,0,0,1,Fire shield,511/531/550,Sun vault
+Ring,The Heart of Fire,Act 2: (Continued),Last breath (W),0,0,0,0,(+4 health) Refresh,666,Lich
+Ring,The Heart of Fire,Act 2: (Continued),Fisher's friend (R),0,1,0,0,Hooked,575,Fisher king
+Ring,The Heart of Fire,Act 2: (Continued),Kiss of a princess,0,1,0,0,Charm,575,Fisher king
+Ring,The Heart of Fire,Act 2: (Continued),Bad tooth (M),0,0,2,0,Disease,714,Gheira
+Ring,The Heart of Fire,Act 2: (Continued),Spark stone (R),0,2,0,0,Lightning,770,Issachar
+Ring,The Heart of Fire,Act 2: (Continued),Twilight tinder (M),0,0,2,0,Overload,761,Issachar
+Ring,The Heart of Fire,Act 3: Tartarus,Abyssal firestone,0,0,0,1,(+2 health) Fire aura,789,Nyx the dark wind
+Ring,The Heart of Fire,Act 3: Tartarus,Wyrmhole (M),0,0,1,0,Vortex,554,Book wyrm
+Ring,The Heart of Fire,Act 3: Tartarus,Aethereal,0,0,0,1,(+2 health) Windblast,851,Rune spirit (side quest)
+Ring,The Heart of Fire,Act 3: Tartarus,Blood diamond (M),0,0,2,0,Bleed,728,Evin Daala
+Ring,The Heart of Fire,Act 3: Tartarus,Heat of ardour (W),0,2,0,0,Sear,823,Ixion
+Ring,The Heart of Fire,Act 3: Tartarus,Crucifixion nail (R),0,1,0,0,Sweet spot,812,Ixion
+Ring,The Heart of Fire,Act 3: (Continued),Circle of sacrifice (M),0,0,1,0,Penance,592,Ixion
+Ring,The Heart of Fire,Act 3: (Continued),The dispossessed (R),0,1,0,1,Steal,723,Nephele
+Ring,The Heart of Fire,Act 3: (Continued),Ironbeard band (W),0,2,0,0,Counter,834,Erkil

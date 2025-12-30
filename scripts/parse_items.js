@@ -46,7 +46,21 @@ const processName = (name) => {
 const processedItems = rawData.slice(1).map((line, index) => {
     if (line.startsWith('#')) return null;
 
-    const parts = line.split(',');
+    const parts = [];
+    let current = '';
+    let inQuotes = false;
+
+    for (const char of line) {
+        if (char === '"') {
+            inQuotes = !inQuotes;
+        } else if (char === ',' && !inQuotes) {
+            parts.push(current);
+            current = '';
+        } else {
+            current += char;
+        }
+    }
+    parts.push(current);
     if (parts.length < 9) return null;
 
     const itemBox = parts[0].trim();
@@ -57,7 +71,7 @@ const processedItems = rawData.slice(1).map((line, index) => {
     const brawn = parseInt(parts[5]) || 0;
     const magic = parseInt(parts[6]) || 0;
     const armour = parseInt(parts[7]) || 0;
-    const ability = parts[8].trim();
+    const abilities = parts[8].trim().split(',');
     const entry = parts[9] ? parseInt(parts[9].trim()) : undefined;
     const location = parts[10] ? parts[10].trim() : undefined;
 
@@ -74,7 +88,7 @@ const processedItems = rawData.slice(1).map((line, index) => {
         book: book,
         act: act,
         stats: {},
-        abilities: [],
+        abilities: abilities.map(a => a.trim()),
         referenceNumber: entry, // Renamed from entry
         location: location,
         careerPreference: career
@@ -84,10 +98,6 @@ const processedItems = rawData.slice(1).map((line, index) => {
     if (brawn) item.stats.brawn = brawn;
     if (magic) item.stats.magic = magic;
     if (armour) item.stats.armour = armour;
-
-    if (ability && ability !== 'None') {
-        item.abilities.push(ability);
-    }
 
     return item;
 }).filter(i => i);

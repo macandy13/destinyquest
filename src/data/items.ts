@@ -10,7 +10,9 @@ export const ITEMS: EquipmentItem[] = [
     "stats": {
       "speed": 1
     },
-    "abilities": [],
+    "abilities": [
+      "None"
+    ],
     "referenceNumber": 68,
     "location": "Vendor/Tithebury Cross"
   },
@@ -24,7 +26,9 @@ export const ITEMS: EquipmentItem[] = [
       "speed": 1,
       "armour": 1
     },
-    "abilities": [],
+    "abilities": [
+      "None"
+    ],
     "referenceNumber": 114,
     "location": "Vendor/Tithebury Cross"
   },
@@ -53,7 +57,9 @@ export const ITEMS: EquipmentItem[] = [
     "stats": {
       "armour": 1
     },
-    "abilities": [],
+    "abilities": [
+      "None"
+    ],
     "referenceNumber": 260,
     "location": "Goblin chief"
   },
@@ -82,7 +88,9 @@ export const ITEMS: EquipmentItem[] = [
     "stats": {
       "speed": 1
     },
-    "abilities": [],
+    "abilities": [
+      "None"
+    ],
     "referenceNumber": 40,
     "location": "Ruffians"
   },
@@ -143,7 +151,9 @@ export const ITEMS: EquipmentItem[] = [
       "speed": 1,
       "armour": 1
     },
-    "abilities": [],
+    "abilities": [
+      "None"
+    ],
     "referenceNumber": 283,
     "location": "Mud golem"
   },
@@ -600,7 +610,9 @@ export const ITEMS: EquipmentItem[] = [
       "brawn": 1,
       "armour": 1
     },
-    "abilities": [],
+    "abilities": [
+      "None"
+    ],
     "referenceNumber": 175,
     "location": "Vendor/Tithebury Cross"
   },
@@ -613,7 +625,9 @@ export const ITEMS: EquipmentItem[] = [
     "stats": {
       "speed": 1
     },
-    "abilities": [],
+    "abilities": [
+      "None"
+    ],
     "referenceNumber": 243,
     "location": "Weather wizard"
   },
@@ -626,7 +640,9 @@ export const ITEMS: EquipmentItem[] = [
     "stats": {
       "speed": 1
     },
-    "abilities": [],
+    "abilities": [
+      "None"
+    ],
     "referenceNumber": 166,
     "location": "Skeletons"
   },
@@ -687,7 +703,9 @@ export const ITEMS: EquipmentItem[] = [
       "brawn": 2,
       "armour": 1
     },
-    "abilities": [],
+    "abilities": [
+      "None"
+    ],
     "referenceNumber": 338,
     "location": "Thievies' guild",
     "careerPreference": "Rogue"
@@ -702,7 +720,9 @@ export const ITEMS: EquipmentItem[] = [
       "speed": 1,
       "armour": 1
     },
-    "abilities": [],
+    "abilities": [
+      "None"
+    ],
     "referenceNumber": 287,
     "location": "Mushroom forest"
   },
@@ -716,7 +736,9 @@ export const ITEMS: EquipmentItem[] = [
       "speed": 1,
       "brawn": 1
     },
-    "abilities": [],
+    "abilities": [
+      "None"
+    ],
     "referenceNumber": 494,
     "location": "Slime"
   },
@@ -730,7 +752,9 @@ export const ITEMS: EquipmentItem[] = [
       "magic": 1,
       "armour": 2
     },
-    "abilities": [],
+    "abilities": [
+      "None"
+    ],
     "referenceNumber": 517,
     "location": "Wormwood (normal)"
   },
@@ -744,7 +768,9 @@ export const ITEMS: EquipmentItem[] = [
       "magic": 2,
       "armour": 2
     },
-    "abilities": [],
+    "abilities": [
+      "None"
+    ],
     "referenceNumber": 533,
     "location": "Wormwood (special)"
   },
@@ -822,7 +848,9 @@ export const ITEMS: EquipmentItem[] = [
       "speed": 1,
       "brawn": 2
     },
-    "abilities": [],
+    "abilities": [
+      "None"
+    ],
     "referenceNumber": 716,
     "location": "Kalimari"
   },
@@ -983,7 +1011,9 @@ export const ITEMS: EquipmentItem[] = [
       "speed": 1,
       "brawn": 2
     },
-    "abilities": [],
+    "abilities": [
+      "None"
+    ],
     "referenceNumber": 370,
     "location": "Nasareim"
   },
@@ -997,7 +1027,9 @@ export const ITEMS: EquipmentItem[] = [
       "magic": 2,
       "armour": 2
     },
-    "abilities": [],
+    "abilities": [
+      "None"
+    ],
     "referenceNumber": 370,
     "location": "Nasareim"
   },
@@ -1061,7 +1093,9 @@ export const ITEMS: EquipmentItem[] = [
       "magic": 3,
       "armour": 2
     },
-    "abilities": [],
+    "abilities": [
+      "None"
+    ],
     "referenceNumber": 776,
     "location": "Bone wyvern"
   },
@@ -1387,7 +1421,9 @@ export const ITEMS: EquipmentItem[] = [
       "speed": 1,
       "magic": 1
     },
-    "abilities": [],
+    "abilities": [
+      "None"
+    ],
     "referenceNumber": 68,
     "location": "Vendor/Tithebury Cross"
   },
@@ -1401,7 +1437,9 @@ export const ITEMS: EquipmentItem[] = [
       "brawn": 1,
       "magic": 1
     },
-    "abilities": [],
+    "abilities": [
+      "None"
+    ],
     "referenceNumber": 161,
     "location": "Rat swarm"
   },
@@ -1446,7 +1484,9 @@ export const ITEMS: EquipmentItem[] = [
       "brawn": 2,
       "armour": 1
     },
-    "abilities": [],
+    "abilities": [
+      "None"
+    ],
     "referenceNumber": 522,
     "location": "Treasure vault"
   },
@@ -1887,7 +1927,9 @@ export const ITEMS: EquipmentItem[] = [
     "stats": {
       "magic": 1
     },
-    "abilities": [],
+    "abilities": [
+      "None"
+    ],
     "referenceNumber": 68,
     "location": "Vendor/Tithebury Cross"
   },
@@ -1900,7 +1942,9 @@ export const ITEMS: EquipmentItem[] = [
     "stats": {
       "armour": 1
     },
-    "abilities": [],
+    "abilities": [
+      "None"
+    ],
     "referenceNumber": 150,
     "location": "Goblin"
   },
@@ -1913,7 +1957,9 @@ export const ITEMS: EquipmentItem[] = [
     "stats": {
       "armour": 1
     },
-    "abilities": [],
+    "abilities": [
+      "None"
+    ],
     "referenceNumber": 228,
     "location": "Huntsman"
   },
@@ -1926,7 +1972,9 @@ export const ITEMS: EquipmentItem[] = [
     "stats": {
       "armour": 2
     },
-    "abilities": [],
+    "abilities": [
+      "None"
+    ],
     "referenceNumber": 125,
     "location": "Were rat"
   },
@@ -1940,7 +1988,9 @@ export const ITEMS: EquipmentItem[] = [
       "magic": 1,
       "armour": 1
     },
-    "abilities": [],
+    "abilities": [
+      "None"
+    ],
     "referenceNumber": 243,
     "location": "Weather wizard"
   },
@@ -2148,7 +2198,9 @@ export const ITEMS: EquipmentItem[] = [
       "speed": 1,
       "armour": 3
     },
-    "abilities": [],
+    "abilities": [
+      "None"
+    ],
     "referenceNumber": 509,
     "location": "Swamp giant",
     "careerPreference": "Warrior"
@@ -2179,7 +2231,9 @@ export const ITEMS: EquipmentItem[] = [
       "speed": 2,
       "brawn": 1
     },
-    "abilities": [],
+    "abilities": [
+      "None"
+    ],
     "referenceNumber": 716,
     "location": "Kalimari"
   },
@@ -2691,7 +2745,9 @@ export const ITEMS: EquipmentItem[] = [
       "speed": 1,
       "brawn": 1
     },
-    "abilities": [],
+    "abilities": [
+      "None"
+    ],
     "referenceNumber": 175,
     "location": "Vendor/Tithebury Cross"
   },
@@ -2721,7 +2777,9 @@ export const ITEMS: EquipmentItem[] = [
       "speed": 1,
       "magic": 1
     },
-    "abilities": [],
+    "abilities": [
+      "None"
+    ],
     "referenceNumber": 204,
     "location": "Scarecrow"
   },
@@ -2735,7 +2793,9 @@ export const ITEMS: EquipmentItem[] = [
       "speed": 1,
       "brawn": 1
     },
-    "abilities": [],
+    "abilities": [
+      "None"
+    ],
     "referenceNumber": 199,
     "location": "Hobgoblin"
   },
@@ -2748,7 +2808,9 @@ export const ITEMS: EquipmentItem[] = [
     "stats": {
       "speed": 1
     },
-    "abilities": [],
+    "abilities": [
+      "None"
+    ],
     "referenceNumber": 260,
     "location": "Goblin chief"
   },
@@ -2825,7 +2887,9 @@ export const ITEMS: EquipmentItem[] = [
       "speed": 2,
       "magic": 2
     },
-    "abilities": [],
+    "abilities": [
+      "None"
+    ],
     "referenceNumber": 311,
     "location": "No Hope tinker"
   },
@@ -2839,7 +2903,9 @@ export const ITEMS: EquipmentItem[] = [
       "speed": 1,
       "brawn": 2
     },
-    "abilities": [],
+    "abilities": [
+      "None"
+    ],
     "referenceNumber": 338,
     "location": "Thievies' guild",
     "careerPreference": "Rogue"
@@ -2854,7 +2920,9 @@ export const ITEMS: EquipmentItem[] = [
       "speed": 1,
       "brawn": 1
     },
-    "abilities": [],
+    "abilities": [
+      "None"
+    ],
     "referenceNumber": 287,
     "location": "Mushroom forest"
   },
@@ -2868,7 +2936,9 @@ export const ITEMS: EquipmentItem[] = [
       "speed": 1,
       "armour": 1
     },
-    "abilities": [],
+    "abilities": [
+      "None"
+    ],
     "referenceNumber": 494,
     "location": "Slime"
   },
@@ -2914,7 +2984,9 @@ export const ITEMS: EquipmentItem[] = [
       "speed": 2,
       "armour": 2
     },
-    "abilities": [],
+    "abilities": [
+      "None"
+    ],
     "referenceNumber": 446,
     "location": "Treasure cave",
     "careerPreference": "Mage"
@@ -2962,7 +3034,9 @@ export const ITEMS: EquipmentItem[] = [
       "speed": 2,
       "armour": 1
     },
-    "abilities": [],
+    "abilities": [
+      "None"
+    ],
     "referenceNumber": 716,
     "location": "Kalimari"
   },
@@ -3273,7 +3347,9 @@ export const ITEMS: EquipmentItem[] = [
       "brawn": 1,
       "magic": 1
     },
-    "abilities": [],
+    "abilities": [
+      "None"
+    ],
     "location": "Prologue"
   },
   {
@@ -3286,7 +3362,9 @@ export const ITEMS: EquipmentItem[] = [
       "speed": 1,
       "brawn": 1
     },
-    "abilities": [],
+    "abilities": [
+      "None"
+    ],
     "referenceNumber": 175,
     "location": "Vendor/Tithebury Cross"
   },
@@ -3299,7 +3377,9 @@ export const ITEMS: EquipmentItem[] = [
     "stats": {
       "speed": 1
     },
-    "abilities": [],
+    "abilities": [
+      "None"
+    ],
     "referenceNumber": 199,
     "location": "Hobgoblin"
   },
@@ -3313,7 +3393,9 @@ export const ITEMS: EquipmentItem[] = [
       "speed": 1,
       "armour": 1
     },
-    "abilities": [],
+    "abilities": [
+      "None"
+    ],
     "referenceNumber": 82,
     "location": "Woodsman"
   },
@@ -3326,7 +3408,9 @@ export const ITEMS: EquipmentItem[] = [
     "stats": {
       "brawn": 2
     },
-    "abilities": [],
+    "abilities": [
+      "None"
+    ],
     "referenceNumber": 228,
     "location": "Huntsman"
   },
@@ -3355,7 +3439,9 @@ export const ITEMS: EquipmentItem[] = [
       "speed": 1,
       "magic": 1
     },
-    "abilities": [],
+    "abilities": [
+      "None"
+    ],
     "referenceNumber": 40,
     "location": "Ruffians"
   },
@@ -3368,7 +3454,9 @@ export const ITEMS: EquipmentItem[] = [
     "stats": {
       "brawn": 3
     },
-    "abilities": [],
+    "abilities": [
+      "None"
+    ],
     "referenceNumber": 40,
     "location": "Ruffians"
   },
@@ -3382,7 +3470,9 @@ export const ITEMS: EquipmentItem[] = [
       "speed": 1,
       "brawn": 1
     },
-    "abilities": [],
+    "abilities": [
+      "None"
+    ],
     "referenceNumber": 125,
     "location": "Were rat"
   },
@@ -3575,7 +3665,9 @@ export const ITEMS: EquipmentItem[] = [
       "speed": 1,
       "magic": 2
     },
-    "abilities": [],
+    "abilities": [
+      "None"
+    ],
     "referenceNumber": 283,
     "location": "Mud golem"
   },
@@ -3589,7 +3681,9 @@ export const ITEMS: EquipmentItem[] = [
       "speed": 1,
       "brawn": 2
     },
-    "abilities": [],
+    "abilities": [
+      "None"
+    ],
     "referenceNumber": 287,
     "location": "Mushroom forest"
   },
@@ -3603,7 +3697,9 @@ export const ITEMS: EquipmentItem[] = [
       "speed": 1,
       "brawn": 3
     },
-    "abilities": [],
+    "abilities": [
+      "None"
+    ],
     "referenceNumber": 327,
     "location": "Trogs",
     "careerPreference": "Warrior"
@@ -3799,7 +3895,9 @@ export const ITEMS: EquipmentItem[] = [
       "speed": 1,
       "magic": 3
     },
-    "abilities": [],
+    "abilities": [
+      "None"
+    ],
     "referenceNumber": 479,
     "location": "Wreekin"
   },
@@ -4565,7 +4663,9 @@ export const ITEMS: EquipmentItem[] = [
       "brawn": 2,
       "armour": 1
     },
-    "abilities": [],
+    "abilities": [
+      "None"
+    ],
     "referenceNumber": 191,
     "location": "Vendor/Tithebury Cross"
   },
@@ -4579,7 +4679,9 @@ export const ITEMS: EquipmentItem[] = [
       "speed": 1,
       "brawn": 1
     },
-    "abilities": [],
+    "abilities": [
+      "None"
+    ],
     "referenceNumber": 204,
     "location": "Scarecrow"
   },
@@ -4592,7 +4694,9 @@ export const ITEMS: EquipmentItem[] = [
     "stats": {
       "brawn": 1
     },
-    "abilities": [],
+    "abilities": [
+      "None"
+    ],
     "referenceNumber": 118,
     "location": "Crocodile"
   },
@@ -4670,7 +4774,9 @@ export const ITEMS: EquipmentItem[] = [
       "speed": 1,
       "armour": 1
     },
-    "abilities": [],
+    "abilities": [
+      "None"
+    ],
     "referenceNumber": 166,
     "location": "Skeletons"
   },
@@ -4814,7 +4920,9 @@ export const ITEMS: EquipmentItem[] = [
       "speed": 2,
       "magic": 2
     },
-    "abilities": [],
+    "abilities": [
+      "None"
+    ],
     "referenceNumber": 445,
     "location": "Treasure vault",
     "careerPreference": "Mage"
@@ -4894,7 +5002,9 @@ export const ITEMS: EquipmentItem[] = [
       "speed": 1,
       "brawn": 3
     },
-    "abilities": [],
+    "abilities": [
+      "None"
+    ],
     "referenceNumber": 452,
     "location": "Angler's cave",
     "careerPreference": "Rogue"
@@ -4925,7 +5035,9 @@ export const ITEMS: EquipmentItem[] = [
       "speed": 2,
       "magic": 3
     },
-    "abilities": [],
+    "abilities": [
+      "None"
+    ],
     "referenceNumber": 550,
     "location": "Jenlar's cabin",
     "careerPreference": "Mage"
@@ -6139,7 +6251,9 @@ export const ITEMS: EquipmentItem[] = [
     "stats": {
       "magic": 1
     },
-    "abilities": [],
+    "abilities": [
+      "None"
+    ],
     "referenceNumber": 199,
     "location": "Hobgoblin"
   },
@@ -6168,7 +6282,9 @@ export const ITEMS: EquipmentItem[] = [
       "brawn": 1,
       "magic": 1
     },
-    "abilities": [],
+    "abilities": [
+      "None"
+    ],
     "referenceNumber": 193,
     "location": "Flooded cave"
   },
@@ -6583,7 +6699,9 @@ export const ITEMS: EquipmentItem[] = [
       "brawn": 1,
       "magic": 1
     },
-    "abilities": [],
+    "abilities": [
+      "None"
+    ],
     "referenceNumber": 180,
     "location": "Barricaded room"
   },
@@ -6625,7 +6743,9 @@ export const ITEMS: EquipmentItem[] = [
     "stats": {
       "brawn": 1
     },
-    "abilities": [],
+    "abilities": [
+      "None"
+    ],
     "referenceNumber": 106,
     "location": "Ghouls"
   },
@@ -7196,6 +7316,7102 @@ export const ITEMS: EquipmentItem[] = [
     "referenceNumber": 826,
     "location": "Doom orb",
     "careerPreference": "Mage"
+  },
+  {
+    "id": "item_name",
+    "name": "Item Name",
+    "type": "item box",
+    "book": "Book Title",
+    "act": 1,
+    "stats": {},
+    "abilities": [
+      "Special Ability"
+    ],
+    "referenceNumber": null,
+    "location": "Location/Enemy"
+  },
+  {
+    "id": "saddle_blanket",
+    "name": "Saddle blanket",
+    "type": "cloak",
+    "book": "The Heart of Fire",
+    "act": 1,
+    "stats": {
+      "armour": 1
+    },
+    "abilities": [
+      "None"
+    ],
+    "location": "Prologue"
+  },
+  {
+    "id": "inscribed_mantle",
+    "name": "Inscribed mantle",
+    "type": "cloak",
+    "book": "The Heart of Fire",
+    "act": 1,
+    "stats": {
+      "magic": 1,
+      "armour": 1
+    },
+    "abilities": [
+      "Iron will"
+    ],
+    "referenceNumber": 22,
+    "location": "Vendor/Carvel"
+  },
+  {
+    "id": "shadow_dyed_cloak",
+    "name": "Shadow-dyed cloak",
+    "type": "cloak",
+    "book": "The Heart of Fire",
+    "act": 1,
+    "stats": {
+      "magic": 1
+    },
+    "abilities": [
+      "Wisdom"
+    ],
+    "referenceNumber": 50,
+    "location": "Barrow"
+  },
+  {
+    "id": "predators_pelt",
+    "name": "Predator's pelt",
+    "type": "cloak",
+    "book": "The Heart of Fire",
+    "act": 1,
+    "stats": {
+      "brawn": 1,
+      "armour": 1
+    },
+    "abilities": [
+      "None"
+    ],
+    "referenceNumber": 106,
+    "location": "Dire wolf"
+  },
+  {
+    "id": "cardinals_cappa",
+    "name": "Cardinal's cappa",
+    "type": "cloak",
+    "book": "The Heart of Fire",
+    "act": 1,
+    "stats": {
+      "brawn": 1,
+      "armour": 1
+    },
+    "abilities": [
+      "None"
+    ],
+    "referenceNumber": 359,
+    "location": "Bishop"
+  },
+  {
+    "id": "ghost_cloth",
+    "name": "Ghost cloth",
+    "type": "cloak",
+    "book": "The Heart of Fire",
+    "act": 1,
+    "stats": {
+      "armour": 1
+    },
+    "abilities": [
+      "Charm"
+    ],
+    "referenceNumber": 367,
+    "location": "Zombie horde (special)"
+  },
+  {
+    "id": "spectral_shawl",
+    "name": "Spectral shawl",
+    "type": "cloak",
+    "book": "The Heart of Fire",
+    "act": 1,
+    "stats": {
+      "brawn": 1
+    },
+    "abilities": [
+      "Vanish"
+    ],
+    "referenceNumber": 218,
+    "location": "Reverend"
+  },
+  {
+    "id": "grizzly_mantle",
+    "name": "Grizzly mantle",
+    "type": "cloak",
+    "book": "The Heart of Fire",
+    "act": 1,
+    "stats": {
+      "brawn": 1
+    },
+    "abilities": [
+      "Savagery"
+    ],
+    "referenceNumber": 105,
+    "location": "Cuddles"
+  },
+  {
+    "id": "rock_shoulders",
+    "name": "Rock shoulders",
+    "type": "cloak",
+    "book": "The Heart of Fire",
+    "act": 1,
+    "stats": {
+      "armour": 1
+    },
+    "abilities": [
+      "Might of stone"
+    ],
+    "referenceNumber": 228,
+    "location": "Toymaker's golems"
+  },
+  {
+    "id": "wildfire_weave",
+    "name": "Wildfire weave",
+    "type": "cloak",
+    "book": "The Heart of Fire",
+    "act": 1,
+    "stats": {
+      "magic": 1,
+      "armour": 1
+    },
+    "abilities": [
+      "Backdraft"
+    ],
+    "referenceNumber": 231,
+    "location": "Black shuck"
+  },
+  {
+    "id": "chibacha",
+    "name": "Chibacha",
+    "type": "cloak",
+    "book": "The Heart of Fire",
+    "act": 2,
+    "stats": {
+      "speed": 1,
+      "brawn": 2
+    },
+    "abilities": [
+      "Gorilla rage"
+    ],
+    "referenceNumber": 612,
+    "location": "Vendor/Emerald Isle"
+  },
+  {
+    "id": "lice_ridden_pelt",
+    "name": "Lice-ridden pelt",
+    "type": "cloak",
+    "book": "The Heart of Fire",
+    "act": 2,
+    "stats": {
+      "speed": 1,
+      "brawn": 1
+    },
+    "abilities": [
+      "Parasite"
+    ],
+    "referenceNumber": 232,
+    "location": "Lycanth",
+    "careerPreference": "Warrior"
+  },
+  {
+    "id": "shades_mantle",
+    "name": "Shade's mantle",
+    "type": "cloak",
+    "book": "The Heart of Fire",
+    "act": 2,
+    "stats": {
+      "speed": 1,
+      "brawn": 1
+    },
+    "abilities": [
+      "Trickster"
+    ],
+    "referenceNumber": 556,
+    "location": "Umbra",
+    "careerPreference": "Warrior"
+  },
+  {
+    "id": "hair_of_the_wolf",
+    "name": "Hair of the wolf",
+    "type": "cloak",
+    "book": "The Heart of Fire",
+    "act": 2,
+    "stats": {
+      "speed": 1,
+      "brawn": 1
+    },
+    "abilities": [
+      "Cunning"
+    ],
+    "referenceNumber": 507,
+    "location": "Lycanth",
+    "careerPreference": "Rogue"
+  },
+  {
+    "id": "stole_of_shadow",
+    "name": "Stole of shadow",
+    "type": "cloak",
+    "book": "The Heart of Fire",
+    "act": 2,
+    "stats": {
+      "speed": 1,
+      "brawn": 1
+    },
+    "abilities": [
+      "Steal"
+    ],
+    "referenceNumber": 255,
+    "location": "Umbra",
+    "careerPreference": "Rogue"
+  },
+  {
+    "id": "twister",
+    "name": "Twister",
+    "type": "cloak",
+    "book": "The Heart of Fire",
+    "act": 2,
+    "stats": {
+      "speed": 1,
+      "magic": 1
+    },
+    "abilities": [
+      "Confound"
+    ],
+    "referenceNumber": 346,
+    "location": "Zephyr",
+    "careerPreference": "Mage"
+  },
+  {
+    "id": "conch_shoulders",
+    "name": "Conch shoulders",
+    "type": "cloak",
+    "book": "The Heart of Fire",
+    "act": 2,
+    "stats": {
+      "speed": 1,
+      "armour": 1
+    },
+    "abilities": [
+      "Timeshift"
+    ],
+    "referenceNumber": 634,
+    "location": "Yootha (side quest)"
+  },
+  {
+    "id": "coronados_pride",
+    "name": "Coronado's pride",
+    "type": "cloak",
+    "book": "The Heart of Fire",
+    "act": 2,
+    "stats": {
+      "speed": 1,
+      "magic": 1
+    },
+    "abilities": [
+      "Reckless"
+    ],
+    "referenceNumber": 501,
+    "location": "Dead explorer"
+  },
+  {
+    "id": "shroud_of_nightmares",
+    "name": "Shroud of nightmares",
+    "type": "cloak",
+    "book": "The Heart of Fire",
+    "act": 2,
+    "stats": {
+      "speed": 1,
+      "brawn": 2
+    },
+    "abilities": [
+      "Confound"
+    ],
+    "referenceNumber": 748,
+    "location": "Succubus"
+  },
+  {
+    "id": "net_of_snares",
+    "name": "Net of snares",
+    "type": "cloak",
+    "book": "The Heart of Fire",
+    "act": 2,
+    "stats": {
+      "speed": 1,
+      "magic": 1
+    },
+    "abilities": [
+      "Immobilise"
+    ],
+    "referenceNumber": 720,
+    "location": "Perez"
+  },
+  {
+    "id": "hunters_burden",
+    "name": "Hunter's burden",
+    "type": "cloak",
+    "book": "The Heart of Fire",
+    "act": 2,
+    "stats": {
+      "speed": 1,
+      "armour": 2
+    },
+    "abilities": [
+      "Feint"
+    ],
+    "referenceNumber": 369,
+    "location": "Buckmaster Bill (side quest)",
+    "careerPreference": "Mage"
+  },
+  {
+    "id": "cope_of_rituals",
+    "name": "Cope of rituals",
+    "type": "cloak",
+    "book": "The Heart of Fire",
+    "act": 2,
+    "stats": {
+      "speed": 1,
+      "brawn": 2
+    },
+    "abilities": [
+      "Heal"
+    ],
+    "referenceNumber": 511,
+    "location": "Sun vault",
+    "careerPreference": "Rogue"
+  },
+  {
+    "id": "shredded_drape",
+    "name": "Shredded drape",
+    "type": "cloak",
+    "book": "The Heart of Fire",
+    "act": 2,
+    "stats": {
+      "speed": 1,
+      "armour": 2
+    },
+    "abilities": [
+      "Channel"
+    ],
+    "referenceNumber": 666,
+    "location": "Lich",
+    "careerPreference": "Mage"
+  },
+  {
+    "id": "cape_of_the_savage",
+    "name": "Cape of the savage",
+    "type": "cloak",
+    "book": "The Heart of Fire",
+    "act": 2,
+    "stats": {
+      "speed": 1,
+      "magic": 2
+    },
+    "abilities": [
+      "Primal"
+    ],
+    "referenceNumber": 714,
+    "location": "Gheira",
+    "careerPreference": "Mage"
+  },
+  {
+    "id": "back_to_the_wild_w_r_",
+    "name": "Back to the wild (W/R)",
+    "type": "cloak",
+    "book": "The Heart of Fire",
+    "act": 2,
+    "stats": {
+      "speed": 1,
+      "brawn": 2
+    },
+    "abilities": [
+      "Fearless"
+    ],
+    "referenceNumber": 729,
+    "location": "Gheira"
+  },
+  {
+    "id": "mantle_of_the_deceiver",
+    "name": "Mantle of the deceiver",
+    "type": "cloak",
+    "book": "The Heart of Fire",
+    "act": 2,
+    "stats": {
+      "speed": 1,
+      "brawn": 3,
+      "armour": 2
+    },
+    "abilities": [
+      "Deceive"
+    ],
+    "referenceNumber": 383,
+    "location": "Kaala"
+  },
+  {
+    "id": "shawl_of_skulls",
+    "name": "Shawl of skulls",
+    "type": "cloak",
+    "book": "The Heart of Fire",
+    "act": 2,
+    "stats": {
+      "speed": 1,
+      "armour": 2
+    },
+    "abilities": [
+      "Purge"
+    ],
+    "referenceNumber": 657,
+    "location": "Siren sisters (side quest)",
+    "careerPreference": "Mage"
+  },
+  {
+    "id": "drake_skin_epaulets",
+    "name": "Drake-skin epaulets",
+    "type": "cloak",
+    "book": "The Heart of Fire",
+    "act": 2,
+    "stats": {
+      "speed": 2,
+      "magic": 4
+    },
+    "abilities": [
+      "Backdraft"
+    ],
+    "referenceNumber": 761,
+    "location": "Issachar",
+    "careerPreference": "Mage"
+  },
+  {
+    "id": "cloak_of_the_undying",
+    "name": "Cloak of the undying",
+    "type": "cloak",
+    "book": "The Heart of Fire",
+    "act": 3,
+    "stats": {
+      "speed": 2
+    },
+    "abilities": [
+      "(+3 health) Gr. heal"
+    ],
+    "referenceNumber": 682,
+    "location": "Vendor/Haunted shop"
+  },
+  {
+    "id": "wings_of_fury",
+    "name": "Wings of fury",
+    "type": "cloak",
+    "book": "The Heart of Fire",
+    "act": 3,
+    "stats": {
+      "speed": 2,
+      "magic": 3
+    },
+    "abilities": [
+      "Surge"
+    ],
+    "referenceNumber": 790,
+    "location": "Furies",
+    "careerPreference": "Mage"
+  },
+  {
+    "id": "sentry_shoulders",
+    "name": "Sentry shoulders",
+    "type": "cloak",
+    "book": "The Heart of Fire",
+    "act": 3,
+    "stats": {
+      "speed": 2,
+      "armour": 2
+    },
+    "abilities": [
+      "Heavy blow"
+    ],
+    "referenceNumber": 546,
+    "location": "Bridge sentries",
+    "careerPreference": "Warrior"
+  },
+  {
+    "id": "patchwork_pulp",
+    "name": "Patchwork pulp",
+    "type": "cloak",
+    "book": "The Heart of Fire",
+    "act": 3,
+    "stats": {
+      "speed": 2,
+      "brawn": 2
+    },
+    "abilities": [
+      "Slick"
+    ],
+    "referenceNumber": 554,
+    "location": "Book wyrm"
+  },
+  {
+    "id": "nemesis_shawl",
+    "name": "Nemesis shawl",
+    "type": "cloak",
+    "book": "The Heart of Fire",
+    "act": 3,
+    "stats": {
+      "speed": 2,
+      "magic": 3
+    },
+    "abilities": [
+      "Wither"
+    ],
+    "referenceNumber": 787,
+    "location": "Nephele",
+    "careerPreference": "Mage"
+  },
+  {
+    "id": "cape_of_the_unseen",
+    "name": "Cape of the unseen",
+    "type": "cloak",
+    "book": "The Heart of Fire",
+    "act": 3,
+    "stats": {
+      "speed": 2,
+      "brawn": 3
+    },
+    "abilities": [
+      "Coup de grace"
+    ],
+    "referenceNumber": 723,
+    "location": "Nephele",
+    "careerPreference": "Rogue"
+  },
+  {
+    "id": "runeplate_pauldrons",
+    "name": "Runeplate pauldrons",
+    "type": "cloak",
+    "book": "The Heart of Fire",
+    "act": 3,
+    "stats": {
+      "speed": 2,
+      "armour": 2
+    },
+    "abilities": [
+      "Last defence"
+    ],
+    "referenceNumber": 834,
+    "location": "Erkil",
+    "careerPreference": "Warrior"
+  },
+  {
+    "id": "mesh_of_sinew",
+    "name": "Mesh of sinew",
+    "type": "cloak",
+    "book": "The Heart of Fire",
+    "act": 3,
+    "stats": {
+      "speed": 2,
+      "brawn": 4
+    },
+    "abilities": [
+      "Dark pact"
+    ],
+    "referenceNumber": 608,
+    "location": "Evin Daala",
+    "careerPreference": "Rogue"
+  },
+  {
+    "id": "blackrock_shoulders",
+    "name": "Blackrock shoulders",
+    "type": "cloak",
+    "book": "The Heart of Fire",
+    "act": 3,
+    "stats": {
+      "speed": 2,
+      "brawn": 4
+    },
+    "abilities": [
+      "Retaliation"
+    ],
+    "referenceNumber": 637,
+    "location": "Krakatoa",
+    "careerPreference": "Warrior"
+  },
+  {
+    "id": "plumed_helm",
+    "name": "Plumed helm",
+    "type": "head",
+    "book": "The Heart of Fire",
+    "act": 1,
+    "stats": {
+      "armour": 1
+    },
+    "abilities": [
+      "None"
+    ],
+    "location": "Prologue"
+  },
+  {
+    "id": "dark_scale_war_helm",
+    "name": "Dark-scale war helm",
+    "type": "head",
+    "book": "The Heart of Fire",
+    "act": 1,
+    "stats": {
+      "speed": 1,
+      "armour": 1
+    },
+    "abilities": [
+      "Deflect"
+    ],
+    "referenceNumber": 230,
+    "location": "Vendor/Carvel"
+  },
+  {
+    "id": "white_mane",
+    "name": "White mane",
+    "type": "head",
+    "book": "The Heart of Fire",
+    "act": 1,
+    "stats": {
+      "brawn": 1,
+      "magic": 1
+    },
+    "abilities": [
+      "Charm"
+    ],
+    "referenceNumber": 292,
+    "location": "Manticore"
+  },
+  {
+    "id": "chieftains_guard",
+    "name": "Chieftain's guard",
+    "type": "head",
+    "book": "The Heart of Fire",
+    "act": 1,
+    "stats": {
+      "brawn": 1
+    },
+    "abilities": [
+      "Might of stone"
+    ],
+    "referenceNumber": 34,
+    "location": "Barrow"
+  },
+  {
+    "id": "assassins_veil",
+    "name": "Assassin's veil",
+    "type": "head",
+    "book": "The Heart of Fire",
+    "act": 1,
+    "stats": {
+      "magic": 1
+    },
+    "abilities": [
+      "Vanish"
+    ],
+    "referenceNumber": 198,
+    "location": "Assassin ant"
+  },
+  {
+    "id": "snipers_goggles",
+    "name": "Sniper's goggles",
+    "type": "head",
+    "book": "The Heart of Fire",
+    "act": 1,
+    "stats": {
+      "armour": 1
+    },
+    "abilities": [
+      "Focus"
+    ],
+    "referenceNumber": 258,
+    "location": "Pirates"
+  },
+  {
+    "id": "marauders_bandanna",
+    "name": "Marauder's bandanna",
+    "type": "head",
+    "book": "The Heart of Fire",
+    "act": 1,
+    "stats": {
+      "brawn": 1
+    },
+    "abilities": [
+      "None"
+    ],
+    "referenceNumber": 79,
+    "location": "Crews' quarters"
+  },
+  {
+    "id": "crown_of_spite",
+    "name": "Crown of spite",
+    "type": "head",
+    "book": "The Heart of Fire",
+    "act": 1,
+    "stats": {
+      "armour": 1
+    },
+    "abilities": [
+      "Curse"
+    ],
+    "referenceNumber": 381,
+    "location": "Queen Ballona"
+  },
+  {
+    "id": "lock_jaw",
+    "name": "Lock jaw",
+    "type": "head",
+    "book": "The Heart of Fire",
+    "act": 1,
+    "stats": {
+      "brawn": 1,
+      "armour": 1
+    },
+    "abilities": [
+      "Slam"
+    ],
+    "referenceNumber": 219,
+    "location": "Saw"
+  },
+  {
+    "id": "hat_of_stars",
+    "name": "Hat of stars",
+    "type": "head",
+    "book": "The Heart of Fire",
+    "act": 1,
+    "stats": {
+      "brawn": 1,
+      "magic": 1
+    },
+    "abilities": [
+      "Charm"
+    ],
+    "referenceNumber": 279,
+    "location": "Stitches puzzle"
+  },
+  {
+    "id": "hood_of_the_night_fiend",
+    "name": "Hood of the night fiend",
+    "type": "head",
+    "book": "The Heart of Fire",
+    "act": 1,
+    "stats": {
+      "brawn": 1,
+      "armour": 1
+    },
+    "abilities": [
+      "Fiend's finest"
+    ],
+    "referenceNumber": 493,
+    "location": "Custodian"
+  },
+  {
+    "id": "garland_of_sacrifice",
+    "name": "Garland of sacrifice",
+    "type": "head",
+    "book": "The Heart of Fire",
+    "act": 1,
+    "stats": {
+      "speed": 1,
+      "brawn": 2
+    },
+    "abilities": [
+      "Atonement"
+    ],
+    "referenceNumber": 155,
+    "location": "Wickerman"
+  },
+  {
+    "id": "cobwebbed_capotain",
+    "name": "Cobwebbed capotain",
+    "type": "head",
+    "book": "The Heart of Fire",
+    "act": 2,
+    "stats": {
+      "speed": 1,
+      "brawn": 1
+    },
+    "abilities": [
+      "Missionary's calling"
+    ],
+    "referenceNumber": 255,
+    "location": "Umbra",
+    "careerPreference": "Rogue"
+  },
+  {
+    "id": "umbras_cowl",
+    "name": "Umbra's cowl",
+    "type": "head",
+    "book": "The Heart of Fire",
+    "act": 2,
+    "stats": {
+      "speed": 1,
+      "magic": 1
+    },
+    "abilities": [
+      "Trickster"
+    ],
+    "referenceNumber": 534,
+    "location": "Umbra",
+    "careerPreference": "Mage"
+  },
+  {
+    "id": "braids_of_the_outcast",
+    "name": "Braids of the outcast",
+    "type": "head",
+    "book": "The Heart of Fire",
+    "act": 2,
+    "stats": {
+      "speed": 1,
+      "magic": 1
+    },
+    "abilities": [
+      "Fearless"
+    ],
+    "referenceNumber": 350,
+    "location": "Lycanth",
+    "careerPreference": "Mage"
+  },
+  {
+    "id": "coif_of_waning",
+    "name": "Coif of waning",
+    "type": "head",
+    "book": "The Heart of Fire",
+    "act": 2,
+    "stats": {
+      "speed": 1,
+      "armour": 2
+    },
+    "abilities": [
+      "Dominate"
+    ],
+    "referenceNumber": 455,
+    "location": "Grub knight"
+  },
+  {
+    "id": "totem_mask",
+    "name": "Totem mask",
+    "type": "head",
+    "book": "The Heart of Fire",
+    "act": 2,
+    "stats": {
+      "speed": 1,
+      "brawn": 2
+    },
+    "abilities": [
+      "Might of stone"
+    ],
+    "referenceNumber": 621,
+    "location": "Totem"
+  },
+  {
+    "id": "monkey_brain",
+    "name": "Monkey brain",
+    "type": "head",
+    "book": "The Heart of Fire",
+    "act": 2,
+    "stats": {
+      "speed": 1,
+      "magic": 2
+    },
+    "abilities": [
+      "Disrupt"
+    ],
+    "referenceNumber": 634,
+    "location": "Yootha (side quest)"
+  },
+  {
+    "id": "hammerhead",
+    "name": "Hammerhead",
+    "type": "head",
+    "book": "The Heart of Fire",
+    "act": 2,
+    "stats": {
+      "speed": 1,
+      "armour": 2
+    },
+    "abilities": [
+      "Charge"
+    ],
+    "referenceNumber": 470,
+    "location": "Guano chest",
+    "careerPreference": "Warrior"
+  },
+  {
+    "id": "dark_vine_pith",
+    "name": "Dark vine pith",
+    "type": "head",
+    "book": "The Heart of Fire",
+    "act": 2,
+    "stats": {
+      "speed": 1,
+      "armour": 2
+    },
+    "abilities": [
+      "Thorns"
+    ],
+    "referenceNumber": 479,
+    "location": "Buckmaster Bill",
+    "careerPreference": "Mage"
+  },
+  {
+    "id": "maidens_mask",
+    "name": "Maiden's mask",
+    "type": "head",
+    "book": "The Heart of Fire",
+    "act": 2,
+    "stats": {
+      "speed": 1,
+      "magic": 2
+    },
+    "abilities": [
+      "Sear"
+    ],
+    "referenceNumber": 699,
+    "location": "Sun maidens"
+  },
+  {
+    "id": "wings_of_gold",
+    "name": "Wings of gold",
+    "type": "head",
+    "book": "The Heart of Fire",
+    "act": 2,
+    "stats": {
+      "speed": 1,
+      "armour": 1
+    },
+    "abilities": [
+      "Time shift"
+    ],
+    "referenceNumber": 524,
+    "location": "Golden guards"
+  },
+  {
+    "id": "king_of_the_pond",
+    "name": "King of the pond",
+    "type": "head",
+    "book": "The Heart of Fire",
+    "act": 2,
+    "stats": {
+      "speed": 1,
+      "magic": 2
+    },
+    "abilities": [
+      "Overload"
+    ],
+    "referenceNumber": 575,
+    "location": "Fisher King",
+    "careerPreference": "Mage"
+  },
+  {
+    "id": "anansis_hood",
+    "name": "Anansi's hood",
+    "type": "head",
+    "book": "The Heart of Fire",
+    "act": 2,
+    "stats": {
+      "speed": 1,
+      "magic": 3
+    },
+    "abilities": [
+      "Webbed"
+    ],
+    "referenceNumber": 685,
+    "location": "Anansi",
+    "careerPreference": "Mage"
+  },
+  {
+    "id": "eyes_of_the_serpent_w_r_",
+    "name": "Eyes of the serpent (W/R)",
+    "type": "head",
+    "book": "The Heart of Fire",
+    "act": 2,
+    "stats": {
+      "speed": 1,
+      "armour": 2
+    },
+    "abilities": [
+      "Hypnotise"
+    ],
+    "referenceNumber": 383,
+    "location": "Kaala"
+  },
+  {
+    "id": "crown_of_gandhara",
+    "name": "Crown of Gandhara",
+    "type": "head",
+    "book": "The Heart of Fire",
+    "act": 2,
+    "stats": {
+      "speed": 1,
+      "brawn": 2
+    },
+    "abilities": [
+      "Command"
+    ],
+    "referenceNumber": 737,
+    "location": "Hanuman"
+  },
+  {
+    "id": "black_talon_hood",
+    "name": "Black talon hood",
+    "type": "head",
+    "book": "The Heart of Fire",
+    "act": 2,
+    "stats": {
+      "speed": 2,
+      "brawn": 3
+    },
+    "abilities": [
+      "Vanish"
+    ],
+    "referenceNumber": 770,
+    "location": "Issachar",
+    "careerPreference": "Rogue"
+  },
+  {
+    "id": "troll_tusks",
+    "name": "Troll tusks",
+    "type": "head",
+    "book": "The Heart of Fire",
+    "act": 3,
+    "stats": {
+      "speed": 2,
+      "armour": 2
+    },
+    "abilities": [
+      "Charge"
+    ],
+    "referenceNumber": 724,
+    "location": "Nergal"
+  },
+  {
+    "id": "helm_of_reflection",
+    "name": "Helm of reflection",
+    "type": "head",
+    "book": "The Heart of Fire",
+    "act": 3,
+    "stats": {
+      "speed": 2,
+      "armour": 2
+    },
+    "abilities": [
+      "Deflect"
+    ],
+    "referenceNumber": 546,
+    "location": "Bridge sentries",
+    "careerPreference": "Mage"
+  },
+  {
+    "id": "mourn_helm",
+    "name": "Mourn helm",
+    "type": "head",
+    "book": "The Heart of Fire",
+    "act": 3,
+    "stats": {
+      "speed": 2,
+      "brawn": 2
+    },
+    "abilities": [
+      "Impale"
+    ],
+    "referenceNumber": 789,
+    "location": "Nyx the dark wind",
+    "careerPreference": "Warrior"
+  },
+  {
+    "id": "wastrels_guise",
+    "name": "Wastrel's guise",
+    "type": "head",
+    "book": "The Heart of Fire",
+    "act": 3,
+    "stats": {
+      "speed": 2,
+      "brawn": 2
+    },
+    "abilities": [
+      "Blind"
+    ],
+    "referenceNumber": 730,
+    "location": "Kuderas",
+    "careerPreference": "Rogue"
+  },
+  {
+    "id": "mordant_shroud",
+    "name": "Mordant shroud",
+    "type": "head",
+    "book": "The Heart of Fire",
+    "act": 3,
+    "stats": {
+      "speed": 2,
+      "magic": 3
+    },
+    "abilities": [
+      "Acid"
+    ],
+    "referenceNumber": 781,
+    "location": "Chilopoda",
+    "careerPreference": "Mage"
+  },
+  {
+    "id": "crimson_cover",
+    "name": "Crimson cover",
+    "type": "head",
+    "book": "The Heart of Fire",
+    "act": 3,
+    "stats": {
+      "speed": 2,
+      "brawn": 2
+    },
+    "abilities": [
+      "Bleed"
+    ],
+    "referenceNumber": 598,
+    "location": "Joss",
+    "careerPreference": "Rogue"
+  },
+  {
+    "id": "blood_sworn_crown",
+    "name": "Blood-sworn crown",
+    "type": "head",
+    "book": "The Heart of Fire",
+    "act": 3,
+    "stats": {
+      "speed": 2,
+      "armour": 3
+    },
+    "abilities": [
+      "Iron will"
+    ],
+    "referenceNumber": 615,
+    "location": "Erkil (hexed)",
+    "careerPreference": "Warrior"
+  },
+  {
+    "id": "volcanists_hood",
+    "name": "Volcanist's hood",
+    "type": "head",
+    "book": "The Heart of Fire",
+    "act": 3,
+    "stats": {
+      "speed": 2,
+      "magic": 3
+    },
+    "abilities": [
+      "Overload"
+    ],
+    "referenceNumber": 803,
+    "location": "Erkil (hexed)",
+    "careerPreference": "Mage"
+  },
+  {
+    "id": "prowlers_cowl",
+    "name": "Prowler's cowl",
+    "type": "head",
+    "book": "The Heart of Fire",
+    "act": 3,
+    "stats": {
+      "speed": 2,
+      "brawn": 4
+    },
+    "abilities": [
+      "Vanish"
+    ],
+    "referenceNumber": 878,
+    "location": "Erkil (hexed)",
+    "careerPreference": "Rogue"
+  },
+  {
+    "id": "gore_mask",
+    "name": "Gore mask",
+    "type": "head",
+    "book": "The Heart of Fire",
+    "act": 3,
+    "stats": {
+      "speed": 2,
+      "brawn": 3
+    },
+    "abilities": [
+      "Mangle"
+    ],
+    "referenceNumber": 608,
+    "location": "Evin Daala",
+    "careerPreference": "Rogue"
+  },
+  {
+    "id": "puritans_peak",
+    "name": "Puritan's peak",
+    "type": "head",
+    "book": "The Heart of Fire",
+    "act": 3,
+    "stats": {
+      "speed": 2,
+      "armour": 2
+    },
+    "abilities": [
+      "Charm",
+      "Heal"
+    ],
+    "referenceNumber": 871,
+    "location": "Virgil"
+  },
+  {
+    "id": "krakkas_crown",
+    "name": "Krakka's crown",
+    "type": "head",
+    "book": "The Heart of Fire",
+    "act": 3,
+    "stats": {
+      "speed": 2,
+      "magic": 5
+    },
+    "abilities": [
+      "Command"
+    ],
+    "referenceNumber": 873,
+    "location": "Krakatoa",
+    "careerPreference": "Mage"
+  },
+  {
+    "id": "troll_skin_gloves",
+    "name": "Troll-skin gloves",
+    "type": "gloves",
+    "book": "The Heart of Fire",
+    "act": 1,
+    "stats": {
+      "armour": 1
+    },
+    "abilities": [
+      "None"
+    ],
+    "referenceNumber": 50,
+    "location": "Barrow"
+  },
+  {
+    "id": "gloves_of_the_night_fiend",
+    "name": "Gloves of the night fiend",
+    "type": "gloves",
+    "book": "The Heart of Fire",
+    "act": 1,
+    "stats": {
+      "brawn": 1
+    },
+    "abilities": [
+      "Fiend's finest"
+    ],
+    "referenceNumber": 48,
+    "location": "Highwayman"
+  },
+  {
+    "id": "dark_vein_bracers",
+    "name": "Dark vein bracers",
+    "type": "gloves",
+    "book": "The Heart of Fire",
+    "act": 1,
+    "stats": {
+      "speed": 1,
+      "armour": 1
+    },
+    "abilities": [
+      "None"
+    ],
+    "referenceNumber": 91,
+    "location": "Margoyle"
+  },
+  {
+    "id": "dread_forge_gauntlets",
+    "name": "Dread forge gauntlets",
+    "type": "gloves",
+    "book": "The Heart of Fire",
+    "act": 1,
+    "stats": {
+      "brawn": 1,
+      "magic": 1
+    },
+    "abilities": [
+      "Retaliation"
+    ],
+    "referenceNumber": 23,
+    "location": "Forger"
+  },
+  {
+    "id": "patchwork_gloves",
+    "name": "Patchwork gloves",
+    "type": "gloves",
+    "book": "The Heart of Fire",
+    "act": 1,
+    "stats": {
+      "magic": 1,
+      "armour": 1
+    },
+    "abilities": [
+      "Charm"
+    ],
+    "referenceNumber": 228,
+    "location": "Toymaker's golems"
+  },
+  {
+    "id": "janitors_safety_gloves",
+    "name": "Janitor's safety gloves",
+    "type": "gloves",
+    "book": "The Heart of Fire",
+    "act": 1,
+    "stats": {
+      "brawn": 1,
+      "armour": 1
+    },
+    "abilities": [
+      "None"
+    ],
+    "referenceNumber": 236,
+    "location": "Poltergeist"
+  },
+  {
+    "id": "armbands_of_living_flame",
+    "name": "Armbands of living flame",
+    "type": "gloves",
+    "book": "The Heart of Fire",
+    "act": 1,
+    "stats": {
+      "speed": 1,
+      "magic": 1
+    },
+    "abilities": [
+      "Sear"
+    ],
+    "referenceNumber": 301,
+    "location": "Dagona"
+  },
+  {
+    "id": "phantom_gauntlets",
+    "name": "Phantom gauntlets",
+    "type": "gloves",
+    "book": "The Heart of Fire",
+    "act": 1,
+    "stats": {
+      "speed": 1,
+      "brawn": 1
+    },
+    "abilities": [
+      "Curse"
+    ],
+    "referenceNumber": 124,
+    "location": "Gairn"
+  },
+  {
+    "id": "dons_fists",
+    "name": "Don's fists",
+    "type": "gloves",
+    "book": "The Heart of Fire",
+    "act": 2,
+    "stats": {
+      "speed": 1,
+      "brawn": 3
+    },
+    "abilities": [
+      "Sideswipe"
+    ],
+    "referenceNumber": 492,
+    "location": "Scholar (side quest)"
+  },
+  {
+    "id": "rusted_armbands",
+    "name": "Rusted armbands",
+    "type": "gloves",
+    "book": "The Heart of Fire",
+    "act": 2,
+    "stats": {
+      "brawn": 1,
+      "armour": 1
+    },
+    "abilities": [
+      "Counter"
+    ],
+    "referenceNumber": 232,
+    "location": "Lycanth",
+    "careerPreference": "Warrior"
+  },
+  {
+    "id": "bracers_of_frenzy",
+    "name": "Bracers of frenzy",
+    "type": "gloves",
+    "book": "The Heart of Fire",
+    "act": 2,
+    "stats": {
+      "speed": 1,
+      "brawn": 1
+    },
+    "abilities": [
+      "Compulsion"
+    ],
+    "referenceNumber": 160,
+    "location": "Zephyr",
+    "careerPreference": "Warrior"
+  },
+  {
+    "id": "fingerless_gloves",
+    "name": "Fingerless gloves",
+    "type": "gloves",
+    "book": "The Heart of Fire",
+    "act": 2,
+    "stats": {
+      "speed": 1,
+      "brawn": 1
+    },
+    "abilities": [
+      "Crawlers"
+    ],
+    "referenceNumber": 246,
+    "location": "Gaia",
+    "careerPreference": "Rogue"
+  },
+  {
+    "id": "shocking_scales",
+    "name": "Shocking scales",
+    "type": "gloves",
+    "book": "The Heart of Fire",
+    "act": 2,
+    "stats": {
+      "speed": 1,
+      "magic": 1
+    },
+    "abilities": [
+      "Shock!"
+    ],
+    "referenceNumber": 158,
+    "location": "Boogaloo",
+    "careerPreference": "Mage"
+  },
+  {
+    "id": "armbands_of_attraction",
+    "name": "Armbands of attraction",
+    "type": "gloves",
+    "book": "The Heart of Fire",
+    "act": 2,
+    "stats": {
+      "speed": 1,
+      "magic": 1
+    },
+    "abilities": [
+      "Confound"
+    ],
+    "referenceNumber": 544,
+    "location": "Gaia",
+    "careerPreference": "Mage"
+  },
+  {
+    "id": "weepers_blooms",
+    "name": "Weeper's blooms",
+    "type": "gloves",
+    "book": "The Heart of Fire",
+    "act": 2,
+    "stats": {
+      "speed": 1,
+      "magic": 2
+    },
+    "abilities": [
+      "Call of nature"
+    ],
+    "referenceNumber": 709,
+    "location": "The weeper",
+    "careerPreference": "Mage"
+  },
+  {
+    "id": "bone_bracelets",
+    "name": "Bone bracelets",
+    "type": "gloves",
+    "book": "The Heart of Fire",
+    "act": 2,
+    "stats": {
+      "speed": 1,
+      "brawn": 1
+    },
+    "abilities": [
+      "Trickster"
+    ],
+    "referenceNumber": 765,
+    "location": "Witch"
+  },
+  {
+    "id": "rainbow_skin_brassard",
+    "name": "Rainbow-skin brassard",
+    "type": "gloves",
+    "book": "The Heart of Fire",
+    "act": 2,
+    "stats": {
+      "speed": 1,
+      "magic": 1
+    },
+    "abilities": [
+      "Regrowth"
+    ],
+    "referenceNumber": 660,
+    "location": "Drecko",
+    "careerPreference": "Mage"
+  },
+  {
+    "id": "the_untouchables",
+    "name": "The untouchables",
+    "type": "gloves",
+    "book": "The Heart of Fire",
+    "act": 2,
+    "stats": {
+      "speed": 1,
+      "brawn": 2
+    },
+    "abilities": [
+      "Shunt"
+    ],
+    "referenceNumber": 501,
+    "location": "Coronado"
+  },
+  {
+    "id": "leather_long_arms",
+    "name": "Leather long arms",
+    "type": "gloves",
+    "book": "The Heart of Fire",
+    "act": 2,
+    "stats": {
+      "speed": 1,
+      "brawn": 2
+    },
+    "abilities": [
+      "Sure grip"
+    ],
+    "referenceNumber": 479,
+    "location": "Buckmaster Bill"
+  },
+  {
+    "id": "burnished_gauntlets",
+    "name": "Burnished gauntlets",
+    "type": "gloves",
+    "book": "The Heart of Fire",
+    "act": 2,
+    "stats": {
+      "brawn": 2,
+      "armour": 2
+    },
+    "abilities": [
+      "Knockdown"
+    ],
+    "referenceNumber": 524,
+    "location": "Golden guards"
+  },
+  {
+    "id": "prickle_pair",
+    "name": "Prickle pair",
+    "type": "gloves",
+    "book": "The Heart of Fire",
+    "act": 2,
+    "stats": {
+      "speed": 1,
+      "brawn": 2
+    },
+    "abilities": [
+      "Barbs"
+    ],
+    "referenceNumber": 683,
+    "location": "Sitadell",
+    "careerPreference": "Rogue"
+  },
+  {
+    "id": "waxen_wilds",
+    "name": "Waxen wilds",
+    "type": "gloves",
+    "book": "The Heart of Fire",
+    "act": 2,
+    "stats": {
+      "speed": 1,
+      "armour": 2
+    },
+    "abilities": [
+      "Surge"
+    ],
+    "referenceNumber": 714,
+    "location": "Gheira",
+    "careerPreference": "Mage"
+  },
+  {
+    "id": "spider_grips_w_r_",
+    "name": "Spider grips (W/R)",
+    "type": "gloves",
+    "book": "The Heart of Fire",
+    "act": 2,
+    "stats": {
+      "speed": 1,
+      "brawn": 2
+    },
+    "abilities": [
+      "Sure grip"
+    ],
+    "referenceNumber": 840,
+    "location": "Anansi"
+  },
+  {
+    "id": "drakes_scales",
+    "name": "Drake's scales",
+    "type": "gloves",
+    "book": "The Heart of Fire",
+    "act": 2,
+    "stats": {
+      "speed": 1,
+      "brawn": 4
+    },
+    "abilities": [
+      "Rake"
+    ],
+    "referenceNumber": 745,
+    "location": "Issachar",
+    "careerPreference": "Warrior"
+  },
+  {
+    "id": "nergals_splinters",
+    "name": "Nergal's splinters",
+    "type": "gloves",
+    "book": "The Heart of Fire",
+    "act": 3,
+    "stats": {
+      "speed": 1,
+      "armour": 2
+    },
+    "abilities": [
+      "Rake"
+    ],
+    "referenceNumber": 724,
+    "location": "Nergal",
+    "careerPreference": "Mage"
+  },
+  {
+    "id": "warfists_of_fury",
+    "name": "Warfists of fury",
+    "type": "gloves",
+    "book": "The Heart of Fire",
+    "act": 3,
+    "stats": {
+      "speed": 1,
+      "brawn": 3
+    },
+    "abilities": [
+      "Knockdown"
+    ],
+    "referenceNumber": 790,
+    "location": "Furies",
+    "careerPreference": "Warrior"
+  },
+  {
+    "id": "deft_hands",
+    "name": "Deft hands",
+    "type": "gloves",
+    "book": "The Heart of Fire",
+    "act": 3,
+    "stats": {
+      "speed": 1,
+      "brawn": 2
+    },
+    "abilities": [
+      "Stun",
+      "steal"
+    ],
+    "referenceNumber": 642,
+    "location": "Imp"
+  },
+  {
+    "id": "fortunes_seekers",
+    "name": "Fortune's seekers",
+    "type": "gloves",
+    "book": "The Heart of Fire",
+    "act": 3,
+    "stats": {
+      "speed": 1,
+      "brawn": 4
+    },
+    "abilities": [
+      "Unstoppable"
+    ],
+    "referenceNumber": 730,
+    "location": "Kuderas",
+    "careerPreference": "Warrior"
+  },
+  {
+    "id": "gloves_of_the_firmament",
+    "name": "Gloves of the firmament",
+    "type": "gloves",
+    "book": "The Heart of Fire",
+    "act": 3,
+    "stats": {
+      "speed": 1,
+      "magic": 4
+    },
+    "abilities": [
+      "Resolve"
+    ],
+    "referenceNumber": 728,
+    "location": "Evin Daala",
+    "careerPreference": "Mage"
+  },
+  {
+    "id": "gore_soaked_fists",
+    "name": "Gore-soaked fists",
+    "type": "gloves",
+    "book": "The Heart of Fire",
+    "act": 3,
+    "stats": {
+      "speed": 1,
+      "brawn": 4
+    },
+    "abilities": [
+      "Slam"
+    ],
+    "referenceNumber": 791,
+    "location": "Evin Daala",
+    "careerPreference": "Warrior"
+  },
+  {
+    "id": "grips_of_living_stone",
+    "name": "Grips of living stone",
+    "type": "gloves",
+    "book": "The Heart of Fire",
+    "act": 3,
+    "stats": {
+      "speed": 1,
+      "armour": 4
+    },
+    "abilities": [
+      "Might of stone"
+    ],
+    "referenceNumber": 794,
+    "location": "Erkil",
+    "careerPreference": "Rogue"
+  },
+  {
+    "id": "blood_sworn_gauntlets",
+    "name": "Blood-sworn gauntlets",
+    "type": "gloves",
+    "book": "The Heart of Fire",
+    "act": 3,
+    "stats": {
+      "speed": 1,
+      "brawn": 4
+    },
+    "abilities": [
+      "Resolve"
+    ],
+    "referenceNumber": 679,
+    "location": "Nephele (hexed)",
+    "careerPreference": "Warrior"
+  },
+  {
+    "id": "prowlers_handguards",
+    "name": "Prowler's handguards",
+    "type": "gloves",
+    "book": "The Heart of Fire",
+    "act": 3,
+    "stats": {
+      "speed": 1,
+      "brawn": 4
+    },
+    "abilities": [
+      "Sneak"
+    ],
+    "referenceNumber": 838,
+    "location": "Nephele (hexed)",
+    "careerPreference": "Rogue"
+  },
+  {
+    "id": "volcanists_handwraps",
+    "name": "Volcanist's handwraps",
+    "type": "gloves",
+    "book": "The Heart of Fire",
+    "act": 3,
+    "stats": {
+      "speed": 1,
+      "magic": 4
+    },
+    "abilities": [
+      "Melt"
+    ],
+    "referenceNumber": 708,
+    "location": "Nephele (hexed)",
+    "careerPreference": "Mage"
+  },
+  {
+    "id": "riders_jerkin",
+    "name": "Rider's jerkin",
+    "type": "chest",
+    "book": "The Heart of Fire",
+    "act": 1,
+    "stats": {
+      "speed": 1
+    },
+    "abilities": [
+      "None"
+    ],
+    "location": "Prologue"
+  },
+  {
+    "id": "josephs_coat",
+    "name": "Joseph's coat",
+    "type": "chest",
+    "book": "The Heart of Fire",
+    "act": 1,
+    "stats": {
+      "speed": 1,
+      "armour": 1
+    },
+    "abilities": [
+      "Second skin",
+      "charm"
+    ],
+    "location": "(side quest)"
+  },
+  {
+    "id": "wolf_bone_vest",
+    "name": "Wolf-bone vest",
+    "type": "chest",
+    "book": "The Heart of Fire",
+    "act": 1,
+    "stats": {
+      "speed": 1,
+      "armour": 1
+    },
+    "abilities": [
+      "None"
+    ],
+    "referenceNumber": 106,
+    "location": "Direwolf"
+  },
+  {
+    "id": "highwaymans_coat",
+    "name": "Highwayman's coat",
+    "type": "chest",
+    "book": "The Heart of Fire",
+    "act": 1,
+    "stats": {
+      "speed": 1,
+      "magic": 1
+    },
+    "abilities": [
+      "Fear"
+    ],
+    "referenceNumber": 48,
+    "location": "Highwayman"
+  },
+  {
+    "id": "green_blaze",
+    "name": "Green blaze",
+    "type": "chest",
+    "book": "The Heart of Fire",
+    "act": 1,
+    "stats": {
+      "speed": 1,
+      "armour": 1
+    },
+    "abilities": [
+      "Haste"
+    ],
+    "referenceNumber": 198,
+    "location": "Assassin ant"
+  },
+  {
+    "id": "rusted_chainmail",
+    "name": "Rusted chainmail",
+    "type": "chest",
+    "book": "The Heart of Fire",
+    "act": 1,
+    "stats": {
+      "speed": 1,
+      "armour": 1
+    },
+    "abilities": [
+      "None"
+    ],
+    "referenceNumber": 205,
+    "location": "Cannon crew"
+  },
+  {
+    "id": "knot_of_knives",
+    "name": "Knot of knives",
+    "type": "chest",
+    "book": "The Heart of Fire",
+    "act": 1,
+    "stats": {
+      "speed": 1,
+      "brawn": 1
+    },
+    "abilities": [
+      "Flurry"
+    ],
+    "referenceNumber": 286,
+    "location": "Lazlo (special)"
+  },
+  {
+    "id": "medics_uniform",
+    "name": "Medic's uniform",
+    "type": "chest",
+    "book": "The Heart of Fire",
+    "act": 1,
+    "stats": {
+      "speed": 1,
+      "magic": 1
+    },
+    "abilities": [
+      "Heal"
+    ],
+    "referenceNumber": 279,
+    "location": "Stitches puzzle"
+  },
+  {
+    "id": "barbarians_chest_wig",
+    "name": "Barbarian's chest wig",
+    "type": "chest",
+    "book": "The Heart of Fire",
+    "act": 1,
+    "stats": {
+      "speed": 1,
+      "brawn": 1
+    },
+    "abilities": [
+      "Fear"
+    ],
+    "referenceNumber": 279,
+    "location": "Stitches puzzle"
+  },
+  {
+    "id": "sawdust_n_stitches",
+    "name": "Sawdust 'n stitches",
+    "type": "chest",
+    "book": "The Heart of Fire",
+    "act": 1,
+    "stats": {
+      "speed": 1,
+      "armour": 1
+    },
+    "abilities": [
+      "Heartless"
+    ],
+    "referenceNumber": 105,
+    "location": "Cuddles"
+  },
+  {
+    "id": "charged_breastplate",
+    "name": "Charged breastplate",
+    "type": "chest",
+    "book": "The Heart of Fire",
+    "act": 1,
+    "stats": {
+      "brawn": 1,
+      "armour": 1
+    },
+    "abilities": [
+      "Lightning"
+    ],
+    "referenceNumber": 44,
+    "location": "Stone giants"
+  },
+  {
+    "id": "shockwave",
+    "name": "Shockwave",
+    "type": "chest",
+    "book": "The Heart of Fire",
+    "act": 1,
+    "stats": {
+      "brawn": 2,
+      "armour": 1
+    },
+    "abilities": [
+      "Lightning"
+    ],
+    "referenceNumber": 188,
+    "location": "Stone giants (special)"
+  },
+  {
+    "id": "barkskin_barding",
+    "name": "Barkskin barding",
+    "type": "chest",
+    "book": "The Heart of Fire",
+    "act": 1,
+    "stats": {
+      "speed": 1,
+      "armour": 1
+    },
+    "abilities": [
+      "Thorn armour"
+    ],
+    "referenceNumber": 308,
+    "location": "Orgorath"
+  },
+  {
+    "id": "hound_masters_tunic",
+    "name": "Hound-master's tunic",
+    "type": "chest",
+    "book": "The Heart of Fire",
+    "act": 1,
+    "stats": {
+      "speed": 1,
+      "brawn": 1
+    },
+    "abilities": [
+      "Sideswipe"
+    ],
+    "referenceNumber": 231,
+    "location": "Black shuck"
+  },
+  {
+    "id": "stoneguard_chest",
+    "name": "Stoneguard chest",
+    "type": "chest",
+    "book": "The Heart of Fire",
+    "act": 2,
+    "stats": {
+      "speed": 1,
+      "brawn": 2
+    },
+    "abilities": [
+      "Might of stone"
+    ],
+    "referenceNumber": 528,
+    "location": "Gaia",
+    "careerPreference": "Warrior"
+  },
+  {
+    "id": "gravedirt_girdle",
+    "name": "Gravedirt girdle",
+    "type": "chest",
+    "book": "The Heart of Fire",
+    "act": 2,
+    "stats": {
+      "speed": 1,
+      "magic": 1
+    },
+    "abilities": [
+      "Parasite"
+    ],
+    "referenceNumber": 544,
+    "location": "Gaia",
+    "careerPreference": "Mage"
+  },
+  {
+    "id": "preachers_coat",
+    "name": "Preacher's coat",
+    "type": "chest",
+    "book": "The Heart of Fire",
+    "act": 2,
+    "stats": {
+      "speed": 1,
+      "brawn": 1
+    },
+    "abilities": [
+      "Missionary's calling"
+    ],
+    "referenceNumber": 246,
+    "location": "Gaia",
+    "careerPreference": "Rogue"
+  },
+  {
+    "id": "nocturnal_leathers",
+    "name": "Nocturnal leathers",
+    "type": "chest",
+    "book": "The Heart of Fire",
+    "act": 2,
+    "stats": {
+      "speed": 1,
+      "brawn": 2
+    },
+    "abilities": [
+      "Savagery"
+    ],
+    "referenceNumber": 556,
+    "location": "Umbra",
+    "careerPreference": "Warrior"
+  },
+  {
+    "id": "electrified_vest",
+    "name": "Electrified vest",
+    "type": "chest",
+    "book": "The Heart of Fire",
+    "act": 2,
+    "stats": {
+      "speed": 1,
+      "brawn": 1
+    },
+    "abilities": [
+      "Shock!"
+    ],
+    "referenceNumber": 325,
+    "location": "Boogaloo",
+    "careerPreference": "Rogue"
+  },
+  {
+    "id": "forest_cuirass",
+    "name": "Forest cuirass",
+    "type": "chest",
+    "book": "The Heart of Fire",
+    "act": 2,
+    "stats": {
+      "brawn": 2,
+      "armour": 2
+    },
+    "abilities": [
+      "Thorn armour"
+    ],
+    "referenceNumber": 709,
+    "location": "The weeper",
+    "careerPreference": "Warrior"
+  },
+  {
+    "id": "gator_aid",
+    "name": "Gator aid",
+    "type": "chest",
+    "book": "The Heart of Fire",
+    "act": 2,
+    "stats": {
+      "speed": 1,
+      "armour": 2
+    },
+    "abilities": [
+      "Second skin"
+    ],
+    "referenceNumber": 742,
+    "location": "Alligator"
+  },
+  {
+    "id": "bright_scale_hauberk",
+    "name": "Bright scale hauberk",
+    "type": "chest",
+    "book": "The Heart of Fire",
+    "act": 2,
+    "stats": {
+      "brawn": 2,
+      "armour": 2
+    },
+    "abilities": [
+      "Radiance"
+    ],
+    "referenceNumber": 660,
+    "location": "Drecko",
+    "careerPreference": "Warrior"
+  },
+  {
+    "id": "desolation_robes",
+    "name": "Desolation robes",
+    "type": "chest",
+    "book": "The Heart of Fire",
+    "act": 2,
+    "stats": {
+      "speed": 2,
+      "magic": 2
+    },
+    "abilities": [
+      "Siphon"
+    ],
+    "referenceNumber": 748,
+    "location": "Succubus"
+  },
+  {
+    "id": "buckmasters_jacket",
+    "name": "Buckmaster's jacket",
+    "type": "chest",
+    "book": "The Heart of Fire",
+    "act": 2,
+    "stats": {
+      "brawn": 3,
+      "armour": 1
+    },
+    "abilities": [
+      "Cunning"
+    ],
+    "referenceNumber": 479,
+    "location": "Buckmaster Bill",
+    "careerPreference": "Warrior"
+  },
+  {
+    "id": "snipers_jacket",
+    "name": "Sniper's jacket",
+    "type": "chest",
+    "book": "The Heart of Fire",
+    "act": 2,
+    "stats": {
+      "speed": 1,
+      "magic": 1
+    },
+    "abilities": [
+      "Focus"
+    ],
+    "referenceNumber": 243,
+    "location": "Sniper"
+  },
+  {
+    "id": "trackers_chestguard",
+    "name": "Tracker's chestguard",
+    "type": "chest",
+    "book": "The Heart of Fire",
+    "act": 2,
+    "stats": {
+      "speed": 1,
+      "armour": 2
+    },
+    "abilities": [
+      "Critical strike"
+    ],
+    "referenceNumber": 678,
+    "location": "Tigris"
+  },
+  {
+    "id": "safari_cams",
+    "name": "Safari cams",
+    "type": "chest",
+    "book": "The Heart of Fire",
+    "act": 2,
+    "stats": {
+      "speed": 1,
+      "armour": 2
+    },
+    "abilities": [
+      "Vanish"
+    ],
+    "referenceNumber": 421,
+    "location": "Buckmaster Bill (side quest)",
+    "careerPreference": "Warrior"
+  },
+  {
+    "id": "burnished_breastplate",
+    "name": "Burnished breastplate",
+    "type": "chest",
+    "book": "The Heart of Fire",
+    "act": 2,
+    "stats": {
+      "brawn": 3,
+      "armour": 2
+    },
+    "abilities": [
+      "Blind"
+    ],
+    "referenceNumber": 699,
+    "location": "Golden guards"
+  },
+  {
+    "id": "gilded_chasuble",
+    "name": "Gilded chasuble",
+    "type": "chest",
+    "book": "The Heart of Fire",
+    "act": 2,
+    "stats": {
+      "speed": 2,
+      "magic": 2
+    },
+    "abilities": [
+      "Channel"
+    ],
+    "referenceNumber": 531,
+    "location": "Sun vault",
+    "careerPreference": "Mage"
+  },
+  {
+    "id": "widows_weave",
+    "name": "Widow's weave",
+    "type": "chest",
+    "book": "The Heart of Fire",
+    "act": 2,
+    "stats": {
+      "speed": 2,
+      "magic": 3
+    },
+    "abilities": [
+      "Weaver"
+    ],
+    "referenceNumber": 685,
+    "location": "Anansi",
+    "careerPreference": "Mage"
+  },
+  {
+    "id": "snakeskin_coat",
+    "name": "Snakeskin coat",
+    "type": "chest",
+    "book": "The Heart of Fire",
+    "act": 2,
+    "stats": {
+      "speed": 2,
+      "brawn": 2
+    },
+    "abilities": [
+      "Deceive"
+    ],
+    "referenceNumber": 473,
+    "location": "Kaala",
+    "careerPreference": "Rogue"
+  },
+  {
+    "id": "drakefire_raiment",
+    "name": "Drakefire raiment",
+    "type": "chest",
+    "book": "The Heart of Fire",
+    "act": 2,
+    "stats": {
+      "speed": 2,
+      "magic": 3
+    },
+    "abilities": [
+      "Fire aura"
+    ],
+    "referenceNumber": 761,
+    "location": "Issachar",
+    "careerPreference": "Mage"
+  },
+  {
+    "id": "drakefire_chestguard",
+    "name": "Drakefire chestguard",
+    "type": "chest",
+    "book": "The Heart of Fire",
+    "act": 2,
+    "stats": {
+      "brawn": 4,
+      "armour": 3
+    },
+    "abilities": [
+      "Barbs"
+    ],
+    "referenceNumber": 745,
+    "location": "Issachar",
+    "careerPreference": "Warrior"
+  },
+  {
+    "id": "brace_of_fury",
+    "name": "Brace of fury",
+    "type": "chest",
+    "book": "The Heart of Fire",
+    "act": 3,
+    "stats": {
+      "speed": 2,
+      "brawn": 3
+    },
+    "abilities": [
+      "Critical strike"
+    ],
+    "referenceNumber": 790,
+    "location": "Furies",
+    "careerPreference": "Rogue"
+  },
+  {
+    "id": "magma_hide",
+    "name": "Magma hide",
+    "type": "chest",
+    "book": "The Heart of Fire",
+    "act": 3,
+    "stats": {
+      "speed": 1,
+      "brawn": 3
+    },
+    "abilities": [
+      "Backdraft"
+    ],
+    "referenceNumber": 783,
+    "location": "Magma hounds",
+    "careerPreference": "Warrior"
+  },
+  {
+    "id": "sanguine_surcoat",
+    "name": "Sanguine surcoat",
+    "type": "chest",
+    "book": "The Heart of Fire",
+    "act": 3,
+    "stats": {
+      "speed": 2,
+      "magic": 4
+    },
+    "abilities": [
+      "Dark pact"
+    ],
+    "referenceNumber": 598,
+    "location": "Joss",
+    "careerPreference": "Mage"
+  },
+  {
+    "id": "mucus_membrane",
+    "name": "Mucus membrane",
+    "type": "chest",
+    "book": "The Heart of Fire",
+    "act": 3,
+    "stats": {
+      "speed": 2,
+      "armour": 2
+    },
+    "abilities": [
+      "Immobilise"
+    ],
+    "referenceNumber": 781,
+    "location": "Chilopoda",
+    "careerPreference": "Warrior"
+  },
+  {
+    "id": "gluttons_robes",
+    "name": "Glutton's robes",
+    "type": "chest",
+    "book": "The Heart of Fire",
+    "act": 3,
+    "stats": {
+      "speed": 2,
+      "magic": 4
+    },
+    "abilities": [
+      "Leech"
+    ],
+    "referenceNumber": 730,
+    "location": "Kuderas",
+    "careerPreference": "Mage"
+  },
+  {
+    "id": "titan_forged_hauberk",
+    "name": "Titan-forged hauberk",
+    "type": "chest",
+    "book": "The Heart of Fire",
+    "act": 3,
+    "stats": {
+      "speed": 2,
+      "armour": 3
+    },
+    "abilities": [
+      "Thorn armour"
+    ],
+    "referenceNumber": 716,
+    "location": "Erkil",
+    "careerPreference": "Mage"
+  },
+  {
+    "id": "crystal_plate",
+    "name": "Crystal plate",
+    "type": "chest",
+    "book": "The Heart of Fire",
+    "act": 3,
+    "stats": {
+      "speed": 2,
+      "brawn": 4
+    },
+    "abilities": [
+      "Overpower"
+    ],
+    "referenceNumber": 818,
+    "location": "Nephele",
+    "careerPreference": "Warrior"
+  },
+  {
+    "id": "blood_sworn_chestguard",
+    "name": "Blood-sworn chestguard",
+    "type": "chest",
+    "book": "The Heart of Fire",
+    "act": 3,
+    "stats": {
+      "speed": 1,
+      "armour": 2
+    },
+    "abilities": [
+      "Unstoppable"
+    ],
+    "referenceNumber": 800,
+    "location": "Ixion (hexed)",
+    "careerPreference": "Warrior"
+  },
+  {
+    "id": "prowlers_tunic",
+    "name": "Prowler's tunic",
+    "type": "chest",
+    "book": "The Heart of Fire",
+    "act": 3,
+    "stats": {
+      "speed": 2,
+      "brawn": 4
+    },
+    "abilities": [
+      "Critical strike"
+    ],
+    "referenceNumber": 732,
+    "location": "Ixion (hexed)"
+  },
+  {
+    "id": "volcanists_vestment",
+    "name": "Volcanist's vestment",
+    "type": "chest",
+    "book": "The Heart of Fire",
+    "act": 3,
+    "stats": {
+      "speed": 2,
+      "armour": 4
+    },
+    "abilities": [
+      "Reaper"
+    ],
+    "referenceNumber": 808,
+    "location": "Ixion (hexed)"
+  },
+  {
+    "id": "rock_spine_coat",
+    "name": "Rock spine coat",
+    "type": "chest",
+    "book": "The Heart of Fire",
+    "act": 3,
+    "stats": {
+      "speed": 2,
+      "brawn": 4
+    },
+    "abilities": [
+      "Gouge"
+    ],
+    "referenceNumber": 830,
+    "location": "Krakatoa",
+    "careerPreference": "Rogue"
+  },
+  {
+    "id": "krakkas_casing",
+    "name": "Krakka's casing",
+    "type": "chest",
+    "book": "The Heart of Fire",
+    "act": 3,
+    "stats": {
+      "speed": 2,
+      "armour": 4
+    },
+    "abilities": [
+      "Thorn armour"
+    ],
+    "referenceNumber": 637,
+    "location": "Krakatoa",
+    "careerPreference": "Warrior"
+  },
+  {
+    "id": "pilgrims_progress",
+    "name": "Pilgrim's progress",
+    "type": "feet",
+    "book": "The Heart of Fire",
+    "act": 1,
+    "stats": {
+      "speed": 1,
+      "armour": 1
+    },
+    "abilities": [
+      "Surefooted"
+    ],
+    "referenceNumber": 235,
+    "location": "Vendor/Raven's Rest"
+  },
+  {
+    "id": "ghost_riders_spurs",
+    "name": "Ghost rider's spurs",
+    "type": "feet",
+    "book": "The Heart of Fire",
+    "act": 1,
+    "stats": {
+      "speed": 1
+    },
+    "abilities": [
+      "Reckless"
+    ],
+    "referenceNumber": 48,
+    "location": "Highwayman"
+  },
+  {
+    "id": "bile_coated_boots",
+    "name": "Bile-coated boots",
+    "type": "feet",
+    "book": "The Heart of Fire",
+    "act": 1,
+    "stats": {
+      "brawn": 1,
+      "magic": 1
+    },
+    "abilities": [
+      "None"
+    ],
+    "referenceNumber": 300,
+    "location": "Number 13"
+  },
+  {
+    "id": "tarsus_boots",
+    "name": "Tarsus boots",
+    "type": "feet",
+    "book": "The Heart of Fire",
+    "act": 1,
+    "stats": {
+      "brawn": 1,
+      "magic": 1
+    },
+    "abilities": [
+      "Surefooted"
+    ],
+    "referenceNumber": 336,
+    "location": "Konga"
+  },
+  {
+    "id": "sailors_sandals",
+    "name": "Sailor's sandals",
+    "type": "feet",
+    "book": "The Heart of Fire",
+    "act": 1,
+    "stats": {
+      "speed": 1
+    },
+    "abilities": [
+      "Surefooted"
+    ],
+    "referenceNumber": 205,
+    "location": "Cannon crew"
+  },
+  {
+    "id": "iron_stompers",
+    "name": "Iron stompers",
+    "type": "feet",
+    "book": "The Heart of Fire",
+    "act": 1,
+    "stats": {
+      "speed": 1,
+      "armour": 1
+    },
+    "abilities": [
+      "Knockdown"
+    ],
+    "referenceNumber": 219,
+    "location": "Saw"
+  },
+  {
+    "id": "grounded_boots",
+    "name": "Grounded boots",
+    "type": "feet",
+    "book": "The Heart of Fire",
+    "act": 1,
+    "stats": {
+      "speed": 1,
+      "magic": 1
+    },
+    "abilities": [
+      "Insulated"
+    ],
+    "referenceNumber": 236,
+    "location": "Poltergeist"
+  },
+  {
+    "id": "firewalkers_boots",
+    "name": "Firewalker's boots",
+    "type": "feet",
+    "book": "The Heart of Fire",
+    "act": 1,
+    "stats": {
+      "speed": 1,
+      "brawn": 1
+    },
+    "abilities": [
+      "Turn up the heat"
+    ],
+    "referenceNumber": 431,
+    "location": "Furnace"
+  },
+  {
+    "id": "shaggy_mukluks",
+    "name": "Shaggy mukluks",
+    "type": "feet",
+    "book": "The Heart of Fire",
+    "act": 1,
+    "stats": {
+      "speed": 1,
+      "armour": 1
+    },
+    "abilities": [
+      "Haste"
+    ],
+    "referenceNumber": 231,
+    "location": "Black shuck"
+  },
+  {
+    "id": "mud_sliders",
+    "name": "Mud sliders",
+    "type": "feet",
+    "book": "The Heart of Fire",
+    "act": 2,
+    "stats": {
+      "speed": 1,
+      "brawn": 1
+    },
+    "abilities": [
+      "Unstoppable"
+    ],
+    "referenceNumber": 528,
+    "location": "Gaia",
+    "careerPreference": "Warrior"
+  },
+  {
+    "id": "storm_riders",
+    "name": "Storm riders",
+    "type": "feet",
+    "book": "The Heart of Fire",
+    "act": 2,
+    "stats": {
+      "speed": 1,
+      "armour": 1
+    },
+    "abilities": [
+      "Pagan's spirit"
+    ],
+    "referenceNumber": 297,
+    "location": "Zephyr",
+    "careerPreference": "Rogue"
+  },
+  {
+    "id": "conga_kickers",
+    "name": "Conga kickers",
+    "type": "feet",
+    "book": "The Heart of Fire",
+    "act": 2,
+    "stats": {
+      "brawn": 1,
+      "armour": 1
+    },
+    "abilities": [
+      "Lightning"
+    ],
+    "referenceNumber": 325,
+    "location": "Boogaloo",
+    "careerPreference": "Rogue"
+  },
+  {
+    "id": "lightning_loafers",
+    "name": "Lightning loafers",
+    "type": "feet",
+    "book": "The Heart of Fire",
+    "act": 2,
+    "stats": {
+      "speed": 1,
+      "magic": 1
+    },
+    "abilities": [
+      "Lightning"
+    ],
+    "referenceNumber": 458,
+    "location": "Boogaloo",
+    "careerPreference": "Mage"
+  },
+  {
+    "id": "stone_walkers",
+    "name": "Stone walkers",
+    "type": "feet",
+    "book": "The Heart of Fire",
+    "act": 2,
+    "stats": {
+      "speed": 1,
+      "magic": 1
+    },
+    "abilities": [
+      "Might of stone"
+    ],
+    "referenceNumber": 621,
+    "location": "Totem"
+  },
+  {
+    "id": "jungle_runners",
+    "name": "Jungle runners",
+    "type": "feet",
+    "book": "The Heart of Fire",
+    "act": 2,
+    "stats": {
+      "speed": 1
+    },
+    "abilities": [
+      "(+2 health) Haste"
+    ],
+    "referenceNumber": 780,
+    "location": "Zambezi"
+  },
+  {
+    "id": "bug_grinders",
+    "name": "Bug grinders",
+    "type": "feet",
+    "book": "The Heart of Fire",
+    "act": 2,
+    "stats": {
+      "speed": 1,
+      "brawn": 2
+    },
+    "abilities": [
+      "Compulsion"
+    ],
+    "referenceNumber": 421,
+    "location": "Buckmaster Bill (side quest)",
+    "careerPreference": "Warrior"
+  },
+  {
+    "id": "rough_pelt_moccasins",
+    "name": "Rough pelt moccasins",
+    "type": "feet",
+    "book": "The Heart of Fire",
+    "act": 2,
+    "stats": {
+      "speed": 1,
+      "armour": 2
+    },
+    "abilities": [
+      "Dominate"
+    ],
+    "referenceNumber": 641,
+    "location": "Terral devil",
+    "careerPreference": "Mage"
+  },
+  {
+    "id": "golden_greaves",
+    "name": "Golden greaves",
+    "type": "feet",
+    "book": "The Heart of Fire",
+    "act": 2,
+    "stats": {
+      "speed": 1,
+      "brawn": 2
+    },
+    "abilities": [
+      "Charm"
+    ],
+    "referenceNumber": 550,
+    "location": "Sun vault",
+    "careerPreference": "Warrior"
+  },
+  {
+    "id": "enchanted_boots",
+    "name": "Enchanted boots",
+    "type": "feet",
+    "book": "The Heart of Fire",
+    "act": 2,
+    "stats": {
+      "speed": 1,
+      "armour": 1
+    },
+    "abilities": [
+      "Heal"
+    ],
+    "referenceNumber": 575,
+    "location": "Fisher king"
+  },
+  {
+    "id": "slither_steps",
+    "name": "Slither steps",
+    "type": "feet",
+    "book": "The Heart of Fire",
+    "act": 2,
+    "stats": {
+      "speed": 1,
+      "brawn": 2
+    },
+    "abilities": [
+      "Charm"
+    ],
+    "referenceNumber": 473,
+    "location": "Kaala"
+  },
+  {
+    "id": "death_blades",
+    "name": "Death blades",
+    "type": "feet",
+    "book": "The Heart of Fire",
+    "act": 2,
+    "stats": {
+      "speed": 2,
+      "brawn": 3
+    },
+    "abilities": [
+      "Fatal blow"
+    ],
+    "referenceNumber": 770,
+    "location": "Issachar",
+    "careerPreference": "Rogue"
+  },
+  {
+    "id": "lava_pads",
+    "name": "Lava pads",
+    "type": "feet",
+    "book": "The Heart of Fire",
+    "act": 3,
+    "stats": {
+      "speed": 2,
+      "magic": 2
+    },
+    "abilities": [
+      "Fire shield"
+    ],
+    "referenceNumber": 783,
+    "location": "Magma hounds",
+    "careerPreference": "Mage"
+  },
+  {
+    "id": "slime_skimmers",
+    "name": "Slime skimmers",
+    "type": "feet",
+    "book": "The Heart of Fire",
+    "act": 3,
+    "stats": {
+      "speed": 2,
+      "brawn": 2
+    },
+    "abilities": [
+      "Webbed"
+    ],
+    "referenceNumber": 781,
+    "location": "Chilopoda"
+  },
+  {
+    "id": "scarlet_sabatons",
+    "name": "Scarlet sabatons",
+    "type": "feet",
+    "book": "The Heart of Fire",
+    "act": 3,
+    "stats": {
+      "speed": 2,
+      "brawn": 3
+    },
+    "abilities": [
+      "Haste"
+    ],
+    "referenceNumber": 598,
+    "location": "Joss",
+    "careerPreference": "Warrior"
+  },
+  {
+    "id": "singed_footpads",
+    "name": "Singed footpads",
+    "type": "feet",
+    "book": "The Heart of Fire",
+    "act": 3,
+    "stats": {
+      "speed": 2,
+      "brawn": 3
+    },
+    "abilities": [
+      "Sidestep"
+    ],
+    "referenceNumber": 812,
+    "location": "Ixion",
+    "careerPreference": "Rogue"
+  },
+  {
+    "id": "ixions_shackles",
+    "name": "Ixion's shackles",
+    "type": "feet",
+    "book": "The Heart of Fire",
+    "act": 3,
+    "stats": {
+      "speed": 2,
+      "magic": 3
+    },
+    "abilities": [
+      "Immobilise"
+    ],
+    "referenceNumber": 592,
+    "location": "Ixion",
+    "careerPreference": "Mage"
+  },
+  {
+    "id": "frost_spike_boots",
+    "name": "Frost spike boots",
+    "type": "feet",
+    "book": "The Heart of Fire",
+    "act": 3,
+    "stats": {
+      "speed": 2,
+      "armour": 2
+    },
+    "abilities": [
+      "Barbs"
+    ],
+    "referenceNumber": 818,
+    "location": "Nephele",
+    "careerPreference": "Warrior"
+  },
+  {
+    "id": "cornerstone_boots",
+    "name": "Cornerstone boots",
+    "type": "feet",
+    "book": "The Heart of Fire",
+    "act": 3,
+    "stats": {
+      "speed": 2,
+      "armour": 2
+    },
+    "abilities": [
+      "Insulated"
+    ],
+    "referenceNumber": 716,
+    "location": "Erkil",
+    "careerPreference": "Mage"
+  },
+  {
+    "id": "knights_folly",
+    "name": "Knight's folly",
+    "type": "mainHand",
+    "book": "The Heart of Fire",
+    "act": 1,
+    "stats": {
+      "brawn": 1,
+      "magic": 1
+    },
+    "abilities": [
+      "None"
+    ],
+    "location": "Prologue"
+  },
+  {
+    "id": "duty",
+    "name": "Duty",
+    "type": "mainHand",
+    "book": "The Heart of Fire",
+    "act": 1,
+    "stats": {
+      "speed": 1,
+      "brawn": 1
+    },
+    "abilities": [
+      "Charm",
+      "Faith & duty"
+    ],
+    "referenceNumber": 221,
+    "location": "Farmers (side quest)"
+  },
+  {
+    "id": "headsplitter",
+    "name": "Headsplitter",
+    "type": "mainHand",
+    "book": "The Heart of Fire",
+    "act": 1,
+    "stats": {
+      "speed": 1,
+      "brawn": 2
+    },
+    "abilities": [
+      "Savagery"
+    ],
+    "referenceNumber": 22,
+    "location": "Vendor/Carvel"
+  },
+  {
+    "id": "midnights_edge",
+    "name": "Midnight's edge",
+    "type": "mainHand",
+    "book": "The Heart of Fire",
+    "act": 1,
+    "stats": {
+      "speed": 1,
+      "brawn": 2
+    },
+    "abilities": [
+      "Dominate"
+    ],
+    "referenceNumber": 230,
+    "location": "Vendor/Carvel"
+  },
+  {
+    "id": "walking_stick",
+    "name": "Walking stick",
+    "type": "mainHand",
+    "book": "The Heart of Fire",
+    "act": 1,
+    "stats": {
+      "speed": 1,
+      "magic": 1
+    },
+    "abilities": [
+      "Charm"
+    ],
+    "referenceNumber": 235,
+    "location": "Vendor/Raven's Rest"
+  },
+  {
+    "id": "cut_throats_carver",
+    "name": "Cut throat's carver",
+    "type": "mainHand",
+    "book": "The Heart of Fire",
+    "act": 1,
+    "stats": {
+      "brawn": 1,
+      "magic": 1
+    },
+    "abilities": [
+      "Bleed"
+    ],
+    "referenceNumber": 26,
+    "location": "Anna"
+  },
+  {
+    "id": "great_divider",
+    "name": "Great divider",
+    "type": "mainHand",
+    "book": "The Heart of Fire",
+    "act": 1,
+    "stats": {
+      "speed": 1,
+      "brawn": 1
+    },
+    "abilities": [
+      "Bleed"
+    ],
+    "referenceNumber": 50,
+    "location": "Barrow"
+  },
+  {
+    "id": "splintered_claw",
+    "name": "Splintered claw",
+    "type": "mainHand",
+    "book": "The Heart of Fire",
+    "act": 1,
+    "stats": {
+      "brawn": 1,
+      "armour": 1
+    },
+    "abilities": [
+      "None"
+    ],
+    "referenceNumber": 133,
+    "location": "Sinister sprigs"
+  },
+  {
+    "id": "ivory_spire",
+    "name": "Ivory spire",
+    "type": "mainHand",
+    "book": "The Heart of Fire",
+    "act": 1,
+    "stats": {
+      "magic": 1
+    },
+    "abilities": [
+      "Focus"
+    ],
+    "referenceNumber": 359,
+    "location": "Bishop"
+  },
+  {
+    "id": "rusted_knife",
+    "name": "Rusted knife",
+    "type": "mainHand",
+    "book": "The Heart of Fire",
+    "act": 1,
+    "stats": {
+      "speed": 1
+    },
+    "abilities": [
+      "Bleed"
+    ],
+    "referenceNumber": 20,
+    "location": "Zombie goblin"
+  },
+  {
+    "id": "stalkers_stiletto",
+    "name": "Stalker's stiletto",
+    "type": "mainHand",
+    "book": "The Heart of Fire",
+    "act": 1,
+    "stats": {
+      "speed": 1,
+      "magic": 1
+    },
+    "abilities": [
+      "Silverfrost"
+    ],
+    "referenceNumber": 372,
+    "location": "Falks"
+  },
+  {
+    "id": "flint_knife",
+    "name": "Flint knife",
+    "type": "mainHand",
+    "book": "The Heart of Fire",
+    "act": 1,
+    "stats": {
+      "speed": 1
+    },
+    "abilities": [
+      "Gouge"
+    ],
+    "referenceNumber": 336,
+    "location": "Konga"
+  },
+  {
+    "id": "mighty_claw",
+    "name": "Mighty claw",
+    "type": "mainHand",
+    "book": "The Heart of Fire",
+    "act": 1,
+    "stats": {
+      "speed": 1,
+      "brawn": 1
+    },
+    "abilities": [
+      "Sideswipe"
+    ],
+    "referenceNumber": 198,
+    "location": "Assassin ant"
+  },
+  {
+    "id": "winters_fall",
+    "name": "Winter's fall",
+    "type": "mainHand",
+    "book": "The Heart of Fire",
+    "act": 1,
+    "stats": {
+      "speed": 1,
+      "brawn": 1
+    },
+    "abilities": [
+      "Silverfrost"
+    ],
+    "referenceNumber": 30,
+    "location": "Jeeves"
+  },
+  {
+    "id": "red_mist",
+    "name": "Red mist",
+    "type": "mainHand",
+    "book": "The Heart of Fire",
+    "act": 1,
+    "stats": {
+      "brawn": 2,
+      "magic": 2
+    },
+    "abilities": [
+      "Bleed"
+    ],
+    "referenceNumber": 174,
+    "location": "Lazlo (special)"
+  },
+  {
+    "id": "buzz_saw",
+    "name": "Buzz saw",
+    "type": "mainHand",
+    "book": "The Heart of Fire",
+    "act": 1,
+    "stats": {
+      "speed": 1
+    },
+    "abilities": [
+      "Cleave"
+    ],
+    "referenceNumber": 219,
+    "location": "Saw"
+  },
+  {
+    "id": "forgers_hammer",
+    "name": "Forger's hammer",
+    "type": "mainHand",
+    "book": "The Heart of Fire",
+    "act": 1,
+    "stats": {
+      "brawn": 2
+    },
+    "abilities": [
+      "Pound"
+    ],
+    "referenceNumber": 23,
+    "location": "Forger"
+  },
+  {
+    "id": "furnace_fire",
+    "name": "Furnace fire",
+    "type": "mainHand",
+    "book": "The Heart of Fire",
+    "act": 1,
+    "stats": {
+      "speed": 1,
+      "magic": 1
+    },
+    "abilities": [
+      "Sear"
+    ],
+    "referenceNumber": 431,
+    "location": "Furnace"
+  },
+  {
+    "id": "gratuitous_maximus",
+    "name": "Gratuitous maximus",
+    "type": "mainHand",
+    "book": "The Heart of Fire",
+    "act": 1,
+    "stats": {
+      "speed": 1,
+      "brawn": 1
+    },
+    "abilities": [
+      "Bleed"
+    ],
+    "referenceNumber": 498,
+    "location": "Maximus"
+  },
+  {
+    "id": "stone_spike",
+    "name": "Stone spike",
+    "type": "mainHand",
+    "book": "The Heart of Fire",
+    "act": 1,
+    "stats": {
+      "brawn": 2
+    },
+    "abilities": [
+      "Critical strike"
+    ],
+    "referenceNumber": 44,
+    "location": "Stone giants",
+    "careerPreference": "Rogue"
+  },
+  {
+    "id": "black_peak",
+    "name": "Black peak",
+    "type": "mainHand",
+    "book": "The Heart of Fire",
+    "act": 1,
+    "stats": {
+      "brawn": 2
+    },
+    "abilities": [
+      "Deep wound"
+    ],
+    "referenceNumber": 188,
+    "location": "Stone giants (special)",
+    "careerPreference": "Rogue"
+  },
+  {
+    "id": "twilight_scepter",
+    "name": "Twilight scepter",
+    "type": "mainHand",
+    "book": "The Heart of Fire",
+    "act": 1,
+    "stats": {
+      "speed": 1,
+      "magic": 2
+    },
+    "abilities": [
+      "Wither"
+    ],
+    "referenceNumber": 493,
+    "location": "Custodian",
+    "careerPreference": "Mage"
+  },
+  {
+    "id": "inscribed_fist",
+    "name": "Inscribed fist",
+    "type": "mainHand",
+    "book": "The Heart of Fire",
+    "act": 1,
+    "stats": {
+      "speed": 1,
+      "brawn": 2
+    },
+    "abilities": [
+      "Knockdown"
+    ],
+    "referenceNumber": 502,
+    "location": "White abbot",
+    "careerPreference": "Warrior"
+  },
+  {
+    "id": "frost_reavers_tongue",
+    "name": "Frost reaver's tongue",
+    "type": "mainHand",
+    "book": "The Heart of Fire",
+    "act": 1,
+    "stats": {
+      "speed": 1,
+      "brawn": 2
+    },
+    "abilities": [
+      "Frost bite"
+    ],
+    "referenceNumber": 124,
+    "location": "Gairn"
+  },
+  {
+    "id": "bramble_blade",
+    "name": "Bramble blade",
+    "type": "mainHand",
+    "book": "The Heart of Fire",
+    "act": 1,
+    "stats": {
+      "speed": 1,
+      "brawn": 2
+    },
+    "abilities": [
+      "Bleed"
+    ],
+    "referenceNumber": 308,
+    "location": "Orgorath"
+  },
+  {
+    "id": "solstice",
+    "name": "Solstice",
+    "type": "mainHand",
+    "book": "The Heart of Fire",
+    "act": 1,
+    "stats": {
+      "speed": 1,
+      "magic": 3
+    },
+    "abilities": [
+      "Channel"
+    ],
+    "referenceNumber": 155,
+    "location": "Wicker man"
+  },
+  {
+    "id": "wangimbo",
+    "name": "Wangimbo",
+    "type": "mainHand",
+    "book": "The Heart of Fire",
+    "act": 2,
+    "stats": {
+      "speed": 2,
+      "brawn": 2
+    },
+    "abilities": [
+      "Impale"
+    ],
+    "referenceNumber": 612,
+    "location": "Vendor/Emerald Isle",
+    "careerPreference": "Warrior"
+  },
+  {
+    "id": "abracabamba",
+    "name": "Abracabamba",
+    "type": "mainHand",
+    "book": "The Heart of Fire",
+    "act": 2,
+    "stats": {
+      "speed": 2,
+      "magic": 2
+    },
+    "abilities": [
+      "Blink"
+    ],
+    "referenceNumber": 612,
+    "location": "Vendor/Emerald Isle",
+    "careerPreference": "Mage"
+  },
+  {
+    "id": "thunder",
+    "name": "Thunder",
+    "type": "mainHand",
+    "book": "The Heart of Fire",
+    "act": 2,
+    "stats": {
+      "speed": 1,
+      "brawn": 2
+    },
+    "abilities": [
+      "Savage arms"
+    ],
+    "referenceNumber": 528,
+    "location": "Gaia",
+    "careerPreference": "Warrior"
+  },
+  {
+    "id": "broken_blade",
+    "name": "Broken blade",
+    "type": "mainHand",
+    "book": "The Heart of Fire",
+    "act": 2,
+    "stats": {
+      "speed": 1,
+      "magic": 2
+    },
+    "abilities": [
+      "Bleed"
+    ],
+    "referenceNumber": 544,
+    "location": "Gaia",
+    "careerPreference": "Mage"
+  },
+  {
+    "id": "tremor_stick",
+    "name": "Tremor stick",
+    "type": "mainHand",
+    "book": "The Heart of Fire",
+    "act": 2,
+    "stats": {
+      "speed": 1,
+      "brawn": 2
+    },
+    "abilities": [
+      "Shock!"
+    ],
+    "referenceNumber": 569,
+    "location": "Boogaloo",
+    "careerPreference": "Warrior"
+  },
+  {
+    "id": "wind_baton",
+    "name": "Wind baton",
+    "type": "mainHand",
+    "book": "The Heart of Fire",
+    "act": 2,
+    "stats": {
+      "speed": 1,
+      "magic": 2
+    },
+    "abilities": [
+      "Windblast"
+    ],
+    "referenceNumber": 346,
+    "location": "Zephyr",
+    "careerPreference": "Mage"
+  },
+  {
+    "id": "glaive_of_souls",
+    "name": "Glaive of souls",
+    "type": "mainHand",
+    "book": "The Heart of Fire",
+    "act": 2,
+    "stats": {
+      "speed": 2,
+      "brawn": 2,
+      "magic": 2
+    },
+    "abilities": [
+      "Vampirism"
+    ],
+    "referenceNumber": 602,
+    "location": "Mortzilla"
+  },
+  {
+    "id": "grubs_glory",
+    "name": "Grub's glory",
+    "type": "mainHand",
+    "book": "The Heart of Fire",
+    "act": 2,
+    "stats": {
+      "speed": 1,
+      "brawn": 2
+    },
+    "abilities": [
+      "Crawlers"
+    ],
+    "referenceNumber": 455,
+    "location": "Grub knight"
+  },
+  {
+    "id": "lone_wolf",
+    "name": "Lone wolf",
+    "type": "mainHand",
+    "book": "The Heart of Fire",
+    "act": 2,
+    "stats": {
+      "speed": 1,
+      "brawn": 2
+    },
+    "abilities": [
+      "Bleed"
+    ],
+    "referenceNumber": 757,
+    "location": "Travellers' shelter"
+  },
+  {
+    "id": "shrunken_hand",
+    "name": "Shrunken hand",
+    "type": "mainHand",
+    "book": "The Heart of Fire",
+    "act": 2,
+    "stats": {
+      "speed": 2,
+      "brawn": 1
+    },
+    "abilities": [
+      "Sideswipe"
+    ],
+    "referenceNumber": 634,
+    "location": "Yootha (side quest)"
+  },
+  {
+    "id": "voodoo_doll",
+    "name": "Voodoo doll",
+    "type": "mainHand",
+    "book": "The Heart of Fire",
+    "act": 2,
+    "stats": {
+      "speed": 2,
+      "magic": 2
+    },
+    "abilities": [
+      "Curse"
+    ],
+    "referenceNumber": 765,
+    "location": "Witch"
+  },
+  {
+    "id": "fang_of_the_fearless",
+    "name": "Fang of the fearless",
+    "type": "mainHand",
+    "book": "The Heart of Fire",
+    "act": 2,
+    "stats": {
+      "speed": 2,
+      "brawn": 1
+    },
+    "abilities": [
+      "Deep wound"
+    ],
+    "referenceNumber": 660,
+    "location": "Drecko"
+  },
+  {
+    "id": "nelsons_column",
+    "name": "Nelson's column",
+    "type": "mainHand",
+    "book": "The Heart of Fire",
+    "act": 2,
+    "stats": {
+      "speed": 1,
+      "brawn": 3
+    },
+    "abilities": [
+      "Knockdown"
+    ],
+    "referenceNumber": 421,
+    "location": "Buckmaster Bill (side quest)",
+    "careerPreference": "Warrior"
+  },
+  {
+    "id": "nelsons_column",
+    "name": "Nelson's column",
+    "type": "mainHand",
+    "book": "The Heart of Fire",
+    "act": 2,
+    "stats": {
+      "speed": 1,
+      "brawn": 3
+    },
+    "abilities": [
+      "Knockdown"
+    ],
+    "referenceNumber": 427,
+    "location": "Nelson",
+    "careerPreference": "Warrior"
+  },
+  {
+    "id": "bone_wild",
+    "name": "Bone wild",
+    "type": "mainHand",
+    "book": "The Heart of Fire",
+    "act": 2,
+    "stats": {
+      "speed": 1,
+      "brawn": 2
+    },
+    "abilities": [
+      "Deep wound"
+    ],
+    "referenceNumber": 780,
+    "location": "Zambezi"
+  },
+  {
+    "id": "bloodied_claws",
+    "name": "Bloodied claws",
+    "type": "mainHand",
+    "book": "The Heart of Fire",
+    "act": 2,
+    "stats": {
+      "speed": 2,
+      "brawn": 2
+    },
+    "abilities": [
+      "Rake"
+    ],
+    "referenceNumber": 678,
+    "location": "Tigris"
+  },
+  {
+    "id": "jade_teeth",
+    "name": "Jade teeth",
+    "type": "mainHand",
+    "book": "The Heart of Fire",
+    "act": 2,
+    "stats": {
+      "speed": 2,
+      "brawn": 2
+    },
+    "abilities": [
+      "Rake"
+    ],
+    "referenceNumber": 720,
+    "location": "Perez",
+    "careerPreference": "Warrior"
+  },
+  {
+    "id": "crystal_dagger",
+    "name": "Crystal dagger",
+    "type": "mainHand",
+    "book": "The Heart of Fire",
+    "act": 2,
+    "stats": {
+      "speed": 2,
+      "brawn": 3
+    },
+    "abilities": [
+      "Gut ripper"
+    ],
+    "referenceNumber": 499,
+    "location": "Buckmaster Bill (side quest)",
+    "careerPreference": "Rogue"
+  },
+  {
+    "id": "ebon_cutlass",
+    "name": "Ebon cutlass",
+    "type": "mainHand",
+    "book": "The Heart of Fire",
+    "act": 2,
+    "stats": {
+      "speed": 2,
+      "brawn": 3
+    },
+    "abilities": [
+      "Deep wound"
+    ],
+    "referenceNumber": 499,
+    "location": "Buckmaster Bill (side quest)",
+    "careerPreference": "Rogue"
+  },
+  {
+    "id": "sun_blaze",
+    "name": "Sun blaze",
+    "type": "mainHand",
+    "book": "The Heart of Fire",
+    "act": 2,
+    "stats": {
+      "speed": 2,
+      "brawn": 3
+    },
+    "abilities": [
+      "Sear"
+    ],
+    "referenceNumber": 699,
+    "location": "Sun maidens"
+  },
+  {
+    "id": "ancestral_spear",
+    "name": "Ancestral spear",
+    "type": "mainHand",
+    "book": "The Heart of Fire",
+    "act": 2,
+    "stats": {
+      "speed": 2,
+      "brawn": 3
+    },
+    "abilities": [
+      "Spirt hunter"
+    ],
+    "referenceNumber": 461,
+    "location": "Font of souls",
+    "careerPreference": "Warrior"
+  },
+  {
+    "id": "ancestral_blade",
+    "name": "Ancestral blade",
+    "type": "mainHand",
+    "book": "The Heart of Fire",
+    "act": 2,
+    "stats": {
+      "speed": 2,
+      "brawn": 3
+    },
+    "abilities": [
+      "Piercing",
+      "bleed"
+    ],
+    "referenceNumber": 526,
+    "location": "Font of souls",
+    "careerPreference": "Rogue"
+  },
+  {
+    "id": "ancestral_stave",
+    "name": "Ancestral stave",
+    "type": "mainHand",
+    "book": "The Heart of Fire",
+    "act": 2,
+    "stats": {
+      "speed": 2,
+      "magic": 3
+    },
+    "abilities": [
+      "Overload",
+      "focus"
+    ],
+    "referenceNumber": 514,
+    "location": "Font of souls",
+    "careerPreference": "Mage"
+  },
+  {
+    "id": "ceremonial_dagger",
+    "name": "Ceremonial dagger",
+    "type": "mainHand",
+    "book": "The Heart of Fire",
+    "act": 2,
+    "stats": {
+      "speed": 2,
+      "brawn": 2,
+      "magic": 2
+    },
+    "abilities": [
+      "Bleed"
+    ],
+    "referenceNumber": 508,
+    "location": "Ziggurat"
+  },
+  {
+    "id": "burnished_knuckles",
+    "name": "Burnished knuckles",
+    "type": "mainHand",
+    "book": "The Heart of Fire",
+    "act": 2,
+    "stats": {
+      "speed": 2,
+      "brawn": 2
+    },
+    "abilities": [
+      "Fatal blow"
+    ],
+    "referenceNumber": 524,
+    "location": "Golden guards",
+    "careerPreference": "Warrior"
+  },
+  {
+    "id": "mortal_coil",
+    "name": "Mortal coil",
+    "type": "mainHand",
+    "book": "The Heart of Fire",
+    "act": 2,
+    "stats": {
+      "speed": 2,
+      "brawn": 2
+    },
+    "abilities": [
+      "Reaper"
+    ],
+    "referenceNumber": 666,
+    "location": "Lich",
+    "careerPreference": "Rogue"
+  },
+  {
+    "id": "hunting_fork",
+    "name": "Hunting fork",
+    "type": "mainHand",
+    "book": "The Heart of Fire",
+    "act": 2,
+    "stats": {
+      "speed": 1,
+      "brawn": 3
+    },
+    "abilities": [
+      "Skewer"
+    ],
+    "referenceNumber": 575,
+    "location": "Fisher king",
+    "careerPreference": "Warrior"
+  },
+  {
+    "id": "untamed_will",
+    "name": "Untamed will",
+    "type": "mainHand",
+    "book": "The Heart of Fire",
+    "act": 2,
+    "stats": {
+      "speed": 2,
+      "brawn": 3
+    },
+    "abilities": [
+      "Piercing"
+    ],
+    "referenceNumber": 729,
+    "location": "Gheira",
+    "careerPreference": "Rogue"
+  },
+  {
+    "id": "death_rattle",
+    "name": "Death rattle",
+    "type": "mainHand",
+    "book": "The Heart of Fire",
+    "act": 2,
+    "stats": {
+      "speed": 2,
+      "magic": 3
+    },
+    "abilities": [
+      "Near death"
+    ],
+    "referenceNumber": 383,
+    "location": "Kaala",
+    "careerPreference": "Mage"
+  },
+  {
+    "id": "comb_of_sailors_fingers",
+    "name": "Comb of sailors' fingers",
+    "type": "mainHand",
+    "book": "The Heart of Fire",
+    "act": 2,
+    "stats": {
+      "speed": 2,
+      "brawn": 2
+    },
+    "abilities": [
+      "Disease"
+    ],
+    "referenceNumber": 657,
+    "location": "Siren sisters (side quest)"
+  },
+  {
+    "id": "wishing_staff",
+    "name": "Wishing staff",
+    "type": "mainHand",
+    "book": "The Heart of Fire",
+    "act": 2,
+    "stats": {
+      "speed": 2,
+      "magic": 3
+    },
+    "abilities": [
+      "Wish master"
+    ],
+    "referenceNumber": 737,
+    "location": "Hanuman",
+    "careerPreference": "Mage"
+  },
+  {
+    "id": "dooms_harbinger",
+    "name": "Doom's harbinger",
+    "type": "mainHand",
+    "book": "The Heart of Fire",
+    "act": 3,
+    "stats": {
+      "speed": 2,
+      "brawn": 5
+    },
+    "abilities": [
+      "Doom"
+    ],
+    "referenceNumber": 682,
+    "location": "Vendor/Haunted shop"
+  },
+  {
+    "id": "oculus_eye_of_pain",
+    "name": "Oculus, eye of pain",
+    "type": "mainHand",
+    "book": "The Heart of Fire",
+    "act": 3,
+    "stats": {
+      "speed": 2,
+      "magic": 5
+    },
+    "abilities": [
+      "Lightning",
+      "focus"
+    ],
+    "referenceNumber": 649,
+    "location": "Rune forge"
+  },
+  {
+    "id": "ravenos_bringer_of_ruin",
+    "name": "Ravenos, bringer of ruin",
+    "type": "mainHand",
+    "book": "The Heart of Fire",
+    "act": 3,
+    "stats": {
+      "speed": 2,
+      "brawn": 5
+    },
+    "abilities": [
+      "Deep wound",
+      "sear"
+    ],
+    "referenceNumber": 796,
+    "location": "Rune forge"
+  },
+  {
+    "id": "fist_of_fury",
+    "name": "Fist of fury",
+    "type": "mainHand",
+    "book": "The Heart of Fire",
+    "act": 3,
+    "stats": {
+      "speed": 2,
+      "brawn": 3
+    },
+    "abilities": [
+      "Knockdown"
+    ],
+    "referenceNumber": 455,
+    "location": "Furies"
+  },
+  {
+    "id": "acherons_war_glaive_w_r_",
+    "name": "Acheron's war glaive (W/R)",
+    "type": "mainHand",
+    "book": "The Heart of Fire",
+    "act": 3,
+    "stats": {
+      "speed": 2,
+      "brawn": 4
+    },
+    "abilities": [
+      "Cleave"
+    ],
+    "referenceNumber": 777,
+    "location": "Treasure vault"
+  },
+  {
+    "id": "acherons_tower",
+    "name": "Acheron's tower",
+    "type": "mainHand",
+    "book": "The Heart of Fire",
+    "act": 3,
+    "stats": {
+      "speed": 2,
+      "magic": 4
+    },
+    "abilities": [
+      "Might of stone"
+    ],
+    "referenceNumber": 176,
+    "location": "Treasure vault",
+    "careerPreference": "Mage"
+  },
+  {
+    "id": "crystal_hammer",
+    "name": "Crystal hammer",
+    "type": "mainHand",
+    "book": "The Heart of Fire",
+    "act": 3,
+    "stats": {
+      "speed": 2,
+      "brawn": 5
+    },
+    "abilities": [
+      "Stagger"
+    ],
+    "referenceNumber": 893,
+    "location": "Tourmalus",
+    "careerPreference": "Warrior"
+  },
+  {
+    "id": "serrated_scapula",
+    "name": "Serrated scapula",
+    "type": "mainHand",
+    "book": "The Heart of Fire",
+    "act": 3,
+    "stats": {
+      "speed": 2,
+      "brawn": 5
+    },
+    "abilities": [
+      "Fallen hero"
+    ],
+    "referenceNumber": 791,
+    "location": "Evin Daala",
+    "careerPreference": "Warrior"
+  },
+  {
+    "id": "spoke_of_the_wheel",
+    "name": "Spoke of the wheel",
+    "type": "mainHand",
+    "book": "The Heart of Fire",
+    "act": 3,
+    "stats": {
+      "speed": 2,
+      "brawn": 4
+    },
+    "abilities": [
+      "Deep wound"
+    ],
+    "referenceNumber": 812,
+    "location": "Ixion",
+    "careerPreference": "Rogue"
+  },
+  {
+    "id": "abandoned_hope",
+    "name": "Abandoned hope",
+    "type": "mainHand",
+    "book": "The Heart of Fire",
+    "act": 3,
+    "stats": {
+      "speed": 3,
+      "brawn": 4
+    },
+    "abilities": [
+      "Gut ripper"
+    ],
+    "referenceNumber": 723,
+    "location": "Nephele",
+    "careerPreference": "Rogue"
+  },
+  {
+    "id": "azure_embers",
+    "name": "Azure embers",
+    "type": "mainHand",
+    "book": "The Heart of Fire",
+    "act": 3,
+    "stats": {
+      "speed": 2,
+      "magic": 4
+    },
+    "abilities": [
+      "Disrupt"
+    ],
+    "referenceNumber": 787,
+    "location": "Nephele",
+    "careerPreference": "Mage"
+  },
+  {
+    "id": "hellslide_halberd",
+    "name": "Hellslide halberd",
+    "type": "mainHand",
+    "book": "The Heart of Fire",
+    "act": 3,
+    "stats": {
+      "speed": 2,
+      "brawn": 6
+    },
+    "abilities": [
+      "Impale"
+    ],
+    "referenceNumber": 637,
+    "location": "Krakatoa",
+    "careerPreference": "Warrior"
+  },
+  {
+    "id": "avalanche",
+    "name": "Avalanche",
+    "type": "mainHand",
+    "book": "The Heart of Fire",
+    "act": 3,
+    "stats": {
+      "speed": 2,
+      "magic": 6
+    },
+    "abilities": [
+      "Shatter"
+    ],
+    "referenceNumber": 873,
+    "location": "Krakatoa",
+    "careerPreference": "Mage"
+  },
+  {
+    "id": "silver_leaf",
+    "name": "Silver leaf",
+    "type": "leftHand",
+    "book": "The Heart of Fire",
+    "act": 1,
+    "stats": {
+      "speed": 1,
+      "magic": 1
+    },
+    "abilities": [
+      "Focus"
+    ],
+    "referenceNumber": 22,
+    "location": "Vendor/Carvel"
+  },
+  {
+    "id": "black_heart",
+    "name": "Black heart",
+    "type": "leftHand",
+    "book": "The Heart of Fire",
+    "act": 1,
+    "stats": {
+      "speed": 1,
+      "armour": 2
+    },
+    "abilities": [
+      "Deflect"
+    ],
+    "referenceNumber": 230,
+    "location": "Vendor/Carvel"
+  },
+  {
+    "id": "faith",
+    "name": "Faith",
+    "type": "leftHand",
+    "book": "The Heart of Fire",
+    "act": 1,
+    "stats": {
+      "speed": 1,
+      "brawn": 2
+    },
+    "abilities": [
+      "Immobilise",
+      "Faith & duty"
+    ],
+    "referenceNumber": 276,
+    "location": "Fallen knight (side quest)"
+  },
+  {
+    "id": "colt_phoenix",
+    "name": "Colt phoenix",
+    "type": "leftHand",
+    "book": "The Heart of Fire",
+    "act": 1,
+    "stats": {
+      "speed": 1,
+      "brawn": 1
+    },
+    "abilities": [
+      "Volley"
+    ],
+    "referenceNumber": 305,
+    "location": "Raven's Rest (side quest)"
+  },
+  {
+    "id": "greenstone_axe",
+    "name": "Greenstone axe",
+    "type": "leftHand",
+    "book": "The Heart of Fire",
+    "act": 1,
+    "stats": {
+      "brawn": 1
+    },
+    "abilities": [
+      "None"
+    ],
+    "referenceNumber": 74,
+    "location": "Drust the defiled"
+  },
+  {
+    "id": "dire_claw",
+    "name": "Dire claw",
+    "type": "leftHand",
+    "book": "The Heart of Fire",
+    "act": 1,
+    "stats": {
+      "brawn": 1,
+      "magic": 1
+    },
+    "abilities": [
+      "None"
+    ],
+    "referenceNumber": 106,
+    "location": "Direwolf"
+  },
+  {
+    "id": "manticores_tooth",
+    "name": "Manticore's tooth",
+    "type": "leftHand",
+    "book": "The Heart of Fire",
+    "act": 1,
+    "stats": {
+      "brawn": 1
+    },
+    "abilities": [
+      "Savagery"
+    ],
+    "referenceNumber": 292,
+    "location": "Manticore"
+  },
+  {
+    "id": "doorman",
+    "name": "Doorman",
+    "type": "leftHand",
+    "book": "The Heart of Fire",
+    "act": 1,
+    "stats": {
+      "armour": 1
+    },
+    "abilities": [
+      "Slam"
+    ],
+    "referenceNumber": 234,
+    "location": "Gutless"
+  },
+  {
+    "id": "cruel_cleaver",
+    "name": "Cruel cleaver",
+    "type": "leftHand",
+    "book": "The Heart of Fire",
+    "act": 1,
+    "stats": {
+      "brawn": 2
+    },
+    "abilities": [
+      "None"
+    ],
+    "referenceNumber": 234,
+    "location": "Gutless"
+  },
+  {
+    "id": "repentance",
+    "name": "Repentance",
+    "type": "leftHand",
+    "book": "The Heart of Fire",
+    "act": 1,
+    "stats": {
+      "speed": 1
+    },
+    "abilities": [
+      "Channel"
+    ],
+    "referenceNumber": 218,
+    "location": "Reverend"
+  },
+  {
+    "id": "falks_firestarter",
+    "name": "Falk's firestarter",
+    "type": "leftHand",
+    "book": "The Heart of Fire",
+    "act": 1,
+    "stats": {
+      "speed": 1,
+      "brawn": 1
+    },
+    "abilities": [
+      "Head shot"
+    ],
+    "referenceNumber": 372,
+    "location": "Falks"
+  },
+  {
+    "id": "sword_of_the_dales",
+    "name": "Sword of the dales",
+    "type": "leftHand",
+    "book": "The Heart of Fire",
+    "act": 1,
+    "stats": {
+      "brawn": 1,
+      "magic": 1
+    },
+    "abilities": [
+      "Heal"
+    ],
+    "referenceNumber": 109,
+    "location": "Loggers' camp"
+  },
+  {
+    "id": "bugsplatter",
+    "name": "Bugsplatter",
+    "type": "leftHand",
+    "book": "The Heart of Fire",
+    "act": 1,
+    "stats": {
+      "speed": 1,
+      "brawn": 1
+    },
+    "abilities": [
+      "None"
+    ],
+    "referenceNumber": 164,
+    "location": "Goblins"
+  },
+  {
+    "id": "flint_knife",
+    "name": "Flint knife",
+    "type": "leftHand",
+    "book": "The Heart of Fire",
+    "act": 1,
+    "stats": {
+      "speed": 1
+    },
+    "abilities": [
+      "Gouge"
+    ],
+    "referenceNumber": 336,
+    "location": "Konga"
+  },
+  {
+    "id": "cutlass_of_the_seven_seas",
+    "name": "Cutlass of the seven seas",
+    "type": "leftHand",
+    "book": "The Heart of Fire",
+    "act": 1,
+    "stats": {
+      "speed": 1
+    },
+    "abilities": [
+      "Parry"
+    ],
+    "referenceNumber": 264,
+    "location": "Captain's cabin"
+  },
+  {
+    "id": "celestes_anchor",
+    "name": "Celeste's anchor",
+    "type": "leftHand",
+    "book": "The Heart of Fire",
+    "act": 1,
+    "stats": {
+      "brawn": 1
+    },
+    "abilities": [
+      "Pound"
+    ],
+    "referenceNumber": 189,
+    "location": "Ship's hold"
+  },
+  {
+    "id": "windbreaker",
+    "name": "Windbreaker",
+    "type": "leftHand",
+    "book": "The Heart of Fire",
+    "act": 1,
+    "stats": {
+      "speed": 1,
+      "armour": 1
+    },
+    "abilities": [
+      "None"
+    ],
+    "referenceNumber": 91,
+    "location": "Margoyle"
+  },
+  {
+    "id": "jeeves_juicer",
+    "name": "Jeeve's juicer",
+    "type": "leftHand",
+    "book": "The Heart of Fire",
+    "act": 1,
+    "stats": {
+      "speed": 1,
+      "brawn": 1
+    },
+    "abilities": [
+      "Gouge"
+    ],
+    "referenceNumber": 286,
+    "location": "Lazlo (special)"
+  },
+  {
+    "id": "quill_of_aquila",
+    "name": "Quill of Aquila",
+    "type": "leftHand",
+    "book": "The Heart of Fire",
+    "act": 1,
+    "stats": {
+      "speed": 1,
+      "brawn": 1
+    },
+    "abilities": [
+      "Bleed"
+    ],
+    "referenceNumber": 303,
+    "location": "Inkheart"
+  },
+  {
+    "id": "ink_blotted_tome",
+    "name": "Ink-blotted tome",
+    "type": "leftHand",
+    "book": "The Heart of Fire",
+    "act": 1,
+    "stats": {
+      "speed": 1,
+      "magic": 1
+    },
+    "abilities": [
+      "Dominate"
+    ],
+    "referenceNumber": 303,
+    "location": "Inkheart"
+  },
+  {
+    "id": "defendus_maximus",
+    "name": "Defendus maximus",
+    "type": "leftHand",
+    "book": "The Heart of Fire",
+    "act": 1,
+    "stats": {
+      "speed": 1,
+      "armour": 1
+    },
+    "abilities": [
+      "Deflect"
+    ],
+    "referenceNumber": 498,
+    "location": "Maximus"
+  },
+  {
+    "id": "rock_fist",
+    "name": "Rock fist",
+    "type": "leftHand",
+    "book": "The Heart of Fire",
+    "act": 1,
+    "stats": {
+      "speed": 1,
+      "magic": 1
+    },
+    "abilities": [
+      "Surge"
+    ],
+    "referenceNumber": 44,
+    "location": "Stone giants"
+  },
+  {
+    "id": "stone_fury",
+    "name": "Stone fury",
+    "type": "leftHand",
+    "book": "The Heart of Fire",
+    "act": 1,
+    "stats": {
+      "speed": 1,
+      "magic": 2
+    },
+    "abilities": [
+      "Surge"
+    ],
+    "referenceNumber": 188,
+    "location": "Stone giants (special)"
+  },
+  {
+    "id": "inscribed_fist",
+    "name": "Inscribed fist",
+    "type": "leftHand",
+    "book": "The Heart of Fire",
+    "act": 1,
+    "stats": {
+      "speed": 1,
+      "brawn": 2
+    },
+    "abilities": [
+      "Pound"
+    ],
+    "referenceNumber": 706,
+    "location": "White abbot",
+    "careerPreference": "Warrior"
+  },
+  {
+    "id": "dawnlight",
+    "name": "Dawnlight",
+    "type": "leftHand",
+    "book": "The Heart of Fire",
+    "act": 1,
+    "stats": {
+      "speed": 1,
+      "brawn": 1
+    },
+    "abilities": [
+      "Blind"
+    ],
+    "referenceNumber": 502,
+    "location": "Custodian"
+  },
+  {
+    "id": "fer_de_lance",
+    "name": "Fer-de-lance",
+    "type": "leftHand",
+    "book": "The Heart of Fire",
+    "act": 2,
+    "stats": {
+      "speed": 1,
+      "brawn": 2
+    },
+    "abilities": [
+      "Venom"
+    ],
+    "referenceNumber": 467,
+    "location": "Vendor/Emerald Isle",
+    "careerPreference": "Rogue"
+  },
+  {
+    "id": "monarch_viper",
+    "name": "Monarch viper",
+    "type": "leftHand",
+    "book": "The Heart of Fire",
+    "act": 2,
+    "stats": {
+      "speed": 2,
+      "brawn": 2
+    },
+    "abilities": [
+      "Venom"
+    ],
+    "referenceNumber": 467,
+    "location": "Vendor/Emerald Isle",
+    "careerPreference": "Rogue"
+  },
+  {
+    "id": "lesser_bushmaster",
+    "name": "Lesser bushmaster",
+    "type": "leftHand",
+    "book": "The Heart of Fire",
+    "act": 2,
+    "stats": {
+      "speed": 2,
+      "brawn": 3
+    },
+    "abilities": [
+      "Constrictor"
+    ],
+    "referenceNumber": 467,
+    "location": "Vendor/Emerald Isle",
+    "careerPreference": "Rogue"
+  },
+  {
+    "id": "bogglespiffs_digest",
+    "name": "Bogglespiff's digest",
+    "type": "leftHand",
+    "book": "The Heart of Fire",
+    "act": 2,
+    "stats": {
+      "speed": 2,
+      "magic": 2
+    },
+    "abilities": [
+      "Insight"
+    ],
+    "referenceNumber": 492,
+    "location": "Scholar (side quest)"
+  },
+  {
+    "id": "squall",
+    "name": "Squall",
+    "type": "leftHand",
+    "book": "The Heart of Fire",
+    "act": 2,
+    "stats": {
+      "speed": 1,
+      "brawn": 2
+    },
+    "abilities": [
+      "Savage arms"
+    ],
+    "referenceNumber": 160,
+    "location": "Zephyr",
+    "careerPreference": "Warrior"
+  },
+  {
+    "id": "silver_flight",
+    "name": "Silver flight",
+    "type": "leftHand",
+    "book": "The Heart of Fire",
+    "act": 2,
+    "stats": {
+      "speed": 1,
+      "brawn": 2
+    },
+    "abilities": [
+      "Charm"
+    ],
+    "referenceNumber": 297,
+    "location": "Zephyr",
+    "careerPreference": "Rogue"
+  },
+  {
+    "id": "lost_scriptures",
+    "name": "Lost scriptures",
+    "type": "leftHand",
+    "book": "The Heart of Fire",
+    "act": 2,
+    "stats": {
+      "speed": 1,
+      "magic": 2
+    },
+    "abilities": [
+      "Cistene's chattels"
+    ],
+    "referenceNumber": 346,
+    "location": "Zephyr",
+    "careerPreference": "Mage"
+  },
+  {
+    "id": "feral_falcate",
+    "name": "Feral falcate",
+    "type": "leftHand",
+    "book": "The Heart of Fire",
+    "act": 2,
+    "stats": {
+      "speed": 1,
+      "brawn": 2
+    },
+    "abilities": [
+      "Pagan's spirit"
+    ],
+    "referenceNumber": 507,
+    "location": "Lycanth",
+    "careerPreference": "Rogue"
+  },
+  {
+    "id": "bone_shaker",
+    "name": "Bone shaker",
+    "type": "leftHand",
+    "book": "The Heart of Fire",
+    "act": 2,
+    "stats": {
+      "speed": 2,
+      "magic": 1
+    },
+    "abilities": [
+      "Fear"
+    ],
+    "referenceNumber": 765,
+    "location": "Witch",
+    "careerPreference": "Mage"
+  },
+  {
+    "id": "creek_guard",
+    "name": "Creek guard",
+    "type": "leftHand",
+    "book": "The Heart of Fire",
+    "act": 2,
+    "stats": {
+      "speed": 2,
+      "armour": 1
+    },
+    "abilities": [
+      "Retaliation"
+    ],
+    "referenceNumber": 742,
+    "location": "Alligator",
+    "careerPreference": "Warrior"
+  },
+  {
+    "id": "shrunken_hand",
+    "name": "Shrunken hand",
+    "type": "leftHand",
+    "book": "The Heart of Fire",
+    "act": 2,
+    "stats": {
+      "speed": 2,
+      "brawn": 1
+    },
+    "abilities": [
+      "Sideswipe"
+    ],
+    "referenceNumber": 634,
+    "location": "Yootha (side quest)"
+  },
+  {
+    "id": "cart_wheel",
+    "name": "Cart wheel",
+    "type": "leftHand",
+    "book": "The Heart of Fire",
+    "act": 2,
+    "stats": {
+      "speed": 2,
+      "armour": 1
+    },
+    "abilities": [
+      "Roll with it"
+    ],
+    "referenceNumber": 697,
+    "location": "Tigris cages (special)",
+    "careerPreference": "Warrior"
+  },
+  {
+    "id": "brazen_bar",
+    "name": "Brazen bar",
+    "type": "leftHand",
+    "book": "The Heart of Fire",
+    "act": 2,
+    "stats": {
+      "speed": 2,
+      "magic": 2
+    },
+    "abilities": [
+      "Knockdown"
+    ],
+    "referenceNumber": 697,
+    "location": "Tigris cages (special)"
+  },
+  {
+    "id": "rip_spleen",
+    "name": "Rip spleen",
+    "type": "leftHand",
+    "book": "The Heart of Fire",
+    "act": 2,
+    "stats": {
+      "speed": 2,
+      "brawn": 1
+    },
+    "abilities": [
+      "Bleed"
+    ],
+    "referenceNumber": 780,
+    "location": "Zambezi"
+  },
+  {
+    "id": "scarlet_hunter",
+    "name": "Scarlet hunter",
+    "type": "leftHand",
+    "book": "The Heart of Fire",
+    "act": 2,
+    "stats": {
+      "speed": 2,
+      "brawn": 2
+    },
+    "abilities": [
+      "Critical strike"
+    ],
+    "referenceNumber": 447,
+    "location": "Nelson",
+    "careerPreference": "Rogue"
+  },
+  {
+    "id": "the_nosepicker",
+    "name": "The nosepicker",
+    "type": "leftHand",
+    "book": "The Heart of Fire",
+    "act": 2,
+    "stats": {
+      "speed": 2,
+      "magic": 2
+    },
+    "abilities": [
+      "Bleed"
+    ],
+    "referenceNumber": 447,
+    "location": "Nelson"
+  },
+  {
+    "id": "bark_whip",
+    "name": "Bark whip",
+    "type": "leftHand",
+    "book": "The Heart of Fire",
+    "act": 2,
+    "stats": {
+      "speed": 2,
+      "brawn": 2
+    },
+    "abilities": [
+      "Bleed"
+    ],
+    "referenceNumber": 720,
+    "location": "Perez"
+  },
+  {
+    "id": "stormbound",
+    "name": "Stormbound",
+    "type": "leftHand",
+    "book": "The Heart of Fire",
+    "act": 2,
+    "stats": {
+      "speed": 1,
+      "brawn": 2
+    },
+    "abilities": [
+      "Volley"
+    ],
+    "referenceNumber": 243,
+    "location": "Sniper"
+  },
+  {
+    "id": "emerald_taipan",
+    "name": "Emerald taipan",
+    "type": "leftHand",
+    "book": "The Heart of Fire",
+    "act": 2,
+    "stats": {
+      "speed": 2,
+      "brawn": 3
+    },
+    "abilities": [
+      "Venom"
+    ],
+    "referenceNumber": 499,
+    "location": "Buckmaster Bill (side quest)",
+    "careerPreference": "Rogue"
+  },
+  {
+    "id": "medicine_staff",
+    "name": "Medicine staff",
+    "type": "leftHand",
+    "book": "The Heart of Fire",
+    "act": 2,
+    "stats": {
+      "speed": 2,
+      "magic": 3
+    },
+    "abilities": [
+      "Greater heal"
+    ],
+    "referenceNumber": 369,
+    "location": "Buckmaster Bill (side quest)",
+    "careerPreference": "Mage"
+  },
+  {
+    "id": "high_priests_scepter",
+    "name": "High priest's scepter",
+    "type": "leftHand",
+    "book": "The Heart of Fire",
+    "act": 2,
+    "stats": {
+      "speed": 2,
+      "magic": 2
+    },
+    "abilities": [
+      "Resolve"
+    ],
+    "referenceNumber": 531,
+    "location": "Sun vault"
+  },
+  {
+    "id": "embalming_razor",
+    "name": "Embalming razor",
+    "type": "leftHand",
+    "book": "The Heart of Fire",
+    "act": 2,
+    "stats": {
+      "speed": 2,
+      "brawn": 2
+    },
+    "abilities": [
+      "Blindstrike"
+    ],
+    "referenceNumber": 511,
+    "location": "Sun vault"
+  },
+  {
+    "id": "sol_shield",
+    "name": "Sol shield",
+    "type": "leftHand",
+    "book": "The Heart of Fire",
+    "act": 2,
+    "stats": {
+      "speed": 2,
+      "armour": 2
+    },
+    "abilities": [
+      "Radiance"
+    ],
+    "referenceNumber": 550,
+    "location": "Sun vault"
+  },
+  {
+    "id": "rodents_scratchers",
+    "name": "Rodent's scratchers",
+    "type": "leftHand",
+    "book": "The Heart of Fire",
+    "act": 2,
+    "stats": {
+      "speed": 2,
+      "brawn": 2
+    },
+    "abilities": [
+      "Piercing"
+    ],
+    "referenceNumber": 641,
+    "location": "Terral devil"
+  },
+  {
+    "id": "devils_incisor",
+    "name": "Devil's incisor",
+    "type": "leftHand",
+    "book": "The Heart of Fire",
+    "act": 2,
+    "stats": {
+      "speed": 2,
+      "brawn": 2
+    },
+    "abilities": [
+      "Fatal blow"
+    ],
+    "referenceNumber": 641,
+    "location": "Terral devil"
+  },
+  {
+    "id": "black_taipan",
+    "name": "Black taipan",
+    "type": "leftHand",
+    "book": "The Heart of Fire",
+    "act": 2,
+    "stats": {
+      "speed": 2,
+      "brawn": 3
+    },
+    "abilities": [
+      "Convulsions"
+    ],
+    "referenceNumber": 885,
+    "location": "Lecture room"
+  },
+  {
+    "id": "widows_needle",
+    "name": "Widow's needle",
+    "type": "leftHand",
+    "book": "The Heart of Fire",
+    "act": 2,
+    "stats": {
+      "speed": 2,
+      "brawn": 3
+    },
+    "abilities": [
+      "Piercing"
+    ],
+    "referenceNumber": 840,
+    "location": "Anansi",
+    "careerPreference": "Rogue"
+  },
+  {
+    "id": "carapace_crest",
+    "name": "Carapace crest",
+    "type": "leftHand",
+    "book": "The Heart of Fire",
+    "act": 2,
+    "stats": {
+      "speed": 2,
+      "armour": 2
+    },
+    "abilities": [
+      "Webbed"
+    ],
+    "referenceNumber": 840,
+    "location": "Anansi",
+    "careerPreference": "Warrior"
+  },
+  {
+    "id": "spinneret_of_shadows",
+    "name": "Spinneret of shadows",
+    "type": "leftHand",
+    "book": "The Heart of Fire",
+    "act": 2,
+    "stats": {
+      "speed": 2,
+      "magic": 3
+    },
+    "abilities": [
+      "Webbed"
+    ],
+    "referenceNumber": 685,
+    "location": "Anansi",
+    "careerPreference": "Mage"
+  },
+  {
+    "id": "drakes_defender",
+    "name": "Drake's defender",
+    "type": "leftHand",
+    "book": "The Heart of Fire",
+    "act": 2,
+    "stats": {
+      "speed": 2,
+      "armour": 4
+    },
+    "abilities": [
+      "Piercing"
+    ],
+    "referenceNumber": 745,
+    "location": "Issachar",
+    "careerPreference": "Warrior"
+  },
+  {
+    "id": "self_published_grimoire",
+    "name": "Self-published grimoire",
+    "type": "leftHand",
+    "book": "The Heart of Fire",
+    "act": 3,
+    "stats": {
+      "speed": 2,
+      "magic": 3
+    },
+    "abilities": [
+      "Dark pact"
+    ],
+    "referenceNumber": 600,
+    "location": "Printing press",
+    "careerPreference": "Mage"
+  },
+  {
+    "id": "self_published_grimoire",
+    "name": "Self-published grimoire",
+    "type": "leftHand",
+    "book": "The Heart of Fire",
+    "act": 3,
+    "stats": {
+      "speed": 2,
+      "magic": 3
+    },
+    "abilities": [
+      "Surge"
+    ],
+    "referenceNumber": 539,
+    "location": "Printing press",
+    "careerPreference": "Mage"
+  },
+  {
+    "id": "self_published_grimoire",
+    "name": "Self-published grimoire",
+    "type": "leftHand",
+    "book": "The Heart of Fire",
+    "act": 3,
+    "stats": {
+      "speed": 2,
+      "magic": 3
+    },
+    "abilities": [
+      "Regrowth"
+    ],
+    "referenceNumber": 816,
+    "location": "Printing press",
+    "careerPreference": "Mage"
+  },
+  {
+    "id": "self_published_grimoire",
+    "name": "Self-published grimoire",
+    "type": "leftHand",
+    "book": "The Heart of Fire",
+    "act": 3,
+    "stats": {
+      "speed": 2,
+      "magic": 3
+    },
+    "abilities": [
+      "Trickster"
+    ],
+    "referenceNumber": 876,
+    "location": "Printing press",
+    "careerPreference": "Mage"
+  },
+  {
+    "id": "self_published_tome",
+    "name": "Self-published tome",
+    "type": "leftHand",
+    "book": "The Heart of Fire",
+    "act": 3,
+    "stats": {
+      "speed": 2,
+      "armour": 3
+    },
+    "abilities": [
+      "Dark pact"
+    ],
+    "referenceNumber": 380,
+    "location": "Printing press",
+    "careerPreference": "Mage"
+  },
+  {
+    "id": "self_published_tome",
+    "name": "Self-published tome",
+    "type": "leftHand",
+    "book": "The Heart of Fire",
+    "act": 3,
+    "stats": {
+      "speed": 2,
+      "armour": 3
+    },
+    "abilities": [
+      "Trickster"
+    ],
+    "referenceNumber": 806,
+    "location": "Printing press",
+    "careerPreference": "Mage"
+  },
+  {
+    "id": "self_published_tome",
+    "name": "Self-published tome",
+    "type": "leftHand",
+    "book": "The Heart of Fire",
+    "act": 3,
+    "stats": {
+      "speed": 2,
+      "armour": 3
+    },
+    "abilities": [
+      "Regrowth"
+    ],
+    "referenceNumber": 826,
+    "location": "Printing press",
+    "careerPreference": "Mage"
+  },
+  {
+    "id": "self_published_tome",
+    "name": "Self-published tome",
+    "type": "leftHand",
+    "book": "The Heart of Fire",
+    "act": 3,
+    "stats": {
+      "speed": 2,
+      "armour": 3
+    },
+    "abilities": [
+      "Surge"
+    ],
+    "referenceNumber": 845,
+    "location": "Printing press",
+    "careerPreference": "Mage"
+  },
+  {
+    "id": "mortis_shard_of_doom_w_r_",
+    "name": "Mortis, shard of doom (W/R)",
+    "type": "leftHand",
+    "book": "The Heart of Fire",
+    "act": 3,
+    "stats": {
+      "speed": 2,
+      "brawn": 5
+    },
+    "abilities": [
+      "Bleed",
+      "lightning"
+    ],
+    "referenceNumber": 536,
+    "location": "Rune forge"
+  },
+  {
+    "id": "scriva_nimbus_of_nightmares",
+    "name": "Scriva, nimbus of nightmares",
+    "type": "leftHand",
+    "book": "The Heart of Fire",
+    "act": 3,
+    "stats": {
+      "speed": 3,
+      "magic": 4
+    },
+    "abilities": [
+      "Curse",
+      "sear"
+    ],
+    "referenceNumber": 474,
+    "location": "Rune forge",
+    "careerPreference": "Mage"
+  },
+  {
+    "id": "light_forged_bulwark",
+    "name": "Light-forged bulwark",
+    "type": "leftHand",
+    "book": "The Heart of Fire",
+    "act": 3,
+    "stats": {
+      "speed": 2,
+      "armour": 4
+    },
+    "abilities": [
+      "Defender"
+    ],
+    "referenceNumber": 682,
+    "location": "Vendor/Haunted shop",
+    "careerPreference": "Warrior"
+  },
+  {
+    "id": "hound_hook",
+    "name": "Hound hook",
+    "type": "leftHand",
+    "book": "The Heart of Fire",
+    "act": 3,
+    "stats": {
+      "speed": 2,
+      "brawn": 3
+    },
+    "abilities": [
+      "Gouge"
+    ],
+    "referenceNumber": 783,
+    "location": "Magma hounds",
+    "careerPreference": "Rogue"
+  },
+  {
+    "id": "bone_rot",
+    "name": "Bone rot",
+    "type": "leftHand",
+    "book": "The Heart of Fire",
+    "act": 3,
+    "stats": {
+      "speed": 2,
+      "brawn": 3
+    },
+    "abilities": [
+      "Leech"
+    ],
+    "referenceNumber": 724,
+    "location": "Nergal",
+    "careerPreference": "Warrior"
+  },
+  {
+    "id": "dark_star",
+    "name": "Dark star",
+    "type": "leftHand",
+    "book": "The Heart of Fire",
+    "act": 3,
+    "stats": {
+      "speed": 2,
+      "magic": 3
+    },
+    "abilities": [
+      "Barbs"
+    ],
+    "referenceNumber": 789,
+    "location": "Nyx the dark wind"
+  },
+  {
+    "id": "dull_gladius",
+    "name": "Dull gladius",
+    "type": "leftHand",
+    "book": "The Heart of Fire",
+    "act": 3,
+    "stats": {
+      "speed": 2,
+      "brawn": 3
+    },
+    "abilities": [
+      "Slam"
+    ],
+    "referenceNumber": 883,
+    "location": "Sparkacus"
+  },
+  {
+    "id": "calcite_claw",
+    "name": "Calcite claw",
+    "type": "leftHand",
+    "book": "The Heart of Fire",
+    "act": 3,
+    "stats": {
+      "speed": 2,
+      "brawn": 4
+    },
+    "abilities": [
+      "Piercing"
+    ],
+    "referenceNumber": 893,
+    "location": "Tourmalus"
+  },
+  {
+    "id": "agilax_the_string_of_tears",
+    "name": "Agilax, the string of tears",
+    "type": "leftHand",
+    "book": "The Heart of Fire",
+    "act": 3,
+    "stats": {
+      "speed": 2,
+      "brawn": 3
+    },
+    "abilities": [
+      "Blood archer"
+    ],
+    "referenceNumber": 846,
+    "location": "Joss",
+    "careerPreference": "Rogue"
+  },
+  {
+    "id": "blood_thorn",
+    "name": "Blood thorn",
+    "type": "leftHand",
+    "book": "The Heart of Fire",
+    "act": 3,
+    "stats": {
+      "speed": 2,
+      "brawn": 5
+    },
+    "abilities": [
+      "Gouge"
+    ],
+    "referenceNumber": 608,
+    "location": "Evin Daala",
+    "careerPreference": "Rogue"
+  },
+  {
+    "id": "ixions_wheel",
+    "name": "Ixion's wheel",
+    "type": "leftHand",
+    "book": "The Heart of Fire",
+    "act": 3,
+    "stats": {
+      "speed": 2,
+      "armour": 4
+    },
+    "abilities": [
+      "Fire aura"
+    ],
+    "referenceNumber": 823,
+    "location": "Ixion",
+    "careerPreference": "Warrior"
+  },
+  {
+    "id": "b_is_for_banshee",
+    "name": "B is for Banshee",
+    "type": "leftHand",
+    "book": "The Heart of Fire",
+    "act": 3,
+    "stats": {
+      "speed": 2,
+      "magic": 4
+    },
+    "abilities": [
+      "Windblast"
+    ],
+    "referenceNumber": 787,
+    "location": "Nephele",
+    "careerPreference": "Mage"
+  },
+  {
+    "id": "shiverspine",
+    "name": "Shiverspine",
+    "type": "leftHand",
+    "book": "The Heart of Fire",
+    "act": 3,
+    "stats": {
+      "speed": 2,
+      "brawn": 3
+    },
+    "abilities": [
+      "frostbite"
+    ],
+    "referenceNumber": 723,
+    "location": "Nephele",
+    "careerPreference": "Rogue"
+  },
+  {
+    "id": "erkils_hacker",
+    "name": "Erkil's hacker",
+    "type": "leftHand",
+    "book": "The Heart of Fire",
+    "act": 3,
+    "stats": {
+      "speed": 2,
+      "brawn": 4
+    },
+    "abilities": [
+      "Compulsion"
+    ],
+    "referenceNumber": 834,
+    "location": "Erkil",
+    "careerPreference": "Warrior"
+  },
+  {
+    "id": "blackthorn_twister",
+    "name": "Blackthorn twister",
+    "type": "leftHand",
+    "book": "The Heart of Fire",
+    "act": 3,
+    "stats": {
+      "speed": 2,
+      "brawn": 4
+    },
+    "abilities": [
+      "Cruel twist"
+    ],
+    "referenceNumber": 794,
+    "location": "Erkil",
+    "careerPreference": "Rogue"
+  },
+  {
+    "id": "krakkas_vengeance",
+    "name": "Krakka's vengeance",
+    "type": "leftHand",
+    "book": "The Heart of Fire",
+    "act": 3,
+    "stats": {
+      "speed": 2,
+      "brawn": 5
+    },
+    "abilities": [
+      "Piercing"
+    ],
+    "referenceNumber": 830,
+    "location": "Krakatoa",
+    "careerPreference": "Rogue"
+  },
+  {
+    "id": "stones_of_dissolution",
+    "name": "Stones of dissolution",
+    "type": "leftHand",
+    "book": "The Heart of Fire",
+    "act": 3,
+    "stats": {
+      "speed": 3,
+      "magic": 5
+    },
+    "abilities": [
+      "Confound"
+    ],
+    "referenceNumber": 873,
+    "location": "Krakatoa",
+    "careerPreference": "Mage"
+  },
+  {
+    "id": "wolfs_paw",
+    "name": "Wolf's paw",
+    "type": "talisman",
+    "book": "The Heart of Fire",
+    "act": 1,
+    "stats": {
+      "speed": 1
+    },
+    "abilities": [
+      "None"
+    ],
+    "referenceNumber": 235,
+    "location": "Vendor/Raven's Rest"
+  },
+  {
+    "id": "crow_feather",
+    "name": "Crow feather",
+    "type": "talisman",
+    "book": "The Heart of Fire",
+    "act": 1,
+    "stats": {
+      "magic": 1
+    },
+    "abilities": [
+      "None"
+    ],
+    "referenceNumber": 7,
+    "location": "Wiccan witch"
+  },
+  {
+    "id": "wishing_well_coin",
+    "name": "Wishing well coin",
+    "type": "talisman",
+    "book": "The Heart of Fire",
+    "act": 1,
+    "stats": {},
+    "abilities": [
+      "Charm"
+    ],
+    "referenceNumber": 20,
+    "location": "Zombie goblin"
+  },
+  {
+    "id": "lukes_left_hand",
+    "name": "Luke's left hand",
+    "type": "talisman",
+    "book": "The Heart of Fire",
+    "act": 1,
+    "stats": {},
+    "abilities": [
+      "High five!"
+    ],
+    "referenceNumber": 79,
+    "location": "Crews' quarters"
+  },
+  {
+    "id": "stone_blood",
+    "name": "Stone blood",
+    "type": "talisman",
+    "book": "The Heart of Fire",
+    "act": 1,
+    "stats": {
+      "armour": 1
+    },
+    "abilities": [
+      "Heal"
+    ],
+    "referenceNumber": 91,
+    "location": "Margoyle"
+  },
+  {
+    "id": "makers_button",
+    "name": "Maker's button",
+    "type": "talisman",
+    "book": "The Heart of Fire",
+    "act": 1,
+    "stats": {
+      "speed": 1
+    },
+    "abilities": [
+      "None"
+    ],
+    "referenceNumber": 105,
+    "location": "Cuddles"
+  },
+  {
+    "id": "adams_core",
+    "name": "Adam's core",
+    "type": "talisman",
+    "book": "The Heart of Fire",
+    "act": 1,
+    "stats": {
+      "brawn": 1
+    },
+    "abilities": [
+      "Heal"
+    ],
+    "referenceNumber": 498,
+    "location": "Maximus"
+  },
+  {
+    "id": "elder_seed",
+    "name": "Elder seed",
+    "type": "talisman",
+    "book": "The Heart of Fire",
+    "act": 1,
+    "stats": {
+      "magic": 1
+    },
+    "abilities": [
+      "Druid"
+    ],
+    "referenceNumber": 403,
+    "location": "Damaris",
+    "careerPreference": "Mage"
+  },
+  {
+    "id": "benediction",
+    "name": "Benediction",
+    "type": "talisman",
+    "book": "The Heart of Fire",
+    "act": 1,
+    "stats": {
+      "magic": 1
+    },
+    "abilities": [
+      "Acolyte"
+    ],
+    "referenceNumber": 487,
+    "location": "Benin",
+    "careerPreference": "Mage"
+  },
+  {
+    "id": "earthen_ashes",
+    "name": "Earthen ashes",
+    "type": "talisman",
+    "book": "The Heart of Fire",
+    "act": 1,
+    "stats": {
+      "brawn": 1
+    },
+    "abilities": [
+      "Cauterise"
+    ],
+    "referenceNumber": 301,
+    "location": "Dagona"
+  },
+  {
+    "id": "the_minds_eye",
+    "name": "The mind's eye",
+    "type": "talisman",
+    "book": "The Heart of Fire",
+    "act": 2,
+    "stats": {
+      "magic": 1
+    },
+    "abilities": [
+      "Scholar"
+    ],
+    "referenceNumber": 275,
+    "location": "Andos (side quest)"
+  },
+  {
+    "id": "lightning_whetstone_w_r_",
+    "name": "Lightning whetstone (W/R)",
+    "type": "talisman",
+    "book": "The Heart of Fire",
+    "act": 2,
+    "stats": {
+      "speed": 1
+    },
+    "abilities": [
+      "Sure edge"
+    ],
+    "referenceNumber": 325,
+    "location": "Boogaloo"
+  },
+  {
+    "id": "spook_chi",
+    "name": "Spook chi",
+    "type": "talisman",
+    "book": "The Heart of Fire",
+    "act": 2,
+    "stats": {
+      "speed": 1
+    },
+    "abilities": [
+      "Trickster"
+    ],
+    "referenceNumber": 255,
+    "location": "Umbra",
+    "careerPreference": "Rogue"
+  },
+  {
+    "id": "screaming_skull",
+    "name": "Screaming skull",
+    "type": "talisman",
+    "book": "The Heart of Fire",
+    "act": 2,
+    "stats": {
+      "speed": 1
+    },
+    "abilities": [
+      "(+4 health) Charm"
+    ],
+    "referenceNumber": 629,
+    "location": "Mortzilla"
+  },
+  {
+    "id": "khanas_pride",
+    "name": "Khana's pride",
+    "type": "talisman",
+    "book": "The Heart of Fire",
+    "act": 2,
+    "stats": {
+      "speed": 1,
+      "armour": 1
+    },
+    "abilities": [
+      "Sideswipe"
+    ],
+    "referenceNumber": 636,
+    "location": "Greyhair"
+  },
+  {
+    "id": "tigris_paw",
+    "name": "Tigris paw",
+    "type": "talisman",
+    "book": "The Heart of Fire",
+    "act": 2,
+    "stats": {
+      "speed": 1
+    },
+    "abilities": [
+      "Evade"
+    ],
+    "referenceNumber": 678,
+    "location": "Tigris"
+  },
+  {
+    "id": "stone_of_the_sitadell",
+    "name": "Stone of the sitadell",
+    "type": "talisman",
+    "book": "The Heart of Fire",
+    "act": 2,
+    "stats": {
+      "speed": 1
+    },
+    "abilities": [
+      "Disrupt"
+    ],
+    "referenceNumber": 683,
+    "location": "Sitadell",
+    "careerPreference": "Warrior"
+  },
+  {
+    "id": "lich_stone",
+    "name": "Lich stone",
+    "type": "talisman",
+    "book": "The Heart of Fire",
+    "act": 2,
+    "stats": {
+      "magic": 1
+    },
+    "abilities": [
+      "Runecaster"
+    ],
+    "referenceNumber": 778,
+    "location": "Lich",
+    "careerPreference": "Mage"
+  },
+  {
+    "id": "eye_of_a_kraken_w_r_",
+    "name": "Eye of a kraken (W/R)",
+    "type": "talisman",
+    "book": "The Heart of Fire",
+    "act": 2,
+    "stats": {
+      "speed": 1
+    },
+    "abilities": [
+      "Greater heal"
+    ],
+    "referenceNumber": 657,
+    "location": "Siren sisters (side quest)"
+  },
+  {
+    "id": "kaalas_scale",
+    "name": "Kaala's scale",
+    "type": "talisman",
+    "book": "The Heart of Fire",
+    "act": 2,
+    "stats": {
+      "speed": 1
+    },
+    "abilities": [
+      "Venommancer"
+    ],
+    "referenceNumber": 745,
+    "location": "Kaala",
+    "careerPreference": "Rogue"
+  },
+  {
+    "id": "drake_spirit",
+    "name": "Drake spirit",
+    "type": "talisman",
+    "book": "The Heart of Fire",
+    "act": 2,
+    "stats": {
+      "speed": 1
+    },
+    "abilities": [
+      "Drake"
+    ],
+    "referenceNumber": 473,
+    "location": "Kaala",
+    "careerPreference": "Warrior"
+  },
+  {
+    "id": "fade_splinter_of_shadow",
+    "name": "Fade, splinter of shadow",
+    "type": "talisman",
+    "book": "The Heart of Fire",
+    "act": 3,
+    "stats": {
+      "speed": 1
+    },
+    "abilities": [
+      "Charm",
+      "trickster"
+    ],
+    "referenceNumber": 674,
+    "location": "Rune forge"
+  },
+  {
+    "id": "angels_despair",
+    "name": "Angel's despair",
+    "type": "talisman",
+    "book": "The Heart of Fire",
+    "act": 3,
+    "stats": {
+      "speed": 1
+    },
+    "abilities": [
+      "Dirge"
+    ],
+    "referenceNumber": 546,
+    "location": "Bridge sentries"
+  },
+  {
+    "id": "rock_idol",
+    "name": "Rock idol",
+    "type": "talisman",
+    "book": "The Heart of Fire",
+    "act": 3,
+    "stats": {
+      "armour": 1
+    },
+    "abilities": [
+      "Geomancer"
+    ],
+    "referenceNumber": 750,
+    "location": "Secure vault",
+    "careerPreference": "Mage"
+  },
+  {
+    "id": "blood_soul",
+    "name": "Blood soul",
+    "type": "talisman",
+    "book": "The Heart of Fire",
+    "act": 3,
+    "stats": {
+      "speed": 1,
+      "brawn": 1
+    },
+    "abilities": [
+      "Weaver"
+    ],
+    "referenceNumber": 791,
+    "location": "Evin Daala",
+    "careerPreference": "Warrior"
+  },
+  {
+    "id": "frozen_heart",
+    "name": "Frozen heart",
+    "type": "talisman",
+    "book": "The Heart of Fire",
+    "act": 3,
+    "stats": {
+      "speed": 1
+    },
+    "abilities": [
+      "Shatter"
+    ],
+    "referenceNumber": 818,
+    "location": "Nephele"
+  },
+  {
+    "id": "titan_stone",
+    "name": "Titan stone",
+    "type": "talisman",
+    "book": "The Heart of Fire",
+    "act": 3,
+    "stats": {
+      "speed": 1
+    },
+    "abilities": [
+      "Titan"
+    ],
+    "referenceNumber": 834,
+    "location": "Erkil",
+    "careerPreference": "Warrior"
+  },
+  {
+    "id": "wanderers_wytchstone",
+    "name": "Wanderer's wytchstone",
+    "type": "necklace",
+    "book": "The Heart of Fire",
+    "act": 1,
+    "stats": {
+      "magic": 1
+    },
+    "abilities": [
+      "Charm"
+    ],
+    "referenceNumber": 59,
+    "location": "Vendor/Carvel"
+  },
+  {
+    "id": "drusts_medallion",
+    "name": "Drust's medallion",
+    "type": "necklace",
+    "book": "The Heart of Fire",
+    "act": 1,
+    "stats": {
+      "magic": 1
+    },
+    "abilities": [
+      "None"
+    ],
+    "referenceNumber": 74,
+    "location": "Drust the defiled"
+  },
+  {
+    "id": "blood_iron_knot",
+    "name": "Blood iron knot",
+    "type": "necklace",
+    "book": "The Heart of Fire",
+    "act": 1,
+    "stats": {
+      "armour": 1
+    },
+    "abilities": [
+      "Charm"
+    ],
+    "referenceNumber": 34,
+    "location": "Barrow"
+  },
+  {
+    "id": "prayer_beads",
+    "name": "Prayer beads",
+    "type": "necklace",
+    "book": "The Heart of Fire",
+    "act": 1,
+    "stats": {},
+    "abilities": [
+      "Heal"
+    ],
+    "referenceNumber": 359,
+    "location": "Bishop"
+  },
+  {
+    "id": "number_of_the_beast",
+    "name": "Number of the beast",
+    "type": "necklace",
+    "book": "The Heart of Fire",
+    "act": 1,
+    "stats": {
+      "brawn": 1,
+      "magic": 1
+    },
+    "abilities": [
+      "None"
+    ],
+    "referenceNumber": 300,
+    "location": "Number 13"
+  },
+  {
+    "id": "silver_whistler",
+    "name": "Silver whistler",
+    "type": "necklace",
+    "book": "The Heart of Fire",
+    "act": 1,
+    "stats": {},
+    "abilities": [
+      "Faithful friend"
+    ],
+    "referenceNumber": 170,
+    "location": "Loggers' camp"
+  },
+  {
+    "id": "eye_of_the_swarm",
+    "name": "Eye of the swarm",
+    "type": "necklace",
+    "book": "The Heart of Fire",
+    "act": 1,
+    "stats": {
+      "brawn": 1,
+      "magic": 1
+    },
+    "abilities": [
+      "Swarm"
+    ],
+    "referenceNumber": 381,
+    "location": "Queen Ballona"
+  },
+  {
+    "id": "betsys_second_compass",
+    "name": "Betsy's second compass",
+    "type": "necklace",
+    "book": "The Heart of Fire",
+    "act": 1,
+    "stats": {},
+    "abilities": [
+      "Safe path"
+    ],
+    "referenceNumber": 264,
+    "location": "Captain's cabin"
+  },
+  {
+    "id": "torque_of_iron",
+    "name": "Torque of iron",
+    "type": "necklace",
+    "book": "The Heart of Fire",
+    "act": 1,
+    "stats": {
+      "brawn": 1,
+      "magic": 1
+    },
+    "abilities": [
+      "Rust"
+    ],
+    "referenceNumber": 228,
+    "location": "Toymaker's golems"
+  },
+  {
+    "id": "dagonas_heart",
+    "name": "Dagona's heart",
+    "type": "necklace",
+    "book": "The Heart of Fire",
+    "act": 1,
+    "stats": {
+      "brawn": 1,
+      "magic": 1
+    },
+    "abilities": [
+      "Radiance"
+    ],
+    "referenceNumber": 313,
+    "location": "Dagona (side quest)"
+  },
+  {
+    "id": "graven_chill",
+    "name": "Graven chill",
+    "type": "necklace",
+    "book": "The Heart of Fire",
+    "act": 1,
+    "stats": {
+      "brawn": 1,
+      "magic": 1
+    },
+    "abilities": [
+      "Frostbite"
+    ],
+    "referenceNumber": 124,
+    "location": "Gairn"
+  },
+  {
+    "id": "providence",
+    "name": "Providence",
+    "type": "necklace",
+    "book": "The Heart of Fire",
+    "act": 1,
+    "stats": {
+      "brawn": 1,
+      "magic": 1
+    },
+    "abilities": [
+      "Faith"
+    ],
+    "referenceNumber": 411,
+    "location": "Orgorath (special)"
+  },
+  {
+    "id": "sanctified_scale",
+    "name": "Sanctified scale",
+    "type": "necklace",
+    "book": "The Heart of Fire",
+    "act": 2,
+    "stats": {
+      "armour": 1
+    },
+    "abilities": [
+      "Seraphim's symbols"
+    ],
+    "referenceNumber": 569,
+    "location": "Boogaloo",
+    "careerPreference": "Warrior"
+  },
+  {
+    "id": "silver_bullet",
+    "name": "Silver bullet",
+    "type": "necklace",
+    "book": "The Heart of Fire",
+    "act": 2,
+    "stats": {
+      "magic": 1
+    },
+    "abilities": [
+      "Quicksilver"
+    ],
+    "referenceNumber": 350,
+    "location": "Lycanth",
+    "careerPreference": "Mage"
+  },
+  {
+    "id": "black_pearl_rosary",
+    "name": "Black pearl rosary",
+    "type": "necklace",
+    "book": "The Heart of Fire",
+    "act": 2,
+    "stats": {
+      "magic": 1
+    },
+    "abilities": [
+      "Cistene's chattels"
+    ],
+    "referenceNumber": 534,
+    "location": "Umbra",
+    "careerPreference": "Mage"
+  },
+  {
+    "id": "wish_bone",
+    "name": "Wish bone",
+    "type": "necklace",
+    "book": "The Heart of Fire",
+    "act": 2,
+    "stats": {
+      "brawn": 1
+    },
+    "abilities": [
+      "(+4 health) Charm"
+    ],
+    "referenceNumber": 629,
+    "location": "Mortzilla"
+  },
+  {
+    "id": "maggot_finger",
+    "name": "Maggot finger",
+    "type": "necklace",
+    "book": "The Heart of Fire",
+    "act": 2,
+    "stats": {
+      "magic": 1
+    },
+    "abilities": [
+      "Wither"
+    ],
+    "referenceNumber": 455,
+    "location": "Grub knight",
+    "careerPreference": "Mage"
+  },
+  {
+    "id": "brocks_medallion",
+    "name": "Brock's medallion",
+    "type": "necklace",
+    "book": "The Heart of Fire",
+    "act": 2,
+    "stats": {
+      "brawn": 1
+    },
+    "abilities": [
+      "Fearless"
+    ],
+    "referenceNumber": 742,
+    "location": "Alligator"
+  },
+  {
+    "id": "dreamcatcher",
+    "name": "Dreamcatcher",
+    "type": "necklace",
+    "book": "The Heart of Fire",
+    "act": 2,
+    "stats": {
+      "speed": 1
+    },
+    "abilities": [
+      "Immobilise"
+    ],
+    "referenceNumber": 748,
+    "location": "Succubus"
+  },
+  {
+    "id": "captives_collar",
+    "name": "Captive's collar",
+    "type": "necklace",
+    "book": "The Heart of Fire",
+    "act": 2,
+    "stats": {
+      "speed": 1
+    },
+    "abilities": [
+      "Bleed"
+    ],
+    "referenceNumber": 697,
+    "location": "Tigris cages (special)"
+  },
+  {
+    "id": "lucky_crown",
+    "name": "Lucky crown",
+    "type": "necklace",
+    "book": "The Heart of Fire",
+    "act": 2,
+    "stats": {
+      "speed": 1
+    },
+    "abilities": [
+      "Charm"
+    ],
+    "referenceNumber": 243,
+    "location": "Sniper"
+  },
+  {
+    "id": "corroded_pendant",
+    "name": "Corroded pendant",
+    "type": "necklace",
+    "book": "The Heart of Fire",
+    "act": 2,
+    "stats": {
+      "speed": 1
+    },
+    "abilities": [
+      "Rust"
+    ],
+    "referenceNumber": 524,
+    "location": "Golden guards"
+  },
+  {
+    "id": "obsidian_shard",
+    "name": "Obsidian shard",
+    "type": "necklace",
+    "book": "The Heart of Fire",
+    "act": 2,
+    "stats": {
+      "speed": 1
+    },
+    "abilities": [
+      "Piercing"
+    ],
+    "referenceNumber": 683,
+    "location": "Sitadell",
+    "careerPreference": "Mage"
+  },
+  {
+    "id": "hanumans_hair",
+    "name": "Hanuman's hair",
+    "type": "necklace",
+    "book": "The Heart of Fire",
+    "act": 2,
+    "stats": {
+      "speed": 1
+    },
+    "abilities": [
+      "Monkey mob"
+    ],
+    "referenceNumber": 737,
+    "location": "Hanuman"
+  },
+  {
+    "id": "sea_spray_garland",
+    "name": "Sea spray garland",
+    "type": "necklace",
+    "book": "The Heart of Fire",
+    "act": 2,
+    "stats": {
+      "speed": 1,
+      "magic": 1
+    },
+    "abilities": [
+      "Wave"
+    ],
+    "referenceNumber": 575,
+    "location": "Fisher king",
+    "careerPreference": "Mage"
+  },
+  {
+    "id": "hunters_heart",
+    "name": "Hunter's heart",
+    "type": "necklace",
+    "book": "The Heart of Fire",
+    "act": 2,
+    "stats": {
+      "speed": 1
+    },
+    "abilities": [
+      "Savage call"
+    ],
+    "referenceNumber": 729,
+    "location": "Gheira",
+    "careerPreference": "Warrior"
+  },
+  {
+    "id": "illumanti_circlet",
+    "name": "Illumanti circlet",
+    "type": "necklace",
+    "book": "The Heart of Fire",
+    "act": 3,
+    "stats": {
+      "speed": 1,
+      "armour": 1
+    },
+    "abilities": [
+      "Confound"
+    ],
+    "referenceNumber": 620,
+    "location": "Goblin looters",
+    "careerPreference": "Mage"
+  },
+  {
+    "id": "gullet_scales",
+    "name": "Gullet scales",
+    "type": "necklace",
+    "book": "The Heart of Fire",
+    "act": 3,
+    "stats": {
+      "speed": 1,
+      "armour": 1
+    },
+    "abilities": [
+      "Charm"
+    ],
+    "referenceNumber": 554,
+    "location": "Book wyrm"
+  },
+  {
+    "id": "tendon_rope",
+    "name": "Tendon rope",
+    "type": "necklace",
+    "book": "The Heart of Fire",
+    "act": 3,
+    "stats": {
+      "speed": 1
+    },
+    "abilities": [
+      "Greater heal"
+    ],
+    "referenceNumber": 728,
+    "location": "Evin Daala",
+    "careerPreference": "Mage"
+  },
+  {
+    "id": "soldering_iron",
+    "name": "Soldering iron",
+    "type": "necklace",
+    "book": "The Heart of Fire",
+    "act": 3,
+    "stats": {
+      "speed": 1,
+      "brawn": 1
+    },
+    "abilities": [
+      "Dominate"
+    ],
+    "referenceNumber": 823,
+    "location": "Ixion",
+    "careerPreference": "Warrior"
+  },
+  {
+    "id": "chained_heart",
+    "name": "Chained heart",
+    "type": "necklace",
+    "book": "The Heart of Fire",
+    "act": 3,
+    "stats": {
+      "speed": 1,
+      "magic": 1
+    },
+    "abilities": [
+      "Channel"
+    ],
+    "referenceNumber": 592,
+    "location": "Ixion",
+    "careerPreference": "Mage"
+  },
+  {
+    "id": "garms_whistle",
+    "name": "Garm's whistle",
+    "type": "necklace",
+    "book": "The Heart of Fire",
+    "act": 3,
+    "stats": {
+      "speed": 1,
+      "magic": 1
+    },
+    "abilities": [
+      "Packmaster"
+    ],
+    "referenceNumber": 716,
+    "location": "Erkil"
+  },
+  {
+    "id": "collar_of_correction",
+    "name": "Collar of correction",
+    "type": "necklace",
+    "book": "The Heart of Fire",
+    "act": 3,
+    "stats": {
+      "speed": 1,
+      "brawn": 1
+    },
+    "abilities": [
+      "Sweet spot"
+    ],
+    "referenceNumber": 929,
+    "location": "Krakatoa",
+    "careerPreference": "Rogue"
+  },
+  {
+    "id": "puritans_band",
+    "name": "Puritan's band",
+    "type": "ring",
+    "book": "The Heart of Fire",
+    "act": 1,
+    "stats": {
+      "brawn": 1
+    },
+    "abilities": [
+      "Charm"
+    ],
+    "referenceNumber": 59,
+    "location": "Vendor/Carvel"
+  },
+  {
+    "id": "eponas_blessing",
+    "name": "Epona's blessing",
+    "type": "ring",
+    "book": "The Heart of Fire",
+    "act": 1,
+    "stats": {
+      "armour": 1
+    },
+    "abilities": [
+      "Charm"
+    ],
+    "referenceNumber": 59,
+    "location": "Vendor/Carvel"
+  },
+  {
+    "id": "all_hallows_ring",
+    "name": "All Hallows ring",
+    "type": "ring",
+    "book": "The Heart of Fire",
+    "act": 1,
+    "stats": {
+      "brawn": 1
+    },
+    "abilities": [
+      "None"
+    ],
+    "referenceNumber": 201,
+    "location": "Jack'o Lantern"
+  },
+  {
+    "id": "warded_wood",
+    "name": "Warded wood",
+    "type": "ring",
+    "book": "The Heart of Fire",
+    "act": 1,
+    "stats": {
+      "brawn": 1,
+      "magic": 1
+    },
+    "abilities": [
+      "None"
+    ],
+    "referenceNumber": 133,
+    "location": "Sinister sprigs"
+  },
+  {
+    "id": "pilfered_ring",
+    "name": "Pilfered ring",
+    "type": "ring",
+    "book": "The Heart of Fire",
+    "act": 1,
+    "stats": {
+      "magic": 1
+    },
+    "abilities": [
+      "None"
+    ],
+    "referenceNumber": 20,
+    "location": "Zombie goblin"
+  },
+  {
+    "id": "signet_of_sorrow",
+    "name": "Signet of sorrow",
+    "type": "ring",
+    "book": "The Heart of Fire",
+    "act": 1,
+    "stats": {
+      "brawn": 1,
+      "magic": 1
+    },
+    "abilities": [
+      "Suppress"
+    ],
+    "referenceNumber": 218,
+    "location": "Reverend"
+  },
+  {
+    "id": "motley_band",
+    "name": "Motley band",
+    "type": "ring",
+    "book": "The Heart of Fire",
+    "act": 1,
+    "stats": {
+      "brawn": 1,
+      "magic": 1
+    },
+    "abilities": [
+      "Sneak"
+    ],
+    "referenceNumber": 79,
+    "location": "Crews' quarters"
+  },
+  {
+    "id": "pins_n_needles",
+    "name": "Pins 'n needles",
+    "type": "ring",
+    "book": "The Heart of Fire",
+    "act": 1,
+    "stats": {},
+    "abilities": [
+      "Thorns"
+    ],
+    "referenceNumber": 381,
+    "location": "Queen Ballona"
+  },
+  {
+    "id": "after_burn",
+    "name": "After burn",
+    "type": "ring",
+    "book": "The Heart of Fire",
+    "act": 1,
+    "stats": {
+      "armour": 1
+    },
+    "abilities": [
+      "Turn up the heat"
+    ],
+    "referenceNumber": 431,
+    "location": "Furnace"
+  },
+  {
+    "id": "the_fellowship_ring",
+    "name": "The fellowship ring",
+    "type": "ring",
+    "book": "The Heart of Fire",
+    "act": 1,
+    "stats": {
+      "brawn": 1,
+      "magic": 1
+    },
+    "abilities": [
+      "Charm"
+    ],
+    "referenceNumber": 145,
+    "location": "Tree house"
+  },
+  {
+    "id": "black_hole",
+    "name": "Black hole",
+    "type": "ring",
+    "book": "The Heart of Fire",
+    "act": 1,
+    "stats": {
+      "brawn": 1,
+      "magic": 1
+    },
+    "abilities": [
+      "Dark pact"
+    ],
+    "referenceNumber": 477,
+    "location": "Toymaker's box"
+  },
+  {
+    "id": "grieving_soul",
+    "name": "Grieving soul",
+    "type": "ring",
+    "book": "The Heart of Fire",
+    "act": 1,
+    "stats": {
+      "armour": 1
+    },
+    "abilities": [
+      "Fire aura"
+    ],
+    "referenceNumber": 301,
+    "location": "Dagona"
+  },
+  {
+    "id": "briar_star",
+    "name": "Briar star",
+    "type": "ring",
+    "book": "The Heart of Fire",
+    "act": 1,
+    "stats": {
+      "armour": 1
+    },
+    "abilities": [
+      "Thorns"
+    ],
+    "referenceNumber": 308,
+    "location": "Orgorath"
+  },
+  {
+    "id": "harvester",
+    "name": "Harvester",
+    "type": "ring",
+    "book": "The Heart of Fire",
+    "act": 1,
+    "stats": {
+      "brawn": 2,
+      "magic": 2
+    },
+    "abilities": [
+      "Regrowth"
+    ],
+    "referenceNumber": 155,
+    "location": "Wicker man"
+  },
+  {
+    "id": "scholars_seal",
+    "name": "Scholar's seal",
+    "type": "ring",
+    "book": "The Heart of Fire",
+    "act": 2,
+    "stats": {
+      "magic": 1,
+      "armour": 1
+    },
+    "abilities": [
+      "Confound"
+    ],
+    "referenceNumber": 492,
+    "location": "Scholar (side quest)"
+  },
+  {
+    "id": "lycanths_teeth_w_r_",
+    "name": "Lycanth's teeth (W/R)",
+    "type": "ring",
+    "book": "The Heart of Fire",
+    "act": 2,
+    "stats": {
+      "brawn": 1
+    },
+    "abilities": [
+      "Bleed"
+    ],
+    "referenceNumber": 232,
+    "location": "Lycanth"
+  },
+  {
+    "id": "gravediggers_ring",
+    "name": "Gravedigger's ring",
+    "type": "ring",
+    "book": "The Heart of Fire",
+    "act": 2,
+    "stats": {
+      "brawn": 1
+    },
+    "abilities": [
+      "Underhand"
+    ],
+    "referenceNumber": 246,
+    "location": "Gaia",
+    "careerPreference": "Rogue"
+  },
+  {
+    "id": "pious_halo",
+    "name": "Pious halo",
+    "type": "ring",
+    "book": "The Heart of Fire",
+    "act": 2,
+    "stats": {
+      "brawn": 2
+    },
+    "abilities": [
+      "Seraphim's symbols"
+    ],
+    "referenceNumber": 556,
+    "location": "Umbra",
+    "careerPreference": "Warrior"
+  },
+  {
+    "id": "shard_of_sky",
+    "name": "Shard of sky",
+    "type": "ring",
+    "book": "The Heart of Fire",
+    "act": 2,
+    "stats": {
+      "brawn": 1
+    },
+    "abilities": [
+      "Blind"
+    ],
+    "referenceNumber": 297,
+    "location": "Zephyr",
+    "careerPreference": "Rogue"
+  },
+  {
+    "id": "circle_of_storms",
+    "name": "Circle of storms",
+    "type": "ring",
+    "book": "The Heart of Fire",
+    "act": 2,
+    "stats": {
+      "armour": 1
+    },
+    "abilities": [
+      "Lightning"
+    ],
+    "referenceNumber": 160,
+    "location": "Zephyr",
+    "careerPreference": "Warrior"
+  },
+  {
+    "id": "weirdstone",
+    "name": "Weirdstone",
+    "type": "ring",
+    "book": "The Heart of Fire",
+    "act": 2,
+    "stats": {
+      "magic": 1
+    },
+    "abilities": [
+      "Focus"
+    ],
+    "referenceNumber": 350,
+    "location": "Lycanth",
+    "careerPreference": "Mage"
+  },
+  {
+    "id": "rain_dance",
+    "name": "Rain dance",
+    "type": "ring",
+    "book": "The Heart of Fire",
+    "act": 2,
+    "stats": {
+      "armour": 1
+    },
+    "abilities": [
+      "Call of nature"
+    ],
+    "referenceNumber": 458,
+    "location": "Boogaloo",
+    "careerPreference": "Mage"
+  },
+  {
+    "id": "seal_of_shadows",
+    "name": "Seal of shadows",
+    "type": "ring",
+    "book": "The Heart of Fire",
+    "act": 2,
+    "stats": {
+      "magic": 1,
+      "armour": 1
+    },
+    "abilities": [
+      "Veil"
+    ],
+    "referenceNumber": 534,
+    "location": "Umbra",
+    "careerPreference": "Mage"
+  },
+  {
+    "id": "zilla_bling",
+    "name": "Zilla bling",
+    "type": "ring",
+    "book": "The Heart of Fire",
+    "act": 2,
+    "stats": {
+      "magic": 1
+    },
+    "abilities": [
+      "(+4 health) Charm"
+    ],
+    "referenceNumber": 629,
+    "location": "Mortzilla"
+  },
+  {
+    "id": "tangle_knot",
+    "name": "Tangle knot",
+    "type": "ring",
+    "book": "The Heart of Fire",
+    "act": 2,
+    "stats": {
+      "brawn": 1,
+      "magic": 1
+    },
+    "abilities": [
+      "Barbs"
+    ],
+    "referenceNumber": 709,
+    "location": "The weeper"
+  },
+  {
+    "id": "iron_recluse",
+    "name": "Iron recluse",
+    "type": "ring",
+    "book": "The Heart of Fire",
+    "act": 2,
+    "stats": {
+      "magic": 2
+    },
+    "abilities": [
+      "Corrode"
+    ],
+    "referenceNumber": 757,
+    "location": "Travellers' shelter"
+  },
+  {
+    "id": "shapers_stone",
+    "name": "Shaper's stone",
+    "type": "ring",
+    "book": "The Heart of Fire",
+    "act": 2,
+    "stats": {
+      "magic": 1,
+      "armour": 1
+    },
+    "abilities": [
+      "Might of stone"
+    ],
+    "referenceNumber": 470,
+    "location": "Guano chest",
+    "careerPreference": "Mage"
+  },
+  {
+    "id": "ring_of_remedies",
+    "name": "Ring of remedies",
+    "type": "ring",
+    "book": "The Heart of Fire",
+    "act": 2,
+    "stats": {
+      "magic": 2
+    },
+    "abilities": [
+      "Cauterise"
+    ],
+    "referenceNumber": 369,
+    "location": "Buckmaster Bill (side quest)",
+    "careerPreference": "Mage"
+  },
+  {
+    "id": "fyre_fiend",
+    "name": "Fyre fiend",
+    "type": "ring",
+    "book": "The Heart of Fire",
+    "act": 2,
+    "stats": {
+      "armour": 1
+    },
+    "abilities": [
+      "Fire shield"
+    ],
+    "referenceNumber": 511,
+    "location": "Sun vault"
+  },
+  {
+    "id": "last_breath",
+    "name": "Last breath",
+    "type": "ring",
+    "book": "The Heart of Fire",
+    "act": 2,
+    "stats": {},
+    "abilities": [
+      "(+4 health) Refresh"
+    ],
+    "referenceNumber": 666,
+    "location": "Lich",
+    "careerPreference": "Warrior"
+  },
+  {
+    "id": "fishers_friend",
+    "name": "Fisher's friend",
+    "type": "ring",
+    "book": "The Heart of Fire",
+    "act": 2,
+    "stats": {
+      "brawn": 1
+    },
+    "abilities": [
+      "Hooked"
+    ],
+    "referenceNumber": 575,
+    "location": "Fisher king",
+    "careerPreference": "Rogue"
+  },
+  {
+    "id": "kiss_of_a_princess",
+    "name": "Kiss of a princess",
+    "type": "ring",
+    "book": "The Heart of Fire",
+    "act": 2,
+    "stats": {
+      "brawn": 1
+    },
+    "abilities": [
+      "Charm"
+    ],
+    "referenceNumber": 575,
+    "location": "Fisher king"
+  },
+  {
+    "id": "bad_tooth",
+    "name": "Bad tooth",
+    "type": "ring",
+    "book": "The Heart of Fire",
+    "act": 2,
+    "stats": {
+      "magic": 2
+    },
+    "abilities": [
+      "Disease"
+    ],
+    "referenceNumber": 714,
+    "location": "Gheira",
+    "careerPreference": "Mage"
+  },
+  {
+    "id": "spark_stone",
+    "name": "Spark stone",
+    "type": "ring",
+    "book": "The Heart of Fire",
+    "act": 2,
+    "stats": {
+      "brawn": 2
+    },
+    "abilities": [
+      "Lightning"
+    ],
+    "referenceNumber": 770,
+    "location": "Issachar",
+    "careerPreference": "Rogue"
+  },
+  {
+    "id": "twilight_tinder",
+    "name": "Twilight tinder",
+    "type": "ring",
+    "book": "The Heart of Fire",
+    "act": 2,
+    "stats": {
+      "magic": 2
+    },
+    "abilities": [
+      "Overload"
+    ],
+    "referenceNumber": 761,
+    "location": "Issachar",
+    "careerPreference": "Mage"
+  },
+  {
+    "id": "abyssal_firestone",
+    "name": "Abyssal firestone",
+    "type": "ring",
+    "book": "The Heart of Fire",
+    "act": 3,
+    "stats": {
+      "armour": 1
+    },
+    "abilities": [
+      "(+2 health) Fire aura"
+    ],
+    "referenceNumber": 789,
+    "location": "Nyx the dark wind"
+  },
+  {
+    "id": "wyrmhole",
+    "name": "Wyrmhole",
+    "type": "ring",
+    "book": "The Heart of Fire",
+    "act": 3,
+    "stats": {
+      "magic": 1
+    },
+    "abilities": [
+      "Vortex"
+    ],
+    "referenceNumber": 554,
+    "location": "Book wyrm",
+    "careerPreference": "Mage"
+  },
+  {
+    "id": "aethereal",
+    "name": "Aethereal",
+    "type": "ring",
+    "book": "The Heart of Fire",
+    "act": 3,
+    "stats": {
+      "armour": 1
+    },
+    "abilities": [
+      "(+2 health) Windblast"
+    ],
+    "referenceNumber": 851,
+    "location": "Rune spirit (side quest)"
+  },
+  {
+    "id": "blood_diamond",
+    "name": "Blood diamond",
+    "type": "ring",
+    "book": "The Heart of Fire",
+    "act": 3,
+    "stats": {
+      "magic": 2
+    },
+    "abilities": [
+      "Bleed"
+    ],
+    "referenceNumber": 728,
+    "location": "Evin Daala",
+    "careerPreference": "Mage"
+  },
+  {
+    "id": "heat_of_ardour",
+    "name": "Heat of ardour",
+    "type": "ring",
+    "book": "The Heart of Fire",
+    "act": 3,
+    "stats": {
+      "brawn": 2
+    },
+    "abilities": [
+      "Sear"
+    ],
+    "referenceNumber": 823,
+    "location": "Ixion",
+    "careerPreference": "Warrior"
+  },
+  {
+    "id": "crucifixion_nail",
+    "name": "Crucifixion nail",
+    "type": "ring",
+    "book": "The Heart of Fire",
+    "act": 3,
+    "stats": {
+      "brawn": 1
+    },
+    "abilities": [
+      "Sweet spot"
+    ],
+    "referenceNumber": 812,
+    "location": "Ixion",
+    "careerPreference": "Rogue"
+  },
+  {
+    "id": "circle_of_sacrifice",
+    "name": "Circle of sacrifice",
+    "type": "ring",
+    "book": "The Heart of Fire",
+    "act": 3,
+    "stats": {
+      "magic": 1
+    },
+    "abilities": [
+      "Penance"
+    ],
+    "referenceNumber": 592,
+    "location": "Ixion",
+    "careerPreference": "Mage"
+  },
+  {
+    "id": "the_dispossessed",
+    "name": "The dispossessed",
+    "type": "ring",
+    "book": "The Heart of Fire",
+    "act": 3,
+    "stats": {
+      "brawn": 1,
+      "armour": 1
+    },
+    "abilities": [
+      "Steal"
+    ],
+    "referenceNumber": 723,
+    "location": "Nephele",
+    "careerPreference": "Rogue"
+  },
+  {
+    "id": "ironbeard_band",
+    "name": "Ironbeard band",
+    "type": "ring",
+    "book": "The Heart of Fire",
+    "act": 3,
+    "stats": {
+      "brawn": 2
+    },
+    "abilities": [
+      "Counter"
+    ],
+    "referenceNumber": 834,
+    "location": "Erkil",
+    "careerPreference": "Warrior"
   }
 ];
 
