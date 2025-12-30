@@ -1,0 +1,23 @@
+import { registerAbility } from '../abilityRegistry';
+import { addLog } from '../../utils/statUtils';
+import { CombatState } from '../../types/combat';
+
+function canActivate(state: CombatState): boolean {
+    return state.phase === 'damage-roll' && state.winner === 'enemy';
+}
+
+registerAbility({
+    name: 'Head Butt',
+    type: 'combat',
+    description: 'Prevent an opponent from rolling damage, ending the round immediately.',
+    canActivate: canActivate,
+    onActivate: (state) => {
+        if (!canActivate(state)) return null;
+
+        return {
+            phase: 'round-end',
+            damageRolls: [{ value: 0, isRerolled: false }],
+            logs: addLog(state.logs, { round: state.round, message: "Used ability: Head Butt. Stopped attack!", type: 'info' })
+        };
+    }
+});
