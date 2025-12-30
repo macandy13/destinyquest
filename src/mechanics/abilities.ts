@@ -15,5 +15,6 @@ import './abilities/Parry';
 import './abilities/Piercing';
 import './abilities/Quicksilver';
 import './abilities/Sidestep';
+import './abilities/Trample';
 import './abilities/Venom';
 import './abilities/Webbed';

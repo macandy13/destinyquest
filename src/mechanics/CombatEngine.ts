@@ -202,7 +202,8 @@ function _processDamagePhase(state: CombatState, rolls: DiceRoll[]): CombatState
             }
         });
 
-        const totalDamage = rollTotal + skill + modifiersFromHooks + damageModifiers;
+        // Damage must never be able to heal, so limit it to 0.
+        const totalDamage = Math.max(0, rollTotal + skill + modifiersFromHooks + damageModifiers);
 
         const actualDamage = Math.max(0, totalDamage - effectiveEnemyStats.armour);
         const damageAmount = Math.min(currentEnemy.stats.health, actualDamage);
@@ -261,46 +262,44 @@ function _processDamagePhase(state: CombatState, rolls: DiceRoll[]): CombatState
 function _processEndOfRoundDamage(state: CombatState): CombatState {
     if (!state.hero || !state.enemy) return state;
 
-    let isFinished = state.hero.stats.health <= 0 || state.enemy.stats.health <= 0;
-
     state.activeAbilities.forEach(ability => {
-        if (isFinished) return;
         const def = getAbilityDefinition(ability.name);
         const updates = def?.onRoundEnd ? def.onRoundEnd(state, ability.target) : {};
         state = {
             ...state, ...updates,
         };
-        if (state.hero!.stats.health <= 0) {
-            state = {
-                ...state,
-                logs: addLog(state.logs, {
-                    round: state.round,
-                    message: 'Hero Defeated!',
-                    type: 'loss'
-                })
-            };
-            isFinished = true;
-        }
-        if (state.enemy!.stats.health <= 0) {
-            state = {
-                ...state,
-                logs: addLog(state.logs, {
-                    round: state.round,
-                    message: 'Enemy Defeated!',
-                    type: 'win'
-                })
-            };
-            isFinished = true;
-        }
-
     });
+
+    let isFinished = state.hero.stats.health <= 0 || state.enemy.stats.health <= 0;
+    if (state.hero!.stats.health <= 0) {
+        state = {
+            ...state,
+            logs: addLog(state.logs, {
+                round: state.round,
+                message: 'Hero Defeated!',
+                type: 'loss'
+            })
+        };
+        isFinished = true;
+    }
+    if (state.enemy!.stats.health <= 0) {
+        state = {
+            ...state,
+            logs: addLog(state.logs, {
+                round: state.round,
+                message: 'Enemy Defeated!',
+                type: 'win'
+            })
+        };
+        isFinished = true;
+    }
 
     return {
         ...state,
         phase: isFinished ? 'combat-end' : 'round-end',
         logs: addLog(state.logs, {
             round: state.round,
-            message: `Round ended, Hero: ${state.hero.stats.health}, Enemy: ${state.enemy.stats.health}`, type: 'info'
+            message: `Round ended, Hero: ${state.hero!.stats.health}, Enemy: ${state.enemy!.stats.health}`, type: 'info'
         })
     };
 }

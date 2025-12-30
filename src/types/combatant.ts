@@ -1,8 +1,8 @@
-import { Stats } from './stats';
+import { Stats, Target } from './stats';
 import { Character } from './character';
 
 export interface Combatant<T extends Character = Character> {
-    type: 'hero' | 'enemy';
+    type: Target;
     id: string; // Unique identifier in combat (e.g. 'hero', 'enemy-1')
     name: string;
     stats: Stats;

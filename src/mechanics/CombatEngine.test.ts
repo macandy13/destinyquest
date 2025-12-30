@@ -151,7 +151,7 @@ describe('CombatEngine', () => {
                 maxHealth: 80,
             },
             act: 1,
-            abilities: ['Charge', 'Trample', 'Bleed^']
+            abilities: ['Charge', 'Trample', 'Bleed']
         };
 
         // --- START ---
@@ -197,7 +197,7 @@ describe('CombatEngine', () => {
         state = resolveDamageRolls(state, [{ value: 2, isRerolled: true }]);
         state = commitDamageResult(state);
 
-        expect(state.hero!.stats.health).toBe(26); // 35 - 9 (dmg) - 1 (bleed)
+        expect(state.hero!.stats.health).toBe(25); // 35 - 9 (dmg) - 1 (bleed)
         expect(state.enemy!.stats.health).toBe(70); // 74 - 4 (Bleed & Venom)
 
         // --- ROUND 3 ---
@@ -217,7 +217,7 @@ describe('CombatEngine', () => {
 
         // Dmg: 5 + 12(Brawn) + 2(Pot) = 19. Armour 0 (Piercing).
         expect(state.enemy!.stats.health).toBe(47); // 70 - 19 - 4
-        expect(state.hero!.stats.health).toBe(26); // 26 (No damage)
+        expect(state.hero!.stats.health).toBe(24); // 26 (No damage)
 
         // --- ROUND 4 ---
         state = nextRound(state);
@@ -241,13 +241,13 @@ describe('CombatEngine', () => {
         state = commitDamageResult(state);
 
         // Dmg: 3 + 10 = 13. Armour 3. 10 Dmg.
-        expect(state.hero!.stats.health).toBe(16); // 26 - 10
+        expect(state.hero!.stats.health).toBe(13); // 24 - 10 - 1
         expect(state.enemy!.stats.health).toBe(43); // 47 - 4
 
         // --- POST R4 HEAL ---
         state = useBackpackItem(state, 0); // Gourd +6
         state = activateAbility(state, 'Heal'); // +4
-        expect(state.hero!.stats.health).toBe(26); // 16 + 6 + 4 = 26
+        expect(state.hero!.stats.health).toBe(23); // 13 + 6 + 4 = 13
 
         // --- ROUND 5 ---
         state = nextRound(state);
@@ -277,7 +277,7 @@ describe('CombatEngine', () => {
 
         // Dmg: 6+6 + 12 = 24. Armour 8. 16 Dmg.
         expect(state.enemy!.stats.health).toBe(23); // 43 - 16 - 4
-        expect(state.hero!.stats.health).toBe(30); // 26+4 = 30
+        expect(state.hero!.stats.health).toBe(26); // 23 + 4 - 1 = 26
 
         // --- ROUND 6 ---
         state = nextRound(state);
@@ -298,23 +298,12 @@ describe('CombatEngine', () => {
         expect(state.winner).toBe('enemy'); // 14 vs 20
 
         state = commitSpeedResult(state);
-
-        // Trample: Roll 6 -> +5.
-        // Manually inject modification
-        state = {
-            ...state,
-            modifications: [
-                ...state.modifications,
-                { modification: { source: 'Trample', target: 'enemy', stats: { damageModifier: 5 } }, duration: 1, id: 'trample-proc' }
-            ]
-        }
-
         state = resolveDamageRolls(state, [{ value: 6, isRerolled: false }]);
         state = commitDamageResult(state);
 
         // Dmg: 6 + 10 + 5(Trample) = 21. Armour 3. 18 Dmg.
-        // HP: 34 (30+4) - 18 = 16.
-        expect(state.hero!.stats.health).toBe(16);
+        // HP: 30 (26+4) - 18 - 1 = 11.
+        expect(state.hero!.stats.health).toBe(11);
         expect(state.enemy!.stats.health).toBe(19); // 23 - 4
 
         // --- ROUND 7 ---
@@ -331,7 +320,7 @@ describe('CombatEngine', () => {
 
         // Dmg: 1 + 12 = 13. Armour 8. 5 Dmg.
         expect(state.enemy!.stats.health).toBe(10); // 19 - 5 - 4
-        expect(state.hero!.stats.health).toBe(16); // 16 (Winner)
+        expect(state.hero!.stats.health).toBe(10); // 11 - 1 (bleed)
 
         // --- ROUND 8 ---
         state = nextRound(state);
@@ -347,7 +336,7 @@ describe('CombatEngine', () => {
 
         // Dmg: 2 + 12 = 14. Armour 8. 6 Dmg.
         expect(state.enemy!.stats.health).toBe(0); // 10 - 6 - 4 => 0.
-        expect(state.hero!.stats.health).toBe(16); // 16 (Winner)
+        expect(state.hero!.stats.health).toBe(9); // 10 - 1 (bleed)
 
         randomSpy.mockRestore();
     });
