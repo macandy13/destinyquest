@@ -14,8 +14,9 @@ describe('Acid', () => {
     });
 
     it('should apply Acid passive ability via hook (add +1 per damage die)', () => {
+        const baseHero = heroWithStats({ damageDice: 2, brawn: 0, magic: 0 });
         const ACID_HERO: Hero = {
-            ...heroWithStats({ damageDice: 2, brawn: 0, magic: 0 }),
+            ...baseHero.original,
             equipment: {
                 gloves: {
                     name: 'Acid Gloves',

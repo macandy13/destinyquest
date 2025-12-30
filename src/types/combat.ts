@@ -10,7 +10,6 @@ export interface Enemy extends Character {
     entry?: string;
 }
 
-
 export interface CombatLog {
     round: number;
     message: string;

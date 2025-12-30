@@ -96,7 +96,7 @@ describe('useCombat Hook', () => {
         registerAbility(MockAbilityDef);
 
         const HERO_WITH_ABILITY: Hero = {
-            ...DAMAGE_MOD_HERO,
+            ...DAMAGE_MOD_HERO.original,
             equipment: {
                 talisman: {
                     id: 'buff-charm',

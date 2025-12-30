@@ -14,7 +14,7 @@ describe('First Strike', () => {
         // Mock Math.random to return 0.5 (=> 3.5 => floor 3 + 1 = 4)
         vi.spyOn(Math, 'random').mockReturnValue(0.5);
 
-        const updates = def!.onCombatStart!(state, { name: 'First Strike', source: 'Test', target: 'enemy', used: false });
+        const updates = def!.onCombatStart!(state, 'enemy');
 
         expect(updates.enemy!.stats.health).toBe(16); // 20 - 4
         expect(updates.logs![0].message).toContain('First Strike deals 4 damage');

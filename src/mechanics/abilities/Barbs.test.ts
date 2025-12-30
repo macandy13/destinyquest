@@ -26,8 +26,9 @@ describe('Barbs', () => {
     });
 
     it('should apply Barbs passive ability via hook (1 damage at end of round)', () => {
+        const baseHero = heroWithStats({ brawn: 0, magic: 0 });
         const BARBS_HERO: Hero = {
-            ...heroWithStats({ brawn: 0, magic: 0 }),
+            ...baseHero.original,
             equipment: {
                 gloves: {
                     name: 'Barbed Bracers',

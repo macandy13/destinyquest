@@ -1,11 +1,13 @@
 import { registerAbility } from '../abilityRegistry';
 import { addLog } from '../../utils/statUtils';
+import { CombatState } from '../../types/combat';
+import { Target } from '../../types/stats';
 
 registerAbility({
     name: 'First Strike',
     type: 'passive',
     description: 'Pre-combat damage. Inflict 1 damage die (ignoring armour) and any harmful passive abilities (venom/bleed) before combat begins.',
-    onCombatStart: (state, target) => {
+    onCombatStart: (state: CombatState, target: Target) => {
         // TODO: Show dice and allow to reroll with charm?
         const damage = Math.floor(Math.random() * 6) + 1;
         const targetCombatant = state[target];
