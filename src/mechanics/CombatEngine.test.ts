@@ -111,6 +111,7 @@ describe('CombatEngine', () => {
 
     it('Scenario: Ben vs Minorian', () => {
         const BEN_NEVIS: Hero = {
+            type: 'hero',
             name: 'Ben Nevis',
             stats: {
                 speed: 10,
@@ -142,6 +143,7 @@ describe('CombatEngine', () => {
         };
 
         const MINORIAN: Enemy = {
+            type: 'enemy',
             name: 'Minorian',
             stats: {
                 speed: 11,
@@ -151,7 +153,7 @@ describe('CombatEngine', () => {
                 health: 80,
                 maxHealth: 80,
             },
-            act: 1,
+            bookRef: TEST_BOOK,
             abilities: ['Charge', 'Trample', 'Bleed']
         };
 
