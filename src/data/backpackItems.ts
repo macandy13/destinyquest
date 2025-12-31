@@ -1,5 +1,4 @@
 import { BackpackItem } from '../types/hero';
-import { BookRef } from '../types/book';
 
 export const BACKPACK_ITEMS: BackpackItem[] = [
   {

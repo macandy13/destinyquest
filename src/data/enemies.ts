@@ -1,5 +1,4 @@
 import { Enemy } from '../types/combat';
-import { BookRef } from '../types/book';
 
 export const ENEMIES: Enemy[] = [
   {
@@ -14,7 +13,7 @@ export const ENEMIES: Enemy[] = [
     },
     "abilities": [],
     "bookRef": {
-      "book": "Core",
+      "book": "Legions of Shadow",
       "act": 1,
       "section": 40
     }
@@ -33,7 +32,7 @@ export const ENEMIES: Enemy[] = [
       "Savagery"
     ],
     "bookRef": {
-      "book": "Core",
+      "book": "Legions of Shadow",
       "act": 1,
       "section": 26
     }
@@ -52,7 +51,7 @@ export const ENEMIES: Enemy[] = [
       "Undead"
     ],
     "bookRef": {
-      "book": "Core",
+      "book": "Legions of Shadow",
       "act": 1,
       "section": 68
     }
@@ -71,7 +70,7 @@ export const ENEMIES: Enemy[] = [
       "Webbed"
     ],
     "bookRef": {
-      "book": "Core",
+      "book": "Legions of Shadow",
       "act": 1,
       "section": 132
     }
@@ -90,7 +89,7 @@ export const ENEMIES: Enemy[] = [
       "Charm"
     ],
     "bookRef": {
-      "book": "Core",
+      "book": "Legions of Shadow",
       "act": 1,
       "section": 155
     }
@@ -109,7 +108,7 @@ export const ENEMIES: Enemy[] = [
       "Boss"
     ],
     "bookRef": {
-      "book": "Core",
+      "book": "Legions of Shadow",
       "act": 1,
       "section": 160
     }
@@ -128,7 +127,7 @@ export const ENEMIES: Enemy[] = [
       "Tail Lash"
     ],
     "bookRef": {
-      "book": "Core",
+      "book": "Legions of Shadow",
       "act": 1,
       "section": 233
     }
@@ -147,7 +146,7 @@ export const ENEMIES: Enemy[] = [
       "Command"
     ],
     "bookRef": {
-      "book": "Core",
+      "book": "Legions of Shadow",
       "act": 1,
       "section": 260
     }
@@ -166,7 +165,7 @@ export const ENEMIES: Enemy[] = [
       "Impale"
     ],
     "bookRef": {
-      "book": "Core",
+      "book": "Legions of Shadow",
       "act": 1,
       "section": 327
     }
@@ -185,7 +184,7 @@ export const ENEMIES: Enemy[] = [
       "Body of Stone"
     ],
     "bookRef": {
-      "book": "Core",
+      "book": "Legions of Shadow",
       "act": 2,
       "section": 283
     }
@@ -204,7 +203,7 @@ export const ENEMIES: Enemy[] = [
       "Legendary"
     ],
     "bookRef": {
-      "book": "Core",
+      "book": "Legions of Shadow",
       "act": 2,
       "section": 313
     }
@@ -223,7 +222,7 @@ export const ENEMIES: Enemy[] = [
       "Infest"
     ],
     "bookRef": {
-      "book": "Core",
+      "book": "Legions of Shadow",
       "act": 2,
       "section": 314
     }
@@ -242,7 +241,7 @@ export const ENEMIES: Enemy[] = [
       "Agility"
     ],
     "bookRef": {
-      "book": "Core",
+      "book": "Legions of Shadow",
       "act": 2,
       "section": 359
     }
@@ -261,7 +260,7 @@ export const ENEMIES: Enemy[] = [
       "Sear"
     ],
     "bookRef": {
-      "book": "Core",
+      "book": "Legions of Shadow",
       "act": 2,
       "section": 377
     }
@@ -280,7 +279,7 @@ export const ENEMIES: Enemy[] = [
       "Roar"
     ],
     "bookRef": {
-      "book": "Core",
+      "book": "Legions of Shadow",
       "act": 2,
       "section": 379
     }
@@ -299,7 +298,7 @@ export const ENEMIES: Enemy[] = [
       "Counter"
     ],
     "bookRef": {
-      "book": "Core",
+      "book": "Legions of Shadow",
       "act": 2,
       "section": 382
     }
@@ -318,7 +317,7 @@ export const ENEMIES: Enemy[] = [
       "Legendary"
     ],
     "bookRef": {
-      "book": "Core",
+      "book": "Legions of Shadow",
       "act": 2,
       "section": 385
     }
@@ -337,7 +336,7 @@ export const ENEMIES: Enemy[] = [
       "Swift"
     ],
     "bookRef": {
-      "book": "Core",
+      "book": "Legions of Shadow",
       "act": 2,
       "section": 386
     }
@@ -356,7 +355,7 @@ export const ENEMIES: Enemy[] = [
       "Body of Rock"
     ],
     "bookRef": {
-      "book": "Core",
+      "book": "Legions of Shadow",
       "act": 2,
       "section": 443
     }
@@ -375,7 +374,7 @@ export const ENEMIES: Enemy[] = [
       "Feint"
     ],
     "bookRef": {
-      "book": "Core",
+      "book": "Legions of Shadow",
       "act": 2,
       "section": 487
     }
@@ -394,7 +393,7 @@ export const ENEMIES: Enemy[] = [
       "Knockdown"
     ],
     "bookRef": {
-      "book": "Core",
+      "book": "Legions of Shadow",
       "act": 2,
       "section": 509
     }
@@ -413,7 +412,7 @@ export const ENEMIES: Enemy[] = [
       "Fire Aura"
     ],
     "bookRef": {
-      "book": "Core",
+      "book": "Legions of Shadow",
       "act": 2,
       "section": 565
     }
@@ -432,7 +431,7 @@ export const ENEMIES: Enemy[] = [
       "Haste"
     ],
     "bookRef": {
-      "book": "Core",
+      "book": "Legions of Shadow",
       "act": 3,
       "section": 454
     }
@@ -451,7 +450,7 @@ export const ENEMIES: Enemy[] = [
       "Dragonscale"
     ],
     "bookRef": {
-      "book": "Core",
+      "book": "Legions of Shadow",
       "act": 3,
       "section": 708
     }
@@ -470,7 +469,7 @@ export const ENEMIES: Enemy[] = [
       "Hybrid"
     ],
     "bookRef": {
-      "book": "Core",
+      "book": "Legions of Shadow",
       "act": 3,
       "section": 738
     }
@@ -489,7 +488,7 @@ export const ENEMIES: Enemy[] = [
       "Final Boss"
     ],
     "bookRef": {
-      "book": "Core",
+      "book": "Legions of Shadow",
       "act": 3,
       "section": 782
     }

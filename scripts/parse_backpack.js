@@ -62,9 +62,10 @@ const processedItems = rawData.slice(1).map((line, index) => {
         duration: duration,
         uses: uses,
         notes: notes,
+        bookRef: {
             book: book,
             act: act,
-            section: referenceNumber
+            section: referenceNumber,
         },
         location: location,
     };
@@ -74,7 +75,6 @@ const processedItems = rawData.slice(1).map((line, index) => {
 }).filter(i => i);
 
 console.log(`import { BackpackItem } from '../types/hero';
-import { BookRef } from '../types/book';
 
 export const BACKPACK_ITEMS: BackpackItem[] = ${JSON.stringify(processedItems, null, 2)};
 `);

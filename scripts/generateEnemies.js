@@ -73,7 +73,6 @@ try {
     const enemies = parseCSV(content);
 
     const fileContent = `import { Enemy } from '../types/combat';
-import { BookRef } from '../types/book';
 
 export const ENEMIES: Enemy[] = ${JSON.stringify(enemies, null, 2)};
 `;

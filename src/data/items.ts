@@ -1,5 +1,4 @@
 import { EquipmentItem } from '../types/hero';
-import { BookRef } from '../types/book';
 
 export const ITEMS: EquipmentItem[] = [
   {

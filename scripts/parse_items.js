@@ -106,7 +106,6 @@ const processedItems = rawData.slice(1).map((line, index) => {
 }).filter(i => i);
 
 console.log(`import { EquipmentItem } from '../types/hero';
-import { BookRef } from '../types/book';
 
 export const ITEMS: EquipmentItem[] = ${JSON.stringify(processedItems, null, 2)};
 

@@ -1,9 +1,8 @@
 
-import React from 'react';
 import { render, screen, fireEvent } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import EquipmentSlots from './EquipmentSlots';
-import { Hero, EquipmentSlot as EquipmentSlotType } from '../../types/hero';
+import { Hero } from '../../types/hero';
 
 // Mock hero data
 const mockHero: Hero = {
@@ -13,12 +12,16 @@ const mockHero: Hero = {
     money: 0,
     stats: { brawn: 1, speed: 1, magic: 1, armour: 0, health: 10, maxHealth: 10 },
     equipment: {
-        mainHand: { id: 'sword1', name: 'Iron Sword', type: 'mainHand', act: 1, referenceNumber: 1, location: 'starter' },
+        mainHand: testEquipment({
+            name: 'Iron Sword',
+            type: 'mainHand',
+        }),
     },
     backpack: [],
 };
 
 import { vi } from 'vitest';
+import { testEquipment } from '../../tests/testUtils';
 
 const mockOnEquip = vi.fn();
 const mockOnUnequip = vi.fn();
