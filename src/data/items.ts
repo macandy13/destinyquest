@@ -10,9 +10,7 @@ export const ITEMS: EquipmentItem[] = [
     "stats": {
       "speed": 1
     },
-    "abilities": [
-      "None"
-    ],
+    "abilities": [],
     "referenceNumber": 68,
     "location": "Vendor/Tithebury Cross"
   },
@@ -26,9 +24,7 @@ export const ITEMS: EquipmentItem[] = [
       "speed": 1,
       "armour": 1
     },
-    "abilities": [
-      "None"
-    ],
+    "abilities": [],
     "referenceNumber": 114,
     "location": "Vendor/Tithebury Cross"
   },
@@ -57,9 +53,7 @@ export const ITEMS: EquipmentItem[] = [
     "stats": {
       "armour": 1
     },
-    "abilities": [
-      "None"
-    ],
+    "abilities": [],
     "referenceNumber": 260,
     "location": "Goblin chief"
   },
@@ -88,9 +82,7 @@ export const ITEMS: EquipmentItem[] = [
     "stats": {
       "speed": 1
     },
-    "abilities": [
-      "None"
-    ],
+    "abilities": [],
     "referenceNumber": 40,
     "location": "Ruffians"
   },
@@ -151,9 +143,7 @@ export const ITEMS: EquipmentItem[] = [
       "speed": 1,
       "armour": 1
     },
-    "abilities": [
-      "None"
-    ],
+    "abilities": [],
     "referenceNumber": 283,
     "location": "Mud golem"
   },
@@ -610,9 +600,7 @@ export const ITEMS: EquipmentItem[] = [
       "brawn": 1,
       "armour": 1
     },
-    "abilities": [
-      "None"
-    ],
+    "abilities": [],
     "referenceNumber": 175,
     "location": "Vendor/Tithebury Cross"
   },
@@ -625,9 +613,7 @@ export const ITEMS: EquipmentItem[] = [
     "stats": {
       "speed": 1
     },
-    "abilities": [
-      "None"
-    ],
+    "abilities": [],
     "referenceNumber": 243,
     "location": "Weather wizard"
   },
@@ -640,9 +626,7 @@ export const ITEMS: EquipmentItem[] = [
     "stats": {
       "speed": 1
     },
-    "abilities": [
-      "None"
-    ],
+    "abilities": [],
     "referenceNumber": 166,
     "location": "Skeletons"
   },
@@ -703,9 +687,7 @@ export const ITEMS: EquipmentItem[] = [
       "brawn": 2,
       "armour": 1
     },
-    "abilities": [
-      "None"
-    ],
+    "abilities": [],
     "referenceNumber": 338,
     "location": "Thievies' guild",
     "careerPreference": "Rogue"
@@ -720,9 +702,7 @@ export const ITEMS: EquipmentItem[] = [
       "speed": 1,
       "armour": 1
     },
-    "abilities": [
-      "None"
-    ],
+    "abilities": [],
     "referenceNumber": 287,
     "location": "Mushroom forest"
   },
@@ -736,9 +716,7 @@ export const ITEMS: EquipmentItem[] = [
       "speed": 1,
       "brawn": 1
     },
-    "abilities": [
-      "None"
-    ],
+    "abilities": [],
     "referenceNumber": 494,
     "location": "Slime"
   },
@@ -752,9 +730,7 @@ export const ITEMS: EquipmentItem[] = [
       "magic": 1,
       "armour": 2
     },
-    "abilities": [
-      "None"
-    ],
+    "abilities": [],
     "referenceNumber": 517,
     "location": "Wormwood (normal)"
   },
@@ -768,9 +744,7 @@ export const ITEMS: EquipmentItem[] = [
       "magic": 2,
       "armour": 2
     },
-    "abilities": [
-      "None"
-    ],
+    "abilities": [],
     "referenceNumber": 533,
     "location": "Wormwood (special)"
   },
@@ -848,9 +822,7 @@ export const ITEMS: EquipmentItem[] = [
       "speed": 1,
       "brawn": 2
     },
-    "abilities": [
-      "None"
-    ],
+    "abilities": [],
     "referenceNumber": 716,
     "location": "Kalimari"
   },
@@ -1011,9 +983,7 @@ export const ITEMS: EquipmentItem[] = [
       "speed": 1,
       "brawn": 2
     },
-    "abilities": [
-      "None"
-    ],
+    "abilities": [],
     "referenceNumber": 370,
     "location": "Nasareim"
   },
@@ -1027,9 +997,7 @@ export const ITEMS: EquipmentItem[] = [
       "magic": 2,
       "armour": 2
     },
-    "abilities": [
-      "None"
-    ],
+    "abilities": [],
     "referenceNumber": 370,
     "location": "Nasareim"
   },
@@ -1093,9 +1061,7 @@ export const ITEMS: EquipmentItem[] = [
       "magic": 3,
       "armour": 2
     },
-    "abilities": [
-      "None"
-    ],
+    "abilities": [],
     "referenceNumber": 776,
     "location": "Bone wyvern"
   },
@@ -1421,9 +1387,7 @@ export const ITEMS: EquipmentItem[] = [
       "speed": 1,
       "magic": 1
     },
-    "abilities": [
-      "None"
-    ],
+    "abilities": [],
     "referenceNumber": 68,
     "location": "Vendor/Tithebury Cross"
   },
@@ -1437,9 +1401,7 @@ export const ITEMS: EquipmentItem[] = [
       "brawn": 1,
       "magic": 1
     },
-    "abilities": [
-      "None"
-    ],
+    "abilities": [],
     "referenceNumber": 161,
     "location": "Rat swarm"
   },
@@ -1484,9 +1446,7 @@ export const ITEMS: EquipmentItem[] = [
       "brawn": 2,
       "armour": 1
     },
-    "abilities": [
-      "None"
-    ],
+    "abilities": [],
     "referenceNumber": 522,
     "location": "Treasure vault"
   },
@@ -1927,9 +1887,7 @@ export const ITEMS: EquipmentItem[] = [
     "stats": {
       "magic": 1
     },
-    "abilities": [
-      "None"
-    ],
+    "abilities": [],
     "referenceNumber": 68,
     "location": "Vendor/Tithebury Cross"
   },
@@ -1942,9 +1900,7 @@ export const ITEMS: EquipmentItem[] = [
     "stats": {
       "armour": 1
     },
-    "abilities": [
-      "None"
-    ],
+    "abilities": [],
     "referenceNumber": 150,
     "location": "Goblin"
   },
@@ -1957,9 +1913,7 @@ export const ITEMS: EquipmentItem[] = [
     "stats": {
       "armour": 1
     },
-    "abilities": [
-      "None"
-    ],
+    "abilities": [],
     "referenceNumber": 228,
     "location": "Huntsman"
   },
@@ -1972,9 +1926,7 @@ export const ITEMS: EquipmentItem[] = [
     "stats": {
       "armour": 2
     },
-    "abilities": [
-      "None"
-    ],
+    "abilities": [],
     "referenceNumber": 125,
     "location": "Were rat"
   },
@@ -1988,9 +1940,7 @@ export const ITEMS: EquipmentItem[] = [
       "magic": 1,
       "armour": 1
     },
-    "abilities": [
-      "None"
-    ],
+    "abilities": [],
     "referenceNumber": 243,
     "location": "Weather wizard"
   },
@@ -2198,9 +2148,7 @@ export const ITEMS: EquipmentItem[] = [
       "speed": 1,
       "armour": 3
     },
-    "abilities": [
-      "None"
-    ],
+    "abilities": [],
     "referenceNumber": 509,
     "location": "Swamp giant",
     "careerPreference": "Warrior"
@@ -2231,9 +2179,7 @@ export const ITEMS: EquipmentItem[] = [
       "speed": 2,
       "brawn": 1
     },
-    "abilities": [
-      "None"
-    ],
+    "abilities": [],
     "referenceNumber": 716,
     "location": "Kalimari"
   },
@@ -2745,9 +2691,7 @@ export const ITEMS: EquipmentItem[] = [
       "speed": 1,
       "brawn": 1
     },
-    "abilities": [
-      "None"
-    ],
+    "abilities": [],
     "referenceNumber": 175,
     "location": "Vendor/Tithebury Cross"
   },
@@ -2777,9 +2721,7 @@ export const ITEMS: EquipmentItem[] = [
       "speed": 1,
       "magic": 1
     },
-    "abilities": [
-      "None"
-    ],
+    "abilities": [],
     "referenceNumber": 204,
     "location": "Scarecrow"
   },
@@ -2793,9 +2735,7 @@ export const ITEMS: EquipmentItem[] = [
       "speed": 1,
       "brawn": 1
     },
-    "abilities": [
-      "None"
-    ],
+    "abilities": [],
     "referenceNumber": 199,
     "location": "Hobgoblin"
   },
@@ -2808,9 +2748,7 @@ export const ITEMS: EquipmentItem[] = [
     "stats": {
       "speed": 1
     },
-    "abilities": [
-      "None"
-    ],
+    "abilities": [],
     "referenceNumber": 260,
     "location": "Goblin chief"
   },
@@ -2887,9 +2825,7 @@ export const ITEMS: EquipmentItem[] = [
       "speed": 2,
       "magic": 2
     },
-    "abilities": [
-      "None"
-    ],
+    "abilities": [],
     "referenceNumber": 311,
     "location": "No Hope tinker"
   },
@@ -2903,9 +2839,7 @@ export const ITEMS: EquipmentItem[] = [
       "speed": 1,
       "brawn": 2
     },
-    "abilities": [
-      "None"
-    ],
+    "abilities": [],
     "referenceNumber": 338,
     "location": "Thievies' guild",
     "careerPreference": "Rogue"
@@ -2920,9 +2854,7 @@ export const ITEMS: EquipmentItem[] = [
       "speed": 1,
       "brawn": 1
     },
-    "abilities": [
-      "None"
-    ],
+    "abilities": [],
     "referenceNumber": 287,
     "location": "Mushroom forest"
   },
@@ -2936,9 +2868,7 @@ export const ITEMS: EquipmentItem[] = [
       "speed": 1,
       "armour": 1
     },
-    "abilities": [
-      "None"
-    ],
+    "abilities": [],
     "referenceNumber": 494,
     "location": "Slime"
   },
@@ -2984,9 +2914,7 @@ export const ITEMS: EquipmentItem[] = [
       "speed": 2,
       "armour": 2
     },
-    "abilities": [
-      "None"
-    ],
+    "abilities": [],
     "referenceNumber": 446,
     "location": "Treasure cave",
     "careerPreference": "Mage"
@@ -3034,9 +2962,7 @@ export const ITEMS: EquipmentItem[] = [
       "speed": 2,
       "armour": 1
     },
-    "abilities": [
-      "None"
-    ],
+    "abilities": [],
     "referenceNumber": 716,
     "location": "Kalimari"
   },
@@ -3347,9 +3273,7 @@ export const ITEMS: EquipmentItem[] = [
       "brawn": 1,
       "magic": 1
     },
-    "abilities": [
-      "None"
-    ],
+    "abilities": [],
     "location": "Prologue"
   },
   {
@@ -3362,9 +3286,7 @@ export const ITEMS: EquipmentItem[] = [
       "speed": 1,
       "brawn": 1
     },
-    "abilities": [
-      "None"
-    ],
+    "abilities": [],
     "referenceNumber": 175,
     "location": "Vendor/Tithebury Cross"
   },
@@ -3377,9 +3299,7 @@ export const ITEMS: EquipmentItem[] = [
     "stats": {
       "speed": 1
     },
-    "abilities": [
-      "None"
-    ],
+    "abilities": [],
     "referenceNumber": 199,
     "location": "Hobgoblin"
   },
@@ -3393,9 +3313,7 @@ export const ITEMS: EquipmentItem[] = [
       "speed": 1,
       "armour": 1
     },
-    "abilities": [
-      "None"
-    ],
+    "abilities": [],
     "referenceNumber": 82,
     "location": "Woodsman"
   },
@@ -3408,9 +3326,7 @@ export const ITEMS: EquipmentItem[] = [
     "stats": {
       "brawn": 2
     },
-    "abilities": [
-      "None"
-    ],
+    "abilities": [],
     "referenceNumber": 228,
     "location": "Huntsman"
   },
@@ -3439,9 +3355,7 @@ export const ITEMS: EquipmentItem[] = [
       "speed": 1,
       "magic": 1
     },
-    "abilities": [
-      "None"
-    ],
+    "abilities": [],
     "referenceNumber": 40,
     "location": "Ruffians"
   },
@@ -3454,9 +3368,7 @@ export const ITEMS: EquipmentItem[] = [
     "stats": {
       "brawn": 3
     },
-    "abilities": [
-      "None"
-    ],
+    "abilities": [],
     "referenceNumber": 40,
     "location": "Ruffians"
   },
@@ -3470,9 +3382,7 @@ export const ITEMS: EquipmentItem[] = [
       "speed": 1,
       "brawn": 1
     },
-    "abilities": [
-      "None"
-    ],
+    "abilities": [],
     "referenceNumber": 125,
     "location": "Were rat"
   },
@@ -3665,9 +3575,7 @@ export const ITEMS: EquipmentItem[] = [
       "speed": 1,
       "magic": 2
     },
-    "abilities": [
-      "None"
-    ],
+    "abilities": [],
     "referenceNumber": 283,
     "location": "Mud golem"
   },
@@ -3681,9 +3589,7 @@ export const ITEMS: EquipmentItem[] = [
       "speed": 1,
       "brawn": 2
     },
-    "abilities": [
-      "None"
-    ],
+    "abilities": [],
     "referenceNumber": 287,
     "location": "Mushroom forest"
   },
@@ -3697,9 +3603,7 @@ export const ITEMS: EquipmentItem[] = [
       "speed": 1,
       "brawn": 3
     },
-    "abilities": [
-      "None"
-    ],
+    "abilities": [],
     "referenceNumber": 327,
     "location": "Trogs",
     "careerPreference": "Warrior"
@@ -3895,9 +3799,7 @@ export const ITEMS: EquipmentItem[] = [
       "speed": 1,
       "magic": 3
     },
-    "abilities": [
-      "None"
-    ],
+    "abilities": [],
     "referenceNumber": 479,
     "location": "Wreekin"
   },
@@ -4663,9 +4565,7 @@ export const ITEMS: EquipmentItem[] = [
       "brawn": 2,
       "armour": 1
     },
-    "abilities": [
-      "None"
-    ],
+    "abilities": [],
     "referenceNumber": 191,
     "location": "Vendor/Tithebury Cross"
   },
@@ -4679,9 +4579,7 @@ export const ITEMS: EquipmentItem[] = [
       "speed": 1,
       "brawn": 1
     },
-    "abilities": [
-      "None"
-    ],
+    "abilities": [],
     "referenceNumber": 204,
     "location": "Scarecrow"
   },
@@ -4694,9 +4592,7 @@ export const ITEMS: EquipmentItem[] = [
     "stats": {
       "brawn": 1
     },
-    "abilities": [
-      "None"
-    ],
+    "abilities": [],
     "referenceNumber": 118,
     "location": "Crocodile"
   },
@@ -4774,9 +4670,7 @@ export const ITEMS: EquipmentItem[] = [
       "speed": 1,
       "armour": 1
     },
-    "abilities": [
-      "None"
-    ],
+    "abilities": [],
     "referenceNumber": 166,
     "location": "Skeletons"
   },
@@ -4920,9 +4814,7 @@ export const ITEMS: EquipmentItem[] = [
       "speed": 2,
       "magic": 2
     },
-    "abilities": [
-      "None"
-    ],
+    "abilities": [],
     "referenceNumber": 445,
     "location": "Treasure vault",
     "careerPreference": "Mage"
@@ -5002,9 +4894,7 @@ export const ITEMS: EquipmentItem[] = [
       "speed": 1,
       "brawn": 3
     },
-    "abilities": [
-      "None"
-    ],
+    "abilities": [],
     "referenceNumber": 452,
     "location": "Angler's cave",
     "careerPreference": "Rogue"
@@ -5035,9 +4925,7 @@ export const ITEMS: EquipmentItem[] = [
       "speed": 2,
       "magic": 3
     },
-    "abilities": [
-      "None"
-    ],
+    "abilities": [],
     "referenceNumber": 550,
     "location": "Jenlar's cabin",
     "careerPreference": "Mage"
@@ -6251,9 +6139,7 @@ export const ITEMS: EquipmentItem[] = [
     "stats": {
       "magic": 1
     },
-    "abilities": [
-      "None"
-    ],
+    "abilities": [],
     "referenceNumber": 199,
     "location": "Hobgoblin"
   },
@@ -6282,9 +6168,7 @@ export const ITEMS: EquipmentItem[] = [
       "brawn": 1,
       "magic": 1
     },
-    "abilities": [
-      "None"
-    ],
+    "abilities": [],
     "referenceNumber": 193,
     "location": "Flooded cave"
   },
@@ -6699,9 +6583,7 @@ export const ITEMS: EquipmentItem[] = [
       "brawn": 1,
       "magic": 1
     },
-    "abilities": [
-      "None"
-    ],
+    "abilities": [],
     "referenceNumber": 180,
     "location": "Barricaded room"
   },
@@ -6743,9 +6625,7 @@ export const ITEMS: EquipmentItem[] = [
     "stats": {
       "brawn": 1
     },
-    "abilities": [
-      "None"
-    ],
+    "abilities": [],
     "referenceNumber": 106,
     "location": "Ghouls"
   },
@@ -7339,9 +7219,7 @@ export const ITEMS: EquipmentItem[] = [
     "stats": {
       "armour": 1
     },
-    "abilities": [
-      "None"
-    ],
+    "abilities": [],
     "location": "Prologue"
   },
   {
@@ -7385,9 +7263,7 @@ export const ITEMS: EquipmentItem[] = [
       "brawn": 1,
       "armour": 1
     },
-    "abilities": [
-      "None"
-    ],
+    "abilities": [],
     "referenceNumber": 106,
     "location": "Dire wolf"
   },
@@ -7401,9 +7277,7 @@ export const ITEMS: EquipmentItem[] = [
       "brawn": 1,
       "armour": 1
     },
-    "abilities": [
-      "None"
-    ],
+    "abilities": [],
     "referenceNumber": 359,
     "location": "Bishop"
   },
@@ -7942,9 +7816,7 @@ export const ITEMS: EquipmentItem[] = [
     "stats": {
       "armour": 1
     },
-    "abilities": [
-      "None"
-    ],
+    "abilities": [],
     "location": "Prologue"
   },
   {
@@ -8033,9 +7905,7 @@ export const ITEMS: EquipmentItem[] = [
     "stats": {
       "brawn": 1
     },
-    "abilities": [
-      "None"
-    ],
+    "abilities": [],
     "referenceNumber": 79,
     "location": "Crews' quarters"
   },
@@ -8578,9 +8448,7 @@ export const ITEMS: EquipmentItem[] = [
     "stats": {
       "armour": 1
     },
-    "abilities": [
-      "None"
-    ],
+    "abilities": [],
     "referenceNumber": 50,
     "location": "Barrow"
   },
@@ -8609,9 +8477,7 @@ export const ITEMS: EquipmentItem[] = [
       "speed": 1,
       "armour": 1
     },
-    "abilities": [
-      "None"
-    ],
+    "abilities": [],
     "referenceNumber": 91,
     "location": "Margoyle"
   },
@@ -8657,9 +8523,7 @@ export const ITEMS: EquipmentItem[] = [
       "brawn": 1,
       "armour": 1
     },
-    "abilities": [
-      "None"
-    ],
+    "abilities": [],
     "referenceNumber": 236,
     "location": "Poltergeist"
   },
@@ -9140,9 +9004,7 @@ export const ITEMS: EquipmentItem[] = [
     "stats": {
       "speed": 1
     },
-    "abilities": [
-      "None"
-    ],
+    "abilities": [],
     "location": "Prologue"
   },
   {
@@ -9171,9 +9033,7 @@ export const ITEMS: EquipmentItem[] = [
       "speed": 1,
       "armour": 1
     },
-    "abilities": [
-      "None"
-    ],
+    "abilities": [],
     "referenceNumber": 106,
     "location": "Direwolf"
   },
@@ -9219,9 +9079,7 @@ export const ITEMS: EquipmentItem[] = [
       "speed": 1,
       "armour": 1
     },
-    "abilities": [
-      "None"
-    ],
+    "abilities": [],
     "referenceNumber": 205,
     "location": "Cannon crew"
   },
@@ -9914,9 +9772,7 @@ export const ITEMS: EquipmentItem[] = [
       "brawn": 1,
       "magic": 1
     },
-    "abilities": [
-      "None"
-    ],
+    "abilities": [],
     "referenceNumber": 300,
     "location": "Number 13"
   },
@@ -10342,9 +10198,7 @@ export const ITEMS: EquipmentItem[] = [
       "brawn": 1,
       "magic": 1
     },
-    "abilities": [
-      "None"
-    ],
+    "abilities": [],
     "location": "Prologue"
   },
   {
@@ -10454,9 +10308,7 @@ export const ITEMS: EquipmentItem[] = [
       "brawn": 1,
       "armour": 1
     },
-    "abilities": [
-      "None"
-    ],
+    "abilities": [],
     "referenceNumber": 133,
     "location": "Sinister sprigs"
   },
@@ -11557,9 +11409,7 @@ export const ITEMS: EquipmentItem[] = [
     "stats": {
       "brawn": 1
     },
-    "abilities": [
-      "None"
-    ],
+    "abilities": [],
     "referenceNumber": 74,
     "location": "Drust the defiled"
   },
@@ -11573,9 +11423,7 @@ export const ITEMS: EquipmentItem[] = [
       "brawn": 1,
       "magic": 1
     },
-    "abilities": [
-      "None"
-    ],
+    "abilities": [],
     "referenceNumber": 106,
     "location": "Direwolf"
   },
@@ -11618,9 +11466,7 @@ export const ITEMS: EquipmentItem[] = [
     "stats": {
       "brawn": 2
     },
-    "abilities": [
-      "None"
-    ],
+    "abilities": [],
     "referenceNumber": 234,
     "location": "Gutless"
   },
@@ -11681,9 +11527,7 @@ export const ITEMS: EquipmentItem[] = [
       "speed": 1,
       "brawn": 1
     },
-    "abilities": [
-      "None"
-    ],
+    "abilities": [],
     "referenceNumber": 164,
     "location": "Goblins"
   },
@@ -11742,9 +11586,7 @@ export const ITEMS: EquipmentItem[] = [
       "speed": 1,
       "armour": 1
     },
-    "abilities": [
-      "None"
-    ],
+    "abilities": [],
     "referenceNumber": 91,
     "location": "Margoyle"
   },
@@ -12806,9 +12648,7 @@ export const ITEMS: EquipmentItem[] = [
     "stats": {
       "speed": 1
     },
-    "abilities": [
-      "None"
-    ],
+    "abilities": [],
     "referenceNumber": 235,
     "location": "Vendor/Raven's Rest"
   },
@@ -12821,9 +12661,7 @@ export const ITEMS: EquipmentItem[] = [
     "stats": {
       "magic": 1
     },
-    "abilities": [
-      "None"
-    ],
+    "abilities": [],
     "referenceNumber": 7,
     "location": "Wiccan witch"
   },
@@ -12877,9 +12715,7 @@ export const ITEMS: EquipmentItem[] = [
     "stats": {
       "speed": 1
     },
-    "abilities": [
-      "None"
-    ],
+    "abilities": [],
     "referenceNumber": 105,
     "location": "Cuddles"
   },
@@ -13235,9 +13071,7 @@ export const ITEMS: EquipmentItem[] = [
     "stats": {
       "magic": 1
     },
-    "abilities": [
-      "None"
-    ],
+    "abilities": [],
     "referenceNumber": 74,
     "location": "Drust the defiled"
   },
@@ -13279,9 +13113,7 @@ export const ITEMS: EquipmentItem[] = [
       "brawn": 1,
       "magic": 1
     },
-    "abilities": [
-      "None"
-    ],
+    "abilities": [],
     "referenceNumber": 300,
     "location": "Number 13"
   },
@@ -13764,9 +13596,7 @@ export const ITEMS: EquipmentItem[] = [
     "stats": {
       "brawn": 1
     },
-    "abilities": [
-      "None"
-    ],
+    "abilities": [],
     "referenceNumber": 201,
     "location": "Jack'o Lantern"
   },
@@ -13780,9 +13610,7 @@ export const ITEMS: EquipmentItem[] = [
       "brawn": 1,
       "magic": 1
     },
-    "abilities": [
-      "None"
-    ],
+    "abilities": [],
     "referenceNumber": 133,
     "location": "Sinister sprigs"
   },
@@ -13795,9 +13623,7 @@ export const ITEMS: EquipmentItem[] = [
     "stats": {
       "magic": 1
     },
-    "abilities": [
-      "None"
-    ],
+    "abilities": [],
     "referenceNumber": 20,
     "location": "Zombie goblin"
   },

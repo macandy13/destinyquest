@@ -3,6 +3,7 @@ import { HeroStats as HeroStatsType, Hero } from '../../types/hero';
 import NumberControl from '../Shared/NumberControl';
 import './HeroStats.css';
 import { getStatIcon } from '../../utils/statUtils';
+import { getAbilityDefinition, getAbilityIcon } from '../../mechanics/abilityRegistry';
 
 import DqCard from '../Shared/DqCard';
 
@@ -76,7 +77,7 @@ const HeroStats: React.FC<HeroStatsProps> = ({ hero, onHealthChange, onMoneyChan
                 {/* Attributes - Grid Layout */}
                 <div className="attributes-grid">
                     {STAT_CONFIG.map(({ key, label }) => (
-                        <div key={key} className="stat-row attribute-square">
+                        <div key={key} className="attribute-square">
                             <span className="stat-icon">{getStatIcon(key)}</span>
                             <div className="attribute-row">
                                 <span className="stat-label">{label}</span>
@@ -91,9 +92,26 @@ const HeroStats: React.FC<HeroStatsProps> = ({ hero, onHealthChange, onMoneyChan
                     <div className="abilities-section">
                         <h4>Active Abilities</h4>
                         <div className="abilities-list">
-                            {activeAbilities.map(([ability, count]) => (
-                                <span key={ability} className="ability-badge">★ {ability} {count > 1 ? `(x${count})` : ''}</span>
-                            ))}
+                            {activeAbilities.map(([abilityName, count]) => {
+                                const def = getAbilityDefinition(abilityName);
+                                const icon = getAbilityIcon(def);
+                                return (
+                                    <div key={abilityName} className="ability-row">
+                                        <div className="ability-icon-wrapper">
+                                            <span className="ability-icon">{icon}</span>
+                                        </div>
+                                        <div className="ability-details">
+                                            <div className="ability-header-row">
+                                                <span className="ability-name">{abilityName}</span>
+                                                {count > 1 && <span className="ability-count">x{count}</span>}
+                                            </div>
+                                            {def?.description && (
+                                                <div className="ability-description">{def.description}</div>
+                                            )}
+                                        </div>
+                                    </div>
+                                );
+                            })}
                         </div>
                     </div>
                 )}

@@ -1,8 +1,8 @@
 .dq-card {
-    background: var(--dq-grey);
+    background: var(--dq-card-bg);
     padding: var(--spacing-md);
     border-radius: var(--radius-md);
-    border: 1px solid var(--dq-gold-dim);
+    border: 1px solid var(--dq-hero-color);
     gap: var(--spacing-md);
     display: flex;
     flex-direction: column;
@@ -15,5 +15,5 @@
 }
 
 .dq-card.combat .dq-card-title {
-    color: var(--dq-crimson);
+    color: var(--dq-enemy-color);
 }

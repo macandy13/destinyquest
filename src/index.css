@@ -14,6 +14,13 @@
   --dq-green: #2d6a4f;
   --dq-blue: #2c4f6a;
 
+  --dq-row-bg: rgba(255, 255, 255, 0.05);
+  --dq-button-border: var(--dq-gold-dim);
+  --dq-background: var(--dq-black);
+  --dq-card-bg: var(--dq-dark-grey);
+  --dq-hero-color: var(--dq-gold-dim);
+  --dq-enemy-color: var(--dq-crimson);
+
   /* Typography */
   --font-heading: 'IM Fell English', Georgia, "Times New Roman", Times, serif;
   /* Fallback will be handled if not loaded */

@@ -88,7 +88,7 @@ const processedItems = rawData.slice(1).map((line, index) => {
         book: book,
         act: act,
         stats: {},
-        abilities: abilities.map(a => a.trim()),
+        abilities: abilities.map(a => a.trim()).filter(a => a !== 'None'),
         referenceNumber: entry, // Renamed from entry
         location: location,
         careerPreference: career

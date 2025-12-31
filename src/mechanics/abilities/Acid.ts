@@ -8,5 +8,4 @@ registerAbility({
         // Add 1 per die rolled
         return rolls.length;
     },
-    icon: '🔥'
 });

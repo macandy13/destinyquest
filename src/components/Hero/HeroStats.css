@@ -31,7 +31,7 @@
     align-self: center;
 }
 
-/* New Grid Layout for Attributes */
+/* Attributes Grid - Updated by User */
 .attributes-grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -42,6 +42,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    background: var(--dq-row-bg);
     justify-content: center;
     gap: var(--spacing-xs);
     border-radius: var(--radius-md);
@@ -63,4 +64,86 @@
     color: var(--dq-gold);
     font-weight: bold;
     line-height: 1;
+}
+
+/* Abilities Section */
+.abilities-section {
+    margin-top: var(--spacing-md);
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-sm);
+}
+
+.abilities-header {
+    font-family: var(--font-heading);
+    color: var(--text-dim);
+    font-size: var(--font-sm);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border-bottom: 1px solid var(--dq-border-dim);
+    padding-bottom: var(--spacing-xs);
+}
+
+.abilities-list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-xs);
+}
+
+.ability-row {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--spacing-sm);
+    background: var(--dq-row-bg);
+    border-radius: var(--radius-md);
+    padding: var(--spacing-sm);
+}
+
+.ability-icon-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: var(--radius-sm);
+    width: 32px;
+    height: 32px;
+    flex-shrink: 0;
+}
+
+.ability-icon {
+    font-size: 1.2rem;
+}
+
+.ability-details {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    flex: 1;
+}
+
+.ability-header-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.ability-name {
+    font-weight: bold;
+    color: var(--dq-gold);
+}
+
+.ability-count {
+    font-size: var(--font-xs);
+    background: var(--dq-gold);
+    color: var(--bg-dark);
+    padding: 0 4px;
+    border-radius: 4px;
+    font-weight: bold;
+}
+
+.ability-description {
+    font-size: var(--font-sm);
+    color: var(--text-dim);
+    line-height: 1.4;
+    font-style: italic;
 }

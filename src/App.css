@@ -213,7 +213,7 @@
     align-items: center;
     justify-content: space-between;
     padding: var(--spacing-xs);
-    background: rgba(255, 255, 255, 0.05);
+    background: var(--dq-row-bg);
     border-radius: var(--radius-sm);
     border: 1px solid transparent;
     transition: border-color 0.2s;
