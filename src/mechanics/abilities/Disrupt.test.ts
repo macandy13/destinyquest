@@ -6,7 +6,17 @@ import { INITIAL_STATE } from '../../tests/testUtils';
 describe('Disrupt', () => {
     it('should apply magic reduction on activate', () => {
         const ability = getAbilityDefinition('Disrupt');
-        const state = { ...INITIAL_STATE, logs: [] };
+        const state = {
+            ...INITIAL_STATE,
+            damageDealt: [
+                {
+                    source: 'Attack',
+                    target: 'enemy' as const,
+                    amount: 1
+                }
+            ],
+            round: 1
+        };
         const result = ability?.onActivate?.(state);
 
         expect(result?.modifications).toHaveLength(1);

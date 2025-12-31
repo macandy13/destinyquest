@@ -1,5 +1,5 @@
 import { describe, it, expect, vi } from 'vitest';
-import { INITIAL_STATE, createEnemyCombatant } from '../../tests/testUtils';
+import { INITIAL_STATE, enemyWithStats } from '../../tests/testUtils';
 import { getAbilityDefinition } from '../abilityRegistry';
 import './FirstStrike';
 
@@ -8,7 +8,7 @@ describe('First Strike', () => {
         const def = getAbilityDefinition('First Strike');
         expect(def).toBeDefined();
 
-        const enemy = createEnemyCombatant({ health: 20 });
+        const enemy = enemyWithStats({ health: 20 });
         const state = { ...INITIAL_STATE, enemy };
 
         // Mock Math.random to return 0.5 (=> 3.5 => floor 3 + 1 = 4)

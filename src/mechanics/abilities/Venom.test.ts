@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { INITIAL_STATE, createEnemyCombatant } from '../../tests/testUtils';
+import { INITIAL_STATE, enemyWithStats } from '../../tests/testUtils';
 import { getAbilityDefinition } from '../abilityRegistry';
 import { CombatState } from '../../types/combat';
 
@@ -14,7 +14,7 @@ const INITIAL_STATE_WITH_DAMAGE: CombatState = {
 describe('Venom', () => {
     it('should deal 2 damage by default', () => {
         const def = getAbilityDefinition('Venom');
-        const enemy = createEnemyCombatant({ health: 20 });
+        const enemy = enemyWithStats({ health: 20 });
         const state = {
             ...INITIAL_STATE_WITH_DAMAGE,
             enemy,
@@ -43,7 +43,7 @@ describe('Venom', () => {
 
     it('should deal 3 damage with Deadly Poisons', () => {
         const def = getAbilityDefinition('Venom');
-        const enemy = createEnemyCombatant({ health: 20 });
+        const enemy = enemyWithStats({ health: 20 });
         const state = {
             ...INITIAL_STATE_WITH_DAMAGE,
             enemy,
@@ -62,7 +62,7 @@ describe('Venom', () => {
 
     it('should deal 4 damage with mastery', () => {
         const def = getAbilityDefinition('Venom');
-        const enemy = createEnemyCombatant({ health: 20 });
+        const enemy = enemyWithStats({ health: 20 });
         const state = {
             ...INITIAL_STATE_WITH_DAMAGE,
             enemy,
@@ -81,7 +81,7 @@ describe('Venom', () => {
 
     it('should not deal damage if damage was only dealt to hero', () => {
         const def = getAbilityDefinition('Venom');
-        const enemy = createEnemyCombatant({ health: 20 });
+        const enemy = enemyWithStats({ health: 20 });
         const state = {
             ...INITIAL_STATE_WITH_DAMAGE,
             enemy,

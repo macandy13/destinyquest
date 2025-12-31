@@ -1,9 +1,11 @@
 import { BookRef } from '../types/book';
+import { Character } from '../types/character';
 import { CombatState, Enemy } from '../types/combat';
 import { Combatant } from '../types/combatant';
 import { EquipmentItem, Hero } from '../types/hero';
 
 export const MOCK_HERO: Hero = {
+    type: 'hero',
     name: 'Test Hero',
     path: '',
     career: '',
@@ -26,6 +28,7 @@ export const TEST_BOOK: BookRef = {
 };
 
 export const MOCK_ENEMY: Enemy = {
+    type: 'enemy',
     name: 'Test Enemy',
     stats: {
         speed: 0,
@@ -39,7 +42,7 @@ export const MOCK_ENEMY: Enemy = {
     abilities: []
 };
 
-const heroCombatant: Combatant<Hero> = {
+const HERO_COMBATANT: Combatant<Hero> = {
     type: 'hero',
     id: 'hero',
     name: MOCK_HERO.name,
@@ -47,7 +50,7 @@ const heroCombatant: Combatant<Hero> = {
     original: MOCK_HERO
 };
 
-const enemyCombatant: Combatant<Enemy> = {
+const ENEMY_COMBATANT: Combatant<Enemy> = {
     type: 'enemy',
     id: 'enemy',
     name: MOCK_ENEMY.name,
@@ -57,8 +60,8 @@ const enemyCombatant: Combatant<Enemy> = {
 
 // Generic mock state for ability testing
 export const INITIAL_STATE: CombatState = {
-    hero: heroCombatant,
-    enemy: enemyCombatant,
+    hero: HERO_COMBATANT,
+    enemy: ENEMY_COMBATANT,
     round: 1,
     phase: 'combat-start',
     heroSpeedRolls: undefined,
@@ -81,15 +84,8 @@ export const heroWithStats = (stats: Partial<Hero['stats']>): Combatant<Hero> =>
             ...stats
         }
     };
-    return {
-        type: 'hero',
-        id: 'hero',
-        name: hero.name,
-        stats: { ...hero.stats },
-        original: hero
-    };
+    return createCombatant(hero) as Combatant<Hero>;
 };
-
 
 export const testEquipment = (stats: Partial<EquipmentItem>): EquipmentItem => {
     return {
@@ -102,9 +98,7 @@ export const testEquipment = (stats: Partial<EquipmentItem>): EquipmentItem => {
     };
 };
 
-export const createHeroCombatant = heroWithStats;
-
-export const createEnemyCombatant = (stats: Partial<Enemy['stats']> = {}): Combatant<Enemy> => {
+export const enemyWithStats = (stats: Partial<Enemy['stats']> = {}): Combatant<Enemy> => {
     const enemy = {
         ...MOCK_ENEMY,
         stats: {
@@ -112,11 +106,15 @@ export const createEnemyCombatant = (stats: Partial<Enemy['stats']> = {}): Comba
             ...stats
         }
     };
-    return {
-        type: 'enemy',
-        id: 'enemy',
-        name: enemy.name,
-        stats: { ...enemy.stats },
-        original: enemy
-    };
+    return createCombatant(enemy) as Combatant<Enemy>;
 };
+
+export function createCombatant(char: Character): Combatant<Character> {
+    return {
+        id: char.name.replace(' ', '-').toLowerCase(),
+        type: char.type,
+        name: char.name,
+        stats: { ...char.stats },
+        original: char
+    };
+}

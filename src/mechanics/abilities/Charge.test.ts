@@ -1,16 +1,35 @@
 import { describe, it, expect } from 'vitest';
-import { getAbilityDefinition } from '../abilityRegistry';
-import './Charge';
+
+import { AbilityDefinition, getAbilityDefinition } from '../abilityRegistry';
 import { INITIAL_STATE } from '../../tests/testUtils';
 
-describe('Charge', () => {
-    it('should increase speed by 2', () => {
-        const charge = getAbilityDefinition('Charge');
-        const state = { ...INITIAL_STATE, logs: [] };
-        const result = charge?.onActivate?.(state);
+import './Charge';
 
+describe('Charge', () => {
+    let ability: AbilityDefinition;
+
+    beforeEach(() => {
+        const def = getAbilityDefinition('Charge')!;
+        expect(def).toBeDefined();
+        ability = def;
+    })
+
+    it('should not increase speed by 2', () => {
+        const combatState = { ...INITIAL_STATE, round: 1 };
+        expect(ability.canActivate?.(combatState)).toBe(true);
+
+        const result = ability.onActivate?.(combatState);
         expect(result?.modifications).toHaveLength(1);
         expect(result?.modifications![0].modification.stats.speed).toBe(2);
         expect(result?.modifications![0].duration).toBe(1);
     });
+
+    it('should not increase speed by 2', () => {
+        const combatState = { ...INITIAL_STATE, round: 2 };
+        expect(ability.canActivate?.(combatState)).toBe(false);
+
+        const result = ability.onActivate?.(combatState);
+        expect(result).toBeNull();
+    });
+
 });

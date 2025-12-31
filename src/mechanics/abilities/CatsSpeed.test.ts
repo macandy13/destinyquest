@@ -6,10 +6,14 @@ import { renderHook, act } from '@testing-library/react';
 import { useCombat } from '../../hooks/useCombat';
 import { Hero } from '../../types/hero';
 
+
 describe("Cat's Speed", () => {
     it('should add speed bonus modifier on activation', () => {
         const ability = getAbilityDefinition("Cat's Speed");
-        const state = { ...INITIAL_STATE, logs: [] };
+        const state = {
+            ...INITIAL_STATE,
+            phase: 'speed-roll',
+        };
         const result = ability?.onActivate?.(state);
 
         expect(result?.modifications).toHaveLength(1);
@@ -33,6 +37,7 @@ describe("Cat's Speed", () => {
         const { result } = renderHook(() => useCombat(HERO));
 
         act(() => result.current.startCombat());
+        act(() => result.current.generateSpeedRolls());
 
         act(() => result.current.activateAbility("Cat's Speed"));
 

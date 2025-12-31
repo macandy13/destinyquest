@@ -1,7 +1,7 @@
 import { describe, it, expect } from 'vitest';
 import { getAbilityDefinition } from '../abilityRegistry';
 import './Barbs';
-import { INITIAL_STATE, createEnemyCombatant, heroWithStats, testEquipment } from '../../tests/testUtils';
+import { INITIAL_STATE, enemyWithStats, heroWithStats, testEquipment } from '../../tests/testUtils';
 import { renderHook, act } from '@testing-library/react';
 import { useCombat } from '../../hooks/useCombat';
 import { Hero } from '../../types/hero';
@@ -11,7 +11,7 @@ describe('Barbs', () => {
         const barbs = getAbilityDefinition('Barbs');
         const state = {
             ...INITIAL_STATE,
-            enemy: createEnemyCombatant({ health: 10 })
+            enemy: enemyWithStats({ health: 10 })
         };
 
         const updates = barbs?.onRoundEnd?.(state, 'enemy');
@@ -24,7 +24,7 @@ describe('Barbs', () => {
         const barbs = getAbilityDefinition('Barbs');
         const state = {
             ...INITIAL_STATE,
-            enemy: createEnemyCombatant({ health: 0 })
+            enemy: enemyWithStats({ health: 0 })
         };
 
         const updates = barbs?.onRoundEnd?.(state, 'enemy');

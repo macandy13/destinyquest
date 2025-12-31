@@ -1,8 +1,10 @@
 import { describe, it, expect } from 'vitest';
 import { getAbilityDefinition } from '../abilityRegistry';
 import './ShadowFury';
-import { INITIAL_STATE, heroWithStats, testEquipment } from '../../tests/testUtils';
-import { CombatState, createCombatant } from '../../types/combat';
+import { INITIAL_STATE, createCombatant, heroWithStats, testEquipment } from '../../tests/testUtils';
+import { CombatState } from '../../types/combat';
+import { Combatant } from '../../types/combatant';
+import { Hero } from '../../types/hero';
 
 describe('Shadow Fury', () => {
     it('should add weapon speed to damage score', () => {
@@ -26,7 +28,7 @@ describe('Shadow Fury', () => {
 
         const state: CombatState = {
             ...INITIAL_STATE,
-            hero: createCombatant(customHero),
+            hero: createCombatant(customHero) as Combatant<Hero>,
             logs: []
         };
         const result = ability?.onActivate?.(state);

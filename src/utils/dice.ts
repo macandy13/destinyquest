@@ -20,6 +20,19 @@ export function rollDice(count: number): DiceRoll[] {
 }
 
 /**
+ * Adds missing dice or removes superfluous ones (randomly)
+*/
+export function rerollDice(input: DiceRoll[], newCount: number): DiceRoll[] {
+    while (newCount < input.length) {
+        // Randomly remove dice
+        const randomIndex = Math.floor(Math.random() * input.length);
+        input.splice(randomIndex, 1);
+    }
+    const newDice = rollDice(newCount - input.length);
+    return [...input, ...newDice];
+}
+
+/**
  * Checks if the given set of dice contains any duplicates (doubles).
  */
 export function hasDouble(rolls: DiceRoll[] | number[]): boolean {

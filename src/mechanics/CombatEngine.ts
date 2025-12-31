@@ -24,7 +24,7 @@
 
 import { CombatState, Enemy, CombatLog, ActiveAbility, DiceRoll } from '../types/combat';
 import { Combatant } from '../types/combatant';
-import { sumDice, rollDice } from '../utils/dice';
+import { sumDice, rollDice, rerollDice } from '../utils/dice';
 import { Hero, HeroStats, BackpackItem } from '../types/hero';
 import { getAbilityDefinition } from './abilityRegistry';
 import { calculateEffectiveStatsForType } from '../utils/stats';
@@ -438,16 +438,28 @@ export function activateAbility(state: CombatState, abilityName: string): Combat
         newActiveAbilities[abilityIndex] = { ...ability, used: true };
     }
 
-    const nextState = {
+    const newState = {
         ...state,
         ...updates,
         activeAbilities: newActiveAbilities,
     };
 
-    if (nextState.phase === 'speed-roll' && nextState.heroSpeedRolls && nextState.enemySpeedRolls) {
-        return _calculateWinner(nextState);
+    const { hero: effectiveHeroStats, enemy: effectiveEnemyStats } = calculateEffectiveStats(newState);
+
+    if (newState.phase === 'speed-roll') {
+        if (newState.hero!.stats.speed !== effectiveHeroStats.speed) {
+            newState.heroSpeedRolls = rerollDice(
+                newState.heroSpeedRolls || [], effectiveHeroStats.speed);
+        }
+        if (newState.enemy!.stats.speed !== effectiveEnemyStats.speed) {
+            newState.enemySpeedRolls = rerollDice(
+                newState.enemySpeedRolls || [], effectiveEnemyStats.speed);
+        }
+        if (newState.heroSpeedRolls && newState.enemySpeedRolls) {
+            return _calculateWinner(newState);
+        }
     }
-    return nextState;
+    return newState;
 }
 
 /**

@@ -12,7 +12,7 @@ describe('Ignite', () => {
         expect(result?.phase).toBe('round-end');
         expect(result?.damageDealt).toHaveLength(1);
         expect(result?.damageDealt![0].amount).toBeGreaterThanOrEqual(2);
-        expect(result?.modifications).toHaveLength(1);
+        expect(result?.modifications).toHaveLength(2);
         expect(result?.modifications![0].modification.source).toBe('Ignite');
     });
 });

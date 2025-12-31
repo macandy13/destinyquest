@@ -1,7 +1,7 @@
 import { describe, it, expect } from 'vitest';
 import { getAbilityDefinition } from '../abilityRegistry';
 import './Heal';
-import { INITIAL_STATE, MOCK_HERO, createHeroCombatant, heroWithStats, testEquipment } from '../../tests/testUtils';
+import { INITIAL_STATE, MOCK_HERO, heroWithStats, testEquipment } from '../../tests/testUtils';
 import { renderHook, act } from '@testing-library/react';
 import { useCombat } from '../../hooks/useCombat';
 import { Hero } from '../../types/hero';
@@ -11,7 +11,7 @@ describe('Heal', () => {
         const heal = getAbilityDefinition('Heal');
         const damagedState = {
             ...INITIAL_STATE,
-            hero: createHeroCombatant({ health: 10 })
+            hero: heroWithStats({ health: 10 })
         };
 
         const updates = heal?.onActivate?.(damagedState);
@@ -22,7 +22,7 @@ describe('Heal', () => {
         const heal = getAbilityDefinition('Heal');
         const mildDamageState = {
             ...INITIAL_STATE,
-            hero: createHeroCombatant({ health: 29 })
+            hero: heroWithStats({ health: 29 })
         };
 
         const updates = heal?.onActivate?.(mildDamageState);
@@ -33,7 +33,7 @@ describe('Heal', () => {
         const heal = getAbilityDefinition('Heal');
         const fullHealthState = {
             ...INITIAL_STATE,
-            hero: createHeroCombatant({ health: 30 })
+            hero: heroWithStats({ health: 30 })
         };
         expect(heal?.canActivate?.(fullHealthState)).toBe(false);
     });
@@ -42,7 +42,7 @@ describe('Heal', () => {
         const heal = getAbilityDefinition('Heal');
         const damagedState = {
             ...INITIAL_STATE,
-            hero: createHeroCombatant({ health: 10 })
+            hero: heroWithStats({ health: 10 })
         };
         expect(heal?.canActivate?.(damagedState)).toBe(true);
     });
