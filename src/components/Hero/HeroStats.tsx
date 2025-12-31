@@ -73,22 +73,23 @@ const HeroStats: React.FC<HeroStatsProps> = ({ hero, onHealthChange, onMoneyChan
                     </div>
                 </div>
 
-                {/* Attributes - Read Only */}
-                {STAT_CONFIG.map(({ key, label }) => (
-                    <div key={key} className="stat-row">
-                        <span className="stat-label">
-                            <span className="stat-icon">{getStatIcon(key)}</span> {label}
-                        </span>
-                        <div className="stat-controls">
-                            <span className="stat-value">{stats[key]}</span>
+                {/* Attributes - Grid Layout */}
+                <div className="attributes-grid">
+                    {STAT_CONFIG.map(({ key, label }) => (
+                        <div key={key} className="stat-row attribute-square">
+                            <span className="stat-icon">{getStatIcon(key)}</span>
+                            <div className="attribute-row">
+                                <span className="stat-label">{label}</span>
+                                <span className="stat-value-large">{stats[key]}</span>
+                            </div>
                         </div>
-                    </div>
-                ))}
+                    ))}
+                </div>
 
                 {/* Active Abilities Section */}
                 {activeAbilities.length > 0 && (
                     <div className="abilities-section">
-                        <div className="abilities-header">Active Abilities</div>
+                        <h4>Active Abilities</h4>
                         <div className="abilities-list">
                             {activeAbilities.map(([ability, count]) => (
                                 <span key={ability} className="ability-badge">★ {ability} {count > 1 ? `(x${count})` : ''}</span>

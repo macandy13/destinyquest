@@ -1,7 +1,7 @@
 .hero-stats-container {
     display: flex;
     flex-direction: column;
-    gap: var(--spacing-sm);
+    gap: var(--spacing-md);
 }
 
 /* .stat-row, .stat-label, .stat-icon moved to App.css */
@@ -29,4 +29,38 @@
 .stat-max {
     font-size: var(--font-sm);
     align-self: center;
+}
+
+/* New Grid Layout for Attributes */
+.attributes-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--spacing-sm);
+}
+
+.attribute-square {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: var(--spacing-xs);
+    border-radius: var(--radius-md);
+    padding: var(--spacing-xs);
+    aspect-ratio: 1;
+    transition: all 0.2s ease;
+}
+
+.attribute-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--spacing-xs);
+}
+
+.stat-value-large {
+    font-size: var(--font-xxl);
+    font-family: var(--font-heading);
+    color: var(--dq-gold);
+    font-weight: bold;
+    line-height: 1;
 }
