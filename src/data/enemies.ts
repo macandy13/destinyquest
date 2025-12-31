@@ -2,6 +2,7 @@ import { Enemy } from '../types/combat';
 
 export const ENEMIES: Enemy[] = [
   {
+    "type": "enemy",
     "name": "Ruffians",
     "stats": {
       "speed": 3,
@@ -19,6 +20,7 @@ export const ENEMIES: Enemy[] = [
     }
   },
   {
+    "type": "enemy",
     "name": "Mauler",
     "stats": {
       "speed": 5,
@@ -38,6 +40,7 @@ export const ENEMIES: Enemy[] = [
     }
   },
   {
+    "type": "enemy",
     "name": "Zombie",
     "stats": {
       "speed": 2,
@@ -57,6 +60,7 @@ export const ENEMIES: Enemy[] = [
     }
   },
   {
+    "type": "enemy",
     "name": "Spindlesilk",
     "stats": {
       "speed": 7,
@@ -76,6 +80,7 @@ export const ENEMIES: Enemy[] = [
     }
   },
   {
+    "type": "enemy",
     "name": "The Witch (Hag)",
     "stats": {
       "speed": 4,
@@ -95,6 +100,7 @@ export const ENEMIES: Enemy[] = [
     }
   },
   {
+    "type": "enemy",
     "name": "Valadin Roth",
     "stats": {
       "speed": 6,
@@ -114,6 +120,7 @@ export const ENEMIES: Enemy[] = [
     }
   },
   {
+    "type": "enemy",
     "name": "Ratling",
     "stats": {
       "speed": 4,
@@ -133,6 +140,7 @@ export const ENEMIES: Enemy[] = [
     }
   },
   {
+    "type": "enemy",
     "name": "Goblin Chieftain",
     "stats": {
       "speed": 5,
@@ -152,6 +160,7 @@ export const ENEMIES: Enemy[] = [
     }
   },
   {
+    "type": "enemy",
     "name": "Trog Spearman",
     "stats": {
       "speed": 5,
@@ -171,6 +180,7 @@ export const ENEMIES: Enemy[] = [
     }
   },
   {
+    "type": "enemy",
     "name": "Mud Golem",
     "stats": {
       "speed": 4,
@@ -190,6 +200,7 @@ export const ENEMIES: Enemy[] = [
     }
   },
   {
+    "type": "enemy",
     "name": "Logan",
     "stats": {
       "speed": 10,
@@ -209,6 +220,7 @@ export const ENEMIES: Enemy[] = [
     }
   },
   {
+    "type": "enemy",
     "name": "Hive Queen",
     "stats": {
       "speed": 8,
@@ -228,6 +240,7 @@ export const ENEMIES: Enemy[] = [
     }
   },
   {
+    "type": "enemy",
     "name": "King Louis",
     "stats": {
       "speed": 8,
@@ -247,6 +260,7 @@ export const ENEMIES: Enemy[] = [
     }
   },
   {
+    "type": "enemy",
     "name": "Vesuvius",
     "stats": {
       "speed": 7,
@@ -266,6 +280,7 @@ export const ENEMIES: Enemy[] = [
     }
   },
   {
+    "type": "enemy",
     "name": "Nalsa",
     "stats": {
       "speed": 9,
@@ -285,6 +300,7 @@ export const ENEMIES: Enemy[] = [
     }
   },
   {
+    "type": "enemy",
     "name": "Zen",
     "stats": {
       "speed": 9,
@@ -304,6 +320,7 @@ export const ENEMIES: Enemy[] = [
     }
   },
   {
+    "type": "enemy",
     "name": "Baron Greyloc",
     "stats": {
       "speed": 10,
@@ -323,6 +340,7 @@ export const ENEMIES: Enemy[] = [
     }
   },
   {
+    "type": "enemy",
     "name": "Shara Khana",
     "stats": {
       "speed": 10,
@@ -342,6 +360,7 @@ export const ENEMIES: Enemy[] = [
     }
   },
   {
+    "type": "enemy",
     "name": "Stone Giant",
     "stats": {
       "speed": 5,
@@ -361,6 +380,7 @@ export const ENEMIES: Enemy[] = [
     }
   },
   {
+    "type": "enemy",
     "name": "The Count",
     "stats": {
       "speed": 9,
@@ -380,6 +400,7 @@ export const ENEMIES: Enemy[] = [
     }
   },
   {
+    "type": "enemy",
     "name": "Swamp Giant",
     "stats": {
       "speed": 6,
@@ -399,6 +420,7 @@ export const ENEMIES: Enemy[] = [
     }
   },
   {
+    "type": "enemy",
     "name": "Phoenix",
     "stats": {
       "speed": 9,
@@ -418,6 +440,7 @@ export const ENEMIES: Enemy[] = [
     }
   },
   {
+    "type": "enemy",
     "name": "Kindle",
     "stats": {
       "speed": 12,
@@ -437,6 +460,7 @@ export const ENEMIES: Enemy[] = [
     }
   },
   {
+    "type": "enemy",
     "name": "Grindle",
     "stats": {
       "speed": 10,
@@ -456,6 +480,7 @@ export const ENEMIES: Enemy[] = [
     }
   },
   {
+    "type": "enemy",
     "name": "Magmageddon",
     "stats": {
       "speed": 11,
@@ -475,6 +500,7 @@ export const ENEMIES: Enemy[] = [
     }
   },
   {
+    "type": "enemy",
     "name": "Sharroth",
     "stats": {
       "speed": 12,

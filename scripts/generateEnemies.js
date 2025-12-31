@@ -48,6 +48,7 @@ function parseCSV(content) {
         }
 
         return {
+            type: 'enemy',
             name,
             stats: {
                 speed,
