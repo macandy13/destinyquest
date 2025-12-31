@@ -1,13 +1,20 @@
-import { describe, it, expect } from 'vitest';
-import { getAbilityDefinition } from '../abilityRegistry';
+import { describe, it, expect, beforeEach } from 'vitest';
+import { AbilityDefinition, getAbilityDefinition } from '../abilityRegistry';
 import './Quicksilver';
 import { INITIAL_STATE } from '../../tests/testUtils';
 
 describe('Quicksilver', () => {
+    let ability: AbilityDefinition;
+
+    beforeEach(() => {
+        const def = getAbilityDefinition('Quicksilver')!;
+        expect(def).toBeDefined();
+        ability = def;
+    });
+
     it('should add speed bonus modifier on activation', () => {
-        const quicksilver = getAbilityDefinition('Quicksilver');
         const state = { ...INITIAL_STATE, logs: [] };
-        const result = quicksilver?.onActivate?.(state);
+        const result = ability.onActivate?.(state);
 
         expect(result?.modifications).toHaveLength(1);
         expect(result?.modifications![0].modification.stats.speed).toBe(2);

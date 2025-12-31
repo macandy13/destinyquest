@@ -1,6 +1,7 @@
 import { registerAbility } from '../abilityRegistry';
 import { addLog } from '../../utils/statUtils';
 import { CombatState } from '../../types/combat';
+import { rollDice, sumDice } from '../../utils/dice';
 
 function canActivate(state: CombatState): boolean {
     // TODO: Check for bow in left hand
@@ -15,13 +16,16 @@ registerAbility({
     onActivate: (state) => {
         if (!canActivate(state)) return null;
 
-        // "Apply result to each opponent". Currently supports single enemy, but structure allows multiple if needed.
-        // We target 'enemy'.
-        // TODO: Handle multiple enemies. With a single enemy we can keep the current damage roll.
+        const dmg = sumDice(rollDice(1));
+
+        // TODO: Apply to each enemy
+        // TODO: Actually apply damage
 
         return {
             phase: 'round-end',
-            logs: addLog(state.logs, { round: state.round, message: `Black Rain keeps damage rolling.`, type: 'warning' })
+            damageDealt: [{ target: 'enemy', amount: dmg, source: 'Black Rain' }],
+            damageRolls: [], // Clear normal damage rolls as we replaced them?
+            logs: addLog(state.logs, { round: state.round, message: `Black Rain! Inflicted ${dmg} damage.`, type: 'damage-enemy' })
         };
     }
 });

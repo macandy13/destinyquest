@@ -1,13 +1,20 @@
-import { describe, it, expect } from 'vitest';
-import { getAbilityDefinition } from '../abilityRegistry';
+import { describe, it, expect, beforeEach } from 'vitest';
+import { AbilityDefinition, getAbilityDefinition } from '../abilityRegistry';
 import './FatalBlow';
 import { INITIAL_STATE } from '../../tests/testUtils';
 
 describe('Fatal Blow', () => {
+    let ability: AbilityDefinition;
+
+    beforeEach(() => {
+        const def = getAbilityDefinition('Fatal Blow')!;
+        expect(def).toBeDefined();
+        ability = def;
+    });
+
     it('should apply modifier on activate', () => {
-        const ability = getAbilityDefinition('Fatal Blow');
-        const state = { ...INITIAL_STATE, logs: [] };
-        const result = ability?.onActivate?.(state);
+        const state = INITIAL_STATE;
+        const result = ability.onActivate?.(state);
 
         expect(result?.modifications).toHaveLength(1);
         expect(result?.modifications![0].modification.source).toBe('Fatal Blow');

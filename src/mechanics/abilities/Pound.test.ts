@@ -1,13 +1,20 @@
-import { describe, it, expect } from 'vitest';
-import { getAbilityDefinition } from '../abilityRegistry';
+import { describe, it, expect, beforeEach } from 'vitest';
+import { AbilityDefinition, getAbilityDefinition } from '../abilityRegistry';
 import './Pound';
 import { INITIAL_STATE } from '../../tests/testUtils';
 
 describe('Pound', () => {
+    let ability: AbilityDefinition;
+
+    beforeEach(() => {
+        const def = getAbilityDefinition('Pound')!;
+        expect(def).toBeDefined();
+        ability = def;
+    });
+
     it('should apply damage buff and self speed debuff', () => {
-        const ability = getAbilityDefinition('Pound');
-        const state = { ...INITIAL_STATE, logs: [] };
-        const result = ability?.onActivate?.(state);
+        const state = INITIAL_STATE;
+        const result = ability.onActivate?.(state);
 
         expect(result?.modifications).toHaveLength(2);
         expect(result?.modifications![0].modification.stats.damageModifier).toBe(3);

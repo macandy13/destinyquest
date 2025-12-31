@@ -1,41 +1,58 @@
-import { describe, it, expect } from 'vitest';
-import { getAbilityDefinition } from '../abilityRegistry';
+import { describe, it, expect, beforeEach } from 'vitest';
+import { AbilityDefinition, getAbilityDefinition } from '../abilityRegistry';
 import './Haunt';
 import { INITIAL_STATE } from '../../tests/testUtils';
+import { CombatState } from '../../types/combat';
 
 describe('Haunt', () => {
+    let ability: AbilityDefinition;
+
+    beforeEach(() => {
+        const def = getAbilityDefinition('Haunt')!;
+        expect(def).toBeDefined();
+        ability = def;
+    });
+
     it('should summon spirit', () => {
-        const ability = getAbilityDefinition('Haunt');
-        const state = { ...INITIAL_STATE, logs: [] };
-        const result = ability?.onActivate?.(state);
+        const state = INITIAL_STATE;
+        const result = ability.onActivate?.(state);
 
         expect(result?.modifications).toHaveLength(1);
         expect(result?.modifications![0].modification.source).toBe('Haunt Spirit');
     });
 
     it('should inflict damage at round end if spirit active', () => {
-        const ability = getAbilityDefinition('Haunt');
-        const state = {
+        const state: CombatState = {
             ...INITIAL_STATE,
-            activeEffects: [{ modification: { source: 'Haunt Spirit', target: 'enemy' }, id: 'haunt-1' }],
-            logs: []
+            activeEffects: [{
+                modification: {
+                    stats: {},
+                    source: 'Haunt Spirit',
+                    target: 'enemy'
+                }, id: 'haunt-1'
+            }],
         };
-        const result = ability?.onRoundEnd?.(state, 'enemy');
+        const result = ability.onRoundEnd?.(state, 'enemy');
 
         expect(result?.damageDealt).toHaveLength(1);
         expect(result?.damageDealt![0].amount).toBe(2);
     });
 
     it('should dispel on double roll', () => {
-        const ability = getAbilityDefinition('Haunt');
-        const state = {
+        const state: CombatState = {
             ...INITIAL_STATE,
-            activeEffects: [{ modification: { source: 'Haunt Spirit', target: 'enemy' }, id: 'haunt-1' }],
-            logs: []
+            activeEffects: [{
+                modification: {
+                    stats: {},
+                    source: 'Haunt Spirit',
+                    target: 'enemy'
+                },
+                id: 'haunt-1'
+            }],
         };
 
         const rolls = [{ value: 3, isRerolled: false }, { value: 3, isRerolled: false }];
-        const result = ability?.onSpeedRoll?.(state, rolls);
+        const result = ability.onSpeedRoll?.(state, rolls);
 
         expect(result?.activeEffects).toEqual([]);
     });

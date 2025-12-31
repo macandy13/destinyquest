@@ -1,13 +1,20 @@
-import { describe, it, expect } from 'vitest';
-import { getAbilityDefinition } from '../abilityRegistry';
+import { describe, it, expect, beforeEach } from 'vitest';
+import { AbilityDefinition, getAbilityDefinition } from '../abilityRegistry';
 import './SnakesAlive';
 import { INITIAL_STATE } from '../../tests/testUtils';
 
 describe('Snakes Alive!', () => {
+    let ability: AbilityDefinition;
+
+    beforeEach(() => {
+        const def = getAbilityDefinition('Snakes Alive!')!;
+        expect(def).toBeDefined();
+        ability = def;
+    });
+
     it('should add speed reduction to enemy on activation', () => {
-        const ability = getAbilityDefinition('Snakes Alive!');
-        const state = { ...INITIAL_STATE, logs: [] };
-        const result = ability?.onActivate?.(state);
+        const state = INITIAL_STATE;
+        const result = ability.onActivate?.(state);
 
         expect(result?.modifications).toHaveLength(1);
         expect(result?.modifications![0].modification.stats.speed).toBe(-2);

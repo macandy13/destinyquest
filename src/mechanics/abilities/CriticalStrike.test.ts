@@ -1,17 +1,26 @@
-import { describe, it, expect } from 'vitest';
+import { describe, it, expect, beforeEach } from 'vitest';
 import { INITIAL_STATE } from '../../tests/testUtils';
-import { getAbilityDefinition } from '../abilityRegistry';
+import { AbilityDefinition, getAbilityDefinition } from '../abilityRegistry';
 import './CriticalStrike';
 
 describe('Critical Strike', () => {
+    let ability: AbilityDefinition;
+
+    beforeEach(() => {
+        const def = getAbilityDefinition('Critical Strike')!;
+        expect(def).toBeDefined();
+        ability = def;
+    });
+
     it('should change all damage rolls to 6', () => {
-        const def = getAbilityDefinition('Critical Strike');
         const state = {
             ...INITIAL_STATE,
-            damageRolls: [{ value: 1, isRerolled: false }, { value: 3, isRerolled: false }]
+            damageRolls: [
+                { value: 1, isRerolled: false },
+                { value: 3, isRerolled: false }]
         };
 
-        const updates = def!.onActivate!(state);
+        const updates = ability.onActivate?.(state);
 
         expect(updates!.damageRolls![0].value).toBe(6);
         expect(updates!.damageRolls![1].value).toBe(6);

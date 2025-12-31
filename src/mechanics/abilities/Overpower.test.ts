@@ -1,29 +1,34 @@
-import { describe, it, expect } from 'vitest';
+import { describe, it, expect, beforeEach } from 'vitest';
 import {
     initCombat,
     resolveSpeedRolls,
     commitSpeedResult,
     activateAbility
 } from '../CombatEngine';
-import { heroWithStats } from '../../tests/testUtils';
+import { heroWithStats, testEquipment } from '../../tests/testUtils';
 import { Hero } from '../../types/hero';
-import './Overpower'; // Ensure Overpower is registered
+import { AbilityDefinition, getAbilityDefinition } from '../abilityRegistry';
+import './Overpower';
 
 describe('Overpower', () => {
+    let ability: AbilityDefinition;
+
+    beforeEach(() => {
+        const def = getAbilityDefinition('Overpower')!;
+        expect(def).toBeDefined();
+        ability = def;
+    });
+
     it('should allow activation when enemy wins speed round and apply damage', () => {
-        // Setup Hero with Overpower
         const baseHero = heroWithStats({ brawn: 5, magic: 0, speed: 5 });
         const OVERPOWER_HERO: Hero = {
             ...baseHero.original,
             equipment: {
-                mainHand: {
+                mainHand: testEquipment({
                     name: 'Sword of Power',
                     abilities: ['Overpower'],
-                    id: 'op-sword',
                     type: 'mainHand',
-                    book: 'book1',
-                    act: 1
-                }
+                })
             }
         };
 
@@ -36,6 +41,8 @@ describe('Overpower', () => {
         );
 
         state = commitSpeedResult(state);
+
+        expect(ability.canActivate?.(state)).toBe(true);
         state = activateAbility(state, 'Overpower');
 
         expect(state.phase).toBe('round-end');
@@ -43,7 +50,6 @@ describe('Overpower', () => {
         const enemyHealth = state.enemy!.stats.health;
         const damageDealt = initialEnemyHealth - enemyHealth;
 
-        // Overpower deals 2d6 damage (min 2, max 12)
         expect(damageDealt).toBeGreaterThanOrEqual(2);
         expect(damageDealt).toBeLessThanOrEqual(12);
 

@@ -1,13 +1,23 @@
-import { describe, it, expect } from 'vitest';
-import { getAbilityDefinition } from '../abilityRegistry';
+import { describe, it, expect, beforeEach } from 'vitest';
+import { AbilityDefinition, getAbilityDefinition } from '../abilityRegistry';
 import './Courage';
 import { INITIAL_STATE } from '../../tests/testUtils';
 
 describe('Courage', () => {
+    let ability: AbilityDefinition;
+
+    beforeEach(() => {
+        const def = getAbilityDefinition('Courage')!;
+        expect(def).toBeDefined();
+        ability = def;
+    });
+
     it('should add speed bonus modifier on activation', () => {
-        const ability = getAbilityDefinition('Courage');
         const state = { ...INITIAL_STATE, logs: [] };
-        const result = ability?.onActivate?.(state);
+
+        // Courage is always active in theory unless constrained, but factory usually doesn't add restriction unless specified
+        // Let's just check onActivate
+        const result = ability.onActivate?.(state);
 
         expect(result?.modifications).toHaveLength(1);
         expect(result?.modifications![0].modification.stats.speed).toBe(4);

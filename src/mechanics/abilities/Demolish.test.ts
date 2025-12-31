@@ -1,13 +1,20 @@
-import { describe, it, expect } from 'vitest';
-import { getAbilityDefinition } from '../abilityRegistry';
+import { describe, it, expect, beforeEach } from 'vitest';
+import { AbilityDefinition, getAbilityDefinition } from '../abilityRegistry';
 import './Demolish';
 import { INITIAL_STATE } from '../../tests/testUtils';
 
 describe('Demolish', () => {
+    let ability: AbilityDefinition;
+
+    beforeEach(() => {
+        const def = getAbilityDefinition('Demolish')!;
+        expect(def).toBeDefined();
+        ability = def;
+    });
+
     it('should add speed reduction and armour reduction to enemy on activation', () => {
-        const ability = getAbilityDefinition('Demolish');
-        const state = { ...INITIAL_STATE, logs: [] };
-        const result = ability?.onActivate?.(state);
+        const state = INITIAL_STATE;
+        const result = ability.onActivate?.(state);
 
         expect(result?.modifications).toHaveLength(2);
 

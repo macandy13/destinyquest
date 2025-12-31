@@ -1,13 +1,28 @@
-import { describe, it, expect } from 'vitest';
-import { getAbilityDefinition } from '../abilityRegistry';
+import { describe, it, expect, beforeEach } from 'vitest';
+import { AbilityDefinition, getAbilityDefinition } from '../abilityRegistry';
 import './Bolt';
 import { INITIAL_STATE } from '../../tests/testUtils';
+import { CombatState } from '../../types/combat';
 
 describe('Bolt', () => {
+    let ability: AbilityDefinition;
+
+    beforeEach(() => {
+        const def = getAbilityDefinition('Bolt')!;
+        expect(def).toBeDefined();
+        ability = def;
+    });
+
     it('should charge up when activated', () => {
-        const ability = getAbilityDefinition('Bolt');
-        const state = { ...INITIAL_STATE, phase: 'damage-roll' as const, winner: 'hero' as const, logs: [] };
-        const result = ability?.onActivate?.(state);
+        const state: CombatState = {
+            ...INITIAL_STATE,
+            phase: 'damage-roll' as const,
+            winner: 'hero' as const
+        };
+
+        expect(ability.canActivate?.(state)).toBe(true);
+
+        const result = ability.onActivate?.(state);
 
         expect(result?.phase).toBe('round-end');
         expect(result?.modifications).toHaveLength(1);
@@ -15,18 +30,19 @@ describe('Bolt', () => {
     });
 
     it('should release damage on subsequent onDamageRoll', () => {
-        const ability = getAbilityDefinition('Bolt');
-        const state = {
+        const state: CombatState = {
             ...INITIAL_STATE,
             phase: 'damage-roll' as const,
             winner: 'hero' as const,
-            logs: [],
-            activeEffects: [{ modification: { source: 'Bolt', target: 'hero' }, id: 'bolt-1' }]
+            activeEffects: [{
+                modification: {
+                    source: 'Bolt',
+                    target: 'hero'
+                }, id: 'bolt-1'
+            }]
         };
 
-        const result = ability?.onDamageRoll?.(state, []);
-        // It should return updated state with damageDealt
-        // Wait, onDamageRoll in Bolt implementation returns PartialState.
+        const result = ability.onDamageRoll?.(state, []);
 
         expect(result?.damageDealt).toHaveLength(1);
         expect(result?.damageDealt![0].amount).toBeGreaterThanOrEqual(3);

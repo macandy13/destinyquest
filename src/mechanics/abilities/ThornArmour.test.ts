@@ -1,13 +1,20 @@
-import { describe, it, expect } from 'vitest';
-import { getAbilityDefinition } from '../abilityRegistry';
+import { describe, it, expect, beforeEach } from 'vitest';
+import { AbilityDefinition, getAbilityDefinition } from '../abilityRegistry';
 import './ThornArmour';
 import { INITIAL_STATE } from '../../tests/testUtils';
 
 describe('Thorn Armour', () => {
+    let ability: AbilityDefinition;
+
+    beforeEach(() => {
+        const def = getAbilityDefinition('Thorn Armour')!;
+        expect(def).toBeDefined();
+        ability = def;
+    });
+
     it('should buff armour and inflict damage', () => {
-        const ability = getAbilityDefinition('Thorn Armour');
-        const state = { ...INITIAL_STATE, logs: [] };
-        const result = ability?.onActivate?.(state);
+        const state = INITIAL_STATE;
+        const result = ability.onActivate?.(state);
 
         expect(result?.modifications).toHaveLength(1);
         expect(result?.modifications![0].modification.stats.armour).toBe(3);

@@ -1,13 +1,20 @@
-import { describe, it, expect } from 'vitest';
-import { getAbilityDefinition } from '../abilityRegistry';
+import { describe, it, expect, beforeEach } from 'vitest';
+import { AbilityDefinition, getAbilityDefinition } from '../abilityRegistry';
 import './Zapped';
 import { INITIAL_STATE } from '../../tests/testUtils';
 
 describe('Zapped!', () => {
+    let ability: AbilityDefinition;
+
+    beforeEach(() => {
+        const def = getAbilityDefinition('Zapped!')!;
+        expect(def).toBeDefined();
+        ability = def;
+    });
+
     it('should reduce enemy stats on activation', () => {
-        const ability = getAbilityDefinition('Zapped!');
-        const state = { ...INITIAL_STATE, logs: [] };
-        const result = ability?.onActivate?.(state);
+        const state = INITIAL_STATE;
+        const result = ability.onActivate?.(state);
 
         expect(result?.modifications).toHaveLength(1);
         const mod = result?.modifications![0];

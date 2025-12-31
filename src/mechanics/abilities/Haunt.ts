@@ -12,7 +12,11 @@ registerAbility({
             modifications: [
                 ...state.modifications,
                 {
-                    modification: { stats: {}, source: 'Haunt Spirit', target: 'enemy' },
+                    modification: {
+                        stats: {},
+                        source: 'Haunt Spirit',
+                        target: 'enemy'
+                    },
                     id: `haunt-${state.round}`, // Infinite duration until removed
                     duration: undefined
                 }

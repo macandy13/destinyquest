@@ -1,11 +1,18 @@
-import { describe, it, expect, vi } from 'vitest';
-import { getAbilityDefinition } from '../abilityRegistry';
+import { describe, it, expect, vi, beforeEach } from 'vitest';
+import { AbilityDefinition, getAbilityDefinition } from '../abilityRegistry';
 import './Charm';
 import { INITIAL_STATE } from '../../tests/testUtils';
 
 describe('Charm', () => {
+    let ability: AbilityDefinition;
+
+    beforeEach(() => {
+        const def = getAbilityDefinition('Charm')!;
+        expect(def).toBeDefined();
+        ability = def;
+    });
+
     it('should allow activation when rolls exist', () => {
-        const charm = getAbilityDefinition('Charm');
         // Speed phase
         const speedState = {
             ...INITIAL_STATE,
@@ -13,7 +20,7 @@ describe('Charm', () => {
             heroSpeedRolls: [{ value: 2, isRerolled: false }, { value: 3, isRerolled: false }]
         };
         // @ts-ignore - Partial state for test
-        expect(charm?.canActivate?.(speedState)).toBe(true);
+        expect(ability.canActivate?.(speedState)).toBe(true);
 
         // Damage phase (hero winning) -> implicitly round-end after resolution
         const damageState = {
@@ -23,16 +30,15 @@ describe('Charm', () => {
             damageRolls: [{ value: 4, isRerolled: false }]
         };
         // @ts-ignore - Partial state for test
-        expect(charm?.canActivate?.(damageState)).toBe(true);
+        expect(ability.canActivate?.(damageState)).toBe(true);
 
         // Invalid phases
         const startState = { ...INITIAL_STATE, phase: 'combat-start' };
         // @ts-ignore - Partial state for test
-        expect(charm?.canActivate?.(startState)).toBe(false);
+        expect(ability.canActivate?.(startState)).toBe(false);
     });
 
     it('should set rerollState on activate', () => {
-        const charm = getAbilityDefinition('Charm');
         const speedState = {
             ...INITIAL_STATE,
             phase: 'speed-roll',
@@ -41,7 +47,7 @@ describe('Charm', () => {
         };
 
         // @ts-ignore - Partial state for test
-        const result = charm?.onActivate?.(speedState);
+        const result = ability.onActivate?.(speedState);
         expect(result?.rerollState).toEqual({
             source: 'Charm',
             target: 'hero-speed'
@@ -49,7 +55,6 @@ describe('Charm', () => {
     });
 
     it('should reroll speed die on interaction', () => {
-        const charm = getAbilityDefinition('Charm');
         const state = {
             ...INITIAL_STATE,
             phase: 'speed-roll',
@@ -62,7 +67,7 @@ describe('Charm', () => {
         const spy = vi.spyOn(Math, 'random').mockReturnValue(0.99); // 6
 
         // @ts-ignore - Partial state for test
-        const updates = charm?.onReroll?.(state, 0);
+        const updates = ability.onReroll?.(state, 0);
 
         expect(updates?.heroSpeedRolls).toEqual([
             { value: 6, isRerolled: true },

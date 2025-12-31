@@ -1,22 +1,54 @@
-import { describe, it, expect } from 'vitest';
-
-import { getAbilityDefinition } from '../abilityRegistry';
+import { describe, it, expect, beforeEach } from 'vitest';
+import { AbilityDefinition, getAbilityDefinition } from '../abilityRegistry';
+import './Overload';
 import { INITIAL_STATE } from '../../tests/testUtils';
 import { CombatState } from '../../types/combat';
 
-import './Overload';
-
 describe('Overload', () => {
-    it('should add extra damage die', () => {
-        const ability = getAbilityDefinition('Overload');
+    let ability: AbilityDefinition;
+
+    beforeEach(() => {
+        const def = getAbilityDefinition('Overload')!;
+        expect(def).toBeDefined();
+        ability = def;
+    });
+
+    it('should add extra damage die if winner is hero and phase is damage-roll', () => {
         const state: CombatState = {
             ...INITIAL_STATE,
             phase: 'damage-roll',
             winner: 'hero'
         };
-        const result = ability?.onActivate?.(state);
+
+        expect(ability.canActivate?.(state)).toBe(true);
+
+        const result = ability.onActivate?.(state);
 
         expect(result?.modifications).toHaveLength(1);
         expect(result?.modifications![0].modification.stats.damageDice).toBe(1);
+    });
+
+    it('should not activate if not damage-roll phase', () => {
+        const state: CombatState = {
+            ...INITIAL_STATE,
+            phase: 'speed-roll',
+            winner: 'hero'
+        };
+
+        expect(ability.canActivate?.(state)).toBe(false);
+        const result = ability.onActivate?.(state);
+        expect(result).toBeNull();
+    });
+
+    it('should not activate if winner is not hero', () => {
+        const state: CombatState = {
+            ...INITIAL_STATE,
+            phase: 'damage-roll',
+            winner: 'enemy'
+        };
+
+        expect(ability.canActivate?.(state)).toBe(false);
+        const result = ability.onActivate?.(state);
+        expect(result).toBeNull();
     });
 });

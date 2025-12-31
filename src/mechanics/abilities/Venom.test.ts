@@ -1,8 +1,7 @@
-import { describe, it, expect } from 'vitest';
+import { describe, it, expect, beforeEach } from 'vitest';
 import { INITIAL_STATE, enemyWithStats } from '../../tests/testUtils';
-import { getAbilityDefinition } from '../abilityRegistry';
+import { getAbilityDefinition, AbilityDefinition } from '../abilityRegistry';
 import { CombatState } from '../../types/combat';
-
 import './Venom';
 
 const INITIAL_STATE_WITH_DAMAGE: CombatState = {
@@ -12,16 +11,28 @@ const INITIAL_STATE_WITH_DAMAGE: CombatState = {
 };
 
 describe('Venom', () => {
+    let ability: AbilityDefinition;
+
+    beforeEach(() => {
+        const def = getAbilityDefinition('Venom')!;
+        expect(def).toBeDefined();
+        ability = def;
+    });
+
     it('should deal 2 damage by default', () => {
-        const def = getAbilityDefinition('Venom');
         const enemy = enemyWithStats({ health: 20 });
         const state = {
             ...INITIAL_STATE_WITH_DAMAGE,
             enemy,
-            activeAbilities: [{ name: 'Venom', source: 'Item', used: false, target: 'enemy' as const }]
+            activeAbilities: [{
+                name: 'Venom',
+                source: 'Item',
+                used: false,
+                target: 'enemy' as const
+            }]
         };
 
-        const updates = def!.onRoundEnd!(state, 'enemy');
+        const updates = ability.onRoundEnd!(state, 'enemy');
 
         expect(updates.enemy!.stats.health).toBe(18);
         expect(updates.damageDealt).toEqual(expect.arrayContaining([
@@ -42,7 +53,6 @@ describe('Venom', () => {
     });
 
     it('should deal 3 damage with Deadly Poisons', () => {
-        const def = getAbilityDefinition('Venom');
         const enemy = enemyWithStats({ health: 20 });
         const state = {
             ...INITIAL_STATE_WITH_DAMAGE,
@@ -53,7 +63,7 @@ describe('Venom', () => {
             ]
         };
 
-        const updates = def!.onRoundEnd!(state, 'enemy');
+        const updates = ability.onRoundEnd!(state, 'enemy');
 
         expect(updates.enemy!.stats.health).toBe(17);
         const damageEntry = updates.damageDealt?.find(d => d.source === 'Venom');
@@ -61,7 +71,6 @@ describe('Venom', () => {
     });
 
     it('should deal 4 damage with mastery', () => {
-        const def = getAbilityDefinition('Venom');
         const enemy = enemyWithStats({ health: 20 });
         const state = {
             ...INITIAL_STATE_WITH_DAMAGE,
@@ -72,7 +81,7 @@ describe('Venom', () => {
             ]
         };
 
-        const updates = def!.onRoundEnd!(state, 'enemy');
+        const updates = ability.onRoundEnd!(state, 'enemy');
 
         expect(updates.enemy!.stats.health).toBe(16);
         const damageEntry = updates.damageDealt?.find(d => d.source === 'Venom');
@@ -80,7 +89,6 @@ describe('Venom', () => {
     });
 
     it('should not deal damage if damage was only dealt to hero', () => {
-        const def = getAbilityDefinition('Venom');
         const enemy = enemyWithStats({ health: 20 });
         const state = {
             ...INITIAL_STATE_WITH_DAMAGE,
@@ -89,7 +97,7 @@ describe('Venom', () => {
             activeAbilities: [{ name: 'Venom', source: 'Item', used: false, target: 'enemy' as const }]
         };
 
-        const updates = def!.onRoundEnd!(state, 'enemy');
+        const updates = ability.onRoundEnd!(state, 'enemy');
         // Should not have any damage dealt
         expect(updates.damageDealt).toBeUndefined();
     });
