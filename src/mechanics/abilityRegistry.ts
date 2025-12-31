@@ -33,10 +33,12 @@ export interface AbilityHooks {
     onReroll?: (state: CombatState, dieIndex: number) => Partial<CombatState>;
 }
 
+export type AbilityType = 'passive' | 'speed' | 'combat' | 'modifier';
+
 export interface AbilityDefinition extends AbilityHooks {
     name: string;
     description: string;
-    type: 'passive' | 'speed' | 'combat' | 'modifier';
+    type: AbilityType,
     icon?: string;
 }
 
