@@ -26,7 +26,10 @@ const EnemySelector: React.FC<EnemySelectorProps> = ({ onSelect }) => {
             health: 20,
             maxHealth: 20,
         },
-        act: 1,
+        bookRef: {
+            book: 'Core',
+            act: 1
+        },
         abilities: []
     });
 
@@ -34,14 +37,14 @@ const EnemySelector: React.FC<EnemySelectorProps> = ({ onSelect }) => {
         const term = searchTerm.toLowerCase();
         return (
             enemy.name.toLowerCase().includes(term) ||
-            (enemy.entry && enemy.entry.toLowerCase().includes(term))
+            (enemy.bookRef.section && enemy.bookRef.section.toString().includes(term))
         );
     });
 
     const handleCustomChange = (field: keyof Enemy | keyof Stats, value: any) => {
         if (field === 'name') {
             setCustomEnemy(prev => ({ ...prev, name: value }));
-        } else if (field === 'entry' || field === 'abilities' || field === 'preventHealing' || field === 'stats') {
+        } else if (field === 'bookRef' || field === 'abilities' || field === 'preventHealing' || field === 'stats') {
             // Ignore or handle specific root fields if needed, simplified for name
         } else {
             // Assume stat
@@ -74,7 +77,10 @@ const EnemySelector: React.FC<EnemySelectorProps> = ({ onSelect }) => {
                 health: 20,
                 maxHealth: 20,
             },
-            act: 1,
+            bookRef: {
+                book: '',
+                act: 0
+            },
             abilities: []
         });
     };
@@ -132,8 +138,8 @@ const EnemySelector: React.FC<EnemySelectorProps> = ({ onSelect }) => {
                                     <div className="item-card-header">
                                         <div className="item-name">{enemy.name}</div>
                                         <div className="item-source">
-                                            <div className="text-dim" style={{ fontSize: '0.8rem' }}>Act {enemy.act}</div>
-                                            {enemy.entry && <div className="text-dim" style={{ fontSize: '0.8rem' }}>📖 {enemy.entry}</div>}
+                                            <div className="text-dim" style={{ fontSize: '0.8rem' }}>Act {enemy.bookRef.act}</div>
+                                            {enemy.bookRef.section && <div className="text-dim" style={{ fontSize: '0.8rem' }}>📖 {enemy.bookRef.section}</div>}
                                         </div>
                                     </div>
 

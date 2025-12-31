@@ -85,14 +85,17 @@ const processedItems = rawData.slice(1).map((line, index) => {
         id: id,
         name: name,
         type: mapType(itemBox),
-        book: book,
-        act: act,
+        bookRef: {
+            book: book,
+            act: act,
+            section: entry
+        },
         stats: {},
         abilities: abilities.map(a => a.trim()).filter(a => a !== 'None'),
-        referenceNumber: entry, // Renamed from entry
         location: location,
         careerPreference: career
     };
+
 
     if (speed) item.stats.speed = speed;
     if (brawn) item.stats.brawn = brawn;
@@ -103,6 +106,7 @@ const processedItems = rawData.slice(1).map((line, index) => {
 }).filter(i => i);
 
 console.log(`import { EquipmentItem } from '../types/hero';
+import { BookRef } from '../types/book';
 
 export const ITEMS: EquipmentItem[] = ${JSON.stringify(processedItems, null, 2)};
 

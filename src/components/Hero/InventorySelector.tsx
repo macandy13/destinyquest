@@ -32,7 +32,7 @@ const InventorySelector: React.FC<InventorySelectorProps> = ({ slot, onSelect, o
         const term = searchTerm.toLowerCase();
         return (
             item.name.toLowerCase().includes(term) ||
-            (item.referenceNumber && item.referenceNumber.toString().includes(term)) ||
+            (item.bookRef.section && item.bookRef.section.toString().includes(term)) ||
             (item.location && item.location.toLowerCase().includes(term))
         );
     });
@@ -86,8 +86,8 @@ const InventorySelector: React.FC<InventorySelectorProps> = ({ slot, onSelect, o
                                 <div className="item-card-header">
                                     <div className="item-name">{item.name}</div>
                                     <div className="item-source">
-                                        <div className="text-dim" style={{ fontSize: '0.8rem' }}>Act {item.act}</div>
-                                        {item.referenceNumber && <div className="text-dim" style={{ fontSize: '0.8rem' }}>📖 {item.referenceNumber}</div>}
+                                        <div className="text-dim" style={{ fontSize: '0.8rem' }}>Act {item.bookRef.act}</div>
+                                        {item.bookRef.section && <div className="text-dim" style={{ fontSize: '0.8rem' }}>📖 {item.bookRef.section}</div>}
                                     </div>
                                 </div>
 

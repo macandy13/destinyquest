@@ -1,4 +1,5 @@
 import { Enemy } from '../types/combat';
+import { BookRef } from '../types/book';
 
 export const ENEMIES: Enemy[] = [
   {
@@ -12,8 +13,11 @@ export const ENEMIES: Enemy[] = [
       "maxHealth": 15
     },
     "abilities": [],
-    "act": 1,
-    "entry": "40"
+    "bookRef": {
+      "book": "Core",
+      "act": 1,
+      "section": 40
+    }
   },
   {
     "name": "Mauler",
@@ -28,8 +32,11 @@ export const ENEMIES: Enemy[] = [
     "abilities": [
       "Savagery"
     ],
-    "act": 1,
-    "entry": "26"
+    "bookRef": {
+      "book": "Core",
+      "act": 1,
+      "section": 26
+    }
   },
   {
     "name": "Zombie",
@@ -44,8 +51,11 @@ export const ENEMIES: Enemy[] = [
     "abilities": [
       "Undead"
     ],
-    "act": 1,
-    "entry": "68"
+    "bookRef": {
+      "book": "Core",
+      "act": 1,
+      "section": 68
+    }
   },
   {
     "name": "Spindlesilk",
@@ -60,8 +70,11 @@ export const ENEMIES: Enemy[] = [
     "abilities": [
       "Webbed"
     ],
-    "act": 1,
-    "entry": "132"
+    "bookRef": {
+      "book": "Core",
+      "act": 1,
+      "section": 132
+    }
   },
   {
     "name": "The Witch (Hag)",
@@ -76,8 +89,11 @@ export const ENEMIES: Enemy[] = [
     "abilities": [
       "Charm"
     ],
-    "act": 1,
-    "entry": "155"
+    "bookRef": {
+      "book": "Core",
+      "act": 1,
+      "section": 155
+    }
   },
   {
     "name": "Valadin Roth",
@@ -92,8 +108,11 @@ export const ENEMIES: Enemy[] = [
     "abilities": [
       "Boss"
     ],
-    "act": 1,
-    "entry": "160"
+    "bookRef": {
+      "book": "Core",
+      "act": 1,
+      "section": 160
+    }
   },
   {
     "name": "Ratling",
@@ -108,8 +127,11 @@ export const ENEMIES: Enemy[] = [
     "abilities": [
       "Tail Lash"
     ],
-    "act": 1,
-    "entry": "233"
+    "bookRef": {
+      "book": "Core",
+      "act": 1,
+      "section": 233
+    }
   },
   {
     "name": "Goblin Chieftain",
@@ -124,8 +146,11 @@ export const ENEMIES: Enemy[] = [
     "abilities": [
       "Command"
     ],
-    "act": 1,
-    "entry": "260"
+    "bookRef": {
+      "book": "Core",
+      "act": 1,
+      "section": 260
+    }
   },
   {
     "name": "Trog Spearman",
@@ -140,8 +165,11 @@ export const ENEMIES: Enemy[] = [
     "abilities": [
       "Impale"
     ],
-    "act": 1,
-    "entry": "327"
+    "bookRef": {
+      "book": "Core",
+      "act": 1,
+      "section": 327
+    }
   },
   {
     "name": "Mud Golem",
@@ -156,8 +184,11 @@ export const ENEMIES: Enemy[] = [
     "abilities": [
       "Body of Stone"
     ],
-    "act": 2,
-    "entry": "283"
+    "bookRef": {
+      "book": "Core",
+      "act": 2,
+      "section": 283
+    }
   },
   {
     "name": "Logan",
@@ -172,8 +203,11 @@ export const ENEMIES: Enemy[] = [
     "abilities": [
       "Legendary"
     ],
-    "act": 2,
-    "entry": "313"
+    "bookRef": {
+      "book": "Core",
+      "act": 2,
+      "section": 313
+    }
   },
   {
     "name": "Hive Queen",
@@ -188,8 +222,11 @@ export const ENEMIES: Enemy[] = [
     "abilities": [
       "Infest"
     ],
-    "act": 2,
-    "entry": "314"
+    "bookRef": {
+      "book": "Core",
+      "act": 2,
+      "section": 314
+    }
   },
   {
     "name": "King Louis",
@@ -204,8 +241,11 @@ export const ENEMIES: Enemy[] = [
     "abilities": [
       "Agility"
     ],
-    "act": 2,
-    "entry": "359"
+    "bookRef": {
+      "book": "Core",
+      "act": 2,
+      "section": 359
+    }
   },
   {
     "name": "Vesuvius",
@@ -220,8 +260,11 @@ export const ENEMIES: Enemy[] = [
     "abilities": [
       "Sear"
     ],
-    "act": 2,
-    "entry": "377"
+    "bookRef": {
+      "book": "Core",
+      "act": 2,
+      "section": 377
+    }
   },
   {
     "name": "Nalsa",
@@ -236,8 +279,11 @@ export const ENEMIES: Enemy[] = [
     "abilities": [
       "Roar"
     ],
-    "act": 2,
-    "entry": "379"
+    "bookRef": {
+      "book": "Core",
+      "act": 2,
+      "section": 379
+    }
   },
   {
     "name": "Zen",
@@ -252,8 +298,11 @@ export const ENEMIES: Enemy[] = [
     "abilities": [
       "Counter"
     ],
-    "act": 2,
-    "entry": "382"
+    "bookRef": {
+      "book": "Core",
+      "act": 2,
+      "section": 382
+    }
   },
   {
     "name": "Baron Greyloc",
@@ -268,8 +317,11 @@ export const ENEMIES: Enemy[] = [
     "abilities": [
       "Legendary"
     ],
-    "act": 2,
-    "entry": "385"
+    "bookRef": {
+      "book": "Core",
+      "act": 2,
+      "section": 385
+    }
   },
   {
     "name": "Shara Khana",
@@ -284,8 +336,11 @@ export const ENEMIES: Enemy[] = [
     "abilities": [
       "Swift"
     ],
-    "act": 2,
-    "entry": "386"
+    "bookRef": {
+      "book": "Core",
+      "act": 2,
+      "section": 386
+    }
   },
   {
     "name": "Stone Giant",
@@ -300,8 +355,11 @@ export const ENEMIES: Enemy[] = [
     "abilities": [
       "Body of Rock"
     ],
-    "act": 2,
-    "entry": "443"
+    "bookRef": {
+      "book": "Core",
+      "act": 2,
+      "section": 443
+    }
   },
   {
     "name": "The Count",
@@ -316,8 +374,11 @@ export const ENEMIES: Enemy[] = [
     "abilities": [
       "Feint"
     ],
-    "act": 2,
-    "entry": "487"
+    "bookRef": {
+      "book": "Core",
+      "act": 2,
+      "section": 487
+    }
   },
   {
     "name": "Swamp Giant",
@@ -332,8 +393,11 @@ export const ENEMIES: Enemy[] = [
     "abilities": [
       "Knockdown"
     ],
-    "act": 2,
-    "entry": "509"
+    "bookRef": {
+      "book": "Core",
+      "act": 2,
+      "section": 509
+    }
   },
   {
     "name": "Phoenix",
@@ -348,8 +412,11 @@ export const ENEMIES: Enemy[] = [
     "abilities": [
       "Fire Aura"
     ],
-    "act": 2,
-    "entry": "565"
+    "bookRef": {
+      "book": "Core",
+      "act": 2,
+      "section": 565
+    }
   },
   {
     "name": "Kindle",
@@ -364,8 +431,11 @@ export const ENEMIES: Enemy[] = [
     "abilities": [
       "Haste"
     ],
-    "act": 3,
-    "entry": "454"
+    "bookRef": {
+      "book": "Core",
+      "act": 3,
+      "section": 454
+    }
   },
   {
     "name": "Grindle",
@@ -380,8 +450,11 @@ export const ENEMIES: Enemy[] = [
     "abilities": [
       "Dragonscale"
     ],
-    "act": 3,
-    "entry": "708"
+    "bookRef": {
+      "book": "Core",
+      "act": 3,
+      "section": 708
+    }
   },
   {
     "name": "Magmageddon",
@@ -396,8 +469,11 @@ export const ENEMIES: Enemy[] = [
     "abilities": [
       "Hybrid"
     ],
-    "act": 3,
-    "entry": "738"
+    "bookRef": {
+      "book": "Core",
+      "act": 3,
+      "section": 738
+    }
   },
   {
     "name": "Sharroth",
@@ -412,7 +488,10 @@ export const ENEMIES: Enemy[] = [
     "abilities": [
       "Final Boss"
     ],
-    "act": 3,
-    "entry": "782"
+    "bookRef": {
+      "book": "Core",
+      "act": 3,
+      "section": 782
+    }
   }
 ];

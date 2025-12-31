@@ -1,7 +1,7 @@
 import { Hero } from '../../types/hero';
 import { getAbilityDefinition } from '../abilityRegistry';
 import './Acid';
-import { INITIAL_STATE, heroWithStats } from '../../tests/testUtils';
+import { INITIAL_STATE, heroWithStats, testEquipment } from '../../tests/testUtils';
 import { renderHook, act } from '@testing-library/react';
 import { useCombat } from '../../hooks/useCombat';
 
@@ -18,13 +18,11 @@ describe('Acid', () => {
         const ACID_HERO: Hero = {
             ...baseHero.original,
             equipment: {
-                gloves: {
+                gloves: testEquipment({
                     name: 'Acid Gloves',
                     abilities: ['Acid'],
-                    id: 'acid-gloves',
                     type: 'gloves',
-                    act: 1
-                }
+                })
             }
         };
 

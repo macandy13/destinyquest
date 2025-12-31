@@ -58,9 +58,13 @@ function parseCSV(content) {
                 maxHealth: health
             },
             abilities,
-            act, // extra metadata helpful for sorting
-            entry // extra metadata helpful for searching
+            bookRef: {
+                book: 'Legions of Shadow',
+                act: act,
+                section: parseInt(entry, 10)
+            }
         };
+
     });
 }
 
@@ -69,6 +73,7 @@ try {
     const enemies = parseCSV(content);
 
     const fileContent = `import { Enemy } from '../types/combat';
+import { BookRef } from '../types/book';
 
 export const ENEMIES: Enemy[] = ${JSON.stringify(enemies, null, 2)};
 `;

@@ -2,13 +2,13 @@ import { Hero, BackpackItem } from './hero';
 import { StatsModification, Target } from './stats';
 import { Character } from './character';
 import { Combatant } from './combatant';
+import { BookRef } from './book';
 
 export interface Enemy extends Character {
     name: string;
     abilities: string[]; // Placeholder for special rules
     preventHealing?: boolean;
-    act: number;
-    entry?: string;
+    bookRef: BookRef;
 }
 
 export interface CombatLog {

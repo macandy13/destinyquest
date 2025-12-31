@@ -1,7 +1,7 @@
 import { describe, it, expect } from 'vitest';
 import { getAbilityDefinition } from '../abilityRegistry';
 import './Barbs';
-import { INITIAL_STATE, createEnemyCombatant, heroWithStats } from '../../tests/testUtils';
+import { INITIAL_STATE, createEnemyCombatant, heroWithStats, testEquipment } from '../../tests/testUtils';
 import { renderHook, act } from '@testing-library/react';
 import { useCombat } from '../../hooks/useCombat';
 import { Hero } from '../../types/hero';
@@ -9,7 +9,10 @@ import { Hero } from '../../types/hero';
 describe('Barbs', () => {
     it('should inflict 1 damage to enemy on round end', () => {
         const barbs = getAbilityDefinition('Barbs');
-        const state = { ...INITIAL_STATE, enemy: createEnemyCombatant({ health: 10 }) };
+        const state = {
+            ...INITIAL_STATE,
+            enemy: createEnemyCombatant({ health: 10 })
+        };
 
         const updates = barbs?.onRoundEnd?.(state, 'enemy');
 
@@ -19,7 +22,10 @@ describe('Barbs', () => {
 
     it('should not reduce enemy health below 0', () => {
         const barbs = getAbilityDefinition('Barbs');
-        const state = { ...INITIAL_STATE, enemy: createEnemyCombatant({ health: 0 }) };
+        const state = {
+            ...INITIAL_STATE,
+            enemy: createEnemyCombatant({ health: 0 })
+        };
 
         const updates = barbs?.onRoundEnd?.(state, 'enemy');
         expect(updates).toEqual({});
@@ -30,14 +36,11 @@ describe('Barbs', () => {
         const BARBS_HERO: Hero = {
             ...baseHero.original,
             equipment: {
-                gloves: {
+                gloves: testEquipment({
                     name: 'Barbed Bracers',
                     abilities: ['Barbs'],
-                    id: 'barbs-gloves',
                     type: 'gloves',
-                    book: 'book1',
-                    act: 1
-                }
+                }),
             }
         };
 

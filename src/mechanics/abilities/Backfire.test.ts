@@ -6,7 +6,11 @@ import { INITIAL_STATE } from '../../tests/testUtils';
 describe('Backfire', () => {
     it('should replace damage roll with specific damage', () => {
         const ability = getAbilityDefinition('Backfire');
-        const state = { ...INITIAL_STATE, phase: 'damage-roll' as const, winner: 'hero' as const, logs: [] };
+        const state = {
+            ...INITIAL_STATE,
+            phase: 'damage-roll' as const,
+            winner: 'hero' as const,
+        };
         const result = ability?.onActivate?.(state);
 
         expect(result?.phase).toBe('round-end');

@@ -1,4 +1,5 @@
 import { BackpackItem } from '../types/hero';
+import { BookRef } from '../types/book';
 
 export const BACKPACK_ITEMS: BackpackItem[] = [
   {
@@ -13,9 +14,11 @@ export const BACKPACK_ITEMS: BackpackItem[] = [
     "duration": 0,
     "uses": 1,
     "notes": "Sold by the Apothecary",
-    "book": "Legions of Shadows",
-    "act": 1,
-    "referenceNumber": 56
+    "bookRef": {
+      "book": "Legions of Shadows",
+      "act": 1,
+      "section": 56
+    }
   },
   {
     "id": "speed_potion",
@@ -29,9 +32,11 @@ export const BACKPACK_ITEMS: BackpackItem[] = [
     "duration": 1,
     "uses": 1,
     "notes": "Sold by the Apothecary",
-    "book": "Legions of Shadows",
-    "act": 1,
-    "referenceNumber": 56
+    "bookRef": {
+      "book": "Legions of Shadows",
+      "act": 1,
+      "section": 56
+    }
   },
   {
     "id": "brawn_potion",
@@ -45,9 +50,11 @@ export const BACKPACK_ITEMS: BackpackItem[] = [
     "duration": 1,
     "uses": 1,
     "notes": "Sold by the Apothecary",
-    "book": "Legions of Shadows",
-    "act": 1,
-    "referenceNumber": 56
+    "bookRef": {
+      "book": "Legions of Shadows",
+      "act": 1,
+      "section": 56
+    }
   },
   {
     "id": "magic_potion",
@@ -61,9 +68,11 @@ export const BACKPACK_ITEMS: BackpackItem[] = [
     "duration": 1,
     "uses": 1,
     "notes": "Sold by the Apothecary",
-    "book": "Legions of Shadows",
-    "act": 1,
-    "referenceNumber": 56
+    "bookRef": {
+      "book": "Legions of Shadows",
+      "act": 1,
+      "section": 56
+    }
   },
   {
     "id": "crocodile_skin",
@@ -74,9 +83,11 @@ export const BACKPACK_ITEMS: BackpackItem[] = [
     "duration": 0,
     "uses": 0,
     "notes": "Dropped by the Crocodile",
-    "book": "Legions of Shadows",
-    "act": 1,
-    "referenceNumber": 118
+    "bookRef": {
+      "book": "Legions of Shadows",
+      "act": 1,
+      "section": 118
+    }
   },
   {
     "id": "goblin_grog",
@@ -90,9 +101,11 @@ export const BACKPACK_ITEMS: BackpackItem[] = [
     "duration": 0,
     "uses": 2,
     "notes": "Found in Goblin loot",
-    "book": "Legions of Shadows",
-    "act": 1,
-    "referenceNumber": 125
+    "bookRef": {
+      "book": "Legions of Shadows",
+      "act": 1,
+      "section": 125
+    }
   },
   {
     "id": "healing_salve",
@@ -106,9 +119,11 @@ export const BACKPACK_ITEMS: BackpackItem[] = [
     "duration": 0,
     "uses": 1,
     "notes": "Found in Goblin loot",
-    "book": "Legions of Shadows",
-    "act": 1,
-    "referenceNumber": 125
+    "bookRef": {
+      "book": "Legions of Shadows",
+      "act": 1,
+      "section": 125
+    }
   },
   {
     "id": "miracle_grow",
@@ -122,9 +137,11 @@ export const BACKPACK_ITEMS: BackpackItem[] = [
     "duration": 1,
     "uses": 1,
     "notes": "Found in Goblin loot",
-    "book": "Legions of Shadows",
-    "act": 1,
-    "referenceNumber": 125
+    "bookRef": {
+      "book": "Legions of Shadows",
+      "act": 1,
+      "section": 125
+    }
   },
   {
     "id": "ghoul_hair",
@@ -135,9 +152,11 @@ export const BACKPACK_ITEMS: BackpackItem[] = [
     "duration": 0,
     "uses": 0,
     "notes": "Dropped by Ghouls",
-    "book": "Legions of Shadows",
-    "act": 1,
-    "referenceNumber": 127
+    "bookRef": {
+      "book": "Legions of Shadows",
+      "act": 1,
+      "section": 127
+    }
   },
   {
     "id": "explosives_bombs",
@@ -151,9 +170,11 @@ export const BACKPACK_ITEMS: BackpackItem[] = [
     "duration": 0,
     "uses": 1,
     "notes": "Sold by the Tinker",
-    "book": "Legions of Shadows",
-    "act": 1,
-    "referenceNumber": 175
+    "bookRef": {
+      "book": "Legions of Shadows",
+      "act": 1,
+      "section": 175
+    }
   },
   {
     "id": "spiders_leg",
@@ -164,9 +185,11 @@ export const BACKPACK_ITEMS: BackpackItem[] = [
     "duration": 0,
     "uses": 0,
     "notes": "Dropped by Spiders",
-    "book": "Legions of Shadows",
-    "act": 1,
-    "referenceNumber": 179
+    "bookRef": {
+      "book": "Legions of Shadows",
+      "act": 1,
+      "section": 179
+    }
   },
   {
     "id": "goblin_grog",
@@ -180,9 +203,11 @@ export const BACKPACK_ITEMS: BackpackItem[] = [
     "duration": 0,
     "uses": 2,
     "notes": "Found in Goblin Chief's loot",
-    "book": "Legions of Shadows",
-    "act": 1,
-    "referenceNumber": 260
+    "bookRef": {
+      "book": "Legions of Shadows",
+      "act": 1,
+      "section": 260
+    }
   },
   {
     "id": "da_boss",
@@ -196,9 +221,11 @@ export const BACKPACK_ITEMS: BackpackItem[] = [
     "duration": 0,
     "uses": 1,
     "notes": "Sold by Sea-Spray Steve",
-    "book": "Legions of Shadows",
-    "act": 1,
-    "referenceNumber": 432
+    "bookRef": {
+      "book": "Legions of Shadows",
+      "act": 1,
+      "section": 432
+    }
   }
 ];
 

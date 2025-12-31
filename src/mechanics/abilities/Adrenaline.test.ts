@@ -1,7 +1,7 @@
 import { describe, it, expect } from 'vitest';
 import { getAbilityDefinition } from '../abilityRegistry';
 import './Adrenaline';
-import { INITIAL_STATE, MOCK_HERO } from '../../tests/testUtils';
+import { INITIAL_STATE, MOCK_HERO, testEquipment } from '../../tests/testUtils';
 import { renderHook, act } from '@testing-library/react';
 import { useCombat } from '../../hooks/useCombat';
 import { Hero } from '../../types/hero';
@@ -22,14 +22,11 @@ describe('Adrenaline', () => {
             ...MOCK_HERO,
             stats: { ...MOCK_HERO.stats, speed: 0 },
             equipment: {
-                gloves: {
+                gloves: testEquipment({
                     name: 'Adrenaline Gloves',
                     abilities: ['Adrenaline'],
-                    id: 'adr-gloves',
                     type: 'gloves' as const,
-                    book: 'book1',
-                    act: 1
-                }
+                })
             }
         };
 

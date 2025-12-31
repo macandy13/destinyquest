@@ -1,15 +1,28 @@
+import { BookRef } from '../types/book';
 import { CombatState, Enemy } from '../types/combat';
-import { Hero } from '../types/hero';
 import { Combatant } from '../types/combatant';
+import { EquipmentItem, Hero } from '../types/hero';
 
 export const MOCK_HERO: Hero = {
     name: 'Test Hero',
     path: '',
     career: '',
-    stats: { speed: 0, brawn: 0, magic: 0, armour: 0, health: 30, maxHealth: 30 },
+    stats: {
+        speed: 0,
+        brawn: 0,
+        magic: 0,
+        armour: 0,
+        health: 30,
+        maxHealth: 30
+    },
     equipment: {},
     backpack: [],
     money: 0
+};
+
+export const TEST_BOOK: BookRef = {
+    book: 'Test',
+    act: 99
 };
 
 export const MOCK_ENEMY: Enemy = {
@@ -22,7 +35,7 @@ export const MOCK_ENEMY: Enemy = {
         health: 20,
         maxHealth: 20,
     },
-    act: 1,
+    bookRef: TEST_BOOK,
     abilities: []
 };
 
@@ -74,6 +87,18 @@ export const heroWithStats = (stats: Partial<Hero['stats']>): Combatant<Hero> =>
         name: hero.name,
         stats: { ...hero.stats },
         original: hero
+    };
+};
+
+
+export const testEquipment = (stats: Partial<EquipmentItem>): EquipmentItem => {
+    return {
+        id: stats.name?.toLowerCase().replaceAll(' ', '-') || 'test-equipment',
+        type: 'cloak',
+        name: 'Test Equipment',
+        abilities: [],
+        bookRef: TEST_BOOK,
+        ...stats
     };
 };
 

@@ -1,5 +1,6 @@
 import { Stats } from './stats';
 import { Character } from './character';
+import { BookRef } from './book';
 
 export interface HeroStats extends Stats { }
 
@@ -16,9 +17,7 @@ export type EquipmentType =
 export interface Item {
     id: string;
     name: string;
-    book: string;
-    act: number;
-    referenceNumber?: number;
+    bookRef: BookRef;
     location?: string;
 }
 
