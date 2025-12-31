@@ -12,16 +12,16 @@ interface EquipmentSlotsProps {
 }
 
 const SLOT_CONFIG: Record<EquipmentSlotType, { top: string; left: string; label: string; icon: string }> = {
-  head: { top: '10%', left: '50%', label: 'Head', icon: '⛑️' },
-  necklace: { top: '22%', left: '70%', label: 'Neck', icon: '📿' },
-  talisman: { top: '22%', left: '30%', label: 'Talisman', icon: '🧿' },
-  leftHand: { top: '15%', left: '90%', label: 'Off', icon: '🛡️' },
-  ring2: { top: '28%', left: '90%', label: 'Ring 2', icon: '💍' },
-  cloak: { top: '40%', left: '20%', label: 'Cloak', icon: '🧥' },
+  head: { top: '5%', left: '50%', label: 'Head', icon: '⛑️' },
+  necklace: { top: '22%', left: '50%', label: 'Neck', icon: '📿' },
+  talisman: { top: '22%', left: '20%', label: 'Talisman', icon: '🧿' },
+  leftHand: { top: '15%', left: '85%', label: 'Off', icon: '🛡️' },
+  ring2: { top: '32%', left: '85%', label: 'Ring 2', icon: '💍' },
+  cloak: { top: '43%', left: '12%', label: 'Cloak', icon: '🧥' },
   chest: { top: '40%', left: '50%', label: 'Chest', icon: '👕' },
-  mainHand: { top: '55%', left: '10%', label: 'Main', icon: '⚔️' },
-  gloves: { top: '65%', left: '70%', label: 'Hands', icon: '🧤' },
-  ring1: { top: '65%', left: '35%', label: 'Ring 1', icon: '💍' },
+  mainHand: { top: '60%', left: '12%', label: 'Main', icon: '⚔️' },
+  gloves: { top: '60%', left: '85%', label: 'Hands', icon: '🧤' },
+  ring1: { top: '60%', left: '40%', label: 'Ring 1', icon: '💍' },
   feet: { top: '88%', left: '50%', label: 'Feet', icon: '👢' },
 };
 

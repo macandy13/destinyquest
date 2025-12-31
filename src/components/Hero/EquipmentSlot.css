@@ -1,7 +1,7 @@
 .equipment-slot {
     aspect-ratio: 1;
-    background: var(--dq-grey);
-    border: 1px solid var(--dq-gold-dim);
+    background: var(--dq-row-bg);
+    border: 1px solid var(--dq-hero-color);
     border-radius: var(--radius-sm);
     display: flex;
     flex-direction: column;
@@ -13,6 +13,7 @@
     width: var(--button-2xl);
     height: var(--button-2xl);
     overflow: clip;
+    gap: 0;
 }
 
 .equipment-slot:hover {
@@ -28,7 +29,6 @@
     font-size: var(--font-xs);
     color: var(--dq-light-grey);
     text-transform: uppercase;
-    margin-top: var(--spacing-xs);
 }
 
 .slot-icon {
@@ -48,8 +48,6 @@
     color: var(--dq-gold);
     text-align: center;
     line-height: 1.2;
-    margin-top: var(--spacing-xs);
-    padding: 0 var(--spacing-2xs);
     overflow: hidden;
     text-overflow: ellipsis;
     display: -webkit-box;
@@ -74,7 +72,6 @@
 
 .equipment-abilities-display {
     font-size: var(--font-sm);
-    margin-top: var(--spacing-2xs);
     text-align: center;
     white-space: nowrap;
     overflow: hidden;

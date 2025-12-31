@@ -41,9 +41,9 @@
 
 /* Adjustments for EquipmentSlot within this context */
 .positioned-slot .equipment-slot {
-    width: var(--button-xl);
-    height: var(--button-xl);
-    font-size: var(--font-xs);
+    width: var(--button-2xl);
+    height: var(--button-2xl);
+    font-size: var(--font-sm);
     border-width: 2px;
     background: rgba(0, 0, 0, 0.7);
 }
@@ -68,7 +68,7 @@
     .equipment-name-visible,
     .equipment-stats-display,
     .equipment-abilities-display {
-        font-size: 0.65rem;
+        font-size: var(--font-size-sm);
         /* Smaller text on mobile */
     }
 }
