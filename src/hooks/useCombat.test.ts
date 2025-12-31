@@ -2,7 +2,7 @@ import { renderHook, act } from '@testing-library/react';
 import { useCombat } from './useCombat';
 import { describe, it, expect } from 'vitest';
 import { registerAbility } from '../mechanics/abilityRegistry';
-import { MOCK_HERO, heroWithStats } from '../tests/testUtils';
+import { MOCK_HERO, enemyWithStats, heroWithStats, testEquipment } from '../tests/testUtils';
 import { Hero } from '../types/hero';
 
 describe('useCombat Hook', () => {
@@ -45,7 +45,7 @@ describe('useCombat Hook', () => {
 
         act(() => {
             // Pass explicitly tough enemy to test armour
-            result.current.startCombat({ name: 'Armoured dummy', stats: { speed: 1, brawn: 1, magic: 1, armour: 2, health: 20, maxHealth: 20 }, act: 1, abilities: [] });
+            result.current.startCombat(enemyWithStats({ armour: 2 }));
         });
 
         // Speed round win for Hero
@@ -98,13 +98,11 @@ describe('useCombat Hook', () => {
         const HERO_WITH_ABILITY: Hero = {
             ...DAMAGE_MOD_HERO.original,
             equipment: {
-                talisman: {
-                    id: 'buff-charm',
+                talisman: testEquipment({
                     type: 'talisman',
-                    act: 1,
                     name: 'Buff Charm',
                     abilities: ['Mock Damage Buff']
-                }
+                })
             }
         };
 
@@ -160,13 +158,11 @@ describe('useCombat Hook', () => {
         const HERO_WITH_DICE: Hero = {
             ...MOCK_HERO,
             equipment: {
-                ring1: {
-                    id: 'dice-charm',
+                ring1: testEquipment({
                     type: 'ring',
-                    act: 1,
                     name: 'Dice Charm',
                     abilities: ['Mock Dice Buff']
-                }
+                })
             }
         };
 

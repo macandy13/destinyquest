@@ -4,31 +4,27 @@ import { useCombat } from './useCombat';
 import { MOCK_HERO, MOCK_ENEMY } from '../tests/testUtils';
 import { BackpackItem } from '../types/hero';
 
-const HEALING_POTION: BackpackItem = {
-    id: 'healing_potion',
+const HEALING_POTION: BackpackItem = testBackpackItem({
     name: 'Healing Potion',
     type: 'backpack',
-    act: 1,
     effect: '+6 health',
     modifier: '+6 health',
     stats: { health: 6 },
     duration: 0,
     uses: 1,
     notes: 'Test potion'
-};
+});
 
-const SPEED_POTION: BackpackItem = {
-    id: 'speed_potion',
+const SPEED_POTION: BackpackItem = testBackpackItem({
     name: 'Speed Potion',
     type: 'backpack',
-    act: 1,
     effect: '+2 speed',
     modifier: '+2 speed',
     stats: { speed: 2 },
     duration: 1,
     uses: 1,
     notes: 'Test potion'
-};
+});
 
 describe('useCombat - Backpack Items', () => {
     it('initializes combat with backpack items', () => {

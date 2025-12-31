@@ -335,12 +335,24 @@ function _startNewRound(state: CombatState): CombatState {
  * @param heroInput The hero object (or combatant wrapper)
  * @param initialEnemy Optional enemy to fight. Defaults to MOCK_ENEMY.
  */
-export function initCombat(heroInput: Hero | Combatant<Hero>, initialEnemy?: Enemy): CombatState {
-    const hero: Hero = 'original' in heroInput ? heroInput.original : heroInput;
-    let logs: CombatLog[] = addLog([], { round: 1, message: 'Combat started', type: 'info' });
+export function initCombat(hero: Hero | Combatant<Hero>, initialEnemy?: Enemy | Combatant<Enemy>): CombatState {
+    let logs: CombatLog[] = addLog([], {
+        round: 1,
+        message: 'Combat started',
+        type: 'info'
+    });
+
+    const heroCombatant: Combatant<Hero> =
+        'original' in hero ? hero : {
+            type: 'hero',
+            id: 'hero',
+            name: hero.name,
+            stats: { ...hero.stats },
+            original: { ...hero }
+        };
 
     const abilities: ActiveAbility[] = [];
-    Object.values(hero.equipment).forEach(item => {
+    Object.values(heroCombatant.original.equipment).forEach(item => {
         if (!item) return;
         item.abilities?.forEach(abilityName => {
             abilities.push({
@@ -353,8 +365,18 @@ export function initCombat(heroInput: Hero | Combatant<Hero>, initialEnemy?: Ene
     });
     logs = addLog(logs, { round: 1, message: `Active hero abilities: ${abilities.map(a => a.name).join(', ')}`, type: 'info' });
 
-    const enemyToUse = initialEnemy || MOCK_ENEMY;
-    enemyToUse.abilities.forEach(abilityName => {
+    initialEnemy = initialEnemy || MOCK_ENEMY;
+    const enemyCombatant: Combatant<Enemy> =
+        'original' in initialEnemy ? initialEnemy :
+            {
+                type: 'hero',
+                id: 'hero',
+                name: initialEnemy!.name,
+                stats: { ...initialEnemy!.stats },
+                original: { ...initialEnemy }
+            };
+
+    enemyCombatant.original.abilities.forEach(abilityName => {
         abilities.push({
             name: abilityName,
             source: 'Enemy Special Ability',
@@ -362,30 +384,17 @@ export function initCombat(heroInput: Hero | Combatant<Hero>, initialEnemy?: Ene
             used: false
         });
     });
-    logs = addLog(logs, { round: 1, message: `Active enemy abilities: ${abilities.filter(a => a.target === 'hero').map(a => a.name).join(', ')}`, type: 'info' });
-
-    const heroCombatant: Combatant<Hero> = {
-        type: 'hero',
-        id: 'hero',
-        name: hero.name,
-        stats: { ...hero.stats },
-        original: { ...hero }
-    };
-
-    const enemyCombatant: Combatant<Enemy> = {
-        type: 'enemy',
-        id: 'enemy',
-        name: enemyToUse.name,
-        stats: { ...enemyToUse.stats },
-        original: { ...enemyToUse }
-    };
-
+    logs = addLog(logs, {
+        round: 1,
+        message: `Active enemy abilities: ${abilities.filter(a => a.target === 'hero').map(a => a.name).join(', ')}`,
+        type: 'info'
+    });
     let state: CombatState = {
         ...INITIAL_STATE,
         enemy: enemyCombatant,
         hero: heroCombatant,
         activeAbilities: abilities,
-        backpack: hero.backpack.filter(i => i?.uses && i.uses > 0) as BackpackItem[],
+        backpack: heroCombatant.original.backpack.filter(i => i?.uses && i.uses > 0) as BackpackItem[],
         logs,
     };
 

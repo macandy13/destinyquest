@@ -2,12 +2,11 @@ import { renderHook, act } from '@testing-library/react';
 import { useHero } from '../hooks/useHero';
 import { describe, it, expect } from 'vitest';
 import { EquipmentItem } from '../types/hero';
+import { testEquipment } from '../tests/testUtils';
 
-const MOCK_ITEM: EquipmentItem = {
-    id: 'test-item',
+const MOCK_ITEM: EquipmentItem = testEquipment({
     type: 'mainHand',
     name: 'Iron Sword',
-    act: 1,
     stats: {
         speed: 1,
         brawn: 2,
@@ -15,7 +14,7 @@ const MOCK_ITEM: EquipmentItem = {
         armour: 0,
         health: 0
     }
-};
+});
 
 describe('useHero Hook', () => {
     it('should initialize with default stats', () => {

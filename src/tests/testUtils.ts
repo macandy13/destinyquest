@@ -2,7 +2,7 @@ import { BookRef } from '../types/book';
 import { Character } from '../types/character';
 import { CombatState, Enemy } from '../types/combat';
 import { Combatant } from '../types/combatant';
-import { EquipmentItem, Hero } from '../types/hero';
+import { BackpackItem, EquipmentItem, Hero } from '../types/hero';
 
 export const MOCK_HERO: Hero = {
     type: 'hero',
@@ -87,7 +87,7 @@ export const heroWithStats = (stats: Partial<Hero['stats']>): Combatant<Hero> =>
     return createCombatant(hero) as Combatant<Hero>;
 };
 
-export const testEquipment = (stats: Partial<EquipmentItem>): EquipmentItem => {
+export function testEquipment(stats: Partial<EquipmentItem>): EquipmentItem {
     return {
         id: stats.name?.toLowerCase().replaceAll(' ', '-') || 'test-equipment',
         type: 'cloak',
@@ -97,6 +97,16 @@ export const testEquipment = (stats: Partial<EquipmentItem>): EquipmentItem => {
         ...stats
     };
 };
+
+export function testBackpackItem(stats: Partial<BackpackItem>): BackpackItem {
+    return {
+        id: stats.name?.toLowerCase().replaceAll(' ', '-') || 'test-backpack-item',
+        type: 'backpack',
+        name: 'Test Backpack Item',
+        bookRef: TEST_BOOK,
+        ...stats
+    };
+}
 
 export const enemyWithStats = (stats: Partial<Enemy['stats']> = {}): Combatant<Enemy> => {
     const enemy = {

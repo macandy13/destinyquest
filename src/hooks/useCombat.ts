@@ -2,9 +2,9 @@ import { useState, useCallback } from 'react';
 import { CombatState, Enemy, DiceRoll } from '../types/combat';
 import { Combatant } from '../types/combatant';
 import { Hero } from '../types/hero';
-import { 
-    INITIAL_STATE, 
-    initCombat, 
+import {
+    INITIAL_STATE,
+    initCombat,
     endCombat as engineEndCombat,
     activateAbility as engineActivateAbility,
     useBackpackItem as engineUseBackpackItem,
@@ -21,7 +21,7 @@ export function useCombat(heroInput: Hero | Combatant<Hero>) {
     const hero: Hero = 'original' in heroInput ? heroInput.original : heroInput;
     const [combat, setCombat] = useState<CombatState>(INITIAL_STATE);
 
-    const startCombat = useCallback((initialEnemy?: Enemy) => {
+    const startCombat = useCallback((initialEnemy?: Enemy | Combatant<Enemy>) => {
         setCombat(initCombat(hero, initialEnemy));
     }, [hero]);
 

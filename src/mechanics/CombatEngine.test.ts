@@ -7,9 +7,10 @@ import {
     resolveDamageRolls,
     commitDamageResult,
     nextRound,
-    useBackpackItem
+    useBackpackItem,
+    MOCK_ENEMY
 } from './CombatEngine';
-import { MOCK_HERO, heroWithStats } from '../tests/testUtils';
+import { MOCK_HERO, TEST_BOOK, enemyWithStats, heroWithStats, testEquipment } from '../tests/testUtils';
 import { Hero } from '../types/hero';
 import { Enemy } from '../types/combat';
 import { registerAbility } from './abilityRegistry';
@@ -39,12 +40,14 @@ describe('CombatEngine', () => {
 
     it('should calculate damage and apply armour', () => {
         const hero = heroWithStats({ brawn: 5 });
-        let state = initCombat(hero, {
-            name: 'Armoured dummy',
-            stats: { speed: 1, brawn: 1, magic: 1, armour: 2, health: 20, maxHealth: 20 },
-            act: 1,
-            abilities: []
-        });
+        let state = initCombat(hero, enemyWithStats({
+            speed: 1,
+            brawn: 1,
+            magic: 1,
+            armour: 2,
+            health: 20,
+            maxHealth: 20
+        }).original);
 
         // Speed win for hero
         state = resolveSpeedRolls(state, [{ value: 6, isRerolled: false }], [{ value: 1, isRerolled: false }]);
@@ -87,13 +90,11 @@ describe('CombatEngine', () => {
             ...MOCK_HERO,
             stats: { ...MOCK_HERO.stats, brawn: 0 },
             equipment: {
-                ring1: {
-                    id: 'test-ring',
+                ring1: testEquipment({
                     type: 'ring',
-                    act: 1,
                     name: 'Test Ring',
                     abilities: ['Engine Test Buff']
-                }
+                })
             }
         };
 
