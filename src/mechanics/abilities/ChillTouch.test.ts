@@ -1,7 +1,7 @@
 import { describe, it, expect } from 'vitest';
 import { getAbilityDefinition } from '../abilityRegistry';
 import './ChillTouch';
-import { INITIAL_STATE, MOCK_HERO } from '../../tests/testUtils';
+import { INITIAL_STATE } from '../../tests/testUtils';
 
 describe('Chill Touch', () => {
     it('should add speed reduction to enemy on activation', () => {

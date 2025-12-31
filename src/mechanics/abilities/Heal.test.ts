@@ -1,7 +1,7 @@
 import { describe, it, expect } from 'vitest';
 import { getAbilityDefinition } from '../abilityRegistry';
 import './Heal';
-import { INITIAL_STATE, MOCK_HERO, createHeroCombatant } from '../../tests/testUtils';
+import { INITIAL_STATE, MOCK_HERO, createHeroCombatant, heroWithStats, testEquipment } from '../../tests/testUtils';
 import { renderHook, act } from '@testing-library/react';
 import { useCombat } from '../../hooks/useCombat';
 import { Hero } from '../../types/hero';
@@ -49,15 +49,13 @@ describe('Heal', () => {
 
     it('should apply Heal modifier ability via hook (restore 4 health)', () => {
         const HEAL_HERO: Hero = {
-            ...MOCK_HERO,
+            ...heroWithStats({}).original,
             equipment: {
-                necklace: {
+                necklace: testEquipment({
                     name: 'Healing Necklace',
                     abilities: ['Heal'],
-                    id: 'heal-necklace',
-                    type: 'necklace' as const,
-                    act: 1
-                }
+                    type: 'necklace',
+                })
             }
         };
 

@@ -1,7 +1,7 @@
 import { describe, it, expect } from 'vitest';
 import { getAbilityDefinition } from '../abilityRegistry';
 import './CatsSpeed';
-import { INITIAL_STATE, MOCK_HERO } from '../../tests/testUtils';
+import { INITIAL_STATE, heroWithStats, testEquipment } from '../../tests/testUtils';
 import { renderHook, act } from '@testing-library/react';
 import { useCombat } from '../../hooks/useCombat';
 import { Hero } from '../../types/hero';
@@ -20,17 +20,13 @@ describe("Cat's Speed", () => {
 
     it('should apply Cat\'s Speed via hook (+1 speed for 1 round)', () => {
         const HERO: Hero = {
-            ...MOCK_HERO,
-            stats: { ...MOCK_HERO.stats, speed: 0 },
+            ...heroWithStats({ speed: 0 }).original,
             equipment: {
-                feet: {
+                feet: testEquipment({
                     name: 'Cat Boots',
                     abilities: ["Cat's Speed"],
-                    id: 'cat-boots',
-                    type: 'feet' as const,
-                    act: 1,
-                    book: 'core'
-                }
+                    type: 'feet',
+                })
             }
         };
 

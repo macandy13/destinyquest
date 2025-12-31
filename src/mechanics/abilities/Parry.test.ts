@@ -1,7 +1,7 @@
 import { describe, it, expect } from 'vitest';
 import { getAbilityDefinition } from '../abilityRegistry';
 import './Parry';
-import { INITIAL_STATE, MOCK_HERO } from '../../tests/testUtils';
+import { INITIAL_STATE, MOCK_HERO, heroWithStats, testEquipment } from '../../tests/testUtils';
 import { renderHook, act } from '@testing-library/react';
 import { useCombat } from '../../hooks/useCombat';
 import { Hero } from '../../types/hero';
@@ -35,15 +35,13 @@ describe('Parry', () => {
 
     it('should apply Parry combat ability via hook (cancel enemy damage)', () => {
         const PARRY_HERO: Hero = {
-            ...MOCK_HERO,
+            ...heroWithStats({}).original,
             equipment: {
-                mainHand: {
+                mainHand: testEquipment({
                     name: 'Parrying Dagger',
                     abilities: ['Parry'],
-                    id: 'parry-dagger',
                     type: 'mainHand',
-                    act: 1
-                }
+                })
             }
         };
 

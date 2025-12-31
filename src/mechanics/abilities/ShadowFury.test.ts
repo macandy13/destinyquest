@@ -1,27 +1,32 @@
 import { describe, it, expect } from 'vitest';
 import { getAbilityDefinition } from '../abilityRegistry';
 import './ShadowFury';
-import { INITIAL_STATE, MOCK_HERO } from '../../tests/testUtils';
-import { CombatState } from '../../types/combat';
+import { INITIAL_STATE, heroWithStats, testEquipment } from '../../tests/testUtils';
+import { CombatState, createCombatant } from '../../types/combat';
 
 describe('Shadow Fury', () => {
     it('should add weapon speed to damage score', () => {
         const ability = getAbilityDefinition('Shadow Fury');
 
         const customHero = {
-            ...MOCK_HERO,
+            ...heroWithStats({}).original,
             equipment: {
-                mainHand: { id: 's', name: 'Sword', type: 'mainHand', stats: { speed: 2 }, act: 1, book: 'core' } as any,
-                leftHand: { id: 'd', name: 'Dagger', type: 'leftHand', stats: { speed: 1 }, act: 1, book: 'core' } as any
+                mainHand: testEquipment({
+                    name: 'Sword',
+                    type: 'mainHand',
+                    stats: { speed: 2 },
+                }),
+                leftHand: testEquipment({
+                    name: 'Dagger',
+                    type: 'leftHand',
+                    stats: { speed: 1 },
+                })
             }
         };
 
         const state: CombatState = {
             ...INITIAL_STATE,
-            hero: {
-                ...INITIAL_STATE.hero!,
-                original: customHero
-            },
+            hero: createCombatant(customHero),
             logs: []
         };
         const result = ability?.onActivate?.(state);
