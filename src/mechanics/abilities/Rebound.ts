@@ -1,5 +1,5 @@
 import { registerAbility } from '../abilityRegistry';
-import { addLog } from '../../utils/statUtils';
+import { addLogs } from '../../utils/statUtils';
 import { CombatState } from '../../types/combat';
 import { CharacterType } from '../../types/stats';
 
@@ -23,7 +23,7 @@ registerAbility({
                     duration: 2
                 }
             ],
-            logs: addLog(state.logs, {
+            logs: addLogs(state.logs, {
                 round: state.round,
                 message: "Rebound triggered! Speed increased for next round.",
                 type: 'info'

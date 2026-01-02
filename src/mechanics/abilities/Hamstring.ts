@@ -1,5 +1,5 @@
 import { registerAbility } from '../abilityRegistry';
-import { addLog } from '../../utils/statUtils';
+import { addLogs } from '../../utils/statUtils';
 import { CombatState } from '../../types/combat';
 import { CharacterType } from '../../types/stats';
 
@@ -24,7 +24,7 @@ registerAbility({
                     duration: 1
                 }
             ],
-            logs: addLog(state.logs, { round: state.round, message: "Used ability: Hamstring. Opponent cannot dodge!", type: 'info' })
+            logs: addLogs(state.logs, { round: state.round, message: "Used ability: Hamstring. Opponent cannot dodge!", type: 'info' })
         };
     }
 });

@@ -37,6 +37,6 @@ describe('Cripple', () => {
 
         expect(ability.canActivate?.(state, 'hero')).toBe(false);
         const result = ability.onActivate?.(state, 'hero');
-        expect(result).toBeNull();
+        expect(result).toEqual({});
     });
 });

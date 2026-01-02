@@ -37,7 +37,7 @@ describe('Overload', () => {
 
         expect(ability.canActivate?.(state, 'hero')).toBe(false);
         const result = ability.onActivate?.(state, 'hero');
-        expect(result).toBeNull();
+        expect(result).toEqual({});
     });
 
     it('should not activate if winner is not hero', () => {
@@ -49,6 +49,6 @@ describe('Overload', () => {
 
         expect(ability.canActivate?.(state, 'hero')).toBe(false);
         const result = ability.onActivate?.(state, 'hero');
-        expect(result).toBeNull();
+        expect(result).toEqual({});
     });
 });

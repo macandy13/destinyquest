@@ -1,5 +1,5 @@
 import { registerAbility } from '../abilityRegistry';
-import { addLog } from '../../utils/statUtils';
+import { addLogs } from '../../utils/statUtils';
 
 registerAbility({
     name: 'Feral Fury',
@@ -15,7 +15,7 @@ registerAbility({
                     duration: 1
                 }
             ],
-            logs: addLog(state.logs, { round: state.round, message: "Used ability: Feral Fury.", type: 'info' })
+            logs: addLogs(state.logs, { round: state.round, message: "Used ability: Feral Fury.", type: 'info' })
         };
     }
 });

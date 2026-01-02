@@ -1,5 +1,5 @@
 import { registerAbility } from '../abilityRegistry';
-import { addLog } from '../../utils/statUtils';
+import { addLogs } from '../../utils/statUtils';
 import { CombatState } from '../../types/combat';
 import { CharacterType } from '../../types/stats';
 
@@ -24,7 +24,7 @@ registerAbility({
 
         return {
             hero: { ...state.hero, stats: { ...state.hero.stats, health: newHealth } },
-            logs: addLog(state.logs, {
+            logs: addLogs(state.logs, {
                 round: state.round,
                 message: 'Used ability: Heal. Restored 4 health.',
                 type: 'info'

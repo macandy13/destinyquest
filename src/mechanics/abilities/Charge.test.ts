@@ -29,7 +29,7 @@ describe('Charge', () => {
         expect(ability.canActivate?.(combatState, 'hero')).toBe(false);
 
         const result = ability.onActivate?.(combatState, 'hero');
-        expect(result).toBeNull();
+        expect(result).toEqual({});
     });
 
 });

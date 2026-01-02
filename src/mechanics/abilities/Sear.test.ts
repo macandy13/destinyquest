@@ -14,13 +14,13 @@ describe('Sear', () => {
 
     it('should add 1 per damage die', () => {
         const rolls = [{ value: 1, isRerolled: false }, { value: 6, isRerolled: false }];
-        const bonus = ability.onDamageCalculate?.(INITIAL_STATE, 'hero', { total: 7, rolls });
+        const bonus = ability.onDamageCalculate?.(INITIAL_STATE, 'hero', 'hero', { total: 7, rolls });
 
         expect(bonus).toBe(2);
     });
 
     it('should return 0 if no dice', () => {
-        const bonus = ability.onDamageCalculate?.(INITIAL_STATE, 'hero', { total: 0, rolls: [] });
+        const bonus = ability.onDamageCalculate?.(INITIAL_STATE, 'hero', 'hero', { total: 0, rolls: [] });
         expect(bonus).toBe(0);
     });
 });

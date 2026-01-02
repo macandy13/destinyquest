@@ -1,5 +1,5 @@
 import { registerAbility } from '../abilityRegistry';
-import { addLog } from '../../utils/statUtils';
+import { addLogs } from '../../utils/statUtils';
 import { getOpponent } from '../../types/stats';
 import { CombatLog, dealDamage } from '../../types/combat';
 
@@ -33,13 +33,13 @@ registerAbility({
         };
 
         // 2. Effect
-        if (!hasBleed) return { activeEffects, logs: addLog(state.logs, bleedLog) };
+        if (!hasBleed) return { activeEffects, logs: addLogs(state.logs, bleedLog) };
 
         const damageUpdates = dealDamage(state, 'Bleed', opponent, 1);
         return {
             ...damageUpdates,
             activeEffects,
-            logs: addLog(damageUpdates.logs ?? [], bleedLog),
+            logs: addLogs(damageUpdates.logs ?? [], bleedLog),
         };
     }
 });

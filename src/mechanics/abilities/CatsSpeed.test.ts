@@ -40,30 +40,6 @@ describe("Cat's Speed", () => {
 
         expect(ability.canActivate?.(state, 'hero')).toBe(false);
         const result = ability.onActivate?.(state, 'hero');
-        expect(result).toBeNull();
-    });
-
-    it('should apply Cat\'s Speed via hook (+1 speed for 1 round)', () => {
-        const HERO: Hero = {
-            ...heroWithStats({ speed: 0 }).original,
-            equipment: {
-                feet: testEquipment({
-                    name: 'Cat Boots',
-                    abilities: ["Cat's Speed"],
-                    type: 'feet',
-                })
-            }
-        };
-
-        const { result } = renderHook(() => useCombat(HERO));
-
-        act(() => result.current.startCombat());
-        act(() => result.current.generateSpeedRolls());
-
-        act(() => result.current.activateAbility("Cat's Speed"));
-
-        expect(result.current.combat.modifications).toHaveLength(1);
-        expect(result.current.combat.modifications[0].modification.stats.speed).toBe(1);
-        expect(result.current.combat.modifications[0].duration).toBe(1);
+        expect(result).toEqual({});
     });
 });

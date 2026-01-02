@@ -1,5 +1,5 @@
 import { registerAbility } from '../abilityRegistry';
-import { addLog } from '../../utils/statUtils';
+import { addLogs } from '../../utils/statUtils';
 import { rollDice, sumDice } from '../../utils/dice';
 import { CombatState } from '../../types/combat';
 import { CharacterType } from '../../types/stats';
@@ -36,7 +36,7 @@ registerAbility({
                     duration: undefined // Burn lasts until removed? 'cause them to burn'. Usually lasts for combat or until Cauterise.
                 }
             ],
-            logs: addLog(state.logs, { round: state.round, message: `Ignite! Inflicted ${dmg} damage and applied Burn.`, type: 'damage-hero' })
+            logs: addLogs(state.logs, { round: state.round, message: `Ignite! Inflicted ${dmg} damage and applied Burn.`, type: 'damage-hero' })
         };
     }
 });

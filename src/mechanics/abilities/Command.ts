@@ -1,5 +1,5 @@
 import { registerAbility } from '../abilityRegistry';
-import { addLog } from '../../utils/statUtils';
+import { addLogs } from '../../utils/statUtils';
 import { CombatState } from '../../types/combat';
 import { CharacterType, getOpponent } from '../../types/stats';
 
@@ -17,7 +17,7 @@ registerAbility({
 
         return {
             winner: 'hero',
-            logs: addLog(state.logs, {
+            logs: addLogs(state.logs, {
                 round: state.round,
                 message: "Used ability: Command. Seized the initiative!",
                 type: 'info'

@@ -1,5 +1,5 @@
 import { registerAbility } from '../abilityRegistry';
-import { addLog, getDamageType } from '../../utils/statUtils';
+import { addLogs, getDamageType } from '../../utils/statUtils';
 import { CharacterType, getOpponent } from '../../types/stats';
 import { CombatState } from '../../types/combat';
 import { Character } from '../../types/character';
@@ -25,7 +25,7 @@ registerAbility({
                 amount: 2,
                 source: 'Lightning'
             }],
-            logs: addLog(state.logs, {
+            logs: addLogs(state.logs, {
                 round: state.round,
                 message: 'Lightning! Inflicted 2 damage back.',
                 type: getDamageType(attackerType),

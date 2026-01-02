@@ -1,5 +1,5 @@
 import { registerAbility } from '../abilityRegistry';
-import { addLog } from '../../utils/statUtils';
+import { addLogs } from '../../utils/statUtils';
 import { CombatState } from '../../types/combat';
 import { CharacterType } from '../../types/stats';
 
@@ -22,7 +22,7 @@ registerAbility({
                 ...state.modifications,
                 { modification: { stats: { speed: -1 }, source: 'Slam', target: 'enemy' }, id: `slam-speed-${state.round}`, duration: 2 }
             ],
-            logs: addLog(state.logs, { round: state.round, message: "Used ability: Slam. Blocked attack and slowed opponent.", type: 'info' })
+            logs: addLogs(state.logs, { round: state.round, message: "Used ability: Slam. Blocked attack and slowed opponent.", type: 'info' })
         };
     }
 });

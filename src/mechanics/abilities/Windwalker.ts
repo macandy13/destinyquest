@@ -1,5 +1,5 @@
 import { registerAbility } from '../abilityRegistry';
-import { addLog } from '../../utils/statUtils';
+import { addLogs } from '../../utils/statUtils';
 import { rollDice, sumDice } from '../../utils/dice';
 import { CombatState } from '../../types/combat';
 import { CharacterType } from '../../types/stats';
@@ -42,7 +42,7 @@ registerAbility({
             phase: 'round-end', // Skip standard roll
             damageRolls: [{ value: 0, isRerolled: false }], // dummy
             damageDealt: [...state.damageDealt, { target: 'enemy', amount: dmg, source: 'Windwalker' }],
-            logs: addLog(state.logs, { round: state.round, message: `Windwalker! Rolled ${speed} dice for ${dmg} damage (${rolls.join('+')}).`, type: 'damage-hero' })
+            logs: addLogs(state.logs, { round: state.round, message: `Windwalker! Rolled ${speed} dice for ${dmg} damage (${rolls.join('+')}).`, type: 'damage-hero' })
         };
     }
 });

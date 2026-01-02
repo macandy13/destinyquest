@@ -1,7 +1,7 @@
 import { vi } from 'vitest';
 import { BookRef } from '../types/book';
 import { Character } from '../types/character';
-import { CombatState, Enemy } from '../types/combat';
+import { CombatState, DiceRoll, Enemy } from '../types/combat';
 import { Combatant } from '../types/combatant';
 import { BackpackItem, EquipmentItem, Hero } from '../types/hero';
 
@@ -133,4 +133,8 @@ export function createCombatant(char: Character): Combatant<Character> {
 export function mockDiceRolls(rolls: number[]) {
     const rollValues = rolls.map(r => (r - 1) / 6);
     vi.spyOn(Math, 'random').mockImplementation(() => rollValues.shift()!);
+}
+
+export function deterministicRoll(rolls: number[]): DiceRoll[] {
+    return rolls.map(r => { return { value: r, isRerolled: false } });
 }

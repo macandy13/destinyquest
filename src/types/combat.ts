@@ -3,7 +3,7 @@ import { StatsModification, CharacterType } from './stats';
 import { Character } from './character';
 import { Combatant } from './combatant';
 import { BookRef } from './book';
-import { addLog, getDamageType } from '../utils/statUtils';
+import { addLogs, getDamageType } from '../utils/statUtils';
 
 export interface Enemy extends Character {
     name: string;
@@ -75,7 +75,7 @@ export interface CombatState {
     enemySpeedRolls?: DiceRoll[];
 
     /* Winner of the current speed round */
-    winner: 'hero' | 'enemy' | null;
+    winner?: CharacterType | null;
 
     /* Damage rolls of the winner of the round */
     damageRolls?: DiceRoll[];
@@ -135,7 +135,7 @@ export function dealDamage(state: CombatState, source: string, target: Character
                 amount: amount,
                 source: source
             }],
-        logs: addLog(state.logs, {
+        logs: addLogs(state.logs, {
             round: state.round,
             message: `${source} dealt ${actualDamage} damage to ${targetChar.name}`,
             type: getDamageType(target)
@@ -155,7 +155,7 @@ export function healDamage(state: CombatState, source: string, target: Character
                 health: Math.min(targetChar.stats.maxHealth, targetChar.stats.health + actualHealed)
             }
         },
-        logs: addLog(state.logs, {
+        logs: addLogs(state.logs, {
             round: state.round,
             message: `${source} healed ${actualHealed} health to ${targetChar.name}`,
             // TODO: Add a heal type

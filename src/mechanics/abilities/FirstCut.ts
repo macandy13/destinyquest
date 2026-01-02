@@ -1,5 +1,5 @@
 import { registerAbility } from '../abilityRegistry';
-import { addLog } from '../../utils/statUtils';
+import { addLogs } from '../../utils/statUtils';
 import { CombatState } from '../../types/combat';
 import { CharacterType } from '../../types/stats';
 
@@ -17,7 +17,7 @@ registerAbility({
         return {
             [target]: { ...targetCombatant, stats: { ...targetCombatant.stats, health: Math.max(0, targetCombatant.stats.health - damage) } },
             damageDealt: [...state.damageDealt, { target: target, amount: damage, source: 'First Cut' }],
-            logs: addLog(state.logs, { round: state.round, message: `First Cut deals ${damage} damage`, type: 'info' })
+            logs: addLogs(state.logs, { round: state.round, message: `First Cut deals ${damage} damage`, type: 'info' })
         };
     }
 });

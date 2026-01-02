@@ -1,5 +1,5 @@
 import { registerAbility } from '../abilityRegistry';
-import { addLog } from '../../utils/statUtils';
+import { addLogs } from '../../utils/statUtils';
 import { rollDice } from '../../utils/dice';
 
 registerAbility({
@@ -19,7 +19,7 @@ registerAbility({
                 { modification: { stats: { armour: armour }, source: 'Shield Wall', target: 'hero' }, id: `shield-wall-${state.round}`, duration: 1 }
             ],
             damageDealt: [...state.damageDealt, { target: 'enemy', amount: val, source: 'Shield Wall' }],
-            logs: addLog(state.logs, { round: state.round, message: `Used ability: Shield Wall. Armour doubled, inflicted ${val} damage.`, type: 'info' })
+            logs: addLogs(state.logs, { round: state.round, message: `Used ability: Shield Wall. Armour doubled, inflicted ${val} damage.`, type: 'info' })
         };
     }
 });

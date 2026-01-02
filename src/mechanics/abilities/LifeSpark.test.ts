@@ -30,7 +30,7 @@ describe('Life Spark', () => {
 
         const rolls = [{ value: 6, isRerolled: false }, { value: 6, isRerolled: false }];
 
-        const updates = ability.onDamageRoll!(state, 'hero', rolls);
+        const updates = ability.onDamageRoll!(state, 'enemy', rolls);
 
         expect(updates.hero!.stats.health).toBe(14);
     });

@@ -1,5 +1,5 @@
 import { registerAbility } from '../abilityRegistry';
-import { addLog } from '../../utils/statUtils';
+import { addLogs } from '../../utils/statUtils';
 import { rollDice, sumDice } from '../../utils/dice';
 
 registerAbility({
@@ -35,7 +35,7 @@ registerAbility({
                     }
                 },
 
-                logs: addLog(state.logs, {
+                logs: addLogs(state.logs, {
                     round: state.round,
                     message: `Shield Spin: Opponent rolled ${ones}x[1]. Inflicted ${totalDmg} damage (${rollVals.join('+')}).`,
                     type: source === 'enemy' ? 'damage-enemy' : 'damage-hero'

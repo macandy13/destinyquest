@@ -1,5 +1,5 @@
 import { registerAbility } from '../abilityRegistry';
-import { addLog } from '../../utils/statUtils';
+import { addLogs } from '../../utils/statUtils';
 import { sumDice, rollDice } from '../../utils/dice';
 import { isOpponentDamageRollPhase } from './abilityFactories';
 import { getOpponent } from '../../types/stats';
@@ -39,7 +39,7 @@ registerAbility({
             phase: 'round-end', // Skip normal damage
             damageRolls: enemyRolls,
             damageDealt: newDamageDealt,
-            logs: addLog(state.logs, {
+            logs: addLogs(state.logs, {
                 round: state.round,
                 message: `Backfire! Inflicted ${enemyDamage} to opponent (${enemyRolls.join('+')}), took ${selfDamage} damage (${selfRolls.join('+')}).`,
                 type: 'info'

@@ -1,5 +1,5 @@
 import { registerAbility } from '../abilityRegistry';
-import { addLog } from '../../utils/statUtils';
+import { addLogs } from '../../utils/statUtils';
 import { CombatState } from '../../types/combat';
 import { CharacterType } from '../../types/stats';
 
@@ -27,7 +27,7 @@ registerAbility({
                     duration: undefined
                 }
             ],
-            logs: addLog(state.logs, { round: state.round, message: "Used ability: Corruption. Enemy weakened!", type: 'info' })
+            logs: addLogs(state.logs, { round: state.round, message: "Used ability: Corruption. Enemy weakened!", type: 'info' })
         };
     }
 });

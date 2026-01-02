@@ -1,5 +1,5 @@
 import { registerAbility } from '../abilityRegistry';
-import { addLog } from '../../utils/statUtils';
+import { addLogs } from '../../utils/statUtils';
 
 registerAbility({
     name: 'Surge',
@@ -12,7 +12,7 @@ registerAbility({
                 { modification: { stats: { magic: 3 }, source: 'Surge', target: 'hero' }, id: `surge-magic-${state.round}`, duration: 1 },
                 { modification: { stats: { speed: -1 }, source: 'Surge', target: 'hero' }, id: `surge-speed-${state.round}`, duration: 2 }
             ],
-            logs: addLog(state.logs, { round: state.round, message: "Used ability: Surge.", type: 'info' })
+            logs: addLogs(state.logs, { round: state.round, message: "Used ability: Surge.", type: 'info' })
         };
     }
 });

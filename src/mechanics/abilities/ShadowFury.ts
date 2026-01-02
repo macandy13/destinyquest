@@ -1,5 +1,5 @@
 import { registerAbility } from '../abilityRegistry';
-import { addLog } from '../../utils/statUtils';
+import { addLogs } from '../../utils/statUtils';
 
 registerAbility({
     name: 'Shadow Fury',
@@ -19,7 +19,7 @@ registerAbility({
                 ...state.modifications,
                 { modification: { stats: { damageModifier: bonus }, source: 'Shadow Fury', target: 'hero' }, id: `shadow-fury-${state.round}`, duration: 1 }
             ],
-            logs: addLog(state.logs, { round: state.round, message: `Used ability: Shadow Fury (+${bonus} Damage).`, type: 'info' })
+            logs: addLogs(state.logs, { round: state.round, message: `Used ability: Shadow Fury (+${bonus} Damage).`, type: 'info' })
         };
     }
 });

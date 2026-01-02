@@ -1,5 +1,5 @@
 import { registerAbility } from '../abilityRegistry';
-import { addLog } from '../../utils/statUtils';
+import { addLogs } from '../../utils/statUtils';
 import { CombatState } from '../../types/combat';
 
 function canActivate(state: CombatState): boolean {
@@ -26,7 +26,7 @@ registerAbility({
                 // Benefit
                 { modification: { stats: { damageModifier: 4 }, source: 'Dark Pact', target: 'hero' }, id: `dark-pact-${state.round}`, duration: 1 }
             ],
-            logs: addLog(state.logs, { round: state.round, message: "Used ability: Dark Pact. Sacrificed health for power!", type: 'info' })
+            logs: addLogs(state.logs, { round: state.round, message: "Used ability: Dark Pact. Sacrificed health for power!", type: 'info' })
         };
     }
 });

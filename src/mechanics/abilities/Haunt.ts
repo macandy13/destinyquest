@@ -1,5 +1,5 @@
 import { registerAbility } from '../abilityRegistry';
-import { addLog } from '../../utils/statUtils';
+import { addLogs } from '../../utils/statUtils';
 import { hasDouble } from '../../utils/dice';
 import { dealDamage, Modification } from '../../types/combat';
 import { CharacterType, getOpponent } from '../../types/stats';
@@ -34,7 +34,7 @@ registerAbility({
                     duration: undefined
                 }
             ],
-            logs: addLog(state.logs, { round: state.round, message: "Used ability: Haunt. Spirit summoned!", type: 'info' })
+            logs: addLogs(state.logs, { round: state.round, message: "Used ability: Haunt. Spirit summoned!", type: 'info' })
         };
     },
     // Check for "Roll a double" to dispel
@@ -48,7 +48,7 @@ registerAbility({
                 return {
                     activeEffects: state.activeEffects.filter(
                         e => !isHaunted(e, opponent)),
-                    logs: addLog(state.logs, {
+                    logs: addLogs(state.logs, {
                         round: state.round,
                         message: "Rolled a double! Haunt spirit dispelled.",
                         type: 'info'

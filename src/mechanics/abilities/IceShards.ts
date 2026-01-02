@@ -1,5 +1,5 @@
 import { registerAbility } from '../abilityRegistry';
-import { addLog } from '../../utils/statUtils';
+import { addLogs } from '../../utils/statUtils';
 import { CombatState } from '../../types/combat';
 import { CharacterType } from '../../types/stats';
 
@@ -29,7 +29,7 @@ registerAbility({
                 }
             },
             damageDealt: [...state.damageDealt, { target: 'enemy', amount: magic, source: 'Ice Shards' }],
-            logs: addLog(state.logs, { round: state.round, message: `Ice Shards! Inflicted ${magic} damage (Magic Score).`, type: 'damage-hero' })
+            logs: addLogs(state.logs, { round: state.round, message: `Ice Shards! Inflicted ${magic} damage (Magic Score).`, type: 'damage-hero' })
         };
     }
 });

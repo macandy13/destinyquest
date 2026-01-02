@@ -18,17 +18,18 @@
  * 3. Damage Phase:
  *    - resolveDamageRolls: Rolls damage dice.
  *    - commitDamageResult: Calculates total damage, applies hooks (onDamageCalculate), updates health.
+ *    - resolveEndOfRoundDamage: Calculates total damage, applies hooks (onDamageCalculate), updates health.
  *    - Checks for win/loss conditions.
  * 4. nextRound: Resets for the next round, handling cooldowns and duration ticks.
  */
 
-import { CombatState, Enemy, CombatLog, ActiveAbility, DiceRoll } from '../types/combat';
+import { CombatState, Enemy, CombatLog, ActiveAbility, DiceRoll, dealDamage } from '../types/combat';
 import { Combatant } from '../types/combatant';
 import { sumDice, rollDice, rerollDice } from '../utils/dice';
 import { Hero, HeroStats, BackpackItem } from '../types/hero';
 import { getAbilityDefinition } from './abilityRegistry';
 import { calculateEffectiveStatsForType } from '../utils/stats';
-import { addLog } from '../utils/statUtils';
+import { addLogs, getDamageType } from '../utils/statUtils';
 import { CharacterType, Stats, getOpponent } from '../types/stats';
 import './allAbilities'; // Ensure abilities are registered
 
@@ -62,266 +63,6 @@ export const MOCK_ENEMY: Enemy = {
     abilities: []
 };
 
-function _generateSpeedRolls(state: CombatState) {
-    const { hero, enemy } = calculateEffectiveStats(state);
-
-    const totalHeroDice = Math.max(1, hero.speedDice ?? 2);
-    const enemyDice = enemy.speedDice ?? 2;
-
-    let newState: CombatState = {
-        ...state,
-        phase: 'speed-roll' as const,
-        heroSpeedRolls: rollDice(totalHeroDice),
-        enemySpeedRolls: rollDice(enemyDice)
-    };
-
-    return newState;
-}
-
-function _calculateWinner(state: CombatState): CombatState {
-    if (!state.enemy || !state.hero) return state;
-
-    const heroRoll = sumDice(state.heroSpeedRolls || []);
-    const enemyRoll = sumDice(state.enemySpeedRolls || []);
-
-    const { hero: effectiveHeroStats, enemy: effectiveEnemyStats } = calculateEffectiveStats(state);
-
-    const heroTotal = heroRoll + effectiveHeroStats.speed;
-    const enemyTotal = enemyRoll + effectiveEnemyStats.speed;
-    let winner: 'hero' | 'enemy' | null = null;
-
-    let modText = '';
-    if (effectiveHeroStats.speed !== state.hero.stats.speed) {
-        const diff = effectiveHeroStats.speed - state.hero.stats.speed;
-        modText += diff > 0 ? ` (+${diff} mod)` : ` (${diff} mod)`;
-    }
-    let message = `Speed: Hero ${heroTotal}${modText} vs Enemy ${enemyTotal}. `;
-
-    if (heroTotal > enemyTotal) {
-        winner = 'hero';
-        message += 'Hero wins speed round';
-    } else if (enemyTotal > heroTotal) {
-        winner = 'enemy';
-        message += 'Enemy wins speed round';
-    } else {
-        message += 'Draw. No damage this round';
-    }
-
-    return {
-        ...state,
-        winner,
-        logs: addLog(state.logs, { round: state.round, message, type: 'info' as const })
-    };
-}
-
-function _generateDamageRolls(state: CombatState): CombatState {
-    const { hero: effectiveHeroStats, enemy: effectiveEnemyStats } = calculateEffectiveStats(state);
-
-    const diceCount = state.winner === 'hero'
-        ? (effectiveHeroStats.damageDice ?? 1)
-        : (effectiveEnemyStats?.damageDice ?? 1);
-    const rolls = rollDice(diceCount);
-    let newState: CombatState = {
-        ...state,
-        damageRolls: rolls,
-        phase: 'damage-roll' as const,
-        logs: addLog(state.logs, {
-            round: state.round,
-            message: `Damage dice rolled ${rolls.map(r => r.value).join(' + ')} = ${sumDice(rolls)}`,
-            type: 'info' as const
-        })
-    };
-
-    const loser = getOpponent(state.winner!);
-    state.activeAbilities.forEach(ability => {
-        const def = getAbilityDefinition(ability.name);
-        if (def?.onDamageRoll && ability.owner === state.winner) {
-            const updates = def.onDamageRoll(newState, loser, rolls);
-            newState = { ...newState, ...updates };
-        }
-    });
-
-    return newState;
-}
-
-function _dealDamage(state: CombatState, target: CharacterType, damage: number) {
-    state.activeAbilities
-        .forEach(ability => {
-            const def = getAbilityDefinition(ability.name);
-            const updates = def?.onDamageDealt?.(state, ability.owner, target, damage);
-            if (updates) {
-                state = { ...state, ...updates };
-            }
-        });
-    return {
-        ...state,
-        damageDealt: [...state.damageDealt, {
-            target,
-            amount: damage,
-            source: 'Attack'
-        }]
-    };
-}
-
-function _processDamagePhase(state: CombatState, rolls: DiceRoll[]): CombatState {
-    if (!state.enemy || !state.winner || !state.hero) return state;
-
-    let currentHero = { ...state.hero, stats: { ...state.hero.stats } } as Combatant<Hero>;
-    let currentEnemy = { ...state.enemy, stats: { ...state.enemy.stats } } as Combatant<Enemy>;
-
-    let modifiersFromHooks = 0;
-    let hookLogMsg = '';
-
-    const rollTotal = sumDice(rolls);
-    let logs = state.logs;
-    let damageDealt = state.damageDealt || [];
-
-    // Calculate effective stats for damage phase
-    const { hero: effectiveHeroStats, enemy: effectiveEnemyStats } = calculateEffectiveStats(state);
-
-    if (state.winner === 'hero') {
-        const skill = Math.max(effectiveHeroStats.brawn, effectiveHeroStats.magic);
-        const damageModifiers = effectiveHeroStats.damageModifier ?? 0;
-
-        state.activeAbilities.forEach(ability => {
-            const def = getAbilityDefinition(ability.name);
-            if (def && def.onDamageCalculate) {
-                const currentTotal = rollTotal + skill + modifiersFromHooks + damageModifiers;
-                const mod = def.onDamageCalculate(state, getOpponent(ability.owner), { total: currentTotal, rolls });
-                if (mod !== 0) {
-                    modifiersFromHooks += mod;
-                    hookLogMsg += ` (+${mod} ${ability.name})`;
-                }
-            }
-        });
-
-        // Damage must never be able to heal, so limit it to 0.
-        const totalDamage = Math.max(0, rollTotal + skill + modifiersFromHooks + damageModifiers);
-
-        const actualDamage = Math.max(0, totalDamage - effectiveEnemyStats.armour);
-        const damageAmount = Math.min(currentEnemy.stats.health, actualDamage);
-
-        // Optimistically apply damage to local vars before _dealDamage which might have side effects
-        state = _dealDamage(state, 'enemy', damageAmount);
-        damageDealt = state.damageDealt; // Updated from _dealDamage
-
-        currentEnemy.stats.health = Math.max(0, currentEnemy.stats.health - damageAmount);
-
-        logs = addLog(logs, {
-            round: state.round,
-            message: `Hero hits for 💥 ${totalDamage}: Rolled ${rollTotal}, Skill ${skill}, Hooks ${hookLogMsg}${damageModifiers ? `, Bonus +${damageModifiers}` : ''}. Enemy armour absorbs ${effectiveEnemyStats.armour}.`,
-            type: 'damage-enemy' as const
-        });
-    } else {
-        const skill = Math.max(effectiveEnemyStats.brawn, effectiveEnemyStats.magic);
-        let damageModifiers = effectiveEnemyStats.damageModifier ?? 0;
-        let currentTotal = rollTotal + skill + damageModifiers;
-
-        state.enemy.original.abilities.forEach(abilityName => {
-            const def = getAbilityDefinition(abilityName);
-            const mod = def?.onDamageCalculate ? def.onDamageCalculate(state, 'enemy', { total: currentTotal, rolls }) : 0;
-            if (mod !== 0) {
-                damageModifiers += mod;
-                currentTotal += mod;
-            }
-        });
-
-        const rawDamage = currentTotal;
-        const actualDamage = Math.max(0, rawDamage - effectiveHeroStats.armour);
-        const damageAmount = Math.min(currentHero.stats.health, actualDamage);
-
-        state = _dealDamage(state, 'hero', damageAmount);
-        damageDealt = state.damageDealt;
-
-        currentHero.stats.health = Math.max(0, currentHero.stats.health - damageAmount);
-
-        logs = addLog(logs, {
-            round: state.round,
-            message: `Enemy hits for 💔 ${rawDamage}: Rolled ${rollTotal}, Skill ${skill}${damageModifiers ? `, Bonus +${damageModifiers}` : ''}. Hero armour absorbs ${effectiveHeroStats.armour}.`,
-            type: 'damage-hero'
-        });
-    }
-
-    return {
-        ...state,
-        hero: currentHero,
-        enemy: currentEnemy,
-        damageDealt,
-        phase: 'round-end',
-        logs,
-    };
-}
-
-function _processEndOfRoundDamage(state: CombatState): CombatState {
-    if (!state.hero || !state.enemy) return state;
-
-    state.activeAbilities.forEach(ability => {
-        const def = getAbilityDefinition(ability.name);
-        const updates = def?.onRoundEnd ? def.onRoundEnd(state, ability.owner) : {};
-        state = {
-            ...state, ...updates,
-        };
-    });
-
-    let isFinished = state.hero.stats.health <= 0 || state.enemy.stats.health <= 0;
-    if (state.hero!.stats.health <= 0) {
-        state = {
-            ...state,
-            logs: addLog(state.logs, {
-                round: state.round,
-                message: 'Hero Defeated!',
-                type: 'loss'
-            })
-        };
-        isFinished = true;
-    }
-    if (state.enemy!.stats.health <= 0) {
-        state = {
-            ...state,
-            logs: addLog(state.logs, {
-                round: state.round,
-                message: 'Enemy Defeated!',
-                type: 'win'
-            })
-        };
-        isFinished = true;
-    }
-
-    return {
-        ...state,
-        phase: isFinished ? 'combat-end' : 'round-end',
-        logs: addLog(state.logs, {
-            round: state.round,
-            message: `Round ended, Hero: ${state.hero!.stats.health}, Enemy: ${state.enemy!.stats.health}`, type: 'info'
-        })
-    };
-}
-
-function _startNewRound(state: CombatState): CombatState {
-    const activeModifications = state.modifications
-        .map(m => { return { ...m, duration: m.duration ? m.duration - 1 : undefined }; })
-        .filter(m => m.duration === undefined || m.duration > 0);
-
-    const activeEffects = (state.activeEffects || [])
-        .map(e => ({ ...e, duration: e.duration ? e.duration - 1 : undefined }))
-        .filter(e => e.duration === undefined || e.duration > 0);
-
-    return {
-        ...state,
-        round: state.round + 1,
-        phase: 'speed-roll',
-        modifications: activeModifications,
-        rerollState: undefined,
-        heroSpeedRolls: undefined,
-        enemySpeedRolls: undefined,
-        damageRolls: undefined,
-        additionalEnemyDamage: undefined,
-        winner: null,
-        damageDealt: [],
-        activeEffects,
-    };
-}
-
 /**
  * Initializes a new combat session using the original stats of the hero and enemy.
  * Applies onCombatStart hooks.
@@ -329,7 +70,7 @@ function _startNewRound(state: CombatState): CombatState {
  * @param initialEnemy Optional enemy to fight. Defaults to MOCK_ENEMY.
  */
 export function initCombat(hero: Hero | Combatant<Hero>, initialEnemy?: Enemy | Combatant<Enemy>): CombatState {
-    let logs: CombatLog[] = addLog([], {
+    let logs: CombatLog[] = addLogs([], {
         round: 1,
         message: 'Combat started',
         type: 'info'
@@ -361,7 +102,13 @@ export function initCombat(hero: Hero | Combatant<Hero>, initialEnemy?: Enemy | 
             });
         });
     });
-    logs = addLog(logs, { round: 1, message: `Active hero abilities: ${abilities.map(a => a.name).join(', ')}`, type: 'info' });
+    if (abilities.length > 0) {
+        logs = addLogs(logs, {
+            round: 1,
+            message: `Active hero abilities: ${abilities.map(a => a.name).join(', ')}`,
+            type: 'info'
+        });
+    }
 
     initialEnemy = initialEnemy || MOCK_ENEMY;
     const enemyCombatant: Combatant<Enemy> =
@@ -387,11 +134,13 @@ export function initCombat(hero: Hero | Combatant<Hero>, initialEnemy?: Enemy | 
             },
         });
     });
-    logs = addLog(logs, {
-        round: 1,
-        message: `Active enemy abilities: ${abilities.filter(a => a.owner === 'enemy').map(a => a.name).join(', ')}`,
-        type: 'info'
-    });
+    if (abilities.filter(a => a.owner === 'enemy').length > 0) {
+        logs = addLogs(logs, {
+            round: 1,
+            message: `Active enemy abilities: ${abilities.filter(a => a.owner === 'enemy').map(a => a.name).join(', ')}`,
+            type: 'info'
+        });
+    }
     let state: CombatState = {
         ...INITIAL_STATE,
         enemy: enemyCombatant,
@@ -410,6 +159,144 @@ export function initCombat(hero: Hero | Combatant<Hero>, initialEnemy?: Enemy | 
     });
 
     return { ...state, round: 1 };
+}
+
+function _dealDamage(state: CombatState, target: CharacterType, damage: number) {
+    let newState = {
+        ...state,
+        ...dealDamage(state, 'Attack', target, damage)
+    };
+    newState.activeAbilities
+        .forEach(ability => {
+            if (ability.owner !== target) return;
+            const def = getAbilityDefinition(ability.name);
+            const updates = def?.onDamageDealt?.(state, ability.owner, target, damage);
+            if (updates) {
+                newState = { ...newState, ...updates };
+            }
+        });
+    return newState;
+}
+
+/**
+ * Applies damage to the losing combatant based on the winner's stats and damage roll.
+ * Transitions phase to 'round-end'.
+ */
+export function applyDamageResult(state: CombatState): CombatState {
+    if (!state.enemy || !state.winner || !state.hero || !state.damageRolls) return state;
+
+    const rollTotal = sumDice(state.damageRolls);
+
+    const effectiveStats = calculateEffectiveStats(state);
+    const effectiveWinnerStats = effectiveStats[state.winner]!;
+    const skill = Math.max(effectiveWinnerStats.brawn, effectiveWinnerStats.magic);
+    const damageModifiers = effectiveWinnerStats.damageModifier ?? 0;
+    const victimType = getOpponent(state.winner);
+    const victim = state[victimType]!;
+    const effectiveVictimStats = effectiveStats[victimType]!;
+    let logs = state.logs;
+    let modifiersFromHooks = 0;
+    state.activeAbilities
+        .forEach(ability => {
+            const def = getAbilityDefinition(ability.name);
+            const currentTotal = rollTotal + skill + modifiersFromHooks + damageModifiers;
+            const mod = def?.onDamageCalculate?.(state, ability.owner, victimType, {
+                total: currentTotal,
+                rolls: state.damageRolls!
+            });
+            if (mod && mod !== 0) {
+                modifiersFromHooks += mod;
+                logs = addLogs(logs, {
+                    round: state.round,
+                    message: `Damage bonus: +${mod} ${ability.name}`,
+                    type: getDamageType(state.winner!)
+                });
+            }
+        });
+
+    // Damage must never be able to heal, so limit it to 0.
+    const totalDamage = Math.max(0, rollTotal + skill + modifiersFromHooks + damageModifiers);
+    const actualDamage = Math.max(0, totalDamage - effectiveVictimStats.armour);
+    const damageAmount = Math.min(victim.stats.health, actualDamage);
+    logs = addLogs(logs, {
+        round: state.round,
+        message: `Total damage: ${damageAmount} = ${rollTotal} (${state.damageRolls!.length}d6) + ${skill} + ${modifiersFromHooks} + ${damageModifiers} - ${effectiveVictimStats.armour}`,
+        type: getDamageType(state.winner!)
+    });
+    return _dealDamage({ ...state, logs }, victimType, damageAmount);
+}
+
+export function applyEndOfRoundDamage(state: CombatState): CombatState {
+    if (!state.hero || !state.enemy) return state;
+
+    state.activeAbilities.forEach(ability => {
+        const def = getAbilityDefinition(ability.name);
+        const updates = def?.onRoundEnd ? def.onRoundEnd(state, ability.owner) : {};
+        state = {
+            ...state, ...updates,
+        };
+    });
+
+    let isFinished = state.hero.stats.health <= 0 || state.enemy.stats.health <= 0;
+    if (state.hero!.stats.health <= 0) {
+        state = {
+            ...state,
+            logs: addLogs(state.logs, {
+                round: state.round,
+                message: 'Hero Defeated!',
+                type: 'loss'
+            })
+        };
+        isFinished = true;
+    }
+    if (state.enemy!.stats.health <= 0) {
+        state = {
+            ...state,
+            logs: addLogs(state.logs, {
+                round: state.round,
+                message: 'Enemy Defeated!',
+                type: 'win'
+            })
+        };
+        isFinished = true;
+    }
+
+    return {
+        ...state,
+        phase: isFinished ? 'combat-end' : 'round-end',
+        logs: addLogs(state.logs, {
+            round: state.round,
+            message: `Round ended, Hero: ${state.hero!.stats.health}, Enemy: ${state.enemy!.stats.health}`, type: 'info'
+        })
+    };
+}
+
+/**
+ * Starts a new round, resetting the state and applying duration ticks to modifications and active effects.
+ */
+export function startNewRound(state: CombatState): CombatState {
+    const activeModifications = state.modifications
+        .map(m => { return { ...m, duration: m.duration ? m.duration - 1 : undefined }; })
+        .filter(m => m.duration === undefined || m.duration > 0);
+
+    const activeEffects = (state.activeEffects || [])
+        .map(e => ({ ...e, duration: e.duration ? e.duration - 1 : undefined }))
+        .filter(e => e.duration === undefined || e.duration > 0);
+
+    return {
+        ...state,
+        round: state.round + 1,
+        phase: 'speed-roll',
+        modifications: activeModifications,
+        rerollState: undefined,
+        heroSpeedRolls: undefined,
+        enemySpeedRolls: undefined,
+        damageRolls: undefined,
+        additionalEnemyDamage: undefined,
+        winner: null,
+        damageDealt: [],
+        activeEffects,
+    };
 }
 
 /**
@@ -432,7 +319,6 @@ export function calculateEffectiveStats(state: CombatState): { hero: HeroStats, 
 /**
  * Activates a specific ability by name.
  * Checks validity/usages, applies onActivate hooks, and updates the state.
- * If the ability affects speed phase outcomes (e.g. dice manipulation), it may re-calculate winders.
  */
 export function activateAbility(state: CombatState, abilityName: string): CombatState {
     const ability = state.activeAbilities.find(a => a.name === abilityName && !a.used);
@@ -456,19 +342,29 @@ export function activateAbility(state: CombatState, abilityName: string): Combat
         activeAbilities: newActiveAbilities,
     };
 
-    const { hero: effectiveHeroStats, enemy: effectiveEnemyStats } = calculateEffectiveStats(newState);
-
+    // Any automatic dice-rerolling should be done now.
+    const effectiveStats = calculateEffectiveStats(newState);
     if (newState.phase === 'speed-roll') {
-        if (newState.hero!.stats.speed !== effectiveHeroStats.speed) {
+        let diceWereRerolled = false;
+        if (newState.hero!.stats.speed !== effectiveStats.hero.speed) {
             newState.heroSpeedRolls = rerollDice(
-                newState.heroSpeedRolls || [], effectiveHeroStats.speed);
+                newState.heroSpeedRolls || [], effectiveStats.hero.speed);
+            diceWereRerolled = true;
         }
-        if (newState.enemy!.stats.speed !== effectiveEnemyStats.speed) {
+        if (newState.enemy!.stats.speed !== effectiveStats.enemy.speed) {
             newState.enemySpeedRolls = rerollDice(
-                newState.enemySpeedRolls || [], effectiveEnemyStats.speed);
+                newState.enemySpeedRolls || [], effectiveStats.enemy.speed);
+            diceWereRerolled = true;
         }
-        if (newState.heroSpeedRolls && newState.enemySpeedRolls) {
-            return _calculateWinner(newState);
+        if (newState.heroSpeedRolls && newState.enemySpeedRolls && diceWereRerolled) {
+            return setSpeedRolls(newState, newState.heroSpeedRolls, newState.enemySpeedRolls);
+        }
+    }
+    if (newState.phase === 'damage-roll' && newState.winner) {
+        if (newState[newState.winner]!.stats.damageDice !== effectiveStats[newState.winner].damageDice) {
+            newState.damageRolls = rerollDice(
+                newState.damageRolls || [], effectiveStats[newState.winner].damageDice ?? 0);
+            return setDamageRolls(newState, newState.damageRolls);
         }
     }
     return newState;
@@ -529,41 +425,107 @@ export function useBackpackItem(state: CombatState, index: number): CombatState 
 }
 
 /**
- * Generates initial random speed rolls for both combatants and calculates the winner.
- * Transitions phase to 'speed-roll'.
- */
-export function generateSpeedRolls(state: CombatState): CombatState {
-    const newState = _generateSpeedRolls(state);
-    return _calculateWinner(resolveSpeedRolls(newState, newState.heroSpeedRolls!, newState.enemySpeedRolls!));
-}
-
-/**
  * Resolves speed rolls with provided values (useful for tests or specific overrides).
  * Transitions phase to 'speed-roll'.
  */
-export function resolveSpeedRolls(state: CombatState, heroRolls: DiceRoll[], enemyRolls: DiceRoll[]): CombatState {
-    let newState: CombatState = {
-        ...state,
-        phase: 'speed-roll',
-        heroSpeedRolls: heroRolls,
-        enemySpeedRolls: enemyRolls,
-    }
-
+function _resolveSpeedRolls(state: CombatState): CombatState {
     state.activeAbilities.forEach(ability => {
         const def = getAbilityDefinition(ability.name);
         if (def?.onSpeedRoll) {
-            if (ability.owner == 'hero' && newState.heroSpeedRolls) {
-                const updates = def.onSpeedRoll(newState, 'hero', newState.heroSpeedRolls);
-                newState = { ...newState, ...updates };
+            if (ability.owner == 'hero' && state.heroSpeedRolls) {
+                const updates = def.onSpeedRoll(state, 'hero', state.heroSpeedRolls);
+                state = { ...state, ...updates };
             }
-            if (ability.owner == 'enemy' && newState.enemySpeedRolls) {
-                const updates = def.onSpeedRoll(newState, 'enemy', newState.enemySpeedRolls);
-                newState = { ...newState, ...updates };
+            if (ability.owner == 'enemy' && state.enemySpeedRolls) {
+                const updates = def.onSpeedRoll(state, 'enemy', state.enemySpeedRolls);
+                state = { ...state, ...updates };
             }
         }
     });
 
-    return _calculateWinner(newState);
+    return applySpeedResult(state);
+}
+/**
+ * Generates initial random speed rolls for both combatants and calculates the winner.
+ * Transitions phase to 'speed-roll'.
+ */
+export function generateSpeedRolls(state: CombatState): CombatState {
+    const { hero, enemy } = calculateEffectiveStats(state);
+
+    const totalHeroDice = Math.max(1, hero.speedDice ?? 2);
+    const enemyDice = enemy.speedDice ?? 2;
+
+    let newState: CombatState = {
+        ...state,
+        phase: 'speed-roll' as const,
+        heroSpeedRolls: rollDice(totalHeroDice),
+        enemySpeedRolls: rollDice(enemyDice)
+    };
+
+    return _resolveSpeedRolls(newState);
+}
+
+/**
+ * Generates initial random speed rolls for both combatants and calculates the winner.
+ * Transitions phase to 'speed-roll'.
+ */
+export function setSpeedRolls(state: CombatState, heroRolls: DiceRoll[], enemyRolls: DiceRoll[]): CombatState {
+    return _resolveSpeedRolls({
+        ...state,
+        phase: 'speed-roll',
+        heroSpeedRolls: heroRolls,
+        enemySpeedRolls: enemyRolls,
+        logs: addLogs(state.logs, {
+            round: state.round,
+            message: `Hero speed dice set to ${heroRolls.map(r => r.value).join(' + ')} = ${sumDice(heroRolls)}`,
+            type: 'info'
+        }, {
+            round: state.round,
+            message: `Enemy speed dice set to ${enemyRolls.map(r => r.value).join(' + ')} = ${sumDice(enemyRolls)}`,
+            type: 'info'
+        })
+    });
+}
+
+export function applySpeedResult(state: CombatState): CombatState {
+    if (!state.enemy || !state.hero) return state;
+
+    const heroRoll = sumDice(state.heroSpeedRolls || []);
+    const enemyRoll = sumDice(state.enemySpeedRolls || []);
+
+    const { hero: effectiveHeroStats, enemy: effectiveEnemyStats } = calculateEffectiveStats(state);
+
+    const heroTotal = heroRoll + effectiveHeroStats.speed;
+    const enemyTotal = enemyRoll + effectiveEnemyStats.speed;
+    let winner: 'hero' | 'enemy' | null | undefined;
+
+    let modText = '';
+    if (effectiveHeroStats.speed !== state.hero.stats.speed) {
+        const diff = effectiveHeroStats.speed - state.hero.stats.speed;
+        modText += diff > 0 ? ` (+${diff} mod)` : ` (${diff} mod)`;
+    }
+    let message = `Speed: Hero ${heroTotal}${modText} vs Enemy ${enemyTotal}. `;
+
+    if (heroTotal > enemyTotal) {
+        winner = 'hero';
+        message += 'Hero wins speed round';
+    } else if (enemyTotal > heroTotal) {
+        winner = 'enemy';
+        message += 'Enemy wins speed round';
+    } else {
+        winner = null;
+        message += 'Draw. No damage this round';
+    }
+
+    return {
+        ...state,
+        winner,
+        logs: addLogs(state.logs, {
+            round: state.round,
+            message,
+            type: 'info' as const
+        })
+    };
 }
 
 /**
@@ -572,27 +534,63 @@ export function resolveSpeedRolls(state: CombatState, heroRolls: DiceRoll[], ene
  * If a draw, transitions to 'round-end'.
  */
 export function commitSpeedResult(state: CombatState): CombatState {
-    if (!state.winner) {
+    if (state.winner === undefined) {
+        state = applySpeedResult(state);
+    }
+    if (state.winner === null) {
         return {
             ...state,
             phase: 'round-end',
-            logs: addLog(state.logs, { round: state.round, message: 'Speed round ended.', type: 'info' })
+            logs: addLogs(state.logs, {
+                round: state.round,
+                message: 'Speed round ended.',
+                type: 'info'
+            })
         };
     }
-    return _generateDamageRolls(state);
+    return {
+        ...state,
+        phase: 'damage-roll',
+    };
+}
+
+export function generateDamageRolls(state: CombatState): CombatState {
+    const { hero: effectiveHeroStats, enemy: effectiveEnemyStats } = calculateEffectiveStats(state);
+
+    const diceCount = state.winner === 'hero'
+        ? (effectiveHeroStats.damageDice ?? 1)
+        : (effectiveEnemyStats?.damageDice ?? 1);
+    const rolls = rollDice(diceCount);
+    return setDamageRolls(state, rolls);
 }
 
 /**
  * Resolves damage rolls with provided values.
  * Transitions phase to 'damage-roll'.
  */
-export function resolveDamageRolls(state: CombatState, rolls: DiceRoll[]): CombatState {
-    return {
+export function setDamageRolls(state: CombatState, rolls: DiceRoll[]): CombatState {
+    if (!state.winner) return state;
+
+    state = {
         ...state,
         damageRolls: rolls,
         phase: 'damage-roll',
-        logs: addLog(state.logs, { round: state.round, message: `Damage dice rolled ${rolls.map(r => r.value).join(' + ')} = ${sumDice(rolls)}`, type: 'info' })
+        logs: addLogs(state.logs, {
+            round: state.round,
+            message: `Damage dice set to ${rolls.map(r => r.value).join(' + ')} = ${sumDice(rolls)}`,
+            type: 'info'
+        })
     };
+
+    const loser = getOpponent(state.winner!);
+    state.activeAbilities.forEach(ability => {
+        const def = getAbilityDefinition(ability.name);
+        if (def?.onDamageRoll && ability.owner === state.winner) {
+            const updates = def.onDamageRoll(state, loser, state.damageRolls!);
+            state = { ...state, ...updates };
+        }
+    });
+    return state;
 }
 
 /**
@@ -602,7 +600,17 @@ export function resolveDamageRolls(state: CombatState, rolls: DiceRoll[]): Comba
  */
 export function commitDamageResult(state: CombatState): CombatState {
     if (!state.damageRolls) return state;
-    return _processEndOfRoundDamage(_processDamagePhase(state, state.damageRolls));
+    return { ...applyDamageResult(state), phase: 'round-end' };
+}
+
+
+/**
+ * Commits damage results, applying damage calculations, armour, and ability hooks (onDamageCalculate).
+ * Updates health and checks for defeat.
+ * Transitions to 'round-end' or 'combat-end'.
+ */
+export function endRound(state: CombatState): CombatState {
+    return applyEndOfRoundDamage(state);
 }
 
 /**
@@ -612,7 +620,7 @@ export function commitDamageResult(state: CombatState): CombatState {
  * Automatically generates new speed rolls for the new round.
  */
 export function nextRound(state: CombatState): CombatState {
-    return _calculateWinner(_generateSpeedRolls(_startNewRound(state)));
+    return startNewRound(state);
 }
 
 /**
@@ -631,7 +639,7 @@ export function handleReroll(state: CombatState, dieIndex: number): CombatState 
     const nextState = { ...state, ...updates, rerollState: undefined };
 
     if (updates.heroSpeedRolls && nextState.enemySpeedRolls) {
-        return _calculateWinner(nextState);
+        return applySpeedResult(nextState);
     }
     return nextState;
 }
@@ -643,6 +651,7 @@ export function endCombat(state: CombatState): CombatState {
     return {
         ...state,
         phase: 'combat-end',
-        logs: addLog(state.logs, { round: state.round, message: 'Combat ended.', type: 'info' })
+        logs: addLogs(state.logs, { round: state.round, message: 'Combat ended.', type: 'info' })
     };
 }
+

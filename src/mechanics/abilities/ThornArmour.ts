@@ -1,5 +1,5 @@
 import { registerAbility } from '../abilityRegistry';
-import { addLog } from '../../utils/statUtils';
+import { addLogs } from '../../utils/statUtils';
 import { rollDice } from '../../utils/dice';
 
 registerAbility({
@@ -14,7 +14,7 @@ registerAbility({
                 { modification: { stats: { armour: 3 }, source: 'Thorn Armour', target: 'hero' }, id: `thorn-armour-${state.round}`, duration: 1 }
             ],
             damageDealt: [...state.damageDealt, { target: 'enemy', amount: val, source: 'Thorn Armour' }],
-            logs: addLog(state.logs, { round: state.round, message: `Thorn Armour active! Armour +3, inflicted ${val} damage.`, type: 'info' })
+            logs: addLogs(state.logs, { round: state.round, message: `Thorn Armour active! Armour +3, inflicted ${val} damage.`, type: 'info' })
         };
     }
 });

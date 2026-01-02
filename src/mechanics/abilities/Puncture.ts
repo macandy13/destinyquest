@@ -1,5 +1,5 @@
 import { registerAbility } from '../abilityRegistry';
-import { addLog } from '../../utils/statUtils';
+import { addLogs } from '../../utils/statUtils';
 import { rollDice, sumDice } from '../../utils/dice';
 import { CombatState } from '../../types/combat';
 import { CharacterType } from '../../types/stats';
@@ -35,7 +35,7 @@ registerAbility({
                 ...state.modifications,
                 { modification: { stats: { armour: -1 }, source: 'Puncture', target: 'enemy' }, id: `puncture-${state.round}`, duration: undefined }
             ],
-            logs: addLog(state.logs, { round: state.round, message: `Puncture! Inflicted ${dmg} damage and reduced armour.`, type: 'damage-hero' })
+            logs: addLogs(state.logs, { round: state.round, message: `Puncture! Inflicted ${dmg} damage and reduced armour.`, type: 'damage-hero' })
         };
     }
 });

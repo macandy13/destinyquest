@@ -1,5 +1,5 @@
 import { registerAbility } from '../abilityRegistry';
-import { addLog } from '../../utils/statUtils';
+import { addLogs } from '../../utils/statUtils';
 
 registerAbility({
     name: 'Pound',
@@ -12,7 +12,7 @@ registerAbility({
                 { modification: { stats: { damageModifier: 3 }, source: 'Pound', target: 'hero' }, id: `pound-dmg-${state.round}`, duration: 1 },
                 { modification: { stats: { speed: -1 }, source: 'Pound', target: 'hero' }, id: `pound-speed-${state.round}`, duration: 2 }
             ],
-            logs: addLog(state.logs, { round: state.round, message: "Used ability: Pound.", type: 'info' })
+            logs: addLogs(state.logs, { round: state.round, message: "Used ability: Pound.", type: 'info' })
         };
     }
 });

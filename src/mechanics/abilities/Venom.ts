@@ -1,5 +1,5 @@
 import { registerAbility } from '../abilityRegistry';
-import { addLog } from '../../utils/statUtils';
+import { addLogs } from '../../utils/statUtils';
 import { getOpponent } from '../../types/stats';
 import { CombatLog, dealDamage } from '../../types/combat';
 
@@ -45,14 +45,14 @@ registerAbility({
         // 2. Effect
         if (!hasVenom) return {
             activeEffects,
-            logs: addLog(state.logs, venomAppliedLog)
+            logs: addLogs(state.logs, venomAppliedLog)
         };
 
         const damageUpdates = dealDamage(state, 'Venom', target, damage);
         return {
             ...damageUpdates,
             activeEffects,
-            logs: addLog(state.logs, venomAppliedLog)
+            logs: addLogs(state.logs, venomAppliedLog)
         };
     }
 });

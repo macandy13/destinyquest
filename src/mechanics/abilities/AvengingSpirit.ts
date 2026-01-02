@@ -1,5 +1,5 @@
 import { registerAbility } from '../abilityRegistry';
-import { addLog } from '../../utils/statUtils';
+import { addLogs } from '../../utils/statUtils';
 import { getOpponent } from '../../types/stats';
 
 registerAbility({
@@ -26,7 +26,7 @@ registerAbility({
 
         return {
             damageDealt: [...state.damageDealt, { target: opponent, amount: damageBack, source: 'Avenging Spirit' }],
-            logs: addLog(state.logs, { round: state.round, message: `Avenging Spirit: Inflicted ${damageBack} damage back to opponent!`, type: 'damage-enemy' })
+            logs: addLogs(state.logs, { round: state.round, message: `Avenging Spirit: Inflicted ${damageBack} damage back to opponent!`, type: 'damage-enemy' })
         };
     }
 });

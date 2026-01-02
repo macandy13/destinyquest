@@ -23,30 +23,33 @@ const CombatArena: React.FC<CombatArenaProps> = ({ hero, onCombatFinish }) => {
         startCombat,
         activateAbility,
         useBackpackItem,
-        generateSpeedRolls,
-        commitSpeedResult,
+        rollSpeedDice,
+        commitSpeedAndRollDamageDice,
+        confirmDamage,
         handleReroll,
-        commitDamageResult,
+        endRoundWithoutDamage,
         nextRound,
+        endCombat,
     } = useCombat(hero);
 
-    if (combat.phase === 'combat-start' && !combat.enemy) {
+    const state = combat.displayed;
+    if (state.phase === 'combat-start' && !state.enemy) {
         return (
             <EnemySelector onSelect={startCombat} />
         );
     }
 
-    if (!combat.enemy) return null;
+    if (!state.enemy) return null;
 
     const getPhaseInstruction = () => {
-        switch (combat.phase) {
+        switch (state.phase) {
             case 'combat-start': return "Enemy Found! Prepare to fight!";
             case 'speed-roll':
-                if (combat.heroSpeedRolls) return combat.winner === 'hero' ? "Hero wins speed! Proceed to damage?" : (combat.winner === 'enemy' ? "Enemy wins speed! Brace for impact." : "Draw! No damage.");
+                if (state.heroSpeedRolls) return state.winner === 'hero' ? "Hero wins speed! Proceed to damage?" : (state.winner === 'enemy' ? "Enemy wins speed! Brace for impact." : "Draw! No damage.");
                 return "Rolling Speed...";
             case 'damage-roll':
-                if (combat.damageRolls) return "Confirm Damage?";
-                return combat.winner === 'hero' ? "Roll Damage (1d6)" : "Enemy Attacking...";
+                if (state.damageRolls) return "Confirm Damage?";
+                return state.winner === 'hero' ? "Roll Damage (1d6)" : "Enemy Attacking...";
 
             case 'round-end': return "Round Complete.";
             case 'combat-end': return "Combat Finished";
@@ -57,25 +60,25 @@ const CombatArena: React.FC<CombatArenaProps> = ({ hero, onCombatFinish }) => {
     // Derived states
     // speed-rolls are shown if we have rolls (phase might be speed-roll or damage-roll or round-end if we want to keep them visible)
     // Actually, usually we keep speed dice visible until round ends for context.
-    const showSpeedDice = !!combat.heroSpeedRolls && combat.phase !== 'combat-start';
+    const showSpeedDice = !!state.heroSpeedRolls && state.phase !== 'combat-start';
 
     // Damage section shown only in damage-roll phase or if we have damage rolls in round-end
-    const showDamageSection = combat.phase === 'damage-roll' || (combat.phase === 'round-end' && combat.damageRolls);
+    const showDamageSection = state.phase === 'damage-roll' || (state.phase === 'round-end' && state.damageRolls);
 
     // Should we show proceed button for Damage?
     // Only if damage rolls exist and we are in damage-roll phase
-    const showDamageConfirm = combat.phase === 'damage-roll' && !!combat.damageRolls;
+    const showDamageConfirm = state.phase === 'damage-roll' && !!state.damageRolls;
 
     return (
         <div className="combat-arena">
             <div className="arena-header">
-                <div className="text-dim round-indicator">Round {combat.round}</div>
+                <div className="text-dim round-indicator">Round {state.round}</div>
 
                 <div className="combatants">
                     {/* Hero Card */}
                     <CombatantCard
                         name={hero.name}
-                        currentHealth={combat.hero?.stats.health ?? 0}
+                        currentHealth={state.hero?.stats.health ?? 0}
                         maxHealth={hero.stats.maxHealth}
                         speed={hero.stats.speed}
                         brawn={hero.stats.brawn}
@@ -88,34 +91,34 @@ const CombatArena: React.FC<CombatArenaProps> = ({ hero, onCombatFinish }) => {
 
                     {/* Enemy Card */}
                     <CombatantCard
-                        name={combat.enemy.name}
-                        currentHealth={combat.enemy.stats.health}
-                        maxHealth={combat.enemy.stats.maxHealth}
-                        speed={combat.enemy.stats.speed}
-                        brawn={combat.enemy.stats.brawn}
-                        magic={combat.enemy.stats.magic}
-                        armour={combat.enemy.stats.armour}
+                        name={state.enemy.name}
+                        currentHealth={state.enemy.stats.health}
+                        maxHealth={state.enemy.stats.maxHealth}
+                        speed={state.enemy.stats.speed}
+                        brawn={state.enemy.stats.brawn}
+                        magic={state.enemy.stats.magic}
+                        armour={state.enemy.stats.armour}
                         isEnemy={true}
                     />
                 </div>
 
-                <CombatModifiers modifications={combat.modifications.map(m => ({ ...m, duration: m.duration ?? 0 }))} />
+                <CombatModifiers modifications={state.modifications.map(m => ({ ...m, duration: m.duration ?? 0 }))} />
             </div>
 
             <div className="arena-center">
                 {showSpeedDice &&
-                    <div className={`speed-rolls-container speed-rolls ${combat.phase !== 'speed-roll' ? 'rolls-mini' : ''}`}>
+                    <div className={`speed-rolls-container speed-rolls ${state.phase !== 'speed-roll' ? 'rolls-mini' : ''}`}>
                         <div className="hero-dice">
                             <CombatDice
                                 label="Hero Speed"
-                                values={combat.heroSpeedRolls} // Persist if exists
-                                onDieClick={combat.rerollState?.target === 'hero-speed' ? (i) => handleReroll(i) : undefined}
-                                mode={combat.rerollState?.target === 'hero-speed' ? 'select-die' : (combat.rerollState ? 'disabled' : 'normal')}
+                                values={state.heroSpeedRolls} // Persist if exists
+                                onDieClick={state.rerollState?.target === 'hero-speed' ? (i) => handleReroll(i) : undefined}
+                                mode={state.rerollState?.target === 'hero-speed' ? 'select-die' : (state.rerollState ? 'disabled' : 'normal')}
                                 baseValue={hero.stats.speed}
                                 modifierValue={
                                     calculateEffectiveStats(
                                         hero.stats,
-                                        combat.modifications.filter(m => m.modification.target === 'hero').map(m => m.modification)
+                                        state.modifications.filter(m => m.modification.target === 'hero').map(m => m.modification)
                                     ).speed - hero.stats.speed
                                 }
                             />
@@ -124,59 +127,59 @@ const CombatArena: React.FC<CombatArenaProps> = ({ hero, onCombatFinish }) => {
                         <div className="enemy-dice">
                             <CombatDice
                                 label="Enemy Speed"
-                                values={combat.enemySpeedRolls}
-                                baseValue={combat.enemy.stats.speed}
-                                mode={combat.rerollState ? 'disabled' : 'normal'}
+                                values={state.enemySpeedRolls}
+                                baseValue={state.enemy.stats.speed}
+                                mode={state.rerollState ? 'disabled' : 'normal'}
                             />
                         </div>
                     </div>}
 
                 {showDamageSection && (
-                    <div className={`damage-roll-container damage-section ${combat.phase !== 'damage-roll' ? 'rolls-mini' : ''}`}>
+                    <div className={`damage-roll-container damage-section ${state.phase !== 'damage-roll' ? 'rolls-mini' : ''}`}>
                         <div className="damage-title">
-                            {combat.phase === 'damage-roll'
-                                ? (combat.winner === 'hero' ? '💥 ROLL FOR DAMAGE!' : '🛡️ BRACE FOR IMPACT!')
-                                : (combat.winner === 'hero' ? '💥 HERO HIT:' : '🛡️ ENEMY HIT:')
+                            {state.phase === 'damage-roll'
+                                ? (state.winner === 'hero' ? '💥 ROLL FOR DAMAGE!' : '🛡️ BRACE FOR IMPACT!')
+                                : (state.winner === 'hero' ? '💥 HERO HIT:' : '🛡️ ENEMY HIT:')
                             }
                         </div>
 
-                        {combat.winner === 'hero' && (
+                        {state.winner === 'hero' && (
                             <div className="damage-dice-container">
                                 <CombatDice
                                     label="Damage"
-                                    values={combat.damageRolls} // Show result if exists
-                                    onDieClick={combat.rerollState?.target === 'damage' ? (i) => handleReroll(i) : undefined}
-                                    mode={combat.rerollState?.target === 'damage' ? 'select-die' : (combat.rerollState ? 'disabled' : 'normal')}
+                                    values={state.damageRolls} // Show result if exists
+                                    onDieClick={state.rerollState?.target === 'damage' ? (i) => handleReroll(i) : undefined}
+                                    mode={state.rerollState?.target === 'damage' ? 'select-die' : (state.rerollState ? 'disabled' : 'normal')}
                                     baseValue={Math.max(hero.stats.brawn, hero.stats.magic)}
                                     modifierValue={
                                         calculateEffectiveStats(
                                             hero.stats,
-                                            combat.modifications.filter(m => m.modification.target === 'hero').map(m => m.modification)
+                                            state.modifications.filter(m => m.modification.target === 'hero').map(m => m.modification)
                                         ).damageModifier ?? 0
                                     }
                                 />
                             </div>
                         )}
 
-                        {combat.winner === 'enemy' && (
+                        {state.winner === 'enemy' && (
                             <div className="enemy-damage-container">
                                 <CombatDice
                                     label="Enemy Damage"
-                                    values={combat.damageRolls}
-                                    baseValue={Math.max(combat.enemy.stats.brawn, combat.enemy.stats.magic)}
-                                    mode={combat.rerollState ? 'disabled' : 'normal'}
+                                    values={state.damageRolls}
+                                    baseValue={Math.max(state.enemy.stats.brawn, state.enemy.stats.magic)}
+                                    mode={state.rerollState ? 'disabled' : 'normal'}
                                 />
                             </div>
                         )}
                     </div>
                 )}
 
-                {combat.phase === 'round-end' && (
+                {state.phase === 'round-end' && (
                     <div className="round-end-container damage-section">
                         <div className="round-end-content">
                             <div className="round-end-text">
-                                {combat.additionalEnemyDamage && (
-                                    combat.additionalEnemyDamage.map(d =>
+                                {state.additionalEnemyDamage && (
+                                    state.additionalEnemyDamage.map(d =>
                                         <div className="additional-damage">
                                             Bonus: +{d.amount} {d.source}
                                         </div>)
@@ -191,70 +194,74 @@ const CombatArena: React.FC<CombatArenaProps> = ({ hero, onCombatFinish }) => {
                         {getPhaseInstruction()}
                     </div>
 
-                    {(combat.phase === 'combat-start') && (
-                        <button className="btn btn-primary" onClick={generateSpeedRolls}>
-                            Fight!
-                        </button>
-                    )}
+                    {(state.phase === 'combat-start'
+                        || (state.phase === 'speed-roll' && !state.heroSpeedRolls)) && (
+                            <button className="btn btn-primary" onClick={rollSpeedDice}>
+                                Roll Speed Dice
+                            </button>
+                        )}
 
                     {/* Speed or Damage Result Confirmation / Proceed Button */}
-                    {combat.phase === 'speed-roll' && combat.heroSpeedRolls && (
-                        combat.winner ?
-                            <button className="btn btn-primary" onClick={commitSpeedResult}>
-                                Procced to Damage Roll
+                    {state.phase === 'speed-roll' && state.heroSpeedRolls && (
+                        state.winner ?
+                            <button className="btn btn-primary" onClick={commitSpeedAndRollDamageDice}>
+                                Confirm Winner & Roll Damage Dice
                             </button> :
-                            <button className="btn btn-primary" onClick={nextRound}>
-                                End Round (Draw)
+                            <button className="btn btn-primary" onClick={endRoundWithoutDamage}>
+                                Confirm Draw
                             </button>
                     )}
 
-                    {combat.phase === 'damage-roll' && showDamageConfirm && (
-                        <button className="btn btn-primary" onClick={commitDamageResult}>
-                            Confirm Damage & End Round
+                    {state.phase === 'damage-roll' && showDamageConfirm && (
+                        <button className="btn btn-primary" onClick={confirmDamage}>
+                            Confirm Damage
                         </button>
                     )}
 
-                    {(combat.phase === 'round-end') && (
+                    {(state.phase === 'round-end') && (
                         <button className="btn btn-primary" onClick={nextRound}>
-                            Next Round
+                            End Round
+                        </button>
+                    )}
+
+                    {(state.phase === 'combat-end') && (
+                        <button className="btn btn-primary" onClick={endCombat}>
+                            End Combat
                         </button>
                     )}
 
                     <CombatAbilitySelector
-                        combat={combat}
+                        combat={state}
                         onActivateAbility={activateAbility}
                         onUseBackbackItem={useBackpackItem}
                     />
                 </div>
             </div>
 
-            <CombatLog logs={combat.logs} />
+            <CombatLog logs={state.logs} />
 
-            {combat.phase === 'combat-end' && (
+            {combat.finished && (
                 <CombatResultDialog
-                    result={combat.hero?.stats.health! <= 0 ? 'defeat' : 'victory'}
+                    result={state.hero?.stats.health! <= 0 ? 'defeat' : 'victory'}
                     onAccept={() => {
-                        if (!combat.hero) return;
+                        if (!state.hero) return;
 
                         let newHealth = 0;
-                        if (combat.hero.stats.health <= 0) {
+                        if (state.hero.stats.health <= 0) {
                             newHealth = 0; // Defeat
-                        } else if (combat.enemy?.original?.preventHealing) {
-                            newHealth = combat.hero.stats.health; // Prevent Healing
+                        } else if (state.enemy?.original?.preventHealing) {
+                            newHealth = state.hero.stats.health; // Prevent Healing
                         } else {
                             newHealth = hero.stats.maxHealth; // Full Restore
                         }
 
                         onCombatFinish({
                             health: newHealth,
-                            backpack: combat.hero.original.backpack
+                            backpack: state.hero.original.backpack
                         });
                     }}
                     onRetry={() => {
-                        // Restart combat with the same enemy, but fresh hero state (from props)
-                        if (combat.enemy) {
-                            startCombat(combat.enemy.original);
-                        }
+                        startCombat(state.enemy!.original);
                     }}
                 />
             )}

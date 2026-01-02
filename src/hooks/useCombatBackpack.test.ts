@@ -40,8 +40,8 @@ describe('useCombat - Backpack Items', () => {
             result.current.startCombat(MOCK_ENEMY);
         });
 
-        expect(result.current.combat.backpack).toHaveLength(1);
-        expect(result.current.combat.backpack[0].name).toBe('Healing Potion');
+        expect(result.current.combat.displayed.backpack).toHaveLength(1);
+        expect(result.current.combat.displayed.backpack[0].name).toBe('Healing Potion');
     });
 
     it('uses healing potion to restore health', () => {
@@ -57,15 +57,15 @@ describe('useCombat - Backpack Items', () => {
             result.current.startCombat(MOCK_ENEMY);
         });
 
-        expect(result.current.combat.hero?.stats.health).toBe(10);
+        expect(result.current.combat.displayed.hero?.stats.health).toBe(10);
 
         act(() => {
             result.current.useBackpackItem(0);
         });
 
-        expect(result.current.combat.hero?.stats.health).toBe(16); // 10 + 6
-        expect(result.current.combat.backpack).toHaveLength(0); // Removed after use
-        expect(result.current.combat.logs.some(l => l.message.includes('Used Healing Potion'))).toBe(true);
+        expect(result.current.combat.displayed.hero?.stats.health).toBe(16); // 10 + 6
+        expect(result.current.combat.displayed.backpack).toHaveLength(0); // Removed after use
+        expect(result.current.combat.displayed.logs.some(l => l.message.includes('Used Healing Potion'))).toBe(true);
     });
 
     it('uses speed potion to modify stats', () => {
@@ -85,8 +85,8 @@ describe('useCombat - Backpack Items', () => {
             result.current.useBackpackItem(0);
         });
 
-        expect(result.current.combat.modifications).toHaveLength(1);
-        expect(result.current.combat.modifications[0].modification.stats.speed).toBe(2);
-        expect(result.current.combat.backpack).toHaveLength(0); // Removed after use
+        expect(result.current.combat.displayed.modifications).toHaveLength(1);
+        expect(result.current.combat.displayed.modifications[0].modification.stats.speed).toBe(2);
+        expect(result.current.combat.displayed.backpack).toHaveLength(0); // Removed after use
     });
 });

@@ -1,5 +1,5 @@
 import { registerAbility } from '../abilityRegistry';
-import { addLog } from '../../utils/statUtils';
+import { addLogs } from '../../utils/statUtils';
 import { rollDice, sumDice } from '../../utils/dice';
 import { CombatState } from '../../types/combat';
 import { CharacterType } from '../../types/stats';
@@ -30,7 +30,7 @@ registerAbility({
             enemy: { ...enemy, stats: { ...enemy.stats, health: newEnemyHealth } },
             damageRolls: [{ value: 0, isRerolled: false }],
             damageDealt: [...state.damageDealt, { target: 'enemy', amount: dmg, source: 'Overpower' }],
-            logs: addLog(state.logs, {
+            logs: addLogs(state.logs, {
                 round: state.round,
                 message: `Overpower! Blocked attack and inflicted ${dmg} damage (${rolls.join('+')}).`,
                 type: 'damage-hero'

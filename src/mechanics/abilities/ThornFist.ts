@@ -1,5 +1,5 @@
 import { registerAbility } from '../abilityRegistry';
-import { addLog } from '../../utils/statUtils';
+import { addLogs } from '../../utils/statUtils';
 import { rollDice, sumDice } from '../../utils/dice';
 
 registerAbility({
@@ -15,7 +15,7 @@ registerAbility({
 
         return {
             damageDealt: [...state.damageDealt, { target: 'enemy', amount: dmg, source: 'Thorn Fist' }],
-            logs: addLog(state.logs, { round: state.round, message: `Thorn Fist! Inflicted ${dmg} damage back (${rolls.join('+')}).`, type: 'damage-enemy' })
+            logs: addLogs(state.logs, { round: state.round, message: `Thorn Fist! Inflicted ${dmg} damage back (${rolls.join('+')}).`, type: 'damage-enemy' })
         };
     }
 });

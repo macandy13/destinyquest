@@ -1,6 +1,6 @@
 import { AbilityDefinition, AbilityType } from '../abilityRegistry';
 import { CombatState, Modification } from '../../types/combat';
-import { addLog } from '../../utils/statUtils';
+import { addLogs } from '../../utils/statUtils';
 import { rollDice, sumDice } from '../../utils/dice';
 import { Stats, StatsModification, CharacterType, getOpponent } from '../../types/stats';
 
@@ -15,6 +15,32 @@ export interface StatModifierAbilityConfig {
     canActivate?: (state: CombatState, owner: CharacterType) => boolean;
 }
 
+export function createStatModifiedState(state: CombatState,
+    config: {
+        name: string,
+        description: string,
+        stats: Partial<Stats>,
+        target: CharacterType,
+        duration?: number
+    }) {
+    return {
+        modifications: [...state.modifications, {
+            duration: config.duration,
+            modification: {
+                id: `${config.name.toLowerCase().replace(/[^a-z0-9]/g, '-')}-${state.round}`,
+                stats: config.stats,
+                target: config.target,
+                source: config.name,
+            } as StatsModification,
+        } as Modification],
+        logs: addLogs(state.logs, {
+            round: state.round,
+            message: `Used ability: ${config.name} (${config.description})`,
+            type: 'info'
+        })
+    };
+}
+
 export function createStatModifierAbility(config: StatModifierAbilityConfig): AbilityDefinition {
     return {
         name: config.name,
@@ -24,25 +50,9 @@ export function createStatModifierAbility(config: StatModifierAbilityConfig): Ab
         canActivate: config.canActivate,
         onActivate: (state: CombatState, owner: CharacterType) => {
             if (config.canActivate && !config.canActivate(state, owner)) {
-                return null;
+                return {};
             }
-
-            return {
-                modifications: [...state.modifications, {
-                    duration: config.duration,
-                    modification: {
-                        id: `${config.name.toLowerCase().replace(/[^a-z0-9]/g, '-')}-${state.round}`,
-                        stats: config.stats,
-                        target: config.target,
-                        source: config.name,
-                    } as StatsModification,
-                } as Modification],
-                logs: addLog(state.logs, {
-                    round: state.round,
-                    message: `Used ability: ${config.name} (${config.description})`,
-                    type: 'info'
-                })
-            };
+            return createStatModifiedState(state, config);
         }
     };
 }
@@ -92,13 +102,13 @@ export function createDamageBlockerAbility(config: DamageBlockerAbilityConfig): 
                 // Override log message for counter damage abilities to match existing behavior
                 // "Brutality! Blocked attack and inflicted X damage (Y+Z)."
                 logMessage = `${config.name}! Blocked attack and inflicted ${dmg} damage (${rolls.join('+')}).`;
-                logs = addLog(logs, {
+                logs = addLogs(logs, {
                     round: state.round,
                     message: logMessage,
                     type: 'damage-hero'
                 });
             } else {
-                logs = addLog(logs, { round: state.round, message: logMessage, type: 'info' });
+                logs = addLogs(logs, { round: state.round, message: logMessage, type: 'info' });
             }
 
             updates.logs = logs;

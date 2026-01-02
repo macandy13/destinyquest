@@ -1,5 +1,5 @@
 import { registerAbility } from '../abilityRegistry';
-import { addLog } from '../../utils/statUtils';
+import { addLogs } from '../../utils/statUtils';
 import { CombatState } from '../../types/combat';
 import { CharacterType } from '../../types/stats';
 
@@ -23,7 +23,7 @@ registerAbility({
             activeEffects: activeEffects,
             phase: 'round-end',
             damageRolls: [{ value: 0, isRerolled: false }],
-            logs: addLog(state.logs, { round: state.round, message: "Used ability: Sacrifice. Shades absorbed the damage!", type: 'info' })
+            logs: addLogs(state.logs, { round: state.round, message: "Used ability: Sacrifice. Shades absorbed the damage!", type: 'info' })
         };
     }
 });

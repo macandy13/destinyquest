@@ -20,7 +20,7 @@ export interface AbilityHooks {
     onDamageRoll?: (state: CombatState, source: CharacterType, rolls: DiceRoll[]) => Partial<CombatState>;
 
     // Returns the modifier amount to add to damage total
-    onDamageCalculate?: (state: CombatState, target: CharacterType, damage: { total: number, rolls: DiceRoll[] }) => number;
+    onDamageCalculate?: (state: CombatState, owner: CharacterType, target: CharacterType, damage: { total: number, rolls: DiceRoll[] }) => number;
 
     // Called after damage from the attack has been assigned
     onDamageDealt?: (state: CombatState, owner: CharacterType, target: CharacterType, damageDealt: number) => Partial<CombatState>;

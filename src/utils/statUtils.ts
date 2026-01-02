@@ -13,9 +13,9 @@ export function getStatIcon(stat: string): string {
     }
 }
 
-export function addLog(logs: CombatLog[], log: CombatLog): CombatLog[] {
-    console.log(`${log.round}: ${log.message}`);
-    return [...logs, log];
+export function addLogs(logs: CombatLog[], ...logsToAdd: CombatLog[]): CombatLog[] {
+    logsToAdd.forEach(log => console.log(`${log.round}: ${log.message}`));
+    return [...logs, ...logsToAdd];
 }
 
 export function getDamageType(target: CharacterType): CombatLogType {

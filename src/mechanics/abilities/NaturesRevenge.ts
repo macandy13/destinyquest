@@ -1,5 +1,5 @@
 import { registerAbility } from '../abilityRegistry';
-import { addLog } from '../../utils/statUtils';
+import { addLogs } from '../../utils/statUtils';
 import { rollDice, sumDice } from '../../utils/dice';
 import { CombatState } from '../../types/combat';
 import { CharacterType } from '../../types/stats';
@@ -28,7 +28,7 @@ registerAbility({
                 ...state.modifications,
                 { modification: { stats: { speed: -1 }, source: "Nature's Revenge", target: 'enemy' }, id: `natures-revenge-speed-${state.round}`, duration: 2 }
             ],
-            logs: addLog(state.logs, { round: state.round, message: `Nature's Revenge! Inflicted ${dmg} damage and slowed opponent.`, type: 'damage-hero' })
+            logs: addLogs(state.logs, { round: state.round, message: `Nature's Revenge! Inflicted ${dmg} damage and slowed opponent.`, type: 'damage-hero' })
         };
     }
 });

@@ -1,5 +1,5 @@
 import { registerAbility } from '../abilityRegistry';
-import { addLog } from '../../utils/statUtils';
+import { addLogs } from '../../utils/statUtils';
 import { rollDice, sumDice } from '../../utils/dice';
 import { CombatState, dealDamage } from '../../types/combat';
 import { CharacterType } from '../../types/stats';
@@ -36,7 +36,7 @@ registerAbility({
             phase: 'round-end',
             damageRolls: [],
             modifications: [...state.modifications, chargeMod],
-            logs: addLog(state.logs, { round: state.round, message: "Used ability: Bolt. Wand charging...", type: 'info' })
+            logs: addLogs(state.logs, { round: state.round, message: "Used ability: Bolt. Wand charging...", type: 'info' })
         };
     },
     onDamageRoll: (state, winner) => {
