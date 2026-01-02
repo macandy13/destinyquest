@@ -16,9 +16,9 @@ describe('Charge', () => {
 
     it('should not increase speed by 2', () => {
         const combatState = { ...INITIAL_STATE, round: 1 };
-        expect(ability.canActivate?.(combatState)).toBe(true);
+        expect(ability.canActivate?.(combatState, 'hero')).toBe(true);
 
-        const result = ability.onActivate?.(combatState);
+        const result = ability.onActivate?.(combatState, 'hero');
         expect(result?.modifications).toHaveLength(1);
         expect(result?.modifications![0].modification.stats.speed).toBe(2);
         expect(result?.modifications![0].duration).toBe(1);
@@ -26,9 +26,9 @@ describe('Charge', () => {
 
     it('should not increase speed by 2', () => {
         const combatState = { ...INITIAL_STATE, round: 2 };
-        expect(ability.canActivate?.(combatState)).toBe(false);
+        expect(ability.canActivate?.(combatState, 'hero')).toBe(false);
 
-        const result = ability.onActivate?.(combatState);
+        const result = ability.onActivate?.(combatState, 'hero');
         expect(result).toBeNull();
     });
 

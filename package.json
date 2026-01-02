@@ -13,6 +13,7 @@
         "generate:backpack": "node scripts/parse_backpack.js > src/data/backpackItems.ts"
     },
     "dependencies": {
+        "glob": "^13.0.0",
         "react": "^18.2.0",
         "react-dom": "^18.2.0",
         "vite-plugin-pwa": "^0.18.1"

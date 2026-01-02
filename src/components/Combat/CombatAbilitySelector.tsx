@@ -17,7 +17,7 @@ const CombatAbilitySelector: React.FC<CombatAbilitySelectorProps> = ({ combat, o
     const canActivateAbility = (abilityName: string, used?: boolean) => {
         const def = getAbilityDefinition(abilityName);
         if (!def || def.type === 'passive' || !def.onActivate || used) return false;
-        if (def.canActivate) return def.canActivate(combat);
+        if (def.canActivate) return def.canActivate(combat, 'hero');
         return true;
     };
 
@@ -45,6 +45,7 @@ const CombatAbilitySelector: React.FC<CombatAbilitySelectorProps> = ({ combat, o
 
     const abilityCounts: Record<string, number> = {};
     const availableAbilities = combat.activeAbilities
+        .filter(a => a.owner === 'hero')
         .filter(a => canActivateAbility(a.name, a.used))
         .reduce((acc, a) => {
             if (!abilityCounts[a.name]) {

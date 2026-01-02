@@ -18,7 +18,7 @@ describe('Hamstring', () => {
             ...INITIAL_STATE,
             winner: 'enemy'
         };
-        const result = ability.onActivate?.(state);
+        const result = ability.onActivate?.(state, 'hero');
 
         expect(result?.modifications).toHaveLength(1);
         expect(result?.modifications![0].modification.source).toBe('Hamstring');

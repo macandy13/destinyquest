@@ -16,7 +16,7 @@ describe('Piercing', () => {
         const enemy = enemyWithStats({ armour: 5 });
         const state = { ...INITIAL_STATE, enemy };
 
-        const updates = ability.onActivate?.(state);
+        const updates = ability.onActivate?.(state, 'hero');
 
         expect(updates!.modifications![0].modification.stats.armour).toBe(-5);
         expect(updates!.modifications![0].modification.target).toBe('enemy');

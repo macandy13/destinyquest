@@ -15,12 +15,12 @@ describe('Shock!', () => {
     it('should inflict extra damage for high armour enemy', () => {
         const state = {
             ...INITIAL_STATE,
-            enemy: enemyWithStats({ armour: 6 }),
+            enemy: enemyWithStats({ armour: 5 }),
             logs: []
         };
-        const result = ability.onDamageDealt?.(state, 'enemy', 5); // Dealing 5 damage to enemy
+        const result = ability.onDamageDealt?.(state, 'hero', 'enemy', 5); // Dealing 5 damage to enemy
 
         expect(result?.damageDealt).toHaveLength(1);
-        expect(result?.damageDealt![0].amount).toBe(3); // 6/2 = 3
+        expect(result?.damageDealt![0].amount).toBe(2); // 5/2 = 2.5 rounded down
     });
 });

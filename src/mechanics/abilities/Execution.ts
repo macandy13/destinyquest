@@ -1,7 +1,8 @@
 import { registerAbility } from '../abilityRegistry';
 import { CombatState } from '../../types/combat';
+import { CharacterType } from '../../types/stats';
 
-function canActivate(state: CombatState): boolean {
+function canActivate(state: CombatState, owner: CharacterType): boolean {
     // Simplistic check: enemy health <= hero speed
     // TODO: Check for sword in main hand if we had access to equipment here easily.
     // Usually state.hero.equipment.mainHand type check.

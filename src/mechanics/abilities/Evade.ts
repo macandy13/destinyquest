@@ -1,8 +1,9 @@
 import { registerAbility } from '../abilityRegistry';
 import { addLog } from '../../utils/statUtils';
 import { CombatState } from '../../types/combat';
+import { CharacterType } from '../../types/stats';
 
-function canActivate(state: CombatState): boolean {
+function canActivate(state: CombatState, owner: CharacterType): boolean {
     const isDisabled = state.activeEffects.some(e => e.modification.source === 'Ensnare' || e.modification.source === 'Hamstring');
     return !isDisabled && state.phase === 'damage-roll' && state.winner === 'enemy';
 }

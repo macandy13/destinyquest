@@ -19,7 +19,7 @@ describe('Time Shift', () => {
             hero: { ...INITIAL_STATE.hero!, stats: { ...INITIAL_STATE.hero!.stats, speed: 0 } },
             enemy: { ...INITIAL_STATE.enemy!, stats: { ...INITIAL_STATE.enemy!.stats, speed: 4 } },
         };
-        const result = ability.onActivate?.(state);
+        const result = ability.onActivate?.(state, 'hero');
 
         expect(result?.modifications).toHaveLength(1);
         expect(result?.modifications![0].modification.stats.speed).toBe(4);
@@ -34,7 +34,7 @@ describe('Time Shift', () => {
             enemy: { ...INITIAL_STATE.enemy!, stats: { ...INITIAL_STATE.enemy!.stats, speed: 2 } },
             logs: []
         };
-        const result = ability.onActivate?.(state);
+        const result = ability.onActivate?.(state, 'hero');
 
         expect(result?.modifications).toHaveLength(1);
         expect(result?.modifications![0].modification.stats.speed).toBe(-3);

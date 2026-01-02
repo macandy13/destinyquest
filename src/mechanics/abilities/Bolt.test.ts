@@ -20,9 +20,9 @@ describe('Bolt', () => {
             winner: 'hero' as const
         };
 
-        expect(ability.canActivate?.(state)).toBe(true);
+        expect(ability.canActivate?.(state, 'hero')).toBe(true);
 
-        const result = ability.onActivate?.(state);
+        const result = ability.onActivate?.(state, 'hero');
 
         expect(result?.phase).toBe('round-end');
         expect(result?.modifications).toHaveLength(1);

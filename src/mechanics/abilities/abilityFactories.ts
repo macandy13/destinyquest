@@ -2,7 +2,7 @@ import { AbilityDefinition, AbilityType } from '../abilityRegistry';
 import { CombatState, Modification } from '../../types/combat';
 import { addLog } from '../../utils/statUtils';
 import { rollDice, sumDice } from '../../utils/dice';
-import { Stats, StatsModification, CharacterType } from '../../types/stats';
+import { Stats, StatsModification, CharacterType, getOpponent } from '../../types/stats';
 
 export interface StatModifierAbilityConfig {
     name: string;
@@ -12,7 +12,7 @@ export interface StatModifierAbilityConfig {
     stats: Partial<Stats>,
     target: CharacterType,
     duration?: number,
-    canActivate?: (state: CombatState) => boolean;
+    canActivate?: (state: CombatState, owner: CharacterType) => boolean;
 }
 
 export function createStatModifierAbility(config: StatModifierAbilityConfig): AbilityDefinition {
@@ -22,8 +22,8 @@ export function createStatModifierAbility(config: StatModifierAbilityConfig): Ab
         description: config.description,
         icon: config.icon,
         canActivate: config.canActivate,
-        onActivate: (state: CombatState) => {
-            if (config.canActivate && !config.canActivate(state)) {
+        onActivate: (state: CombatState, owner: CharacterType) => {
+            if (config.canActivate && !config.canActivate(state, owner)) {
                 return null;
             }
 
@@ -54,7 +54,7 @@ export interface DamageBlockerAbilityConfig {
     type: AbilityType;
     blockMessage?: string; // Message to log, e.g. "Opponent's attack blocked!"
     counterDamageDice?: number; // Number of dice to roll for counter damage (deflect/brutality)
-    canActivate?: (state: CombatState) => boolean;
+    canActivate?: (state: CombatState, owner: CharacterType) => boolean;
 }
 
 export function createDamageBlockerAbility(config: DamageBlockerAbilityConfig): AbilityDefinition {
@@ -65,8 +65,8 @@ export function createDamageBlockerAbility(config: DamageBlockerAbilityConfig): 
         description: config.description,
         icon: config.icon,
         canActivate: checker,
-        onActivate: (state: CombatState) => {
-            if (!checker(state)) return null;
+        onActivate: (state: CombatState, owner: CharacterType) => {
+            if (!checker(state, owner)) return null;
 
             let logMessage = `Used ability: ${config.name}.`;
             if (config.blockMessage) {
@@ -107,6 +107,14 @@ export function createDamageBlockerAbility(config: DamageBlockerAbilityConfig): 
     };
 }
 
+export function isHeroDamageRollPhase(state: CombatState): boolean {
+    return state.phase === 'damage-roll' && state.winner === 'hero';
+};
+
 export function isEnemyDamageRollPhase(state: CombatState): boolean {
     return state.phase === 'damage-roll' && state.winner === 'enemy';
+};
+
+export function isOpponentDamageRollPhase(state: CombatState, owner: CharacterType): boolean {
+    return state.phase === 'damage-roll' && state.winner === getOpponent(owner);
 };

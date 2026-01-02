@@ -14,7 +14,7 @@ describe('Sidestep', () => {
 
     it('should boost armour by 200 on activation', () => {
         const state = { ...INITIAL_STATE };
-        const updates = ability.onActivate?.(state);
+        const updates = ability.onActivate?.(state, 'hero');
 
         expect(updates!.modifications![0].modification.stats.armour).toBe(200);
         expect(updates!.modifications![0].duration).toBe(1);

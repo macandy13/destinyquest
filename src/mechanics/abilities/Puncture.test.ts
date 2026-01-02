@@ -47,7 +47,7 @@ describe('Puncture', () => {
         expect(state.phase).toBe('damage-roll');
         expect(state.winner).toBe('hero');
 
-        expect(ability.canActivate?.(state)).toBe(true);
+        expect(ability.canActivate?.(state, 'hero')).toBe(true);
         state = activateAbility(state, 'Puncture');
 
         expect(state.phase).toBe('round-end');

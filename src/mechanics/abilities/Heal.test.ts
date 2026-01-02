@@ -21,7 +21,7 @@ describe('Heal', () => {
             hero: heroWithStats({ health: 10 })
         };
 
-        const updates = ability.onActivate?.(damagedState);
+        const updates = ability.onActivate?.(damagedState, 'hero');
         expect(updates?.hero?.stats.health).toBe(14);
     });
 
@@ -31,7 +31,7 @@ describe('Heal', () => {
             hero: heroWithStats({ health: 29 })
         };
 
-        const updates = ability.onActivate?.(mildDamageState);
+        const updates = ability.onActivate?.(mildDamageState, 'hero');
         expect(updates?.hero?.stats.health).toBe(30);
     });
 
@@ -40,7 +40,7 @@ describe('Heal', () => {
             ...INITIAL_STATE,
             hero: heroWithStats({ health: 30 })
         };
-        expect(ability.canActivate?.(fullHealthState)).toBe(false);
+        expect(ability.canActivate?.(fullHealthState, 'hero')).toBe(false);
     });
 
     it('should return true for canActivate if health is not full', () => {
@@ -48,7 +48,7 @@ describe('Heal', () => {
             ...INITIAL_STATE,
             hero: heroWithStats({ health: 10 })
         };
-        expect(ability.canActivate?.(damagedState)).toBe(true);
+        expect(ability.canActivate?.(damagedState, 'hero')).toBe(true);
     });
 
     it('should apply Heal modifier ability via hook (restore 4 health)', () => {

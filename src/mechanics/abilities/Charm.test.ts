@@ -20,7 +20,7 @@ describe('Charm', () => {
             heroSpeedRolls: [{ value: 2, isRerolled: false }, { value: 3, isRerolled: false }]
         };
         // @ts-ignore - Partial state for test
-        expect(ability.canActivate?.(speedState)).toBe(true);
+        expect(ability.canActivate?.(speedState, 'hero')).toBe(true);
 
         // Damage phase (hero winning) -> implicitly round-end after resolution
         const damageState = {
@@ -30,12 +30,12 @@ describe('Charm', () => {
             damageRolls: [{ value: 4, isRerolled: false }]
         };
         // @ts-ignore - Partial state for test
-        expect(ability.canActivate?.(damageState)).toBe(true);
+        expect(ability.canActivate?.(damageState, 'hero')).toBe(true);
 
         // Invalid phases
         const startState = { ...INITIAL_STATE, phase: 'combat-start' };
         // @ts-ignore - Partial state for test
-        expect(ability.canActivate?.(startState)).toBe(false);
+        expect(ability.canActivate?.(startState, 'hero')).toBe(false);
     });
 
     it('should set rerollState on activate', () => {
@@ -47,7 +47,7 @@ describe('Charm', () => {
         };
 
         // @ts-ignore - Partial state for test
-        const result = ability.onActivate?.(speedState);
+        const result = ability.onActivate?.(speedState, 'hero');
         expect(result?.rerollState).toEqual({
             source: 'Charm',
             target: 'hero-speed'

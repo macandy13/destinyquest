@@ -19,9 +19,9 @@ describe('Corruption', () => {
             damageDealt: [{ target: 'enemy', amount: 5, source: 'Melee' }]
         };
 
-        expect(ability.canActivate?.(state)).toBe(true);
+        expect(ability.canActivate?.(state, 'hero')).toBe(true);
 
-        const result = ability.onActivate?.(state);
+        const result = ability.onActivate?.(state, 'hero');
 
         expect(result?.modifications).toHaveLength(1);
         expect(result?.modifications![0].modification.stats.brawn).toBe(-2);
@@ -34,8 +34,8 @@ describe('Corruption', () => {
             damageDealt: []
         };
 
-        expect(ability.canActivate?.(state)).toBe(false);
-        const result = ability.onActivate?.(state);
+        expect(ability.canActivate?.(state, 'hero')).toBe(false);
+        const result = ability.onActivate?.(state, 'hero');
         expect(result).toBeNull();
     });
 });

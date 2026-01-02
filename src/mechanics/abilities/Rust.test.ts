@@ -19,9 +19,9 @@ describe('Rust', () => {
             damageDealt: [{ target: 'enemy', amount: 1, source: 'Attack' }],
         };
 
-        expect(ability.canActivate?.(state)).toBe(true);
+        expect(ability.canActivate?.(state, 'hero')).toBe(true);
 
-        const result = ability.onActivate?.(state);
+        const result = ability.onActivate?.(state, 'hero');
 
         expect(result?.modifications).toHaveLength(1);
         expect(result?.modifications![0].modification.stats.armour).toBe(-2);
@@ -33,8 +33,8 @@ describe('Rust', () => {
             damageDealt: [],
         };
 
-        expect(ability.canActivate?.(state)).toBe(false);
-        const result = ability.onActivate?.(state);
+        expect(ability.canActivate?.(state, 'hero')).toBe(false);
+        const result = ability.onActivate?.(state, 'hero');
         expect(result).toBeNull();
     });
 });

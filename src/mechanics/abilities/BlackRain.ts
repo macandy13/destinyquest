@@ -2,8 +2,9 @@ import { registerAbility } from '../abilityRegistry';
 import { addLog } from '../../utils/statUtils';
 import { CombatState } from '../../types/combat';
 import { rollDice, sumDice } from '../../utils/dice';
+import { CharacterType } from '../../types/stats';
 
-function canActivate(state: CombatState): boolean {
+function canActivate(state: CombatState, owner: CharacterType): boolean {
     // TODO: Check for bow in left hand
     return state.phase === 'damage-roll' && state.winner === 'hero';
 }

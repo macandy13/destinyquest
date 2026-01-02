@@ -18,7 +18,7 @@ describe('Shield Wall', () => {
             hero: heroWithStats({ armour: 3 })
         };
 
-        const result = ability.onActivate?.(state);
+        const result = ability.onActivate?.(state, 'hero');
 
         expect(result?.modifications).toHaveLength(1);
         expect(result?.modifications![0].modification.stats.armour).toBe(3); // +3 to make it 6 (doubled)

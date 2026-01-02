@@ -14,9 +14,15 @@ describe('Riposte', () => {
 
     it('should inflict damage back', () => {
         const state = INITIAL_STATE;
-        const result = ability.onDamageDealt?.(state, 'hero', 5);
+        const result = ability.onDamageDealt?.(state, 'hero', 'hero', 5);
 
         expect(result?.damageDealt).toHaveLength(1);
         expect(result?.damageDealt![0].amount).toBeGreaterThanOrEqual(1);
+    });
+
+    it('should not inflict damage back if not taking damage', () => {
+        const state = INITIAL_STATE;
+        expect(ability.onDamageDealt?.(state, 'hero', 'enemy', 5)).toEqual({});
+        expect(ability.onDamageDealt?.(state, 'hero', 'hero', 0)).toEqual({});
     });
 });

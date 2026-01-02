@@ -14,7 +14,7 @@ describe('Zapped!', () => {
 
     it('should reduce enemy stats on activation', () => {
         const state = INITIAL_STATE;
-        const result = ability.onActivate?.(state);
+        const result = ability.onActivate?.(state, 'hero');
 
         expect(result?.modifications).toHaveLength(1);
         const mod = result?.modifications![0];

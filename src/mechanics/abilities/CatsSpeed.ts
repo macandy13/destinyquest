@@ -1,6 +1,7 @@
 import { CombatState } from '../../types/combat';
 import { registerAbility } from '../abilityRegistry';
 import { createStatModifierAbility } from './abilityFactories';
+import { CharacterType } from '../../types/stats';
 
 registerAbility(createStatModifierAbility({
     name: "Cat's Speed",
@@ -9,5 +10,5 @@ registerAbility(createStatModifierAbility({
     stats: { speed: 1 },
     target: 'hero',
     duration: 1,
-    canActivate: (state: CombatState) => state.phase === 'speed-roll',
+    canActivate: (state: CombatState, owner: CharacterType) => state.phase === 'speed-roll',
 }));

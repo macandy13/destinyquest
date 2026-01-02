@@ -14,7 +14,7 @@ describe('Impale', () => {
 
     it('should apply damage buff and speed debuff', () => {
         const state = { ...INITIAL_STATE, logs: [] };
-        const result = ability.onActivate?.(state);
+        const result = ability.onActivate?.(state, 'hero');
 
         expect(result?.modifications).toHaveLength(2);
         expect(result?.modifications).toContainEqual(expect.objectContaining({

@@ -14,7 +14,7 @@ describe('Deep Wound', () => {
 
     it('should add 1 damage die', () => {
         const state = INITIAL_STATE;
-        const updates = ability.onActivate?.(state);
+        const updates = ability.onActivate?.(state, 'hero');
 
         expect(updates!.modifications![0].modification.stats.damageDice).toBe(1);
     });

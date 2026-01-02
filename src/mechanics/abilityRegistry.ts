@@ -3,10 +3,10 @@ import { CharacterType } from '../types/stats';
 
 export interface AbilityHooks {
     // Checks if ability can be activated in current state
-    canActivate?: (state: CombatState) => boolean;
+    canActivate?: (state: CombatState, owner: CharacterType) => boolean;
 
     // For active abilities: returns partial state or null if activation failed/invalid
-    onActivate?: (state: CombatState) => Partial<CombatState> | null;
+    onActivate?: (state: CombatState, owner: CharacterType) => Partial<CombatState> | null;
 
     onCombatStart?: (state: CombatState, owner: CharacterType) => Partial<CombatState>;
 

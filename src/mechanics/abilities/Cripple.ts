@@ -1,6 +1,7 @@
 import { registerAbility } from '../abilityRegistry';
 import { createStatModifierAbility } from './abilityFactories';
 import { CombatState } from '../../types/combat';
+import { CharacterType } from '../../types/stats';
 
 registerAbility(createStatModifierAbility({
     name: 'Cripple',
@@ -9,5 +10,5 @@ registerAbility(createStatModifierAbility({
     stats: { speed: -1 },
     duration: 3,
     target: 'enemy',
-    canActivate: (state: CombatState) => state.damageDealt.some(d => d.target === 'enemy' && d.amount > 0)
+    canActivate: (state: CombatState, owner: CharacterType) => state.damageDealt.some(d => d.target === 'enemy' && d.amount > 0)
 }));

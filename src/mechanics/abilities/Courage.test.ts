@@ -17,7 +17,7 @@ describe('Courage', () => {
 
         // Courage is always active in theory unless constrained, but factory usually doesn't add restriction unless specified
         // Let's just check onActivate
-        const result = ability.onActivate?.(state);
+        const result = ability.onActivate?.(state, 'hero');
 
         expect(result?.modifications).toHaveLength(1);
         expect(result?.modifications![0].modification.stats.speed).toBe(4);

@@ -13,8 +13,18 @@ describe('Ensnare', () => {
     });
 
     it('should apply Ensnare effect', () => {
-        const state = INITIAL_STATE;
-        const result = ability.onActivate?.(state);
+        const state = {
+            ...INITIAL_STATE,
+            activeAbilities: [
+                {
+                    name: 'Dodge',
+                    owner: 'enemy' as const,
+                    source: 'Test',
+                    used: false,
+                    def: {} as any
+                }]
+        };
+        const result = ability.onActivate?.(state, 'hero');
 
         expect(result?.modifications).toHaveLength(1);
         expect(result?.modifications![0].modification.source).toBe('Ensnare');

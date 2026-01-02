@@ -1,6 +1,7 @@
 import { registerAbility } from '../abilityRegistry';
 import { createStatModifierAbility } from './abilityFactories';
 import { CombatState } from '../../types/combat';
+import { CharacterType } from '../../types/stats';
 
 registerAbility(createStatModifierAbility({
     name: 'Charge',
@@ -9,5 +10,5 @@ registerAbility(createStatModifierAbility({
     stats: { speed: 2 },
     duration: 1,
     target: 'hero',
-    canActivate: (state: CombatState) => state.round === 1
+    canActivate: (state: CombatState, owner: CharacterType) => state.round === 1
 }));

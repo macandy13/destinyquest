@@ -16,12 +16,12 @@ describe('Backfire', () => {
         const state = {
             ...INITIAL_STATE,
             phase: 'damage-roll' as const,
-            winner: 'hero' as const,
+            winner: 'enemy' as const,
         };
 
-        expect(ability.canActivate?.(state)).toBe(true);
+        expect(ability.canActivate?.(state, 'hero')).toBe(true);
 
-        const result = ability.onActivate?.(state);
+        const result = ability.onActivate?.(state, 'hero');
 
         expect(result?.phase).toBe('round-end');
         expect(result?.damageDealt).toHaveLength(2); // One for enemy, one for hero

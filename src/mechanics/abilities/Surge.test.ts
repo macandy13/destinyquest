@@ -14,7 +14,7 @@ describe('Surge', () => {
 
     it('should buff magic and debuff speed', () => {
         const state = INITIAL_STATE;
-        const result = ability.onActivate?.(state);
+        const result = ability.onActivate?.(state, 'hero');
 
         expect(result?.modifications).toHaveLength(2);
         expect(result?.modifications![0].modification.stats.magic).toBe(3);

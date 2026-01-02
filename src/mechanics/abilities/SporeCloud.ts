@@ -6,8 +6,8 @@ registerAbility({
     name: 'Spore Cloud',
     type: 'combat',
     description: 'When taking health damage, inflict 2 damage dice back (ignoring armour).',
-    onDamageDealt: (state, target, amount) => {
-        if (target !== 'hero' || amount <= 0) return {};
+    onDamageDealt: (state, owner, target, amount) => {
+        if (owner !== target || amount <= 0) return {};
 
         const dmgRolls = rollDice(2);
         const dmg = sumDice(dmgRolls);

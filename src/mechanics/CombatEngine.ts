@@ -30,7 +30,7 @@ import { getAbilityDefinition } from './abilityRegistry';
 import { calculateEffectiveStatsForType } from '../utils/stats';
 import { addLog } from '../utils/statUtils';
 import { CharacterType, Stats, getOpponent } from '../types/stats';
-import './abilities'; // Ensure abilities are registered
+import './allAbilities'; // Ensure abilities are registered
 
 export const INITIAL_STATE: CombatState = {
     round: 0,
@@ -441,7 +441,7 @@ export function activateAbility(state: CombatState, abilityName: string): Combat
     const definition = getAbilityDefinition(abilityName);
     if (!definition || !definition.onActivate) return state;
 
-    const updates = definition.onActivate(state);
+    const updates = definition.onActivate(state, ability.owner);
     if (!updates) return state;
 
     const abilityIndex = state.activeAbilities.indexOf(ability);

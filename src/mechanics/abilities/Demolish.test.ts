@@ -14,7 +14,7 @@ describe('Demolish', () => {
 
     it('should add speed reduction and armour reduction to enemy on activation', () => {
         const state = INITIAL_STATE;
-        const result = ability.onActivate?.(state);
+        const result = ability.onActivate?.(state, 'hero');
 
         expect(result?.modifications).toHaveLength(2);
 

@@ -19,20 +19,20 @@ describe('Parry', () => {
         // Valid state
         const validState = { ...INITIAL_STATE, phase: 'damage-roll', winner: 'enemy' };
         // @ts-ignore - Partial state
-        expect(ability.canActivate?.(validState)).toBe(true);
+        expect(ability.canActivate?.(validState, 'hero')).toBe(true);
 
         // Invalid phase
         const invalidPhase = { ...INITIAL_STATE, phase: 'speed-roll', winner: 'enemy' };
         // @ts-ignore - Partial state
-        expect(ability.canActivate?.(invalidPhase)).toBe(false);
+        expect(ability.canActivate?.(invalidPhase, 'hero')).toBe(false);
 
         // Invalid winner
         const invalidWinner = { ...INITIAL_STATE, phase: 'damage-roll', winner: 'hero' };
         // @ts-ignore - Partial state
-        expect(ability.canActivate?.(invalidWinner)).toBe(false);
+        expect(ability.canActivate?.(invalidWinner, 'hero')).toBe(false);
 
         // @ts-ignore - Partial state
-        const updates = ability.onActivate?.(validState);
+        const updates = ability.onActivate?.(validState, 'hero');
 
         expect(updates?.phase).toBe('round-end');
         expect(updates?.damageRolls).toEqual([{ value: 0, isRerolled: false }]);

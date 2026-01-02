@@ -22,9 +22,9 @@ describe("Cat's Speed", () => {
             phase: 'speed-roll',
         } as any;
 
-        expect(ability.canActivate?.(state)).toBe(true);
+        expect(ability.canActivate?.(state, 'hero')).toBe(true);
 
-        const result = ability.onActivate?.(state);
+        const result = ability.onActivate?.(state, 'hero');
 
         expect(result?.modifications).toHaveLength(1);
         expect(result?.modifications![0].modification.stats.speed).toBe(1);
@@ -38,8 +38,8 @@ describe("Cat's Speed", () => {
             phase: 'damage-roll',
         } as any;
 
-        expect(ability.canActivate?.(state)).toBe(false);
-        const result = ability.onActivate?.(state);
+        expect(ability.canActivate?.(state, 'hero')).toBe(false);
+        const result = ability.onActivate?.(state, 'hero');
         expect(result).toBeNull();
     });
 

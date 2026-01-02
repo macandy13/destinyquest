@@ -21,7 +21,7 @@ describe('Ice Shards', () => {
             phase: 'damage-roll' as const,
             winner: 'hero' as const,
         };
-        const result = ability.onActivate?.(state);
+        const result = ability.onActivate?.(state, 'hero');
         expect(result?.damageDealt).toHaveLength(1);
         expect(result?.damageDealt![0].amount).toBe(5);
     });

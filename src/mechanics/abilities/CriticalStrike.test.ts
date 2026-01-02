@@ -20,7 +20,7 @@ describe('Critical Strike', () => {
                 { value: 3, isRerolled: false }]
         };
 
-        const updates = ability.onActivate?.(state);
+        const updates = ability.onActivate?.(state, 'hero');
 
         expect(updates!.damageRolls![0].value).toBe(6);
         expect(updates!.damageRolls![1].value).toBe(6);

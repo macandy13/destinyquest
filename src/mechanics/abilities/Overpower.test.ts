@@ -42,7 +42,7 @@ describe('Overpower', () => {
 
         state = commitSpeedResult(state);
 
-        expect(ability.canActivate?.(state)).toBe(true);
+        expect(ability.canActivate?.(state, 'hero')).toBe(true);
         state = activateAbility(state, 'Overpower');
 
         expect(state.phase).toBe('round-end');

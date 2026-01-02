@@ -14,7 +14,7 @@ describe('Thorn Armour', () => {
 
     it('should buff armour and inflict damage', () => {
         const state = INITIAL_STATE;
-        const result = ability.onActivate?.(state);
+        const result = ability.onActivate?.(state, 'hero');
 
         expect(result?.modifications).toHaveLength(1);
         expect(result?.modifications![0].modification.stats.armour).toBe(3);

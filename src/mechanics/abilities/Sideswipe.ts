@@ -1,19 +1,16 @@
 import { registerAbility } from '../abilityRegistry';
-import { addLog } from '../../utils/statUtils';
-import { rollDice } from '../../utils/dice';
+import { rollDice, sumDice } from '../../utils/dice';
+import { dealDamage } from '../../types/combat';
 
 registerAbility({
     name: 'Sideswipe',
     type: 'combat',
     description: 'When taking health damage, inflict 1 damage die back (ignoring armour).',
-    onDamageDealt: (state, target, amount) => {
-        if (target !== 'hero' || amount <= 0) return {};
+    onDamageDealt: (state, owner, target, amount) => {
+        if (owner !== target || amount <= 0) return {};
 
-        const val = rollDice(1)[0].value;
+        const val = sumDice(rollDice(1));
 
-        return {
-            damageDealt: [...state.damageDealt, { target: 'enemy', amount: val, source: 'Sideswipe' }],
-            logs: addLog(state.logs, { round: state.round, message: `Sideswipe! Inflicted ${val} damage back.`, type: 'damage-enemy' })
-        };
+        return dealDamage(state, 'Sideswipe', target, val);
     }
 });

@@ -1,8 +1,9 @@
 import { registerAbility } from '../abilityRegistry';
 import { addLog } from '../../utils/statUtils';
 import { CombatState } from '../../types/combat';
+import { CharacterType } from '../../types/stats';
 
-function canActivate(state: CombatState): boolean {
+function canActivate(state: CombatState, owner: CharacterType): boolean {
     // TODO: Should this be possible on round-end? Does this trigger the right things?
     return (state.phase === 'damage-roll' || state.phase === 'round-end') && state.winner === 'hero';
 }

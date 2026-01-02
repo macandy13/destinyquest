@@ -17,7 +17,7 @@ describe('Adrenaline', () => {
 
     it('should add speed bonus modifier on activation', () => {
         const state = INITIAL_STATE;
-        const result = ability.onActivate?.(state);
+        const result = ability.onActivate?.(state, 'hero');
 
         expect(result?.modifications).toHaveLength(1);
         expect(result?.modifications![0].modification.stats.speed).toBe(2);

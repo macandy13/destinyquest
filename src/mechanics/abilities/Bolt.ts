@@ -2,8 +2,9 @@ import { registerAbility } from '../abilityRegistry';
 import { addLog } from '../../utils/statUtils';
 import { rollDice, sumDice } from '../../utils/dice';
 import { CombatState } from '../../types/combat';
+import { CharacterType } from '../../types/stats';
 
-function canActivate(state: CombatState): boolean {
+function canActivate(state: CombatState, owner: CharacterType): boolean {
     const isCharged = state.activeEffects.some(e => e.modification.source === 'Bolt');
     return state.phase === 'damage-roll' && state.winner === 'hero' && !isCharged;
 }

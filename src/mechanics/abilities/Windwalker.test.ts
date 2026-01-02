@@ -20,7 +20,7 @@ describe('Windwalker', () => {
             winner: 'hero' as const,
             logs: []
         };
-        const result = ability.onActivate?.(state);
+        const result = ability.onActivate?.(state, 'hero');
 
         expect(result?.phase).toBe('round-end');
         expect(result?.damageDealt).toHaveLength(1);

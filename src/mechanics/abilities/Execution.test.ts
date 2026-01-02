@@ -20,7 +20,7 @@ describe('Execution', () => {
             hero: { ...INITIAL_STATE.hero!, stats: { ...INITIAL_STATE.hero!.stats, speed: 5 } },
             enemy: { ...INITIAL_STATE.enemy!, stats: { ...INITIAL_STATE.enemy!.stats, health: 5 } },
         };
-        const result = ability.onActivate?.(state);
+        const result = ability.onActivate?.(state, 'hero');
 
         expect(result?.modifications).toHaveLength(1);
         expect(result?.modifications![0].modification.stats.health).toBe(-5);
@@ -34,7 +34,7 @@ describe('Execution', () => {
             hero: { ...INITIAL_STATE.hero!, stats: { ...INITIAL_STATE.hero!.stats, speed: 4 } },
             enemy: { ...INITIAL_STATE.enemy!, stats: { ...INITIAL_STATE.enemy!.stats, health: 5 } },
         };
-        const result = ability.onActivate?.(state);
+        const result = ability.onActivate?.(state, 'hero');
 
         expect(result).toBeNull();
     });
@@ -46,7 +46,7 @@ describe('Execution', () => {
             hero: { ...INITIAL_STATE.hero!, stats: { ...INITIAL_STATE.hero!.stats, speed: 5 } },
             enemy: { ...INITIAL_STATE.enemy!, stats: { ...INITIAL_STATE.enemy!.stats, health: 5 } }
         };
-        expect(ability.canActivate?.(stateSuccess)).toBe(true);
+        expect(ability.canActivate?.(stateSuccess, 'hero')).toBe(true);
 
         // Hero Speed 4, Enemy Health 5 -> False
         const stateFail = {
@@ -54,6 +54,6 @@ describe('Execution', () => {
             hero: { ...INITIAL_STATE.hero!, stats: { ...INITIAL_STATE.hero!.stats, speed: 4 } },
             enemy: { ...INITIAL_STATE.enemy!, stats: { ...INITIAL_STATE.enemy!.stats, health: 5 } }
         };
-        expect(ability.canActivate?.(stateFail)).toBe(false);
+        expect(ability.canActivate?.(stateFail, 'hero')).toBe(false);
     });
 });

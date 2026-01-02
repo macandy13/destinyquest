@@ -15,7 +15,7 @@ describe('Last Laugh', () => {
     it('should set reroll state', () => {
         const state = INITIAL_STATE;
 
-        const updates = ability.onActivate?.(state);
+        const updates = ability.onActivate?.(state, 'hero');
 
         expect(updates!.rerollState!.source).toBe('Last Laugh');
         // Last laugh forces opponent to reroll.

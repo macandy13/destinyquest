@@ -1,7 +1,8 @@
 import { registerAbility } from '../abilityRegistry';
 import { CombatState } from '../../types/combat';
+import { CharacterType } from '../../types/stats';
 
-function canActivate(state: CombatState): boolean {
+function canActivate(state: CombatState, owner: CharacterType): boolean {
     // Can reroll speed if rolls exist (allows backtracking if we lost or want to improve before damage)
     if (state.heroSpeedRolls && state.phase !== 'combat-end') return true;
     // Can reroll damage if hero won and rolled damage
