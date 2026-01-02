@@ -11,7 +11,7 @@ describe('Avenging Spirit', () => {
             hero: heroWithStats({ armour: 2 }),
         };
         // Mock damage dealt to hero
-        const result = ability?.onDamageDealt?.(state, 'hero', 5);
+        const result = ability?.onDamageDealt?.(state, 'hero', 'hero', 5);
 
         expect(result?.damageDealt).toHaveLength(1);
         expect(result?.damageDealt![0]).toEqual({ target: 'enemy', amount: 2, source: 'Avenging Spirit' });

@@ -17,7 +17,7 @@ describe('Acid', () => {
 
     it('should add 1 damage per die rolled', () => {
         const rolls = [{ value: 1, isRerolled: false }, { value: 4, isRerolled: false }, { value: 6, isRerolled: false }];
-        const bonus = ability.onDamageCalculate?.(INITIAL_STATE, { total: 10, rolls });
+        const bonus = ability.onDamageCalculate?.(INITIAL_STATE, 'hero', { total: 10, rolls });
         expect(bonus).toBe(3);
     });
 

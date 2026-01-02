@@ -1,52 +1,45 @@
 import { registerAbility } from '../abilityRegistry';
 import { addLog } from '../../utils/statUtils';
+import { getOpponent } from '../../types/stats';
+import { CombatLog, dealDamage } from '../../types/combat';
 
 registerAbility({
     name: 'Bleed',
     type: 'passive',
     description: 'If your damage causes health damage, the opponent continues to take 1 damage (ignoring armour) at the end of each combat round.',
-    onRoundEnd: (state, target) => {
+    onRoundEnd: (state, owner) => {
+        const opponent = getOpponent(owner);
         let activeEffects = [...(state.activeEffects || [])];
-        let logs = [...state.logs];
 
         // 1. Application
-        const targetTookDamage = state.damageDealt?.some(d => d.target === target && d.amount > 0);
-        let hasBleed = activeEffects.some(e => e.modification.source === 'Bleed' && e.modification.target === target);
+        const targetTookDamage = state.damageDealt?.some(d => d.target === opponent && d.amount > 0);
+        let hasBleed = activeEffects.some(e => e.modification.source === 'Bleed' && e.modification.target === opponent);
         if (targetTookDamage && !hasBleed) {
             activeEffects.push({
-                id: `bleed-${target}`,
+                id: `bleed-${opponent}`,
                 modification: {
                     stats: { health: -1 },
                     source: 'Bleed',
-                    target: target,
+                    target: opponent,
                 },
             });
-            logs = addLog(logs, { round: state.round, message: `Bleed applied to ${target}`, type: 'info' });
             hasBleed = true;
         }
 
+        const bleedLog: CombatLog = {
+            round: state.round,
+            message: `Bleed applied to ${opponent}`,
+            type: 'info'
+        };
+
         // 2. Effect
-        if (!hasBleed) return { activeEffects, logs };
+        if (!hasBleed) return { activeEffects, logs: addLog(state.logs, bleedLog) };
 
-        let enemy = state.enemy;
-        if (target === 'enemy') enemy!.stats.health -= 1;
-        let hero = state.hero;
-        if (target === 'hero') hero!.stats.health -= 1;
-
+        const damageUpdates = dealDamage(state, 'Bleed', opponent, 1);
         return {
-            enemy,
-            hero,
-            damageDealt: [...state.damageDealt, {
-                target,
-                amount: 1,
-                source: 'Bleed'
-            }],
+            ...damageUpdates,
             activeEffects,
-            logs: addLog(logs, {
-                round: state.round,
-                message: `Bleed: +1 damage to ${target} (ignoring armour)`,
-                type: 'info' as const
-            })
+            logs: addLog(damageUpdates.logs ?? [], bleedLog),
         };
     }
 });

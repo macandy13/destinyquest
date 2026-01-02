@@ -2,7 +2,7 @@ import { AbilityDefinition, AbilityType } from '../abilityRegistry';
 import { CombatState, Modification } from '../../types/combat';
 import { addLog } from '../../utils/statUtils';
 import { rollDice, sumDice } from '../../utils/dice';
-import { Stats, StatsModification, Target } from '../../types/stats';
+import { Stats, StatsModification, CharacterType } from '../../types/stats';
 
 export interface StatModifierAbilityConfig {
     name: string;
@@ -10,7 +10,7 @@ export interface StatModifierAbilityConfig {
     description: string;
     type: AbilityType;
     stats: Partial<Stats>,
-    target: Target,
+    target: CharacterType,
     duration?: number,
     canActivate?: (state: CombatState) => boolean;
 }

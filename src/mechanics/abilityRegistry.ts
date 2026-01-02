@@ -1,33 +1,32 @@
 import { CombatState, DiceRoll } from '../types/combat';
-import { Target } from '../types/stats';
-
+import { CharacterType } from '../types/stats';
 
 export interface AbilityHooks {
-    // For active abilities: returns partial state or null if activation failed/invalid
-    onActivate?: (state: CombatState) => Partial<CombatState> | null;
-
     // Checks if ability can be activated in current state
     canActivate?: (state: CombatState) => boolean;
 
-    onCombatStart?: (state: CombatState, target: Target) => Partial<CombatState>;
+    // For active abilities: returns partial state or null if activation failed/invalid
+    onActivate?: (state: CombatState) => Partial<CombatState> | null;
+
+    onCombatStart?: (state: CombatState, owner: CharacterType) => Partial<CombatState>;
 
     // Triggered after speed dice are rolled
-    onSpeedRoll?: (state: CombatState, rolls: DiceRoll[]) => Partial<CombatState>;
+    onSpeedRoll?: (state: CombatState, source: CharacterType, rolls: DiceRoll[]) => Partial<CombatState>;
 
     // Returns the modifier amount to add to speed total
     onSpeedCalculate?: (state: CombatState) => number;
 
     // Triggered after damage dice are rolled
-    onDamageRoll?: (state: CombatState, rolls: DiceRoll[]) => Partial<CombatState>;
+    onDamageRoll?: (state: CombatState, source: CharacterType, rolls: DiceRoll[]) => Partial<CombatState>;
 
     // Returns the modifier amount to add to damage total
-    onDamageCalculate?: (state: CombatState, damage: { total: number, rolls: DiceRoll[] }) => number;
+    onDamageCalculate?: (state: CombatState, target: CharacterType, damage: { total: number, rolls: DiceRoll[] }) => number;
 
-    // Returns partial state updates (e.g. log messages, health updates)
-    onDamageDealt?: (state: CombatState, target: Target, damageDealt: number) => Partial<CombatState>;
+    // Called when damage from the attack is about to be inflicted
+    onDamageDealt?: (state: CombatState, owner: CharacterType, target: CharacterType, damageDealt: number) => Partial<CombatState>;
 
-    // Returns partial state updates (e.g. passive damage at end of round)
-    onRoundEnd?: (state: CombatState, target: Target) => Partial<CombatState>;
+    // Called when damage phase is over and passive abilities are triggered.
+    onRoundEnd?: (state: CombatState, owner: CharacterType) => Partial<CombatState>;
 
     // Handles reroll interactions. Returns state updates.
     onReroll?: (state: CombatState, dieIndex: number) => Partial<CombatState>;

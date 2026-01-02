@@ -29,7 +29,7 @@ import { Hero, HeroStats, BackpackItem } from '../types/hero';
 import { getAbilityDefinition } from './abilityRegistry';
 import { calculateEffectiveStatsForType } from '../utils/stats';
 import { addLog } from '../utils/statUtils';
-import { Target, Stats } from '../types/stats';
+import { CharacterType, Stats, getOpponent } from '../types/stats';
 import './abilities'; // Ensure abilities are registered
 
 export const INITIAL_STATE: CombatState = {
@@ -49,6 +49,7 @@ export const INITIAL_STATE: CombatState = {
 // Default easy enemy for testing or fallback
 export const MOCK_ENEMY: Enemy = {
     name: 'Training Dummy',
+    type: 'enemy',
     stats: {
         speed: 2,
         brawn: 2,
@@ -57,7 +58,7 @@ export const MOCK_ENEMY: Enemy = {
         health: 20,
         maxHealth: 20,
     },
-    act: 1,
+    bookRef: { book: 'Tutorial', act: 0 },
     abilities: []
 };
 
@@ -74,13 +75,6 @@ function _generateSpeedRolls(state: CombatState) {
         enemySpeedRolls: rollDice(enemyDice)
     };
 
-    state.activeAbilities.forEach(ability => {
-        const def = getAbilityDefinition(ability.name);
-        if (def?.onSpeedRoll && newState.heroSpeedRolls) {
-            const updates = def.onSpeedRoll(newState, newState.heroSpeedRolls);
-            newState = { ...newState, ...updates };
-        }
-    });
     return newState;
 }
 
@@ -138,28 +132,27 @@ function _generateDamageRolls(state: CombatState): CombatState {
         })
     };
 
-    if (state.winner === 'hero') {
-        state.activeAbilities.forEach(ability => {
-            const def = getAbilityDefinition(ability.name);
-            if (def?.onDamageRoll) {
-                const updates = def.onDamageRoll(newState, rolls);
-                newState = { ...newState, ...updates };
-            }
-        });
-    }
+    const loser = getOpponent(state.winner!);
+    state.activeAbilities.forEach(ability => {
+        const def = getAbilityDefinition(ability.name);
+        if (def?.onDamageRoll && ability.owner === state.winner) {
+            const updates = def.onDamageRoll(newState, loser, rolls);
+            newState = { ...newState, ...updates };
+        }
+    });
 
     return newState;
 }
 
-function _dealDamage(state: CombatState, target: Target, damage: number) {
-    state.activeAbilities.forEach(ability => {
-        if (ability.target !== target) return;
-        const def = getAbilityDefinition(ability.name);
-        const updates = def?.onDamageDealt?.(state, target, damage);
-        if (updates) {
-            state = { ...state, ...updates };
-        }
-    });
+function _dealDamage(state: CombatState, target: CharacterType, damage: number) {
+    state.activeAbilities
+        .forEach(ability => {
+            const def = getAbilityDefinition(ability.name);
+            const updates = def?.onDamageDealt?.(state, ability.owner, target, damage);
+            if (updates) {
+                state = { ...state, ...updates };
+            }
+        });
     return {
         ...state,
         damageDealt: [...state.damageDealt, {
@@ -194,7 +187,7 @@ function _processDamagePhase(state: CombatState, rolls: DiceRoll[]): CombatState
             const def = getAbilityDefinition(ability.name);
             if (def && def.onDamageCalculate) {
                 const currentTotal = rollTotal + skill + modifiersFromHooks + damageModifiers;
-                const mod = def.onDamageCalculate(state, { total: currentTotal, rolls });
+                const mod = def.onDamageCalculate(state, getOpponent(ability.owner), { total: currentTotal, rolls });
                 if (mod !== 0) {
                     modifiersFromHooks += mod;
                     hookLogMsg += ` (+${mod} ${ability.name})`;
@@ -226,7 +219,7 @@ function _processDamagePhase(state: CombatState, rolls: DiceRoll[]): CombatState
 
         state.enemy.original.abilities.forEach(abilityName => {
             const def = getAbilityDefinition(abilityName);
-            const mod = def?.onDamageCalculate ? def.onDamageCalculate(state, { total: currentTotal, rolls }) : 0;
+            const mod = def?.onDamageCalculate ? def.onDamageCalculate(state, 'enemy', { total: currentTotal, rolls }) : 0;
             if (mod !== 0) {
                 damageModifiers += mod;
                 currentTotal += mod;
@@ -264,7 +257,7 @@ function _processEndOfRoundDamage(state: CombatState): CombatState {
 
     state.activeAbilities.forEach(ability => {
         const def = getAbilityDefinition(ability.name);
-        const updates = def?.onRoundEnd ? def.onRoundEnd(state, ability.target) : {};
+        const updates = def?.onRoundEnd ? def.onRoundEnd(state, ability.owner) : {};
         state = {
             ...state, ...updates,
         };
@@ -358,8 +351,13 @@ export function initCombat(hero: Hero | Combatant<Hero>, initialEnemy?: Enemy | 
             abilities.push({
                 name: abilityName,
                 source: item.name,
-                target: 'enemy',
-                used: false
+                owner: 'hero',
+                used: false,
+                def: getAbilityDefinition(abilityName) ?? {
+                    name: abilityName,
+                    type: 'combat',
+                    description: 'Unknown ability'
+                },
             });
         });
     });
@@ -380,13 +378,18 @@ export function initCombat(hero: Hero | Combatant<Hero>, initialEnemy?: Enemy | 
         abilities.push({
             name: abilityName,
             source: 'Enemy Special Ability',
-            target: 'hero',
-            used: false
+            owner: 'enemy',
+            used: false,
+            def: getAbilityDefinition(abilityName) ?? {
+                name: abilityName,
+                type: 'combat',
+                description: 'Unknown ability'
+            },
         });
     });
     logs = addLog(logs, {
         round: 1,
-        message: `Active enemy abilities: ${abilities.filter(a => a.target === 'hero').map(a => a.name).join(', ')}`,
+        message: `Active enemy abilities: ${abilities.filter(a => a.owner === 'enemy').map(a => a.name).join(', ')}`,
         type: 'info'
     });
     let state: CombatState = {
@@ -401,7 +404,7 @@ export function initCombat(hero: Hero | Combatant<Hero>, initialEnemy?: Enemy | 
     state.activeAbilities.forEach(ability => {
         const def = getAbilityDefinition(ability.name);
         if (def?.onCombatStart) {
-            const updates = def.onCombatStart(state, ability.target);
+            const updates = def.onCombatStart(state, ability.owner);
             state = { ...state, ...updates };
         }
     });
@@ -530,7 +533,8 @@ export function useBackpackItem(state: CombatState, index: number): CombatState 
  * Transitions phase to 'speed-roll'.
  */
 export function generateSpeedRolls(state: CombatState): CombatState {
-    return _calculateWinner(_generateSpeedRolls(state));
+    const newState = _generateSpeedRolls(state);
+    return _calculateWinner(resolveSpeedRolls(newState, newState.heroSpeedRolls!, newState.enemySpeedRolls!));
 }
 
 /**
@@ -538,12 +542,28 @@ export function generateSpeedRolls(state: CombatState): CombatState {
  * Transitions phase to 'speed-roll'.
  */
 export function resolveSpeedRolls(state: CombatState, heroRolls: DiceRoll[], enemyRolls: DiceRoll[]): CombatState {
-    return _calculateWinner({
+    let newState: CombatState = {
         ...state,
         phase: 'speed-roll',
         heroSpeedRolls: heroRolls,
-        enemySpeedRolls: enemyRolls
+        enemySpeedRolls: enemyRolls,
+    }
+
+    state.activeAbilities.forEach(ability => {
+        const def = getAbilityDefinition(ability.name);
+        if (def?.onSpeedRoll) {
+            if (ability.owner == 'hero' && newState.heroSpeedRolls) {
+                const updates = def.onSpeedRoll(newState, 'hero', newState.heroSpeedRolls);
+                newState = { ...newState, ...updates };
+            }
+            if (ability.owner == 'enemy' && newState.enemySpeedRolls) {
+                const updates = def.onSpeedRoll(newState, 'enemy', newState.enemySpeedRolls);
+                newState = { ...newState, ...updates };
+            }
+        }
     });
+
+    return _calculateWinner(newState);
 }
 
 /**

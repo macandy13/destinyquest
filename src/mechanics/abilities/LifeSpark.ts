@@ -5,7 +5,7 @@ registerAbility({
     name: 'Life Spark',
     type: 'passive',
     description: 'Heal 4 health every time you roll a double.',
-    onSpeedRoll: (state, rolls) => {
+    onSpeedRoll: (state, _source, rolls) => {
         if (state.hero && hasDouble(rolls)) {
             const newHealth = Math.min(state.hero.stats.maxHealth, state.hero.stats.health + 4);
             return {
@@ -15,7 +15,7 @@ registerAbility({
         }
         return {};
     },
-    onDamageRoll: (state, rolls) => {
+    onDamageRoll: (state, _source, rolls) => {
         if (state.hero && hasDouble(rolls)) {
             const newHealth = Math.min(state.hero.stats.maxHealth, state.hero.stats.health + 4);
             return {

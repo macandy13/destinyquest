@@ -1,13 +1,13 @@
 import { registerAbility } from '../abilityRegistry';
 import { addLog } from '../../utils/statUtils';
+import { getOpponent } from '../../types/stats';
 
 registerAbility({
     name: 'Avenging Spirit',
     type: 'combat',
     description: 'When you take health damage from an opponent’s damage score/dice, you inflict damage back equal to your armour. This ignores the opponent\'s armour and cannot be increased by modifier abilities.',
-    onDamageDealt: (state, target, amount) => {
-        // Trigger: When YOU (hero) take damage.
-        // target is the victim.
+    onDamageDealt: (state, owner, target, amount) => {
+        if (owner !== target) return {};
         if (amount <= 0) return {};
         const victim = state[target];
         if (!victim) return {};
@@ -18,7 +18,7 @@ registerAbility({
         // Inflict damage back to opponent (enemy)
         // Ignoring armour -> direct health reduction
         // TODO: Simplify conversion to opponent
-        const opponent = target == 'hero' ? 'enemy' : 'hero';
+        const opponent = getOpponent(owner);
         if (!opponent) return {};
 
         const damageBack = victimArmour;

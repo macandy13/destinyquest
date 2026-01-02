@@ -1,18 +1,18 @@
 import { registerAbility } from '../abilityRegistry';
 import { addLog } from '../../utils/statUtils';
+import { getOpponent } from '../../types/stats';
+import { CombatLog, dealDamage } from '../../types/combat';
 
 registerAbility({
     name: 'Venom',
     type: 'passive',
     description: 'If causing health damage, opponent loses 2 health (ignoring armour) at the end of every round.',
-    onRoundEnd: (state, target) => {
+    onRoundEnd: (state, owner) => { // target is type CharacterType (the one suffering damage)
         let activeEffects = [...(state.activeEffects || [])];
-        let logs = [...state.logs];
-        let damageDealt = [...state.damageDealt];
         // Target is who takes the damage (e.g. if Enemy uses Venom, target is 'hero')
+        const target = getOpponent(owner);
         const victim = state[target];
         if (!victim) return {};
-        let victimClone = { ...victim };
 
         // TODO: Only apply if the active ability is from the opponent, otherwise the hero would suffer from its own mastery
         const hasMastery = state.activeAbilities.some(a => a.name === 'Poison Mastery');
@@ -33,22 +33,26 @@ registerAbility({
                     target: target,
                 },
             });
-            logs = addLog(logs, { round: state.round, message: `Venom applied to ${target}`, type: 'info' });
             hasVenom = true;
         }
 
-        // 2. Effect
-        if (!hasVenom) return { activeEffects, logs };
+        const venomAppliedLog: CombatLog = {
+            round: state.round,
+            message: `Venom applied to ${target}`,
+            type: 'info'
+        };
 
-        return {
-            [target]: { ...victimClone, stats: { ...victimClone.stats, health: Math.max(0, victimClone.stats.health - damage) } },
-            damageDealt: [...damageDealt, { target: target, amount: damage, source: 'Venom' }],
+        // 2. Effect
+        if (!hasVenom) return {
             activeEffects,
-            logs: addLog(logs, {
-                round: state.round,
-                message: `Venom: +${damage} damage to ${target} (ignoring armour)`,
-                type: 'info' as const
-            })
+            logs: addLog(state.logs, venomAppliedLog)
+        };
+
+        const damageUpdates = dealDamage(state, 'Venom', target, damage);
+        return {
+            ...damageUpdates,
+            activeEffects,
+            logs: addLog(state.logs, venomAppliedLog)
         };
     }
 });

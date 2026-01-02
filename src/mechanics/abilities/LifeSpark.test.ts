@@ -18,7 +18,7 @@ describe('Life Spark', () => {
 
         const rolls = [{ value: 4, isRerolled: false }, { value: 4, isRerolled: false }];
 
-        const updates = ability.onSpeedRoll!(state, rolls);
+        const updates = ability.onSpeedRoll!(state, 'hero', rolls);
 
         expect(updates.hero!.stats.health).toBe(14);
         expect(updates.logs![0].message).toContain('Life Spark');
@@ -30,7 +30,7 @@ describe('Life Spark', () => {
 
         const rolls = [{ value: 6, isRerolled: false }, { value: 6, isRerolled: false }];
 
-        const updates = ability.onDamageRoll!(state, rolls);
+        const updates = ability.onDamageRoll!(state, 'hero', rolls);
 
         expect(updates.hero!.stats.health).toBe(14);
     });
@@ -41,7 +41,7 @@ describe('Life Spark', () => {
 
         const rolls = [{ value: 1, isRerolled: false }, { value: 2, isRerolled: false }];
 
-        const updates = ability.onSpeedRoll!(state, rolls);
+        const updates = ability.onSpeedRoll!(state, 'hero', rolls);
 
         expect(updates.hero).toBeUndefined(); // No update
     });

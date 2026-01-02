@@ -3,10 +3,10 @@ import { getOpponent } from '../../types/stats';
 import { registerAbility } from '../abilityRegistry';
 
 registerAbility({
-    name: 'Barbs',
+    name: 'Fire Aura',
     type: 'passive',
-    description: 'At the end of every combat round, automatically inflict 1 damage to all opponents.',
+    description: 'All opponents take 1 damage (ignoring armour) at the end of every round.',
     onRoundEnd: (state, owner) => {
-        return dealDamage(state, 'Barbs', getOpponent(owner), 1);
+        return dealDamage(state, 'Fire Aura', getOpponent(owner), 1);
     }
 });

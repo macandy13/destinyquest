@@ -1,3 +1,4 @@
+import { vi } from 'vitest';
 import { BookRef } from '../types/book';
 import { Character } from '../types/character';
 import { CombatState, Enemy } from '../types/combat';
@@ -127,4 +128,9 @@ export function createCombatant(char: Character): Combatant<Character> {
         stats: { ...char.stats },
         original: char
     };
+}
+
+export function mockDiceRolls(rolls: number[]) {
+    const rollValues = rolls.map(r => (r - 1) / 6);
+    vi.spyOn(Math, 'random').mockImplementation(() => rollValues.shift()!);
 }

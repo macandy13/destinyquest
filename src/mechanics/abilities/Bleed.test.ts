@@ -21,7 +21,7 @@ describe('Bleed', () => {
             damageDealt: [{ target: 'enemy' as const, amount: 5, source: 'Attack' }]
         };
 
-        const updates = ability.onRoundEnd!(state, 'enemy' as const);
+        const updates = ability.onRoundEnd!(state, 'hero' as const);
 
         expect(updates.enemy!.stats.health).toBe(19);
         expect(updates.activeEffects).toEqual(

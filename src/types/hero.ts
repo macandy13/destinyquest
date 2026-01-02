@@ -53,6 +53,7 @@ export interface Hero extends Character {
 }
 
 export const INITIAL_HERO: Hero = {
+    type: 'hero',
     name: 'New Hero',
     path: '',
     career: '',

@@ -14,7 +14,7 @@ describe('Rebound', () => {
 
     it('should increase speed after taking damage', () => {
         const state = INITIAL_STATE;
-        const result = ability.onDamageDealt?.(state, 'hero', 5);
+        const result = ability.onDamageDealt?.(state, 'hero', 'hero', 5);
 
         expect(result?.modifications).toHaveLength(1);
         expect(result?.modifications![0].modification.stats.speed).toBe(2);

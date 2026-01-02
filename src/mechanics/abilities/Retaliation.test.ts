@@ -1,7 +1,7 @@
 import { describe, it, expect, beforeEach } from 'vitest';
 import { AbilityDefinition, getAbilityDefinition } from '../abilityRegistry';
 import './Retaliation';
-import { INITIAL_STATE } from '../../tests/testUtils';
+import { enemyWithStats, INITIAL_STATE, mockDiceRolls } from '../../tests/testUtils';
 
 describe('Retaliation', () => {
     let ability: AbilityDefinition;
@@ -13,10 +13,22 @@ describe('Retaliation', () => {
     });
 
     it('should inflict damage back', () => {
-        const state = INITIAL_STATE;
-        const result = ability.onDamageDealt?.(state, 'hero', 5);
+        const state = {
+            ...INITIAL_STATE,
+            enemy: enemyWithStats({ health: 10 }),
+            logs: []
+        };
 
-        expect(result?.damageDealt).toHaveLength(1);
-        expect(result?.damageDealt![0].amount).toBeGreaterThanOrEqual(1);
+        mockDiceRolls([3]);
+
+        const result = ability.onDamageDealt?.(state, 'hero', 'hero', 5);
+
+        expect(result).toEqual(expect.objectContaining({
+            enemy: expect.objectContaining({
+                stats: expect.objectContaining({
+                    health: 7
+                })
+            })
+        }));
     });
 });

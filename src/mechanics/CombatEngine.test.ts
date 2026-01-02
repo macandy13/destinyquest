@@ -8,7 +8,6 @@ import {
     commitDamageResult,
     nextRound,
     useBackpackItem,
-    MOCK_ENEMY
 } from './CombatEngine';
 import { MOCK_HERO, TEST_BOOK, enemyWithStats, heroWithStats, testEquipment } from '../tests/testUtils';
 import { Hero } from '../types/hero';

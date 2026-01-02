@@ -1,11 +1,24 @@
 import { registerAbility } from '../abilityRegistry';
 import { addLog } from '../../utils/statUtils';
 import { hasDouble } from '../../utils/dice';
+import { dealDamage, Modification } from '../../types/combat';
+import { CharacterType, getOpponent } from '../../types/stats';
+
+function isHaunted(effect: Modification, opponent: CharacterType) {
+    return effect.modification.source === 'Haunt Spirit' &&
+        effect.modification.target === opponent;
+}
 
 registerAbility({
     name: 'Haunt',
     type: 'combat',
     description: 'Summon a spirit to inflict 2 damage (ignoring armour) to one opponent at the end of every round until you roll a double.',
+    canActivate: (state) => {
+        // TODO: Also implement for enemy
+        const opponent = 'enemy';
+        const hasSpirit = state.activeEffects.some(e => isHaunted(e, opponent));
+        return !hasSpirit;
+    },
     onActivate: (state) => {
         // Activate to summon spirit
         return {
@@ -24,29 +37,33 @@ registerAbility({
             logs: addLog(state.logs, { round: state.round, message: "Used ability: Haunt. Spirit summoned!", type: 'info' })
         };
     },
-    onRoundEnd: (state, target) => {
-        // Inflict damage if spirit active
-        const hasSpirit = state.activeEffects.some(e => e.modification.source === 'Haunt Spirit');
-        if (!hasSpirit || target !== 'enemy') return {};
-
-        return {
-            damageDealt: [...state.damageDealt, { target: 'enemy', amount: 2, source: 'Haunt' }],
-            logs: addLog(state.logs, { round: state.round, message: "Haunt spirit inflicts 2 damage.", type: 'damage-enemy' })
-        };
-    },
     // Check for "Roll a double" to dispel
-    onSpeedRoll: (state, rolls) => {
+    onSpeedRoll: (state, source, rolls) => {
         // If hero rolls double? "until you roll a double".
         if (hasDouble(rolls)) {
-            const hasSpirit = state.activeEffects.some(e => e.modification.source === 'Haunt Spirit');
+            const opponent = getOpponent(source);
+            const hasSpirit = state.activeEffects.some(e => isHaunted(e, opponent));
             if (hasSpirit) {
                 // Remove spirit
                 return {
-                    activeEffects: state.activeEffects.filter(e => e.modification.source !== 'Haunt Spirit'),
-                    logs: addLog(state.logs, { round: state.round, message: "Rolled a double! Haunt spirit dispelled.", type: 'info' })
+                    activeEffects: state.activeEffects.filter(
+                        e => !isHaunted(e, opponent)),
+                    logs: addLog(state.logs, {
+                        round: state.round,
+                        message: "Rolled a double! Haunt spirit dispelled.",
+                        type: 'info'
+                    })
                 };
             }
         }
         return {};
-    }
+    },
+    onRoundEnd: (state, owner) => {
+        // Inflict damage if spirit active
+        const opponent = getOpponent(owner);
+        const hasSpirit = state.activeEffects.some(e => isHaunted(e, opponent));
+        if (!hasSpirit) return {};
+        return dealDamage(state, 'Haunt', opponent, 2);
+    },
 });
+

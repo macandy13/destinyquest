@@ -13,7 +13,11 @@ export interface Stats {
 export interface StatsModification {
     stats: Partial<Stats>;
     source: string; // The name of the ability or item causing the modification
-    target: Target; // Who the modification applies to
+    target: CharacterType; // Who the modification applies to
 }
 
-export type Target = 'hero' | 'enemy';
+export type CharacterType = 'hero' | 'enemy';
+
+export function getOpponent(target: CharacterType): CharacterType {
+    return target === 'hero' ? 'enemy' : 'hero';
+}
