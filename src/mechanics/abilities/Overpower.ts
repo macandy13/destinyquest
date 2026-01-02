@@ -4,7 +4,7 @@ import { rollDice, sumDice } from '../../utils/dice';
 import { CombatState } from '../../types/combat';
 import { CharacterType } from '../../types/stats';
 
-function canActivate(state: CombatState, owner: CharacterType): boolean {
+function canActivate(state: CombatState, _owner: CharacterType): boolean {
     return state.phase === 'damage-roll' && state.winner === 'enemy';
 }
 
@@ -13,8 +13,8 @@ registerAbility({
     type: 'combat',
     description: 'Stop an opponent\'s damage after they win a round and automatically inflict 2 damage dice (ignoring armour).',
     canActivate: canActivate,
-    onActivate: (state) => {
-        if (!canActivate(state)) return null;
+    onActivate: (state, owner) => {
+        if (!canActivate(state, owner)) return null;
 
         const dmgRolls = rollDice(2);
         const dmg = sumDice(dmgRolls);

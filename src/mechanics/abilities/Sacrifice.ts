@@ -3,7 +3,7 @@ import { addLog } from '../../utils/statUtils';
 import { CombatState } from '../../types/combat';
 import { CharacterType } from '../../types/stats';
 
-function canActivate(state: CombatState, owner: CharacterType): boolean {
+function canActivate(state: CombatState, _owner: CharacterType): boolean {
     const hasShades = state.activeEffects.some(e => e.modification.source === 'Shades'); // Checking modification source
     return hasShades && state.phase === 'damage-roll' && state.winner === 'enemy';
 }
@@ -13,8 +13,8 @@ registerAbility({
     type: 'combat',
     description: "Sacrifice your shades to absorb all damage from an opponent's roll.",
     canActivate: canActivate,
-    onActivate: (state) => {
-        if (!canActivate(state)) return null;
+    onActivate: (state, owner) => {
+        if (!canActivate(state, owner)) return null;
 
         // Remove Shades
         const activeEffects = state.activeEffects.filter(e => e.modification.source !== 'Shades');

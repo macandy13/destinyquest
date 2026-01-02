@@ -1,6 +1,6 @@
 import { describe, it, expect, beforeEach } from 'vitest';
 import { AbilityDefinition, getAbilityDefinition } from '../abilityRegistry';
-import { INITIAL_STATE } from '../../tests/testUtils';
+import { INITIAL_STATE, mockDiceRolls } from '../../tests/testUtils';
 import { CombatState } from '../../types/combat';
 import './Bolt';
 
@@ -43,11 +43,13 @@ describe('Bolt', () => {
             }]
         };
 
+        mockDiceRolls([1, 2, 3]);
+
         const result = ability.onDamageRoll?.(state, 'hero', []);
 
         expect(result?.damageDealt).toHaveLength(1);
         expect(result?.damageDealt![0].amount).toBeGreaterThanOrEqual(3);
-        expect(result?.damageRolls).toEqual([{ value: 0, isRerolled: false }]);
+        expect(result?.damageRolls).toEqual([{ value: 1, isRerolled: false }, { value: 2, isRerolled: false }, { value: 3, isRerolled: false }]);
         expect(result?.activeEffects).toEqual([]); // Charge removed
     });
 });

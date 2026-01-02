@@ -10,5 +10,5 @@ registerAbility(createStatModifierAbility({
     stats: { speed: 1 },
     target: 'hero',
     duration: 1,
-    canActivate: (state: CombatState, owner: CharacterType) => state.phase === 'speed-roll',
+    canActivate: (state: CombatState, _owner: CharacterType) => state.phase === 'speed-roll',
 }));

@@ -4,7 +4,7 @@ import { rollDice, sumDice } from '../../utils/dice';
 import { CombatState } from '../../types/combat';
 import { CharacterType } from '../../types/stats';
 
-function canActivate(state: CombatState, owner: CharacterType): boolean {
+function canActivate(state: CombatState, _owner: CharacterType): boolean {
     return state.phase === 'damage-roll' && state.winner === 'hero';
 }
 
@@ -13,8 +13,8 @@ registerAbility({
     type: 'combat',
     description: 'Use all attack speed dice for your damage score after winning a round.',
     canActivate: canActivate,
-    onActivate: (state) => {
-        if (!canActivate(state)) return null;
+    onActivate: (state, owner) => {
+        if (!canActivate(state, owner)) return null;
 
         // Use Speed Stat as Damage Dice count
         const speed = state.hero?.stats.speed || 0;

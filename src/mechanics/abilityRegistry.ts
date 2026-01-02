@@ -22,7 +22,7 @@ export interface AbilityHooks {
     // Returns the modifier amount to add to damage total
     onDamageCalculate?: (state: CombatState, target: CharacterType, damage: { total: number, rolls: DiceRoll[] }) => number;
 
-    // Called when damage from the attack is about to be inflicted
+    // Called after damage from the attack has been assigned
     onDamageDealt?: (state: CombatState, owner: CharacterType, target: CharacterType, damageDealt: number) => Partial<CombatState>;
 
     // Called when damage phase is over and passive abilities are triggered.

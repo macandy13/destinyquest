@@ -3,7 +3,7 @@ import { addLog } from '../../utils/statUtils';
 import { CombatState } from '../../types/combat';
 import { CharacterType } from '../../types/stats';
 
-function canActivate(state: CombatState, owner: CharacterType): boolean {
+function canActivate(state: CombatState, _owner: CharacterType): boolean {
     return state.phase === 'damage-roll' && state.winner === 'enemy';
 }
 
@@ -12,8 +12,8 @@ registerAbility({
     type: 'combat',
     description: 'Prevent an opponent from rolling damage, ending the round immediately.',
     canActivate: canActivate,
-    onActivate: (state) => {
-        if (!canActivate(state)) return null;
+    onActivate: (state, owner) => {
+        if (!canActivate(state, owner)) return null;
 
         return {
             phase: 'round-end',

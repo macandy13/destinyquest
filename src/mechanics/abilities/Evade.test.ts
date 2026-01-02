@@ -32,7 +32,7 @@ describe('Evade', () => {
             ...INITIAL_STATE,
             phase: 'damage-roll' as const,
             winner: 'enemy' as const,
-            activeEffects: [{ modification: { source: 'Ensnare', target: 'hero' }, id: 'ensnare-1' }]
+            activeEffects: [{ modification: { source: 'Ensnare', target: 'hero' as const, stats: {} }, id: 'ensnare-1' }]
         };
 
         const canActivate = ability.canActivate?.(state, 'hero');

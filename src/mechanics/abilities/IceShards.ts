@@ -3,7 +3,7 @@ import { addLog } from '../../utils/statUtils';
 import { CombatState } from '../../types/combat';
 import { CharacterType } from '../../types/stats';
 
-function canActivate(state: CombatState, owner: CharacterType): boolean {
+function canActivate(state: CombatState, _owner: CharacterType): boolean {
     // TODO: Should this be possible on round-end? Does this trigger the right things?
     return (state.phase === 'damage-roll' || state.phase === 'round-end') && state.winner === 'hero';
 }
@@ -13,8 +13,8 @@ registerAbility({
     type: 'combat',
     description: 'After winning a round, automatically inflict damage equal to your magic score (ignoring armour) to one opponent.',
     canActivate: canActivate,
-    onActivate: (state) => {
-        if (!canActivate(state)) return null;
+    onActivate: (state, owner) => {
+        if (!canActivate(state, owner)) return null;
 
         const enemy = state.enemy;
         if (!enemy) return null;

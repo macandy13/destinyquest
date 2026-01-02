@@ -4,7 +4,7 @@ import { rollDice, sumDice } from '../../utils/dice';
 import { CombatState } from '../../types/combat';
 import { CharacterType } from '../../types/stats';
 
-function canActivate(state: CombatState, owner: CharacterType): boolean {
+function canActivate(state: CombatState, _owner: CharacterType): boolean {
     return state.phase === 'damage-roll' && state.winner === 'hero';
 }
 
@@ -13,8 +13,8 @@ registerAbility({
     type: 'combat',
     description: "Instead of rolling damage, inflict 2 damage dice (ignoring armour) and reduce opponent's speed by 1 for the next round.",
     canActivate: canActivate,
-    onActivate: (state) => {
-        if (!canActivate(state)) return null;
+    onActivate: (state, owner) => {
+        if (!canActivate(state, owner)) return null;
 
         const dmgRolls = rollDice(2);
         const dmg = sumDice(dmgRolls);

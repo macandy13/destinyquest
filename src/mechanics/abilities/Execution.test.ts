@@ -1,8 +1,13 @@
 import { describe, it, expect, beforeEach } from 'vitest';
 import { AbilityDefinition, getAbilityDefinition } from '../abilityRegistry';
-import './Execution';
-import { INITIAL_STATE } from '../../tests/testUtils';
+import { INITIAL_STATE, testEquipment } from '../../tests/testUtils';
 import { CombatState } from '../../types/combat';
+import './Execution';
+
+const TEST_STATE: CombatState = {
+    ...INITIAL_STATE,
+    phase: 'speed-roll',
+};
 
 describe('Execution', () => {
     let ability: AbilityDefinition;
@@ -14,46 +19,45 @@ describe('Execution', () => {
     });
 
     it('should reduce enemy health to zero if conditions are met', () => {
-        // Hero Speed 5, Enemy Health 5 -> Success
-        const state: CombatState = {
-            ...INITIAL_STATE,
-            hero: { ...INITIAL_STATE.hero!, stats: { ...INITIAL_STATE.hero!.stats, speed: 5 } },
-            enemy: { ...INITIAL_STATE.enemy!, stats: { ...INITIAL_STATE.enemy!.stats, health: 5 } },
-        };
-        const result = ability.onActivate?.(state, 'hero');
+        const state = TEST_STATE;
+        state.hero!.stats.speed = 5;
+        state.enemy!.stats.health = 5;
+        state.hero!.original.equipment.mainHand = testEquipment({ name: 'sword' });
 
-        expect(result?.modifications).toHaveLength(1);
-        expect(result?.modifications![0].modification.stats.health).toBe(-5);
-        expect(result?.modifications![0].modification.target).toBe('enemy');
+        expect(ability.canActivate?.(state, 'hero')).toBe(true);
+
+        const result = ability.onActivate?.(state, 'hero');
+        expect(result).toEqual(expect.objectContaining({
+            damageDealt: expect.arrayContaining([
+                expect.objectContaining({
+                    amount: 5,
+                    target: 'enemy'
+                })
+            ])
+        }));
     });
 
     it('should fail if enemy health is greater than hero speed', () => {
-        // Hero Speed 4, Enemy Health 5 -> Failure
-        const state: CombatState = {
-            ...INITIAL_STATE,
-            hero: { ...INITIAL_STATE.hero!, stats: { ...INITIAL_STATE.hero!.stats, speed: 4 } },
-            enemy: { ...INITIAL_STATE.enemy!, stats: { ...INITIAL_STATE.enemy!.stats, health: 5 } },
-        };
-        const result = ability.onActivate?.(state, 'hero');
+        const state = TEST_STATE;
+        state.hero!.stats.speed = 4;
+        state.enemy!.stats.health = 6;
+        state.hero!.original.equipment.mainHand = testEquipment({ name: 'sword' });
 
-        expect(result).toBeNull();
+        expect(ability.canActivate?.(state, 'hero')).toBe(false);
+
+        const result = ability.onActivate?.(state, 'hero');
+        expect(result).toEqual({});
     });
 
-    it('should report canActivate correctly', () => {
-        // Hero Speed 5, Enemy Health 5 -> True
-        const stateSuccess: CombatState = {
-            ...INITIAL_STATE,
-            hero: { ...INITIAL_STATE.hero!, stats: { ...INITIAL_STATE.hero!.stats, speed: 5 } },
-            enemy: { ...INITIAL_STATE.enemy!, stats: { ...INITIAL_STATE.enemy!.stats, health: 5 } }
-        };
-        expect(ability.canActivate?.(stateSuccess, 'hero')).toBe(true);
+    it('should fail if hero has now sword', () => {
+        const state = TEST_STATE;
+        state.hero!.stats.speed = 5;
+        state.enemy!.stats.health = 5;
+        state.hero!.original.equipment.mainHand = testEquipment({ name: 'axe' });
 
-        // Hero Speed 4, Enemy Health 5 -> False
-        const stateFail = {
-            ...INITIAL_STATE,
-            hero: { ...INITIAL_STATE.hero!, stats: { ...INITIAL_STATE.hero!.stats, speed: 4 } },
-            enemy: { ...INITIAL_STATE.enemy!, stats: { ...INITIAL_STATE.enemy!.stats, health: 5 } }
-        };
-        expect(ability.canActivate?.(stateFail, 'hero')).toBe(false);
+        expect(ability.canActivate?.(state, 'hero')).toBe(false);
+
+        const result = ability.onActivate?.(state, 'hero');
+        expect(result).toEqual({});
     });
 });

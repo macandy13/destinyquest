@@ -10,5 +10,5 @@ registerAbility(createStatModifierAbility({
     stats: { damageDice: 1 },
     duration: 1,
     target: 'hero',
-    canActivate: (state: CombatState, owner: CharacterType) => state.phase === 'damage-roll' && state.winner === 'hero'
+    canActivate: (state: CombatState, _owner: CharacterType) => state.phase === 'damage-roll' && state.winner === 'hero'
 }));    

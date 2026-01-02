@@ -16,7 +16,13 @@ describe('Corruption', () => {
     it('should apply corruption buff on activate if damage dealt', () => {
         const state: CombatState = {
             ...INITIAL_STATE,
-            damageDealt: [{ target: 'enemy', amount: 5, source: 'Melee' }]
+            phase: 'round-end',
+            winner: 'hero',
+            damageDealt: [{
+                target: 'enemy',
+                amount: 5,
+                source: 'Attack'
+            }]
         };
 
         expect(ability.canActivate?.(state, 'hero')).toBe(true);

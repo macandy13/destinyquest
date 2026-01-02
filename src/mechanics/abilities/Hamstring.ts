@@ -3,7 +3,7 @@ import { addLog } from '../../utils/statUtils';
 import { CombatState } from '../../types/combat';
 import { CharacterType } from '../../types/stats';
 
-function canActivate(state: CombatState, owner: CharacterType): boolean {
+function canActivate(state: CombatState, _owner: CharacterType): boolean {
     // TODO: Handle for hero as well
     return state.winner === 'enemy';
 }
@@ -13,8 +13,8 @@ registerAbility({
     type: 'combat',
     description: "Cancel an opponent's dodge (e.g., evade, sidestep) and roll for damage as normal.",
     canActivate: canActivate,
-    onActivate: (state) => {
-        if (!canActivate(state)) return null;
+    onActivate: (state, owner) => {
+        if (!canActivate(state, owner)) return null;
         return {
             modifications: [
                 ...state.modifications,

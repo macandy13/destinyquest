@@ -3,7 +3,7 @@ import { CombatState } from '../../types/combat';
 import { createStatModifierAbility } from './abilityFactories';
 import { CharacterType } from '../../types/stats';
 
-function canActivate(state: CombatState, owner: CharacterType): boolean {
+function canActivate(state: CombatState, _owner: CharacterType): boolean {
     return state.damageDealt.some(d => d.target === 'enemy' && d.amount > 0);
 }
 

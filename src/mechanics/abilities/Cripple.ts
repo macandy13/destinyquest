@@ -10,5 +10,5 @@ registerAbility(createStatModifierAbility({
     stats: { speed: -1 },
     duration: 3,
     target: 'enemy',
-    canActivate: (state: CombatState, owner: CharacterType) => state.damageDealt.some(d => d.target === 'enemy' && d.amount > 0)
+    canActivate: (state: CombatState, _owner: CharacterType) => state.damageDealt.some(d => d.target === 'enemy' && d.amount > 0)
 }));

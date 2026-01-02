@@ -10,5 +10,5 @@ registerAbility(createStatModifierAbility({
     stats: { speed: 2 },
     duration: 1,
     target: 'hero',
-    canActivate: (state: CombatState, owner: CharacterType) => state.round === 1
+    canActivate: (state: CombatState, _owner: CharacterType) => state.round === 1
 }));

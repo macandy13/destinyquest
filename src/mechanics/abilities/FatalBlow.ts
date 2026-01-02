@@ -3,7 +3,7 @@ import { addLog } from '../../utils/statUtils';
 import { CombatState } from '../../types/combat';
 import { CharacterType } from '../../types/stats';
 
-function canActivate(state: CombatState, owner: CharacterType): boolean {
+function canActivate(state: CombatState, _owner: CharacterType): boolean {
     return state.phase !== 'round-end';
 }
 
@@ -13,7 +13,7 @@ registerAbility({
     description: "Ignore half of your opponent's armour (rounding up).",
     canActivate: canActivate,
     onActivate: (state: CombatState, owner: CharacterType) => {
-        if (!canActivate(state)) return null;
+        if (!canActivate(state, owner)) return null;
         return {
             modifications: [
                 ...state.modifications,

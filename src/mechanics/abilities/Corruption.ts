@@ -3,9 +3,12 @@ import { addLog } from '../../utils/statUtils';
 import { CombatState } from '../../types/combat';
 import { CharacterType } from '../../types/stats';
 
-function canActivate(state: CombatState, owner: CharacterType): boolean {
-    // Can activate if we just dealt damage this round
-    return state.damageDealt.some(d => d.target === 'enemy' && d.amount > 0 && d.source !== 'Corruption');
+function canActivate(state: CombatState, _owner: CharacterType): boolean {
+    return state.phase === 'round-end'
+        && state.winner === 'hero'
+        && state.damageDealt.some(d => d.target === 'enemy'
+            && d.amount > 0
+            && d.source === 'Attack');
 }
 
 registerAbility({
@@ -13,8 +16,8 @@ registerAbility({
     type: 'combat',
     description: "If you cause health damage, reduce the opponent's brawn or magic by 2 for the remainder of the combat.",
     canActivate: canActivate,
-    onActivate: (state) => {
-        if (!canActivate(state)) return null;
+    onActivate: (state, owner) => {
+        if (!canActivate(state, owner)) return null;
         return {
             modifications: [
                 ...state.modifications,
