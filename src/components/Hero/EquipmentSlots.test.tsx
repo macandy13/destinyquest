@@ -6,6 +6,7 @@ import { Hero } from '../../types/hero';
 
 // Mock hero data
 const mockHero: Hero = {
+    type: 'hero',
     name: 'Test Hero',
     career: 'Warrior',
     path: 'Warrior',

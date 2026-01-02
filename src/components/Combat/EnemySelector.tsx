@@ -17,6 +17,7 @@ const EnemySelector: React.FC<EnemySelectorProps> = ({ onSelect }) => {
 
     // Custom Enemy State
     const [customEnemy, setCustomEnemy] = useState<Enemy>({
+        type: 'enemy',
         name: 'Custom Enemy',
         stats: {
             speed: 2,
@@ -68,6 +69,7 @@ const EnemySelector: React.FC<EnemySelectorProps> = ({ onSelect }) => {
 
     const selectTrainingDummy = () => {
         onSelect({
+            type: 'enemy',
             name: 'Training Dummy',
             stats: {
                 speed: 2,

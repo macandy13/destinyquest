@@ -8104,21 +8104,6 @@ export const ITEMS: EquipmentItem[] = [
     "careerPreference": "Mage"
   },
   {
-    "id": "item_name",
-    "name": "Item Name",
-    "type": "item box",
-    "bookRef": {
-      "book": "Book Title",
-      "act": 1,
-      "section": null
-    },
-    "stats": {},
-    "abilities": [
-      "Special Ability"
-    ],
-    "location": "Location/Enemy"
-  },
-  {
     "id": "saddle_blanket",
     "name": "Saddle blanket",
     "type": "cloak",
@@ -16024,9 +16009,9 @@ export const ITEMS: EquipmentItem[] = [
 ];
 
 export const getItemsBySlot = (slot: string) => {
-    return ITEMS.filter(item => {
-        if (slot === 'ring1' || slot === 'ring2') return item.type === 'ring';
-        return item.type === slot;
-    });
+  return ITEMS.filter(item => {
+    if (slot === 'ring1' || slot === 'ring2') return item.type === 'ring';
+    return item.type === slot;
+  });
 };
 
