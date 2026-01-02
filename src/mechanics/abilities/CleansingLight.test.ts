@@ -1,10 +1,10 @@
 import { describe, it, expect, beforeEach } from 'vitest';
 import { CombatState, Enemy } from '../../types/combat';
 import { AbilityDefinition, getAbilityDefinition } from '../abilityRegistry';
-import './CleansingLight'; // Register ability
 import { INITIAL_STATE, enemyWithStats, heroWithStats, } from '../../tests/testUtils';
 import { Combatant } from '../../types/combatant';
 import { Hero } from '../../types/hero';
+import './CleansingLight'; // Register ability
 
 describe('Cleansing Light', () => {
     let hero: Combatant<Hero>;
@@ -28,7 +28,6 @@ describe('Cleansing Light', () => {
     });
 
     it('should heal the hero at the end of the round', () => {
-        const ability = getAbilityDefinition('Cleansing Light');
         if (!ability || !ability.onRoundEnd) throw new Error('Ability not found or missing onRoundEnd');
 
         // Hero is missing 10 health (20/30)
@@ -41,7 +40,6 @@ describe('Cleansing Light', () => {
     });
 
     it('should not heal beyond max health', () => {
-        const ability = getAbilityDefinition('Cleansing Light');
         if (!ability || !ability.onRoundEnd) throw new Error('Ability not found or missing onRoundEnd');
 
         // Set hero health to near max
@@ -54,7 +52,6 @@ describe('Cleansing Light', () => {
     });
 
     it('should do nothing if health is full', () => {
-        const ability = getAbilityDefinition('Cleansing Light');
         if (!ability || !ability.onRoundEnd) throw new Error('Ability not found or missing onRoundEnd');
 
         state.hero!.stats.health = 30;
