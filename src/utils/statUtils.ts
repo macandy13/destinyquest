@@ -1,4 +1,4 @@
-import { CombatLog, CombatLogType } from "../types/combat";
+import { CombatLog, CombatLogType, CombatState } from "../types/combat";
 import { CharacterType } from "../types/stats";
 
 export function getStatIcon(stat: string): string {
@@ -13,9 +13,28 @@ export function getStatIcon(stat: string): string {
     }
 }
 
-export function addLogs(logs: CombatLog[], ...logsToAdd: CombatLog[]): CombatLog[] {
-    logsToAdd.forEach(log => console.log(`${log.round}: ${log.message}`));
-    return [...logs, ...logsToAdd];
+export function addLogs(state: CombatState, ...logs: Partial<CombatLog>[]): CombatState;
+export function addLogs(currentLogs: CombatLog[], ...logs: Partial<CombatLog>[]): CombatLog[];
+export function addLogs(arg: CombatState | CombatLog[], ...logs: Partial<CombatLog>[]): CombatState | CombatLog[] {
+    const fullLogs = logs
+        .filter(l => l.message)
+        .map(log => {
+            const round = !Array.isArray(arg) ? arg.round : log.round!;
+            const message = log.message!;
+            const type = log.type ?? 'info';
+            const fullLog = {
+                ...log,
+                round,
+                message,
+                type
+            };
+            console.log(`${fullLog.round}: ${fullLog.message}`);
+            return fullLog;
+        });
+    if (Array.isArray(arg)) {
+        return [...arg, ...fullLogs];
+    }
+    return { ...arg, logs: [...arg.logs, ...fullLogs] };
 }
 
 export function getDamageType(target: CharacterType): CombatLogType {

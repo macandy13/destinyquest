@@ -19,7 +19,7 @@ describe('Thorns', () => {
             enemy: enemyWithStats({ health: 10 })
         };
 
-        const result = ability.onRoundEnd?.(state, 'hero');
+        const result = ability.onPassiveAbility?.(state, 'hero');
 
         expect(result).toEqual(expect.objectContaining({
             enemy: expect.objectContaining({

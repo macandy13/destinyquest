@@ -11,7 +11,7 @@ describe('Barbs', () => {
             enemy: enemyWithStats({ health: 10 })
         };
 
-        const updates = barbs?.onRoundEnd?.(state, 'hero');
+        const updates = barbs?.onPassiveAbility?.(state, 'hero');
 
         expect(updates?.enemy?.stats.health).toBe(9);
         expect(updates?.logs?.[0].message).toContain('Barbs dealt 1 damage');
@@ -24,7 +24,7 @@ describe('Barbs', () => {
             enemy: enemyWithStats({ health: 0 })
         };
 
-        const updates = barbs?.onRoundEnd?.(state, 'hero');
+        const updates = barbs?.onPassiveAbility?.(state, 'hero');
         expect(updates).toEqual({});
     });
 });

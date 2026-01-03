@@ -14,23 +14,32 @@ describe('Bleed', () => {
     });
 
     it('should deal 1 damage at round end', () => {
-        const state: CombatState = {
+        let state: CombatState = {
             ...INITIAL_STATE,
             enemy: enemyWithStats({ health: 20 }),
             winner: 'hero' as const,
-            damageDealt: [{ target: 'enemy' as const, amount: 5, source: 'Attack' }]
+            bonusDamage: [{ target: 'enemy' as const, amount: 5, source: 'Attack' }]
         };
 
-        const updates = ability.onRoundEnd!(state, 'hero' as const);
-
-        expect(updates.enemy!.stats.health).toBe(19);
-        expect(updates.activeEffects).toEqual(
+        state = ability.onDamageDealt!(state, { owner: 'hero', target: 'enemy' as const }, 5);
+        expect(state.enemy!.activeEffects).toEqual(
             expect.arrayContaining([
                 expect.objectContaining({
                     modification: expect.objectContaining({
                         source: 'Bleed',
                         target: 'enemy',
                     })
+                })
+            ])
+        );
+
+        state = ability.onPassiveAbility!(state, { owner: 'hero' as const });
+        expect(state.bonusDamage).toEqual(
+            expect.arrayContaining([
+                expect.objectContaining({
+                    source: 'Bleed',
+                    target: 'enemy',
+                    amount: 1,
                 })
             ])
         );

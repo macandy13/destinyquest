@@ -40,3 +40,8 @@ export function hasDouble(rolls: DiceRoll[] | number[]): boolean {
     const values = rolls.map(r => (typeof r === 'number' ? r : r.value));
     return new Set(values).size !== values.length;
 }
+
+export function formatDice(rolls: DiceRoll[] | number[]): string {
+    if (!rolls) return '';
+    return rolls.map(r => (typeof r === 'number' ? r : r.value)).join(', ');
+}

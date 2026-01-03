@@ -49,7 +49,7 @@ describe('Venom', () => {
             activeAbilities: [VENOM_ABILITY]
         };
 
-        const updates = ability.onRoundEnd!(state, 'hero');
+        const updates = ability.onPassiveAbility!(state, 'hero');
 
         expect(updates.enemy!.stats.health).toBe(18);
         expect(updates.damageDealt).toEqual(expect.arrayContaining([
@@ -82,7 +82,7 @@ describe('Venom', () => {
             ]
         };
 
-        const updates = ability.onRoundEnd!(state, 'hero');
+        const updates = ability.onPassiveAbility!(state, 'hero');
 
         expect(updates.enemy!.stats.health).toBe(17);
         const damageEntry = updates.damageDealt?.find(d => d.source === 'Venom');
@@ -102,7 +102,7 @@ describe('Venom', () => {
             ]
         };
 
-        const updates = ability.onRoundEnd!(state, 'hero');
+        const updates = ability.onPassiveAbility!(state, 'hero');
 
         expect(updates.enemy!.stats.health).toBe(16);
         const damageEntry = updates.damageDealt?.find(d => d.source === 'Venom');
@@ -119,7 +119,7 @@ describe('Venom', () => {
             activeAbilities: [VENOM_ABILITY]
         };
 
-        const updates = ability.onRoundEnd!(state, 'hero');
+        const updates = ability.onPassiveAbility!(state, 'hero');
         // Should not have any damage dealt
         expect(updates.damageDealt).toBeUndefined();
     });

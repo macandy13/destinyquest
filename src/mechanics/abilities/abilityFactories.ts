@@ -1,9 +1,8 @@
 import { AbilityDefinition, AbilityType } from '../abilityRegistry';
 import { CombatState } from '../../types/combat';
-import { Modification } from '../../types/character';
 import { addLogs } from '../../utils/statUtils';
 import { rollDice, sumDice } from '../../utils/dice';
-import { Stats, StatsModification, CharacterType, getOpponent } from '../../types/stats';
+import { Stats, CharacterType, getOpponent } from '../../types/stats';
 
 export interface StatModifierAbilityConfig {
     name: string;
@@ -25,22 +24,25 @@ export function createStatModification(
         target: CharacterType,
         duration?: number
     }): Partial<CombatState> {
-    return {
-        modifications: [{
-            duration: config.duration,
-            modification: {
-                id: `${config.name.toLowerCase().replace(/[^a-z0-9]/g, '-')}-${state.round}`,
-                stats: config.stats,
-                target: config.target,
-                source: config.name,
-            } as StatsModification,
-        } as Modification],
-        logs: [{
-            round: state.round ?? 0,
-            message: `Used ability: ${config.name} (${config.description})`,
-            type: 'info'
-        }]
-    };
+    return state;
+    // TODO
+    /*
+return {
+    modifications: [{
+        duration: config.duration,
+        modification: {
+            id: `${config.name.toLowerCase().replace(/[^a-z0-9]/g, '-')}-${state.round}`,
+            stats: config.stats,
+            target: config.target,
+            source: config.name,
+        } as StatsModification,
+    } as Modification],
+    logs: [{
+        round: state.round ?? 0,
+        message: `Used ability: ${config.name} (${config.description})`,
+        type: 'info'
+    }]
+};*/
 }
 
 export function createStatModifierAbility(config: StatModifierAbilityConfig): AbilityDefinition {

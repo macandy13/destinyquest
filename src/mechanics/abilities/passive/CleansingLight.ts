@@ -5,7 +5,7 @@ registerAbility({
     name: 'Cleansing Light',
     type: 'passive',
     description: 'Automatically heal for 2 health at the end of each round.',
-    onRoundEnd: (state, owner) => {
+    onPassiveAbility: (state, owner) => {
         const beneficiary = state[owner];
         if (!beneficiary) return {};
 

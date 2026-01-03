@@ -1,19 +1,18 @@
-import { Hero, BackpackItem } from './hero';
-import { StatsModification, CharacterType } from './stats';
-import { Character } from './character';
-import { Combatant } from './combatant';
+import { Hero, BackpackItem, EquipmentItem } from './hero';
+import { CharacterType, Stats } from './stats';
+import { Character, Modification } from './character';
 import { BookRef } from './book';
 import { addLogs, getDamageType } from '../utils/statUtils';
 import { applyStatsModification } from '../utils/stats';
 
 export interface Enemy extends Character {
     name: string;
-    abilities: string[]; // Placeholder for special rules
+    abilities: string[];
     preventHealing?: boolean;
     bookRef: BookRef;
 }
 
-export type CombatLogType = 'info' | 'damage-hero' | 'damage-enemy' | 'win' | 'loss' | 'warning';
+export type CombatLogType = 'info' | 'warning' | 'damage-hero' | 'damage-enemy' | 'win' | 'loss';
 
 export interface CombatLog {
     round: number;
@@ -21,7 +20,7 @@ export interface CombatLog {
     type: CombatLogType;
 }
 
-export type AbilityType = 'speed' | 'combat' | 'modifier' | 'passive';
+export type AbilityType = 'speed' | 'combat' | 'modifier' | 'passive' | 'special';
 
 export interface AbilityDefinition {
     name: string;
@@ -31,79 +30,71 @@ export interface AbilityDefinition {
 
 export interface ActiveAbility {
     name: string;
-    source: string; // Item name
     owner: CharacterType;
-    used: boolean;
     def: AbilityDefinition;
+    uses?: number,
+    // TODO: Needed?
+    sources?: EquipmentItem[];
 }
 
-export interface CombatModifier {
+export type CombatPhase = 'combat-start' | 'round-start' | 'speed-roll' | 'damage-roll' | 'apply-damage' | 'passive-damage' | 'round-end' | 'combat-end';
+
+export interface Combatant<T extends Character = Character> {
+    type: CharacterType;
+    id: string; // Unique identifier in combat (e.g. 'hero', 'enemy-1')
     name: string;
-    source: string;
-    type: 'speed-bonus' | 'speed-dice' | 'damage-bonus' | 'armour-bonus'; // Add more as needed
-    value: number;
-    duration: number; // rounds remaining
+    stats: Stats;
+    // We retain a reference to the original character object for accessing static data/metadata
+    original: T;
+    // Maps from ability name to active (non-used) abilities in a combat.
+    activeAbilities: Map<string, ActiveAbility>;
+    /* Active effects, both buffs and debuffs */
+    activeEffects: Modification[];
 }
 
-export type CombatPhase = 'combat-start' | 'speed-roll' | 'damage-roll' | 'passive-damage' | 'round-end' | 'combat-end';
-
-export interface AdditionalDamageDescriptor {
-    type: 'damage-hero' | 'damage-enemy';
-    amount: number;
+export interface DamageDescriptor {
     source: string;
-}
-
-export interface DamageDealtDescriptor {
     target: CharacterType;
     amount: number;
-    source: string;
 }
 
-export interface Modification {
-    id: string;
-    modification: StatsModification;
-    duration?: number; // undefined means infinite
+export interface AttackDamageDescriptor {
+    damageRolls: DiceRoll[];
+    modifiers: DamageDescriptor[];
 }
 
 export interface CombatState {
+    enemy: Combatant<Enemy>;
+    hero: Combatant<Hero>;
+
     round: number;
     phase: CombatPhase;
-    enemy: Combatant<Enemy> | null;
-    hero: Combatant<Hero> | null;
+    logs: CombatLog[];
 
-    /* Speed rolls of the hero and the enemy */
+    // Available items in the backpack (hero.original.backpack will not be modified).
+    backpack: BackpackItem[];
+
+    /* 
+     * Speed rolls of the hero and the enemy.
+     * Always set beginning with the speed-roll phase.
+     */
     heroSpeedRolls?: DiceRoll[];
     enemySpeedRolls?: DiceRoll[];
 
-    /* Winner of the current speed round */
+    /* 
+     * Winner of the current speed round. 
+     * Will be determined beginning with the speed-roll phase. 
+     */
     winner?: CharacterType | null;
 
-    /* Damage rolls of the winner of the round */
-    damageRolls?: DiceRoll[];
+    /* 
+     * Damage rolls of the winner of the round.
+     * Will be set beginning with the damage-roll phase.
+     */
+    damage?: AttackDamageDescriptor;
 
     /* Damage dealt during the current round */
-    damageDealt: DamageDealtDescriptor[];
-
-    /* All active abilities, both targeting hero and enemey */
-    activeAbilities: ActiveAbility[];
-
-    /* Active effects, both buffs and debuffs */
-    activeEffects: Modification[];
-
-    /* Permanent modifications */
-    modifications: Modification[];
-
-    /* Backpack of the hero */
-    backpack: BackpackItem[];
-
-    /* Full logs of the combat, tracks all changes to the health of the combatants */
-    logs: CombatLog[];
-
-    /* 
-    * Additional damage reported at the end of the round. 
-    * Only used for displaying additioal information at the end of the round. 
-    */
-    additionalEnemyDamage?: AdditionalDamageDescriptor[];
+    bonusDamage: DamageDescriptor[];
 
     /* Used to allow the user to select dice to be re-rolled */
     rerollState?: {
@@ -129,13 +120,6 @@ export function dealDamage(state: CombatState, source: string, target: Character
                 health: Math.max(0, targetChar.stats.health - actualDamage)
             }
         },
-        damageDealt: [
-            ...state.damageDealt,
-            {
-                target: target,
-                amount: amount,
-                source: source
-            }],
         logs: addLogs(state.logs, {
             round: state.round,
             message: `${source} dealt ${actualDamage} damage to ${targetChar.name}`,
@@ -189,12 +173,30 @@ export function applyUpdates(state: CombatState, updates: Partial<CombatState>):
         winner: updates.winner ?? state.winner,
         damageRolls: updates.damageRolls ?? state.damageRolls,
         damageDealt: appendArray(state.damageDealt, updates.damageDealt),
-        activeAbilities: appendArray(state.activeAbilities, updates.activeAbilities),
-        activeEffects: appendArray(state.activeEffects, updates.activeEffects),
-        modifications: appendArray(state.modifications, updates.modifications),
         backpack: updates.backpack ?? state.backpack,
         logs: appendArray(state.logs, updates.logs),
-        additionalEnemyDamage: appendArray(state.additionalEnemyDamage, updates.additionalEnemyDamage),
+        pendingDamage: updates.pendingDamage ?? state.pendingDamage,
         rerollState: updates.rerollState ?? state.rerollState,
+    };
+}
+
+export function appendEffect(state: CombatState, target: CharacterType, effect: Modification) {
+    return {
+        ...state,
+        [target]: {
+            ...state[target],
+            activeEffects: [...state[target].activeEffects, effect],
+        },
+    };
+}
+
+export function hasEffect(state: CombatState, target: CharacterType, source: string) {
+    return state[target].activeEffects.some(e => e.modification.source === source);
+}
+
+export function appendBonusDamage(state: CombatState, damage: DamageDescriptor) {
+    return {
+        ...state,
+        bonusDamage: [...state.bonusDamage, damage],
     };
 }

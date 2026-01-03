@@ -1,8 +1,7 @@
 import { vi } from 'vitest';
 import { BookRef } from '../types/book';
 import { Character } from '../types/character';
-import { CombatState, DiceRoll, Enemy } from '../types/combat';
-import { Combatant } from '../types/combatant';
+import { CombatState, Combatant, DiceRoll, Enemy } from '../types/combat';
 import { BackpackItem, EquipmentItem, Hero } from '../types/hero';
 
 export const MOCK_HERO: Hero = {
@@ -43,38 +42,23 @@ export const MOCK_ENEMY: Enemy = {
     abilities: []
 };
 
-const HERO_COMBATANT: Combatant<Hero> = {
-    type: 'hero',
-    id: 'hero',
-    name: MOCK_HERO.name,
-    stats: { ...MOCK_HERO.stats },
-    original: MOCK_HERO
-};
+const HERO_COMBATANT: Combatant<Hero> = createCombatant(MOCK_HERO);
 
-const ENEMY_COMBATANT: Combatant<Enemy> = {
-    type: 'enemy',
-    id: 'enemy',
-    name: MOCK_ENEMY.name,
-    stats: { ...MOCK_ENEMY.stats },
-    original: MOCK_ENEMY
-};
+const ENEMY_COMBATANT: Combatant<Enemy> = createCombatant(MOCK_ENEMY);
 
 // Generic mock state for ability testing
 export const INITIAL_STATE: CombatState = {
     hero: HERO_COMBATANT,
     enemy: ENEMY_COMBATANT,
-    round: 1,
+    round: 0,
     phase: 'combat-start',
+    logs: [],
     heroSpeedRolls: undefined,
     enemySpeedRolls: undefined,
     damageRolls: undefined,
     winner: null,
-    activeAbilities: [],
-    modifications: [],
     backpack: [],
-    logs: [],
     damageDealt: [],
-    activeEffects: []
 };
 
 export const heroWithStats = (stats: Partial<Hero['stats']>): Combatant<Hero> => {
@@ -85,7 +69,7 @@ export const heroWithStats = (stats: Partial<Hero['stats']>): Combatant<Hero> =>
             ...stats
         }
     };
-    return createCombatant(hero) as Combatant<Hero>;
+    return createCombatant(hero);
 };
 
 export function testEquipment(stats: Partial<EquipmentItem>): EquipmentItem {
@@ -126,7 +110,9 @@ export function createCombatant(char: Character): Combatant<Character> {
         type: char.type,
         name: char.name,
         stats: { ...char.stats },
-        original: char
+        original: char,
+        activeAbilities: new Map(),
+        activeEffects: []
     };
 }
 

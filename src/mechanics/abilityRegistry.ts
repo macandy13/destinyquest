@@ -1,38 +1,43 @@
-import { CombatState, DiceRoll } from '../types/combat';
+import { CombatState } from '../types/combat';
 import { CharacterType } from '../types/stats';
+
+export interface AbilityContext {
+    owner: CharacterType;
+    target?: CharacterType;
+}
 
 export interface AbilityHooks {
     // Checks if ability can be activated in current state
-    canActivate?: (state: CombatState, owner: CharacterType) => boolean;
+    canActivate?: (state: CombatState, context: AbilityContext) => boolean;
 
     // For active abilities: returns partial state or null if activation failed/invalid
-    onActivate?: (state: CombatState, owner: CharacterType) => Partial<CombatState> | null;
+    onActivate?: (state: CombatState, context: AbilityContext) => CombatState;
 
-    onCombatStart?: (state: CombatState, owner: CharacterType) => Partial<CombatState>;
+    onCombatStart?: (state: CombatState, context: AbilityContext) => CombatState;
 
     // Triggered after speed dice are rolled
-    onSpeedRoll?: (state: CombatState, source: CharacterType, rolls: DiceRoll[]) => Partial<CombatState>;
+    onSpeedRoll?: (state: CombatState, context: AbilityContext) => CombatState;
 
     // Returns the modifier amount to add to speed total
-    onSpeedCalculate?: (state: CombatState) => number;
+    onSpeedCalculate?: (state: CombatState, context: AbilityContext) => number;
 
     // Triggered after damage dice are rolled
-    onDamageRoll?: (state: CombatState, source: CharacterType, rolls: DiceRoll[]) => Partial<CombatState>;
+    onDamageRoll?: (state: CombatState, context: AbilityContext) => CombatState;
 
     // Returns the modifier amount to add to damage total
-    onDamageCalculate?: (state: CombatState, owner: CharacterType, target: CharacterType, damage: { total: number, rolls: DiceRoll[] }) => number;
+    onDamageCalculate?: (state: CombatState, context: AbilityContext) => number;
 
     // Called after damage from the attack has been assigned
-    onDamageDealt?: (state: CombatState, owner: CharacterType, target: CharacterType, damageDealt: number) => Partial<CombatState>;
+    onDamageDealt?: (state: CombatState, context: AbilityContext, damageDealt: number) => CombatState;
 
     // Called when damage phase is over and passive abilities are triggered.
-    onRoundEnd?: (state: CombatState, owner: CharacterType) => Partial<CombatState>;
+    onPassiveAbility?: (state: CombatState, context: AbilityContext) => CombatState;
 
     // Handles reroll interactions. Returns state updates.
-    onReroll?: (state: CombatState, dieIndex: number) => Partial<CombatState>;
+    onReroll?: (state: CombatState, dieIndex: number) => CombatState;
 }
 
-export type AbilityType = 'passive' | 'speed' | 'combat' | 'modifier';
+export type AbilityType = 'passive' | 'speed' | 'combat' | 'modifier' | 'special';
 
 export interface AbilityDefinition extends AbilityHooks {
     name: string;
@@ -51,7 +56,6 @@ export function getAbilityDefinition(name: string): AbilityDefinition | undefine
     return ABILITY_REGISTRY[name];
 }
 
-
 export function getAbilityIcon(definition: AbilityDefinition | undefined): string {
     if (!definition) return '❓';
 
@@ -66,6 +70,7 @@ export function getAbilityIcon(definition: AbilityDefinition | undefined): strin
         case 'combat': return '⚔️';
         case 'modifier': return '✨';
         case 'passive': return '👁️';
+        case 'specials': return '👾';
         default: return '✨';
     }
 }

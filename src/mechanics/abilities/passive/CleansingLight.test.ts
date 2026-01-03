@@ -28,10 +28,10 @@ describe('Cleansing Light', () => {
     });
 
     it('should heal the hero at the end of the round', () => {
-        if (!ability || !ability.onRoundEnd) throw new Error('Ability not found or missing onRoundEnd');
+        if (!ability || !ability.onPassiveAbility) throw new Error('Ability not found or missing onPassiveAbility');
 
         // Hero is missing 10 health (20/30)
-        const result = ability.onRoundEnd(state, 'hero');
+        const result = ability.onPassiveAbility(state, 'hero');
 
         expect(result.hero).toBeDefined();
         expect(result.hero!.stats.health).toBe(22); // 20 + 2
@@ -40,23 +40,23 @@ describe('Cleansing Light', () => {
     });
 
     it('should not heal beyond max health', () => {
-        if (!ability || !ability.onRoundEnd) throw new Error('Ability not found or missing onRoundEnd');
+        if (!ability || !ability.onPassiveAbility) throw new Error('Ability not found or missing onPassiveAbility');
 
         // Set hero health to near max
         state.hero!.stats.health = 29;
 
-        const result = ability.onRoundEnd(state, 'hero');
+        const result = ability.onPassiveAbility(state, 'hero');
         expect(result.hero).toBeDefined();
         expect(result.hero!.stats.health).toBe(30); // Capped at 30
         expect(result.logs![0].message).toContain('Cleansing Light healed 1 health');
     });
 
     it('should do nothing if health is full', () => {
-        if (!ability || !ability.onRoundEnd) throw new Error('Ability not found or missing onRoundEnd');
+        if (!ability || !ability.onPassiveAbility) throw new Error('Ability not found or missing onPassiveAbility');
 
         state.hero!.stats.health = 30;
 
-        const result = ability.onRoundEnd(state, 'hero');
+        const result = ability.onPassiveAbility(state, 'hero');
         expect(result).toEqual({});
     });
 });

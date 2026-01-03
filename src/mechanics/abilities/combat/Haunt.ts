@@ -58,7 +58,7 @@ registerAbility({
         }
         return {};
     },
-    onRoundEnd: (state, owner) => {
+    onPassiveAbility: (state, owner) => {
         // Inflict damage if spirit active
         const opponent = getOpponent(owner);
         const hasSpirit = state.activeEffects.some(e => isHaunted(e, opponent));

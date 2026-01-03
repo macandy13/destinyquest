@@ -7,7 +7,7 @@ registerAbility({
     name: 'Venom',
     type: 'passive',
     description: 'If causing health damage, opponent loses 2 health (ignoring armour) at the end of every round.',
-    onRoundEnd: (state, owner) => { // target is type CharacterType (the one suffering damage)
+    onPassiveAbility: (state, owner) => { // target is type CharacterType (the one suffering damage)
         let activeEffects = [...(state.activeEffects || [])];
         // Target is who takes the damage (e.g. if Enemy uses Venom, target is 'hero')
         const target = getOpponent(owner);

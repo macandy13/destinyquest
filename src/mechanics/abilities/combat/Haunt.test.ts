@@ -32,7 +32,7 @@ describe('Haunt', () => {
                 }, id: 'haunt-1'
             }],
         };
-        const result = ability.onRoundEnd?.(state, 'hero');
+        const result = ability.onPassiveAbility?.(state, 'hero');
 
         expect(result?.damageDealt).toHaveLength(1);
         expect(result?.damageDealt![0].amount).toBe(2);
