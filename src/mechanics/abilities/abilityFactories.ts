@@ -1,5 +1,6 @@
 import { AbilityDefinition, AbilityType } from '../abilityRegistry';
-import { CombatState, Modification } from '../../types/combat';
+import { CombatState } from '../../types/combat';
+import { Modification } from '../../types/character';
 import { addLogs } from '../../utils/statUtils';
 import { rollDice, sumDice } from '../../utils/dice';
 import { Stats, StatsModification, CharacterType, getOpponent } from '../../types/stats';
@@ -16,6 +17,7 @@ export interface StatModifierAbilityConfig {
 }
 
 export function createStatModification(
+    state: CombatState,
     config: {
         name: string,
         description: string,
@@ -52,7 +54,7 @@ export function createStatModifierAbility(config: StatModifierAbilityConfig): Ab
             if (config.canActivate && !config.canActivate(state, owner)) {
                 return {};
             }
-            return createStatModification(config);
+            return createStatModification(state, config);
         }
     };
 }
