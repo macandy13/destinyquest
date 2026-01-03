@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import { CombatState } from '../../types/combat';
-import { getAbilityDefinition, AbilityDefinition, getAbilityIcon } from '../../mechanics/abilityRegistry';
+import { ActiveAbility, CombatState } from '../../types/CombatState';
+import { getAbilityDefinition, getAbilityIcon } from '../../mechanics/abilityRegistry';
 import CombatAbilityItem from './CombatAbilityItem';
 import CombatBackpackItem from './CombatBackpackItem';
 import './CombatAbilitySelector.css';
@@ -12,20 +12,13 @@ interface CombatAbilitySelectorProps {
 }
 
 const CombatAbilitySelector: React.FC<CombatAbilitySelectorProps> = ({ combat, onActivateAbility, onUseBackbackItem }) => {
-    const [selectedAbility, setSelectedAbility] = useState<AbilityDefinition | null>(null);
+    const [selectedAbility, setSelectedAbility] = useState<ActiveAbility | null>(null);
 
-    const canActivateAbility = (abilityName: string, used?: boolean) => {
+    const canActivateAbility = (abilityName: string) => {
         const def = getAbilityDefinition(abilityName);
-        if (!def || def.type === 'passive' || !def.onActivate || used) return false;
-        if (def.canActivate) return def.canActivate(combat, 'hero');
+        if (!def || def.type === 'passive' || !def.onActivate) return false;
+        if (def.canActivate) return def.canActivate(combat, { owner: 'hero' });
         return true;
-    };
-
-    const handleAbilityClick = (abilityName: string) => {
-        const def = getAbilityDefinition(abilityName);
-        if (def) {
-            setSelectedAbility(def);
-        }
     };
 
     const handleBackpackClick = (itemIndex: number) => {
@@ -39,24 +32,10 @@ const CombatAbilitySelector: React.FC<CombatAbilitySelectorProps> = ({ combat, o
         }
     };
 
-    const activeAbilityInstance = selectedAbility
-        ? combat.activeAbilities.find(a => a.name === selectedAbility.name)
-        : null;
-
-    const abilityCounts: Record<string, number> = {};
-    const availableAbilities = combat.activeAbilities
-        .filter(a => a.owner === 'hero')
-        .filter(a => canActivateAbility(a.name, a.used))
-        .reduce((acc, a) => {
-            if (!abilityCounts[a.name]) {
-                abilityCounts[a.name] = 0;
-                acc.push(a);
-            }
-            abilityCounts[a.name]++;
-            return acc;
-        }, [] as typeof combat.activeAbilities)
+    const allActiveAbilities = [...combat.hero.activeAbilities.values()];
+    const availableAbilities = allActiveAbilities
+        .filter(a => canActivateAbility(a.name))
         .sort((a, b) => a.name.localeCompare(b.name));
-
     if (availableAbilities.length === 0) return null;
 
     return (
@@ -66,7 +45,7 @@ const CombatAbilitySelector: React.FC<CombatAbilitySelectorProps> = ({ combat, o
                     <CombatAbilityItem
                         key={index}
                         ability={ability}
-                        onClick={() => handleAbilityClick(ability.name)}
+                        onClick={() => setSelectedAbility(ability)}
                     />
                 ))}
                 {combat.hero?.original.backpack.map((item, index) => (
@@ -82,19 +61,19 @@ const CombatAbilitySelector: React.FC<CombatAbilitySelectorProps> = ({ combat, o
                 <div className="ability-modal-overlay" onClick={() => setSelectedAbility(null)}>
                     <div className="ability-modal-content" onClick={e => e.stopPropagation()}>
                         <div className="ability-modal-header">
-                            <div className="ability-icon-huge">{getAbilityIcon(selectedAbility)}</div>
+                            <div className="ability-icon-huge">{getAbilityIcon(selectedAbility.def)}</div>
                             <span className="ability-modal-title">
                                 <h3>{selectedAbility.name}</h3>
-                                <span>{abilityCounts[selectedAbility.name] > 1 ? `(x${abilityCounts[selectedAbility.name]})` : ''}</span>
+                                <span>{selectedAbility.uses ? `(x${selectedAbility.uses})` : ''}</span>
                             </span>
                             <button className="close-btn ability-modal-close" onClick={() => setSelectedAbility(null)}>&times;</button>
                         </div>
 
                         <div className="ability-modal-body">
-                            <p className="ability-modal-description">{selectedAbility.description}</p>
-                            {activeAbilityInstance && (
+                            <p className="ability-modal-description">{selectedAbility.def.description}</p>
+                            {selectedAbility.sources && (
                                 <p className="text-dim text-sm" style={{ marginTop: '8px' }}>
-                                    Source: {activeAbilityInstance.source}
+                                    Source(s): {selectedAbility.sources.map(s => s.name).join(', ')}
                                 </p>
                             )}
                         </div>

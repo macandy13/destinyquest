@@ -16,23 +16,23 @@ describe('Parry', () => {
         // Valid state
         const validState = { ...INITIAL_STATE, phase: 'damage-roll', winner: 'enemy' };
         // @ts-ignore - Partial state
-        expect(ability.canActivate?.(validState, 'hero')).toBe(true);
+        expect(ability.canActivate?.(validState, { owner: 'hero' })).toBe(true);
 
         // Invalid phase
         const invalidPhase = { ...INITIAL_STATE, phase: 'speed-roll', winner: 'enemy' };
         // @ts-ignore - Partial state
-        expect(ability.canActivate?.(invalidPhase, 'hero')).toBe(false);
+        expect(ability.canActivate?.(invalidPhase, { owner: 'hero' })).toBe(false);
 
         // Invalid winner
         const invalidWinner = { ...INITIAL_STATE, phase: 'damage-roll', winner: 'hero' };
         // @ts-ignore - Partial state
-        expect(ability.canActivate?.(invalidWinner, 'hero')).toBe(false);
+        expect(ability.canActivate?.(invalidWinner, { owner: 'hero' })).toBe(false);
 
         // @ts-ignore - Partial state
-        const updates = ability.onActivate?.(validState, 'hero');
+        const updates = ability.onActivate?.(validState, { owner: 'hero' });
 
         expect(updates?.phase).toBe('round-end');
-        expect(updates?.damageRolls).toEqual([{ value: 0, isRerolled: false }]);
+        expect(updates?.damage?.damageRolls).toEqual([{ value: 0, isRerolled: false }]);
         expect(updates?.logs?.[0].message).toContain('blocked');
     });
 });

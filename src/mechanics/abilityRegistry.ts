@@ -1,5 +1,6 @@
-import { CombatState } from '../types/combat';
-import { CharacterType } from '../types/stats';
+import { CombatState } from '../types/CombatState';
+import { CharacterType } from '../types/Character';
+import { AbilityType } from '../types/AbilityDescription';
 
 export interface AbilityContext {
     owner: CharacterType;
@@ -28,7 +29,7 @@ export interface AbilityHooks {
     onDamageCalculate?: (state: CombatState, context: AbilityContext) => number;
 
     // Called after damage from the attack has been assigned
-    onDamageDealt?: (state: CombatState, context: AbilityContext, damageDealt: number) => CombatState;
+    onDamageDealt?: (state: CombatState, context: AbilityContext, source: string, damageDealt: number) => CombatState;
 
     // Called when damage phase is over and passive abilities are triggered.
     onPassiveAbility?: (state: CombatState, context: AbilityContext) => CombatState;
@@ -36,8 +37,6 @@ export interface AbilityHooks {
     // Handles reroll interactions. Returns state updates.
     onReroll?: (state: CombatState, dieIndex: number) => CombatState;
 }
-
-export type AbilityType = 'passive' | 'speed' | 'combat' | 'modifier' | 'special';
 
 export interface AbilityDefinition extends AbilityHooks {
     name: string;
@@ -70,7 +69,7 @@ export function getAbilityIcon(definition: AbilityDefinition | undefined): strin
         case 'combat': return '⚔️';
         case 'modifier': return '✨';
         case 'passive': return '👁️';
-        case 'specials': return '👾';
+        case 'special': return '👾';
         default: return '✨';
     }
 }

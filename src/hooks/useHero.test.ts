@@ -1,7 +1,7 @@
 import { renderHook, act } from '@testing-library/react';
 import { useHero } from '../hooks/useHero';
 import { describe, it, expect } from 'vitest';
-import { EquipmentItem } from '../types/hero';
+import { EquipmentItem } from '../types/Hero';
 import { testEquipment } from '../tests/testUtils';
 
 const MOCK_ITEM: EquipmentItem = testEquipment({

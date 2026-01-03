@@ -1,5 +1,5 @@
-import { appendBonusDamage } from '../../../types/combat';
-import { getOpponent } from '../../../types/stats';
+import { appendBonusDamage } from '../../../types/CombatState';
+import { getOpponent } from '../../../types/Character';
 import { registerAbility } from '../../abilityRegistry';
 
 registerAbility({

@@ -1,7 +1,7 @@
 import React from 'react';
-import { HeroStats } from '../../types/hero';
+import { HeroStats } from '../../types/Hero';
 import './EquipmentSlot.css';
-import { getStatIcon } from '../../utils/statUtils';
+import { getStatIcon } from '../../types/Stats';
 
 interface SlotDisplayItem {
     name: string;

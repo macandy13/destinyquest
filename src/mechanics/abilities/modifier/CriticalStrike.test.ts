@@ -15,14 +15,19 @@ describe('Critical Strike', () => {
     it('should change all damage rolls to 6', () => {
         const state = {
             ...INITIAL_STATE,
-            damageRolls: [
-                { value: 1, isRerolled: false },
-                { value: 3, isRerolled: false }]
+            damage: {
+                damageRolls: [
+                    { value: 1, isRerolled: false },
+                    { value: 3, isRerolled: false }],
+                modifiers: []
+            }
         };
 
-        const updates = ability.onActivate?.(state, 'hero');
+        const updates = ability.onActivate!(state, { owner: 'hero' });
 
-        expect(updates!.damageRolls![0].value).toBe(6);
-        expect(updates!.damageRolls![1].value).toBe(6);
+        expect(updates!.damage!.damageRolls).toEqual([
+            { value: 6, isRerolled: false },
+            { value: 6, isRerolled: false }
+        ]);
     });
 });

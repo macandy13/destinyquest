@@ -1,21 +1,25 @@
 import { registerAbility } from '../../abilityRegistry';
-import { addLogs } from '../../../utils/statUtils';
-import { rollDice, sumDice } from '../../../utils/dice';
+import { addLogs, dealDamage } from '../../../types/CombatState';
+import { rollDice, sumDice } from '../../../types/Dice';
+import { getOpponent } from '../../../types/Character';
 
 registerAbility({
     name: 'Thorn Fist',
     type: 'combat',
     description: 'When taking health damage, inflict 2 damage dice back (ignoring armour).',
-    onDamageDealt: (state, owner, target, amount) => {
-        if (owner !== target || amount <= 0) return {};
+    onDamageDealt: (state, { owner, target }, _source, amount) => {
+        if (owner !== target || amount <= 0) return state;
 
         const dmgRolls = rollDice(2);
         const dmg = sumDice(dmgRolls);
         const rolls = dmgRolls.map(r => r.value);
+        const opponent = getOpponent(owner);
 
-        return {
-            damageDealt: [...state.damageDealt, { target: 'enemy', amount: dmg, source: 'Thorn Fist' }],
-            logs: addLogs(state.logs, { round: state.round, message: `Thorn Fist! Inflicted ${dmg} damage back (${rolls.join('+')}).`, type: 'damage-enemy' })
-        };
+        let newState = dealDamage(state, 'Thorn Fist', opponent, dmg);
+        return addLogs(newState, {
+            round: state.round,
+            message: `Thorn Fist! Inflicted ${dmg} damage back (${rolls.join('+')}).`,
+            type: 'damage-enemy'
+        });
     }
 });

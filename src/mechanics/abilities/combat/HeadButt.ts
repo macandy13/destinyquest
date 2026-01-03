@@ -1,9 +1,7 @@
-import { registerAbility } from '../../abilityRegistry';
-import { addLogs } from '../../../utils/statUtils';
-import { CombatState } from '../../../types/combat';
-import { CharacterType } from '../../../types/stats';
+import { registerAbility, AbilityContext } from '../../abilityRegistry';
+import { CombatState, skipDamagePhase } from '../../../types/CombatState';
 
-function canActivate(state: CombatState, _owner: CharacterType): boolean {
+function canActivate(state: CombatState, _context: AbilityContext): boolean {
     return state.phase === 'damage-roll' && state.winner === 'enemy';
 }
 
@@ -12,13 +10,9 @@ registerAbility({
     type: 'combat',
     description: 'Prevent an opponent from rolling damage, ending the round immediately.',
     canActivate: canActivate,
-    onActivate: (state, owner) => {
-        if (!canActivate(state, owner)) return null;
+    onActivate: (state, context) => {
+        if (!canActivate(state, context)) return state;
 
-        return {
-            phase: 'round-end',
-            damageRolls: [{ value: 0, isRerolled: false }],
-            logs: addLogs(state.logs, { round: state.round, message: "Used ability: Head Butt. Stopped attack!", type: 'info' })
-        };
+        return skipDamagePhase(state, "Used ability: Head Butt. Stopped attack!");
     }
 });

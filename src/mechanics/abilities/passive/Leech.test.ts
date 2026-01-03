@@ -19,7 +19,7 @@ describe('Leech', () => {
             hero: heroWithStats({ health: 20, maxHealth: 30 })
         };
 
-        const updates = ability.onDamageDealt?.(state, 'hero', 'enemy', 5);
+        const updates = ability.onDamageDealt!(state, { owner: 'hero', target: 'enemy' }, 'Attack', 5);
 
         expect(updates?.hero?.stats.health).toBe(22);
         expect(updates?.logs?.[0].message).toContain('Leech healed 2 health');
@@ -31,8 +31,8 @@ describe('Leech', () => {
             hero: heroWithStats({ health: 20, maxHealth: 30 })
         };
 
-        const updates = ability.onDamageDealt?.(state, 'hero', 'enemy', 0);
-        expect(updates).toEqual({});
+        const updates = ability.onDamageDealt!(state, { owner: 'hero', target: 'enemy' }, 'Attack', 0);
+        expect(updates).toBe(state);
     });
 
     it('should not heal beyond max health', () => {
@@ -41,7 +41,7 @@ describe('Leech', () => {
             hero: heroWithStats({ health: 29, maxHealth: 30 })
         };
 
-        const updates = ability.onDamageDealt?.(state, 'hero', 'enemy', 5);
+        const updates = ability.onDamageDealt!(state, { owner: 'hero', target: 'enemy' }, 'Attack', 5);
         expect(updates?.hero?.stats.health).toBe(30);
     });
 });

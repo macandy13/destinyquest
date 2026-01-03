@@ -1,7 +1,7 @@
 import { describe, it, expect, beforeEach } from 'vitest';
 import { AbilityDefinition, getAbilityDefinition } from '../../abilityRegistry';
 import './BlackRain';
-import { INITIAL_STATE } from '../../../tests/testUtils';
+import { INITIAL_STATE, mockDiceRolls } from '../../../tests/testUtils';
 
 describe('Black Rain', () => {
     let ability: AbilityDefinition;
@@ -19,14 +19,18 @@ describe('Black Rain', () => {
             winner: 'hero' as const
         };
 
-        expect(ability.canActivate?.(state, 'hero')).toBe(true);
+        expect(ability.canActivate?.(state, { owner: 'hero' })).toBe(true);
 
-        const result = ability.onActivate?.(state, 'hero');
+        mockDiceRolls([6]); // Roll 6 damage
+        const result = ability.onActivate?.(state, { owner: 'hero' });
 
-        expect(result?.phase).toBe('round-end');
-        expect(result?.damageDealt).toHaveLength(1);
-        expect(result?.damageDealt![0].target).toBe('enemy');
-        expect(result?.damageDealt![0].amount).toBeGreaterThanOrEqual(1);
-        expect(result?.damageDealt![0].source).toBe('Black Rain');
+        expect(result).toEqual(expect.objectContaining({
+            phase: 'passive-damage',
+            enemy: expect.objectContaining({
+                stats: expect.objectContaining({
+                    health: INITIAL_STATE.enemy.stats.health - 6
+                })
+            })
+        }));
     });
 });

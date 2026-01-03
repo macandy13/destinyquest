@@ -1,14 +1,15 @@
 import { registerAbility } from '../../abilityRegistry';
-import { rollDice, sumDice } from '../../../utils/dice';
-import { dealDamage } from '../../../types/combat';
-import { getOpponent } from '../../../types/stats';
+import { rollDice, sumDice } from '../../../types/Dice';
+import { dealDamage } from '../../../types/CombatState';
+import { getOpponent } from '../../../types/Character';
 
 registerAbility({
     name: 'Retaliation',
     type: 'combat',
     description: 'When taking health damage, inflict 1 damage die back (ignoring armour).',
-    onDamageDealt: (state, owner, target, amount) => {
-        if (owner !== target || amount <= 0) return {};
+    onDamageDealt: (state, context, _source, amount) => {
+        const { owner, target } = context;
+        if (owner !== target || amount <= 0) return state;
 
         const opponent = getOpponent(target);
         const val = sumDice(rollDice(1));

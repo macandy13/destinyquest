@@ -1,7 +1,7 @@
-import { CombatState } from '../../../types/combat';
+import { CombatState } from '../../../types/CombatState';
 import { registerAbility } from '../../abilityRegistry';
 import { createStatModifierAbility } from '../abilityFactories';
-import { CharacterType } from '../../../types/stats';
+import { CharacterType } from '../../../types/Stats';
 
 registerAbility(createStatModifierAbility({
     name: 'Overload',

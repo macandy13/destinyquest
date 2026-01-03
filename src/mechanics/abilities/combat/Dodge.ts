@@ -1,15 +1,16 @@
-import { registerAbility } from '../../abilityRegistry';
-import { createDamageBlockerAbility, isEnemyDamageRollPhase } from '../abilityFactories';
-import { CombatState } from '../../../types/combat';
-import { CharacterType } from '../../../types/stats';
+import { AbilityContext, registerAbility } from '../../abilityRegistry';
+import { isEnemyDamageRollPhase } from '../abilityFactories';
+import { CombatState, hasEffect, skipDamagePhase } from '../../../types/CombatState';
 
-registerAbility(createDamageBlockerAbility({
+registerAbility({
     name: 'Dodge',
     type: 'combat',
     description: 'Avoid taking damage from an opponent after losing a round (still affected by passive damage like bleed/venom).',
-    blockMessage: 'Evaded attack!',
-    canActivate: (state: CombatState, _owner: CharacterType) => {
-        const isDisabled = state.activeEffects.some(e => e.modification.source === 'Ensnare' || e.modification.source === 'Hamstring');
+    canActivate: (state: CombatState, { owner }: AbilityContext) => {
+        const isDisabled = hasEffect(state, owner, 'Ensnare') || hasEffect(state, owner, 'Hamstring');
         return !isDisabled && isEnemyDamageRollPhase(state);
-    }
-}));
+    },
+    onActivate: (state: CombatState) => {
+        return skipDamagePhase(state, 'Dodge');
+    },
+});

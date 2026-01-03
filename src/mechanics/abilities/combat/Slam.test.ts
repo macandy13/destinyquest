@@ -16,16 +16,21 @@ describe('Slam', () => {
         const state = {
             ...INITIAL_STATE,
             phase: 'damage-roll' as const,
-            winner: 'enemy' as const
+            winner: 'enemy' as const,
+            damage: {
+                damageRolls: [{ value: 6, isRerolled: false }],
+                modifiers: []
+            }
         };
 
-        expect(ability.canActivate?.(state, 'hero')).toBe(true);
+        expect(ability.canActivate?.(state, { owner: 'hero' })).toBe(true);
 
-        const result = ability.onActivate?.(state, 'hero');
+        const result = ability.onActivate?.(state, { owner: 'hero' });
 
         expect(result?.phase).toBe('round-end');
-        expect(result?.damageRolls).toEqual([{ value: 0, isRerolled: false }]);
-        expect(result?.modifications).toHaveLength(1);
-        expect(result?.modifications![0].modification.stats.speed).toBe(-1);
+        // Slam implementation clears damage rolls.
+        expect(result?.damage?.damageRolls).toEqual([]);
+        expect(result?.enemy.activeEffects).toHaveLength(1);
+        expect(result?.enemy.activeEffects[0].stats.speed).toBe(-1);
     });
 });

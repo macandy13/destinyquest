@@ -2,9 +2,8 @@ import { describe, it, expect, beforeEach } from 'vitest';
 import { AbilityDefinition, getAbilityDefinition } from '../../abilityRegistry';
 import './ShadowFury';
 import { INITIAL_STATE, createCombatant, heroWithStats, testEquipment } from '../../../tests/testUtils';
-import { CombatState } from '../../../types/combat';
-import { Combatant } from '../../../types/combatant';
-import { Hero } from '../../../types/hero';
+import { CombatState, Combatant } from '../../../types/CombatState';
+import { Hero } from '../../../types/Hero';
 
 describe('Shadow Fury', () => {
     let ability: AbilityDefinition;
@@ -37,9 +36,9 @@ describe('Shadow Fury', () => {
             hero: createCombatant(customHero) as Combatant<Hero>,
             logs: []
         };
-        const result = ability.onActivate?.(state, 'hero');
+        const result = ability.onActivate?.(state, { owner: 'hero' });
 
-        expect(result?.modifications).toHaveLength(1);
-        expect(result?.modifications![0].modification.stats.damageModifier).toBe(3); // 2+1
+        expect(result?.hero.activeEffects).toHaveLength(1);
+        expect(result?.hero.activeEffects[0].stats.damageModifier).toBe(3); // 2+1
     });
 });

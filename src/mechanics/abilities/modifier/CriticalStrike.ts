@@ -1,16 +1,18 @@
-import { addLogs } from '../../../utils/statUtils';
+import { addLogs, setDamageRoll } from '../../../types/CombatState';
+import { deterministicRoll, formatDice } from '../../../types/Dice';
 import { registerAbility } from '../../abilityRegistry';
+import { canModifyDamage } from '../abilityFactories';
 
 registerAbility({
     name: 'Critical Strike',
     type: 'modifier',
     description: 'All 6s',
-    onActivate: (state) => ({
-        damageRolls: state.damageRolls!.map(r => ({ ...r, value: 6 })),
-        logs: addLogs(state.logs, {
-            round: state.round,
-            message: `Used ability: Critical strike. ${state.damageRolls!.length}d6 -> 6s`,
-            type: 'info'
+    canActivate: canModifyDamage,
+    onActivate: (state) => {
+        const damageRoll = deterministicRoll(new Array(state.damage!.damageRolls.length).fill(6));
+        state = setDamageRoll(state, damageRoll);
+        return addLogs(state, {
+            message: `Used ability: Critical strike. New damage roll: ${formatDice(damageRoll)}`,
         })
-    })
+    }
 });

@@ -1,13 +1,15 @@
-import { dealDamage } from '../../../types/combat';
-import { getOpponent } from '../../../types/stats';
-import { registerAbility } from '../../abilityRegistry';
+import { dealDamage, CombatState } from '../../../types/CombatState';
+import { getOpponent } from '../../../types/Character';
+import { registerAbility, AbilityContext } from '../../abilityRegistry';
 
 registerAbility({
     name: 'Judgement',
     type: 'combat',
     description: 'When taking health damage, inflict damage back equal to half your speed score (rounding up), ignoring armour.',
-    onDamageDealt: (state, owner, target, amount) => {
-        if (target !== owner || amount <= 0) return {};
+    onDamageDealt: (state: CombatState, context: AbilityContext, _source: string, damageDealt: number) => {
+        const owner = context.owner;
+        const target = context.target;
+        if (target !== owner || damageDealt <= 0) return state;
 
         const speed = state.hero?.stats.speed || 0;
         const dmgBack = Math.ceil(speed / 2);

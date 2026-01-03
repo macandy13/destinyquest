@@ -1,62 +1,41 @@
 import { registerAbility } from '../../abilityRegistry';
-import { addLogs } from '../../../utils/statUtils';
-import { rollDice, sumDice } from '../../../utils/dice';
-import { CombatState, dealDamage } from '../../../types/combat';
-import { CharacterType } from '../../../types/stats';
+import { hasEffect, removeEffect } from '../../../types/CombatState';
+import { rollDice, sumDice } from '../../../types/Dice';
+import { CombatState, dealDamage, appendEffect, skipDamagePhase } from '../../../types/CombatState';
+import { CharacterType } from '../../../types/Character';
 
 function winnerIsNotCharged(state: CombatState, owner: CharacterType): boolean {
-    const isCharged = state.activeEffects
-        .some(e => e.modification.source === 'Bolt'
-            && e.modification.target === 'hero');
-    return state.phase === 'damage-roll'
+    return state.phase === 'speed-roll'
         && state.winner === owner
-        && !isCharged;
+        && !hasEffect(state, owner, 'Bolt');
 }
 
 registerAbility({
     name: 'Bolt',
     type: 'combat',
     description: "Instead of rolling damage, you can 'charge up' your wand. When you win your next round, you inflict 3 damage dice to one opponent, ignoring armour.",
-    canActivate: winnerIsNotCharged,
-    onActivate: (state, owner) => {
-        if (!winnerIsNotCharged(state, owner)) return null;
+    canActivate: (state, { owner }) => winnerIsNotCharged(state, owner),
+    onActivate: (state, { owner }) => {
+        if (!winnerIsNotCharged(state, owner)) return state;
 
-        // Charge up
-        const chargeMod = {
-            modification: {
-                stats: {}, // No stats change, just a marker
-                source: 'Bolt',
-                target: 'hero' as const
-            },
-            id: `bolt-charge-${state.round}`,
+        state = appendEffect(state, owner, {
+            stats: {}, // No stats change, just a marker
+            source: 'Bolt',
+            target: owner,
             duration: undefined // Until consumed
-        };
-
-        return {
-            phase: 'round-end',
-            damageRolls: [],
-            modifications: [...state.modifications, chargeMod],
-            logs: addLogs(state.logs, { round: state.round, message: "Used ability: Bolt. Wand charging...", type: 'info' })
-        };
+        });
+        state = skipDamagePhase(state, 'Bolt');
+        return state;
     },
-    onDamageRoll: (state, winner) => {
-        const chargeMod = state.activeEffects.find(
-            e => e.modification.source === 'Bolt'
-                && e.modification.target === winner);
-        if (chargeMod) {
-            // Bolt Release!
-            const dmgRolls = rollDice(3);
-            const dmg = sumDice(dmgRolls);
+    onDamageRoll: (state, { owner }) => {
+        if (state.winner !== owner) return state;
+        if (!hasEffect(state, owner, 'Bolt')) return state;
 
-            // Remove charge
-            const newEffects = state.activeEffects.filter(e => e.id !== chargeMod.id);
-
-            return {
-                ...dealDamage(state, 'Bolt', 'enemy', dmg),
-                activeEffects: newEffects,
-                damageRolls: dmgRolls,
-            };
-        }
-        return {};
+        const dmgRolls = rollDice(3);
+        const dmg = sumDice(dmgRolls);
+        state = dealDamage(state, 'Bolt', 'enemy', dmg, `Bolt released! Rolled ${dmg} (${dmgRolls.map(r => r.value).join('+')}). Ignored armour!`);
+        state = removeEffect(state, owner, 'Bolt');
+        state = skipDamagePhase(state, 'Bolt released');
+        return state;
     }
 });

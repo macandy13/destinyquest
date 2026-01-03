@@ -14,11 +14,12 @@ describe('Thorn Armour', () => {
 
     it('should buff armour and inflict damage', () => {
         const state = INITIAL_STATE;
-        const result = ability.onActivate?.(state, 'hero');
+        const result = ability.onActivate?.(state, { owner: 'hero' });
 
-        expect(result?.modifications).toHaveLength(1);
-        expect(result?.modifications![0].modification.stats.armour).toBe(3);
-        expect(result?.damageDealt).toHaveLength(1);
-        expect(result?.damageDealt![0].amount).toBeGreaterThanOrEqual(1);
+        expect(result?.hero.activeEffects).toHaveLength(1);
+        expect(result?.hero.activeEffects[0].stats.armour).toBe(3);
+        // Damage is inflicted directly via dealDamage. Check logs.
+        const log = result?.logs.find(l => l.message.includes('inflicted'));
+        expect(log).toBeDefined();
     });
 });

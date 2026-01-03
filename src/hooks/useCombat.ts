@@ -1,159 +1,86 @@
-import { useState, useCallback } from 'react';
-import { CombatState, Enemy } from '../types/combat';
-import { Combatant } from '../types/combatant';
-import { Hero } from '../types/hero';
+import { useState } from 'react';
+import { Enemy } from '../types/Character';
+import { Hero } from '../types/Hero';
 import {
-    INITIAL_STATE,
-    initCombat,
+    startCombat,
+    startRound,
+    rollForSpeed,
+    rollForDamage,
+    applyDamage,
     activateAbility as engineActivateAbility,
     useBackpackItem as engineUseBackpackItem,
-    startNewRound,
-    applyEndOfRoundDamage,
-    applyDamageResult,
-    applySpeedResult,
-    commitDamageResult,
-    commitSpeedResult,
-    generateDamageRolls,
-    generateSpeedRolls,
+    endRound,
     endCombat as engineEndCombat,
     handleReroll as engineHandleReroll,
+    applyPassiveAbilities,
 } from '../mechanics/CombatEngine';
+import { CombatState } from '../types/CombatState';
 
-export interface CombatArenaState {
-    displayed: CombatState;
-    accepted: CombatState;
-    finished: boolean;
-};
 
-export function useCombat(heroInput: Hero | Combatant<Hero>) {
-    const hero: Hero = 'original' in heroInput ? heroInput.original : heroInput;
-    const [combat, setCombat] = useState<CombatArenaState>({
-        displayed: INITIAL_STATE,
-        accepted: INITIAL_STATE,
-        finished: false
-    });
-
-    const startCombat = useCallback((initialEnemy?: Enemy | Combatant<Enemy>) => {
-        setCombat(() => {
-            const newState = initCombat(hero, initialEnemy);
-            return {
-                displayed: newState,
-                accepted: newState,
-                finished: false
-            };
-        });
-    }, [hero]);
+export function useCombat(hero: Hero, enemy: Enemy) {
+    const combatState = startCombat(hero, enemy);
+    const [combat, setCombat] = useState<CombatState>(
+        combatState,
+    );
 
     const activateAbility = (abilityName: string) => {
         setCombat(prev => {
-            const newState = engineActivateAbility(prev.displayed, abilityName);
-            return {
-                ...prev,
-                displayed: newState,
-                accepted: newState
-            };
+            return engineActivateAbility(prev, abilityName);
         });
     };
 
     const useBackpackItem = (itemIndex: number) => {
         setCombat(prev => {
-            const newState = engineUseBackpackItem(prev.displayed, itemIndex);
-            return {
-                ...prev,
-                displayed: newState,
-                accepted: newState
-            };
+            return engineUseBackpackItem(prev, itemIndex);
         });
     };
 
     const rollSpeedDice = () => {
         setCombat(prev => {
-            const newState = generateSpeedRolls(prev.accepted);
-            return {
-                ...prev,
-                displayed: applySpeedResult(newState),
-                accepted: newState
-            };
+            return rollForSpeed(prev);
         });
     };
 
     const commitSpeedAndRollDamageDice = () => {
-        setCombat(prev => {
-            const newState = generateDamageRolls(commitSpeedResult(prev.displayed));
-            return {
-                ...prev,
-                displayed: applyDamageResult(newState),
-                accepted: newState
-            };
-        });
-    }
-
-    const confirmDamage = () => {
-        setCombat(prev => {
-            const newState = commitDamageResult(prev.displayed);
-            return {
-                ...prev,
-                displayed: applyEndOfRoundDamage(newState),
-                accepted: newState
-            };
-        });
-    }
-
-    const handleReroll = (dieIndex: number) => {
-        setCombat(prev => {
-            const newState = engineHandleReroll(prev.displayed, dieIndex);
-            return {
-                ...prev,
-                displayed: newState,
-                accepted: newState
-            };
-        });
+        setCombat(prev => rollForDamage(prev));
     };
 
-    const endRoundWithoutDamage = () => {
-        setCombat(prev => {
-            const newState = commitSpeedResult(prev.displayed);
-            return {
-                ...prev,
-                displayed: applyEndOfRoundDamage(newState),
-                accepted: newState
-            };
-        });
+    const confirmDamageRoll = () => {
+        setCombat(prev => applyDamage(prev));
+    }
+
+    const confirmBonusDamage = () => {
+        setCombat(prev => applyPassiveAbilities(prev));
+    };
+
+    const handleReroll = (dieIndex: number) => {
+        setCombat(prev => engineHandleReroll(prev, dieIndex));
     };
 
     const nextRound = () => {
-        setCombat(prev => {
-            const newState = startNewRound(prev.displayed);
-            return {
-                ...prev,
-                displayed: newState,
-                accepted: newState
-            };
-        });
+        setCombat(prev => startRound(endRound(prev)));
     };
 
     const endCombat = () => {
-        setCombat(prev => {
-            const newState = engineEndCombat(prev.displayed);
-            return {
-                displayed: newState,
-                accepted: newState,
-                finished: true
-            };
-        });
+        setCombat(prev => engineEndCombat(prev));
+    };
+
+    const restartCombat = () => {
+        const combatState = startCombat(hero, enemy);
+        setCombat(combatState);
     };
 
     return {
         combat,
-        startCombat,
         activateAbility,
         useBackpackItem,
         rollSpeedDice,
         commitSpeedAndRollDamageDice,
-        endRoundWithoutDamage,
-        confirmDamage,
+        confirmDamageRoll,
+        confirmBonusDamage,
         handleReroll,
         nextRound,
         endCombat,
+        restartCombat,
     };
 }

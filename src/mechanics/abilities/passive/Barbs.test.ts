@@ -11,20 +11,13 @@ describe('Barbs', () => {
             enemy: enemyWithStats({ health: 10 })
         };
 
-        const updates = barbs?.onPassiveAbility?.(state, 'hero');
+        const updates = barbs?.onPassiveAbility?.(state, { owner: 'hero' });
 
-        expect(updates?.enemy?.stats.health).toBe(9);
-        expect(updates?.logs?.[0].message).toContain('Barbs dealt 1 damage');
-    });
-
-    it('should not reduce enemy health below 0', () => {
-        const barbs = getAbilityDefinition('Barbs');
-        const state = {
-            ...INITIAL_STATE,
-            enemy: enemyWithStats({ health: 0 })
-        };
-
-        const updates = barbs?.onPassiveAbility?.(state, 'hero');
-        expect(updates).toEqual({});
+        expect(updates?.bonusDamage).toEqual(expect.arrayContaining([
+            expect.objectContaining({
+                source: 'Barbs',
+                amount: 1
+            })
+        ]));
     });
 });

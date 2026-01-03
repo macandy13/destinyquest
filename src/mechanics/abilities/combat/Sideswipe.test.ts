@@ -16,8 +16,7 @@ describe('Sideswipe', () => {
         const state = INITIAL_STATE;
         mockDiceRolls([3]);
 
-        const result = ability.onDamageDealt?.(state, 'hero', 'hero', 5);
-        expect(result?.damageDealt).toHaveLength(1);
-        expect(result?.damageDealt![0].amount).toEqual(3);
+        const result = ability.onDamageDealt?.(state, { owner: 'hero', target: 'hero' }, 'Attack', 5);
+        expect(result?.enemy.stats.health).toBe(state.enemy.stats.health - 3);
     });
 });

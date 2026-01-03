@@ -1,32 +1,26 @@
 import { registerAbility } from '../../abilityRegistry';
-import { addLogs } from '../../../utils/statUtils';
-import { getOpponent } from '../../../types/stats';
+import { AttackSource, dealDamage } from '../../../types/CombatState';
+import { getOpponent } from '../../../types/Character';
 
 registerAbility({
     name: 'Avenging Spirit',
     type: 'combat',
     description: 'When you take health damage from an opponent’s damage score/dice, you inflict damage back equal to your armour. This ignores the opponent\'s armour and cannot be increased by modifier abilities.',
-    onDamageDealt: (state, owner, target, amount) => {
-        if (owner !== target) return {};
-        if (amount <= 0) return {};
+    onDamageDealt: (state, { owner, target }, source, amount) => {
+        if (owner !== target || amount <= 0 || !target || source !== AttackSource) return state;
         const victim = state[target];
-        if (!victim) return {};
+        if (!victim) return state;
 
-        // TODO: Filter damage source to be Attack
         const victimArmour = victim.stats.armour || 0;
 
         // Inflict damage back to opponent (enemy)
         // Ignoring armour -> direct health reduction
-        // TODO: Simplify conversion to opponent
         const opponent = getOpponent(owner);
-        if (!opponent) return {};
+        if (!opponent) return state;
 
         const damageBack = victimArmour;
-        if (damageBack <= 0) return {};
+        if (damageBack <= 0) return state;
 
-        return {
-            damageDealt: [...state.damageDealt, { target: opponent, amount: damageBack, source: 'Avenging Spirit' }],
-            logs: addLogs(state.logs, { round: state.round, message: `Avenging Spirit: Inflicted ${damageBack} damage back to opponent!`, type: 'damage-enemy' })
-        };
+        return dealDamage(state, 'Avenging Spirit', opponent, damageBack);
     }
 });

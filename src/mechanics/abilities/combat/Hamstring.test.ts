@@ -2,7 +2,7 @@ import { describe, it, expect, beforeEach } from 'vitest';
 import { AbilityDefinition, getAbilityDefinition } from '../../abilityRegistry';
 import './Hamstring';
 import { INITIAL_STATE } from '../../../tests/testUtils';
-import { CombatState } from '../../../types/combat';
+import { CombatState } from '../../../types/CombatState';
 
 describe('Hamstring', () => {
     let ability: AbilityDefinition;
@@ -18,9 +18,10 @@ describe('Hamstring', () => {
             ...INITIAL_STATE,
             winner: 'enemy'
         };
-        const result = ability.onActivate?.(state, 'hero');
+        const result = ability.onActivate?.(state, { owner: 'hero' });
 
-        expect(result?.modifications).toHaveLength(1);
-        expect(result?.modifications![0].modification.source).toBe('Hamstring');
+        expect(result).toBeDefined();
+        // Hamstring returns appended effect.
+        expect(result?.enemy.activeEffects).toEqual(expect.arrayContaining([expect.objectContaining({ source: 'Hamstring' })]));
     });
 });

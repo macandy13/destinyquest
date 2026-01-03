@@ -1,12 +1,12 @@
 import { describe, it, expect, beforeEach } from 'vitest';
 import { AbilityDefinition, getAbilityDefinition } from '../../abilityRegistry';
 import { INITIAL_STATE, testEquipment } from '../../../tests/testUtils';
-import { CombatState } from '../../../types/combat';
+import { CombatState } from '../../../types/CombatState';
 import './Execution';
 
 const TEST_STATE: CombatState = {
     ...INITIAL_STATE,
-    phase: 'speed-roll',
+    phase: 'round-start',
 };
 
 describe('Execution', () => {
@@ -24,17 +24,11 @@ describe('Execution', () => {
         state.enemy!.stats.health = 5;
         state.hero!.original.equipment.mainHand = testEquipment({ name: 'sword' });
 
-        expect(ability.canActivate?.(state, 'hero')).toBe(true);
+        expect(ability.canActivate?.(state, { owner: 'hero' })).toBe(true);
 
-        const result = ability.onActivate?.(state, 'hero');
-        expect(result).toEqual(expect.objectContaining({
-            damageDealt: expect.arrayContaining([
-                expect.objectContaining({
-                    amount: 5,
-                    target: 'enemy'
-                })
-            ])
-        }));
+        const result = ability.onActivate!(state, { owner: 'hero' });
+        expect(result.logs?.[0].message).toContain('Execution dealt 5 damage');
+        expect(result.enemy!.stats.health).toBe(0);
     });
 
     it('should fail if enemy health is greater than hero speed', () => {
@@ -43,10 +37,10 @@ describe('Execution', () => {
         state.enemy!.stats.health = 6;
         state.hero!.original.equipment.mainHand = testEquipment({ name: 'sword' });
 
-        expect(ability.canActivate?.(state, 'hero')).toBe(false);
+        expect(ability.canActivate?.(state, { owner: 'hero' })).toBe(false);
 
-        const result = ability.onActivate?.(state, 'hero');
-        expect(result).toEqual({});
+        const result = ability.onActivate!(state, { owner: 'hero' });
+        expect(result).toBe(state);
     });
 
     it('should fail if hero has now sword', () => {
@@ -55,9 +49,9 @@ describe('Execution', () => {
         state.enemy!.stats.health = 5;
         state.hero!.original.equipment.mainHand = testEquipment({ name: 'axe' });
 
-        expect(ability.canActivate?.(state, 'hero')).toBe(false);
+        expect(ability.canActivate?.(state, { owner: 'hero' })).toBe(false);
 
-        const result = ability.onActivate?.(state, 'hero');
-        expect(result).toEqual({});
+        const result = ability.onActivate!(state, { owner: 'hero' });
+        expect(result).toBe(state);
     });
 });

@@ -14,10 +14,13 @@ describe('Surge', () => {
 
     it('should buff magic and debuff speed', () => {
         const state = INITIAL_STATE;
-        const result = ability.onActivate?.(state, 'hero');
+        const result = ability.onActivate?.(state, { owner: 'hero' });
 
-        expect(result?.modifications).toHaveLength(2);
-        expect(result?.modifications![0].modification.stats.magic).toBe(3);
-        expect(result?.modifications![1].modification.stats.speed).toBe(-1);
+        expect(result?.hero.activeEffects).toHaveLength(2);
+        const magicMod = result?.hero.activeEffects.find(e => e.stats.magic === 3);
+        const speedMod = result?.hero.activeEffects.find(e => e.stats.speed === -1);
+
+        expect(magicMod).toBeDefined();
+        expect(speedMod).toBeDefined();
     });
 });

@@ -20,11 +20,11 @@ describe('Vanish', () => {
             logs: []
         };
 
-        expect(ability.canActivate?.(state, 'hero')).toBe(true);
+        expect(ability.canActivate?.(state, { owner: 'hero' })).toBe(true);
 
-        const result = ability.onActivate?.(state, 'hero');
+        const result = ability.onActivate?.(state, { owner: 'hero' });
 
         expect(result?.phase).toBe('round-end');
-        expect(result?.damageRolls).toEqual([{ value: 0, isRerolled: false }]);
+        expect(result?.damage?.damageRolls).toEqual([{ value: 0, isRerolled: false }]);
     });
 });

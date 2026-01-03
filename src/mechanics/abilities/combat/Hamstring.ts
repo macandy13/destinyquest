@@ -1,11 +1,10 @@
 import { registerAbility } from '../../abilityRegistry';
-import { addLogs } from '../../../utils/statUtils';
-import { CombatState } from '../../../types/combat';
-import { CharacterType } from '../../../types/stats';
+import { appendEffect, CombatState } from '../../../types/CombatState';
+import { CharacterType, getOpponent } from '../../../types/Character';
 
-function canActivate(state: CombatState, _owner: CharacterType): boolean {
+function canActivate(state: CombatState, { owner }: { owner: CharacterType }): boolean {
     // TODO: Handle for hero as well
-    return state.winner === 'enemy';
+    return state.winner === getOpponent(owner);
 }
 
 registerAbility({
@@ -13,18 +12,14 @@ registerAbility({
     type: 'combat',
     description: "Cancel an opponent's dodge (e.g., evade, sidestep) and roll for damage as normal.",
     canActivate: canActivate,
-    onActivate: (state, owner) => {
-        if (!canActivate(state, owner)) return null;
-        return {
-            modifications: [
-                ...state.modifications,
-                {
-                    modification: { stats: {}, source: 'Hamstring', target: 'enemy' },
-                    id: `hamstring-${state.round}`,
-                    duration: 1
-                }
-            ],
-            logs: addLogs(state.logs, { round: state.round, message: "Used ability: Hamstring. Opponent cannot dodge!", type: 'info' })
-        };
+    onActivate: (state, context) => { // context { owner }
+        const opponent = getOpponent(context.owner);
+        if (!canActivate(state, context)) return state;
+        return appendEffect(state, opponent, {
+            stats: {},
+            source: 'Hamstring',
+            target: opponent,
+            duration: 1
+        });
     }
 });

@@ -19,13 +19,14 @@ describe('Cripple', () => {
             damageDealt: [{ target: 'enemy' as const, amount: 5, source: 'Melee' }]
         };
 
-        expect(ability.canActivate?.(state, 'hero')).toBe(true);
+        expect(ability.canActivate?.(state, { owner: 'hero' })).toBe(true);
 
-        const result = ability.onActivate?.(state, 'hero');
+        const result = ability.onActivate?.(state, { owner: 'hero' });
 
-        expect(result?.modifications).toHaveLength(1);
-        expect(result?.modifications![0].modification.stats.speed).toBe(-1);
-        expect(result?.modifications![0].duration).toBe(3);
+        expect(result).toBeDefined();
+        expect(result?.enemy.activeEffects).toHaveLength(1);
+        expect(result?.enemy!.activeEffects[0].stats.speed).toBe(-1);
+        expect(result?.enemy!.activeEffects[0].duration).toBe(3);
     });
 
     it('should not activate if no damage dealt to enemy', () => {
@@ -35,8 +36,8 @@ describe('Cripple', () => {
             damageDealt: []
         };
 
-        expect(ability.canActivate?.(state, 'hero')).toBe(false);
-        const result = ability.onActivate?.(state, 'hero');
-        expect(result).toEqual({});
+        expect(ability.canActivate?.(state, { owner: 'hero' })).toBe(false);
+        const result = ability.onActivate?.(state, { owner: 'hero' });
+        expect(result).toBe(state);
     });
 });

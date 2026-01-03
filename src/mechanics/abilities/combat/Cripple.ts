@@ -1,7 +1,7 @@
 import { registerAbility } from '../../abilityRegistry';
 import { createStatModifierAbility } from '../abilityFactories';
-import { CombatState } from '../../../types/combat';
-import { CharacterType } from '../../../types/stats';
+import { CombatState } from '../../../types/CombatState';
+import { CharacterType } from '../../../types/Stats';
 
 registerAbility(createStatModifierAbility({
     name: 'Cripple',

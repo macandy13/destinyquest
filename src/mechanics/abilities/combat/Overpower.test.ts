@@ -35,18 +35,12 @@ describe('Overpower', () => {
         mockDiceRolls([4, 5]);
 
         assert(ability.onActivate);
-        const result = ability.onActivate(combatState, 'hero');
+        const result = ability.onActivate(combatState, { owner: 'hero' });
         assert(result !== null);
 
-        expect(result).toEqual(expect.objectContaining({
-            phase: 'round-end',
-            damageRolls: [{ value: 0, isRerolled: false }],
-            enemy: expect.objectContaining({
-                stats: expect.objectContaining({
-                    health: 11
-                })
-            })
-        }));
+        expect(result?.phase).toBe('passive-damage');
+        expect(result?.damage?.damageRolls).toEqual([]);
+        expect(result?.enemy?.stats.health).toBe(11);
     });
 
     it('should return empty object if conditions not met', () => {
@@ -56,7 +50,7 @@ describe('Overpower', () => {
         };
 
         assert(ability.onActivate);
-        const result = ability.onActivate(combatState, 'hero');
-        expect(result).toEqual({});
+        const result = ability.onActivate(combatState, { owner: 'hero' });
+        expect(result).toBe(combatState);
     });
 });

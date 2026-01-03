@@ -1,14 +1,10 @@
-import { CombatState } from '../../../types/combat';
 import { registerAbility } from '../../abilityRegistry';
-import { createStatModifierAbility } from '../abilityFactories';
-import { CharacterType } from '../../../types/stats';
+import { createSpeedDiceModifier } from '../abilityFactories';
 
-registerAbility(createStatModifierAbility({
+registerAbility(createSpeedDiceModifier({
     name: "Cat's Speed",
-    type: 'speed',
     description: 'Roll an extra die to determine attack speed for one round.',
-    stats: { speed: 1 },
-    target: 'hero',
+    target: 'owner',
+    speedModifier: 1,
     duration: 1,
-    canActivate: (state: CombatState, _owner: CharacterType) => state.phase === 'speed-roll',
 }));

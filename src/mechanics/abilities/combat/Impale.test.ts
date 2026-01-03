@@ -14,14 +14,14 @@ describe('Impale', () => {
 
     it('should apply damage buff and speed debuff', () => {
         const state = { ...INITIAL_STATE, logs: [] };
-        const result = ability.onActivate?.(state, 'hero');
+        const result = ability.onActivate?.(state, { owner: 'hero' });
 
-        expect(result?.modifications).toHaveLength(2);
-        expect(result?.modifications).toContainEqual(expect.objectContaining({
-            modification: expect.objectContaining({ stats: expect.objectContaining({ damageModifier: 3 }) })
+        // Impale adds damage buff to self and speed debuff to enemy
+        expect(result?.hero.activeEffects).toContainEqual(expect.objectContaining({
+            stats: expect.objectContaining({ damageModifier: 3 })
         }));
-        expect(result?.modifications).toContainEqual(expect.objectContaining({
-            modification: expect.objectContaining({ stats: expect.objectContaining({ speed: -1 }) })
+        expect(result?.enemy.activeEffects).toContainEqual(expect.objectContaining({
+            stats: expect.objectContaining({ speed: -1 })
         }));
     });
 });

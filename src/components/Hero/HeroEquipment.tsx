@@ -1,5 +1,5 @@
 import React from 'react';
-import { Hero, EquipmentSlot, EquipmentItem, BackpackItem } from '../../types/hero';
+import { Hero, EquipmentSlot, EquipmentItem, BackpackItem } from '../../types/Hero';
 import EquipmentSlots from './EquipmentSlots';
 import Backpack from './Backpack';
 

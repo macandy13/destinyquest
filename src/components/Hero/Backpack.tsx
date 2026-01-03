@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Hero, BackpackItem } from '../../types/hero';
+import { Hero, BackpackItem } from '../../types/Hero';
 import EquipmentSlot from './EquipmentSlot';
 import InventorySelector from './InventorySelector';
 import { BACKPACK_ITEMS } from '../../data/backpackItems';

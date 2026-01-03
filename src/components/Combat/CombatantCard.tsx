@@ -1,5 +1,5 @@
 import React from 'react';
-import { getStatIcon } from '../../utils/statUtils';
+import { getStatIcon } from '../../types/Stats';
 import './CombatantCard.css';
 
 interface CombatantCardProps {

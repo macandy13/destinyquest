@@ -1,9 +1,9 @@
 import { registerAbility } from '../../abilityRegistry';
-import { addLogs } from '../../../utils/statUtils';
-import { CombatState } from '../../../types/combat';
-import { CharacterType } from '../../../types/stats';
+import { addLogs, appendEffect } from '../../../types/CombatState';
+import { CombatState } from '../../../types/CombatState';
+import { CharacterType, getOpponent } from '../../../types/Character';
 
-function canActivate(state: CombatState, _owner: CharacterType): boolean {
+function canActivate(state: CombatState, { owner }: { owner: CharacterType }): boolean {
     return state.phase !== 'round-end';
 }
 
@@ -11,19 +11,19 @@ registerAbility({
     name: 'Fatal Blow',
     type: 'combat',
     description: "Ignore half of your opponent's armour (rounding up).",
-    canActivate: canActivate,
-    onActivate: (state: CombatState, owner: CharacterType) => {
-        if (!canActivate(state, owner)) return null;
-        return {
-            modifications: [
-                ...state.modifications,
-                {
-                    modification: { stats: { armour: -Math.ceil((state.enemy?.stats.armour || 0) / 2) }, source: 'Fatal Blow', target: 'enemy' },
-                    id: `fatal-blow-${state.round}`,
-                    duration: 1
-                }
-            ],
-            logs: addLogs(state.logs, { round: state.round, message: "Used ability: Fatal Blow.", type: 'info' })
-        };
+    canActivate: (state, { owner }) => canActivate(state, { owner }),
+    onActivate: (state, { owner }) => {
+        if (!canActivate(state, { owner })) return state;
+        const opponent = getOpponent(owner);
+        const armour = state[opponent].stats.armour || 0;
+        const reduction = -Math.ceil(armour / 2);
+
+        let newState = appendEffect(state, opponent, {
+            stats: { armour: reduction },
+            source: 'Fatal Blow',
+            target: opponent,
+            duration: 1
+        });
+        return addLogs(newState, { round: state.round, message: "Used ability: Fatal Blow.", type: 'info' });
     },
 });

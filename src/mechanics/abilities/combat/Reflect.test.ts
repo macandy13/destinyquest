@@ -2,7 +2,7 @@ import { describe, it, expect, beforeEach } from 'vitest';
 import { AbilityDefinition, getAbilityDefinition } from '../../abilityRegistry';
 import './Reflect';
 import { INITIAL_STATE } from '../../../tests/testUtils';
-import { CombatState } from '../../../types/combat';
+import { CombatState } from '../../../types/CombatState';
 
 describe('Reflect', () => {
     let ability: AbilityDefinition;
@@ -25,10 +25,12 @@ describe('Reflect', () => {
                 }
             },
         };
-        const result = ability.onDamageDealt?.(state, 'hero', 'hero', 5);
+        const result = ability.onDamageDealt?.(state, { owner: 'hero', target: 'hero' }, 'Attack', 5);
 
-        expect(result?.damageDealt).toHaveLength(1);
-        expect(result?.damageDealt![0].amount).toBe(5);
+        // Check logs for reflected damage
+        expect(result?.logs.some(l => l.message?.includes('Reflect dealt'))).toBe(true);
+        // Check enemy health reduced
+        expect(result?.enemy.stats.health).toBeLessThan(INITIAL_STATE.enemy!.stats.health);
     });
 
     it('should NOT reflect damage to non-vampire', () => {
@@ -36,8 +38,8 @@ describe('Reflect', () => {
             ...INITIAL_STATE,
             enemy: { ...INITIAL_STATE.enemy!, name: 'Goblin' },
         };
-        const result = ability.onDamageDealt?.(state, 'hero', 'enemy', 5);
+        const result = ability.onDamageDealt?.(state, { owner: 'hero', target: 'hero' }, 'Attack', 5);
 
-        expect(result).toEqual({});
+        expect(result).toEqual(state);
     });
 });

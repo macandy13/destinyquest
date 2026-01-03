@@ -1,18 +1,27 @@
 import { registerAbility } from '../../abilityRegistry';
-import { addLogs } from '../../../utils/statUtils';
+import { addLogs, appendEffect } from '../../../types/CombatState';
+import { getOpponent } from '../../../types/Character';
 
 registerAbility({
     name: 'Impale',
     type: 'combat',
     description: "Increase damage score by 3; opponent's speed is lowered by 1 in the next round.",
-    onActivate: (state) => {
-        return {
-            modifications: [
-                ...state.modifications,
-                { modification: { stats: { damageModifier: 3 }, source: 'Impale', target: 'hero' }, id: `impale-dmg-${state.round}`, duration: 1 },
-                { modification: { stats: { speed: -1 }, source: 'Impale', target: 'enemy' }, id: `impale-speed-${state.round}`, duration: 2 }
-            ],
-            logs: addLogs(state.logs, { round: state.round, message: "Used ability: Impale.", type: 'info' })
-        };
+    onActivate: (state, { owner }) => {
+        let newState = appendEffect(state, owner, {
+            stats: { damageModifier: 3 },
+            source: 'Impale (Damage)',
+            target: owner,
+            duration: 1
+        });
+
+        const opponent = getOpponent(owner);
+        newState = appendEffect(newState, opponent, {
+            stats: { speed: -1 },
+            source: 'Impale (Slow)',
+            target: opponent,
+            duration: 2
+        });
+
+        return addLogs(newState, { round: state.round, message: "Used ability: Impale.", type: 'info' });
     }
 });

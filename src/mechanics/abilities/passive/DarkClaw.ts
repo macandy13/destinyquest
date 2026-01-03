@@ -1,11 +1,12 @@
 import { registerAbility } from '../../abilityRegistry';
-import { hasDouble } from '../../../utils/dice';
-import { dealDamage, DiceRoll } from '../../../types/combat';
-import { CharacterType, getOpponent } from '../../../types/stats';
+import { hasDouble, DiceRoll } from '../../../types/Dice';
+import { dealDamage } from '../../../types/CombatState';
+import { CharacterType, getOpponent } from '../../../types/Character';
+import { CombatState } from '../../../types/CombatState';
 
-function inflictDarkClawDamage(state: any, source: CharacterType, rolls: DiceRoll[]) {
+function inflictDarkClawDamage(state: CombatState, source: CharacterType, rolls: DiceRoll[]) {
     if (!hasDouble(rolls)) {
-        return {};
+        return state;
     }
 
     const target = getOpponent(source);
@@ -16,10 +17,16 @@ registerAbility({
     name: 'Dark Claw',
     type: 'passive',
     description: 'For every double rolled, automatically inflict 4 damage (ignoring armour).',
-    onSpeedRoll: (state, source, rolls) => {
-        return inflictDarkClawDamage(state, source, rolls);
+    onSpeedRoll: (state, { owner }) => {
+        const rolls = owner === 'hero' ? state.heroSpeedRolls : state.enemySpeedRolls;
+        if (!rolls) return state;
+        return inflictDarkClawDamage(state, owner, rolls);
     },
-    onDamageRoll: (state, source, rolls) => {
-        return inflictDarkClawDamage(state, source, rolls);
+    onDamageRoll: (state, { owner }) => {
+        // Only valid if owner WON the round (is damage roller)
+        if (state.winner !== owner) return state;
+        const rolls = state.damage?.damageRolls;
+        if (!rolls) return state;
+        return inflictDarkClawDamage(state, owner, rolls);
     }
 });

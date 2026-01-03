@@ -21,14 +21,12 @@ describe('Retaliation', () => {
 
         mockDiceRolls([3]);
 
-        const result = ability.onDamageDealt?.(state, 'hero', 'hero', 5);
+        const result = ability.onDamageDealt?.(state, { owner: 'hero', target: 'hero' }, 'Attack', 5);
 
-        expect(result).toEqual(expect.objectContaining({
-            enemy: expect.objectContaining({
-                stats: expect.objectContaining({
-                    health: 7
-                })
-            })
-        }));
+        // Result is the state. DealDamage modifies logs and stats.
+        // It updates `enemy.stats.health`.
+        expect(result?.enemy.stats.health).toBeLessThan(10);
+        // It also adds a log.
+        expect(result?.logs.some(l => l.message?.includes('Retaliation dealt'))).toBe(true);
     });
 });

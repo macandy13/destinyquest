@@ -14,9 +14,9 @@ describe('Fatal Blow', () => {
 
     it('should apply modifier on activate', () => {
         const state = INITIAL_STATE;
-        const result = ability.onActivate?.(state, 'hero');
+        const result = ability.onActivate?.(state, { owner: 'hero' });
 
-        expect(result?.modifications).toHaveLength(1);
-        expect(result?.modifications![0].modification.source).toBe('Fatal Blow');
+        expect(result?.enemy.activeEffects).toHaveLength(1);
+        expect(result?.enemy.activeEffects[0].source).toBe('Fatal Blow');
     });
 });

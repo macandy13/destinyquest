@@ -2,6 +2,7 @@ import { describe, it, expect, beforeEach } from 'vitest';
 import { AbilityDefinition, getAbilityDefinition } from '../../abilityRegistry';
 import './Windwalker';
 import { heroWithStats, INITIAL_STATE } from '../../../tests/testUtils';
+import { deterministicRoll } from '../../../types/Dice';
 
 describe('Windwalker', () => {
     let ability: AbilityDefinition;
@@ -16,16 +17,14 @@ describe('Windwalker', () => {
         const state = {
             ...INITIAL_STATE,
             hero: heroWithStats({ speed: 5 }),
+            heroSpeedRolls: deterministicRoll([6, 5]),
+            damage: { damageRolls: deterministicRoll([1]), modifiers: [] },
             phase: 'damage-roll' as const,
             winner: 'hero' as const,
             logs: []
         };
-        const result = ability.onActivate?.(state, 'hero');
+        const result = ability.onActivate!(state, { owner: 'hero' });
 
-        expect(result?.phase).toBe('round-end');
-        expect(result?.damageDealt).toHaveLength(1);
-        // Should have rolled 5 dice. Sum >= 5.
-        expect(result?.damageDealt![0].amount).toBeGreaterThanOrEqual(5);
-        expect(result?.damageDealt![0].source).toBe('Windwalker');
+        expect(result?.damage?.damageRolls).toEqual(state.heroSpeedRolls);
     });
 });

@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import { Enemy } from '../../types/combat';
-import { Stats } from '../../types/stats';
+import { Stats } from '../../types/Stats';
+import { Enemy } from '../../types/Character';
 import { ENEMIES } from '../../data/enemies';
-import { getStatIcon } from '../../utils/statUtils';
+import { getStatIcon } from '../../types/Stats';
 import NumberControl from '../Shared/NumberControl';
 import DqCard from '../Shared/DqCard';
 import './EnemySelector.css';
@@ -155,7 +155,7 @@ const EnemySelector: React.FC<EnemySelectorProps> = ({ onSelect }) => {
 
                                     {enemy.abilities && enemy.abilities.length > 0 && (
                                         <div className="item-abilities-tag">
-                                            {enemy.abilities.map(a => `★ ${a}`).join(', ')}
+                                            {enemy.abilities.map((a: string) => `★ ${a}`).join(', ')}
                                         </div>
                                     )}
                                 </div>

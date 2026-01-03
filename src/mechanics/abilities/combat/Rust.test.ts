@@ -1,8 +1,8 @@
 import { describe, it, expect, beforeEach } from 'vitest';
 import { AbilityDefinition, getAbilityDefinition } from '../../abilityRegistry';
-import './Rust';
 import { INITIAL_STATE } from '../../../tests/testUtils';
-import { CombatState } from '../../../types/combat';
+import { CombatState } from '../../../types/CombatState';
+import './Rust';
 
 describe('Rust', () => {
     let ability: AbilityDefinition;
@@ -14,27 +14,22 @@ describe('Rust', () => {
     });
 
     it('should reduce opponent armour if damage dealt', () => {
-        const state: CombatState = {
+        let state: CombatState = {
             ...INITIAL_STATE,
-            damageDealt: [{ target: 'enemy', amount: 1, source: 'Attack' }],
         };
 
-        expect(ability.canActivate?.(state, 'hero')).toBe(true);
+        const result = ability.onDamageDealt!(state, { owner: 'hero', target: 'enemy' }, 'Attack', 5);
 
-        const result = ability.onActivate?.(state, 'hero');
-
-        expect(result?.modifications).toHaveLength(1);
-        expect(result?.modifications![0].modification.stats.armour).toBe(-2);
+        expect(result.enemy!.activeEffects).toHaveLength(1);
+        expect(result.enemy!.activeEffects[0].stats.armour).toBe(-2);
     });
 
     it('should not activate if no damage dealt', () => {
         const state: CombatState = {
             ...INITIAL_STATE,
-            damageDealt: [],
         };
 
-        expect(ability.canActivate?.(state, 'hero')).toBe(false);
-        const result = ability.onActivate?.(state, 'hero');
-        expect(result).toEqual({});
+        const result = ability.onDamageDealt!(state, { owner: 'hero', target: 'enemy' }, 'Attack', 0);
+        expect(result).toBe(state);
     });
 });

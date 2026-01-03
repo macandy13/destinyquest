@@ -1,15 +1,13 @@
-import { registerAbility } from '../../abilityRegistry';
-import { addLogs } from '../../../utils/statUtils';
-import { CombatState } from '../../../types/combat';
-import { CharacterType } from '../../../types/stats';
+import { registerAbility, AbilityContext } from '../../abilityRegistry';
+import { CombatState, skipDamagePhase, hasEffect } from '../../../types/CombatState';
 import { isOpponentDamageRollPhase } from '../abilityFactories';
 
-function canActivate(state: CombatState, owner: CharacterType): boolean {
+function canActivate(state: CombatState, context: AbilityContext): boolean {
     const cancellationEffects = ['Ensnare', 'Hamstring'];
-    return isOpponentDamageRollPhase(state, owner)
-        && !state.activeEffects.some(
-            e => e.modification.target == owner
-                && cancellationEffects.includes(e.modification.source));
+    // Check if ANY cancellation effect is active on the owner
+    const isRestricted = cancellationEffects.some(effectSource => hasEffect(state, context.owner, effectSource));
+
+    return isOpponentDamageRollPhase(state, context) && !isRestricted;
 }
 
 registerAbility({
@@ -17,13 +15,9 @@ registerAbility({
     type: 'combat',
     description: 'Avoid damage after losing a round (still affected by passive damage like bleed/venom).',
     canActivate: canActivate,
-    onActivate: (state, owner) => {
-        if (!canActivate(state, owner)) return null;
+    onActivate: (state, context) => {
+        if (!canActivate(state, context)) return state;
 
-        return {
-            phase: 'round-end',
-            damageRolls: [{ value: 0, isRerolled: false }],
-            logs: addLogs(state.logs, { round: state.round, message: "Used ability: Evade. Avoided attack!", type: 'info' })
-        };
+        return skipDamagePhase(state, "Used ability: Evade. Avoided attack!");
     }
 });

@@ -1,48 +1,41 @@
-import { AbilityDefinition, AbilityType } from '../abilityRegistry';
-import { CombatState } from '../../types/combat';
-import { addLogs } from '../../utils/statUtils';
-import { rollDice, sumDice } from '../../utils/dice';
-import { Stats, CharacterType, getOpponent } from '../../types/stats';
+import { AbilityContext, AbilityDefinition } from '../abilityRegistry';
+import { addLogs, appendEffect, CombatState } from '../../types/CombatState';
+import { rollDice, sumDice } from '../../types/Dice';
+import { AbilityType } from '../../types/AbilityDescription';
+import { CharacterType, getOpponent } from '../../types/Character';
+import { Effect } from '../../types/Effect';
+import { getStatIcon, Stats } from '../../types/Stats';
+
+export type TargetType = 'hero' | 'enemy' | 'owner' | 'opponent' | 'winner' | 'loser';
+
+function resolveTarget(target: TargetType, state: CombatState, context: AbilityContext): CharacterType {
+    switch (target) {
+        case 'hero':
+            return 'hero';
+        case 'enemy':
+            return 'enemy';
+        case 'owner':
+            return context.owner;
+        case 'opponent':
+            return getOpponent(context.owner);
+        case 'winner':
+            return state.winner!;
+        case 'loser':
+            return getOpponent(state.winner!);
+    }
+}
 
 export interface StatModifierAbilityConfig {
     name: string;
     icon?: string;
     description: string;
     type: AbilityType;
-    stats: Partial<Stats>,
-    target: CharacterType,
-    duration?: number,
-    canActivate?: (state: CombatState, owner: CharacterType) => boolean;
-}
-
-export function createStatModification(
-    state: CombatState,
-    config: {
-        name: string,
-        description: string,
-        stats: Partial<Stats>,
-        target: CharacterType,
-        duration?: number
-    }): Partial<CombatState> {
-    return state;
-    // TODO
-    /*
-return {
-    modifications: [{
-        duration: config.duration,
-        modification: {
-            id: `${config.name.toLowerCase().replace(/[^a-z0-9]/g, '-')}-${state.round}`,
-            stats: config.stats,
-            target: config.target,
-            source: config.name,
-        } as StatsModification,
-    } as Modification],
-    logs: [{
-        round: state.round ?? 0,
-        message: `Used ability: ${config.name} (${config.description})`,
-        type: 'info'
-    }]
-};*/
+    effect?: Effect;
+    // Backward compatibility for easier definition
+    stats?: Partial<Stats>;
+    duration?: number;
+    target?: TargetType;
+    canActivate?: (state: CombatState, context: AbilityContext) => boolean;
 }
 
 export function createStatModifierAbility(config: StatModifierAbilityConfig): AbilityDefinition {
@@ -52,14 +45,64 @@ export function createStatModifierAbility(config: StatModifierAbilityConfig): Ab
         description: config.description,
         icon: config.icon,
         canActivate: config.canActivate,
-        onActivate: (state: CombatState, owner: CharacterType) => {
-            if (config.canActivate && !config.canActivate(state, owner)) {
-                return {};
+        onActivate: (state: CombatState, context: AbilityContext): CombatState => {
+            if (config.canActivate && !config.canActivate(state, context)) {
+                return state;
             }
-            return createStatModification(state, config);
+
+            const target = resolveTarget(config.target || context.owner, state, context);
+            const effect: Effect = config.effect || {
+                source: config.name,
+                target: target,
+                stats: config.stats || {},
+                duration: config.duration,
+            };
+
+            return appendEffect(state, target, effect);
         }
     };
 }
+
+export function createSpeedDiceModifier(config: {
+    name: string,
+    description: string,
+    target: TargetType,
+    speedModifier: number,
+    duration?: number,
+    type?: AbilityType,
+}): AbilityDefinition {
+    return createStatModifierAbility({
+        name: config.name,
+        description: config.description,
+        icon: getStatIcon('speed'),
+        target: config.target,
+        canActivate: canModifySpeed,
+        stats: { speedDice: config.speedModifier },
+        duration: config.duration,
+        type: config.type ?? 'speed',
+    });
+}
+
+export function createDamageDiceModifier(config: {
+    name: string,
+    description: string,
+    target: TargetType,
+    damageModifier: number,
+    duration?: number,
+    type?: AbilityType,
+}): AbilityDefinition {
+    return createStatModifierAbility({
+        name: config.name,
+        description: config.description,
+        icon: getStatIcon('die'),
+        target: config.target,
+        canActivate: canModifyDamage,
+        stats: { damageDice: config.damageModifier },
+        duration: config.duration,
+        type: config.type ?? 'combat',
+    });
+}
+
 
 export interface DamageBlockerAbilityConfig {
     name: string;
@@ -68,7 +111,7 @@ export interface DamageBlockerAbilityConfig {
     type: AbilityType;
     blockMessage?: string; // Message to log, e.g. "Opponent's attack blocked!"
     counterDamageDice?: number; // Number of dice to roll for counter damage (deflect/brutality)
-    canActivate?: (state: CombatState, owner: CharacterType) => boolean;
+    canActivate?: (state: CombatState, context: AbilityContext) => boolean;
 }
 
 export function createDamageBlockerAbility(config: DamageBlockerAbilityConfig): AbilityDefinition {
@@ -79,8 +122,8 @@ export function createDamageBlockerAbility(config: DamageBlockerAbilityConfig): 
         description: config.description,
         icon: config.icon,
         canActivate: checker,
-        onActivate: (state: CombatState, owner: CharacterType) => {
-            if (!checker(state, owner)) return null;
+        onActivate: (state: CombatState, context: AbilityContext): CombatState => {
+            if (!checker(state, context)) return state;
 
             let logMessage = `Used ability: ${config.name}.`;
             if (config.blockMessage) {
@@ -89,9 +132,14 @@ export function createDamageBlockerAbility(config: DamageBlockerAbilityConfig): 
                 logMessage += " Opponent's attack blocked!";
             }
 
+            // Correctly structure damage rolls within the 'damage' object
+            // and use bonusDamage instead of damageDealt
             const updates: Partial<CombatState> = {
                 phase: 'round-end',
-                damageRolls: [{ value: 0, isRerolled: false }],
+                damage: {
+                    damageRolls: [{ value: 0, isRerolled: false }],
+                    modifiers: []
+                }
             };
 
             let logs = state.logs;
@@ -101,7 +149,7 @@ export function createDamageBlockerAbility(config: DamageBlockerAbilityConfig): 
                 const dmg = sumDice(dmgRolls);
                 const rolls = dmgRolls.map(r => r.value);
 
-                updates.damageDealt = [...state.damageDealt, { target: 'enemy', amount: dmg, source: config.name }];
+                updates.bonusDamage = [...state.bonusDamage, { target: 'enemy', amount: dmg, source: config.name }];
 
                 // Override log message for counter damage abilities to match existing behavior
                 // "Brutality! Blocked attack and inflicted X damage (Y+Z)."
@@ -116,19 +164,46 @@ export function createDamageBlockerAbility(config: DamageBlockerAbilityConfig): 
             }
 
             updates.logs = logs;
-            return updates;
+            return {
+                ...state,
+                ...updates
+            };
         }
     };
 }
 
+export function canModifySpeed(state: CombatState): boolean {
+    return ['combat-start', 'round-start'].includes(state.phase);
+}
+
+export function canModifySpeedDice(state: CombatState): boolean {
+    return ['combat-start', 'round-start', 'speed-roll'].includes(state.phase);
+}
+
+export function canModifyDamage(state: CombatState): boolean {
+    return ['damage-roll'].includes(state.phase);
+}
+
+export function canModifyDamageDice(state: CombatState): boolean {
+    return ['combat-start', 'round-start', 'damage-roll'].includes(state.phase);
+}
+
+export function canModifyRolledDice(state: CombatState): boolean {
+    return ['speed-roll', 'damage-roll'].includes(state.phase);
+}
+
 export function isHeroDamageRollPhase(state: CombatState): boolean {
-    return state.phase === 'damage-roll' && state.winner === 'hero';
+    return canModifyDamage(state) && state.winner === 'hero';
 };
 
 export function isEnemyDamageRollPhase(state: CombatState): boolean {
-    return state.phase === 'damage-roll' && state.winner === 'enemy';
+    return canModifyDamage(state) && state.winner === 'enemy';
 };
 
-export function isOpponentDamageRollPhase(state: CombatState, owner: CharacterType): boolean {
-    return state.phase === 'damage-roll' && state.winner === getOpponent(owner);
+export function isOwnerDamageRollPhase(state: CombatState, context: AbilityContext): boolean {
+    return canModifyDamage(state) && state.winner === context.owner;
+};
+
+export function isOpponentDamageRollPhase(state: CombatState, context: AbilityContext): boolean {
+    return canModifyDamage(state) && state.winner === getOpponent(context.owner);
 };

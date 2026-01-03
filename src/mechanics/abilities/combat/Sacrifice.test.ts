@@ -2,7 +2,7 @@ import { describe, it, expect, beforeEach } from 'vitest';
 import { AbilityDefinition, getAbilityDefinition } from '../../abilityRegistry';
 import './Sacrifice';
 import { INITIAL_STATE } from '../../../tests/testUtils';
-import { CombatState } from '../../../types/combat';
+import { CombatState } from '../../../types/CombatState';
 
 describe('Sacrifice', () => {
     let ability: AbilityDefinition;
@@ -18,21 +18,24 @@ describe('Sacrifice', () => {
             ...INITIAL_STATE,
             phase: 'damage-roll' as const,
             winner: 'enemy' as const,
-            activeEffects: [{
-                modification: {
+            hero: {
+                ...INITIAL_STATE.hero,
+                activeEffects: [{
                     stats: {},
                     source: 'Shades',
-                    target: 'hero'
-                }, id: 'shades-1'
-            }],
+                    target: 'hero',
+                    duration: undefined
+                }]
+            },
         };
 
-        expect(ability.canActivate?.(state, 'hero')).toBe(true);
+        expect(ability.canActivate?.(state, { owner: 'hero' })).toBe(true);
 
-        const result = ability.onActivate?.(state, 'hero');
+        const result = ability.onActivate?.(state, { owner: 'hero' });
 
-        expect(result?.phase).toBe('round-end');
-        expect(result?.damageRolls).toEqual([{ value: 0, isRerolled: false }]);
-        expect(result?.activeEffects).toEqual([]); // Shades removed
+        expect(result?.phase).toBe('passive-damage');
+        // Clears damage (depends on implementation: result.damage.damageRolls = []?)
+        expect(result?.damage?.damageRolls).toEqual([]);
+        expect(result?.hero.activeEffects).toEqual([]); // Shades removed
     });
 });
