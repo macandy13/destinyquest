@@ -4,6 +4,7 @@ import { Character } from './character';
 import { Combatant } from './combatant';
 import { BookRef } from './book';
 import { addLogs, getDamageType } from '../utils/statUtils';
+import { applyStatsModification } from '../utils/stats';
 
 export interface Enemy extends Character {
     name: string;
@@ -164,3 +165,36 @@ export function healDamage(state: CombatState, source: string, target: Character
     };
 }
 
+function appendArray<T>(array: T[], updates: T[] | undefined): T[];
+function appendArray<T>(array: T[] | undefined, updates: T[] | undefined): T[] | undefined;
+function appendArray<T>(array: T[] | undefined, updates: T[] | undefined): T[] | undefined {
+    if (!array && !updates) return undefined;
+    return [...(array ?? []), ...(updates ?? [])];
+}
+
+export function applyUpdates(state: CombatState, updates: Partial<CombatState>): CombatState {
+    return {
+        round: updates.round ?? state.round,
+        phase: updates.phase ?? state.phase,
+        hero: updates.hero ? {
+            ...state.hero!,
+            stats: applyStatsModification(state.hero!.stats, updates.hero.stats)
+        } : state.hero!,
+        enemy: updates.enemy ? {
+            ...state.enemy!,
+            stats: applyStatsModification(state.enemy!.stats, updates.enemy.stats)
+        } : state.enemy,
+        heroSpeedRolls: appendArray(state.heroSpeedRolls, updates.heroSpeedRolls),
+        enemySpeedRolls: appendArray(state.enemySpeedRolls, updates.enemySpeedRolls),
+        winner: updates.winner ?? state.winner,
+        damageRolls: updates.damageRolls ?? state.damageRolls,
+        damageDealt: appendArray(state.damageDealt, updates.damageDealt),
+        activeAbilities: appendArray(state.activeAbilities, updates.activeAbilities),
+        activeEffects: appendArray(state.activeEffects, updates.activeEffects),
+        modifications: appendArray(state.modifications, updates.modifications),
+        backpack: updates.backpack ?? state.backpack,
+        logs: appendArray(state.logs, updates.logs),
+        additionalEnemyDamage: appendArray(state.additionalEnemyDamage, updates.additionalEnemyDamage),
+        rerollState: updates.rerollState ?? state.rerollState,
+    };
+}

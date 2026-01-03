@@ -1,10 +1,7 @@
 import { describe, it, expect, beforeEach } from 'vitest';
 import { AbilityDefinition, getAbilityDefinition } from '../abilityRegistry';
 import './CatsSpeed';
-import { INITIAL_STATE, heroWithStats, testEquipment } from '../../tests/testUtils';
-import { renderHook, act } from '@testing-library/react';
-import { useCombat } from '../../hooks/useCombat';
-import { Hero } from '../../types/hero';
+import { INITIAL_STATE } from '../../tests/testUtils';
 
 
 describe("Cat's Speed", () => {

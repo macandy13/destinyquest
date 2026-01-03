@@ -23,7 +23,7 @@
  * 4. nextRound: Resets for the next round, handling cooldowns and duration ticks.
  */
 
-import { CombatState, Enemy, CombatLog, ActiveAbility, DiceRoll, dealDamage } from '../types/combat';
+import { CombatState, Enemy, CombatLog, ActiveAbility, DiceRoll, dealDamage, applyUpdates } from '../types/combat';
 import { Combatant } from '../types/combatant';
 import { sumDice, rollDice, rerollDice } from '../utils/dice';
 import { Hero, HeroStats, BackpackItem } from '../types/hero';
@@ -154,7 +154,7 @@ export function initCombat(hero: Hero | Combatant<Hero>, initialEnemy?: Enemy | 
         const def = getAbilityDefinition(ability.name);
         if (def?.onCombatStart) {
             const updates = def.onCombatStart(state, ability.owner);
-            state = { ...state, ...updates };
+            state = applyUpdates(state, updates);
         }
     });
 
@@ -330,17 +330,11 @@ export function activateAbility(state: CombatState, abilityName: string): Combat
     const updates = definition.onActivate(state, ability.owner);
     if (!updates) return state;
 
-    const abilityIndex = state.activeAbilities.indexOf(ability);
-    const newActiveAbilities = [...state.activeAbilities];
-    if (abilityIndex !== -1) {
-        newActiveAbilities[abilityIndex] = { ...ability, used: true };
-    }
-
-    const newState = {
-        ...state,
-        ...updates,
-        activeAbilities: newActiveAbilities,
-    };
+    const newState = applyUpdates(state, updates);
+    newState.activeAbilities = newState.activeAbilities.map(a => {
+        if (a === ability) return { ...a, used: true };
+        return a;
+    });
 
     // Any automatic dice-rerolling should be done now.
     const effectiveStats = calculateEffectiveStats(newState);
@@ -434,11 +428,11 @@ function _resolveSpeedRolls(state: CombatState): CombatState {
         if (def?.onSpeedRoll) {
             if (ability.owner == 'hero' && state.heroSpeedRolls) {
                 const updates = def.onSpeedRoll(state, 'hero', state.heroSpeedRolls);
-                state = { ...state, ...updates };
+                state = applyUpdates(state, updates);
             }
             if (ability.owner == 'enemy' && state.enemySpeedRolls) {
                 const updates = def.onSpeedRoll(state, 'enemy', state.enemySpeedRolls);
-                state = { ...state, ...updates };
+                state = applyUpdates(state, updates);
             }
         }
     });
@@ -587,7 +581,7 @@ export function setDamageRolls(state: CombatState, rolls: DiceRoll[]): CombatSta
         const def = getAbilityDefinition(ability.name);
         if (def?.onDamageRoll && ability.owner === state.winner) {
             const updates = def.onDamageRoll(state, loser, state.damageRolls!);
-            state = { ...state, ...updates };
+            state = applyUpdates(state, updates);
         }
     });
     return state;

@@ -1,10 +1,7 @@
 import { describe, it, expect, beforeEach } from 'vitest';
-import { Hero } from '../../types/hero';
 import { AbilityDefinition, getAbilityDefinition } from '../abilityRegistry';
 import './Acid';
-import { INITIAL_STATE, heroWithStats, testEquipment } from '../../tests/testUtils';
-import { renderHook, act } from '@testing-library/react';
-import { useCombat } from '../../hooks/useCombat';
+import { INITIAL_STATE } from '../../tests/testUtils';
 
 describe('Acid', () => {
     let ability: AbilityDefinition;

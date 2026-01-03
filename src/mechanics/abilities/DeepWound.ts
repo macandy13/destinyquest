@@ -1,5 +1,5 @@
 import { registerAbility } from '../abilityRegistry';
-import { createStatModifiedState } from './abilityFactories';
+import { createStatModification } from './abilityFactories';
 
 registerAbility({
     name: 'Deep Wound',
@@ -8,15 +8,15 @@ registerAbility({
     canActivate: (state, owner) => state.phase === 'damage-roll' && state.winner === owner,
     onActivate: (state, owner) => {
         const currentDamageDiceCount = state[owner]!.stats.damageDice ?? 1;
-        return createStatModifiedState(
-            state, {
-            name: 'Deep Wound',
-            description: `Increased damage dice from ${currentDamageDiceCount} to ${currentDamageDiceCount + 1}`,
-            stats: {
-                damageDice: 1, // Will automatically be added.
-            },
-            target: owner,
-            duration: 1
-        });
+        return createStatModification(
+            {
+                name: 'Deep Wound',
+                description: `Increased damage dice from ${currentDamageDiceCount} to ${currentDamageDiceCount + 1}`,
+                stats: {
+                    damageDice: 1, // Will automatically be added.
+                },
+                target: owner,
+                duration: 1
+            });
     }
 });

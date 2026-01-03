@@ -15,16 +15,16 @@ export interface StatModifierAbilityConfig {
     canActivate?: (state: CombatState, owner: CharacterType) => boolean;
 }
 
-export function createStatModifiedState(state: CombatState,
+export function createStatModification(
     config: {
         name: string,
         description: string,
         stats: Partial<Stats>,
         target: CharacterType,
         duration?: number
-    }) {
+    }): Partial<CombatState> {
     return {
-        modifications: [...state.modifications, {
+        modifications: [{
             duration: config.duration,
             modification: {
                 id: `${config.name.toLowerCase().replace(/[^a-z0-9]/g, '-')}-${state.round}`,
@@ -33,11 +33,11 @@ export function createStatModifiedState(state: CombatState,
                 source: config.name,
             } as StatsModification,
         } as Modification],
-        logs: addLogs(state.logs, {
-            round: state.round,
+        logs: [{
+            round: state.round ?? 0,
             message: `Used ability: ${config.name} (${config.description})`,
             type: 'info'
-        })
+        }]
     };
 }
 
@@ -52,7 +52,7 @@ export function createStatModifierAbility(config: StatModifierAbilityConfig): Ab
             if (config.canActivate && !config.canActivate(state, owner)) {
                 return {};
             }
-            return createStatModifiedState(state, config);
+            return createStatModification(config);
         }
     };
 }
