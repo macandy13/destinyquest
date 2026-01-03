@@ -18,9 +18,19 @@ describe('Shock!', () => {
             enemy: enemyWithStats({ armour: 5 }),
             logs: []
         };
-        const result = ability.onDamageDealt?.(state, 'hero', 'enemy', 5); // Dealing 5 damage to enemy
+        const result = ability.onDamageDealt?.(state, { owner: 'hero', target: 'enemy' }, 'Attack', 5); // Dealing 5 damage to enemy
 
-        expect(result?.damageDealt).toHaveLength(1);
-        expect(result?.damageDealt![0].amount).toBe(2); // 5/2 = 2.5 rounded down
+        // Shock deals extra damage. Since dealDamage modifies state, we expect state changes.
+        // Original health 30. 5 damage dealt. Shock extra = 5/2 = 2. Total damage 7.
+        // The ability itself only deals the EXTRA damage (2). The initial 5 was dealt before calling this hook?
+        // Wait, onDamageDealt hook is called AFTER damage dealt?
+        // Yes, but usually logic is: ability deals EXTRA damage.
+        expect(result?.enemy.stats.health).toBe(20 - 2); // Initial health 20, deals 2 extra damage
+        // dealDamage returns NEW state. Input state had full health (or whatever).
+        // If input state passed to onDamageDealt has not yet applied the 5 damage (it's "onDamageDealt", implying it just happened, but state might not reflect it if it's just a notification hook without state chained?)
+        // Actually, `CombatEngine` likely chains these.
+        // But in this unit test, `state` has full health.
+        // So result should have `health - 2`.
+        expect(result?.logs.some(l => l.message?.includes('Shock! dealt 2 damage'))).toBe(true);
     });
 });

@@ -12,37 +12,26 @@ describe('Disrupt', () => {
         ability = def;
     });
 
-    it('should apply magic reduction on activate if damage dealt', () => {
+    it('should apply magic reduction on damage dealt', () => {
         const state = {
             ...INITIAL_STATE,
-            damageDealt: [
-                {
-                    source: 'Attack',
-                    target: 'enemy' as const,
-                    amount: 1
-                }
-            ],
             round: 1
         };
 
-        expect(ability.canActivate?.(state, 'hero')).toBe(true);
+        const result = ability.onDamageDealt!(state, { owner: 'hero', target: 'enemy' }, 'Attack', 5);
 
-        const result = ability.onActivate?.(state, 'hero');
-
-        expect(result?.modifications).toHaveLength(1);
-        expect(result?.modifications![0].modification.stats.magic).toBe(-3);
-        expect(result?.modifications![0].modification.target).toBe('enemy');
+        expect(result.enemy.activeEffects).toHaveLength(1);
+        expect(result.enemy.activeEffects[0].stats.magic).toBe(-3);
+        expect(result.enemy.activeEffects[0].target).toBe('enemy');
     });
 
-    it('should not activate if no damage dealt', () => {
+    it('should not activate if no damage dealt (0 damage)', () => {
         const state = {
             ...INITIAL_STATE,
-            damageDealt: [],
             round: 1
         };
 
-        expect(ability.canActivate?.(state, 'hero')).toBe(false);
-        const result = ability.onActivate?.(state, 'hero');
-        expect(result).toEqual({});
+        const result = ability.onDamageDealt!(state, { owner: 'hero', target: 'enemy' }, 'Attack', 0);
+        expect(result).toEqual(state);
     });
 });

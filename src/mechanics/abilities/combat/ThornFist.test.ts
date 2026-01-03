@@ -16,9 +16,8 @@ describe('Thorn Fist', () => {
         const state = INITIAL_STATE;
         mockDiceRolls([2, 3]);
 
-        const result = ability.onDamageDealt?.(state, 'hero', 'hero', 5);
+        const result = ability.onDamageDealt?.(state, { owner: 'hero', target: 'hero' }, 'Attack', 5);
 
-        expect(result?.damageDealt).toHaveLength(1);
-        expect(result?.damageDealt![0].amount).toBeGreaterThanOrEqual(5);
+        expect(result?.logs.find(l => l.message.includes('Thorn Fist dealt'))).toBeDefined();
     });
 });

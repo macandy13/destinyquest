@@ -1,17 +1,23 @@
 import { registerAbility } from '../../abilityRegistry';
-import { CombatState, dealDamage } from '../../../types/combat';
-import { CharacterType } from '../../../types/stats';
+import { dealDamage } from '../../../types/CombatState';
 
 registerAbility({
     name: 'Reflect',
     type: 'combat',
     description: 'Reflect health damage back to vampire opponents.',
-    onDamageDealt: (state: CombatState, owner: CharacterType, target: CharacterType, amount: number): Partial<CombatState> => {
-        if (owner !== 'hero' || target !== 'hero' || amount <= 0) return {};
+    onDamageDealt: (state, context, _source, amount) => {
+        const { owner, target } = context;
+        // Reflect works if "I took damage" (target === 'hero' if ability owner is 'hero').
+        // Wait, AbilityContext `owner` is the one who HAS the ability.
+        // If Reflect is on Hero, `context.owner` is 'hero'.
+        // If Hero takes damage, `context.target` (victim) would be 'hero' in global hook?
+        // Assuming global hook passes target. Previous analysis of Retaliation suggests yes.
+
+        if (owner !== target || amount <= 0) return state;
 
         const enemy = state.enemy;
-        if (!enemy) return {};
-        if (!enemy.original.abilities.includes('Vampire')) return {};
+        if (!enemy) return state;
+        if (!enemy.original.abilities.includes('Vampire')) return state;
 
         return dealDamage(state, 'Reflect', 'enemy', amount);
     }

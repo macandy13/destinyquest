@@ -2,6 +2,7 @@ import { describe, it, expect, beforeEach } from 'vitest';
 import { AbilityDefinition, getAbilityDefinition } from '../../abilityRegistry';
 import './Acid';
 import { INITIAL_STATE } from '../../../tests/testUtils';
+import { deterministicRoll } from '../../../types/Dice';
 
 describe('Acid', () => {
     let ability: AbilityDefinition;
@@ -13,8 +14,11 @@ describe('Acid', () => {
     });
 
     it('should add 1 damage per die rolled', () => {
-        const state = { ...INITIAL_STATE, damageRolls: [{ value: 1, isRerolled: false }, { value: 4, isRerolled: false }, { value: 6, isRerolled: false }] };
-        const bonus = ability.onDamageCalculate?.(state, 'hero', 'hero', 10);
+        const state = {
+            ...INITIAL_STATE,
+            damage: { damageRolls: deterministicRoll([1, 2, 3]), modifiers: [] }
+        };
+        const bonus = ability.onDamageCalculate!(state, { owner: 'hero' });
         expect(bonus).toBe(3);
     });
 });

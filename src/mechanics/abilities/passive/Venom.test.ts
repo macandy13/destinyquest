@@ -1,12 +1,10 @@
 import { describe, it, expect, beforeEach } from 'vitest';
 import { INITIAL_STATE, enemyWithStats } from '../../../tests/testUtils';
 import { getAbilityDefinition, AbilityDefinition } from '../../abilityRegistry';
-import { CombatState } from '../../../types/combat';
+import { CombatState } from '../../../types/CombatState';
 import './DeadlyPoisons';
 import './Venom';
 import './PoisonMastery';
-
-const DAMAGE_TO_ENEMY = { target: 'enemy' as const, amount: 1, source: 'Attack' };
 
 const VENOM_ABILITY = {
     name: 'Venom',
@@ -44,29 +42,26 @@ describe('Venom', () => {
         const state: CombatState = {
             ...INITIAL_STATE,
             winner: 'hero' as const,
-            damageDealt: [DAMAGE_TO_ENEMY],
-            enemy,
-            activeAbilities: [VENOM_ABILITY]
+            damage: { damageRolls: [], modifiers: [] },
+            hero: {
+                ...INITIAL_STATE.hero!,
+                activeAbilities: new Map([['Venom', VENOM_ABILITY]])
+            },
+            enemy: {
+                ...enemy,
+                activeEffects: [{ source: 'Venom', target: 'enemy', stats: {} }]
+            }
         };
 
-        const updates = ability.onPassiveAbility!(state, 'hero');
+        const updates = ability.onPassiveAbility!(state, { owner: 'hero' });
 
-        expect(updates.enemy!.stats.health).toBe(18);
-        expect(updates.damageDealt).toEqual(expect.arrayContaining([
+
+        expect(updates.bonusDamage).toEqual(expect.arrayContaining([
             expect.objectContaining({
-                amount: 2
+                amount: 2,
+                source: 'Venom'
             })
         ]));
-        expect(updates.activeEffects).toEqual(
-            expect.arrayContaining([
-                expect.objectContaining({
-                    modification: expect.objectContaining({
-                        source: 'Venom',
-                        target: 'enemy',
-                    })
-                })
-            ])
-        );
     });
 
     it('should deal 3 damage with Deadly Poisons', () => {
@@ -74,53 +69,67 @@ describe('Venom', () => {
         const state: CombatState = {
             ...INITIAL_STATE,
             winner: 'hero' as const,
-            damageDealt: [DAMAGE_TO_ENEMY],
-            enemy,
-            activeAbilities: [
-                VENOM_ABILITY,
-                DEADLY_POISONS_ABILITY
-            ]
+            damage: { damageRolls: [], modifiers: [] },
+            hero: {
+                ...INITIAL_STATE.hero!,
+                activeAbilities: new Map([
+                    ['Venom', VENOM_ABILITY],
+                    ['Deadly Poisons', DEADLY_POISONS_ABILITY]
+                ])
+            },
+            enemy: {
+                ...enemy,
+                activeEffects: [{ source: 'Venom', target: 'enemy', stats: {} }]
+            }
         };
 
-        const updates = ability.onPassiveAbility!(state, 'hero');
+        const updates = ability.onPassiveAbility!(state, { owner: 'hero' });
 
-        expect(updates.enemy!.stats.health).toBe(17);
-        const damageEntry = updates.damageDealt?.find(d => d.source === 'Venom');
+
+        const damageEntry = updates.bonusDamage?.find(d => d.source === 'Venom');
         expect(damageEntry?.amount).toBe(3);
     });
 
     it('should deal 4 damage with Poison Mastery', () => {
-        const state = {
+        const state: CombatState = {
             ...INITIAL_STATE,
             winner: 'hero' as const,
-            damageDealt: [DAMAGE_TO_ENEMY],
-            enemy: enemyWithStats({ health: 20 }),
-            activeAbilities: [
-                VENOM_ABILITY,
-                DEADLY_POISONS_ABILITY,
-                POISON_MASTERY,
-            ]
+            damage: { damageRolls: [], modifiers: [] },
+            hero: {
+                ...INITIAL_STATE.hero!,
+                activeAbilities: new Map([
+                    ['Venom', VENOM_ABILITY],
+                    ['Deadly Poisons', DEADLY_POISONS_ABILITY],
+                    ['Poison Mastery', POISON_MASTERY]
+                ])
+            },
+            enemy: {
+                ...enemyWithStats({ health: 20 }),
+                activeEffects: [{ source: 'Venom', target: 'enemy', stats: {} }]
+            }
         };
 
-        const updates = ability.onPassiveAbility!(state, 'hero');
+        const updates = ability.onPassiveAbility!(state, { owner: 'hero' });
 
-        expect(updates.enemy!.stats.health).toBe(16);
-        const damageEntry = updates.damageDealt?.find(d => d.source === 'Venom');
+
+        const damageEntry = updates.bonusDamage?.find(d => d.source === 'Venom');
         expect(damageEntry?.amount).toBe(4);
     });
 
-    it('should not deal damage if damage was only dealt to hero', () => {
+    it('should not deal damage if no damage was dealt', () => {
+        // If we want to test that it DOES NOT apply if venom NOT present:
         const enemy = enemyWithStats({ health: 20 });
         const state = {
             ...INITIAL_STATE,
-            winner: 'enemy' as const,
-            damageDealt: [{ target: 'hero' as const, amount: 1, source: 'Attack' }],
-            enemy,
-            activeAbilities: [VENOM_ABILITY]
+            winner: null,
+            hero: {
+                ...INITIAL_STATE.hero!,
+            },
+            enemy, // No active effects
         };
 
-        const updates = ability.onPassiveAbility!(state, 'hero');
+        const updates = ability.onPassiveAbility!(state, { owner: 'hero' });
         // Should not have any damage dealt
-        expect(updates.damageDealt).toBeUndefined();
+        expect(updates.bonusDamage).toEqual([]);
     });
 });

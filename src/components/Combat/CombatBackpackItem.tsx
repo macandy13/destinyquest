@@ -1,5 +1,5 @@
 import React from 'react';
-import { BackpackItem } from '../../types/hero';
+import { BackpackItem } from '../../types/Hero';
 import './CombatBackpackItem.css';
 
 interface CombatBackpackItemProps {

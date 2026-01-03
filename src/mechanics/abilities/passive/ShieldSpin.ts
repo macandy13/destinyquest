@@ -1,48 +1,26 @@
 import { registerAbility } from '../../abilityRegistry';
-import { addLogs } from '../../../utils/statUtils';
-import { rollDice, sumDice } from '../../../utils/dice';
+import { dealDamage } from '../../../types/CombatState';
+import { rollDice, sumDice } from '../../../types/Dice';
 
 registerAbility({
     name: 'Shield Spin',
     type: 'passive',
     description: 'Opponents take 1 damage die (ignoring armour) for every [1] they roll for speed.',
-    onSpeedRoll: (state, source, rolls) => {
-        // "Opponents take 1 damage for every 1 they roll"
-        // The engine calls this hook for the TARGET of the ability. 
-        // So if Hero has Shield Spin (target=Enemy), this is called with source='enemy'.
+    // TODO: Should this be done during end of round instead?
+    onSpeedRoll: (state, { owner }) => {
+        // "Opponents take 1 damage... for every [1] they roll for speed"
+        // If owner is hero, opponent is enemy.
+        // Check enemy speed rolls.
+        const opponent = owner === 'hero' ? 'enemy' : 'hero';
+        const rolls = opponent === 'enemy' ? state.enemySpeedRolls : state.heroSpeedRolls;
+        if (!rolls) return state;
 
         const ones = rolls.filter(r => r.value === 1).length;
+        if (ones === 0) return state;
 
-        if (ones > 0) {
-            // "take 1 damage die"
-            const dmgResults = rollDice(ones);
-            const totalDmg = sumDice(dmgResults);
-            const rollVals = dmgResults.map(r => r.value);
+        const dmgResults = rollDice(ones);
+        const totalDmg = sumDice(dmgResults);
 
-            return {
-                additionalEnemyDamage: source === 'enemy' ? [...state.additionalEnemyDamage ?? [], {
-                    type: `damage-${source}`,
-                    amount: totalDmg,
-                    source: 'Shield Spin'
-                }] : undefined,
-
-                // Apply Direct Damage to the roller (source)
-                [source]: {
-                    ...state[source]!,
-                    stats: {
-                        ...state[source]!.stats,
-                        health: Math.max(0, state[source]!.stats.health - totalDmg)
-                    }
-                },
-
-                logs: addLogs(state.logs, {
-                    round: state.round,
-                    message: `Shield Spin: Opponent rolled ${ones}x[1]. Inflicted ${totalDmg} damage (${rollVals.join('+')}).`,
-                    type: source === 'enemy' ? 'damage-enemy' : 'damage-hero'
-                })
-            };
-        }
-
-        return {};
+        return dealDamage(state, 'Shield Spin', opponent, totalDmg);
     }
 });

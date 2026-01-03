@@ -1,9 +1,10 @@
 import React from 'react';
-import { EquipmentSlot, EquipmentItem, BackpackItem } from '../../types/hero';
+import { EquipmentSlot, EquipmentItem, BackpackItem } from '../../types/Hero';
 import { getItemsBySlot, ITEMS } from '../../data/items';
-import { getStatIcon } from '../../utils/statUtils';
 import DqCard from '../Shared/DqCard';
 import './InventorySelector.css';
+import { getStatIcon } from '../../types/Stats';
+import { formatEffect } from '../../types/Effect';
 
 
 
@@ -91,20 +92,19 @@ const InventorySelector: React.FC<InventorySelectorProps> = ({ slot, onSelect, o
                                     </div>
                                 </div>
 
-                                {(item.stats || ('abilities' in item && (item as EquipmentItem).abilities) || ('effect' in item)) && (
+                                {item.type == 'backpack' ? (
                                     <div className="item-stats">
-                                        {item.stats?.speed ? `${getStatIcon('speed')} ${item.stats.speed} ` : ''}
-                                        {item.stats?.brawn ? `${getStatIcon('brawn')} ${item.stats.brawn} ` : ''}
-                                        {item.stats?.magic ? `${getStatIcon('magic')} ${item.stats.magic} ` : ''}
-                                        {item.stats?.armour ? `${getStatIcon('armour')} ${item.stats.armour} ` : ''}
+                                        {formatEffect(item.effect!)}
+                                    </div>
+                                ) : (
+                                    <div className="item-stats">
+                                        {item.stats!.speed ? `${getStatIcon('speed')} ${item.stats!.speed} ` : ''}
+                                        {item.stats!.brawn ? `${getStatIcon('brawn')} ${item.stats!.brawn} ` : ''}
+                                        {item.stats!.magic ? `${getStatIcon('magic')} ${item.stats!.magic} ` : ''}
+                                        {item.stats!.armour ? `${getStatIcon('armour')} ${item.stats!.armour} ` : ''}
                                         {'abilities' in item && (item as EquipmentItem).abilities && (item as EquipmentItem).abilities!.length > 0 && (
                                             <div className="item-abilities-tag">
                                                 {(item as EquipmentItem).abilities!.map(a => `★ ${a} `).join(', ')}
-                                            </div>
-                                        )}
-                                        {'effect' in item && (
-                                            <div className="item-abilities-tag">
-                                                {(item as BackpackItem).effect}
                                             </div>
                                         )}
                                     </div>

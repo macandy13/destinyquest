@@ -21,12 +21,11 @@ describe('Shield Spin', () => {
             enemySpeedRolls: [{ value: 1, isRerolled: false }, { value: 1, isRerolled: false }, { value: 6, isRerolled: false }]
         };
 
-        // Hook is called with (state, source, rolls). source is who rolled.
-        // If ability targets enemy, source is 'enemy'.
-        const updates = ability!.onSpeedRoll!(state, 'enemy', [{ value: 1, isRerolled: false }, { value: 1, isRerolled: false }, { value: 6, isRerolled: false }]);
+        // ShieldSpin logic: "opponent === 'enemy' (since owner='hero')". "rolls = state.enemySpeedRolls".
+        const updates = ability!.onSpeedRoll!(state, { owner: 'hero' });
 
         expect(updates?.enemy?.stats.health).toBeLessThan(20);
-        expect(updates?.logs?.[0].message).toContain('Shield Spin: Opponent rolled 2x[1]');
+        expect(updates?.logs?.[0].message).toContain('Shield Spin dealt');
     });
 
     it('should do nothing if no 1s rolled', () => {
@@ -36,7 +35,7 @@ describe('Shield Spin', () => {
         };
 
 
-        const updates = ability!.onSpeedRoll!(state, 'enemy', [{ value: 2, isRerolled: false }, { value: 6, isRerolled: false }]);
-        expect(updates).toEqual({});
+        const updates = ability!.onSpeedRoll!(state, { owner: 'hero' });
+        expect(updates).toBe(state);
     });
 });

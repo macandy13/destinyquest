@@ -25,7 +25,7 @@ describe('Charm', () => {
         // Damage phase (hero winning) -> implicitly round-end after resolution
         const damageState = {
             ...INITIAL_STATE,
-            phase: 'round-end',
+            phase: 'damage-roll',
             winner: 'hero',
             damageRolls: [{ value: 4, isRerolled: false }]
         };

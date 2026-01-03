@@ -1,5 +1,5 @@
 import { registerAbility } from '../../abilityRegistry';
-import { addLogs } from '../../../utils/statUtils';
+import { skipDamagePhase } from '../../../types/CombatState';
 import { isOpponentDamageRollPhase } from '../abilityFactories';
 
 
@@ -8,17 +8,7 @@ registerAbility({
     type: 'combat',
     description: 'Stop your opponent from rolling for damage when they have won a round.',
     canActivate: isOpponentDamageRollPhase,
-    onActivate: (state, owner) => {
-        if (!isOpponentDamageRollPhase(state, owner)) return null;
-
-        return {
-            phase: 'round-end',
-            damageRolls: [],
-            logs: addLogs(state.logs, {
-                round: state.round,
-                message: "Used ability: Banshee Wail. Opponent's attack silenced!",
-                type: 'info'
-            })
-        };
+    onActivate: (state) => {
+        return skipDamagePhase(state, "Used ability: Banshee Wail. Opponent's attack silenced!");
     }
 });

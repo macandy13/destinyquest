@@ -6,7 +6,7 @@ import MobileLayout from './components/Layout/MobileLayout';
 import BottomNav from './components/Navigation/BottomNav';
 import HeroStats from './components/Hero/HeroStats';
 import HeroEquipment from './components/Hero/HeroEquipment';
-import CombatArena from './components/Combat/CombatArena';
+import CombatTab from './components/Combat/CombatTab';
 import { useHero } from './hooks/useHero';
 
 
@@ -47,7 +47,9 @@ function App() {
                 )}
 
                 {activeTab === 'combat' && (
-                    <CombatArena hero={hero} onCombatFinish={handleCombatFinish} />
+                    <CombatTab
+                        hero={hero}
+                        onCombatFinish={handleCombatFinish} />
                 )}
             </main>
 

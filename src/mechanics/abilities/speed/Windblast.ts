@@ -1,11 +1,12 @@
 import { registerAbility } from '../../abilityRegistry';
-import { createStatModifierAbility } from '../abilityFactories';
+import { canModifySpeed, createStatModifierAbility } from '../abilityFactories';
 
 registerAbility(createStatModifierAbility({
     name: 'Windblast',
     type: 'speed',
     description: "Reduce opponent's speed dice by 1 for one round.",
-    stats: { speed: -1 },
+    stats: { speedDice: -1 },
     duration: 1,
-    target: 'enemy'
+    target: 'opponent',
+    canActivate: canModifySpeed,
 }));

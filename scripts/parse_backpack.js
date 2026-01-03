@@ -57,9 +57,10 @@ const processedItems = rawData.slice(1).map((line, index) => {
         name: name,
         type: 'backpack',
         effect: {
-            id: id,
-            modification: { stats, source: name, target: 'hero' },
-            duration: duration
+            stats,
+            source: name,
+            target: 'hero',
+            duration,
         },
         uses: uses,
         notes: notes,

@@ -1,4 +1,4 @@
-import { describe, it, expect, beforeEach } from 'vitest';
+import { describe, it, expect, beforeEach, vi } from 'vitest';
 import { AbilityDefinition, getAbilityDefinition } from '../../abilityRegistry';
 import './HeadButt';
 import { INITIAL_STATE } from '../../../tests/testUtils';
@@ -19,11 +19,11 @@ describe('Head Butt', () => {
             winner: 'enemy' as const,
         };
 
-        expect(ability.canActivate?.(state, 'hero')).toBe(true);
+        expect(ability.canActivate?.(state, { owner: 'hero' })).toBe(true);
 
-        const result = ability.onActivate?.(state, 'hero');
+        const result = ability.onActivate?.(state, { owner: 'hero' });
 
-        expect(result?.phase).toBe('round-end');
-        expect(result?.damageRolls).toEqual([{ value: 0, isRerolled: false }]);
+        expect(result?.phase).toBe('passive-damage');
+        expect(result?.damage?.damageRolls).toEqual([]);
     });
 });

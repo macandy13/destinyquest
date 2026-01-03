@@ -19,7 +19,7 @@ describe('Vitriol', () => {
             hero: heroWithStats({ health: 20 })
         };
 
-        const updates = ability?.onPassiveAbility?.(state, 'hero');
+        const updates = ability?.onPassiveAbility?.(state, { owner: 'hero' });
 
         expect(updates?.enemy?.stats.health).toBe(9);
         expect(updates?.hero?.stats.health).toBe(19);

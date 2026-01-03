@@ -1,21 +1,20 @@
 import { registerAbility } from '../../abilityRegistry';
-import { addLogs } from '../../../utils/statUtils';
-import { rollDice, sumDice } from '../../../utils/dice';
+import { dealDamage } from '../../../types/CombatState';
+import { formatDice, rollDice, sumDice } from '../../../types/Dice';
+import { getOpponent } from '../../../types/Character';
 
 registerAbility({
     name: 'Spore Cloud',
     type: 'combat',
     description: 'When taking health damage, inflict 2 damage dice back (ignoring armour).',
-    onDamageDealt: (state, owner, target, amount) => {
-        if (owner !== target || amount <= 0) return {};
+    onDamageDealt: (state, { owner, target }, _source, amount) => {
+        // Trigger if owner (me) is the target (victim) of damage
+        if (owner !== target || amount <= 0) return state;
 
         const dmgRolls = rollDice(2);
         const dmg = sumDice(dmgRolls);
-        const rolls = dmgRolls.map(r => r.value);
+        const opponent = getOpponent(owner);
 
-        return {
-            damageDealt: [...state.damageDealt, { target: 'enemy', amount: dmg, source: 'Spore Cloud' }],
-            logs: addLogs(state.logs, { round: state.round, message: `Spore Cloud! Inflicted ${dmg} damage back (${rolls.join('+')}).`, type: 'damage-enemy' })
-        };
+        return dealDamage(state, 'Spore Cloud', opponent, dmg, `Spore Cloud rolled 2d6 (${formatDice(dmgRolls)})`);
     }
 });

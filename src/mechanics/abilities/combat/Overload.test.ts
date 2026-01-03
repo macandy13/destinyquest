@@ -2,7 +2,7 @@ import { describe, it, expect, beforeEach } from 'vitest';
 import { AbilityDefinition, getAbilityDefinition } from '../../abilityRegistry';
 import './Overload';
 import { INITIAL_STATE } from '../../../tests/testUtils';
-import { CombatState } from '../../../types/combat';
+import { CombatState } from '../../../types/CombatState';
 
 describe('Overload', () => {
     let ability: AbilityDefinition;
@@ -20,12 +20,11 @@ describe('Overload', () => {
             winner: 'hero'
         };
 
-        expect(ability.canActivate?.(state, 'hero')).toBe(true);
+        const result = ability.onActivate?.(state, { owner: 'hero' });
 
-        const result = ability.onActivate?.(state, 'hero');
-
-        expect(result?.modifications).toHaveLength(1);
-        expect(result?.modifications![0].modification.stats.damageDice).toBe(1);
+        expect(result).toBeDefined();
+        expect(result?.hero?.activeEffects).toHaveLength(1);
+        expect(result?.hero.activeEffects[0].stats.damageDice).toBe(1);
     });
 
     it('should not activate if not damage-roll phase', () => {
@@ -35,9 +34,9 @@ describe('Overload', () => {
             winner: 'hero'
         };
 
-        expect(ability.canActivate?.(state, 'hero')).toBe(false);
-        const result = ability.onActivate?.(state, 'hero');
-        expect(result).toEqual({});
+        expect(ability.canActivate?.(state, { owner: 'hero' })).toBe(false);
+        const result = ability.onActivate?.(state, { owner: 'hero' });
+        expect(result).toBe(state);
     });
 
     it('should not activate if winner is not hero', () => {
@@ -47,8 +46,8 @@ describe('Overload', () => {
             winner: 'enemy'
         };
 
-        expect(ability.canActivate?.(state, 'hero')).toBe(false);
-        const result = ability.onActivate?.(state, 'hero');
-        expect(result).toEqual({});
+        expect(ability.canActivate?.(state, { owner: 'hero' })).toBe(false);
+        const result = ability.onActivate?.(state, { owner: 'hero' });
+        expect(result).toBe(state);
     });
 });

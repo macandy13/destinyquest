@@ -21,12 +21,10 @@ describe('Lightning', () => {
         };
 
         // Hero takes damage (target='hero')
-        const updates = ability?.onDamageDealt?.(state, 'hero', 'hero', 5);
+        const updates = ability!.onDamageDealt!(state, { owner: 'hero', target: 'hero' }, 'Attack', 5);
 
         // Should trigger damage to Enemy
-        expect(updates?.damageDealt).toHaveLength(1); // Appending to existing
-        expect(updates?.damageDealt?.[0]).toMatchObject({ target: 'enemy', amount: 2, source: 'Lightning' });
-        expect(updates?.logs?.[0].message).toContain('Lightning! Inflicted 2 damage back');
+        expect(updates?.logs?.[0].message).toContain('Lightning dealt 2 damage');
     });
 
     it('should NOT trigger when enemy takes damage (offensive)', () => {
@@ -37,8 +35,8 @@ describe('Lightning', () => {
         };
 
         // Enemy takes damage (target='enemy')
-        const updates = ability?.onDamageDealt?.(state, 'hero', 'enemy', 5);
+        const updates = ability!.onDamageDealt!(state, { owner: 'hero', target: 'enemy' }, 'Attack', 5);
 
-        expect(updates).toEqual({});
+        expect(updates).toBe(state);
     });
 });

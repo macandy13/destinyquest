@@ -1,5 +1,5 @@
 import { registerAbility } from '../../abilityRegistry';
-import { createStatModifierAbility } from '../abilityFactories';
+import { canModifySpeed, createStatModifierAbility } from '../abilityFactories';
 
 registerAbility(createStatModifierAbility({
     name: 'Quicksilver',
@@ -7,5 +7,5 @@ registerAbility(createStatModifierAbility({
     description: 'Increase speed by 2 for one round.',
     stats: { speed: 2 },
     duration: 1,
-    target: 'hero'
+    canActivate: canModifySpeed,
 }));

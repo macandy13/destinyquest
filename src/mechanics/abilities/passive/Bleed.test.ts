@@ -1,7 +1,7 @@
 import { describe, it, expect, beforeEach } from 'vitest';
 import { INITIAL_STATE, enemyWithStats } from '../../../tests/testUtils';
 import { AbilityDefinition, getAbilityDefinition } from '../../abilityRegistry';
-import { CombatState } from '../../../types/combat';
+import { CombatState } from '../../../types/CombatState';
 import './Bleed';
 
 describe('Bleed', () => {
@@ -21,14 +21,12 @@ describe('Bleed', () => {
             bonusDamage: [{ target: 'enemy' as const, amount: 5, source: 'Attack' }]
         };
 
-        state = ability.onDamageDealt!(state, { owner: 'hero', target: 'enemy' as const }, 5);
+        state = ability.onDamageDealt!(state, { owner: 'hero', target: 'enemy' as const }, 'Attack', 5);
         expect(state.enemy!.activeEffects).toEqual(
             expect.arrayContaining([
                 expect.objectContaining({
-                    modification: expect.objectContaining({
-                        source: 'Bleed',
-                        target: 'enemy',
-                    })
+                    source: 'Bleed',
+                    target: 'enemy',
                 })
             ])
         );

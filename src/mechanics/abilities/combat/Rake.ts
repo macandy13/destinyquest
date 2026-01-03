@@ -1,10 +1,9 @@
-import { registerAbility } from '../../abilityRegistry';
-import { addLogs } from '../../../utils/statUtils';
-import { rollDice, sumDice } from '../../../utils/dice';
-import { CombatState } from '../../../types/combat';
-import { CharacterType } from '../../../types/stats';
+import { registerAbility, AbilityContext } from '../../abilityRegistry';
+import { addLogs, CombatState, dealDamage, skipDamagePhase } from '../../../types/CombatState';
+import { rollDice, sumDice } from '../../../types/Dice';
 
-function canActivate(state: CombatState, _owner: CharacterType): boolean {
+
+function canActivate(state: CombatState, _context: AbilityContext): boolean {
     return state.phase === 'damage-roll' && state.winner === 'hero';
 }
 
@@ -13,20 +12,16 @@ registerAbility({
     type: 'combat',
     description: 'After winning a round, inflict 3 damage dice (ignoring armour). Modifiers cannot be used.',
     canActivate: canActivate,
-    onActivate: (state, owner) => {
-        if (!canActivate(state, owner)) return null;
+    onActivate: (state, context) => {
+        if (!canActivate(state, context)) return state;
 
         const dmgRolls = rollDice(3);
         const dmg = sumDice(dmgRolls);
-        const rolls = dmgRolls.map(r => r.value);
+        const rollValues = dmgRolls.map(r => r.value).join('+');
 
-        // TODO: Is damage dealt?
+        state = dealDamage(state, 'Rake', 'enemy', dmg);
+        state = addLogs(state, { round: state.round, message: `Rake! Inflicted ${dmg} damage (${rollValues}).`, type: 'damage-hero' });
 
-        return {
-            phase: 'round-end',
-            damageRolls: [{ value: 0, isRerolled: false }],
-            damageDealt: [...state.damageDealt, { target: 'enemy', amount: dmg, source: 'Rake' }],
-            logs: addLogs(state.logs, { round: state.round, message: `Rake! Inflicted ${dmg} damage (${rolls.join('+')}).`, type: 'damage-hero' })
-        };
+        return skipDamagePhase(state, 'Rake skipped normal damage roll');
     }
 });

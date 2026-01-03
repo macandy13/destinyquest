@@ -13,9 +13,12 @@ describe('Deep Wound', () => {
     });
 
     it('should add 1 damage die', () => {
-        const state = INITIAL_STATE;
-        const updates = ability.onActivate?.(state, 'hero');
+        const state = {
+            ...INITIAL_STATE,
+            phase: 'damage-roll' as const
+        };
+        const updates = ability.onActivate?.(state, { owner: 'hero' });
 
-        expect(updates!.modifications![0].modification.stats.damageDice).toBe(1);
+        expect(updates!.hero.activeEffects[0].stats.damageDice).toBe(1);
     });
 });

@@ -18,7 +18,7 @@ describe('Heal', () => {
             hero: heroWithStats({ health: 10 })
         };
 
-        const updates = ability.onActivate?.(damagedState, 'hero');
+        const updates = ability.onActivate!(damagedState, { owner: 'hero' });
         expect(updates?.hero?.stats.health).toBe(14);
     });
 
@@ -28,7 +28,7 @@ describe('Heal', () => {
             hero: heroWithStats({ health: 29 })
         };
 
-        const updates = ability.onActivate?.(mildDamageState, 'hero');
+        const updates = ability.onActivate!(mildDamageState, { owner: 'hero' });
         expect(updates?.hero?.stats.health).toBe(30);
     });
 
@@ -37,7 +37,7 @@ describe('Heal', () => {
             ...INITIAL_STATE,
             hero: heroWithStats({ health: 30 })
         };
-        expect(ability.canActivate?.(fullHealthState, 'hero')).toBe(false);
+        expect(ability.canActivate?.(fullHealthState, { owner: 'hero' })).toBe(false);
     });
 
     it('should return true for canActivate if health is not full', () => {
@@ -45,6 +45,6 @@ describe('Heal', () => {
             ...INITIAL_STATE,
             hero: heroWithStats({ health: 10 })
         };
-        expect(ability.canActivate?.(damagedState, 'hero')).toBe(true);
+        expect(ability.canActivate?.(damagedState, { owner: 'hero' })).toBe(true);
     });
 });

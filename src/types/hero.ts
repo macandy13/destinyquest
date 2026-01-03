@@ -1,6 +1,7 @@
-import { Stats } from './stats';
-import { Character, Modification } from './character';
-import { BookRef } from './book';
+import { Stats } from './Stats';
+import { Character } from './Character';
+import { BookRef } from './BookRef';
+import { Effect } from './Effect';
 
 export interface HeroStats extends Stats { }
 
@@ -35,7 +36,7 @@ export type HeroPath = '' | 'Warrior' | 'Mage' | 'Rogue';
 export interface BackpackItem extends Item {
     type: 'backpack';
     description: string; // Full modifier string (e.g. "+2 speed")
-    effect: Modification;
+    effect: Effect;
     notes?: string;
     uses?: number;
 }

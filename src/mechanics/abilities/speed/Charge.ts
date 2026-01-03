@@ -1,14 +1,12 @@
 import { registerAbility } from '../../abilityRegistry';
-import { createStatModifierAbility } from '../abilityFactories';
-import { CombatState } from '../../../types/combat';
-import { CharacterType } from '../../../types/stats';
+import { canModifySpeed, createStatModifierAbility } from '../abilityFactories';
 
 registerAbility(createStatModifierAbility({
     name: 'Charge',
     type: 'speed',
     description: 'Increase speed by 2 in the first round of combat.',
+    target: 'owner',
     stats: { speed: 2 },
     duration: 1,
-    target: 'hero',
-    canActivate: (state: CombatState, _owner: CharacterType) => state.round === 1
+    canActivate: canModifySpeed,
 }));

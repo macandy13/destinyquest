@@ -1,18 +1,17 @@
 import { registerAbility } from '../../abilityRegistry';
-import { CombatState } from '../../../types/combat';
-import { createStatModifierAbility } from '../abilityFactories';
-import { CharacterType } from '../../../types/stats';
+import { appendEffect } from '../../../types/CombatState';
 
-function canActivate(state: CombatState, _owner: CharacterType): boolean {
-    return state.damageDealt.some(d => d.target === 'enemy' && d.amount > 0);
-}
-
-registerAbility(createStatModifierAbility({
+registerAbility({
     name: 'Rust',
     type: 'combat',
     description: "If you cause health damage, lower opponent's armour by 2 for the remainder of combat.",
-    canActivate: canActivate,
-    stats: { armour: -2 },
-    target: 'enemy',
-    duration: undefined
-}));
+    onDamageDealt: (state, { target }, _source, amount) => {
+        if (amount <= 0) return state;
+        return appendEffect(state, target!, {
+            stats: { armour: -2 },
+            source: 'Rust',
+            target: target!,
+            duration: undefined,
+        });
+    },
+});

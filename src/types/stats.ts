@@ -10,14 +10,15 @@ export interface Stats {
     damageModifier?: number; // Flat bonus to damage
 }
 
-export interface StatsModification {
-    stats: Partial<Stats>;
-    source: string; // The name of the ability or item causing the modification
-    target: CharacterType; // Who the modification applies to
-}
-
-export type CharacterType = 'hero' | 'enemy';
-
-export function getOpponent(target: CharacterType): CharacterType {
-    return target === 'hero' ? 'enemy' : 'hero';
+export function getStatIcon(stat: string): string {
+    switch (stat.toLowerCase()) {
+        case 'speed': return '⚡';
+        case 'die': return '🎲'; // TODO
+        case 'brawn': return '💪';
+        case 'magic': return '✨';
+        case 'armour': return '🛡️';
+        case 'health': return '❤️';
+        case 'money': return '💰';
+        default: return '';
+    }
 }

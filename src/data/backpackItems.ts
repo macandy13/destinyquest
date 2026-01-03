@@ -6,14 +6,11 @@ export const BACKPACK_ITEMS: BackpackItem[] = [
     "name": "Healing Potion",
     "type": "backpack",
     "effect": {
-      "id": "healing_potion",
-      "modification": {
-        "stats": {
-          "health": 6
-        },
-        "source": "Healing Potion",
-        "target": "hero"
+      "stats": {
+        "health": 6
       },
+      "source": "Healing Potion",
+      "target": "hero",
       "duration": 0
     },
     "uses": 1,
@@ -29,14 +26,11 @@ export const BACKPACK_ITEMS: BackpackItem[] = [
     "name": "Speed Potion",
     "type": "backpack",
     "effect": {
-      "id": "speed_potion",
-      "modification": {
-        "stats": {
-          "speed": 2
-        },
-        "source": "Speed Potion",
-        "target": "hero"
+      "stats": {
+        "speed": 2
       },
+      "source": "Speed Potion",
+      "target": "hero",
       "duration": 1
     },
     "uses": 1,
@@ -52,14 +46,11 @@ export const BACKPACK_ITEMS: BackpackItem[] = [
     "name": "Brawn Potion",
     "type": "backpack",
     "effect": {
-      "id": "brawn_potion",
-      "modification": {
-        "stats": {
-          "brawn": 2
-        },
-        "source": "Brawn Potion",
-        "target": "hero"
+      "stats": {
+        "brawn": 2
       },
+      "source": "Brawn Potion",
+      "target": "hero",
       "duration": 1
     },
     "uses": 1,
@@ -75,14 +66,11 @@ export const BACKPACK_ITEMS: BackpackItem[] = [
     "name": "Magic Potion",
     "type": "backpack",
     "effect": {
-      "id": "magic_potion",
-      "modification": {
-        "stats": {
-          "magic": 2
-        },
-        "source": "Magic Potion",
-        "target": "hero"
+      "stats": {
+        "magic": 2
       },
+      "source": "Magic Potion",
+      "target": "hero",
       "duration": 1
     },
     "uses": 1,
@@ -98,12 +86,9 @@ export const BACKPACK_ITEMS: BackpackItem[] = [
     "name": "Crocodile Skin",
     "type": "backpack",
     "effect": {
-      "id": "crocodile_skin",
-      "modification": {
-        "stats": {},
-        "source": "Crocodile Skin",
-        "target": "hero"
-      },
+      "stats": {},
+      "source": "Crocodile Skin",
+      "target": "hero",
       "duration": 0
     },
     "uses": 0,
@@ -119,14 +104,11 @@ export const BACKPACK_ITEMS: BackpackItem[] = [
     "name": "Goblin Grog",
     "type": "backpack",
     "effect": {
-      "id": "goblin_grog",
-      "modification": {
-        "stats": {
-          "health": 4
-        },
-        "source": "Goblin Grog",
-        "target": "hero"
+      "stats": {
+        "health": 4
       },
+      "source": "Goblin Grog",
+      "target": "hero",
       "duration": 0
     },
     "uses": 2,
@@ -142,14 +124,11 @@ export const BACKPACK_ITEMS: BackpackItem[] = [
     "name": "Healing Salve",
     "type": "backpack",
     "effect": {
-      "id": "healing_salve",
-      "modification": {
-        "stats": {
-          "health": 6
-        },
-        "source": "Healing Salve",
-        "target": "hero"
+      "stats": {
+        "health": 6
       },
+      "source": "Healing Salve",
+      "target": "hero",
       "duration": 0
     },
     "uses": 1,
@@ -165,14 +144,11 @@ export const BACKPACK_ITEMS: BackpackItem[] = [
     "name": "Miracle Grow",
     "type": "backpack",
     "effect": {
-      "id": "miracle_grow",
-      "modification": {
-        "stats": {
-          "brawn": 2
-        },
-        "source": "Miracle Grow",
-        "target": "hero"
+      "stats": {
+        "brawn": 2
       },
+      "source": "Miracle Grow",
+      "target": "hero",
       "duration": 1
     },
     "uses": 1,
@@ -188,12 +164,9 @@ export const BACKPACK_ITEMS: BackpackItem[] = [
     "name": "Ghoul Hair",
     "type": "backpack",
     "effect": {
-      "id": "ghoul_hair",
-      "modification": {
-        "stats": {},
-        "source": "Ghoul Hair",
-        "target": "hero"
-      },
+      "stats": {},
+      "source": "Ghoul Hair",
+      "target": "hero",
       "duration": 0
     },
     "uses": 0,
@@ -209,14 +182,11 @@ export const BACKPACK_ITEMS: BackpackItem[] = [
     "name": "Explosives / Bombs",
     "type": "backpack",
     "effect": {
-      "id": "explosives_bombs",
-      "modification": {
-        "stats": {
-          "damageModifier": 10
-        },
-        "source": "Explosives / Bombs",
-        "target": "hero"
+      "stats": {
+        "damageModifier": 10
       },
+      "source": "Explosives / Bombs",
+      "target": "hero",
       "duration": 0
     },
     "uses": 1,
@@ -232,12 +202,9 @@ export const BACKPACK_ITEMS: BackpackItem[] = [
     "name": "Spider's Leg",
     "type": "backpack",
     "effect": {
-      "id": "spiders_leg",
-      "modification": {
-        "stats": {},
-        "source": "Spider's Leg",
-        "target": "hero"
-      },
+      "stats": {},
+      "source": "Spider's Leg",
+      "target": "hero",
       "duration": 0
     },
     "uses": 0,
@@ -253,14 +220,11 @@ export const BACKPACK_ITEMS: BackpackItem[] = [
     "name": "Goblin Grog",
     "type": "backpack",
     "effect": {
-      "id": "goblin_grog",
-      "modification": {
-        "stats": {
-          "health": 4
-        },
-        "source": "Goblin Grog",
-        "target": "hero"
+      "stats": {
+        "health": 4
       },
+      "source": "Goblin Grog",
+      "target": "hero",
       "duration": 0
     },
     "uses": 2,
@@ -276,14 +240,11 @@ export const BACKPACK_ITEMS: BackpackItem[] = [
     "name": "Da Boss",
     "type": "backpack",
     "effect": {
-      "id": "da_boss",
-      "modification": {
-        "stats": {
-          "damageModifier": 10
-        },
-        "source": "Da Boss",
-        "target": "hero"
+      "stats": {
+        "damageModifier": 10
       },
+      "source": "Da Boss",
+      "target": "hero",
       "duration": 0
     },
     "uses": 1,

@@ -13,20 +13,24 @@ describe('Ensnare', () => {
     });
 
     it('should apply Ensnare effect', () => {
+        const enemy = {
+            ...INITIAL_STATE.enemy,
+            activeAbilities: new Map([['Dodge', {
+                name: 'Dodge',
+                type: 'combat',
+                description: 'test',
+                canActivate: () => true,
+                owner: 'enemy' as const,
+                def: {} as any
+            }]])
+        };
         const state = {
             ...INITIAL_STATE,
-            activeAbilities: [
-                {
-                    name: 'Dodge',
-                    owner: 'enemy' as const,
-                    source: 'Test',
-                    used: false,
-                    def: {} as any
-                }]
+            enemy
         };
-        const result = ability.onActivate?.(state, 'hero');
+        const result = ability.onActivate?.(state, { owner: 'hero' });
 
-        expect(result?.modifications).toHaveLength(1);
-        expect(result?.modifications![0].modification.source).toBe('Ensnare');
+        expect(result?.enemy.activeEffects).toHaveLength(1);
+        expect(result?.enemy.activeEffects[0].source).toBe('Ensnare');
     });
 });

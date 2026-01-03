@@ -2,7 +2,7 @@ import { describe, it, expect, beforeEach } from 'vitest';
 import { AbilityDefinition, getAbilityDefinition } from '../../abilityRegistry';
 import './IceShards';
 import { enemyWithStats, heroWithStats, INITIAL_STATE } from '../../../tests/testUtils';
-import { CombatState } from '../../../types/combat';
+import { CombatState } from '../../../types/CombatState';
 
 describe('Ice Shards', () => {
     let ability: AbilityDefinition;
@@ -21,8 +21,9 @@ describe('Ice Shards', () => {
             phase: 'damage-roll' as const,
             winner: 'hero' as const,
         };
-        const result = ability.onActivate?.(state, 'hero');
-        expect(result?.damageDealt).toHaveLength(1);
-        expect(result?.damageDealt![0].amount).toBe(5);
+        const result = ability.onActivate?.(state, { owner: 'hero' });
+        expect(result?.logs.some(l => l.message?.includes('Ice Shards'))).toBe(true);
+        // Also check if health decreased (magic is 5)
+        expect(result?.enemy.stats.health).toBe(INITIAL_STATE.enemy!.stats.health - 5);
     });
 });

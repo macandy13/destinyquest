@@ -14,9 +14,9 @@ describe('Feral Fury', () => {
 
     it('should add extra damage die', () => {
         const state = INITIAL_STATE;
-        const result = ability.onActivate?.(state, 'hero');
+        const result = ability.onActivate?.(state, { owner: 'hero' });
 
-        expect(result?.modifications).toHaveLength(1);
-        expect(result?.modifications![0].modification.stats.damageDice).toBe(1);
+        expect(result?.hero.activeEffects).toHaveLength(1);
+        expect(result?.hero.activeEffects[0].stats.damageDice).toBe(1);
     });
 });

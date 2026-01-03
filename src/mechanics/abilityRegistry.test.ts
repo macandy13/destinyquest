@@ -1,6 +1,6 @@
 import { describe, it, expect } from 'vitest';
 import { getAbilityDefinition, registerAbility, AbilityDefinition } from './abilityRegistry';
-import './abilities';
+import './allAbilities';
 
 
 describe('Ability Registry', () => {

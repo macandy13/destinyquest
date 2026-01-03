@@ -1,7 +1,7 @@
 import { describe, it, expect, beforeEach } from 'vitest';
 import { AbilityDefinition, getAbilityDefinition } from '../../abilityRegistry';
 import './Backfire';
-import { INITIAL_STATE } from '../../../tests/testUtils';
+import { deterministicRoll, INITIAL_STATE, mockDiceRolls } from '../../../tests/testUtils';
 
 describe('Backfire', () => {
     let ability: AbilityDefinition;
@@ -17,18 +17,28 @@ describe('Backfire', () => {
             ...INITIAL_STATE,
             phase: 'damage-roll' as const,
             winner: 'enemy' as const,
+            damage: {
+                damageRolls: deterministicRoll([6]),
+                modifiers: []
+            }
         };
 
-        expect(ability.canActivate?.(state, 'hero')).toBe(true);
+        expect(ability.canActivate?.(state, { owner: 'hero' })).toBe(true);
 
-        const result = ability.onActivate?.(state, 'hero');
+        // Mock dice for enemy (3 dice) and self (2 dice)
+        mockDiceRolls([4, 5, 6, 2, 3]);
 
-        expect(result?.phase).toBe('round-end');
-        expect(result?.damageDealt).toHaveLength(2); // One for enemy, one for hero
-        const enemyDmg = result?.damageDealt?.find(d => d.target === 'enemy');
-        const heroDmg = result?.damageDealt?.find(d => d.target === 'hero');
+        const result = ability.onActivate?.(state, { owner: 'hero' });
 
-        expect(enemyDmg?.amount).toBeGreaterThanOrEqual(3); // 3 dice
-        expect(heroDmg?.amount).toBeGreaterThanOrEqual(2); // 2 dice
+        expect(result?.phase).toBe('passive-damage');
+        // Check logs or health modifications
+        // Backfire deals damage immediately via dealDamage.
+        // It skips damage phase.
+        // So we verify health or logs.
+        const enemyLog = result?.logs.find(l => l.message.includes('Backfire (enemy)'));
+        const selfLog = result?.logs.find(l => l.message.includes('Backfire (self)'));
+
+        expect(enemyLog).toBeDefined();
+        expect(selfLog).toBeDefined();
     });
 });

@@ -14,11 +14,11 @@ describe('Swamp Legs', () => {
 
     it('should add speed reduction to enemy on activation', () => {
         const state = INITIAL_STATE;
-        const result = ability.onActivate?.(state, 'hero');
+        const result = ability.onActivate?.(state, { owner: 'hero' });
 
-        expect(result?.modifications).toHaveLength(1);
-        expect(result?.modifications![0].modification.stats.speed).toBe(-1);
-        expect(result?.modifications![0].modification.target).toBe('enemy');
-        expect(result?.modifications![0].duration).toBe(1);
+        expect(result?.enemy.activeEffects).toHaveLength(1);
+        expect(result?.enemy.activeEffects[0].stats.speed).toBe(-1);
+        expect(result?.enemy.activeEffects[0].target).toBe('enemy');
+        expect(result?.enemy.activeEffects[0].duration).toBe(1);
     });
 });

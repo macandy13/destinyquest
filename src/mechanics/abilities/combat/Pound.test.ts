@@ -14,10 +14,14 @@ describe('Pound', () => {
 
     it('should apply damage buff and self speed debuff', () => {
         const state = INITIAL_STATE;
-        const result = ability.onActivate?.(state, 'hero');
+        const result = ability.onActivate?.(state, { owner: 'hero' });
 
-        expect(result?.modifications).toHaveLength(2);
-        expect(result?.modifications![0].modification.stats.damageModifier).toBe(3);
-        expect(result?.modifications![1].modification.stats.speed).toBe(-1);
+        expect(result?.hero.activeEffects).toHaveLength(2);
+        // Effects might be in any order if appended sequentially.
+        const damageMod = result?.hero.activeEffects.find(e => e.stats.damageModifier === 3);
+        const speedMod = result?.hero.activeEffects.find(e => e.stats.speed === -1);
+
+        expect(damageMod).toBeDefined();
+        expect(speedMod).toBeDefined();
     });
 });

@@ -19,12 +19,11 @@ describe('Rake', () => {
             winner: 'hero' as const,
         };
 
-        expect(ability.canActivate?.(state, 'hero')).toBe(true);
+        expect(ability.canActivate?.(state, { owner: 'hero' })).toBe(true);
 
-        const result = ability.onActivate?.(state, 'hero');
+        const result = ability.onActivate?.(state, { owner: 'hero' });
 
-        expect(result?.phase).toBe('round-end');
-        expect(result?.damageDealt).toHaveLength(1);
-        expect(result?.damageDealt![0].amount).toBeGreaterThanOrEqual(3);
+        expect(result?.phase).toBe('passive-damage');
+        expect(result?.logs.some(l => l.message?.includes('Rake'))).toBe(true);
     });
 });

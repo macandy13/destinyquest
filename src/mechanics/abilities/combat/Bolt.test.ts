@@ -1,7 +1,7 @@
 import { describe, it, expect, beforeEach } from 'vitest';
 import { AbilityDefinition, getAbilityDefinition } from '../../abilityRegistry';
 import { INITIAL_STATE, mockDiceRolls } from '../../../tests/testUtils';
-import { CombatState } from '../../../types/combat';
+import { CombatState } from '../../../types/CombatState';
 import './Bolt';
 
 describe('Bolt', () => {
@@ -16,17 +16,17 @@ describe('Bolt', () => {
     it('should charge up when activated', () => {
         const state: CombatState = {
             ...INITIAL_STATE,
-            phase: 'damage-roll' as const,
+            phase: 'speed-roll' as const,
             winner: 'hero' as const
         };
 
-        expect(ability.canActivate?.(state, 'hero')).toBe(true);
+        expect(ability.canActivate?.(state, { owner: 'hero' })).toBe(true);
 
-        const result = ability.onActivate?.(state, 'hero');
+        const result = ability.onActivate?.(state, { owner: 'hero' });
 
-        expect(result?.phase).toBe('round-end');
-        expect(result?.modifications).toHaveLength(1);
-        expect(result?.modifications![0].modification.source).toBe('Bolt');
+        expect(result?.phase).toBe('passive-damage');
+        expect(result?.hero.activeEffects).toHaveLength(1);
+        expect(result?.hero.activeEffects[0].source).toBe('Bolt');
     });
 
     it('should release damage on subsequent onDamageRoll', () => {
@@ -34,22 +34,22 @@ describe('Bolt', () => {
             ...INITIAL_STATE,
             phase: 'damage-roll' as const,
             winner: 'hero' as const,
-            activeEffects: [{
-                modification: {
+            hero: {
+                ...INITIAL_STATE.hero,
+                activeEffects: [{
                     source: 'Bolt',
                     target: 'hero',
-                    stats: {}
-                }, id: 'bolt-1'
-            }]
+                    stats: {},
+                    duration: undefined
+                }]
+            }
         };
 
         mockDiceRolls([1, 2, 3]);
 
-        const result = ability.onDamageRoll?.(state, 'hero', []);
-
-        expect(result?.damageDealt).toHaveLength(1);
-        expect(result?.damageDealt![0].amount).toBeGreaterThanOrEqual(3);
-        expect(result?.damageRolls).toEqual([{ value: 1, isRerolled: false }, { value: 2, isRerolled: false }, { value: 3, isRerolled: false }]);
-        expect(result?.activeEffects).toEqual([]); // Charge removed
+        const result = ability.onDamageRoll?.(state, { owner: 'hero' });
+        expect(result?.phase).toBe('passive-damage');
+        expect(result?.logs.some(l => l.message.includes('Bolt released!'))).toBe(true);
+        expect(result?.hero.activeEffects).toHaveLength(0); // Charge removed
     });
 });

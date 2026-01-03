@@ -20,9 +20,9 @@ describe('Command', () => {
         };
         // Command usually activates during speed roll or round resolution, but logic is custom
 
-        expect(ability.canActivate?.(state, 'hero')).toBe(true);
+        expect(ability.canActivate?.(state, { owner: 'hero' })).toBe(true);
 
-        const result = ability.onActivate?.(state, 'hero');
+        const result = ability.onActivate?.(state, { owner: 'hero' });
 
         expect(result?.winner).toBe('hero');
     });

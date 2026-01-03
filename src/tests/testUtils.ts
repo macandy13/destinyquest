@@ -1,8 +1,9 @@
 import { vi } from 'vitest';
-import { BookRef } from '../types/book';
-import { Character } from '../types/character';
-import { CombatState, Combatant, DiceRoll, Enemy } from '../types/combat';
-import { BackpackItem, EquipmentItem, Hero } from '../types/hero';
+import { BookRef } from '../types/BookRef';
+import { CombatState, Combatant } from '../types/CombatState';
+import { DiceRoll } from '../types/Dice';
+import { BackpackItem, EquipmentItem, Hero } from '../types/Hero';
+import { Enemy } from '../types/Character';
 
 export const MOCK_HERO: Hero = {
     type: 'hero',
@@ -55,10 +56,10 @@ export const INITIAL_STATE: CombatState = {
     logs: [],
     heroSpeedRolls: undefined,
     enemySpeedRolls: undefined,
-    damageRolls: undefined,
+    damage: undefined,
     winner: null,
     backpack: [],
-    damageDealt: [],
+    bonusDamage: [],
 };
 
 export const heroWithStats = (stats: Partial<Hero['stats']>): Combatant<Hero> => {
@@ -88,7 +89,15 @@ export function testBackpackItem(stats: Partial<BackpackItem>): BackpackItem {
         id: stats.name?.toLowerCase().replaceAll(' ', '-') || 'test-backpack-item',
         type: 'backpack',
         name: 'Test Backpack Item',
+        description: 'Test Backpack Item',
         bookRef: TEST_BOOK,
+        effect: {
+            stats: {
+            },
+            duration: 0,
+            source: 'hero',
+            target: 'hero'
+        },
         ...stats
     };
 }
@@ -104,7 +113,7 @@ export const enemyWithStats = (stats: Partial<Enemy['stats']> = {}): Combatant<E
     return createCombatant(enemy) as Combatant<Enemy>;
 };
 
-export function createCombatant(char: Character): Combatant<Character> {
+export function createCombatant<T extends Hero | Enemy>(char: T): Combatant<T> {
     return {
         id: char.name.replace(' ', '-').toLowerCase(),
         type: char.type,
@@ -118,9 +127,16 @@ export function createCombatant(char: Character): Combatant<Character> {
 
 export function mockDiceRolls(rolls: number[]) {
     const rollValues = rolls.map(r => (r - 1) / 6);
-    vi.spyOn(Math, 'random').mockImplementation(() => rollValues.shift()!);
+    vi.spyOn(Math, 'random').mockImplementation(() => {
+        if (rollValues.length === 0) {
+            throw new Error('No more dice rolls available');
+        }
+        const value = rollValues.shift()!
+        console.log('Random dice roll result:', (6 * value) + 1);
+        return value;
+    });
 }
 
 export function deterministicRoll(rolls: number[]): DiceRoll[] {
-    return rolls.map(r => { return { value: r, isRerolled: false } });
+    return rolls.map(val => ({ value: val, isRerolled: false }));
 }

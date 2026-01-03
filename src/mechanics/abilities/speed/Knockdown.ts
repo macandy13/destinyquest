@@ -5,7 +5,8 @@ registerAbility(createStatModifierAbility({
     name: 'Knockdown',
     type: 'speed',
     description: "Reduce opponent's speed dice by 1 for one round.",
-    stats: { speed: -1 },
+    stats: { speedDice: -1 },
     duration: 1,
-    target: 'enemy'
+    target: 'opponent',
+    canActivate: (state) => state.phase === 'speed-roll',
 }));

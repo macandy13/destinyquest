@@ -1,4 +1,7 @@
-import { DiceRoll } from '../types/combat';
+export interface DiceRoll {
+    value: number;
+    isRerolled: boolean;
+}
 
 /**
  * Calculates the total value of a set of dice.
@@ -17,6 +20,10 @@ export function rollDice(count: number): DiceRoll[] {
         value: Math.floor(Math.random() * 6) + 1,
         isRerolled: false
     }));
+}
+
+export function deterministicRoll(rolls: number[]): DiceRoll[] {
+    return rolls.map(r => { return { value: r, isRerolled: false } });
 }
 
 /**
@@ -43,5 +50,5 @@ export function hasDouble(rolls: DiceRoll[] | number[]): boolean {
 
 export function formatDice(rolls: DiceRoll[] | number[]): string {
     if (!rolls) return '';
-    return rolls.map(r => (typeof r === 'number' ? r : r.value)).join(', ');
+    return rolls.map(r => (typeof r === 'number' ? r : r.value)).join('+');
 }

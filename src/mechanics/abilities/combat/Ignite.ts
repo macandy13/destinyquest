@@ -1,42 +1,42 @@
 import { registerAbility } from '../../abilityRegistry';
-import { addLogs } from '../../../utils/statUtils';
-import { rollDice, sumDice } from '../../../utils/dice';
-import { CombatState } from '../../../types/combat';
-import { CharacterType } from '../../../types/stats';
+import { appendEffect, dealDamage } from '../../../types/CombatState';
+import { rollDice, sumDice } from '../../../types/Dice';
+import { CombatState } from '../../../types/CombatState';
+import { Effect } from '../../../types/Effect';
+import { CharacterType, getOpponent } from '../../../types/Character';
 
-function canActivate(state: CombatState, _owner: CharacterType): boolean {
-    return state.winner === 'hero';
+function canActivate(state: CombatState, { owner }: { owner: CharacterType }): boolean {
+    return state.winner === owner;
 }
 
 registerAbility({
     name: 'Ignite',
     type: 'combat',
     description: 'After winning a round, roll 2 damage dice and apply to each opponent (ignoring armour) and cause them to burn.',
-    canActivate: canActivate,
-    onActivate: (state, owner) => {
-        if (!canActivate(state, owner)) return null;
+    canActivate: (state, { owner }) => canActivate(state, { owner }),
+    onActivate: (state, { owner }) => {
+        if (!canActivate(state, { owner })) return state;
 
         const dmgRolls = rollDice(2);
         const dmg = sumDice(dmgRolls);
+        const opponent = getOpponent(owner);
+
+        // Apply Burn effect
+        const effect: Effect = {
+            stats: {},
+            source: 'Ignite',
+            target: opponent,
+            duration: undefined // Burn lasts until removed
+        };
+
+        state = appendEffect(state, opponent, effect);
+
+        // Deal damage (ignoring armour)
+        state = dealDamage(state, 'Ignite', opponent, dmg);
 
         return {
-            phase: 'round-end',
-            damageRolls: dmgRolls,
-            damageDealt: [...state.damageDealt, { target: 'enemy', amount: dmg, source: 'Ignite' }],
-            modifications: [
-                ...state.modifications,
-                {
-                    modification: { stats: { health: -dmg }, source: 'Ignite', target: 'enemy' },
-                    id: `ignite-burn-damage-${state.round}`,
-                    duration: 1,
-                },
-                {
-                    modification: { stats: {}, source: 'Ignite', target: 'enemy' },
-                    id: `ignite-burn-state-${state.round}`,
-                    duration: undefined // Burn lasts until removed? 'cause them to burn'. Usually lasts for combat or until Cauterise.
-                }
-            ],
-            logs: addLogs(state.logs, { round: state.round, message: `Ignite! Inflicted ${dmg} damage and applied Burn.`, type: 'damage-hero' })
+            ...state,
+            phase: 'round-end' // Ignite ends the round (replaces normal attack?)
         };
     }
 });

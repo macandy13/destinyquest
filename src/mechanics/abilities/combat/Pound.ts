@@ -1,18 +1,22 @@
 import { registerAbility } from '../../abilityRegistry';
-import { addLogs } from '../../../utils/statUtils';
+import { appendEffect } from '../../../types/CombatState';
 
 registerAbility({
     name: 'Pound',
     type: 'combat',
     description: 'Increase damage score by 3, but lower your speed by 1 in the next round.',
-    onActivate: (state) => {
-        return {
-            modifications: [
-                ...state.modifications,
-                { modification: { stats: { damageModifier: 3 }, source: 'Pound', target: 'hero' }, id: `pound-dmg-${state.round}`, duration: 1 },
-                { modification: { stats: { speed: -1 }, source: 'Pound', target: 'hero' }, id: `pound-speed-${state.round}`, duration: 2 }
-            ],
-            logs: addLogs(state.logs, { round: state.round, message: "Used ability: Pound.", type: 'info' })
-        };
+    onActivate: (state, { owner }) => {
+        state = appendEffect(state, owner, {
+            stats: { damageModifier: 3 },
+            source: 'Pound (Damage)',
+            target: owner,
+            duration: 1
+        });
+        return appendEffect(state, owner, {
+            stats: { speed: -1 },
+            source: 'Pound (Speed)',
+            target: owner,
+            duration: 2
+        });
     }
 });

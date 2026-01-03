@@ -6,6 +6,5 @@ registerAbility(createStatModifierAbility({
     type: 'speed',
     description: 'Roll an extra die for attack speed for one round.',
     stats: { speed: 1 },
-    duration: 1,
-    target: 'hero'
+    duration: 1
 }));

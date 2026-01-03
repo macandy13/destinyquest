@@ -15,13 +15,19 @@ describe('Dark Pact', () => {
     it('should sacrifice health for damage', () => {
         const state = {
             ...INITIAL_STATE,
+            // heroWithStats creates a hero with stats.
             hero: heroWithStats({ health: 10 }),
             logs: []
         };
-        const result = ability.onActivate?.(state, 'hero');
+        const result = ability.onActivate?.(state, { owner: 'hero' });
 
-        expect(result?.modifications).toHaveLength(2);
-        expect(result?.modifications![0].modification.stats.health).toBe(-4);
-        expect(result?.modifications![1].modification.stats.damageModifier).toBe(4);
+        expect(result?.hero.activeEffects).toHaveLength(1);
+
+        // Damage buff
+        const damageMod = result?.hero.activeEffects.find(e => e.stats.damageModifier === 4);
+        expect(damageMod).toBeDefined();
+
+        // Health cost applied directly
+        expect(result?.hero.stats.health).toBe(6); // 10 - 4
     });
 });

@@ -20,14 +20,15 @@ describe("Nature's Revenge", () => {
             logs: []
         };
 
-        expect(ability.canActivate?.(state, 'hero')).toBe(true);
+        expect(ability.canActivate?.(state, { owner: 'hero' })).toBe(true);
 
-        const result = ability.onActivate?.(state, 'hero');
+        const result = ability.onActivate?.(state, { owner: 'hero' });
 
-        expect(result?.phase).toBe('round-end');
-        expect(result?.damageDealt).toHaveLength(1);
-        expect(result?.damageDealt![0].amount).toBeGreaterThanOrEqual(2);
-        expect(result?.modifications).toHaveLength(1);
-        expect(result?.modifications![0].modification.stats.speed).toBe(-1);
+        // Check logs for damage
+        expect(result?.logs.some(l => l.message.includes("Nature's Revenge"))).toBe(true);
+
+        // Use activeEffects check for speed debuff
+        expect(result?.enemy.activeEffects).toHaveLength(1);
+        expect(result?.enemy.activeEffects[0].stats.speed).toBe(-1);
     });
 });

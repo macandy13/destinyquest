@@ -19,11 +19,12 @@ describe('Banshee Wail', () => {
             winner: 'enemy' as const,
         };
 
-        expect(ability.canActivate?.(state, 'hero')).toBe(true);
+        expect(ability.canActivate?.(state, { owner: 'hero' })).toBe(true);
+        expect(ability.canActivate?.(state, { owner: 'enemy' })).toBe(false);
 
-        const result = ability.onActivate?.(state, 'hero');
+        const result = ability.onActivate?.(state, { owner: 'hero' });
 
-        expect(result?.phase).toBe('round-end');
-        expect(result?.damageRolls).toEqual([]);
+        expect(result?.phase).toBe('passive-damage');
+        expect(result?.damage?.damageRolls).toEqual([]);
     });
 });
