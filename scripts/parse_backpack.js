@@ -56,10 +56,11 @@ const processedItems = rawData.slice(1).map((line, index) => {
         id: id,
         name: name,
         type: 'backpack',
-        effect: effect,
-        modifier: modifier,
-        stats: Object.keys(stats).length > 0 ? stats : undefined,
-        duration: duration,
+        effect: {
+            id: id,
+            modification: { stats, source: name, target: 'hero' },
+            duration: duration
+        },
         uses: uses,
         notes: notes,
         bookRef: {

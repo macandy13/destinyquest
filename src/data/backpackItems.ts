@@ -5,12 +5,17 @@ export const BACKPACK_ITEMS: BackpackItem[] = [
     "id": "healing_potion",
     "name": "Healing Potion",
     "type": "backpack",
-    "effect": "+6 health",
-    "modifier": "+6 health",
-    "stats": {
-      "health": 6
+    "effect": {
+      "id": "healing_potion",
+      "modification": {
+        "stats": {
+          "health": 6
+        },
+        "source": "Healing Potion",
+        "target": "hero"
+      },
+      "duration": 0
     },
-    "duration": 0,
     "uses": 1,
     "notes": "Sold by the Apothecary",
     "bookRef": {
@@ -23,12 +28,17 @@ export const BACKPACK_ITEMS: BackpackItem[] = [
     "id": "speed_potion",
     "name": "Speed Potion",
     "type": "backpack",
-    "effect": "+2 speed / 1 rd",
-    "modifier": "+2 speed",
-    "stats": {
-      "speed": 2
+    "effect": {
+      "id": "speed_potion",
+      "modification": {
+        "stats": {
+          "speed": 2
+        },
+        "source": "Speed Potion",
+        "target": "hero"
+      },
+      "duration": 1
     },
-    "duration": 1,
     "uses": 1,
     "notes": "Sold by the Apothecary",
     "bookRef": {
@@ -41,12 +51,17 @@ export const BACKPACK_ITEMS: BackpackItem[] = [
     "id": "brawn_potion",
     "name": "Brawn Potion",
     "type": "backpack",
-    "effect": "+2 brawn / 1 rd",
-    "modifier": "+2 brawn",
-    "stats": {
-      "brawn": 2
+    "effect": {
+      "id": "brawn_potion",
+      "modification": {
+        "stats": {
+          "brawn": 2
+        },
+        "source": "Brawn Potion",
+        "target": "hero"
+      },
+      "duration": 1
     },
-    "duration": 1,
     "uses": 1,
     "notes": "Sold by the Apothecary",
     "bookRef": {
@@ -59,12 +74,17 @@ export const BACKPACK_ITEMS: BackpackItem[] = [
     "id": "magic_potion",
     "name": "Magic Potion",
     "type": "backpack",
-    "effect": "+2 magic / 1 rd",
-    "modifier": "+2 magic",
-    "stats": {
-      "magic": 2
+    "effect": {
+      "id": "magic_potion",
+      "modification": {
+        "stats": {
+          "magic": 2
+        },
+        "source": "Magic Potion",
+        "target": "hero"
+      },
+      "duration": 1
     },
-    "duration": 1,
     "uses": 1,
     "notes": "Sold by the Apothecary",
     "bookRef": {
@@ -77,9 +97,15 @@ export const BACKPACK_ITEMS: BackpackItem[] = [
     "id": "crocodile_skin",
     "name": "Crocodile Skin",
     "type": "backpack",
-    "effect": "",
-    "modifier": "",
-    "duration": 0,
+    "effect": {
+      "id": "crocodile_skin",
+      "modification": {
+        "stats": {},
+        "source": "Crocodile Skin",
+        "target": "hero"
+      },
+      "duration": 0
+    },
     "uses": 0,
     "notes": "Dropped by the Crocodile",
     "bookRef": {
@@ -92,12 +118,17 @@ export const BACKPACK_ITEMS: BackpackItem[] = [
     "id": "goblin_grog",
     "name": "Goblin Grog",
     "type": "backpack",
-    "effect": "+4 health",
-    "modifier": "+4 health",
-    "stats": {
-      "health": 4
+    "effect": {
+      "id": "goblin_grog",
+      "modification": {
+        "stats": {
+          "health": 4
+        },
+        "source": "Goblin Grog",
+        "target": "hero"
+      },
+      "duration": 0
     },
-    "duration": 0,
     "uses": 2,
     "notes": "Found in Goblin loot",
     "bookRef": {
@@ -110,12 +141,17 @@ export const BACKPACK_ITEMS: BackpackItem[] = [
     "id": "healing_salve",
     "name": "Healing Salve",
     "type": "backpack",
-    "effect": "+6 health",
-    "modifier": "+6 health",
-    "stats": {
-      "health": 6
+    "effect": {
+      "id": "healing_salve",
+      "modification": {
+        "stats": {
+          "health": 6
+        },
+        "source": "Healing Salve",
+        "target": "hero"
+      },
+      "duration": 0
     },
-    "duration": 0,
     "uses": 1,
     "notes": "Found in Goblin loot",
     "bookRef": {
@@ -128,12 +164,17 @@ export const BACKPACK_ITEMS: BackpackItem[] = [
     "id": "miracle_grow",
     "name": "Miracle Grow",
     "type": "backpack",
-    "effect": "+2 brawn / 1 rd",
-    "modifier": "+2 brawn",
-    "stats": {
-      "brawn": 2
+    "effect": {
+      "id": "miracle_grow",
+      "modification": {
+        "stats": {
+          "brawn": 2
+        },
+        "source": "Miracle Grow",
+        "target": "hero"
+      },
+      "duration": 1
     },
-    "duration": 1,
     "uses": 1,
     "notes": "Found in Goblin loot",
     "bookRef": {
@@ -146,9 +187,15 @@ export const BACKPACK_ITEMS: BackpackItem[] = [
     "id": "ghoul_hair",
     "name": "Ghoul Hair",
     "type": "backpack",
-    "effect": "",
-    "modifier": "",
-    "duration": 0,
+    "effect": {
+      "id": "ghoul_hair",
+      "modification": {
+        "stats": {},
+        "source": "Ghoul Hair",
+        "target": "hero"
+      },
+      "duration": 0
+    },
     "uses": 0,
     "notes": "Dropped by Ghouls",
     "bookRef": {
@@ -161,12 +208,17 @@ export const BACKPACK_ITEMS: BackpackItem[] = [
     "id": "explosives_bombs",
     "name": "Explosives / Bombs",
     "type": "backpack",
-    "effect": "+10 damage",
-    "modifier": "+10 damage",
-    "stats": {
-      "damageModifier": 10
+    "effect": {
+      "id": "explosives_bombs",
+      "modification": {
+        "stats": {
+          "damageModifier": 10
+        },
+        "source": "Explosives / Bombs",
+        "target": "hero"
+      },
+      "duration": 0
     },
-    "duration": 0,
     "uses": 1,
     "notes": "Sold by the Tinker",
     "bookRef": {
@@ -179,9 +231,15 @@ export const BACKPACK_ITEMS: BackpackItem[] = [
     "id": "spiders_leg",
     "name": "Spider's Leg",
     "type": "backpack",
-    "effect": "",
-    "modifier": "",
-    "duration": 0,
+    "effect": {
+      "id": "spiders_leg",
+      "modification": {
+        "stats": {},
+        "source": "Spider's Leg",
+        "target": "hero"
+      },
+      "duration": 0
+    },
     "uses": 0,
     "notes": "Dropped by Spiders",
     "bookRef": {
@@ -194,12 +252,17 @@ export const BACKPACK_ITEMS: BackpackItem[] = [
     "id": "goblin_grog",
     "name": "Goblin Grog",
     "type": "backpack",
-    "effect": "+4 health",
-    "modifier": "+4 health",
-    "stats": {
-      "health": 4
+    "effect": {
+      "id": "goblin_grog",
+      "modification": {
+        "stats": {
+          "health": 4
+        },
+        "source": "Goblin Grog",
+        "target": "hero"
+      },
+      "duration": 0
     },
-    "duration": 0,
     "uses": 2,
     "notes": "Found in Goblin Chief's loot",
     "bookRef": {
@@ -212,12 +275,17 @@ export const BACKPACK_ITEMS: BackpackItem[] = [
     "id": "da_boss",
     "name": "Da Boss",
     "type": "backpack",
-    "effect": "+10 damage",
-    "modifier": "+10 damage",
-    "stats": {
-      "damageModifier": 10
+    "effect": {
+      "id": "da_boss",
+      "modification": {
+        "stats": {
+          "damageModifier": 10
+        },
+        "source": "Da Boss",
+        "target": "hero"
+      },
+      "duration": 0
     },
-    "duration": 0,
     "uses": 1,
     "notes": "Sold by Sea-Spray Steve",
     "bookRef": {
