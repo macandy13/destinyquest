@@ -1,6 +1,6 @@
 import { registerAbility, AbilityContext } from '../../abilityRegistry';
-import { addLogs, CombatState, dealDamage, skipDamagePhase } from '../../../types/CombatState';
-import { rollDice, sumDice } from '../../../types/Dice';
+import { addLogs, CombatState, dealDamage, skipDamagePhase } from '../../../types/combatState';
+import { rollDice, sumDice } from '../../../types/dice';
 
 
 function canActivate(state: CombatState, _context: AbilityContext): boolean {

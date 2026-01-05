@@ -1,6 +1,6 @@
 import { registerAbility } from '../../abilityRegistry';
-import { dealDamage } from '../../../types/CombatState';
-import { getOpponent } from '../../../types/Character';
+import { dealDamage } from '../../../types/combatState';
+import { getOpponent } from '../../../types/character';
 
 registerAbility({
     name: 'Lightning',

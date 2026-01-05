@@ -1,6 +1,6 @@
 import { registerAbility } from '../../abilityRegistry';
-import { hasDouble } from '../../../types/Dice';
-import { healDamage } from '../../../types/CombatState';
+import { hasDouble } from '../../../types/dice';
+import { healDamage } from '../../../types/combatState';
 
 registerAbility({
     name: 'Life Spark',

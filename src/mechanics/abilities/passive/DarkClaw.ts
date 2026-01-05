@@ -1,8 +1,8 @@
 import { registerAbility } from '../../abilityRegistry';
-import { hasDouble, DiceRoll } from '../../../types/Dice';
-import { dealDamage } from '../../../types/CombatState';
-import { CharacterType, getOpponent } from '../../../types/Character';
-import { CombatState } from '../../../types/CombatState';
+import { hasDouble, DiceRoll } from '../../../types/dice';
+import { dealDamage } from '../../../types/combatState';
+import { CharacterType, getOpponent } from '../../../types/character';
+import { CombatState } from '../../../types/combatState';
 
 function inflictDarkClawDamage(state: CombatState, source: CharacterType, rolls: DiceRoll[]) {
     if (!hasDouble(rolls)) {

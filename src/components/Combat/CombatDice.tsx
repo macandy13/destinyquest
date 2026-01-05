@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { DiceRoll, rollDice, sumDice } from '../../types/Dice';
+import { DiceRoll, rollDice, sumDice } from '../../types/dice';
 import './CombatDice.css';
 
 interface CombatDiceProps {

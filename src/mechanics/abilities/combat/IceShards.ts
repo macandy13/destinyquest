@@ -1,5 +1,5 @@
 import { registerAbility, AbilityContext } from '../../abilityRegistry';
-import { CombatState, dealDamage } from '../../../types/CombatState';
+import { CombatState, dealDamage } from '../../../types/combatState';
 
 function canActivate(state: CombatState, _context: AbilityContext): boolean {
     // TODO: Should this be possible on round-end? Does this trigger the right things?

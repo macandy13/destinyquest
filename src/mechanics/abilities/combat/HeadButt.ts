@@ -1,5 +1,5 @@
 import { registerAbility, AbilityContext } from '../../abilityRegistry';
-import { CombatState, skipDamagePhase } from '../../../types/CombatState';
+import { CombatState, skipDamagePhase } from '../../../types/combatState';
 
 function canActivate(state: CombatState, _context: AbilityContext): boolean {
     return state.phase === 'damage-roll' && state.winner === 'enemy';

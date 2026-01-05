@@ -1,6 +1,6 @@
 import { registerAbility } from '../../abilityRegistry';
-import { getOpponent } from '../../../types/Character';
-import { appendBonusDamage, appendEffect, hasEffect } from '../../../types/CombatState';
+import { getOpponent } from '../../../types/character';
+import { appendBonusDamage, appendEffect, hasEffect, getCombatant } from '../../../types/combatState';
 
 registerAbility({
     name: 'Venom',
@@ -23,8 +23,9 @@ registerAbility({
         if (!hasEffect(state, opponent, 'Venom')) return state;
 
         let damage = 2;
-        const hasMastery = state[owner].activeAbilities.has('Poison Mastery');
-        const hasDeadly = state[owner].activeAbilities.has('Deadly Poisons');
+        const ownerCombatant = getCombatant(state, owner);
+        const hasMastery = ownerCombatant.activeAbilities.has('Poison Mastery');
+        const hasDeadly = ownerCombatant.activeAbilities.has('Deadly Poisons');
         if (hasMastery) damage = 4;
         else if (hasDeadly) damage = 3;
 

@@ -73,7 +73,7 @@ try {
     const content = fs.readFileSync(CSV_PATH, 'utf-8');
     const enemies = parseCSV(content);
 
-    const fileContent = `import { Enemy } from '../types/combat';
+    const fileContent = `import { Enemy } from '../types/character';
 
 export const ENEMIES: Enemy[] = ${JSON.stringify(enemies, null, 2)};
 `;

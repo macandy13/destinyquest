@@ -1,10 +1,10 @@
 import { AbilityContext, AbilityDefinition } from '../abilityRegistry';
-import { appendEffect, CombatState, dealDamage, skipDamagePhase } from '../../types/CombatState';
-import { formatDice, rollDice, sumDice } from '../../types/Dice';
-import { AbilityType } from '../../types/AbilityDescription';
-import { CharacterType, getOpponent } from '../../types/Character';
-import { Effect } from '../../types/Effect';
-import { getStatIcon, Stats } from '../../types/Stats';
+import { appendEffect, CombatState, dealDamage, skipDamagePhase } from '../../types/combatState';
+import { formatDice, rollDice, sumDice } from '../../types/dice';
+import { AbilityType } from '../../types/abilityDescription';
+import { CharacterType, getOpponent } from '../../types/character';
+import { Effect } from '../../types/effect';
+import { getStatIcon, Stats } from '../../types/stats';
 
 export type TargetType = 'hero' | 'enemy' | 'owner' | 'opponent' | 'winner' | 'loser';
 
@@ -44,6 +44,10 @@ export function canModifyRolledDice(state: CombatState): boolean {
     return ['speed-roll', 'damage-roll'].includes(state.phase);
 }
 
+export function canModifyArmour(state: CombatState): boolean {
+    return ['combat-start', 'round-start', 'apply-damage'].includes(state.phase);
+}
+
 export function isHeroDamageRollPhase(state: CombatState): boolean {
     return canModifyDamage(state) && state.winner === 'hero';
 };
@@ -62,7 +66,9 @@ export function isOpponentDamageRollPhase(state: CombatState, context: AbilityCo
 
 export interface StatModifierAbilityConfig {
     name: string;
+    description: string;
     type: AbilityType;
+    icon?: string; // Add icon too if missing and used
     effect?: Effect;
     // Backward compatibility for easier definition
     stats?: Partial<Stats>;
@@ -142,7 +148,6 @@ export interface ReactionAbilityConfig {
     type: AbilityType;
     icon?: string;
     damageDice?: number; // Number of dice to roll for counter damage. If 0/undefined, no damage dealing.
-    blockAttack?: boolean; // If true, blocks the incoming attack (skips damage phase). Default false (passive retaliation).
     canActivate?: (state: CombatState, context: AbilityContext) => boolean;
 }
 
@@ -214,6 +219,7 @@ export function createRetaliationAbility(config: RetaliationAbilityConfig): Abil
                     getOpponent(context.owner),
                     totalDamage,
                     `Counter damage from ${config.name}: ${damageSources.join('+')} = ${totalDamage}`
+                );
             }
             return state;
         }

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Effect } from '../../types/Effect';
+import { Effect } from '../../types/effect';
 import './CombatModifiers.css';
 
 // Helper to format modification text

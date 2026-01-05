@@ -2,7 +2,7 @@ import { describe, it, expect, beforeEach } from 'vitest';
 import { AbilityDefinition, getAbilityDefinition } from '../../abilityRegistry';
 import './Acid';
 import { INITIAL_STATE } from '../../../tests/testUtils';
-import { deterministicRoll } from '../../../types/Dice';
+import { deterministicRoll } from '../../../types/dice';
 
 describe('Acid', () => {
     let ability: AbilityDefinition;

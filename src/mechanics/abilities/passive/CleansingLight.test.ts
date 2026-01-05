@@ -1,9 +1,9 @@
 import { describe, it, expect, beforeEach } from 'vitest';
-import { CombatState, Combatant } from '../../../types/CombatState';
+import { CombatState, Combatant } from '../../../types/combatState';
 import { AbilityDefinition, getAbilityDefinition } from '../../abilityRegistry';
 import { INITIAL_STATE, enemyWithStats, heroWithStats, } from '../../../tests/testUtils';
-import { Hero } from '../../../types/Hero';
-import { Enemy } from '../../../types/Character';
+import { Hero } from '../../../types/hero';
+import { Enemy } from '../../../types/character';
 import './CleansingLight'; // Register ability
 
 describe('Cleansing Light', () => {

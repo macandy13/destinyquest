@@ -1,8 +1,8 @@
 import { registerAbility } from '../../abilityRegistry';
-import { addLogs, appendEffect, dealDamage, hasEffect, removeEffect } from '../../../types/CombatState';
-import { Effect } from '../../../types/Effect';
-import { hasDouble } from '../../../types/Dice';
-import { getOpponent } from '../../../types/Character';
+import { addLogs, appendEffect, dealDamage, hasEffect, removeEffect } from '../../../types/combatState';
+import { Effect } from '../../../types/effect';
+import { hasDouble } from '../../../types/dice';
+import { getOpponent } from '../../../types/character';
 
 
 

@@ -1,5 +1,5 @@
 import { registerAbility } from '../../abilityRegistry';
-import { addLogs } from '../../../types/CombatState';
+import { addLogs } from '../../../types/combatState';
 import { isOpponentDamageRollPhase } from '../abilityFactories';
 
 

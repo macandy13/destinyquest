@@ -1,4 +1,4 @@
-import { CharacterType } from "./Character";
+import { CharacterType } from "./character";
 
 export type CombatLogType = 'info' | 'warning' | 'damage-hero' | 'damage-enemy' | 'win' | 'loss';
 

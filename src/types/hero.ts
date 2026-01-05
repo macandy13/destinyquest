@@ -1,7 +1,7 @@
-import { Stats } from './Stats';
-import { Character } from './Character';
-import { BookRef } from './BookRef';
-import { Effect } from './Effect';
+import { Stats } from './stats';
+import { Character } from './character';
+import { BookRef } from './bookRef';
+import { Effect } from './effect';
 
 export interface HeroStats extends Stats { }
 

@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Hero, INITIAL_HERO, HeroStats, EquipmentItem, EquipmentSlot, BackpackItem } from '../types/Hero';
+import { Hero, INITIAL_HERO, HeroStats, EquipmentItem, EquipmentSlot, BackpackItem } from '../types/hero';
 
 const STORAGE_KEY = 'dq-hero-v1';
 

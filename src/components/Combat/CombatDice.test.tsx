@@ -1,6 +1,6 @@
 import { render, act } from '@testing-library/react';
 import CombatDice from './CombatDice';
-import { DiceRoll } from '../../types/Dice';
+import { DiceRoll } from '../../types/dice';
 import { describe, it, expect, vi } from 'vitest';
 
 describe('CombatDice', () => {

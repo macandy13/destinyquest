@@ -2,7 +2,7 @@
 import { render, screen, fireEvent } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import EquipmentSlots from './EquipmentSlots';
-import { Hero } from '../../types/Hero';
+import { Hero } from '../../types/hero';
 
 // Mock hero data
 const mockHero: Hero = {

@@ -1,8 +1,8 @@
 import { registerAbility } from '../../abilityRegistry';
-import { hasEffect, removeEffect } from '../../../types/CombatState';
-import { rollDice, sumDice } from '../../../types/Dice';
-import { CombatState, dealDamage, appendEffect, skipDamagePhase } from '../../../types/CombatState';
-import { CharacterType } from '../../../types/Character';
+import { hasEffect, removeEffect } from '../../../types/combatState';
+import { rollDice, sumDice } from '../../../types/dice';
+import { CombatState, dealDamage, appendEffect, skipDamagePhase } from '../../../types/combatState';
+import { CharacterType } from '../../../types/character';
 
 function winnerIsNotCharged(state: CombatState, owner: CharacterType): boolean {
     return state.phase === 'speed-roll'

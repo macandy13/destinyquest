@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import { Stats } from '../../types/Stats';
-import { Enemy } from '../../types/Character';
+import { Stats } from '../../types/stats';
+import { Enemy } from '../../types/character';
 import { ENEMIES } from '../../data/enemies';
-import { getStatIcon } from '../../types/Stats';
+import { getStatIcon } from '../../types/stats';
 import NumberControl from '../Shared/NumberControl';
 import DqCard from '../Shared/DqCard';
 import './EnemySelector.css';
@@ -42,9 +42,9 @@ const EnemySelector: React.FC<EnemySelectorProps> = ({ onSelect }) => {
         );
     });
 
-    const handleCustomChange = (field: keyof Enemy | keyof Stats, value: any) => {
+    const handleCustomChange = (field: keyof Enemy | keyof Stats, value: string | number) => {
         if (field === 'name') {
-            setCustomEnemy(prev => ({ ...prev, name: value }));
+            setCustomEnemy(prev => ({ ...prev, name: String(value) }));
         } else if (field === 'bookRef' || field === 'abilities' || field === 'preventHealing' || field === 'stats') {
             // Ignore or handle specific root fields if needed, simplified for name
         } else {

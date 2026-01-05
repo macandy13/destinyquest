@@ -1,14 +1,15 @@
 import React from 'react';
-import { HeroStats } from '../../types/Hero';
+import { HeroStats } from '../../types/hero';
 import './EquipmentSlot.css';
-import { getStatIcon } from '../../types/Stats';
+import { getStatIcon } from '../../types/stats';
+import { Effect, formatEffect } from '../../types/effect';
 
 interface SlotDisplayItem {
     name: string;
     stats?: Partial<HeroStats>;
     abilities?: string[];
     description?: string;
-    effect?: string;
+    effect?: string | Effect;
 }
 
 interface EquipmentSlotProps {
@@ -33,8 +34,9 @@ const EquipmentSlot: React.FC<EquipmentSlotProps> = ({ label, icon, item, onClic
                         <span className="equipment-stats-display">
                             {Object.entries(item.stats)
                                 .map(([stat, value]) => {
+                                    const val = value as number;
                                     const statIcon = getStatIcon(stat);
-                                    return `${value > 0 ? '+' : ''}${value} ${statIcon}`;
+                                    return `${val > 0 ? '+' : ''}${val} ${statIcon}`;
                                 })
                                 .join(' ')}
                         </span>
@@ -46,7 +48,7 @@ const EquipmentSlot: React.FC<EquipmentSlotProps> = ({ label, icon, item, onClic
                     )}
                     {(item.description || item.effect) && (
                         <span className="equipment-effect-display">
-                            {item.description || item.effect}
+                            {item.description || (typeof item.effect === 'string' ? item.effect : formatEffect(item.effect!))}
                         </span>
                     )}
                 </div>

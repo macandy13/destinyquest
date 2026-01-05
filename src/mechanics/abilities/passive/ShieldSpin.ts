@@ -1,6 +1,6 @@
 import { registerAbility } from '../../abilityRegistry';
-import { dealDamage } from '../../../types/CombatState';
-import { rollDice, sumDice } from '../../../types/Dice';
+import { dealDamage } from '../../../types/combatState';
+import { rollDice, sumDice } from '../../../types/dice';
 
 registerAbility({
     name: 'Shield Spin',

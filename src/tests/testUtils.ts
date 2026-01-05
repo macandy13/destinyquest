@@ -1,9 +1,9 @@
 import { vi } from 'vitest';
-import { BookRef } from '../types/BookRef';
-import { CombatState, Combatant } from '../types/CombatState';
-import { DiceRoll } from '../types/Dice';
-import { BackpackItem, EquipmentItem, Hero } from '../types/Hero';
-import { Enemy } from '../types/Character';
+import { BookRef } from '../types/bookRef';
+import { CombatState, Combatant } from '../types/combatState';
+import { DiceRoll } from '../types/dice';
+import { BackpackItem, EquipmentItem, Hero } from '../types/hero';
+import { Enemy } from '../types/character';
 
 export const MOCK_HERO: Hero = {
     type: 'hero',

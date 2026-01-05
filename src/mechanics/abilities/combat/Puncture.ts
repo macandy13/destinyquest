@@ -1,15 +1,15 @@
 import { registerAbility } from '../../abilityRegistry';
-import { rollDice, sumDice } from '../../../types/Dice';
+import { rollDice, sumDice } from '../../../types/dice';
 import { isHeroDamageRollPhase } from '../abilityFactories';
-import { dealDamage, appendEffect, skipDamagePhase } from '../../../types/CombatState';
-import { Effect } from '../../../types/Effect';
+import { dealDamage, appendEffect, skipDamagePhase } from '../../../types/combatState';
+import { Effect } from '../../../types/effect';
 
 registerAbility({
     name: 'Puncture',
     type: 'combat',
     description: "Instead of rolling damage, inflict 2 damage dice (ignoring armour) and reduce opponent's armour by 1 for the remainder of the combat.",
     canActivate: isHeroDamageRollPhase,
-    onActivate: (state, context) => {
+    onActivate: (state) => {
         if (!isHeroDamageRollPhase(state)) return state;
 
         const dmgRolls = rollDice(2);

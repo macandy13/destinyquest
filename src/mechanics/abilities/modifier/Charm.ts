@@ -1,4 +1,4 @@
-import { addLogs } from '../../../types/CombatState';
+import { addLogs } from '../../../types/combatState';
 import { registerAbility } from '../../abilityRegistry';
 
 registerAbility({

@@ -1,5 +1,5 @@
-import { CharacterType } from "./Character";
-import { Stats } from "./Stats";
+import { CharacterType } from "./character";
+import { Stats } from "./stats";
 
 export interface Effect {
     stats: Partial<Stats>;

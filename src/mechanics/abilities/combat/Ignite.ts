@@ -1,9 +1,9 @@
 import { registerAbility } from '../../abilityRegistry';
-import { appendEffect, dealDamage } from '../../../types/CombatState';
-import { rollDice, sumDice } from '../../../types/Dice';
-import { CombatState } from '../../../types/CombatState';
-import { Effect } from '../../../types/Effect';
-import { CharacterType, getOpponent } from '../../../types/Character';
+import { appendEffect, dealDamage } from '../../../types/combatState';
+import { rollDice, sumDice } from '../../../types/dice';
+import { CombatState } from '../../../types/combatState';
+import { Effect } from '../../../types/effect';
+import { CharacterType, getOpponent } from '../../../types/character';
 
 function canActivate(state: CombatState, { owner }: { owner: CharacterType }): boolean {
     return state.winner === owner;

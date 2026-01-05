@@ -1,6 +1,6 @@
 import { AbilityContext, registerAbility } from '../../abilityRegistry';
 import { isEnemyDamageRollPhase } from '../abilityFactories';
-import { CombatState, hasEffect, skipDamagePhase } from '../../../types/CombatState';
+import { CombatState, hasEffect, skipDamagePhase } from '../../../types/combatState';
 
 registerAbility({
     name: 'Dodge',

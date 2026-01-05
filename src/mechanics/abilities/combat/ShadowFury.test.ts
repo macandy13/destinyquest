@@ -2,8 +2,8 @@ import { describe, it, expect, beforeEach } from 'vitest';
 import { AbilityDefinition, getAbilityDefinition } from '../../abilityRegistry';
 import './ShadowFury';
 import { INITIAL_STATE, createCombatant, heroWithStats, testEquipment } from '../../../tests/testUtils';
-import { CombatState, Combatant } from '../../../types/CombatState';
-import { Hero } from '../../../types/Hero';
+import { CombatState, Combatant } from '../../../types/combatState';
+import { Hero } from '../../../types/hero';
 
 describe('Shadow Fury', () => {
     let ability: AbilityDefinition;

@@ -1,7 +1,7 @@
 import { describe, it, expect, beforeEach } from 'vitest';
 import { AbilityDefinition, getAbilityDefinition } from '../../abilityRegistry';
 import './Brutality';
-import { deterministicRoll, INITIAL_STATE } from '../../../tests/testUtils';
+import { deterministicRoll, INITIAL_STATE, mockDiceRolls } from '../../../tests/testUtils';
 
 describe('Brutality', () => {
     let ability: AbilityDefinition;
@@ -25,12 +25,11 @@ describe('Brutality', () => {
 
         expect(ability.canActivate?.(state, { owner: 'hero' })).toBe(true);
 
+        mockDiceRolls([1, 2]);
+
         const result = ability.onActivate?.(state, { owner: 'hero' });
 
         expect(result?.phase).toBe('passive-damage');
-        expect(result?.damage?.damageRolls).toEqual([{ value: 0, isRerolled: false }]);
-        // Brutality deals X damage directly or via log?
-        // Assuming implementation uses dealDamage/log.
-        expect(result?.logs.some(l => l.message.includes('Brutality'))).toBe(true);
+        expect(result?.enemy.stats.health).toBe(INITIAL_STATE.enemy.stats.health - 3);
     });
 });

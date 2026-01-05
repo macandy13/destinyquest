@@ -1,15 +1,15 @@
 import React from 'react';
 import { useCombat } from '../../hooks/useCombat';
-import { Hero } from '../../types/Hero';
-import { Enemy } from '../../types/Character';
+import { Hero } from '../../types/hero';
+import { Enemy } from '../../types/character';
 import CombatDice from './CombatDice';
 import CombatLog from './CombatLog';
 import CombatantCard from './CombatantCard';
 import CombatAbilitySelector from './CombatAbilitySelector';
 import CombatModifiers from './CombatModifiers';
 import CombatResultDialog from './CombatResultDialog';
-import { calculateEffectiveStats } from '../../types/Effect';
-import { BackpackItem } from '../../types/Hero';
+import { calculateEffectiveStats } from '../../types/effect';
+import { BackpackItem } from '../../types/hero';
 import './CombatArena.css';
 
 interface CombatArenaProps {

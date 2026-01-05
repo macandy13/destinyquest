@@ -1,7 +1,6 @@
-import { CombatState } from '../../../types/CombatState';
-import { registerAbility } from '../../abilityRegistry';
-import { createStatModifierAbility } from '../abilityFactories';
-import { CharacterType } from '../../../types/Stats';
+import { CombatState } from '../../../types/combatState';
+import { AbilityContext, registerAbility } from '../../abilityRegistry';
+import { canModifyDamageDice, createStatModifierAbility } from '../abilityFactories';
 
 registerAbility(createStatModifierAbility({
     name: 'Overload',
@@ -10,5 +9,5 @@ registerAbility(createStatModifierAbility({
     stats: { damageDice: 1 },
     duration: 1,
     target: 'hero',
-    canActivate: (state: CombatState, _owner: CharacterType) => state.phase === 'damage-roll' && state.winner === 'hero'
+    canActivate: (state: CombatState, context: AbilityContext) => canModifyDamageDice(state) && state.winner === context.owner
 }));    

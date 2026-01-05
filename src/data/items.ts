@@ -1,4 +1,4 @@
-import { EquipmentItem } from '../types/Hero';
+import { EquipmentItem } from '../types/hero';
 
 export const ITEMS: EquipmentItem[] = [
   {

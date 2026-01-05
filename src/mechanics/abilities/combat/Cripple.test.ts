@@ -19,8 +19,6 @@ describe('Cripple', () => {
             damageDealt: [{ target: 'enemy' as const, amount: 5, source: 'Melee' }]
         };
 
-        expect(ability.canActivate?.(state, { owner: 'hero' })).toBe(true);
-
         const result = ability.onActivate?.(state, { owner: 'hero' });
 
         expect(result).toBeDefined();

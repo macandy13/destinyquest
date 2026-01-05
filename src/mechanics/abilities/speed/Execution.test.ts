@@ -1,7 +1,7 @@
 import { describe, it, expect, beforeEach } from 'vitest';
 import { AbilityDefinition, getAbilityDefinition } from '../../abilityRegistry';
 import { INITIAL_STATE, testEquipment } from '../../../tests/testUtils';
-import { CombatState } from '../../../types/CombatState';
+import { CombatState } from '../../../types/combatState';
 import './Execution';
 
 const TEST_STATE: CombatState = {

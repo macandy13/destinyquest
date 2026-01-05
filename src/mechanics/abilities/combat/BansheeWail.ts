@@ -1,5 +1,5 @@
 import { registerAbility } from '../../abilityRegistry';
-import { skipDamagePhase } from '../../../types/CombatState';
+import { skipDamagePhase } from '../../../types/combatState';
 import { isOpponentDamageRollPhase } from '../abilityFactories';
 
 

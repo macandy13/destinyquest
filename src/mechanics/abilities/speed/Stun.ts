@@ -1,5 +1,5 @@
-import { getOpponent } from '../../../types/Character';
-import { appendEffect, hasEffect } from '../../../types/CombatState';
+import { getOpponent } from '../../../types/character';
+import { appendEffect, hasEffect } from '../../../types/combatState';
 import { registerAbility } from '../../abilityRegistry';
 import { canModifySpeedDice } from '../abilityFactories';
 

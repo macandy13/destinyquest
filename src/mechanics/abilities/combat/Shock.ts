@@ -1,5 +1,5 @@
 import { registerAbility, AbilityContext } from '../../abilityRegistry';
-import { dealDamage, CombatState } from '../../../types/CombatState';
+import { dealDamage, CombatState, getCombatant } from '../../../types/combatState';
 
 registerAbility({
     name: 'Shock!',
@@ -9,7 +9,8 @@ registerAbility({
         // Trigger if we deal damage to enemy causing health damage (amount > 0)
         if (owner === target || amount <= 0 || !target) return state;
 
-        const oppArmour = state[target]!.stats.armour || 0;
+        const targetChar = getCombatant(state, target);
+        const oppArmour = targetChar.stats.armour || 0;
         const extra = Math.floor(oppArmour / 2);
         if (extra <= 0) return state;
 

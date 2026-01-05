@@ -1,6 +1,6 @@
 import { registerAbility } from '../../abilityRegistry';
-import { appendEffect } from '../../../types/CombatState';
-import { getOpponent } from '../../../types/Character';
+import { appendEffect } from '../../../types/combatState';
+import { getOpponent } from '../../../types/character';
 
 registerAbility({
     name: 'Swamp Legs',

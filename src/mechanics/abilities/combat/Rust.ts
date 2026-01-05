@@ -1,5 +1,5 @@
 import { registerAbility } from '../../abilityRegistry';
-import { appendEffect } from '../../../types/CombatState';
+import { appendEffect } from '../../../types/combatState';
 
 registerAbility({
     name: 'Rust',

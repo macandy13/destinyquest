@@ -1,5 +1,5 @@
 import { registerAbility, AbilityContext } from '../../abilityRegistry';
-import { CombatState, skipDamagePhase, hasEffect } from '../../../types/CombatState';
+import { CombatState, skipDamagePhase, hasEffect } from '../../../types/combatState';
 import { isOpponentDamageRollPhase } from '../abilityFactories';
 
 function canActivate(state: CombatState, context: AbilityContext): boolean {

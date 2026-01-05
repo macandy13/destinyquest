@@ -1,6 +1,6 @@
 import { registerAbility } from '../../abilityRegistry';
-import { appendEffect } from '../../../types/CombatState';
-import { getOpponent } from '../../../types/Character';
+import { appendEffect, getCombatant } from '../../../types/combatState';
+import { getOpponent } from '../../../types/character';
 
 registerAbility({
     name: 'Piercing',
@@ -8,7 +8,8 @@ registerAbility({
     description: 'Ignore armour',
     onActivate: (state, { owner }) => {
         const opponent = getOpponent(owner);
-        const reduction = -(state[opponent].stats.armour || 0);
+        const opponentChar = getCombatant(state, opponent);
+        const reduction = -(opponentChar.stats.armour || 0);
         return appendEffect(state, opponent, {
             stats: { armour: reduction },
             source: 'Piercing',

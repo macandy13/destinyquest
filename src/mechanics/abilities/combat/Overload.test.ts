@@ -2,7 +2,7 @@ import { describe, it, expect, beforeEach } from 'vitest';
 import { AbilityDefinition, getAbilityDefinition } from '../../abilityRegistry';
 import './Overload';
 import { INITIAL_STATE } from '../../../tests/testUtils';
-import { CombatState } from '../../../types/CombatState';
+import { CombatState } from '../../../types/combatState';
 
 describe('Overload', () => {
     let ability: AbilityDefinition;

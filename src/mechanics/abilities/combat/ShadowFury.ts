@@ -1,5 +1,5 @@
 import { registerAbility } from '../../abilityRegistry';
-import { addLogs, appendEffect } from '../../../types/CombatState';
+import { addLogs, appendEffect, getCombatant } from '../../../types/combatState';
 
 registerAbility({
     name: 'Shadow Fury',
@@ -13,7 +13,7 @@ registerAbility({
         // Need to be careful about types. owner can be 'hero' or 'enemy'. Enemy might not have equipment structure.
         // Ability likely restricted to Hero or characters with equipment.
 
-        const character = state[owner];
+        const character = getCombatant(state, owner);
         if (!character.original || !('equipment' in character.original)) {
             return addLogs(state, { round: state.round, message: "Shadow Fury failed: No equipment found.", type: 'info' });
         }

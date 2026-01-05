@@ -4,6 +4,7 @@ export const BACKPACK_ITEMS: BackpackItem[] = [
   {
     "id": "healing_potion",
     "name": "Healing Potion",
+    "description": "+6 health",
     "type": "backpack",
     "effect": {
       "stats": {
@@ -24,6 +25,7 @@ export const BACKPACK_ITEMS: BackpackItem[] = [
   {
     "id": "speed_potion",
     "name": "Speed Potion",
+    "description": "+2 speed",
     "type": "backpack",
     "effect": {
       "stats": {
@@ -44,6 +46,7 @@ export const BACKPACK_ITEMS: BackpackItem[] = [
   {
     "id": "brawn_potion",
     "name": "Brawn Potion",
+    "description": "+2 brawn",
     "type": "backpack",
     "effect": {
       "stats": {
@@ -64,6 +67,7 @@ export const BACKPACK_ITEMS: BackpackItem[] = [
   {
     "id": "magic_potion",
     "name": "Magic Potion",
+    "description": "+2 magic",
     "type": "backpack",
     "effect": {
       "stats": {
@@ -84,6 +88,7 @@ export const BACKPACK_ITEMS: BackpackItem[] = [
   {
     "id": "crocodile_skin",
     "name": "Crocodile Skin",
+    "description": "Quest Item",
     "type": "backpack",
     "effect": {
       "stats": {},
@@ -102,6 +107,7 @@ export const BACKPACK_ITEMS: BackpackItem[] = [
   {
     "id": "goblin_grog",
     "name": "Goblin Grog",
+    "description": "+4 health",
     "type": "backpack",
     "effect": {
       "stats": {
@@ -122,6 +128,7 @@ export const BACKPACK_ITEMS: BackpackItem[] = [
   {
     "id": "healing_salve",
     "name": "Healing Salve",
+    "description": "+6 health",
     "type": "backpack",
     "effect": {
       "stats": {
@@ -142,6 +149,7 @@ export const BACKPACK_ITEMS: BackpackItem[] = [
   {
     "id": "miracle_grow",
     "name": "Miracle Grow",
+    "description": "+2 brawn",
     "type": "backpack",
     "effect": {
       "stats": {
@@ -162,6 +170,7 @@ export const BACKPACK_ITEMS: BackpackItem[] = [
   {
     "id": "ghoul_hair",
     "name": "Ghoul Hair",
+    "description": "Quest Item",
     "type": "backpack",
     "effect": {
       "stats": {},
@@ -180,6 +189,7 @@ export const BACKPACK_ITEMS: BackpackItem[] = [
   {
     "id": "explosives_bombs",
     "name": "Explosives / Bombs",
+    "description": "+10 damage",
     "type": "backpack",
     "effect": {
       "stats": {
@@ -200,6 +210,7 @@ export const BACKPACK_ITEMS: BackpackItem[] = [
   {
     "id": "spiders_leg",
     "name": "Spider's Leg",
+    "description": "Quest Item",
     "type": "backpack",
     "effect": {
       "stats": {},
@@ -218,6 +229,7 @@ export const BACKPACK_ITEMS: BackpackItem[] = [
   {
     "id": "goblin_grog",
     "name": "Goblin Grog",
+    "description": "+4 health",
     "type": "backpack",
     "effect": {
       "stats": {
@@ -238,6 +250,7 @@ export const BACKPACK_ITEMS: BackpackItem[] = [
   {
     "id": "da_boss",
     "name": "Da Boss",
+    "description": "+10 damage",
     "type": "backpack",
     "effect": {
       "stats": {

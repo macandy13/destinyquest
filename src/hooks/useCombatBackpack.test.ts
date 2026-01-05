@@ -3,7 +3,7 @@ import { act, renderHook } from '@testing-library/react';
 import { useCombat } from './useCombat';
 import { MOCK_HERO, MOCK_ENEMY } from '../tests/testUtils';
 import { testBackpackItem } from '../tests/testUtils';
-import { BackpackItem } from '../types/Hero';
+import { BackpackItem } from '../types/hero';
 
 const HEALING_POTION: BackpackItem = testBackpackItem({
     name: 'Healing Potion',

@@ -1,6 +1,6 @@
 import { registerAbility } from '../../abilityRegistry';
-import { AttackSource, dealDamage } from '../../../types/CombatState';
-import { getOpponent } from '../../../types/Character';
+import { AttackSource, dealDamage, getCombatant } from '../../../types/combatState';
+import { getOpponent } from '../../../types/character';
 
 registerAbility({
     name: 'Avenging Spirit',
@@ -8,7 +8,7 @@ registerAbility({
     description: 'When you take health damage from an opponent’s damage score/dice, you inflict damage back equal to your armour. This ignores the opponent\'s armour and cannot be increased by modifier abilities.',
     onDamageDealt: (state, { owner, target }, source, amount) => {
         if (owner !== target || amount <= 0 || !target || source !== AttackSource) return state;
-        const victim = state[target];
+        const victim = getCombatant(state, target);
         if (!victim) return state;
 
         const victimArmour = victim.stats.armour || 0;

@@ -1,6 +1,6 @@
 import { registerAbility } from '../../abilityRegistry';
-import { getOpponent } from '../../../types/Character';
-import { appendBonusDamage, appendEffect, hasEffect } from '../../../types/CombatState';
+import { getOpponent } from '../../../types/character';
+import { appendBonusDamage, appendEffect, hasEffect } from '../../../types/combatState';
 
 registerAbility({
     name: 'Bleed',

@@ -1,10 +1,12 @@
 import { registerAbility } from '../../abilityRegistry';
-import { appendEffect, CombatState } from '../../../types/CombatState';
-import { getOpponent, CharacterType } from '../../../types/Character';
+import { getCombatant, appendEffect, CombatState } from '../../../types/combatState';
+import { getOpponent, CharacterType } from '../../../types/character';
+
+const dodgeAbilities = new Set(['Vanish', 'Sidestep', 'Dodge']);
 
 function opponentHasDodge(state: CombatState, opponent: CharacterType): boolean {
-    const dodgeAbilities = new Set(['Dodge', 'Evade', 'Vanish']);
-    return [...state[opponent].activeAbilities.keys()].some(name => dodgeAbilities.has(name));
+    const opponentChar = getCombatant(state, opponent);
+    return [...opponentChar.activeAbilities.keys()].some(name => dodgeAbilities.has(name));
 }
 
 registerAbility({

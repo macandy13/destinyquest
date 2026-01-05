@@ -2,7 +2,7 @@ import { describe, it, expect, beforeEach } from 'vitest';
 import { AbilityDefinition, getAbilityDefinition } from '../../abilityRegistry';
 import './Windwalker';
 import { heroWithStats, INITIAL_STATE } from '../../../tests/testUtils';
-import { deterministicRoll } from '../../../types/Dice';
+import { deterministicRoll } from '../../../types/dice';
 
 describe('Windwalker', () => {
     let ability: AbilityDefinition;

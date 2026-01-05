@@ -1,5 +1,5 @@
-import { addLogs, setDamageRoll } from '../../../types/CombatState';
-import { deterministicRoll, formatDice } from '../../../types/Dice';
+import { addLogs, setDamageRoll } from '../../../types/combatState';
+import { deterministicRoll, formatDice } from '../../../types/dice';
 import { registerAbility } from '../../abilityRegistry';
 import { canModifyDamage } from '../abilityFactories';
 

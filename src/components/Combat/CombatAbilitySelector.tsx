@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { ActiveAbility, CombatState } from '../../types/CombatState';
+import { ActiveAbility, CombatState } from '../../types/combatState';
 import { getAbilityDefinition, getAbilityIcon } from '../../mechanics/abilityRegistry';
 import CombatAbilityItem from './CombatAbilityItem';
 import CombatBackpackItem from './CombatBackpackItem';
@@ -41,14 +41,14 @@ const CombatAbilitySelector: React.FC<CombatAbilitySelectorProps> = ({ combat, o
     return (
         <div className="ability-selector-container">
             <div className="ability-list-horizontal">
-                {availableAbilities.map((ability, index) => (
+                {availableAbilities.map((ability, index: number) => (
                     <CombatAbilityItem
                         key={index}
                         ability={ability}
                         onClick={() => setSelectedAbility(ability)}
                     />
                 ))}
-                {combat.hero?.original.backpack.map((item, index) => (
+                {combat.hero?.original.backpack.map((item, index: number) => (
                     item && (item.uses === undefined || item.uses > 0) && <CombatBackpackItem
                         key={`backpack-${index}`}
                         item={item}

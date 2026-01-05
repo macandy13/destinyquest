@@ -1,7 +1,7 @@
 import { registerAbility } from '../../abilityRegistry';
-import { addLogs, appendEffect, dealDamage } from '../../../types/CombatState';
-import { rollDice } from '../../../types/Dice';
-import { getOpponent } from '../../../types/Character';
+import { addLogs, appendEffect, dealDamage } from '../../../types/combatState';
+import { rollDice } from '../../../types/dice';
+import { getOpponent } from '../../../types/character';
 
 registerAbility({
     name: 'Thorn Armour',

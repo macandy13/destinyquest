@@ -1,6 +1,6 @@
 import { registerAbility } from '../../abilityRegistry';
-import { addLogs, setDamageRoll } from '../../../types/CombatState';
-import { formatDice } from '../../../types/Dice';
+import { addLogs, setDamageRoll } from '../../../types/combatState';
+import { formatDice } from '../../../types/dice';
 import { isHeroDamageRollPhase } from '../abilityFactories';
 
 registerAbility({

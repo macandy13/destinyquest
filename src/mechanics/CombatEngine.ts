@@ -23,13 +23,13 @@
  * 4. nextRound: Resets for the next round, handling cooldowns and duration ticks.
  */
 
-import { CombatState, Combatant, ActiveAbility, addLogs, applyEffect, forEachActiveAbility, dealDamage, AttackSource, setDamageRoll } from '../types/CombatState';
-import { sumDice, rollDice, formatDice, DiceRoll } from '../types/Dice';
-import { Hero, HeroStats, BackpackItem } from '../types/Hero';
+import { CombatState, Combatant, ActiveAbility, addLogs, applyEffect, forEachActiveAbility, dealDamage, AttackSource, setDamageRoll, getCombatant } from '../types/combatState';
+import { sumDice, rollDice, formatDice, DiceRoll } from '../types/dice';
+import { Hero, HeroStats, BackpackItem } from '../types/hero';
 import { getAbilityDefinition } from './abilityRegistry';
-import { calculateEffectiveStatsForType, Effect } from '../types/Effect';
-import { getOpponent, Enemy } from '../types/Character';
-import { Stats } from '../types/Stats';
+import { calculateEffectiveStatsForType, Effect } from '../types/effect';
+import { getOpponent, Enemy } from '../types/character';
+import { Stats } from '../types/stats';
 import './allAbilities'; // Ensure abilities are registered
 
 // Default easy enemy for testing or fallback
@@ -355,16 +355,21 @@ export function applyDamage(state: CombatState): CombatState {
     state = { ...state, phase: 'apply-damage' };
     const effectiveStats = calculateEffectiveStats(state);
     const totalDiceValue = sumDice(state.damage!.damageRolls);
-    const skill = Math.max(effectiveStats[state.winner!].brawn, effectiveStats[state.winner!].magic);
+    const winnerType = state.winner!;
+    const winnerStats = winnerType === 'hero' ? effectiveStats.hero : effectiveStats.enemy;
+
+    const skill = Math.max(winnerStats.brawn, winnerStats.magic);
     const totalModifiersValue = state.damage!.modifiers.reduce((a, b) => a + b.amount, 0);
-    const victim = getOpponent(state.winner!);
-    const armor = effectiveStats[victim].armour;
+    const victim = getOpponent(winnerType);
+    const victimStats = victim === 'hero' ? effectiveStats.hero : effectiveStats.enemy;
+    const armor = victimStats.armour;
     const totalDamage = Math.max(0,
         totalDiceValue
         + skill
         + totalModifiersValue
         - armor);
-    const damageAmount = Math.min(state[victim].stats.health, totalDamage);
+    const victimChar = getCombatant(state, victim);
+    const damageAmount = Math.min(victimChar.stats.health, totalDamage);
     state = dealDamage(
         state,
         AttackSource,

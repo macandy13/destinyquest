@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import { Hero, BackpackItem } from '../../types/Hero';
-import { Enemy } from '../../types/Character';
+import { Hero, BackpackItem } from '../../types/hero';
+import { Enemy } from '../../types/character';
 import EnemySelector from './EnemySelector';
 import CombatArena from './CombatArena';
 

@@ -1,5 +1,5 @@
 import { registerAbility } from '../../abilityRegistry';
-import { dealDamage } from '../../../types/CombatState';
+import { dealDamage } from '../../../types/combatState';
 
 registerAbility({
     name: 'Reflect',

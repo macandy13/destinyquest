@@ -1,6 +1,6 @@
 import { registerAbility } from '../../abilityRegistry';
-import { CombatState, appendEffect } from '../../../types/CombatState';
-import { CharacterType } from '../../../types/Character';
+import { CombatState, appendEffect } from '../../../types/combatState';
+import { CharacterType } from '../../../types/character';
 
 registerAbility({
     name: 'Rebound',

@@ -1,11 +1,11 @@
 import { AbilityDefinition, getAbilityDefinition } from '../mechanics/abilityRegistry';
-import { AbilityDescription } from './AbilityDescription';
-import { Character, Enemy, CharacterType, getOpponent } from './Character';
-import { CombatLog, getDamageType } from './CombatLog';
-import { DiceRoll, formatDice, sumDice } from './Dice';
-import { Effect, applyStatsModification, formatEffect } from './Effect';
-import { Hero, BackpackItem, EquipmentItem } from './Hero';
-import { Stats } from './Stats';
+import { AbilityDescription } from './abilityDescription';
+import { Character, Enemy, CharacterType, getOpponent } from './character';
+import { CombatLog, getDamageType } from './combatLog';
+import { DiceRoll, formatDice, sumDice } from './dice';
+import { Effect, applyStatsModification, formatEffect } from './effect';
+import { Hero, BackpackItem, EquipmentItem } from './hero';
+import { Stats } from './stats';
 
 export type CombatPhase = 'combat-start' | 'round-start' | 'speed-roll' | 'damage-roll' | 'apply-damage' | 'passive-damage' | 'round-end' | 'combat-end';
 
@@ -105,16 +105,15 @@ export function runOnDamageDealtHooks(state: CombatState, victim: CharacterType,
 }
 
 function setStats(state: CombatState, target: CharacterType, stats: Partial<Stats>): CombatState {
-    return {
-        ...state,
-        [target]: {
-            ...state[target],
-            stats: {
-                ...state[target].stats,
-                ...stats
-            }
+    const char = getCombatant(state, target);
+    const newChar = {
+        ...char,
+        stats: {
+            ...char.stats,
+            ...stats
         }
     };
+    return updateCombatant(state, target, newChar);
 }
 
 function runOnDamageRollHooks(state: CombatState): CombatState {
@@ -165,7 +164,7 @@ export function setDamageRoll(state: CombatState, damageRolls: DiceRoll[]): Comb
 }
 
 export function dealDamage(state: CombatState, source: string, target: CharacterType, amount: number, message?: string): CombatState {
-    const targetChar = state[target];
+    const targetChar = getCombatant(state, target);
     if (!targetChar) return state;
     if (targetChar.stats.health <= 0) return state;
     const actualDamage = Math.min(amount, targetChar.stats.health);
@@ -181,7 +180,7 @@ export function dealDamage(state: CombatState, source: string, target: Character
 }
 
 export function healDamage(state: CombatState, source: string, target: CharacterType, amount: number, message?: string): CombatState {
-    const targetChar = state[target];
+    const targetChar = getCombatant(state, target);
     if (!targetChar) return state;
     if (targetChar.stats.health === targetChar.stats.maxHealth) return state;
     const actualHealed = Math.min(amount, targetChar.stats.maxHealth - targetChar.stats.health);
@@ -196,20 +195,19 @@ export function healDamage(state: CombatState, source: string, target: Character
 }
 
 export function hasEffect(state: CombatState, target: CharacterType, source: string) {
-    return state[target].activeEffects.some(e => e.source === source);
+    return getCombatant(state, target).activeEffects.some(e => e.source === source);
 }
 
 export function appendEffect(state: CombatState, target: CharacterType, effect: Effect) {
-    state = {
-        ...state,
-        [target]: {
-            ...state[target],
-            activeEffects: [
-                ...state[target].activeEffects,
-                effect,
-            ],
-        },
+    const char = getCombatant(state, target);
+    const newChar = {
+        ...char,
+        activeEffects: [
+            ...char.activeEffects,
+            effect,
+        ]
     };
+    state = updateCombatant(state, target, newChar);
     state = addLogs(state, {
         message: `${effect.source} applied effect ${formatEffect(effect)} to ${state[target].name}`,
     });
@@ -223,30 +221,28 @@ export function applyEffect(state: CombatState, effect: Effect): CombatState {
         state = appendEffect(state, target, effect);
     } else if (effect.duration === 0) {
         // One-time effects are applied immediately. Mostly used for health restoration.
-        state = {
-            ...state,
-            [target]: {
-                ...state[target],
-                stats: applyStatsModification(state[target].stats, effect.stats)
-            }
+        const char = getCombatant(state, target);
+        const newChar = {
+            ...char,
+            stats: applyStatsModification(char.stats, effect.stats)
         };
+        state = updateCombatant(state, target, newChar);
         state = addLogs(state, {
-            message: `${effect.source} applied effect ${formatEffect(effect)} to ${state[target].name}`,
+            message: `${effect.source} applied effect ${formatEffect(effect)} to ${newChar.name}`,
         });
     }
     return state;
 }
 
 export function removeEffect(state: CombatState, target: CharacterType, source: string) {
-    state = {
-        ...state,
-        [target]: {
-            ...state[target],
-            activeEffects: state[target].activeEffects.filter(e => e.source !== source),
-        },
+    const char = getCombatant(state, target);
+    const newChar = {
+        ...char,
+        activeEffects: char.activeEffects.filter(e => e.source !== source),
     };
+    state = updateCombatant(state, target, newChar);
     state = addLogs(state, {
-        message: `${source} removed from ${state[target].name}`,
+        message: `${source} removed from ${newChar.name}`,
     });
     return state;
 }
@@ -292,4 +288,22 @@ export function addLogs(arg: CombatState | CombatLog[], ...logs: Partial<CombatL
         return [...arg, ...fullLogs];
     }
     return { ...arg, logs: [...arg.logs, ...fullLogs] };
+}
+
+export function getCombatant(state: CombatState, type: CharacterType): Combatant {
+    return type === 'hero' ? state.hero : state.enemy;
+}
+
+export function updateCombatant(state: CombatState, type: CharacterType, combatant: Combatant): CombatState {
+    if (type === 'hero') {
+        return {
+            ...state,
+            hero: combatant as Combatant<Hero>
+        };
+    } else {
+        return {
+            ...state,
+            enemy: combatant as Combatant<Enemy>
+        };
+    }
 }

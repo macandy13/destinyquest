@@ -1,15 +1,14 @@
 import { registerAbility, AbilityContext } from '../../abilityRegistry';
 import { createReactionAbility, isOpponentDamageRollPhase } from '../abilityFactories';
-import { CombatState } from '../../../types/CombatState';
+import { CombatState, getCombatant } from '../../../types/combatState';
 
 registerAbility(createReactionAbility({
     name: 'Vanish',
     type: 'combat',
     description: 'Avoid damage after losing a round (still affected by passive damage like bleed/venom).',
-    blockAttack: true,
     canActivate: (state: CombatState, { owner }: AbilityContext) => {
         const cancellationEffects = ['Ensnare', 'Hamstring'];
-        const agent = state[owner];
+        const agent = getCombatant(state, owner);
         if (!agent) return false;
 
         const isDisabled = agent.activeEffects

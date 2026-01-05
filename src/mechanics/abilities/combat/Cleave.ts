@@ -1,6 +1,6 @@
 import { registerAbility } from '../../abilityRegistry';
-import { rollDice, sumDice } from '../../../types/Dice';
-import { dealDamage, skipDamagePhase } from '../../../types/CombatState';
+import { rollDice, sumDice } from '../../../types/dice';
+import { dealDamage, skipDamagePhase } from '../../../types/combatState';
 import { isOwnerDamageRollPhase } from '../abilityFactories';
 
 registerAbility({

@@ -1,6 +1,6 @@
-import { dealDamage } from '../../../types/CombatState';
+import { dealDamage } from '../../../types/combatState';
 import { registerAbility } from '../../abilityRegistry';
-import { getOpponent } from '../../../types/Character';
+import { getOpponent } from '../../../types/character';
 
 registerAbility({
     name: 'Thorns',

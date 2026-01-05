@@ -1,7 +1,7 @@
 import { describe, it, expect, beforeEach } from 'vitest';
 import { AbilityDefinition, getAbilityDefinition } from '../../abilityRegistry';
 import { INITIAL_STATE } from '../../../tests/testUtils';
-import { CombatState } from '../../../types/CombatState';
+import { CombatState } from '../../../types/combatState';
 import './Rust';
 
 describe('Rust', () => {

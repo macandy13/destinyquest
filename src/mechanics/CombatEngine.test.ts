@@ -11,8 +11,8 @@ import {
     activateAbility,
 } from './CombatEngine';
 import { MOCK_HERO, MOCK_ENEMY, TEST_BOOK, deterministicRoll, enemyWithStats, heroWithStats, mockDiceRolls, testEquipment, testBackpackItem } from '../tests/testUtils';
-import { Hero } from '../types/Hero';
-import { Enemy } from '../types/Character';
+import { Hero } from '../types/hero';
+import { Enemy } from '../types/character';
 
 describe('CombatEngine', () => {
     it('should work for a simple flow', () => {

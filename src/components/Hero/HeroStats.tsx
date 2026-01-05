@@ -1,8 +1,8 @@
 import React from 'react';
-import { HeroStats as HeroStatsType, Hero } from '../../types/Hero';
+import { HeroStats as HeroStatsType, Hero } from '../../types/hero';
 import NumberControl from '../Shared/NumberControl';
 import './HeroStats.css';
-import { getStatIcon } from '../../types/Stats';
+import { getStatIcon } from '../../types/stats';
 import { getAbilityDefinition, getAbilityIcon } from '../../mechanics/abilityRegistry';
 
 import DqCard from '../Shared/DqCard';

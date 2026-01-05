@@ -1,5 +1,5 @@
 import { registerAbility } from '../../abilityRegistry';
-import { addLogs, appendEffect } from '../../../types/CombatState';
+import { addLogs, appendEffect } from '../../../types/combatState';
 
 registerAbility({
     name: 'Feral Fury',

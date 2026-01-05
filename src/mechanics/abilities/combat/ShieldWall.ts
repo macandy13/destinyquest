@@ -1,8 +1,8 @@
 import { registerAbility } from '../../abilityRegistry';
-import { addLogs, dealDamage } from '../../../types/CombatState';
-import { rollDice, sumDice } from '../../../types/Dice';
-import { appendEffect } from '../../../types/CombatState';
-import { getOpponent } from '../../../types/Character';
+import { addLogs, dealDamage, getCombatant } from '../../../types/combatState';
+import { rollDice, sumDice } from '../../../types/dice';
+import { appendEffect } from '../../../types/combatState';
+import { getOpponent } from '../../../types/character';
 
 registerAbility({
     name: 'Shield Wall',
@@ -15,7 +15,8 @@ registerAbility({
             && !['passive-damage', 'round-end', 'combat-end'].includes(state.phase);
     },
     onActivate: (state, { owner }) => {
-        const armour = state[owner].stats.armour || 0;
+        const char = getCombatant(state, owner);
+        const armour = char.stats.armour || 0;
         state = appendEffect(state, owner, {
             stats: { armour: armour },
             source: 'Shield Wall',

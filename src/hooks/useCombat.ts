@@ -1,6 +1,6 @@
 import { useState } from 'react';
-import { Enemy } from '../types/Character';
-import { Hero } from '../types/Hero';
+import { Enemy } from '../types/character';
+import { Hero } from '../types/hero';
 import {
     startCombat,
     startRound,
@@ -14,7 +14,7 @@ import {
     handleReroll as engineHandleReroll,
     applyPassiveAbilities,
 } from '../mechanics/CombatEngine';
-import { CombatState } from '../types/CombatState';
+import { CombatState } from '../types/combatState';
 
 
 export function useCombat(hero: Hero, enemy: Enemy) {

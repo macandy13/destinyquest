@@ -1,5 +1,5 @@
-import { BookRef } from './BookRef';
-import { Stats } from './Stats';
+import { BookRef } from './bookRef';
+import { Stats } from './stats';
 
 export type CharacterType = 'hero' | 'enemy';
 

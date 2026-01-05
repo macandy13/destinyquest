@@ -1,6 +1,6 @@
 import { registerAbility } from '../../abilityRegistry';
-import { appendEffect, hasEffect } from '../../../types/CombatState';
-import { getOpponent } from '../../../types/Character';
+import { appendEffect, hasEffect } from '../../../types/combatState';
+import { getOpponent } from '../../../types/character';
 import { canModifySpeed } from '../abilityFactories';
 
 registerAbility({

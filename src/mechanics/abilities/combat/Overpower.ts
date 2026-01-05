@@ -6,5 +6,4 @@ registerAbility(createReactionAbility({
     type: 'combat',
     description: 'Stop an opponent\'s damage after they win a round and automatically inflict 2 damage dice (ignoring armour).',
     damageDice: 2, // Renamed from counterDamageDice
-    blockAttack: true, // Renamed from implied behavior
 }));

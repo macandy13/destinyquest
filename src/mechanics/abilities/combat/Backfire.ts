@@ -1,8 +1,8 @@
 import { registerAbility } from '../../abilityRegistry';
-import { sumDice, rollDice, formatDice } from '../../../types/Dice';
+import { sumDice, rollDice, formatDice } from '../../../types/dice';
 import { isOpponentDamageRollPhase } from '../abilityFactories';
-import { dealDamage, skipDamagePhase } from '../../../types/CombatState';
-import { getOpponent } from '../../../types/Character';
+import { dealDamage, skipDamagePhase } from '../../../types/combatState';
+import { getOpponent } from '../../../types/character';
 
 registerAbility({
     name: 'Backfire',

@@ -1,5 +1,5 @@
 import { registerAbility } from '../../abilityRegistry';
-import { healDamage } from '../../../types/CombatState';
+import { healDamage } from '../../../types/combatState';
 
 registerAbility({
     name: 'Leech',

@@ -1,8 +1,8 @@
 import { registerAbility } from '../../abilityRegistry';
-import { rollDice, sumDice } from '../../../types/Dice';
+import { rollDice, sumDice } from '../../../types/dice';
 import { isHeroDamageRollPhase } from '../abilityFactories';
-import { dealDamage, skipDamagePhase } from '../../../types/CombatState';
-import { getOpponent } from '../../../types/Character';
+import { dealDamage, skipDamagePhase } from '../../../types/combatState';
+import { getOpponent } from '../../../types/character';
 
 registerAbility({
     name: 'Black Rain',

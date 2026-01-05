@@ -1,7 +1,7 @@
 import { describe, it, expect, beforeEach } from 'vitest';
 import { INITIAL_STATE, enemyWithStats } from '../../../tests/testUtils';
 import { getAbilityDefinition, AbilityDefinition } from '../../abilityRegistry';
-import { CombatState } from '../../../types/CombatState';
+import { CombatState } from '../../../types/combatState';
 import './DeadlyPoisons';
 import './Venom';
 import './PoisonMastery';

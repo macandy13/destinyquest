@@ -1,7 +1,7 @@
 import { registerAbility } from '../../abilityRegistry';
-import { addLogs, appendEffect } from '../../../types/CombatState';
-import { CombatState } from '../../../types/CombatState';
-import { CharacterType, getOpponent } from '../../../types/Character';
+import { addLogs, appendEffect } from '../../../types/combatState';
+import { CombatState } from '../../../types/combatState';
+import { CharacterType, getOpponent } from '../../../types/character';
 
 function canActivate(state: CombatState, owner: CharacterType): boolean {
     // Check if opponent is winner.

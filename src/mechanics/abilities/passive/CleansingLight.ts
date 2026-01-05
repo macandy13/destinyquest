@@ -1,4 +1,4 @@
-import { healDamage } from '../../../types/CombatState';
+import { healDamage } from '../../../types/combatState';
 import { registerAbility } from '../../abilityRegistry';
 
 registerAbility({

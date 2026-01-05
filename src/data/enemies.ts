@@ -1,4 +1,4 @@
-import { Enemy } from '../types/CombatState';
+import { Enemy } from "../types/character";
 
 export const ENEMIES: Enemy[] = [
   {

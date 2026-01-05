@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Hero, EquipmentSlot as EquipmentSlotType, EquipmentItem } from '../../types/Hero';
+import { Hero, EquipmentSlot as EquipmentSlotType, EquipmentItem } from '../../types/hero';
 import EquipmentSlot from './EquipmentSlot';
 import InventorySelector from './InventorySelector';
 import heroSilhouette from '../../assets/hero_silhouette.png';

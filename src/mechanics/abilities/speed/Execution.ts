@@ -1,6 +1,6 @@
 import { registerAbility } from '../../abilityRegistry';
-import { CombatState, dealDamage } from '../../../types/CombatState';
-import { CharacterType } from '../../../types/Character';
+import { CombatState, dealDamage } from '../../../types/combatState';
+import { CharacterType } from '../../../types/character';
 
 function canActivate(state: CombatState, { owner }: { owner: CharacterType }): boolean {
     if (owner !== 'hero') return false;

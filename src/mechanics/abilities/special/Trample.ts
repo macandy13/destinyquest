@@ -1,4 +1,4 @@
-import { CombatState } from '../../../types/CombatState';
+import { CombatState } from '../../../types/combatState';
 import { registerAbility } from '../../abilityRegistry';
 import { AbilityContext } from '../../abilityRegistry';
 

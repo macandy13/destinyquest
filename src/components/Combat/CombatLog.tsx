@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { CombatLog as CombatLogType } from '../../types/CombatState';
+import { CombatLog as CombatLogType } from '../../types/combatLog';
 import './CombatLog.css';
 
 interface CombatLogProps {

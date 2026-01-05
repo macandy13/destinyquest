@@ -1,5 +1,5 @@
 import React from 'react';
-import { ActiveAbility } from '../../types/CombatState';
+import { ActiveAbility } from '../../types/combatState';
 import { getAbilityDefinition, getAbilityIcon } from '../../mechanics/abilityRegistry';
 import './CombatAbilityItem.css';
 

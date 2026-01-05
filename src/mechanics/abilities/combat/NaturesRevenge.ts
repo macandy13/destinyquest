@@ -1,8 +1,8 @@
 import { registerAbility } from '../../abilityRegistry';
-import { addLogs } from '../../../types/CombatState';
-import { rollDice, sumDice } from '../../../types/Dice';
-import { CombatState, dealDamage, appendEffect } from '../../../types/CombatState';
-import { CharacterType, getOpponent } from '../../../types/Character';
+import { addLogs } from '../../../types/combatState';
+import { rollDice, sumDice } from '../../../types/dice';
+import { CombatState, dealDamage, appendEffect } from '../../../types/combatState';
+import { CharacterType, getOpponent } from '../../../types/character';
 
 function canActivate(state: CombatState, owner: CharacterType): boolean {
     return state.phase === 'damage-roll' && state.winner === owner;

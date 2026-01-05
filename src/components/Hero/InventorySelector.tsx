@@ -1,10 +1,10 @@
 import React from 'react';
-import { EquipmentSlot, EquipmentItem, BackpackItem } from '../../types/Hero';
+import { EquipmentSlot, EquipmentItem, BackpackItem } from '../../types/hero';
 import { getItemsBySlot, ITEMS } from '../../data/items';
 import DqCard from '../Shared/DqCard';
 import './InventorySelector.css';
-import { getStatIcon } from '../../types/Stats';
-import { formatEffect } from '../../types/Effect';
+import { getStatIcon } from '../../types/stats';
+import { formatEffect } from '../../types/effect';
 
 
 
