@@ -18,6 +18,6 @@ describe('Spore Cloud', () => {
 
         const result = ability.onDamageDealt?.(state, { owner: 'hero', target: 'hero' }, 'Attack', 5);
 
-        expect(result?.logs.find(l => l.message.includes('Spore Cloud dealt'))).toBeDefined();
+        expect(result?.enemy.stats.health).toBe(INITIAL_STATE.enemy.stats.health - 5);
     });
 });

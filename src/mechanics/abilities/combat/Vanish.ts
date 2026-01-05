@@ -1,13 +1,12 @@
 import { registerAbility, AbilityContext } from '../../abilityRegistry';
-import { createDamageBlockerAbility, isOpponentDamageRollPhase } from '../abilityFactories';
+import { createReactionAbility, isOpponentDamageRollPhase } from '../abilityFactories';
 import { CombatState } from '../../../types/CombatState';
-import { CharacterType } from '../../../types/Character';
 
-registerAbility(createDamageBlockerAbility({
+registerAbility(createReactionAbility({
     name: 'Vanish',
     type: 'combat',
     description: 'Avoid damage after losing a round (still affected by passive damage like bleed/venom).',
-    blockMessage: 'Disappeared from sight!',
+    blockAttack: true,
     canActivate: (state: CombatState, { owner }: AbilityContext) => {
         const cancellationEffects = ['Ensnare', 'Hamstring'];
         const agent = state[owner];

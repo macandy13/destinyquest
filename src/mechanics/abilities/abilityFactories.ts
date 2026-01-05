@@ -1,6 +1,6 @@
 import { AbilityContext, AbilityDefinition } from '../abilityRegistry';
-import { addLogs, appendEffect, CombatState } from '../../types/CombatState';
-import { rollDice, sumDice } from '../../types/Dice';
+import { appendEffect, CombatState, dealDamage, skipDamagePhase } from '../../types/CombatState';
+import { formatDice, rollDice, sumDice } from '../../types/Dice';
 import { AbilityType } from '../../types/AbilityDescription';
 import { CharacterType, getOpponent } from '../../types/Character';
 import { Effect } from '../../types/Effect';
@@ -24,6 +24,42 @@ function resolveTarget(target: TargetType, state: CombatState, context: AbilityC
             return getOpponent(state.winner!);
     }
 }
+
+export function canModifySpeed(state: CombatState): boolean {
+    return ['combat-start', 'round-start'].includes(state.phase);
+}
+
+export function canModifySpeedDice(state: CombatState): boolean {
+    return ['combat-start', 'round-start', 'speed-roll'].includes(state.phase);
+}
+
+export function canModifyDamage(state: CombatState): boolean {
+    return ['damage-roll'].includes(state.phase);
+}
+
+export function canModifyDamageDice(state: CombatState): boolean {
+    return ['combat-start', 'round-start', 'damage-roll'].includes(state.phase);
+}
+
+export function canModifyRolledDice(state: CombatState): boolean {
+    return ['speed-roll', 'damage-roll'].includes(state.phase);
+}
+
+export function isHeroDamageRollPhase(state: CombatState): boolean {
+    return canModifyDamage(state) && state.winner === 'hero';
+};
+
+export function isEnemyDamageRollPhase(state: CombatState): boolean {
+    return canModifyDamage(state) && state.winner === 'enemy';
+};
+
+export function isOwnerDamageRollPhase(state: CombatState, context: AbilityContext): boolean {
+    return canModifyDamage(state) && state.winner === context.owner;
+};
+
+export function isOpponentDamageRollPhase(state: CombatState, context: AbilityContext): boolean {
+    return canModifyDamage(state) && state.winner === getOpponent(context.owner);
+};
 
 export interface StatModifierAbilityConfig {
     name: string;
@@ -103,107 +139,87 @@ export function createDamageDiceModifier(config: {
     });
 }
 
-
-export interface DamageBlockerAbilityConfig {
+export interface ReactionAbilityConfig {
     name: string;
-    icon?: string;
     description: string;
     type: AbilityType;
-    blockMessage?: string; // Message to log, e.g. "Opponent's attack blocked!"
-    counterDamageDice?: number; // Number of dice to roll for counter damage (deflect/brutality)
+    icon?: string;
+    damageDice?: number; // Number of dice to roll for counter damage. If 0/undefined, no damage dealing.
+    blockAttack?: boolean; // If true, blocks the incoming attack (skips damage phase). Default false (passive retaliation).
     canActivate?: (state: CombatState, context: AbilityContext) => boolean;
 }
 
-export function createDamageBlockerAbility(config: DamageBlockerAbilityConfig): AbilityDefinition {
-    const checker = config.canActivate || isEnemyDamageRollPhase;
+export function createReactionAbility(config: ReactionAbilityConfig): AbilityDefinition {
+    const checker = config.canActivate || isOpponentDamageRollPhase;
     return {
         name: config.name,
-        type: config.type,
+        type: config.type ?? 'combat',
         description: config.description,
         icon: config.icon,
         canActivate: checker,
         onActivate: (state: CombatState, context: AbilityContext): CombatState => {
             if (!checker(state, context)) return state;
 
-            let logMessage = `Used ability: ${config.name}.`;
-            if (config.blockMessage) {
-                logMessage += ` ${config.blockMessage}`;
-            } else if (!config.counterDamageDice) {
-                logMessage += " Opponent's attack blocked!";
-            }
+            const blockMsg = `Ability ${config.name} blocked damage`;
+            state = skipDamagePhase(state, blockMsg);
 
-            // Correctly structure damage rolls within the 'damage' object
-            // and use bonusDamage instead of damageDealt
-            const updates: Partial<CombatState> = {
-                phase: 'round-end',
-                damage: {
-                    damageRolls: [{ value: 0, isRerolled: false }],
-                    modifiers: []
-                }
-            };
-
-            let logs = state.logs;
-
-            if (config.counterDamageDice) {
-                const dmgRolls = rollDice(config.counterDamageDice);
+            if (config.damageDice && config.damageDice > 0) {
+                const dmgRolls = rollDice(config.damageDice);
                 const dmg = sumDice(dmgRolls);
-                const rolls = dmgRolls.map(r => r.value);
-
-                updates.bonusDamage = [...state.bonusDamage, { target: 'enemy', amount: dmg, source: config.name }];
-
-                // Override log message for counter damage abilities to match existing behavior
-                // "Brutality! Blocked attack and inflicted X damage (Y+Z)."
-                logMessage = `${config.name}! Blocked attack and inflicted ${dmg} damage (${rolls.join('+')}).`;
-                logs = addLogs(logs, {
-                    round: state.round,
-                    message: logMessage,
-                    type: 'damage-hero'
-                });
-            } else {
-                logs = addLogs(logs, { round: state.round, message: logMessage, type: 'info' });
+                state = dealDamage(
+                    state,
+                    config.name,
+                    getOpponent(context.owner),
+                    dmg,
+                    `Counter damage from ${config.name}: ${formatDice(dmgRolls)}=${dmg}`
+                );
             }
-
-            updates.logs = logs;
-            return {
-                ...state,
-                ...updates
-            };
+            return state;
         }
     };
 }
 
-export function canModifySpeed(state: CombatState): boolean {
-    return ['combat-start', 'round-start'].includes(state.phase);
+export interface RetaliationAbilityConfig {
+    name: string;
+    description: string;
+    type: AbilityType;
+    icon?: string;
+    damageDice?: number; // Number of dice to roll for counter damage. If 0/undefined, no damage dealing.
+    damage?: number; // Fixed damage to deal.
 }
 
-export function canModifySpeedDice(state: CombatState): boolean {
-    return ['combat-start', 'round-start', 'speed-roll'].includes(state.phase);
+export function createRetaliationAbility(config: RetaliationAbilityConfig): AbilityDefinition {
+    return {
+        name: config.name,
+        type: config.type ?? 'combat',
+        description: config.description,
+        icon: config.icon,
+        onDamageDealt: (state: CombatState, context: AbilityContext, _source: string, damage: number): CombatState => {
+            if (context.owner !== context.target || damage <= 0) return state;
+
+            const blockMsg = `Ability ${config.name} blocked damage`;
+            state = skipDamagePhase(state, blockMsg);
+
+            const damageSources = [];
+            let totalDamage = 0;
+            if (config.damage) {
+                damageSources.push(`${config.damage}`);
+                totalDamage += config.damage;
+            }
+            if (config.damageDice && config.damageDice > 0) {
+                const dmgRolls = rollDice(config.damageDice);
+                totalDamage += sumDice(dmgRolls);
+            }
+            if (totalDamage > 0) {
+                state = dealDamage(
+                    state,
+                    config.name,
+                    getOpponent(context.owner),
+                    totalDamage,
+                    `Counter damage from ${config.name}: ${damageSources.join('+')} = ${totalDamage}`
+                );
+            }
+            return state;
+        }
+    };
 }
-
-export function canModifyDamage(state: CombatState): boolean {
-    return ['damage-roll'].includes(state.phase);
-}
-
-export function canModifyDamageDice(state: CombatState): boolean {
-    return ['combat-start', 'round-start', 'damage-roll'].includes(state.phase);
-}
-
-export function canModifyRolledDice(state: CombatState): boolean {
-    return ['speed-roll', 'damage-roll'].includes(state.phase);
-}
-
-export function isHeroDamageRollPhase(state: CombatState): boolean {
-    return canModifyDamage(state) && state.winner === 'hero';
-};
-
-export function isEnemyDamageRollPhase(state: CombatState): boolean {
-    return canModifyDamage(state) && state.winner === 'enemy';
-};
-
-export function isOwnerDamageRollPhase(state: CombatState, context: AbilityContext): boolean {
-    return canModifyDamage(state) && state.winner === context.owner;
-};
-
-export function isOpponentDamageRollPhase(state: CombatState, context: AbilityContext): boolean {
-    return canModifyDamage(state) && state.winner === getOpponent(context.owner);
-};

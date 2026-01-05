@@ -27,6 +27,6 @@ describe('Retaliation', () => {
         // It updates `enemy.stats.health`.
         expect(result?.enemy.stats.health).toBeLessThan(10);
         // It also adds a log.
-        expect(result?.logs.some(l => l.message?.includes('Retaliation dealt'))).toBe(true);
+        expect(result?.logs.some(l => l.message?.includes('Retaliation'))).toBe(true);
     });
 });

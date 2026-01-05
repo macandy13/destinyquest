@@ -27,10 +27,12 @@ describe('Brutality', () => {
 
         const result = ability.onActivate?.(state, { owner: 'hero' });
 
-        expect(result?.phase).toBe('round-end');
+        expect(result?.phase).toBe('passive-damage');
         expect(result?.damage?.damageRolls).toEqual([{ value: 0, isRerolled: false }]);
         // Brutality deals X damage directly or via log?
         // Assuming implementation uses dealDamage/log.
         expect(result?.logs.some(l => l.message.includes('Brutality'))).toBe(true);
     });
 });
+
+```

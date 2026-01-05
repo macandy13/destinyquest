@@ -18,6 +18,6 @@ describe('Thorn Fist', () => {
 
         const result = ability.onDamageDealt?.(state, { owner: 'hero', target: 'hero' }, 'Attack', 5);
 
-        expect(result?.logs.find(l => l.message.includes('Thorn Fist dealt'))).toBeDefined();
+        expect(result?.enemy.stats.health).toBe(INITIAL_STATE.enemy.stats.health - 5);
     });
 });

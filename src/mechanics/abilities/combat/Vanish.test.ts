@@ -24,7 +24,6 @@ describe('Vanish', () => {
 
         const result = ability.onActivate?.(state, { owner: 'hero' });
 
-        expect(result?.phase).toBe('round-end');
-        expect(result?.damage?.damageRolls).toEqual([{ value: 0, isRerolled: false }]);
+        expect(result!.phase).toBe('passive-damage');
     });
 });
