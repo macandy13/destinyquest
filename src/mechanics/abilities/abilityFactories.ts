@@ -1,6 +1,6 @@
 import { AbilityContext, AbilityDefinition } from '../abilityRegistry';
 import { appendEffect, CombatState, dealDamage, skipDamagePhase } from '../../types/combatState';
-import { formatDice, rollDice, sumDice } from '../../types/dice';
+import { formatDice, rollDice, sumDice, DiceRoll } from '../../types/dice';
 import { AbilityType } from '../../types/abilityDescription';
 import { CharacterType, getOpponent } from '../../types/character';
 import { Effect } from '../../types/effect';
@@ -142,6 +142,42 @@ export function createDamageDiceModifier(config: {
     });
 }
 
+export function modifySpeedRolls(
+    state: CombatState,
+    target: CharacterType,
+    modifier: (rolls: DiceRoll[]) => DiceRoll[]
+): CombatState {
+    const propName = target === 'hero' ? 'heroSpeedRolls' : 'enemySpeedRolls';
+    const oldRolls = state[propName];
+    if (!oldRolls) return state;
+
+    const newRolls = modifier([...oldRolls]);
+
+    return {
+        ...state,
+        [propName]: newRolls
+    };
+}
+
+export function modifyDamageRolls(
+    state: CombatState,
+    roller: CharacterType,
+    modifier: (rolls: DiceRoll[]) => DiceRoll[]
+): CombatState {
+    if (state.winner !== roller) return state;
+    if (!state.damage || !state.damage.damageRolls) return state;
+
+    const newRolls = modifier([...state.damage.damageRolls]);
+
+    return {
+        ...state,
+        damage: {
+            ...state.damage,
+            damageRolls: newRolls
+        }
+    };
+}
+
 export interface ReactionAbilityConfig {
     name: string;
     description: string;
@@ -188,6 +224,7 @@ export interface RetaliationAbilityConfig {
     icon?: string;
     damageDice?: number; // Number of dice to roll for counter damage. If 0/undefined, no damage dealing.
     damage?: number; // Fixed damage to deal.
+    canActivate?: (state: CombatState, context: AbilityContext) => boolean;
 }
 
 export function createRetaliationAbility(config: RetaliationAbilityConfig): AbilityDefinition {
@@ -196,6 +233,7 @@ export function createRetaliationAbility(config: RetaliationAbilityConfig): Abil
         type: config.type ?? 'combat',
         description: config.description,
         icon: config.icon,
+        canActivate: config.canActivate,
         onDamageDealt: (state: CombatState, context: AbilityContext, _source: string, damage: number): CombatState => {
             if (context.owner !== context.target || damage <= 0) return state;
 

@@ -194,6 +194,10 @@ export function healDamage(state: CombatState, source: string, target: Character
     return state;
 }
 
+export function hasAbility(state: CombatState, target: CharacterType, name: string) {
+    return getCombatant(state, target).activeAbilities.keys().some(e => e === name);
+}
+
 export function hasEffect(state: CombatState, target: CharacterType, source: string) {
     return getCombatant(state, target).activeEffects.some(e => e.source === source);
 }

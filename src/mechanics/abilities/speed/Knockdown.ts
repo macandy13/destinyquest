@@ -8,5 +8,7 @@ registerAbility(createStatModifierAbility({
     stats: { speedDice: -1 },
     duration: 1,
     target: 'opponent',
-    canActivate: (state) => state.phase === 'speed-roll',
+    canActivate: (state, { owner }) => (
+        state.phase === 'speed-roll'
+        && !hasAbility(state, getOpponent(owner), 'Steadfast')),
 }));
