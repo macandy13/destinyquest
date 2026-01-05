@@ -34,5 +34,3 @@ describe('Brutality', () => {
         expect(result?.logs.some(l => l.message.includes('Brutality'))).toBe(true);
     });
 });
-
-```

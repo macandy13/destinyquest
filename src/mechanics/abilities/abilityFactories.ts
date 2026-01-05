@@ -28,7 +28,6 @@ function resolveTarget(target: TargetType, state: CombatState, context: AbilityC
 export function canModifySpeed(state: CombatState): boolean {
     return ['combat-start', 'round-start'].includes(state.phase);
 }
-
 export function canModifySpeedDice(state: CombatState): boolean {
     return ['combat-start', 'round-start', 'speed-roll'].includes(state.phase);
 }
@@ -63,8 +62,6 @@ export function isOpponentDamageRollPhase(state: CombatState, context: AbilityCo
 
 export interface StatModifierAbilityConfig {
     name: string;
-    icon?: string;
-    description: string;
     type: AbilityType;
     effect?: Effect;
     // Backward compatibility for easier definition
@@ -217,7 +214,6 @@ export function createRetaliationAbility(config: RetaliationAbilityConfig): Abil
                     getOpponent(context.owner),
                     totalDamage,
                     `Counter damage from ${config.name}: ${damageSources.join('+')} = ${totalDamage}`
-                );
             }
             return state;
         }
