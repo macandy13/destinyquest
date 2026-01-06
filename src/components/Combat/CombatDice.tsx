@@ -8,10 +8,11 @@ interface CombatDiceProps {
     baseValue?: number; // Base stat value (e.g. speed, brawn)
     modifierValue?: number; // Additional modifiers
     onDieClick?: (index: number) => void;
+    selectedIndices?: number[];
     mode?: 'normal' | 'select-die' | 'disabled';
 }
 
-const CombatDice: React.FC<CombatDiceProps> = ({ values, label, baseValue = 0, modifierValue = 0, onDieClick, mode = 'normal' }) => {
+const CombatDice: React.FC<CombatDiceProps> = ({ values, label, baseValue = 0, modifierValue = 0, onDieClick, mode = 'normal', selectedIndices = [] }) => {
     // Track which specific dice indices are currently "rolling" (animating)
     const [rollingIndices, setRollingIndices] = useState<number[]>([]);
 
@@ -91,11 +92,12 @@ const CombatDice: React.FC<CombatDiceProps> = ({ values, label, baseValue = 0, m
                     // Interactive only if mode is select-die, not rolling, and not already rerolled (if relevant)
                     // The user requirement says "reroll mode should allow for selecting a specific die".
                     const isInteractive = mode === 'select-die' && !!onDieClick && !isDieRolling && !diceRoll.isRerolled;
+                    const isSelected = selectedIndices.includes(i);
 
                     return (
                         <div
                             key={i}
-                            className={`die d6 ${isDieRolling ? 'rolling' : ''} ${isInteractive ? 'interactive' : 'static'} ${diceRoll.isRerolled ? 'rerolled' : ''}`}
+                            className={`die d6 ${isDieRolling ? 'rolling' : ''} ${isInteractive ? 'interactive' : 'static'} ${diceRoll.isRerolled ? 'rerolled' : ''} ${isSelected ? 'selected' : ''}`}
                             onClick={() => handleDieClick(i, diceRoll)}
                         >
                             <span className="die-result">{diceRoll.value}</span>

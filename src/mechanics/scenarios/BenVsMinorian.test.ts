@@ -93,7 +93,7 @@ describe('Scenario: Ben vs Minorian', () => {
         state = endRound(state);
 
         expect(state.hero!.stats.health).toBe(35); // Sidestep avoids damage.
-        expect(state.enemy!.stats.health).toBe(74); // -2 (Bleed & Venom)
+        expect(state.enemy!.stats.health).toBe(74); // -1 Bleed & -3 Venom
 
         // --- ROUND 2 ---
         state = startRound(state);

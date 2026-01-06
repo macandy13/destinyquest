@@ -1,4 +1,4 @@
-import { AbilityDefinition, getAbilityDefinition } from '../mechanics/abilityRegistry';
+import { AbilityDefinition, getAbilityDefinition, toCanonicalName } from '../mechanics/abilityRegistry';
 import { AbilityDescription } from './abilityDescription';
 import { Character, Enemy, CharacterType, getOpponent } from './character';
 import { CombatLog, getDamageType } from './combatLog';
@@ -44,6 +44,27 @@ export interface AttackDamageDescriptor {
     modifiers: DamageDescriptor[];
 }
 
+export type InteractionType = 'dice' | 'choices';
+
+export interface InteractionRequest {
+    type: InteractionType;
+    target?: CharacterType;
+    mode: 'select';
+    count: number;
+    choices?: string[];
+}
+
+export interface InteractionResponse {
+    request: InteractionRequest;
+    selectedIndex: number;
+}
+
+export interface PendingInteraction {
+    ability: ActiveAbility;
+    requests: InteractionRequest[];
+    callback: (state: CombatState, response: InteractionResponse[]) => CombatState;
+}
+
 export interface CombatState {
     enemy: Combatant<Enemy>;
     hero: Combatant<Hero>;
@@ -77,28 +98,25 @@ export interface CombatState {
     /* Damage dealt during the current round */
     damageDealt: DamageDescriptor[];
 
-    /* Used to allow the user to select dice to be re-rolled */
-    rerollState?: {
-        source: string; // Ability name (e.g. 'Charm')
-        target: 'hero-speed' | 'enemy-speed' | 'damage';
-    };
+    /* Pending interaction request from an ability */
+    pendingInteraction?: PendingInteraction;
 }
 
-export function forEachActiveAbility(state: CombatState, callback: (ability: AbilityDefinition, owner: CharacterType) => void) {
+export function forEachActiveAbility(state: CombatState, callback: (ability: ActiveAbility, def: AbilityDefinition) => void) {
     [
         ...state.hero.activeAbilities.values(),
         ...state.enemy.activeAbilities.values()
     ].forEach(ability => {
         const def = getAbilityDefinition(ability.name);
         if (!def) return;
-        callback(def, ability.owner);
+        callback(ability, def);
     });
 }
 
 export function runOnDamageDealtHooks(state: CombatState, victim: CharacterType, source: string, amount: number): CombatState {
-    forEachActiveAbility(state, (def, owner) => {
+    forEachActiveAbility(state, (ability, def) => {
         if (def.onDamageDealt) {
-            state = def.onDamageDealt(state, { owner, target: victim }, source, amount);
+            state = def.onDamageDealt(state, { ability, owner: ability.owner, target: victim }, source, amount);
         }
     });
     return state;
@@ -118,9 +136,9 @@ function setStats(state: CombatState, target: CharacterType, stats: Partial<Stat
 
 function runOnDamageRollHooks(state: CombatState): CombatState {
     const looser = getOpponent(state.winner!);
-    forEachActiveAbility(state, (def, owner) => {
+    forEachActiveAbility(state, (ability, def) => {
         if (def.onDamageRoll && state.damage?.damageRolls) {
-            state = def.onDamageRoll(state, { owner, target: looser });
+            state = def.onDamageRoll(state, { ability, owner: ability.owner, target: looser });
         }
     });
     return state;
@@ -128,9 +146,9 @@ function runOnDamageRollHooks(state: CombatState): CombatState {
 
 function runOnDamageCalculateHooks(state: CombatState,): CombatState {
     const victim = getOpponent(state.winner!);
-    forEachActiveAbility(state, (def, owner) => {
+    forEachActiveAbility(state, (ability, def) => {
         if (def.onDamageCalculate && state.damage?.damageRolls) {
-            const mod = def.onDamageCalculate(state, { owner, target: victim });
+            const mod = def.onDamageCalculate(state, { ability, owner: ability.owner, target: victim });
             if (mod) {
                 state.damage.modifiers.push({
                     amount: mod,
@@ -146,12 +164,12 @@ function runOnDamageCalculateHooks(state: CombatState,): CombatState {
     return state;
 }
 
-export function setDamageRoll(state: CombatState, damageRolls: DiceRoll[]): CombatState {
+export function setDamageRoll(state: CombatState, damageRolls?: DiceRoll[]): CombatState {
     state = {
         ...state,
         phase: 'damage-roll',
         damage: {
-            damageRolls,
+            damageRolls: damageRolls ?? state.damage!.damageRolls!,
             modifiers: [],
         }
     };
@@ -204,9 +222,9 @@ export function healDamage(state: CombatState, source: string, target: Character
 
 export function hasAbility(state: CombatState, target: CharacterType, name: string) {
     const activeAbilities = getCombatant(state, target).activeAbilities;
-    const lowerName = name.toLowerCase();
+    const canonicalName = toCanonicalName(name);
     for (const key of activeAbilities.keys()) {
-        if (key.toLowerCase() === lowerName) return true;
+        if (key === canonicalName) return true;
     }
     return false;
 }

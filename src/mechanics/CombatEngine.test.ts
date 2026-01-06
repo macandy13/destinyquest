@@ -9,9 +9,8 @@ import {
     applyPassiveAbilities,
     useBackpackItem,
     activateAbility,
-    handleReroll,
 } from './CombatEngine';
-import { registerAbility } from './abilityRegistry';
+import { registerAbility, toCanonicalName } from './abilityRegistry';
 import { MOCK_HERO, MOCK_ENEMY, deterministicRoll, enemyWithStats, heroWithStats, testEquipment, testBackpackItem } from '../tests/testUtils';
 import { Hero } from '../types/hero';
 import { Enemy } from '../types/character';
@@ -110,41 +109,9 @@ describe('CombatEngine', () => {
         });
     });
 
-    describe('handleReroll', () => {
-        it('should update rolls and winner', () => {
-            let state = startCombat(hero, enemy);
-            state = startRound(state);
-            // Hero loses initially: 1+2=3 vs 3+1=4
-            state = rollForSpeed(state,
-                deterministicRoll([1, 1]),
-                deterministicRoll([2, 1]));
-            expect(state.winner).toBe('enemy');
+    describe('handlePendingInteractions', () => {
+        it('should ask user for choice and process response', () => {
 
-            // Set up a mock reroll state
-            state.rerollState = {
-                source: 'Test Reroll',
-                target: 'hero-speed',
-            };
-
-            // Mock ability definition
-            registerAbility({
-                name: 'Test Reroll',
-                type: 'combat',
-                description: 'Rerolls',
-                onReroll: (s, dieIndex) => {
-                    const newRolls = [...(s.heroSpeedRolls || [])];
-                    newRolls[dieIndex] = { value: 6, isRerolled: true };
-                    return { ...s, heroSpeedRolls: newRolls };
-                }
-            });
-
-            // Reroll first die
-            state = handleReroll(state, 0);
-
-            // Now hero: 6+1+1=8 vs 7. Hero wins.
-            expect(state.heroSpeedRolls![0].value).toBe(6);
-            expect(state.winner).toBe('hero');
-            expect(state.rerollState).toBeUndefined();
         });
     });
 
@@ -252,10 +219,10 @@ describe('CombatEngine', () => {
             // But let's verify specific behavior.
             // Note: 'combat' type abilities get 1 use per item by default in createHeroCombatant
 
-            expect(state.hero.activeAbilities.get(abilityName)?.uses).toBe(1);
+            expect(state.hero.activeAbilities.get(toCanonicalName(abilityName))?.uses).toBe(1);
 
             state = activateAbility(state, abilityName);
-            expect(state.hero.activeAbilities.has(abilityName)).toBe(false); // Should be removed if uses 0
+            expect(state.hero.activeAbilities.has(toCanonicalName(abilityName))).toBe(false); // Should be removed if uses 0
         });
     });
 

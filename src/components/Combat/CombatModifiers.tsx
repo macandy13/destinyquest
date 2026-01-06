@@ -25,7 +25,7 @@ const CombatModifiers: React.FC<CombatModifiersProps> = ({ modifications }) => {
             <div className="modifiers-list">
                 {modifications.map((item, i) => (
                     <div key={i} className="modifier-item">
-                        {item.source}: {formatEffect(item)} ({item.duration} rounds left)
+                        {item.source}: {formatEffect(item)} ({item.duration ?? '∞'} rounds left)
                     </div>
                 ))}
             </div>

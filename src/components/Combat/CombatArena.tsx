@@ -14,6 +14,7 @@ import ApplyDamagePhase from './ApplyDamagePhase';
 import PassiveDamagePhase from './PassiveDamagePhase';
 import RoundEndPhase from './RoundEndPhase';
 import CombatEndPhase from './CombatEndPhase';
+import InteractionOverlay from './InteractionOverlay';
 import './CombatArena.css';
 
 interface CombatArenaProps {
@@ -31,7 +32,7 @@ const CombatArena: React.FC<CombatArenaProps> = ({ hero, enemy, onCombatFinish }
         commitSpeedAndRollDamageDice,
         confirmDamageRoll,
         confirmBonusDamage,
-        handleReroll,
+        resolveInteraction,
         nextRound,
         restartCombat
     } = useCombat(hero, enemy);
@@ -78,6 +79,17 @@ const CombatArena: React.FC<CombatArenaProps> = ({ hero, enemy, onCombatFinish }
             </div>
 
             <div className="arena-center">
+                {/* Interaction Overlay for choices */}
+                {combat.pendingInteraction?.requests.some(r => r.type === 'choices') && (
+                    <InteractionOverlay
+                        combat={combat}
+                        onResolve={(data) => resolveInteraction([{
+                            request: combat.pendingInteraction!.requests.find(r => r.type === 'choices'),
+                            ...data
+                        }])}
+                    />
+                )}
+
                 {combat.phase === 'combat-start' && (
                     <CombatStartPhase
                         combat={combat}
@@ -99,7 +111,7 @@ const CombatArena: React.FC<CombatArenaProps> = ({ hero, enemy, onCombatFinish }
                         combat={combat}
                         commitSpeedAndRollDamageDice={commitSpeedAndRollDamageDice}
                         confirmBonusDamage={confirmBonusDamage}
-                        handleReroll={handleReroll}
+                        resolveInteraction={resolveInteraction}
                         activateAbility={activateAbility}
                         useBackpackItem={useBackpackItem}
                     />
@@ -108,7 +120,7 @@ const CombatArena: React.FC<CombatArenaProps> = ({ hero, enemy, onCombatFinish }
                     <DamageRollPhase
                         combat={combat}
                         confirmDamageRoll={confirmDamageRoll}
-                        handleReroll={handleReroll}
+                        resolveInteraction={resolveInteraction}
                         activateAbility={activateAbility}
                         useBackpackItem={useBackpackItem}
                     />

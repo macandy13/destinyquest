@@ -3,6 +3,7 @@ import { ActiveAbility, CombatState } from '../../types/combatState';
 import { getAbilityDefinition, getAbilityIcon } from '../../mechanics/abilityRegistry';
 import CombatAbilityItem from './CombatAbilityItem';
 import CombatBackpackItem from './CombatBackpackItem';
+import './CombatModal.css';
 import './CombatAbilitySelector.css';
 
 interface CombatAbilitySelectorProps {

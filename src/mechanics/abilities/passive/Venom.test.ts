@@ -1,6 +1,6 @@
 import { describe, it, expect, beforeEach } from 'vitest';
 import { INITIAL_STATE, enemyWithStats } from '../../../tests/testUtils';
-import { getAbilityDefinition, AbilityDefinition } from '../../abilityRegistry';
+import { getAbilityDefinition, AbilityDefinition, toCanonicalName } from '../../abilityRegistry';
 import { CombatState } from '../../../types/combatState';
 import './DeadlyPoisons';
 import './Venom';
@@ -73,8 +73,8 @@ describe('Venom', () => {
             hero: {
                 ...INITIAL_STATE.hero!,
                 activeAbilities: new Map([
-                    ['Venom', VENOM_ABILITY],
-                    ['Deadly Poisons', DEADLY_POISONS_ABILITY]
+                    [toCanonicalName('Venom'), VENOM_ABILITY],
+                    [toCanonicalName('Deadly Poisons'), DEADLY_POISONS_ABILITY]
                 ])
             },
             enemy: {
@@ -98,9 +98,9 @@ describe('Venom', () => {
             hero: {
                 ...INITIAL_STATE.hero!,
                 activeAbilities: new Map([
-                    ['Venom', VENOM_ABILITY],
-                    ['Deadly Poisons', DEADLY_POISONS_ABILITY],
-                    ['Poison Mastery', POISON_MASTERY]
+                    [toCanonicalName('Venom'), VENOM_ABILITY],
+                    [toCanonicalName('Deadly Poisons'), DEADLY_POISONS_ABILITY],
+                    [toCanonicalName('Poison Mastery'), POISON_MASTERY]
                 ])
             },
             enemy: {

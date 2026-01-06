@@ -147,30 +147,10 @@ export function calculateEffectiveStats(state: CombatState): { hero: HeroStats, 
     return { hero: effectiveHeroStats, enemy: effectiveEnemyStats };
 }
 
-/**
- * Handles reroll logic for a specific die.
- * Requires `state.rerollState` to be set (usually by an ability's onActivate).
- * Calls the ability's `onReroll` hook to get the new roll value.
- */
-export function handleReroll(state: CombatState, dieIndex: number): CombatState {
-    if (!state.rerollState) return state;
-
-    const def = getAbilityDefinition(state.rerollState.source);
-    if (!def || !def.onReroll) return state;
-
-    const updates = def.onReroll(state, dieIndex);
-    const nextState = { ...updates, rerollState: undefined };
-
-    if (nextState.heroSpeedRolls && nextState.enemySpeedRolls) {
-        return updateWinner(nextState);
-    }
-    return nextState;
-}
-
 function runCombatStartHook(state: CombatState): CombatState {
-    forEachActiveAbility(state, (def, owner) => {
+    forEachActiveAbility(state, (ability, def) => {
         if (def?.onCombatStart) {
-            state = def.onCombatStart(state, { owner });
+            state = def.onCombatStart(state, { ability, owner: ability.owner });
         }
     });
     return state;
@@ -217,7 +197,6 @@ export function startRound(state: CombatState): CombatState {
         winner: undefined,
         damage: undefined,
         damageDealt: [],
-        rerollState: undefined,
     };
     return addLogs(state, { message: 'Round started.', });
 }
@@ -230,12 +209,50 @@ export function activateAbility(state: CombatState, rawAbilityName: string): Com
     const definition = getAbilityDefinition(abilityName);
     if (!definition || !definition.onActivate) return state;
 
-    state = definition.onActivate(state, { owner: ability.owner });
+    state = definition.onActivate(state, { owner: ability.owner, ability });
+    if (state.pendingInteraction) {
+        return state;
+    }
+
     if (ability.uses) ability.uses -= 1;
     if (!ability.uses || ability.uses === 0) {
         state.hero.activeAbilities.delete(abilityName);
     }
     return checkForCombatEnd(state);
+}
+
+export function resolveInteraction(state: CombatState, data: any): CombatState {
+    if (!state.pendingInteraction) {
+        console.error('No pending interaction to resolve');
+        return state;
+    }
+
+    const { requests, ability, callback } = state.pendingInteraction;
+    let nextState: CombatState = { ...state, pendingInteraction: undefined };
+    nextState = callback(nextState, data);
+
+    // Decrement uses if the interaction was resolved (and not just cancelled implicitly by returning same state? no, clear intent)
+    // Actually, we assume if we reach here, it's successful.
+    if (ability.uses) ability.uses -= 1;
+    if (!ability.uses || ability.uses === 0) {
+        nextState.hero.activeAbilities.delete(toCanonicalName(ability.name));
+    }
+
+    if (requests.some(r => r.type === 'dice')) {
+        if (state.phase === 'speed-roll') {
+            state = updateWinner(state);
+        } else if (state.phase === 'damage-roll') {
+            state = setDamageRoll(state, state.damage?.damageRolls);
+        }
+    }
+    return checkForCombatEnd(nextState);
+}
+
+export function cancelInteraction(state: CombatState): CombatState {
+    return {
+        ...state,
+        pendingInteraction: undefined
+    };
 }
 
 function reduceBackpackItem(state: CombatState, idx: number): CombatState {
@@ -268,9 +285,9 @@ export function useBackpackItem(state: CombatState, idx: number): CombatState {
 }
 
 function runOnSpeedRollHooks(state: CombatState): CombatState {
-    forEachActiveAbility(state, (def, owner) => {
+    forEachActiveAbility(state, (ability, def) => {
         if (def?.onSpeedRoll) {
-            state = def.onSpeedRoll(state, { owner });
+            state = def.onSpeedRoll(state, { ability, owner: ability.owner });
         }
     });
     return state;
@@ -384,9 +401,9 @@ export function applyDamage(state: CombatState): CombatState {
 }
 
 function runOnPassiveAbilityHooks(state: CombatState): CombatState {
-    forEachActiveAbility(state, (def, owner) => {
+    forEachActiveAbility(state, (ability, def) => {
         if (def.onPassiveAbility) {
-            state = def.onPassiveAbility(state, { owner });
+            state = def.onPassiveAbility(state, { ability, owner: ability.owner });
         }
     });
     return state;

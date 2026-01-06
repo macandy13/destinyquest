@@ -1,4 +1,5 @@
-import { addLogs } from '../../../types/combatState';
+import { addLogs, CombatState, InteractionResponse } from '../../../types/combatState';
+import { rerollSelectedDie, formatDice } from '../../../types/dice';
 import { registerAbility } from '../../abilityRegistry';
 
 registerAbility({
@@ -7,7 +8,8 @@ registerAbility({
     description: 'Re-roll one of your hero\'s dice; you must accept the second result.',
     icon: '🎲',
     canActivate: (state) => state.phase === 'speed-roll' || (state.phase === 'damage-roll' && state.winner === 'hero'),
-    onActivate: (state) => {
+    onActivate: (state, context) => {
+        if (!context.ability) return state;
         let target: 'damage' | 'hero-speed';
         if (state.phase === 'damage-roll' && state.winner === 'hero') {
             target = 'damage';
@@ -20,9 +22,35 @@ registerAbility({
         // TODO: Turn into modifier function
         state = {
             ...state,
-            rerollState: {
-                source: 'Charm',
-                target
+            pendingInteraction: {
+                ability: context.ability,
+                requests: [{
+                    type: 'dice',
+                    target: 'hero',
+                    mode: 'select',
+                    count: 1,
+                }],
+                callback: (state: CombatState, responses: InteractionResponse[]) => {
+                    if (responses.length === 0) return state;
+                    const response = responses[0];
+                    state = {
+                        ...state,
+                    };
+                    let newDice;
+                    if (target === 'hero-speed') {
+                        state.heroSpeedRolls = rerollSelectedDie(state.heroSpeedRolls!, response.selectedIndex);
+                        newDice = formatDice(state.heroSpeedRolls!);
+                    } else if (target === 'damage') {
+                        state.damage!.damageRolls = rerollSelectedDie(state.damage!.damageRolls!, response.selectedIndex);
+                        newDice = formatDice(state.damage!.damageRolls!);
+                    } else {
+                        return state;
+                    }
+                    state = addLogs(state, {
+                        message: `Rerolled die for ${context.ability!.name}, new rolls: ${newDice}`,
+                    });
+                    return state;
+                }
             }
         };
         return addLogs(
@@ -30,31 +58,4 @@ registerAbility({
             { message: `Select a ${target === 'damage' ? 'damage' : 'speed'} die to re-roll.` }
         );
     },
-    onReroll: (state, dieIndex) => {
-        const target = state.rerollState?.target;
-        if (!target) return state;
-
-        const newRoll = { value: Math.floor(Math.random() * 6) + 1, isRerolled: true };
-        let newState = { ...state };
-
-        if (target === 'hero-speed' && state.heroSpeedRolls) {
-            const rolls = [...state.heroSpeedRolls];
-            if (dieIndex >= 0 && dieIndex < rolls.length) {
-                rolls[dieIndex] = newRoll;
-                newState.heroSpeedRolls = rolls;
-            }
-        } else if (target === 'damage' && state.damage?.damageRolls) {
-            const rolls = [...state.damage.damageRolls];
-            if (dieIndex >= 0 && dieIndex < rolls.length) {
-                rolls[dieIndex] = newRoll;
-                newState.damage = { ...state.damage, damageRolls: rolls };
-            }
-        }
-
-        newState.rerollState = undefined;
-
-        return addLogs(newState, {
-            message: `Charm used. Re-rolled a die to ${newRoll.value}.`
-        });
-    }
 });

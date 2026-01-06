@@ -11,8 +11,8 @@ import {
     useBackpackItem as engineUseBackpackItem,
     endRound,
     endCombat as engineEndCombat,
-    handleReroll as engineHandleReroll,
     applyPassiveAbilities,
+    resolveInteraction as engineResolveInteraction,
 } from '../mechanics/CombatEngine';
 import { CombatState } from '../types/combatState';
 
@@ -53,10 +53,6 @@ export function useCombat(hero: Hero, enemy: Enemy) {
         setCombat(prev => applyPassiveAbilities(prev));
     };
 
-    const handleReroll = (dieIndex: number) => {
-        setCombat(prev => engineHandleReroll(prev, dieIndex));
-    };
-
     const nextRound = () => {
         setCombat(prev => startRound(endRound(prev)));
     };
@@ -70,6 +66,10 @@ export function useCombat(hero: Hero, enemy: Enemy) {
         setCombat(combatState);
     };
 
+    const resolveInteraction = (data: any) => {
+        setCombat(prev => engineResolveInteraction(prev, data));
+    };
+
     return {
         combat,
         activateAbility,
@@ -78,9 +78,9 @@ export function useCombat(hero: Hero, enemy: Enemy) {
         commitSpeedAndRollDamageDice,
         confirmDamageRoll,
         confirmBonusDamage,
-        handleReroll,
         nextRound,
         endCombat,
         restartCombat,
+        resolveInteraction,
     };
 }

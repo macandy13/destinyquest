@@ -6,13 +6,13 @@ import CombatArena from './CombatArena';
 
 interface CombatTabProps {
     hero: Hero;
-    onCombatFinish: (results: { health: number, backpack: (BackpackItem | null)[] }) => void;
+    onCombatFinish: (results: { health?: number, backpack: (BackpackItem | null)[] }) => void;
 }
 
 const CombatTab: React.FC<CombatTabProps> = ({ hero, onCombatFinish }) => {
     const [selectedEnemy, setSelectedEnemy] = useState<Enemy | null>(null);
 
-    const handleCombatFinish = (results: { health: number, backpack: (BackpackItem | null)[] }) => {
+    const handleCombatFinish = (results: { health?: number, backpack: (BackpackItem | null)[] }) => {
         setSelectedEnemy(null);
         onCombatFinish(results);
     };

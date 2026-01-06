@@ -1,8 +1,9 @@
-import { CombatState } from '../types/combatState';
+import { ActiveAbility, CombatState } from '../types/combatState';
 import { CharacterType } from '../types/character';
 import { AbilityType } from '../types/abilityDescription';
 
 export interface AbilityContext {
+    ability?: ActiveAbility;
     owner: CharacterType;
     target?: CharacterType;
 }

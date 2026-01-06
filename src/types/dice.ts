@@ -12,14 +12,18 @@ export function sumDice(rolls: DiceRoll[] | undefined): number {
     return rolls.reduce((sum, roll) => sum + roll.value, 0);
 }
 
+function rollDie(): DiceRoll {
+    return {
+        value: Math.floor(Math.random() * 6) + 1,
+        isRerolled: false
+    };
+}
+
 /**
  * Creates a fresh array of random dice rolls.
  */
 export function rollDice(count: number): DiceRoll[] {
-    return new Array(count).fill(0).map(() => ({
-        value: Math.floor(Math.random() * 6) + 1,
-        isRerolled: false
-    }));
+    return new Array(count).fill(0).map(() => rollDie());
 }
 
 export function deterministicRoll(rolls: number[]): DiceRoll[] {
@@ -37,6 +41,13 @@ export function rerollDice(input: DiceRoll[], newCount: number): DiceRoll[] {
     }
     const newDice = rollDice(newCount - input.length);
     return [...input, ...newDice];
+}
+
+export function rerollSelectedDie(dice: DiceRoll[], selectedIndex: number): DiceRoll[] {
+    const newDice = [...dice];
+    newDice[selectedIndex] = rollDie();
+    newDice[selectedIndex].isRerolled = true;
+    return newDice;
 }
 
 /**
