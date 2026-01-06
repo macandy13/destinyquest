@@ -33,7 +33,6 @@ const CombatArena: React.FC<CombatArenaProps> = ({ hero, enemy, onCombatFinish }
         confirmBonusDamage,
         handleReroll,
         nextRound,
-        endCombat,
         restartCombat
     } = useCombat(hero, enemy);
 
@@ -141,7 +140,6 @@ const CombatArena: React.FC<CombatArenaProps> = ({ hero, enemy, onCombatFinish }
                 {combat.phase === 'combat-end' && (
                     <CombatEndPhase
                         combat={combat}
-                        endCombat={endCombat}
                         onCombatFinish={onCombatFinish}
                         restartCombat={restartCombat}
                     />
