@@ -26,7 +26,7 @@
 import { CombatState, Combatant, ActiveAbility, addLogs, applyEffect, forEachActiveAbility, dealDamage, AttackSource, setDamageRoll, getCombatant } from '../types/combatState';
 import { sumDice, rollDice, formatDice, DiceRoll } from '../types/dice';
 import { Hero, HeroStats, BackpackItem } from '../types/hero';
-import { getAbilityDefinition } from './abilityRegistry';
+import { getAbilityDefinition, toCanonicalName } from './abilityRegistry';
 import { calculateEffectiveStatsForType, Effect } from '../types/effect';
 import { getOpponent, Enemy } from '../types/character';
 import { Stats } from '../types/stats';
@@ -60,16 +60,17 @@ function createHeroCombatant(character: Hero | Combatant<Hero>): Combatant<Hero>
         activeEffects: []
     };
     Object.values(hero.equipment).forEach(item => {
-        item?.abilities?.forEach(abilityName => {
+        item?.abilities?.forEach(rawAbilityName => {
+            const abilityName = toCanonicalName(rawAbilityName);
             let ability = combatant.activeAbilities.get(abilityName);
             if (!ability) {
                 const def = getAbilityDefinition(abilityName) ?? {
-                    name: abilityName,
+                    name: rawAbilityName,
                     type: 'combat',
                     description: 'Unknown hero ability'
                 };
                 ability = {
-                    name: abilityName,
+                    name: rawAbilityName,
                     owner: combatant.type,
                     def,
                     sources: [],
@@ -104,12 +105,13 @@ function createEnemyCombatant(character: Enemy | Combatant<Enemy>): Combatant<En
         activeAbilities: new Map<string, ActiveAbility>(),
         activeEffects: []
     };
-    Object.values(enemy.abilities).forEach(abilityName => {
+    Object.values(enemy.abilities).forEach(rawAbilityName => {
+        const abilityName = toCanonicalName(rawAbilityName);
         combatant.activeAbilities.set(abilityName, {
-            name: abilityName,
+            name: rawAbilityName,
             owner: 'enemy',
             def: getAbilityDefinition(abilityName) ?? {
-                name: abilityName,
+                name: rawAbilityName,
                 type: 'special',
                 description: 'Unknown enemy ability'
             },
@@ -220,7 +222,8 @@ export function startRound(state: CombatState): CombatState {
     return addLogs(state, { message: 'Round started.', });
 }
 
-export function activateAbility(state: CombatState, abilityName: string): CombatState {
+export function activateAbility(state: CombatState, rawAbilityName: string): CombatState {
+    const abilityName = toCanonicalName(rawAbilityName);
     const ability = state.hero.activeAbilities.get(abilityName);
     if (!ability || !ability.uses || ability.uses <= 0) return state;
 

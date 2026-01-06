@@ -48,11 +48,16 @@ export interface AbilityDefinition extends AbilityHooks {
 export const ABILITY_REGISTRY: Record<string, AbilityDefinition> = {};
 
 export function registerAbility(definition: AbilityDefinition) {
-    ABILITY_REGISTRY[definition.name] = definition;
+    ABILITY_REGISTRY[toCanonicalName(definition.name)] = definition;
+}
+
+export function toCanonicalName(name: string): string {
+    return name.replace(/ /g, '-').toLowerCase();
 }
 
 export function getAbilityDefinition(name: string): AbilityDefinition | undefined {
-    return ABILITY_REGISTRY[name];
+    const canonicalName = toCanonicalName(name);
+    return canonicalName ? ABILITY_REGISTRY[canonicalName] : undefined;
 }
 
 export function getAbilityIcon(definition: AbilityDefinition | undefined): string {

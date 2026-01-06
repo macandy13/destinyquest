@@ -203,7 +203,12 @@ export function healDamage(state: CombatState, source: string, target: Character
 }
 
 export function hasAbility(state: CombatState, target: CharacterType, name: string) {
-    return getCombatant(state, target).activeAbilities.keys().some(e => e === name);
+    const activeAbilities = getCombatant(state, target).activeAbilities;
+    const lowerName = name.toLowerCase();
+    for (const key of activeAbilities.keys()) {
+        if (key.toLowerCase() === lowerName) return true;
+    }
+    return false;
 }
 
 export function hasEffect(state: CombatState, target: CharacterType, source: string) {
