@@ -68,7 +68,9 @@ export const heroWithStats = (stats: Partial<Hero['stats']>): Combatant<Hero> =>
         stats: {
             ...MOCK_HERO.stats,
             ...stats
-        }
+        },
+        equipment: { ...MOCK_HERO.equipment },
+        backpack: [...MOCK_HERO.backpack]
     };
     return createCombatant(hero);
 };

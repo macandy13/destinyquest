@@ -242,7 +242,7 @@ function reduceBackpackItem(state: CombatState, idx: number): CombatState {
     }
     state = {
         ...state,
-        backpack: state.backpack.filter(i => i?.uses && i.uses > 0)
+        backpack: state.backpack.filter(i => i && (i.uses === undefined || i.uses > 0))
     };
     state = addLogs(state, {
         message: `Used item ${item.name} (${item.description}).` + (item.uses !== undefined ? ` (${item.uses} uses left)` : ''),
@@ -279,8 +279,8 @@ function updateWinner(state: CombatState): CombatState {
 
     const effectiveStats = calculateEffectiveStats(state);
 
-    const heroTotal = heroRoll + effectiveStats.hero.speed;
-    const enemyTotal = enemyRoll + effectiveStats.enemy.speed;
+    const heroTotal = Number(heroRoll) + Number(effectiveStats.hero.speed);
+    const enemyTotal = Number(enemyRoll) + Number(effectiveStats.enemy.speed);
     let winner: 'hero' | 'enemy' | null | undefined;
 
     let modText = '';
@@ -291,13 +291,13 @@ function updateWinner(state: CombatState): CombatState {
     let message = `Speed: Hero ${heroTotal}${modText} vs Enemy ${enemyTotal}.`;
     if (heroTotal > enemyTotal) {
         winner = 'hero';
-        message += 'Hero wins speed round';
+        message += ' Hero wins speed round';
     } else if (enemyTotal > heroTotal) {
         winner = 'enemy';
-        message += 'Enemy wins speed round';
+        message += ' Enemy wins speed round';
     } else {
         winner = null;
-        message += 'Draw. No damage this round';
+        message += ' Draw. No damage this round';
     }
 
     state = {
