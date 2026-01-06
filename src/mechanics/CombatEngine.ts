@@ -191,6 +191,7 @@ export function startCombat(hero: Hero, enemy: Enemy): CombatState {
         type: 'info'
     });
     state = runCombatStartHook(state);
+    state = checkForCombatEnd(state);
     if (state.hero.activeAbilities.size > 0) {
         state = addLogs(state, {
             message: `Active hero abilities: ${printActiveAbilities(state.hero.activeAbilities)}`,
@@ -231,7 +232,7 @@ export function activateAbility(state: CombatState, abilityName: string): Combat
     if (!ability.uses || ability.uses === 0) {
         state.hero.activeAbilities.delete(abilityName);
     }
-    return state;
+    return checkForCombatEnd(state);
 }
 
 function reduceBackpackItem(state: CombatState, idx: number): CombatState {
@@ -260,7 +261,7 @@ export function useBackpackItem(state: CombatState, idx: number): CombatState {
     }
     state = applyEffect(state, item.effect);
     state = reduceBackpackItem(state, idx);
-    return state;
+    return checkForCombatEnd(state);
 }
 
 function runOnSpeedRollHooks(state: CombatState): CombatState {
@@ -322,7 +323,7 @@ export function rollForSpeed(state: CombatState, heroRolls?: DiceRoll[], enemyRo
     });
     state = runOnSpeedRollHooks(state);
     state = updateWinner(state);
-    return state;
+    return checkForCombatEnd(state);
 }
 
 export function rollForDamage(state: CombatState, damageRolls?: DiceRoll[]): CombatState {
@@ -339,7 +340,7 @@ export function rollForDamage(state: CombatState, damageRolls?: DiceRoll[]): Com
     }
     // Do not respect changed stats.
     state = setDamageRoll(state, damageRolls);
-    return state;
+    return checkForCombatEnd(state);
 }
 
 /**
@@ -376,7 +377,7 @@ export function applyDamage(state: CombatState): CombatState {
         victim,
         damageAmount,
         `Total attack damage to ${victim}: ${damageAmount} (${totalDiceValue} + ${skill} + ${totalModifiersValue} - ${armor})`);
-    return state;
+    return checkForCombatEnd(state);
 }
 
 function runOnPassiveAbilityHooks(state: CombatState): CombatState {
@@ -395,7 +396,7 @@ export function applyPassiveAbilities(state: CombatState): CombatState {
     state = { ...state, phase: 'passive-damage' };
     state = runOnPassiveAbilityHooks(state);
     state = addLogs(state, { message: 'Passive damage applied.' });
-    return state;
+    return checkForCombatEnd(state);
 }
 
 /**
@@ -425,6 +426,14 @@ export function endRound(state: CombatState): CombatState {
     return state;
 }
 
+export function checkForCombatEnd(state: CombatState): CombatState {
+    if (state.phase === 'combat-end') return state;
+    if (state.hero.stats.health <= 0 || state.enemy.stats.health <= 0) {
+        return endCombat(state);
+    }
+    return state;
+}
+
 /**
  * Transitions to 'combat-end'.
  */
@@ -436,3 +445,4 @@ export function endCombat(state: CombatState): CombatState {
     // TODO: Update hero health if auto-healing is disabled
     return state;
 }
+

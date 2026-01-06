@@ -439,5 +439,85 @@ describe('CombatEngine', () => {
         expect(state.enemy!.stats.health).toBe(0); // 10 - 6 - 4 => 0.
         expect(state.hero!.stats.health).toBe(9); // 10 - 1 (bleed)
     });
-});
 
+    describe('checkCombatEnd', () => {
+        it('should end combat if health is 0 at start of combat', () => {
+            const nearlyDeadHero = {
+                ...MOCK_HERO,
+                stats: { ...MOCK_HERO.stats, health: 0 }
+            };
+            const state = startCombat(nearlyDeadHero, MOCK_ENEMY);
+            expect(state.phase).toBe('combat-end');
+        });
+
+        it('should end combat when enemy health reaches 0 during damage application', () => {
+            let state = startCombat(MOCK_HERO, MOCK_ENEMY);
+
+            // Set enemy health to 1 for easy kill
+            state = {
+                ...state,
+                winner: 'hero',
+                phase: 'damage-roll',
+                damage: {
+                    damageRolls: [{ value: 100, isRerolled: false }],
+                    modifiers: []
+                },
+                enemy: {
+                    ...state.enemy,
+                    stats: {
+                        ...state.enemy.stats,
+                        health: 1
+                    }
+                }
+            };
+
+            state = applyDamage(state);
+            expect(state.phase).toBe('combat-end');
+            expect(state.enemy.stats.health).toBeLessThanOrEqual(0);
+        });
+
+        it('should end combat when hero health reaches 0 after using a backpack item', () => {
+            let state = startCombat(MOCK_HERO, MOCK_ENEMY);
+            state = {
+                ...state,
+                hero: {
+                    ...state.hero,
+                    stats: { ...state.hero.stats, health: 1 }
+                },
+                backpack: [testBackpackItem({
+                    effect: {
+                        source: 'Suicide Pill',
+                        target: 'hero',
+                        stats: { health: -10 },
+                        duration: 0
+                    },
+                    uses: 1
+                })]
+            };
+            state = useBackpackItem(state, 0);
+            expect(state.phase).toBe('combat-end');
+            expect(state.hero.stats.health).toBeLessThanOrEqual(0);
+        });
+
+        it('should end combat when health reaches 0 from passive damage', () => {
+            let state = startCombat(MOCK_HERO, MOCK_ENEMY);
+            // Add a lethal bleed effect
+            state = {
+                ...state,
+                hero: {
+                    ...state.hero,
+                    activeEffects: [{
+                        source: 'Lethal Bleed',
+                        target: 'hero',
+                        stats: { health: -100 },
+                        duration: 1
+                    }]
+                }
+            };
+
+            state = applyPassiveAbilities(state);
+            expect(state.phase).toBe('combat-end');
+            expect(state.hero.stats.health).toBeLessThanOrEqual(0);
+        });
+    });
+});
