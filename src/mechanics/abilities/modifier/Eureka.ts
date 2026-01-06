@@ -1,4 +1,4 @@
-import { registerAbility, AbilityContext } from '../../abilityRegistry';
+import { registerAbility } from '../../abilityRegistry';
 import { createStatModifierAbility } from '../abilityFactories';
 
 registerAbility(createStatModifierAbility({

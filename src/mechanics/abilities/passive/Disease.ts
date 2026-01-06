@@ -6,7 +6,7 @@ registerAbility({
     name: 'Disease',
     type: 'passive',
     description: 'If you cause health damage, the opponent takes 2 damage (ignoring armour) at the end of each round.',
-    onDamageDealt: (state, { owner, target }, source, amount) => {
+    onDamageDealt: (state, { target }, _source, amount) => {
         if (amount > 0 && target && !hasEffect(state, target, 'Disease')) {
             return appendEffect(state, target, {
                 stats: {},

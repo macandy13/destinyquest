@@ -1,5 +1,5 @@
 import { registerAbility } from '../../abilityRegistry';
-import { getCombatant, addLogs, dealDamage } from '../../../types/combatState';
+import { getCombatant, dealDamage } from '../../../types/combatState';
 import { getOpponent } from '../../../types/character';
 
 registerAbility({

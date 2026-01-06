@@ -1,5 +1,5 @@
 import { registerAbility } from '../../abilityRegistry';
-import { appendEffect, hasEffect, removeEffect } from '../../../types/combatState';
+import { appendEffect, hasEffect } from '../../../types/combatState';
 
 registerAbility({
     name: 'Blood Rage',

@@ -1,5 +1,7 @@
 import { registerAbility } from '../../abilityRegistry';
 import { createStatModifierAbility } from '../abilityFactories';
+import { hasAbility } from '../../../types/combatState';
+import { getOpponent } from '../../../types/character';
 
 registerAbility(createStatModifierAbility({
     name: 'Knockdown',
