@@ -1,2 +1,4 @@
 node_modules
 dist
+build_output.txt
+tsc_output.txt
