@@ -56,7 +56,7 @@ describe('Venom', () => {
         const updates = ability.onPassiveAbility!(state, { owner: 'hero' });
 
 
-        expect(updates.bonusDamage).toEqual(expect.arrayContaining([
+        expect(updates.damageDealt).toEqual(expect.arrayContaining([
             expect.objectContaining({
                 amount: 2,
                 source: 'Venom'
@@ -86,7 +86,7 @@ describe('Venom', () => {
         const updates = ability.onPassiveAbility!(state, { owner: 'hero' });
 
 
-        const damageEntry = updates.bonusDamage?.find(d => d.source === 'Venom');
+        const damageEntry = updates.damageDealt?.find(d => d.source === 'Venom');
         expect(damageEntry?.amount).toBe(3);
     });
 
@@ -112,7 +112,7 @@ describe('Venom', () => {
         const updates = ability.onPassiveAbility!(state, { owner: 'hero' });
 
 
-        const damageEntry = updates.bonusDamage?.find(d => d.source === 'Venom');
+        const damageEntry = updates.damageDealt?.find(d => d.source === 'Venom');
         expect(damageEntry?.amount).toBe(4);
     });
 
@@ -130,6 +130,6 @@ describe('Venom', () => {
 
         const updates = ability.onPassiveAbility!(state, { owner: 'hero' });
         // Should not have any damage dealt
-        expect(updates.bonusDamage).toEqual([]);
+        expect(updates.damageDealt).toEqual([]);
     });
 });

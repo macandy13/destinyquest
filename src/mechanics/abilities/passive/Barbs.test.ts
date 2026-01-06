@@ -13,7 +13,7 @@ describe('Barbs', () => {
 
         const updates = barbs?.onPassiveAbility?.(state, { owner: 'hero' });
 
-        expect(updates?.bonusDamage).toEqual(expect.arrayContaining([
+        expect(updates?.damageDealt).toEqual(expect.arrayContaining([
             expect.objectContaining({
                 source: 'Barbs',
                 amount: 1

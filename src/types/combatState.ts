@@ -75,7 +75,7 @@ export interface CombatState {
     damage?: AttackDamageDescriptor;
 
     /* Damage dealt during the current round */
-    bonusDamage: DamageDescriptor[];
+    damageDealt: DamageDescriptor[];
 
     /* Used to allow the user to select dice to be re-rolled */
     rerollState?: {
@@ -171,6 +171,14 @@ export function dealDamage(state: CombatState, source: string, target: Character
     state = setStats(state, target, {
         health: targetChar.stats.health - actualDamage,
     });
+    // Record damage dealt
+    state = {
+        ...state,
+        damageDealt: [
+            ...state.damageDealt,
+            { target, source, amount: actualDamage }
+        ]
+    };
     state = addLogs(state, {
         message: message ?? `${source} dealt ${actualDamage} damage to ${targetChar.name}`,
         type: getDamageType(target)
@@ -260,13 +268,6 @@ export function skipDamagePhase(state: CombatState, message: string): CombatStat
             modifiers: []
         },
         logs: addLogs(state.logs, { message, type: 'info' })
-    };
-}
-
-export function appendBonusDamage(state: CombatState, damage: DamageDescriptor) {
-    return {
-        ...state,
-        bonusDamage: [...state.bonusDamage, damage],
     };
 }
 

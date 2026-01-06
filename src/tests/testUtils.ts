@@ -57,9 +57,9 @@ export const INITIAL_STATE: CombatState = {
     heroSpeedRolls: undefined,
     enemySpeedRolls: undefined,
     damage: undefined,
-    winner: null,
+    damageDealt: [],
+    winner: undefined,
     backpack: [],
-    bonusDamage: [],
 };
 
 export const heroWithStats = (stats: Partial<Hero['stats']>): Combatant<Hero> => {

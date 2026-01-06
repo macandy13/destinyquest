@@ -1,6 +1,6 @@
 import { registerAbility } from '../../abilityRegistry';
 import { getOpponent } from '../../../types/character';
-import { appendBonusDamage, appendEffect, hasEffect } from '../../../types/combatState';
+import { appendEffect, dealDamage, hasEffect } from '../../../types/combatState';
 
 registerAbility({
     name: 'Bleed',
@@ -20,10 +20,6 @@ registerAbility({
     onPassiveAbility: (state, { owner }) => {
         const opponent = getOpponent(owner);
         if (!hasEffect(state, opponent, 'Bleed')) return state;
-        return appendBonusDamage(state, {
-            source: 'Bleed',
-            target: opponent,
-            amount: 1,
-        });
+        return dealDamage(state, 'Bleed', opponent, 1, `Bleed deals 1 damage to ${opponent}`);
     }
 });

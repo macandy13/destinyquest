@@ -1,4 +1,4 @@
-import { appendBonusDamage } from '../../../types/combatState';
+import { dealDamage } from '../../../types/combatState';
 import { getOpponent } from '../../../types/character';
 import { registerAbility } from '../../abilityRegistry';
 
@@ -7,10 +7,12 @@ registerAbility({
     type: 'passive',
     description: 'At the end of every combat round, automatically inflict 1 damage to all opponents.',
     onPassiveAbility: (state, { owner }) => {
-        return appendBonusDamage(state, {
-            source: 'Barbs',
-            target: getOpponent(owner),
-            amount: 1
-        });
+        return dealDamage(
+            state,
+            'Barbs',
+            getOpponent(owner),
+            1,
+            `Barbs deals 1 damage to ${getOpponent(owner)}`
+        );
     }
 });

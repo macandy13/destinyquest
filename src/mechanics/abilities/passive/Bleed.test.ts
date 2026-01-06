@@ -18,7 +18,7 @@ describe('Bleed', () => {
             ...INITIAL_STATE,
             enemy: enemyWithStats({ health: 20 }),
             winner: 'hero' as const,
-            bonusDamage: [{ target: 'enemy' as const, amount: 5, source: 'Attack' }]
+            damageDealt: [{ target: 'enemy' as const, amount: 5, source: 'Attack' }]
         };
 
         state = ability.onDamageDealt!(state, { owner: 'hero', target: 'enemy' as const }, 'Attack', 5);
@@ -32,7 +32,7 @@ describe('Bleed', () => {
         );
 
         state = ability.onPassiveAbility!(state, { owner: 'hero' as const });
-        expect(state.bonusDamage).toEqual(
+        expect(state.damageDealt).toEqual(
             expect.arrayContaining([
                 expect.objectContaining({
                     source: 'Bleed',

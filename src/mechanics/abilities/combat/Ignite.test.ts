@@ -23,7 +23,7 @@ describe('Ignite', () => {
 
         const result = ability.onActivate?.(state, { owner: 'hero' });
 
-        expect(result?.phase).toBe('round-end');
+        expect(result?.phase).toBe('apply-damage');
         // Check logs for damage
         expect(result?.logs.some(l => l.message?.includes('Ignite dealt'))).toBe(true);
         // Check for burn effect

@@ -182,7 +182,7 @@ export function startCombat(hero: Hero, enemy: Enemy): CombatState {
         enemy: createEnemyCombatant(enemy),
         logs: [],
         backpack: hero.backpack.filter(i => i && (!i?.uses || i.uses > 0)) as BackpackItem[],
-        bonusDamage: [],
+        damageDealt: [],
     };
 
     state = addLogs(state, {
@@ -213,7 +213,7 @@ export function startRound(state: CombatState): CombatState {
         enemySpeedRolls: undefined,
         winner: undefined,
         damage: undefined,
-        bonusDamage: [],
+        damageDealt: [],
         rerollState: undefined,
     };
     return addLogs(state, { message: 'Round started.', });
@@ -388,28 +388,12 @@ function runOnPassiveAbilityHooks(state: CombatState): CombatState {
     return state;
 }
 
-function applyBonusDamage(state: CombatState): CombatState {
-    state.bonusDamage?.forEach((damage) => {
-        state = dealDamage(
-            state,
-            damage.source,
-            damage.target,
-            damage.amount,
-            `Passive damage ${damage.source} (+${damage.amount}) applied to ${damage.target}`);
-    });
-    return {
-        ...state,
-        bonusDamage: []
-    };
-}
-
 /**
  * Applies all passive abilites.
  */
 export function applyPassiveAbilities(state: CombatState): CombatState {
     state = { ...state, phase: 'passive-damage' };
-    state = runOnPassiveAbilityHooks(state); // fills bonusDamage field
-    state = applyBonusDamage(state);
+    state = runOnPassiveAbilityHooks(state);
     state = addLogs(state, { message: 'Passive damage applied.' });
     return state;
 }
