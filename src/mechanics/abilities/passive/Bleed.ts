@@ -15,6 +15,7 @@ registerAbility({
             source: 'Bleed',
             target,
             duration: undefined, // for the rest of the combat (or until cauterized)
+            icon: '🩸'
         });
     },
     onPassiveAbility: (state, { owner }) => {

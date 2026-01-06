@@ -12,7 +12,8 @@ registerAbility({
                 stats: {},
                 source: 'Disease',
                 target: target,
-                duration: undefined
+                duration: undefined,
+                icon: '🦠'
             });
         }
         return state;

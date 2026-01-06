@@ -1,5 +1,8 @@
 import React from 'react';
 import { getStatIcon } from '../../types/stats';
+import { Effect } from '../../types/effect';
+import ActiveEffectIcon from './ActiveEffectIcon';
+import ActiveEffectOverlay from './ActiveEffectOverlay';
 import './CombatantCard.css';
 
 interface CombatantCardProps {
@@ -11,6 +14,7 @@ interface CombatantCardProps {
     magic?: number;
     armour?: number;
     isEnemy?: boolean;
+    activeEffects?: Effect[];
 }
 
 const CombatantCard: React.FC<CombatantCardProps> = ({
@@ -21,8 +25,10 @@ const CombatantCard: React.FC<CombatantCardProps> = ({
     brawn,
     magic = undefined,
     armour = undefined,
-    isEnemy = false
+    isEnemy = false,
+    activeEffects = []
 }) => {
+    const [selectedEffect, setSelectedEffect] = React.useState<Effect | null>(null);
     const healthPct = Math.max(0, Math.min(100, (currentHealth / maxHealth) * 100));
 
     return (
@@ -38,6 +44,25 @@ const CombatantCard: React.FC<CombatantCardProps> = ({
                 {magic && magic > 0 && magic > brawn ? <div>{getStatIcon('magic')} {magic}</div> : null}
                 {armour && armour > 0 ? <div>{getStatIcon('armour')} {armour}</div> : null}
             </div>
+
+            {activeEffects.length > 0 && (
+                <div className="combatant-effects">
+                    {activeEffects.map((effect, idx) => (
+                        <ActiveEffectIcon
+                            key={idx}
+                            effect={effect}
+                            onClick={() => setSelectedEffect(effect)}
+                        />
+                    ))}
+                </div>
+            )}
+
+            {selectedEffect && (
+                <ActiveEffectOverlay
+                    effect={selectedEffect}
+                    onClose={() => setSelectedEffect(null)}
+                />
+            )}
         </div>
     );
 };

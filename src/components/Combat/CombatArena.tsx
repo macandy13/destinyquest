@@ -5,7 +5,6 @@ import { Enemy } from '../../types/character';
 import { BackpackItem } from '../../types/hero';
 import CombatLog from './CombatLog';
 import CombatantCard from './CombatantCard';
-import CombatModifiers from './CombatModifiers';
 import CombatStartPhase from './CombatStartPhase';
 import RoundStartPhase from './RoundStartPhase';
 import SpeedRollPhase from './SpeedRollPhase';
@@ -52,6 +51,7 @@ const CombatArena: React.FC<CombatArenaProps> = ({ hero, enemy, onCombatFinish }
                         brawn={hero.stats.brawn}
                         magic={hero.stats.magic}
                         armour={hero.stats.armour}
+                        activeEffects={combat.hero.activeEffects}
                     />
 
                     {/* VS Separator */}
@@ -67,15 +67,9 @@ const CombatArena: React.FC<CombatArenaProps> = ({ hero, enemy, onCombatFinish }
                         magic={combat.enemy.stats.magic}
                         armour={combat.enemy.stats.armour}
                         isEnemy={true}
+                        activeEffects={combat.enemy.activeEffects}
                     />
                 </div>
-
-                <CombatModifiers
-                    modifications={
-                        [
-                            ...combat.hero.activeEffects,
-                            ...combat.enemy.activeEffects]
-                    } />
             </div>
 
             <div className="arena-center">

@@ -20,7 +20,8 @@ registerAbility({
             stats: {},
             source: 'Ignite',
             target: opponent,
-            duration: undefined // Burn lasts until removed
+            duration: undefined, // Burn lasts until removed
+            icon: '🔥'
         };
 
         state = dealDamage(state, 'Ignite', opponent, dmg);

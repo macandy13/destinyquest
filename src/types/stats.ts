@@ -19,6 +19,8 @@ export function getStatIcon(stat: string): string {
         case 'armour': return '🛡️';
         case 'health': return '❤️';
         case 'money': return '💰';
+        case 'damage': return '⚔️';
+        case 'damageModifier': return '⚔️';
         default: return '';
     }
 }

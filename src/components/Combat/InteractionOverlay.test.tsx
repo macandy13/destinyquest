@@ -2,7 +2,6 @@ import { render, fireEvent } from '@testing-library/react';
 import InteractionOverlay from './InteractionOverlay';
 import { CombatState, InteractionRequest } from '../../types/combatState';
 import { describe, it, expect, vi } from 'vitest';
-import { CharacterType } from '../../types/character';
 
 // Mock getAbilityIcon
 vi.mock('../../mechanics/abilityRegistry', () => ({
@@ -20,7 +19,7 @@ describe('InteractionOverlay', () => {
             type: 'hero',
             activeAbilities: new Map(),
             activeEffects: [],
-            stats: { health: 10, maxHealth: 10, speed: 2, magic: 0, brawn: 0, armor: 0 },
+            stats: { health: 10, maxHealth: 10, speed: 2, magic: 0, brawn: 0, armour: 0 },
             original: {} as any // simplified
         },
         enemy: {
@@ -29,7 +28,7 @@ describe('InteractionOverlay', () => {
             type: 'enemy',
             activeAbilities: new Map(),
             activeEffects: [],
-            stats: { health: 10, maxHealth: 10, speed: 2, magic: 0, brawn: 0, armor: 0 },
+            stats: { health: 10, maxHealth: 10, speed: 2, magic: 0, brawn: 0, armour: 0 },
             original: {} as any
         },
         round: 1,
@@ -53,7 +52,7 @@ describe('InteractionOverlay', () => {
                 ability: {
                     name: 'Test Ability',
                     owner: 'hero',
-                    def: { name: 'Test Ability', description: 'Description', type: 'combat', source: 'career' }
+                    def: { name: 'Test Ability', description: 'Description', type: 'combat' }
                 },
                 requests: [
                     { type: 'dice', mode: 'select', count: 1 } as unknown as InteractionRequest
@@ -75,7 +74,7 @@ describe('InteractionOverlay', () => {
                 ability: {
                     name: 'Test Ability',
                     owner: 'hero',
-                    def: { name: 'Test Ability', description: 'Test Description', type: 'combat', source: 'career' }
+                    def: { name: 'Test Ability', description: 'Test Description', type: 'combat' }
                 },
                 requests: [
                     { type: 'choices', mode: 'select', count: 1, choices: ['Yes', 'No'] }
@@ -103,7 +102,7 @@ describe('InteractionOverlay', () => {
                 ability: {
                     name: 'Test Ability',
                     owner: 'hero',
-                    def: { name: 'Test Ability', description: 'Test Description', type: 'combat', source: 'career' }
+                    def: { name: 'Test Ability', description: 'Test Description', type: 'combat' }
                 },
                 requests: [
                     { type: 'choices', mode: 'select', count: 1, choices: ['Option A', 'Option B'] }
@@ -133,7 +132,7 @@ describe('InteractionOverlay', () => {
                 ability: {
                     name: 'Multi Step',
                     owner: 'hero',
-                    def: { name: 'Multi Step', description: 'Desc', type: 'combat', source: 'career' }
+                    def: { name: 'Multi Step', description: 'Desc', type: 'combat' }
                 },
                 requests: [
                     { type: 'choices', mode: 'select', count: 1, choices: ['Skip'] },

@@ -9,8 +9,6 @@ import HeroEquipment from './components/Hero/HeroEquipment';
 import CombatTab from './components/Combat/CombatTab';
 import { useHero } from './hooks/useHero';
 
-
-
 function App() {
     const [activeTab, setActiveTab] = useState<'stats' | 'equipment' | 'combat'>('stats');
     const { hero, updateHealth, updateMoney, equipItem, unequipItem, setBackpackItem, deleteBackpackItem, updateBackpack } = useHero();

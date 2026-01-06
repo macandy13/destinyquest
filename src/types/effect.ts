@@ -7,6 +7,7 @@ export interface Effect {
     target: CharacterType; // Who the modification applies to
     duration?: number; // undefined means infinite
     visible?: boolean; // If the effect should be presented to the user or if it is an internal states
+    icon?: string; // Optional icon override
 }
 
 export function formatEffect(effect: Effect): string {

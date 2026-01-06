@@ -13,7 +13,8 @@ registerAbility({
                 stats: {},
                 source: 'Venom',
                 target,
-                duration: undefined
+                duration: undefined,
+                icon: '☠️'
             });
         }
         return state;

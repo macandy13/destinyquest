@@ -95,6 +95,7 @@ export function createStatModifierAbility(config: StatModifierAbilityConfig): Ab
                 target: target,
                 stats: config.stats || {},
                 duration: config.duration,
+                icon: config.icon // Use the icon from config
             };
 
             return appendEffect(state, target, effect);

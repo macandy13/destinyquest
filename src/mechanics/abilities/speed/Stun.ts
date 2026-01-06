@@ -15,7 +15,8 @@ registerAbility({
             stats: { speedDice: -1 },
             source: 'Stun',
             target: getOpponent(owner),
-            duration: 1
+            duration: 1,
+            icon: '💫'
         });
         state = appendEffect(state, owner, {
             source: 'used-stun',
