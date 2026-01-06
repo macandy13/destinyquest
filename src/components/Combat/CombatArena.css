@@ -4,7 +4,6 @@
     /* Fixed height for log area to prevent jump */
     gap: var(--spacing-md);
     height: 100%;
-    /* Remove padding-bottom as the grid height handles it */
 }
 
 .arena-header {
@@ -19,28 +18,82 @@
     align-items: center;
     width: 100%;
     position: relative;
-    /* Stabilize positioning */
     gap: var(--spacing-sm);
+    overflow-y: auto;
+    /* Allow scrolling if content is tall */
+}
+
+/* Phase Layout */
+.phase-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--spacing-md);
+    width: 100%;
+    max-width: 600px;
+    /* Constrain width for better readability */
+    margin: 0 auto;
+}
+
+.phase-header {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-xs);
+}
+
+.phase-title {
+    color: var(--dq-gold);
+    font-size: var(--font-lg);
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.phase-description {
+    color: var(--text-dim);
+    font-size: var(--font-sm);
+}
+
+.phase-main-content {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--spacing-md);
+    justify-content: center;
+}
+
+.phase-actions {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-sm);
+    width: 100%;
+    align-items: center;
+}
+
+/* Specific Phase overrides/utilities */
+
+.speed-rolls-container {
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-start;
+    width: 100%;
+    gap: var(--spacing-md);
+}
+
+.damage-section {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-md);
+    width: 100%;
+    align-items: center;
 }
 
 .combatants {
     display: flex;
     justify-content: space-evenly;
     gap: var(--spacing-md);
-}
-
-/* CombatantCard styles moved to CombatantCard.css */
-
-/* Log styles moved to CombatLog.css */
-
-.combat-controls {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: var(--spacing-sm);
-}
-
-.round-indicator {
-    text-align: center;
 }
 
 .vs-separator {
@@ -50,82 +103,8 @@
     color: var(--dq-gold-dim);
 }
 
-/* Button styles moved to App.css as global utilities */
-
-.speed-rolls {
-    gap: calc(2 * var(--spacing-md));
-}
-
-/* Mini dice for non-focus phases */
-.rolls-mini {
-    transform: scale(0.8);
-    opacity: 0.8;
-}
-
-.rolls-mini .dice-label,
-.rolls-mini .text-dim {
-    visibility: hidden;
-    /* Reserve space to prevent layout jump */
-    opacity: 0;
-    transition: opacity 0.3s;
-}
-
-.phase-control {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: var(--spacing-md);
-}
-
-.phase-instruction {
-    text-align: center;
-    color: var(--dq-gold);
-}
-
-.speed-rolls-container {
-    display: flex;
-    justify-content: space-around;
-    align-items: flex-start;
-    transition: all 0.5s ease;
-}
-
-.speed-result-text {
-    text-align: center;
-    font-size: var(--font-sm);
-    color: var(--dq-dim);
-}
-
-.speed-confirm-container {
-    text-align: center;
-}
-
-.damage-section {
-    border-top: var(--border-sm) solid #333;
-    padding-top: var(--spacing-md);
-    display: flex;
-    flex-direction: column;
-    gap: var(--spacing-md);
+/* Utility to ensure buttons are wide enough on mobile but not too wide on desktop */
+.btn-phase-action {
     width: 100%;
-    align-items: center;
-}
-
-.damage-title {
-    text-align: center;
-    color: var(--dq-gold);
-}
-
-.damage-dice-container {
-    display: flex;
-    justify-content: center;
-}
-
-.enemy-damage-container {
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    align-items: center;
-}
-
-.damage-confirm-container {
-    text-align: center;
+    max-width: 300px;
 }
