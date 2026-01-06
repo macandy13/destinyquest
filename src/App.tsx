@@ -15,8 +15,8 @@ function App() {
     const [activeTab, setActiveTab] = useState<'stats' | 'equipment' | 'combat'>('stats');
     const { hero, updateHealth, updateMoney, equipItem, unequipItem, setBackpackItem, deleteBackpackItem, updateBackpack } = useHero();
 
-    const handleCombatFinish = (results: { health: number, backpack: (any)[] }) => {
-        updateHealth(results.health);
+    const handleCombatFinish = (results: { health?: number, backpack: (any)[] }) => {
+        if (results.health) updateHealth(results.health);
         updateBackpack(results.backpack);
         setActiveTab('stats');
     };

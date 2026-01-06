@@ -19,7 +19,7 @@ import './CombatArena.css';
 interface CombatArenaProps {
     hero: Hero;
     enemy: Enemy;
-    onCombatFinish: (results: { health: number, backpack: (BackpackItem | null)[] }) => void;
+    onCombatFinish: (results: { health?: number, backpack: (BackpackItem | null)[] }) => void;
 }
 
 const CombatArena: React.FC<CombatArenaProps> = ({ hero, enemy, onCombatFinish }) => {

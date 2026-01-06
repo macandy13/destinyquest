@@ -5,7 +5,7 @@ import CombatPhaseLayout from './CombatPhaseLayout';
 
 interface CombatEndPhaseProps {
     combat: CombatState;
-    onCombatFinish: (results: { health: number, backpack: (BackpackItem | null)[] }) => void;
+    onCombatFinish: (results: { health?: number, backpack: (BackpackItem | null)[] }) => void;
     restartCombat: () => void;
 }
 
@@ -17,24 +17,18 @@ const CombatEndPhase: React.FC<CombatEndPhaseProps> = ({
     const isVictory = (combat.hero?.stats.health ?? 0) > 0;
     const enemyName = combat.enemy?.original?.name || 'Enemy';
 
-    const handleAccept = () => {
-        if (!combat.hero) return;
-
-        let newHealth = 0;
-        if (combat.hero.stats.health <= 0) {
-            newHealth = 0; // Defeat
-        } else if (combat.enemy?.original?.preventHealing) {
-            newHealth = combat.hero.stats.health; // Prevent Healing
-        } else {
-            newHealth = combat.hero.original.stats.maxHealth; // Full Restore
-        }
-
+    const healAndMoveOn = () => {
         onCombatFinish({
-            health: newHealth,
-            backpack: combat.hero.original.backpack
+            health: combat.hero.original.stats.maxHealth,
+            backpack: combat.backpack,
         });
     };
 
+    const exitWithoutHealing = () => {
+        onCombatFinish({
+            backpack: combat.backpack
+        });
+    };
     return (
         <CombatPhaseLayout
             title={isVictory ? 'VICTORY!' : 'DEFEAT!'}
@@ -46,11 +40,14 @@ const CombatEndPhase: React.FC<CombatEndPhaseProps> = ({
             combat={combat}
             actions={
                 <>
+                    <button className="btn btn-primary" onClick={healAndMoveOn}>
+                        Restore Health & Move On
+                    </button>
+                    <button className="btn btn-secondary" onClick={exitWithoutHealing}>
+                        Exit without Healing
+                    </button>
                     <button className="btn btn-secondary" onClick={restartCombat}>
                         Retry
-                    </button>
-                    <button className="btn btn-primary" onClick={handleAccept}>
-                        Accept
                     </button>
                 </>
             }
