@@ -34,10 +34,12 @@ const CombatantCard: React.FC<CombatantCardProps> = ({
     return (
         <div className={`combatant-card ${isEnemy ? 'enemy' : ''}`}>
             <div className="combatant-name">{name}</div>
-            <div className="health-bar-container">
-                <div className="health-bar" style={{ width: `${healthPct}%` }}></div>
+            <div className="health-bar-row">
+                <div className="health-bar-container">
+                    <div className="health-bar" style={{ width: `${healthPct}%` }}></div>
+                </div>
+                <div className="health-bar-text">{currentHealth}/{maxHealth}</div>
             </div>
-            <div>{currentHealth} / {maxHealth} HP</div>
             <div className="combatant-stats">
                 <div>{getStatIcon('speed')} {speed}</div>
                 {brawn >= (magic ?? -1) ? <div>{getStatIcon('brawn')} {brawn}</div> : <div>{getStatIcon('magic')} {magic}</div>}
