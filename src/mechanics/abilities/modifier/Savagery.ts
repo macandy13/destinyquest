@@ -21,7 +21,7 @@ registerAbility({
                 }],
                 callback: (currentState, responses) => {
                     if (responses.length !== 1) return currentState;
-                    const choiceIndex = responses[0].selectedIndex;
+                    const choiceIndex = responses[0].selectedIndexes[0];
                     const statMap: (keyof Stats)[] = ['brawn', 'magic'];
                     const attribute = statMap[choiceIndex];
                     if (!attribute) return currentState;

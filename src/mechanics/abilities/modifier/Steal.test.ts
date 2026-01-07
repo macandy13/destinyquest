@@ -55,7 +55,7 @@ describe('Steal Ability', () => {
 
         // Resolve interaction: Choice 0 (Speed)
         // state.hero.speed = 2, state.enemy.speed = 5. Diff = 3.
-        state = resolveInteraction(state, [{ request: state.pendingInteraction!.requests[0], selectedIndex: 0 }]);
+        state = resolveInteraction(state, [{ request: state.pendingInteraction!.requests[0], selectedIndexes: [0] }]);
 
         // Verify interaction cleared
         expect(state.pendingInteraction).toBeUndefined();
@@ -91,7 +91,7 @@ describe('Steal Ability', () => {
         state = activateAbility(state, 'Steal');
 
         // Resolve interaction: Choice 1 (Brawn)
-        state = resolveInteraction(state, [{ request: state.pendingInteraction!.requests[0], selectedIndex: 1 }]);
+        state = resolveInteraction(state, [{ request: state.pendingInteraction!.requests[0], selectedIndexes: [1] }]);
 
         // Verify no effect applied (diff would be negative)
         const effect = state.hero.activeEffects.find(e => e.source === 'Steal');

@@ -38,10 +38,10 @@ registerAbility({
                     };
                     let newDice;
                     if (target === 'enemy-speed') {
-                        state.enemySpeedRolls = rerollSelectedDie(state.enemySpeedRolls!, response.selectedIndex);
+                        state.enemySpeedRolls = rerollSelectedDie(state.enemySpeedRolls!, response.selectedIndexes[0]);
                         newDice = formatDice(state.enemySpeedRolls!);
                     } else if (target === 'damage') {
-                        state.damage!.damageRolls = rerollSelectedDie(state.damage!.damageRolls!, response.selectedIndex);
+                        state.damage!.damageRolls = rerollSelectedDie(state.damage!.damageRolls!, response.selectedIndexes[0]);
                         newDice = formatDice(state.damage!.damageRolls!);
                     } else {
                         return state;

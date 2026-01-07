@@ -73,7 +73,7 @@ describe('Ability Interactions', () => {
         expect(state.hero.activeAbilities.get('dice-selector')?.uses).toBe(1);
 
         // 5. Resolve interaction
-        state = resolveInteraction(state, [{ request: state.pendingInteraction!.requests[0], selectedIndex: 0 }]);
+        state = resolveInteraction(state, [{ request: state.pendingInteraction!.requests[0], selectedIndexes: [0] }]);
 
         // 6. Verify interaction resolved
         expect(state.pendingInteraction).toBeUndefined();

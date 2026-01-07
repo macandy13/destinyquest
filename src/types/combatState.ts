@@ -56,12 +56,13 @@ export interface InteractionRequest {
 
 export interface InteractionResponse {
     request: InteractionRequest;
-    selectedIndex: number;
+    selectedIndexes: number[];
 }
 
 export interface PendingInteraction {
     ability: ActiveAbility;
     requests: InteractionRequest[];
+    currentRequestIndex: number;
     callback: (state: CombatState, response: InteractionResponse[]) => CombatState;
 }
 

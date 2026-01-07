@@ -34,9 +34,6 @@ export interface AbilityHooks {
 
     // Called when damage phase is over and passive abilities are triggered.
     onPassiveAbility?: (state: CombatState, context: AbilityContext) => CombatState;
-
-    // Handles reroll interactions. Returns state updates.
-    onReroll?: (state: CombatState, dieIndex: number) => CombatState;
 }
 
 export interface AbilityDefinition extends AbilityHooks {

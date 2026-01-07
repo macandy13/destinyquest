@@ -57,15 +57,15 @@ describe('Multiple Interaction Resolution', () => {
         state.hero.activeAbilities.set('test', state.pendingInteraction!.ability);
 
         const responses: InteractionResponse[] = [
-            { request: requests[0], selectedIndex: 0 },
-            { request: requests[1], selectedIndex: 1 }
+            { request: requests[0], selectedIndexes: [0] },
+            { request: requests[1], selectedIndexes: [1] }
         ];
 
         resolveInteraction(state, responses);
 
         expect(capturedResponses).toHaveLength(2);
-        expect(capturedResponses[0].selectedIndex).toBe(0);
-        expect(capturedResponses[1].selectedIndex).toBe(1);
+        expect(capturedResponses[0].selectedIndexes).toEqual([0]);
+        expect(capturedResponses[1].selectedIndexes).toEqual([1]);
     });
 
     it('should handle multiple dice selection from a single request', () => {
@@ -97,8 +97,8 @@ describe('Multiple Interaction Resolution', () => {
         state.hero.activeAbilities.set('test', state.pendingInteraction!.ability);
 
         const responses: InteractionResponse[] = [
-            { request: request, selectedIndex: 0 },
-            { request: request, selectedIndex: 1 }
+            { request: request, selectedIndexes: [0] },
+            { request: request, selectedIndexes: [1] }
         ];
 
         resolveInteraction(state, responses);

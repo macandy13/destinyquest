@@ -1,5 +1,5 @@
 import React from 'react';
-import { CombatState } from '../../types/combatState';
+import { CombatState, InteractionRequest, InteractionResponse } from '../../types/combatState';
 import { calculateEffectiveStats } from '../../types/effect';
 import CombatDice from './CombatDice';
 import CombatPhaseLayout from './CombatPhaseLayout';
@@ -9,7 +9,8 @@ interface SpeedRollPhaseProps {
     combat: CombatState;
     commitSpeedAndRollDamageDice: () => void;
     confirmBonusDamage: () => void;
-    resolveInteraction: (data: any) => void;
+    currentInteraction?: InteractionRequest;
+    resolveInteraction: (data: InteractionResponse) => void;
     activateAbility: (abilityName: string) => void;
     useBackpackItem: (itemIndex: number) => void;
 }
@@ -18,12 +19,13 @@ const SpeedRollPhase: React.FC<SpeedRollPhaseProps> = ({
     combat,
     commitSpeedAndRollDamageDice,
     confirmBonusDamage,
+    currentInteraction,
     resolveInteraction,
     activateAbility,
     useBackpackItem
 }) => {
     const getInstruction = () => {
-        if (combat.pendingInteraction?.requests.some(r => r.type === 'dice')) {
+        if (currentInteraction?.type === 'dice') {
             return "Select a die to interact with.";
         }
         switch (combat.winner) {
@@ -36,14 +38,13 @@ const SpeedRollPhase: React.FC<SpeedRollPhaseProps> = ({
 
     const [selectedDice, setSelectedDice] = React.useState<number[]>([]);
 
-    const isInteracting = combat.pendingInteraction?.requests.some(r => r.type === 'dice');
-    const interactionRequest = combat.pendingInteraction?.requests.find(r => r.type === 'dice');
-    const canInteractHero = isInteracting && (interactionRequest?.target === 'hero' || !interactionRequest?.target);
-    const canInteractEnemy = isInteracting && (interactionRequest?.target === 'enemy');
+    const isInteracting = currentInteraction?.type === 'dice';
+    const canInteractHero = isInteracting && (currentInteraction?.target === 'hero' || !currentInteraction?.target);
+    const canInteractEnemy = isInteracting && (currentInteraction?.target === 'enemy');
 
     // Helper to handle die click for interaction
     const onDieClick = (index: number) => {
-        const count = interactionRequest?.count ?? 1;
+        const count = currentInteraction?.count ?? 1;
         if (count > 1) {
             // Toggle selection
             if (selectedDice.includes(index)) {
@@ -53,25 +54,18 @@ const SpeedRollPhase: React.FC<SpeedRollPhaseProps> = ({
             }
         } else {
             // Immediate resolve for single die
-            resolveInteraction([{
-                request: interactionRequest,
-                selectedIndex: index
-            }]);
+            resolveInteraction({
+                request: currentInteraction!,
+                selectedIndexes: [index]
+            });
         }
     };
 
     const confirmDiceSelection = () => {
-        if (!interactionRequest) return;
-        // Map each selected index to a response
-        // Note: The structure of InteractionResponse implies a 1-to-1 mapping via array in CombatEngine?
-        // Actually, resolveInteraction takes 'data'. CombatEngine implementation of resolveInteraction
-        // takes 'response: InteractionResponse[]'.
-        // So we send an array of responses.
-        const responses = selectedDice.map(idx => ({
-            request: interactionRequest,
-            selectedIndex: idx
-        }));
-        resolveInteraction(responses);
+        resolveInteraction({
+            request: currentInteraction!,
+            selectedIndexes: selectedDice
+        });
         setSelectedDice([]);
     };
 
@@ -84,13 +78,13 @@ const SpeedRollPhase: React.FC<SpeedRollPhaseProps> = ({
             onUseBackpackItem={useBackpackItem}
             actions={
                 isInteracting ? (
-                    (interactionRequest?.count ?? 1) > 1 && (
+                    (currentInteraction?.count ?? 1) > 1 && (
                         <PrimaryButton
                             className="btn-phase-action"
                             onClick={confirmDiceSelection}
-                            disabled={selectedDice.length !== (interactionRequest?.count ?? 1)}
+                            disabled={selectedDice.length !== (currentInteraction?.count ?? 1)}
                         >
-                            Confirm Selection ({selectedDice.length}/{interactionRequest?.count})
+                            Confirm Selection ({selectedDice.length}/{currentInteraction?.count})
                         </PrimaryButton>
                     )
                 ) : (

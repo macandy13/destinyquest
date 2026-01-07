@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useCombat } from '../../hooks/useCombat';
 import { Hero } from '../../types/hero';
 import { Enemy } from '../../types/character';
@@ -15,12 +15,19 @@ import RoundEndPhase from './RoundEndPhase';
 import CombatEndPhase from './CombatEndPhase';
 import InteractionOverlay from './InteractionOverlay';
 import './CombatArena.css';
+import { InteractionResponse } from '../../types/combatState';
 
 interface CombatArenaProps {
     hero: Hero;
     enemy: Enemy;
     onCombatFinish: (results: { health?: number, backpack: (BackpackItem | null)[] }) => void;
 }
+
+interface InteractionTracker {
+    currentIndex: number;
+    length: number;
+    collectedResponses: InteractionResponse[];
+};
 
 const CombatArena: React.FC<CombatArenaProps> = ({ hero, enemy, onCombatFinish }) => {
     const {
@@ -35,6 +42,36 @@ const CombatArena: React.FC<CombatArenaProps> = ({ hero, enemy, onCombatFinish }
         nextRound,
         restartCombat
     } = useCombat(hero, enemy);
+
+    const [interactionData, setInteractionData] = useState<InteractionTracker | null>(null);
+    React.useEffect(() => {
+        if (combat.pendingInteraction) {
+            setInteractionData({
+                currentIndex: 0,
+                length: combat.pendingInteraction.requests.length,
+                collectedResponses: []
+            });
+        } else {
+            setInteractionData(null);
+        }
+    }, [combat.pendingInteraction]);
+
+    const currentInteraction = () => combat.pendingInteraction?.requests[interactionData?.currentIndex ?? 0];
+
+    const resolveSingleInteraction = (response: InteractionResponse) => {
+        if (!interactionData) return;
+        const newData = {
+            ...interactionData,
+            currentIndex: interactionData.currentIndex + 1,
+            collectedResponses: [...interactionData.collectedResponses, response],
+        };
+        if (newData.currentIndex < newData.length) {
+            setInteractionData(newData);
+            return;
+        }
+        resolveInteraction(newData.collectedResponses);
+        setInteractionData(null);
+    };
 
     return (
         <div className="combat-arena">
@@ -74,13 +111,11 @@ const CombatArena: React.FC<CombatArenaProps> = ({ hero, enemy, onCombatFinish }
 
             <div className="arena-center">
                 {/* Interaction Overlay for choices */}
-                {combat.pendingInteraction?.requests.some(r => r.type === 'choices') && (
+                {currentInteraction()?.type === 'choices' && (
                     <InteractionOverlay
-                        combat={combat}
-                        onResolve={(data) => resolveInteraction([{
-                            request: combat.pendingInteraction!.requests.find(r => r.type === 'choices'),
-                            ...data
-                        }])}
+                        ability={combat.pendingInteraction!.ability}
+                        interaction={currentInteraction()!}
+                        onResolve={(data) => resolveSingleInteraction(data)}
                     />
                 )}
 
@@ -105,7 +140,8 @@ const CombatArena: React.FC<CombatArenaProps> = ({ hero, enemy, onCombatFinish }
                         combat={combat}
                         commitSpeedAndRollDamageDice={commitSpeedAndRollDamageDice}
                         confirmBonusDamage={confirmBonusDamage}
-                        resolveInteraction={resolveInteraction}
+                        currentInteraction={currentInteraction()?.type === 'dice' ? currentInteraction() : null}
+                        resolveInteraction={resolveSingleInteraction}
                         activateAbility={activateAbility}
                         useBackpackItem={useBackpackItem}
                     />
@@ -114,7 +150,8 @@ const CombatArena: React.FC<CombatArenaProps> = ({ hero, enemy, onCombatFinish }
                     <DamageRollPhase
                         combat={combat}
                         confirmDamageRoll={confirmDamageRoll}
-                        resolveInteraction={resolveInteraction}
+                        currentInteraction={currentInteraction()?.type === 'dice' ? currentInteraction() : null}
+                        resolveInteraction={resolveSingleInteraction}
                         activateAbility={activateAbility}
                         useBackpackItem={useBackpackItem}
                     />

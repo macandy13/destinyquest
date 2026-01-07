@@ -23,7 +23,7 @@
  * 4. nextRound: Resets for the next round, handling cooldowns and duration ticks.
  */
 
-import { CombatState, Combatant, ActiveAbility, addLogs, applyEffect, forEachActiveAbility, dealDamage, AttackSource, setDamageRoll, getCombatant } from '../types/combatState';
+import { CombatState, Combatant, ActiveAbility, addLogs, applyEffect, forEachActiveAbility, dealDamage, AttackSource, setDamageRoll, getCombatant, InteractionResponse } from '../types/combatState';
 import { sumDice, rollDice, formatDice, DiceRoll } from '../types/dice';
 import { Hero, HeroStats, BackpackItem } from '../types/hero';
 import { getAbilityDefinition, toCanonicalName } from './abilityRegistry';
@@ -221,7 +221,7 @@ export function activateAbility(state: CombatState, rawAbilityName: string): Com
     return checkForCombatEnd(state);
 }
 
-export function resolveInteraction(state: CombatState, data: any): CombatState {
+export function resolveInteraction(state: CombatState, data: InteractionResponse[]): CombatState {
     if (!state.pendingInteraction) {
         console.error('No pending interaction to resolve');
         return state;
