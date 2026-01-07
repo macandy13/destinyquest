@@ -57,6 +57,7 @@
   --border-md: clamp(2px, 0.2vw, 3px);
   --border-lg: clamp(3px, 0.5vw, 4px);
 
+  --icon-xs: clamp(12px, 3vw, 16px);
   --icon-sm: clamp(16px, 4vw, 20px);
   --icon-md: clamp(24px, 6vw, 32px);
   --icon-lg: clamp(32px, 8vw, 48px);

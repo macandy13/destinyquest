@@ -14,24 +14,29 @@ const ActiveEffectIcon: React.FC<ActiveEffectIconProps> = ({ effect, onClick }) 
 
     // Check keys in order of precedence/importance or logic
     // Check keys in order of precedence/importance or logic
+    let value: number | undefined;
+    const s = effect.stats;
+    if (s.damageModifier) { icon = getStatIcon('damage'); value = s.damageModifier; }
+    else if (s.speed) { icon = getStatIcon('speed'); value = s.speed; }
+    else if (s.brawn) { icon = getStatIcon('brawn'); value = s.brawn; }
+    else if (s.magic) { icon = getStatIcon('magic'); value = s.magic; }
+    else if (s.armour) { icon = getStatIcon('armour'); value = s.armour; }
+    else if (s.health) { icon = getStatIcon('health'); value = s.health; }
+    else if (s.speedDice) { icon = getStatIcon('die'); value = s.speedDice; }
+    else if (s.damageDice) { icon = getStatIcon('die'); value = s.damageDice; }
     if (effect.icon) {
         icon = effect.icon;
-    } else {
-        const s = effect.stats;
-        if (s.damageModifier) icon = getStatIcon('damage');
-        else if (s.speed) icon = getStatIcon('speed');
-        else if (s.brawn) icon = getStatIcon('brawn');
-        else if (s.magic) icon = getStatIcon('magic');
-        else if (s.armour) icon = getStatIcon('armour');
-        else if (s.health) icon = getStatIcon('health');
-        else if (s.speedDice) icon = getStatIcon('die');
     }
+
+    let valueDisplay = value === undefined ? '' : value;
+    if (value ?? 0 > 0) valueDisplay = '+' + valueDisplay;
 
     const durationDisplay = effect.duration === undefined ? '∞' : effect.duration;
     return (
         <div className="active-effect-icon" onClick={onClick} title={effect.source}>
-            <span className="effect-icon-symbol">{icon}</span>
-            <span className="effect-duration-badge">{durationDisplay}</span>
+            <span>{icon}</span>
+            {valueDisplay ? <span className="effect-value">{valueDisplay}</span> : null}
+            {durationDisplay ? <span className="effect-duration-badge">{durationDisplay}</span> : null}
         </div>
     );
 };
