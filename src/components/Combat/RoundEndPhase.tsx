@@ -1,6 +1,7 @@
 import React from 'react';
 import { CombatState } from '../../types/combatState';
 import CombatPhaseLayout from './CombatPhaseLayout';
+import { PrimaryButton } from '../Shared/Button';
 
 interface RoundEndPhaseProps {
     combat: CombatState;
@@ -23,9 +24,9 @@ const RoundEndPhase: React.FC<RoundEndPhaseProps> = ({
             onActivateAbility={activateAbility}
             onUseBackpackItem={useBackpackItem}
             actions={
-                <button className="btn btn-primary btn-phase-action" onClick={nextRound}>
+                <PrimaryButton className="btn-phase-action" onClick={nextRound}>
                     Start Round {combat.round + 1}
-                </button>
+                </PrimaryButton>
             }
         >
             {/* Round summary stats? */}

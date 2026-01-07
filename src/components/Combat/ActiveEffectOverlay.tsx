@@ -1,6 +1,8 @@
 import React from 'react';
 import { Effect, formatEffect } from '../../types/effect';
-import './ActiveEffectOverlay.css';
+import CombatOverlay from './CombatOverlay';
+import { PrimaryButton } from '../Shared/Button';
+import { getAbilityDefinition, getAbilityIcon } from '../../mechanics/abilityRegistry';
 
 interface ActiveEffectOverlayProps {
     effect: Effect;
@@ -8,19 +10,29 @@ interface ActiveEffectOverlayProps {
 }
 
 const ActiveEffectOverlay: React.FC<ActiveEffectOverlayProps> = ({ effect, onClose }) => {
+    let icon = effect.icon;
+    if (!icon) {
+        const def = getAbilityDefinition(effect.source);
+        icon = getAbilityIcon(def);
+    }
+
     return (
-        <div className="active-effect-overlay-backdrop" onClick={onClose}>
-            <div className="active-effect-overlay-content" onClick={e => e.stopPropagation()}>
-                <h3>{effect.source}</h3>
-                <div className="effect-details">
+        <CombatOverlay
+            title={effect.source}
+            icon={icon}
+            onClose={onClose}>
+            <CombatOverlay.Content>
+                <div style={{ textAlign: 'center' }}>
                     <p>{formatEffect(effect)}</p>
-                    <p className="effect-duration">
+                    <p style={{ fontStyle: 'italic', marginTop: '0.5rem', color: 'var(--dq-light-grey)' }}>
                         Duration: {effect.duration === undefined ? 'Infinite' : `${effect.duration} rounds`}
                     </p>
                 </div>
-                <button onClick={onClose}>Close</button>
-            </div>
-        </div>
+            </CombatOverlay.Content>
+            <CombatOverlay.Actions>
+                <PrimaryButton onClick={onClose}>Close</PrimaryButton>
+            </CombatOverlay.Actions>
+        </CombatOverlay>
     );
 };
 

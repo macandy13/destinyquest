@@ -3,8 +3,9 @@ import { ActiveAbility, CombatState } from '../../types/combatState';
 import { getAbilityDefinition, getAbilityIcon } from '../../mechanics/abilityRegistry';
 import CombatAbilityItem from './CombatAbilityItem';
 import CombatBackpackItem from './CombatBackpackItem';
-import './CombatModal.css';
 import './CombatAbilitySelector.css';
+import CombatOverlay from './CombatOverlay';
+import { PrimaryButton } from '../Shared/Button';
 
 interface CombatAbilitySelectorProps {
     combat: CombatState;
@@ -59,36 +60,26 @@ const CombatAbilitySelector: React.FC<CombatAbilitySelectorProps> = ({ combat, o
             </div>
 
             {selectedAbility && (
-                <div className="ability-modal-overlay" onClick={() => setSelectedAbility(null)}>
-                    <div className="ability-modal-content" onClick={e => e.stopPropagation()}>
-                        <div className="ability-modal-header">
-                            <div className="ability-icon-huge">{getAbilityIcon(selectedAbility.def)}</div>
-                            <span className="ability-modal-title">
-                                <h3>{selectedAbility.name}</h3>
-                                <span>{selectedAbility.uses ? `(x${selectedAbility.uses})` : ''}</span>
-                            </span>
-                            <button className="close-btn ability-modal-close" onClick={() => setSelectedAbility(null)}>&times;</button>
-                        </div>
-
-                        <div className="ability-modal-body">
-                            <p className="ability-modal-description">{selectedAbility.def.description}</p>
-                            {selectedAbility.sources && (
-                                <p className="text-dim text-sm" style={{ marginTop: '8px' }}>
-                                    Source(s): {selectedAbility.sources.map(s => s.name).join(', ')}
-                                </p>
-                            )}
-                        </div>
-
-                        <div className="ability-modal-actions">
-                            <button className="btn btn-primary" onClick={handleConfirm} style={{ width: '100%' }}>
-                                Use Ability
-                            </button>
-                        </div>
-                    </div>
-                </div>
+                <CombatOverlay
+                    title={selectedAbility.name + (selectedAbility.uses ? ` (x${selectedAbility.uses})` : '')}
+                    icon={getAbilityIcon(selectedAbility.def)}
+                    onClose={() => setSelectedAbility(null)}>
+                    <CombatOverlay.Content>
+                        <p className="ability-modal-description">{selectedAbility.def.description}</p>
+                        {selectedAbility.sources && (
+                            <p className="text-dim text-sm" style={{ marginTop: '8px' }}>
+                                Source(s): {selectedAbility.sources.map(s => s.name).join(', ')}
+                            </p>
+                        )}
+                    </CombatOverlay.Content>
+                    <CombatOverlay.Actions>
+                        <PrimaryButton onClick={handleConfirm}>Use Ability</PrimaryButton>
+                    </CombatOverlay.Actions>
+                </CombatOverlay>
             )}
         </div>
     );
 };
 
 export default CombatAbilitySelector;
+

@@ -40,7 +40,7 @@ const CombatantCard: React.FC<CombatantCardProps> = ({
             <div>{currentHealth} / {maxHealth} HP</div>
             <div className="combatant-stats">
                 <div>{getStatIcon('speed')} {speed}</div>
-                {brawn >= (magic ?? -1) ? <div>{getStatIcon('brawn')} {brawn}</div> : <div>{getStatIcon('magic')} {magic}</div> : null}
+                {brawn >= (magic ?? -1) ? <div>{getStatIcon('brawn')} {brawn}</div> : <div>{getStatIcon('magic')} {magic}</div>}
                 {armour && armour > 0 ? <div>{getStatIcon('armour')} {armour}</div> : null}
             </div>
 

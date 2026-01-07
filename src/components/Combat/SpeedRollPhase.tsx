@@ -3,6 +3,7 @@ import { CombatState } from '../../types/combatState';
 import { calculateEffectiveStats } from '../../types/effect';
 import CombatDice from './CombatDice';
 import CombatPhaseLayout from './CombatPhaseLayout';
+import { PrimaryButton } from '../Shared/Button';
 
 interface SpeedRollPhaseProps {
     combat: CombatState;
@@ -84,22 +85,22 @@ const SpeedRollPhase: React.FC<SpeedRollPhaseProps> = ({
             actions={
                 isInteracting ? (
                     (interactionRequest?.count ?? 1) > 1 && (
-                        <button
-                            className="btn btn-primary btn-phase-action"
+                        <PrimaryButton
+                            className="btn-phase-action"
                             onClick={confirmDiceSelection}
                             disabled={selectedDice.length !== (interactionRequest?.count ?? 1)}
                         >
                             Confirm Selection ({selectedDice.length}/{interactionRequest?.count})
-                        </button>
+                        </PrimaryButton>
                     )
                 ) : (
                     combat.winner ?
-                        <button className="btn btn-primary btn-phase-action" onClick={commitSpeedAndRollDamageDice}>
+                        <PrimaryButton className="btn-phase-action" onClick={commitSpeedAndRollDamageDice}>
                             Roll Damage Dice
-                        </button> :
-                        <button className="btn btn-primary btn-phase-action" onClick={confirmBonusDamage}>
+                        </PrimaryButton> :
+                        <PrimaryButton className="btn-phase-action" onClick={confirmBonusDamage}>
                             Apply Passive Abilities
-                        </button>
+                        </PrimaryButton>
                 )
             }
         >

@@ -3,6 +3,7 @@ import { CombatState } from '../../types/combatState';
 import { calculateEffectiveStats } from '../../types/effect';
 import CombatDice from './CombatDice';
 import CombatPhaseLayout from './CombatPhaseLayout';
+import { PrimaryButton } from '../Shared/Button';
 
 interface DamageRollPhaseProps {
     combat: CombatState;
@@ -74,18 +75,18 @@ const DamageRollPhase: React.FC<DamageRollPhaseProps> = ({
             actions={
                 isInteracting ? (
                     (interactionRequest?.count ?? 1) > 1 && (
-                        <button
-                            className="btn btn-primary btn-phase-action"
+                        <PrimaryButton
+                            className="btn-phase-action"
                             onClick={confirmDiceSelection}
                             disabled={selectedDice.length !== (interactionRequest?.count ?? 1)}
                         >
                             Confirm Selection ({selectedDice.length}/{interactionRequest?.count})
-                        </button>
+                        </PrimaryButton>
                     )
                 ) : (
-                    <button className="btn btn-primary btn-phase-action" onClick={confirmDamageRoll}>
+                    <PrimaryButton className="btn-phase-action" onClick={confirmDamageRoll}>
                         Apply Damage
-                    </button>
+                    </PrimaryButton>
                 )
             }
         >

@@ -1,7 +1,8 @@
 import React from 'react';
 import { CombatState } from '../../types/combatState';
 import { getAbilityIcon } from '../../mechanics/abilityRegistry';
-import './CombatModal.css';
+import CombatOverlay from './CombatOverlay';
+import { SecondaryButton } from '../Shared/Button';
 
 interface InteractionOverlayProps {
     combat: CombatState;
@@ -19,6 +20,7 @@ const InteractionOverlay: React.FC<InteractionOverlayProps> = ({ combat, onResol
         setResponses([]);
     }, [interaction]);
 
+
     if (!interaction) return null;
 
     const currentRequest = interaction.requests[currentStep];
@@ -31,43 +33,28 @@ const InteractionOverlay: React.FC<InteractionOverlayProps> = ({ combat, onResol
             setResponses(newResponses);
             setCurrentStep(currentStep + 1);
         } else {
-            // All steps completed
             onResolve(newResponses as any);
         }
     };
 
     return (
-        <div className="ability-modal-overlay">
-            <div className="ability-modal-content">
-                <div className="ability-modal-header">
-                    <div className="ability-icon-huge">{getAbilityIcon(interaction.ability.def)}</div>
-                    <span className="ability-modal-title">
-                        <h3>{interaction.ability.name}</h3>
-                    </span>
-                    {/* No close button as interactions must be resolved */}
+        <CombatOverlay
+            title={interaction.ability.name}
+            icon={getAbilityIcon(interaction.ability.def)}>
+            <CombatOverlay.Content>
+                <p className="ability-modal-description">{interaction.ability.def.description}</p>
+                <div className="text-dim text-sm" style={{ marginTop: '1rem' }}>
+                    Step {currentStep + 1} of {interaction.requests.length}
                 </div>
-
-                <div className="ability-modal-body">
-                    <p className="ability-modal-description">{interaction.ability.def.description}</p>
-                    <div className="text-dim text-sm" style={{ marginTop: '1rem' }}>
-                        Step {currentStep + 1} of {interaction.requests.length}
-                    </div>
-                </div>
-
-                <div className="ability-modal-actions">
-                    {currentRequest.choices.map((choice, index) => (
-                        <button
-                            key={index}
-                            className="btn btn-secondary"
-                            onClick={() => handleChoice(index)}
-                            style={{ flex: 1 }}
-                        >
-                            {choice}
-                        </button>
-                    ))}
-                </div>
-            </div>
-        </div>
+            </CombatOverlay.Content>
+            <CombatOverlay.Actions>
+                {currentRequest.choices.map((choice, index) => (
+                    <SecondaryButton key={index} onClick={() => handleChoice(index)}>
+                        {choice}
+                    </SecondaryButton>
+                ))}
+            </CombatOverlay.Actions>
+        </CombatOverlay >
     );
 };
 
