@@ -1,9 +1,11 @@
 import React from 'react';
 import { CombatState, InteractionRequest, InteractionResponse } from '../../types/combatState';
-import { calculateEffectiveStats } from '../../types/effect';
 import CombatDice from './CombatDice';
 import CombatPhaseLayout from './CombatPhaseLayout';
 import { PrimaryButton } from '../Shared/Button';
+import { calculateDamageBreakdown } from '../../mechanics/CombatEngine';
+import { getStatIcon } from '../../types/stats';
+import './DamageRollPhase.css';
 
 interface DamageRollPhaseProps {
     combat: CombatState;
@@ -24,17 +26,15 @@ const DamageRollPhase: React.FC<DamageRollPhaseProps> = ({
 }) => {
     const [selectedDice, setSelectedDice] = React.useState<number[]>([]);
 
-    // In Damage phase, the winner rolls damage. 
-    // Interaction might target 'hero' (if hero won) or 'enemy' (if enemy won).
-    // Or abilities might let you affect opponent damage?
-    // We check target. default is 'hero' usually implies the Roller? 
-    // Actually, target 'hero' means Hero's dice. Target 'enemy' means Enemy's dice.
-
     // Hero rolls damage
     const canInteractHero = currentInteraction?.target === 'hero' && combat.winner === 'hero';
 
     // Enemy rolls damage
     const canInteractEnemy = currentInteraction?.target === 'enemy' && combat.winner === 'enemy';
+
+    const breakdown = React.useMemo(() => {
+        return calculateDamageBreakdown(combat);
+    }, [combat]);
 
     const onDieClick = (index: number) => {
         const count = currentInteraction?.count ?? 1;
@@ -66,7 +66,6 @@ const DamageRollPhase: React.FC<DamageRollPhaseProps> = ({
     return (
         <CombatPhaseLayout
             title="Damage Roll"
-            description={currentInteraction ? "Select a die to interact with." : (combat.winner === 'hero' ? 'Roll for Damage!' : 'Brace for Impact!')}
             combat={combat}
             onActivateAbility={activateAbility}
             onUseBackpackItem={useBackpackItem}
@@ -88,33 +87,67 @@ const DamageRollPhase: React.FC<DamageRollPhaseProps> = ({
                 )
             }
         >
-            <div className="damage-dice-container">
-                {combat.winner === 'hero' && (
-                    <CombatDice
-                        label="Damage"
-                        values={combat.damage?.damageRolls}
-                        onDieClick={canInteractHero ? onDieClick : undefined}
-                        mode={canInteractHero ? 'select-die' : (currentInteraction ? 'disabled' : 'normal')}
-                        selectedIndices={selectedDice}
-                        baseValue={Math.max(combat.hero.stats.brawn, combat.hero.stats.magic)}
-                        modifierValue={
-                            calculateEffectiveStats(
-                                combat.hero.stats,
-                                combat.hero.activeEffects
-                            ).damageModifier ?? 0
-                        }
-                    />
-                )}
+            <div className="damage-rolls-container">
+                <div className="damage-dice-container">
+                    {combat.winner === 'hero' && (
+                        <CombatDice
+                            label={combat.winner === 'hero' ? 'Hero' : 'Enemy'}
+                            values={combat.damage?.damageRolls}
+                            onDieClick={canInteractHero ? onDieClick : undefined}
+                            mode={canInteractHero ? 'select-die' : (currentInteraction ? 'disabled' : 'normal')}
+                            selectedIndices={selectedDice}
+                        />
+                    )}
+                    {combat.winner === 'enemy' && (
+                        <CombatDice
+                            label="Enemy Damage"
+                            values={combat.damage?.damageRolls}
+                            onDieClick={canInteractEnemy ? onDieClick : undefined}
+                            mode={canInteractEnemy ? 'select-die' : (currentInteraction ? 'disabled' : 'normal')}
+                            selectedIndices={selectedDice}
+                        />
+                    )}
 
-                {combat.winner === 'enemy' && (
-                    <CombatDice
-                        label="Enemy Damage"
-                        values={combat.damage?.damageRolls}
-                        baseValue={Math.max(combat.enemy.stats.brawn, combat.enemy.stats.magic)}
-                        onDieClick={canInteractEnemy ? onDieClick : undefined}
-                        mode={canInteractEnemy ? 'select-die' : (currentInteraction ? 'disabled' : 'normal')}
-                        selectedIndices={selectedDice}
-                    />
+                    <div className="damage-breakdown-container">
+                        {breakdown && (
+                            <table className="dice-breakdown-table">
+                                <thead>
+                                    <tr>
+                                        <th title="Roll">{getStatIcon('die')}</th>
+                                        {!!breakdown.skill && <th title="Base Stat">{breakdown.skillName === 'brawn' ? getStatIcon('brawn') : getStatIcon('magic')}</th>}
+                                        {!!breakdown.modifiersTotal && <th title="Modifiers">{getStatIcon('modifier')}</th>}
+                                        {!!breakdown.armor && <th title="Armour">{getStatIcon('armour')}</th>}
+                                        <th></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>{breakdown.diceTotal}</td>
+                                        {!!breakdown.skill && <td>{breakdown.skill}</td>}
+                                        {!!breakdown.modifiersTotal && <td>{breakdown.modifiersTotal > 0 ? `+${breakdown.modifiersTotal}` : breakdown.modifiersTotal}</td>}
+                                        {!!breakdown.armor && <td>-{breakdown.armor}</td>}
+                                        <td className="dice-result-total">= {breakdown.totalDamage}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        )}
+                    </div>
+                </div>
+
+                {breakdown && breakdown.modifiers.length > 0 && (
+                    <div className="damage-modifier-breakdown">
+                        <h6>Modifiers</h6>
+                        <ul className="damage-modifiers-list">
+                            {breakdown.modifiers.map((modifier, index) => (
+                                <li key={index} className="damage-modifier-row">
+                                    <span className="modifier-source">{modifier.source}</span>
+                                    <span className="modifier-amount">
+                                        {modifier.amount > 0 ? `+${modifier.amount}` : modifier.amount}
+                                    </span>
+                                </li>
+                            ))}
+                        </ul>
+                    </div>
                 )}
             </div>
         </CombatPhaseLayout>

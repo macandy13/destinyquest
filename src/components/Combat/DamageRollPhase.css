@@ -1,0 +1,35 @@
+.damage-rolls-container {
+    display: flex;
+    justify-content: space-around;
+    flex-direction: row;
+    justify-content: center;
+    width: 100%;
+    gap: var(--spacing-md);
+}
+
+.damage-dice-container {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-sm);
+    background: var(--dq-row-bg);
+    border-radius: var(--radius-md);
+    width: 40vw;
+    align-items: center;
+}
+
+.damage-modifier-breakdown {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-sm);
+    width: 50vw;
+    align-items: left;
+}
+
+.damage-modifiers-list>li {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--spacing-sm);
+    background: var(--dq-row-bg);
+    border-radius: var(--radius-md);
+    padding: var(--spacing-sm);
+}

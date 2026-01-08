@@ -1,18 +1,21 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { DiceRoll, rollDice, sumDice } from '../../types/dice';
+import { DiceRoll, rollDice } from '../../types/dice';
 import './CombatDice.css';
 
 interface CombatDiceProps {
     values?: DiceRoll[]; // Controlled mode: display these specific dice
     label?: string;
-    baseValue?: number; // Base stat value (e.g. speed, brawn)
-    modifierValue?: number; // Additional modifiers
     onDieClick?: (index: number) => void;
     selectedIndices?: number[];
     mode?: 'normal' | 'select-die' | 'disabled';
 }
 
-const CombatDice: React.FC<CombatDiceProps> = ({ values, label, baseValue = 0, modifierValue = 0, onDieClick, mode = 'normal', selectedIndices = [] }) => {
+const CombatDice: React.FC<CombatDiceProps> = ({
+    values,
+    label,
+    onDieClick,
+    mode = 'normal',
+    selectedIndices = [] }) => {
     // Track which specific dice indices are currently "rolling" (animating)
     const [rollingIndices, setRollingIndices] = useState<number[]>([]);
 
@@ -106,22 +109,6 @@ const CombatDice: React.FC<CombatDiceProps> = ({ values, label, baseValue = 0, m
 
                 })}
             </div>
-            {
-                rollingIndices.length === 0 && (
-                    <div className="dice-result-container">
-                        {(baseValue !== 0 || modifierValue !== 0) && (
-                            <div className="dice-result-breakdown text-dim">
-                                {sumDice(currentDice)} (Roll)
-                                {baseValue !== 0 && ` + ${baseValue} (Base)`}
-                                {modifierValue !== 0 && ` + ${modifierValue} (Mod)`}
-                            </div>
-                        )}
-                        <div className="dice-result-total">
-                            = {sumDice(currentDice) + baseValue + modifierValue}
-                        </div>
-                    </div>
-                )
-            }
         </div>
     );
 };

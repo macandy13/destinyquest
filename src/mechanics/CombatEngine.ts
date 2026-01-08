@@ -23,7 +23,7 @@
  * 4. nextRound: Resets for the next round, handling cooldowns and duration ticks.
  */
 
-import { CombatState, Combatant, ActiveAbility, addLogs, applyEffect, forEachActiveAbility, dealDamage, AttackSource, setDamageRoll, getCombatant, InteractionResponse } from '../types/combatState';
+import { CombatState, Combatant, ActiveAbility, addLogs, applyEffect, forEachActiveAbility, dealDamage, AttackSource, setDamageRoll, InteractionResponse } from '../types/combatState';
 import { sumDice, rollDice, formatDice, DiceRoll } from '../types/dice';
 import { Hero, HeroStats, BackpackItem } from '../types/hero';
 import { getAbilityDefinition, toCanonicalName } from './abilityRegistry';
@@ -364,23 +364,37 @@ export function rollForDamage(state: CombatState, damageRolls?: DiceRoll[]): Com
 }
 
 /**
- * Applies all collected damage to the victim after subtracting the armor.
+ * Describes the components of the total damage calculation.
  */
-export function applyDamage(state: CombatState): CombatState {
-    if (!state.damage) {
-        // TODO: Handle errors
-        console.log('ERROR: No damage found in state');
-        return state;
+export interface DamageBreakdown {
+    diceTotal: number;
+    skill: number;
+    skillName: string;
+    modifiers: { source: string; amount: number }[];
+    modifiersTotal: number;
+    armor: number;
+    totalDamage: number;
+}
+
+/**
+ * Calculates the breakdown of the damage that would be applied based on the current state.
+ */
+export function calculateDamageBreakdown(state: CombatState): DamageBreakdown | null {
+    if (!state.damage || !state.winner) {
+        return null;
     }
 
-    state = { ...state, phase: 'apply-damage' };
     const effectiveStats = calculateEffectiveStats(state);
     const totalDiceValue = sumDice(state.damage!.damageRolls);
     const winnerType = state.winner!;
     const winnerStats = winnerType === 'hero' ? effectiveStats.hero : effectiveStats.enemy;
 
-    const skill = Math.max(winnerStats.brawn, winnerStats.magic);
-    const totalModifiersValue = state.damage!.modifiers.reduce((a, b) => a + b.amount, 0);
+    const useBrawn = winnerStats.brawn >= winnerStats.magic;
+    const skill = useBrawn ? winnerStats.brawn : winnerStats.magic;
+    const skillName = useBrawn ? 'brawn' : 'magic';
+
+    const modifiers = state.damage!.modifiers;
+    const totalModifiersValue = modifiers.reduce((a, b) => a + b.amount, 0);
     const victim = getOpponent(winnerType);
     const victimStats = victim === 'hero' ? effectiveStats.hero : effectiveStats.enemy;
     const armor = victimStats.armour;
@@ -389,14 +403,39 @@ export function applyDamage(state: CombatState): CombatState {
         + skill
         + totalModifiersValue
         - armor);
-    const victimChar = getCombatant(state, victim);
-    const damageAmount = Math.min(victimChar.stats.health, totalDamage);
+
+    return {
+        diceTotal: totalDiceValue,
+        skill,
+        skillName,
+        modifiers,
+        modifiersTotal: totalModifiersValue,
+        armor,
+        totalDamage
+    };
+}
+
+/**
+ * Applies all collected damage to the victim after subtracting the armor.
+ */
+export function applyDamage(state: CombatState): CombatState {
+    const breakdown = calculateDamageBreakdown(state);
+    if (!breakdown) {
+        // TODO: Handle errors
+        console.log('ERROR: No damage found in state');
+        return state;
+    }
+
+    state = { ...state, phase: 'apply-damage' };
+    const winnerType = state.winner!;
+    const victim = getOpponent(winnerType);
     state = dealDamage(
         state,
         AttackSource,
         victim,
-        damageAmount,
-        `Total attack damage to ${victim}: ${damageAmount} (${totalDiceValue} + ${skill} + ${totalModifiersValue} - ${armor})`);
+        breakdown.totalDamage,
+        `Total attack damage to ${victim}: ${breakdown.totalDamage} = ${breakdown.diceTotal} + ${breakdown.skill} + ${breakdown.modifiersTotal} - ${breakdown.armor}`
+    );
     return checkForCombatEnd(state);
 }
 

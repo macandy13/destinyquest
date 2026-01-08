@@ -4,7 +4,7 @@ import CombatAbilitySelector from './CombatAbilitySelector';
 
 interface CombatPhaseLayoutProps {
     title: string;
-    description: ReactNode;
+    description?: ReactNode;
     children?: ReactNode;
     combat: CombatState;
     onActivateAbility?: (abilityName: string) => void;
@@ -14,7 +14,7 @@ interface CombatPhaseLayoutProps {
 
 const CombatPhaseLayout: React.FC<CombatPhaseLayoutProps> = ({
     title,
-    description,
+    description = undefined,
     children,
     combat,
     onActivateAbility,
@@ -24,8 +24,8 @@ const CombatPhaseLayout: React.FC<CombatPhaseLayoutProps> = ({
     return (
         <div className="phase-container">
             <div className="phase-header">
-                <div className="phase-title">{title}</div>
-                <div className="phase-description">{description}</div>
+                <h2 >{title}</h2>
+                {description && <div className="phase-description">{description}</div>}
             </div>
 
             <div className="phase-main-content">

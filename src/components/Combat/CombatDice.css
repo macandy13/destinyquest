@@ -102,8 +102,25 @@
     white-space: nowrap;
 }
 
+.dice-breakdown-table {
+    border-collapse: collapse;
+    font-size: var(--font-sm);
+    text-align: center;
+}
+
+.dice-breakdown-table th {
+    font-size: var(--font-sm);
+    line-height: 1;
+    padding: var(--spacing-xs);
+}
+
+.dice-breakdown-table td {
+    font-variant-numeric: tabular-nums;
+    padding: var(--spacing-xs);
+}
+
 .dice-result-total {
-    font-size: var(--font-md);
+    font-size: var(--font-sm);
     font-weight: bold;
     color: var(--text-light);
 }

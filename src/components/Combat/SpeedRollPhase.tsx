@@ -1,9 +1,12 @@
 import React from 'react';
 import { CombatState, InteractionRequest, InteractionResponse } from '../../types/combatState';
-import { calculateEffectiveStats } from '../../types/effect';
+import { sumDice } from '../../types/dice';
+import { calculateEffectiveStats } from '../../mechanics/CombatEngine';
 import CombatDice from './CombatDice';
 import CombatPhaseLayout from './CombatPhaseLayout';
 import { PrimaryButton } from '../Shared/Button';
+import { getStatIcon } from '../../types/stats';
+import './SpeedRollPhase.css';
 
 interface SpeedRollPhaseProps {
     combat: CombatState;
@@ -37,6 +40,17 @@ const SpeedRollPhase: React.FC<SpeedRollPhaseProps> = ({
     };
 
     const [selectedDice, setSelectedDice] = React.useState<number[]>([]);
+
+    const effectiveStats = calculateEffectiveStats(combat);
+    const heroSpeed = effectiveStats.hero.speed;
+    const heroSpeedRoll = sumDice(combat.heroSpeedRolls || []);
+    const heroSpeedTotal = heroSpeed + heroSpeedRoll;
+    const heroSpeedDiff = heroSpeed - combat.hero.stats.speed;
+
+    const enemySpeed = effectiveStats.enemy.speed;
+    const enemySpeedRoll = sumDice(combat.enemySpeedRolls || []);
+    const enemySpeedTotal = enemySpeed + enemySpeedRoll;
+    const enemySpeedDiff = enemySpeed - combat.enemy.stats.speed;
 
     const isInteracting = currentInteraction?.type === 'dice';
     const canInteractHero = isInteracting && (currentInteraction?.target === 'hero' || !currentInteraction?.target);
@@ -98,31 +112,63 @@ const SpeedRollPhase: React.FC<SpeedRollPhaseProps> = ({
                 )
             }
         >
-            <div className="speed-rolls-container speed-rolls">
-                <div className="hero-dice">
+            <div className="speed-rolls-container">
+                <div className="speed-dice-container">
                     <CombatDice
                         label="Hero Speed"
                         values={combat.heroSpeedRolls}
                         onDieClick={canInteractHero ? onDieClick : undefined}
                         mode={canInteractHero ? 'select-die' : (isInteracting ? 'disabled' : 'normal')}
                         selectedIndices={selectedDice}
-                        baseValue={combat.hero.stats.speed}
-                        modifierValue={
-                            calculateEffectiveStats(
-                                combat.hero.stats,
-                                combat.hero.activeEffects
-                            ).speed - combat.hero.stats.speed
-                        }
                     />
+                    {combat.heroSpeedRolls && (
+                        <table className="dice-breakdown-table">
+                            <thead>
+                                <tr>
+                                    <th title="Roll">{getStatIcon('die')}</th>
+                                    <th title="Base Stat">{getStatIcon('speed')}</th>
+                                    {!!heroSpeedDiff && <th title="Modifiers">+/-</th>}
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>{sumDice(combat.heroSpeedRolls)}</td>
+                                    <td>{combat.hero.stats.speed}</td>
+                                    {!!heroSpeedDiff && <td>{heroSpeedDiff > 0 ? `+${heroSpeedDiff}` : heroSpeedDiff}</td>}
+                                    <td className="dice-result-total">= {heroSpeedTotal}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    )}
                 </div>
-                <div className="enemy-dice">
+                <div className="speed-dice-container">
                     <CombatDice
                         label="Enemy Speed"
                         values={combat.enemySpeedRolls}
-                        baseValue={combat.enemy.stats.speed}
                         onDieClick={canInteractEnemy ? onDieClick : undefined}
                         mode={canInteractEnemy ? 'select-die' : (isInteracting ? 'disabled' : 'normal')}
                     />
+                    {combat.enemySpeedRolls && (
+                        <table className="dice-breakdown-table">
+                            <thead>
+                                <tr>
+                                    <th title="Roll">{getStatIcon('die')}</th>
+                                    <th title="Base Stat">{getStatIcon('speed')}</th>
+                                    {!!enemySpeedDiff && <th title="Modifiers">+/-</th>}
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>{sumDice(combat.enemySpeedRolls)}</td>
+                                    <td>{combat.enemy.stats.speed}</td>
+                                    {!!enemySpeedDiff && <td>{enemySpeedDiff > 0 ? `+${enemySpeedDiff}` : enemySpeedDiff}</td>}
+                                    <td className="dice-result-total">= {enemySpeedTotal}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    )}
                 </div>
             </div>
         </CombatPhaseLayout>

@@ -13,7 +13,7 @@ describe('CombatDice', () => {
         ];
 
         const { rerender, container } = render(
-            <CombatDice values={initialValues} baseValue={5} />
+            <CombatDice values={initialValues} />
         );
 
         // Advance timers to finish initial animation (since mount triggers animation)
@@ -54,31 +54,7 @@ describe('CombatDice', () => {
 
         vi.useRealTimers();
     });
-    it('should calculate and display correct total with base and modifiers', async () => {
-        vi.useFakeTimers();
-        const values: DiceRoll[] = [
-            { value: 3, isRerolled: false },
-            { value: 4, isRerolled: false }
-        ];
 
-        const { getByText } = render(
-            <CombatDice values={values} baseValue={5} modifierValue={2} />
-        );
-
-        // Advance timers to finish animation
-        act(() => {
-            vi.advanceTimersByTime(700);
-        });
-
-        // Sum = 7 (dice) + 5 (base) + 2 (mod) = 14
-        expect(getByText('= 14')).toBeDefined();
-
-        // Breakdown check: 7 (Roll) + 5 (Base) + 2 (Mod)
-        // Breakdown check: 7 (Roll) + 5 (Base) + 2 (Mod)
-        expect(getByText(/7\s*\(Roll\)/)).toBeDefined();
-        expect(getByText(/\+ 5\s*\(Base\)/)).toBeDefined();
-        expect(getByText(/\+ 2\s*\(Mod\)/)).toBeDefined();
-    });
 
     it('should apply correct classes based on mode', () => {
         const values: DiceRoll[] = [{ value: 1, isRerolled: false }];

@@ -21,6 +21,7 @@ export function getStatIcon(stat: string): string {
         case 'money': return '💰';
         case 'damage': return '⚔️';
         case 'damageModifier': return '⚔️';
+        case 'modifier': return '⚔️';
         default: return '';
     }
 }

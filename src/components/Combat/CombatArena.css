@@ -74,14 +74,6 @@
 
 /* Specific Phase overrides/utilities */
 
-.speed-rolls-container {
-    display: flex;
-    justify-content: space-around;
-    align-items: flex-start;
-    width: 100%;
-    gap: var(--spacing-md);
-}
-
 .damage-section {
     display: flex;
     flex-direction: column;
@@ -158,11 +150,4 @@
         linear-gradient(to bottom, transparent 0%, black 15%, black 85%, transparent 100%);
     mask-composite: intersect;
     -webkit-mask-composite: source-in;
-}
-
-/* Ensure foreground content is on top */
-.arena-header,
-.arena-center {
-    position: relative;
-    z-index: 1;
 }
