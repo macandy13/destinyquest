@@ -40,7 +40,10 @@ describe('InteractionOverlay', () => {
 
     it('should render nothing when no interaction is pending', () => {
         const { container } = render(
-            <InteractionOverlay combat={mockCombatState} onResolve={mockOnResolve} />
+            <InteractionOverlay
+                ability={mockCombatState.pendingInteraction!.ability}
+                interaction={mockCombatState.pendingInteraction!.requests[0]}
+                onResolve={mockOnResolve} />
         );
         expect(container.firstChild).toBeNull();
     });
@@ -62,7 +65,10 @@ describe('InteractionOverlay', () => {
         };
 
         const { container } = render(
-            <InteractionOverlay combat={stateWithInteraction} onResolve={mockOnResolve} />
+            <InteractionOverlay
+                ability={stateWithInteraction.pendingInteraction!.ability}
+                interaction={stateWithInteraction.pendingInteraction!.requests[0]}
+                onResolve={mockOnResolve} />
         );
         expect(container.firstChild).toBeNull();
     });
@@ -84,7 +90,10 @@ describe('InteractionOverlay', () => {
         };
 
         const { getByText, getByTestId } = render(
-            <InteractionOverlay combat={stateWithInteraction} onResolve={mockOnResolve} />
+            <InteractionOverlay
+                ability={stateWithInteraction.pendingInteraction!.ability}
+                interaction={stateWithInteraction.pendingInteraction!.requests[0]}
+                onResolve={mockOnResolve} />
         );
 
         expect(getByText('Test Ability')).toBeDefined();
@@ -112,7 +121,10 @@ describe('InteractionOverlay', () => {
         };
 
         const { getByText } = render(
-            <InteractionOverlay combat={stateWithInteraction} onResolve={mockOnResolve} />
+            <InteractionOverlay
+                ability={stateWithInteraction.pendingInteraction!.ability}
+                interaction={stateWithInteraction.pendingInteraction!.requests[0]}
+                onResolve={mockOnResolve} />
         );
 
         fireEvent.click(getByText('Option B'));
@@ -143,7 +155,10 @@ describe('InteractionOverlay', () => {
         };
 
         const { getByText, queryByText } = render(
-            <InteractionOverlay combat={stateWithInteraction} onResolve={mockOnResolve} />
+            <InteractionOverlay
+                ability={stateWithInteraction.pendingInteraction!.ability}
+                interaction={stateWithInteraction.pendingInteraction!.requests[0]}
+                onResolve={mockOnResolve} />
         );
 
         expect(getByText('Step 1 of 2')).toBeDefined();

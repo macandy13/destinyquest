@@ -146,7 +146,7 @@ const CombatArena: React.FC<CombatArenaProps> = ({ hero, enemy, onCombatFinish }
                         combat={combat}
                         commitSpeedAndRollDamageDice={commitSpeedAndRollDamageDice}
                         confirmBonusDamage={confirmBonusDamage}
-                        currentInteraction={currentInteraction()?.type === 'dice' ? currentInteraction() : null}
+                        currentInteraction={currentInteraction()?.type === 'dice' ? currentInteraction() : undefined}
                         resolveInteraction={resolveSingleInteraction}
                         activateAbility={activateAbility}
                         useBackpackItem={useBackpackItem}
@@ -156,7 +156,7 @@ const CombatArena: React.FC<CombatArenaProps> = ({ hero, enemy, onCombatFinish }
                     <DamageRollPhase
                         combat={combat}
                         confirmDamageRoll={confirmDamageRoll}
-                        currentInteraction={currentInteraction()?.type === 'dice' ? currentInteraction() : null}
+                        currentInteraction={currentInteraction()?.type === 'dice' ? currentInteraction() : undefined}
                         resolveInteraction={resolveSingleInteraction}
                         activateAbility={activateAbility}
                         useBackpackItem={useBackpackItem}
