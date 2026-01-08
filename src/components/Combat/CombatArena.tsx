@@ -16,6 +16,8 @@ import CombatEndPhase from './CombatEndPhase';
 import InteractionOverlay from './InteractionOverlay';
 import './CombatArena.css';
 import { InteractionResponse } from '../../types/combatState';
+import heroBg from '../../assets/hero_background.png';
+import monsterBg from '../../assets/monster_background.png';
 
 interface CombatArenaProps {
     hero: Hero;
@@ -75,6 +77,10 @@ const CombatArena: React.FC<CombatArenaProps> = ({ hero, enemy, onCombatFinish }
 
     return (
         <div className="combat-arena">
+            <div className="combat-background">
+                <div className="hero-bg" style={{ backgroundImage: `url(${heroBg})` }} />
+                <div className="monster-bg" style={{ backgroundImage: `url(${monsterBg})` }} />
+            </div>
             <div className="arena-header">
                 <div className="text-dim round-indicator">Round {combat.round}</div>
 

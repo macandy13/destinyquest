@@ -4,6 +4,7 @@
     /* Fixed height for log area to prevent jump */
     gap: var(--spacing-md);
     height: 100%;
+    position: relative;
 }
 
 .arena-header {
@@ -103,7 +104,65 @@
 }
 
 /* Utility to ensure buttons are wide enough on mobile but not too wide on desktop */
+/* Utility to ensure buttons are wide enough on mobile but not too wide on desktop */
 .btn-phase-action {
     width: 100%;
     max-width: 300px;
+}
+
+/* Background Images */
+/* Background Images */
+.combat-background {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: calc(-1 * var(--spacing-md));
+    right: calc(-1 * var(--spacing-md));
+    width: auto;
+    height: 100%;
+    z-index: 0;
+    overflow: hidden;
+    pointer-events: none;
+}
+
+.hero-bg,
+.monster-bg {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 50vw;
+    /* Cover sides */
+    background-size: cover;
+    background-position: center;
+    opacity: 0.25;
+    /* Subtle background */
+}
+
+.hero-bg {
+    left: 0;
+    /* Fade to right (center) AND fade top/bottom edges */
+    mask-image: linear-gradient(to right, black 30%, transparent 100%),
+        linear-gradient(to bottom, transparent 0%, black 15%, black 85%, transparent 100%);
+    -webkit-mask-image: linear-gradient(to right, black 30%, transparent 100%),
+        linear-gradient(to bottom, transparent 0%, black 15%, black 85%, transparent 100%);
+    mask-composite: intersect;
+    -webkit-mask-composite: source-in;
+}
+
+.monster-bg {
+    right: 0;
+    /* Fade to left (center) AND fade top/bottom edges */
+    mask-image: linear-gradient(to left, black 30%, transparent 100%),
+        linear-gradient(to bottom, transparent 0%, black 15%, black 85%, transparent 100%);
+    -webkit-mask-image: linear-gradient(to left, black 30%, transparent 100%),
+        linear-gradient(to bottom, transparent 0%, black 15%, black 85%, transparent 100%);
+    mask-composite: intersect;
+    -webkit-mask-composite: source-in;
+}
+
+/* Ensure foreground content is on top */
+.arena-header,
+.arena-center {
+    position: relative;
+    z-index: 1;
 }

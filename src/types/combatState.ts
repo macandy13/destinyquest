@@ -62,7 +62,6 @@ export interface InteractionResponse {
 export interface PendingInteraction {
     ability: ActiveAbility;
     requests: InteractionRequest[];
-    currentRequestIndex: number;
     callback: (state: CombatState, response: InteractionResponse[]) => CombatState;
 }
 
