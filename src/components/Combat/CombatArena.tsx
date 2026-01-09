@@ -82,8 +82,6 @@ const CombatArena: React.FC<CombatArenaProps> = ({ hero, enemy, onCombatFinish }
                 <div className="monster-bg" style={{ backgroundImage: `url(${monsterBg})` }} />
             </div>
             <div className="arena-header">
-                <div className="text-dim round-indicator">Round {combat.round}</div>
-
                 <div className="combatants">
                     {/* Hero Card */}
                     <CombatantCard

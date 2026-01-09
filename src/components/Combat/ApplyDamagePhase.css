@@ -1,0 +1,15 @@
+.passive-preview-item {
+    background-color: rgba(0, 0, 0, 0.2);
+    padding: var(--spacing-sm);
+    padding-left: var(--spacing-md);
+    border-radius: var(--border-radius-sm);
+    width: 50vw;
+}
+
+.passive-preview-item.hero {
+    border-left: 3px solid var(--dq-gold);
+}
+
+.passive-preview-item.enemy {
+    border-left: 3px solid var(--dq-crimson);
+}

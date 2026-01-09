@@ -28,7 +28,7 @@ import { sumDice, rollDice, formatDice, DiceRoll } from '../types/dice';
 import { Hero, HeroStats, BackpackItem } from '../types/hero';
 import { getAbilityDefinition, toCanonicalName } from './abilityRegistry';
 import { calculateEffectiveStatsForType, Effect } from '../types/effect';
-import { getOpponent, Enemy } from '../types/character';
+import { getOpponent, Enemy, CharacterType } from '../types/character';
 import { Stats } from '../types/stats';
 import './allAbilities'; // Ensure abilities are registered
 
@@ -326,6 +326,67 @@ function updateWinner(state: CombatState): CombatState {
     };
     state = addLogs(state, { message });
     return state;
+}
+
+export interface PassivePreview {
+    owner: CharacterType;
+    abilityName: string;
+    description: string;
+    changes: {
+        target: CharacterType;
+        type: 'damage' | 'heal' | 'info';
+        amount: number;
+        message: string;
+    }[];
+}
+
+export function getPassiveAbilityPreview(state: CombatState): { previews: PassivePreview[], finalState: CombatState } {
+    const previews: PassivePreview[] = [];
+    let tempState = state;
+
+    forEachActiveAbility(state, (ability, def) => {
+        if (def.onPassiveAbility) {
+            const beforeState = tempState;
+            tempState = def.onPassiveAbility(tempState, { ability, owner: ability.owner });
+
+            if (tempState !== beforeState) {
+                const changes: PassivePreview['changes'] = [];
+
+                // Check health changes
+                const heroHealthDiff = tempState.hero.stats.health - beforeState.hero.stats.health;
+                if (heroHealthDiff !== 0) {
+                    changes.push({
+                        target: 'hero',
+                        type: heroHealthDiff > 0 ? 'heal' : 'damage',
+                        amount: Math.abs(heroHealthDiff),
+                        message: `${heroHealthDiff > 0 ? 'Heals' : 'Deals'} ${Math.abs(heroHealthDiff)} damage to Hero`
+                    });
+                }
+
+                const enemyHealthDiff = tempState.enemy.stats.health - beforeState.enemy.stats.health;
+                if (enemyHealthDiff !== 0) {
+                    changes.push({
+                        target: 'enemy',
+                        type: enemyHealthDiff > 0 ? 'heal' : 'damage',
+                        amount: Math.abs(enemyHealthDiff),
+                        message: `${enemyHealthDiff > 0 ? 'Heals' : 'Deals'} ${Math.abs(enemyHealthDiff)} damage to ${beforeState.enemy.name}`
+                    });
+                }
+
+                // Check for new effects (simplified check)
+                // We're iterating active abilities, so 'ability.owner' is the source.
+
+                previews.push({
+                    owner: ability.owner,
+                    abilityName: ability.name,
+                    description: ability.def.description,
+                    changes
+                });
+            }
+        }
+    });
+
+    return { previews, finalState: tempState };
 }
 
 export function rollForSpeed(state: CombatState, heroRolls?: DiceRoll[], enemyRolls?: DiceRoll[]): CombatState {

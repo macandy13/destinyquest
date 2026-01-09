@@ -17,8 +17,7 @@ const PassiveDamagePhase: React.FC<PassiveDamagePhaseProps> = ({
 }) => {
     return (
         <CombatPhaseLayout
-            title="Passive Damage"
-            description="Applying passive damage effects..."
+            title="Round Summary"
             combat={combat}
             onActivateAbility={activateAbility}
             onUseBackpackItem={useBackpackItem}
@@ -28,12 +27,7 @@ const PassiveDamagePhase: React.FC<PassiveDamagePhaseProps> = ({
                 </button>
             }
         >
-            {/* Visuals for passive damage? */}
-            {combat.damage && (
-                <div style={{ color: 'var(--dq-gold)' }}>
-                    Bottom of round damage: {(combat.damage as any).damageModifier ?? 0}
-                </div>
-            )}
+            <div>TODO: Show summary of the changes in this round</div>
         </CombatPhaseLayout>
     );
 };

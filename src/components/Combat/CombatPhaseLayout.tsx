@@ -24,7 +24,7 @@ const CombatPhaseLayout: React.FC<CombatPhaseLayoutProps> = ({
     return (
         <div className="phase-container">
             <div className="phase-header">
-                <h2 >{title}</h2>
+                <h2>{combat.round > 0 ? `Round ${combat.round} - ${title}` : title}</h2>
                 {description && <div className="phase-description">{description}</div>}
             </div>
 
