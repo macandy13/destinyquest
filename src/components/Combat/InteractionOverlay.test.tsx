@@ -41,8 +41,8 @@ describe('InteractionOverlay', () => {
     it('should render nothing when no interaction is pending', () => {
         const { container } = render(
             <InteractionOverlay
-                ability={mockCombatState.pendingInteraction!.ability}
-                interaction={mockCombatState.pendingInteraction!.requests[0]}
+                ability={mockCombatState.pendingInteraction?.ability as any}
+                interaction={mockCombatState.pendingInteraction?.requests?.[0] as any}
                 onResolve={mockOnResolve} />
         );
         expect(container.firstChild).toBeNull();
@@ -101,7 +101,6 @@ describe('InteractionOverlay', () => {
         expect(getByTestId('ability-icon')).toBeDefined();
         expect(getByText('Yes')).toBeDefined();
         expect(getByText('No')).toBeDefined();
-        expect(getByText('Step 1 of 1')).toBeDefined();
     });
 
     it('should call onResolve with selected index when choice is clicked', () => {
@@ -129,61 +128,11 @@ describe('InteractionOverlay', () => {
 
         fireEvent.click(getByText('Option B'));
 
-        expect(mockOnResolve).toHaveBeenCalledWith([
+        expect(mockOnResolve).toHaveBeenCalledWith(
             {
                 request: stateWithInteraction.pendingInteraction!.requests[0],
-                selectedIndex: 1
+                selectedIndexes: [1]
             }
-        ]);
-    });
-
-    it('should handle multiple steps', () => {
-        const stateWithInteraction: CombatState = {
-            ...mockCombatState,
-            pendingInteraction: {
-                ability: {
-                    name: 'Multi Step',
-                    owner: 'hero',
-                    def: { name: 'Multi Step', description: 'Desc', type: 'combat' }
-                },
-                requests: [
-                    { type: 'choices', mode: 'select', count: 1, choices: ['Skip'] },
-                    { type: 'choices', mode: 'select', count: 1, choices: ['Confirm'] }
-                ],
-                callback: mockCallback
-            }
-        };
-
-        const { getByText, queryByText } = render(
-            <InteractionOverlay
-                ability={stateWithInteraction.pendingInteraction!.ability}
-                interaction={stateWithInteraction.pendingInteraction!.requests[0]}
-                onResolve={mockOnResolve} />
         );
-
-        expect(getByText('Step 1 of 2')).toBeDefined();
-        expect(getByText('Skip')).toBeDefined();
-
-        // Click first step
-        fireEvent.click(getByText('Skip'));
-
-        // Should now be on step 2
-        expect(getByText('Step 2 of 2')).toBeDefined();
-        expect(getByText('Confirm')).toBeDefined();
-        expect(queryByText('Skip')).toBeNull();
-
-        // Click second step
-        fireEvent.click(getByText('Confirm'));
-
-        expect(mockOnResolve).toHaveBeenCalledWith([
-            {
-                request: stateWithInteraction.pendingInteraction!.requests[0],
-                selectedIndex: 0
-            },
-            {
-                request: stateWithInteraction.pendingInteraction!.requests[1],
-                selectedIndex: 0
-            }
-        ]);
     });
 });
