@@ -9,8 +9,8 @@ import CombatStartPhase from './CombatStartPhase';
 import RoundStartPhase from './RoundStartPhase';
 import SpeedRollPhase from './SpeedRollPhase';
 import DamageRollPhase from './DamageRollPhase';
-import ApplyDamagePhase from './ApplyDamagePhase';
-import PassiveDamagePhase from './PassiveDamagePhase';
+import ApplyPassiveAbilitiesPhase from './ApplyPassiveAbilitiesPhase';
+import RoundSummary from './RoundSummary';
 import RoundEndPhase from './RoundEndPhase';
 import CombatEndPhase from './CombatEndPhase';
 import InteractionOverlay from './InteractionOverlay';
@@ -161,7 +161,7 @@ const CombatArena: React.FC<CombatArenaProps> = ({ hero, enemy, onCombatFinish }
                     />
                 )}
                 {combat.phase === 'apply-damage' && (
-                    <ApplyDamagePhase
+                    <ApplyPassiveAbilitiesPhase
                         combat={combat}
                         confirmBonusDamage={confirmBonusDamage}
                         activateAbility={activateAbility}
@@ -169,7 +169,7 @@ const CombatArena: React.FC<CombatArenaProps> = ({ hero, enemy, onCombatFinish }
                     />
                 )}
                 {combat.phase === 'passive-damage' && (
-                    <PassiveDamagePhase
+                    <RoundSummary
                         combat={combat}
                         nextRound={nextRound}
                         activateAbility={activateAbility}

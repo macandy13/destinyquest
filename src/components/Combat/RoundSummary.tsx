@@ -2,14 +2,14 @@ import React from 'react';
 import { CombatState } from '../../types/combatState';
 import CombatPhaseLayout from './CombatPhaseLayout';
 
-interface PassiveDamagePhaseProps {
+interface RoundSummaryProps {
     combat: CombatState;
     nextRound: () => void;
     activateAbility: (abilityName: string) => void;
     useBackpackItem: (itemIndex: number) => void;
 }
 
-const PassiveDamagePhase: React.FC<PassiveDamagePhaseProps> = ({
+const RoundSummary: React.FC<RoundSummaryProps> = ({
     combat,
     nextRound,
     activateAbility,
@@ -32,4 +32,4 @@ const PassiveDamagePhase: React.FC<PassiveDamagePhaseProps> = ({
     );
 };
 
-export default PassiveDamagePhase;
+export default RoundSummary;

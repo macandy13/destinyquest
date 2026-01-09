@@ -1,17 +1,17 @@
 import React from 'react';
 import { CombatState } from '../../types/combatState';
-import { getPassiveAbilityPreview, PassivePreview } from '../../mechanics/CombatEngine';
+import { getPassiveAbilityPreview } from '../../mechanics/CombatEngine';
 import CombatPhaseLayout from './CombatPhaseLayout';
-import './ApplyDamagePhase.css';
+import './ApplyPassiveAbilitiesPhase.css';
 
-interface ApplyDamagePhaseProps {
+interface ApplyPassiveAbilitiesPhaseProps {
     combat: CombatState;
     confirmBonusDamage: () => void;
     activateAbility: (abilityName: string) => void;
     useBackpackItem: (itemIndex: number) => void;
 }
 
-const ApplyDamagePhase: React.FC<ApplyDamagePhaseProps> = ({
+const ApplyPassiveAbilitiesPhase: React.FC<ApplyPassiveAbilitiesPhaseProps> = ({
     combat,
     confirmBonusDamage,
     activateAbility,
@@ -50,4 +50,4 @@ const ApplyDamagePhase: React.FC<ApplyDamagePhaseProps> = ({
     );
 };
 
-export default ApplyDamagePhase;
+export default ApplyPassiveAbilitiesPhase;
