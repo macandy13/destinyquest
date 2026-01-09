@@ -18,6 +18,7 @@ registerAbility({
         const newOpponentRolls = [...opponentRolls];
 
         // Swap: Give lowest, take highest.
+        // TODO: Let user choose which die to swap.
         let minOwnerIndex = 0;
         for (let i = 1; i < newOwnerRolls.length; i++) {
             if (newOwnerRolls[i].value < newOwnerRolls[minOwnerIndex].value) minOwnerIndex = i;
@@ -32,9 +33,8 @@ registerAbility({
         newOwnerRolls[minOwnerIndex] = { ...newOwnerRolls[minOwnerIndex], value: newOpponentRolls[maxOpponentIndex].value, isRerolled: true };
         newOpponentRolls[maxOpponentIndex] = { ...newOpponentRolls[maxOpponentIndex], value: temp, isRerolled: true };
 
-        let newState = modifySpeedRolls(state, owner, () => newOwnerRolls);
-        newState = modifySpeedRolls(newState, opponent, () => newOpponentRolls);
-
-        return newState;
+        state = modifySpeedRolls(state, owner, () => newOwnerRolls);
+        state = modifySpeedRolls(state, opponent, () => newOpponentRolls);
+        return state;
     }
 });

@@ -6,7 +6,9 @@ const STORAGE_KEY = 'dq-hero-v1';
 export function useHero() {
     const [hero, setHero] = useState<Hero>(() => {
         const saved = localStorage.getItem(STORAGE_KEY);
-        return saved ? JSON.parse(saved) : INITIAL_HERO;
+        let hero = saved ? JSON.parse(saved) : INITIAL_HERO;
+        hero.backpack = [...hero.backpack, ...Array(5).fill(null)].slice(0, 5);
+        return hero;
     });
 
     useEffect(() => {

@@ -1,5 +1,5 @@
 import { AbilityContext, AbilityDefinition } from '../abilityRegistry';
-import { appendEffect, CombatState, dealDamage, skipDamagePhase } from '../../types/combatState';
+import { addLogs, appendEffect, CombatState, dealDamage, skipDamagePhase } from '../../types/combatState';
 import { formatDice, rollDice, sumDice, DiceRoll } from '../../types/dice';
 import { AbilityType } from '../../types/abilityDescription';
 import { CharacterType, getOpponent } from '../../types/character';
@@ -153,11 +153,14 @@ export function modifySpeedRolls(
     if (!oldRolls) return state;
 
     const newRolls = modifier([...oldRolls]);
-
-    return {
+    state = {
         ...state,
         [propName]: newRolls
     };
+    state = addLogs(state, {
+        message: `${target} speed dice modified: ${formatDice(oldRolls)} -> ${formatDice(newRolls)}`,
+    });
+    return state;
 }
 
 export function modifyDamageRolls(
