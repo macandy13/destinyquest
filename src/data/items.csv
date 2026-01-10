@@ -1,457 +1,457 @@
 # Item Box,Book,Act,Item name,Speed,Brawn,Magic,Armour,Special ability,Entry no.,Location/enemy
-Cloak,Legions of Shadows,Act 1: Tithebury Cross,Patchwork cloak,1,0,0,0,None,68,Vendor/Tithebury Cross
-Cloak,Legions of Shadows,Act 1: Tithebury Cross,Bat cape,1,0,0,1,None,114,Vendor/Tithebury Cross
-Cloak,Legions of Shadows,Act 1: Tithebury Cross,Spindlesilk cloak,1,0,0,2,Spindlesilk set,132,Vendor/Tithebury Cross
-Cloak,Legions of Shadows,Act 1: Tithebury Cross,Chieftain's furs,0,0,0,1,None,260,Goblin chief
-Cloak,Legions of Shadows,Act 1: Tithebury Cross,Traveller's cloak,0,0,1,1,Charm,251,Farmhouse bedroom
-Cloak,Legions of Shadows,Act 1: Tithebury Cross,Moth-eaten blanket,1,0,0,0,None,40,Ruffians
-Cloak,Legions of Shadows,Act 1: Tithebury Cross,Crusader's mantle,1,0,0,0,Charm,160,Valadin Roth
-Cloak,Legions of Shadows,Act 1: Tithebury Cross,Hag's shawl,0,0,1,1,Charm,155,Witch
-Cloak,Legions of Shadows,Act 1: Tithebury Cross,Savage pelt,0,1,1,0,Savagery,26,Mauler
-Cloak,Legions of Shadows,Act 2: Mistwood & Black Marsh,Mottled cloak,1,0,0,1,None,283,Mud golem
-Cloak,Legions of Shadows,Act 2: Mistwood & Black Marsh,Diaphanous wings,1,0,1,0,Haste,314,Hive queen
-Cloak,Legions of Shadows,Act 2: Mistwood & Black Marsh,Cloak of white winter,1,2,0,0,Piercing,385,Baron Greylock
-Cloak,Legions of Shadows,Act 2: Mistwood & Black Marsh,Cloak of shadows,1,0,0,2,Feint,487,Count(special)
-Cloak,Legions of Shadows,Act 2: Mistwood & Black Marsh,Golden fleece,1,0,0,2,Radiance,548,Treasure vault
-Cloak,Legions of Shadows,Act 2: Mistwood & Black Marsh,Phoenix feathers,1,0,0,1,Charm,565,Phoenix
-Cloak,Legions of Shadows,Act 2: Mistwood & Black Marsh,Destroyer's drape,2,0,0,1,Backfire,568,Inferno
-Cloak,Legions of Shadows,Act 2: Mistwood & Black Marsh,Majestic shoulders (W),2,0,0,2,Royal regalia set,397,Puzzle chest
-Cloak,Legions of Shadows,Act 2: Mistwood & Black Marsh,Sparkcraft mantle (M),2,0,2,0,Lifespark,509,Swamp giant
-Cloak,Legions of Shadows,Act 2: (Continued),Kaggadour's cloak,2,2,0,0,Savagery,443,Stone giant
-Cloak,Legions of Shadows,Act 2: (Continued),Mantle of spite (M),2,0,3,0,Curse,713,Gargoyle chest
-Cloak,Legions of Shadows,Act 2: (Continued),Mane of the Black Lion,1,3,0,0,Fearless,379,Nalsa
-Cloak,Legions of Shadows,Act 2: (Continued),Winter pelt,2,0,0,2,Savagery,359,King Louis
-Cloak,Legions of Shadows,Act 2: (Continued),Flame mantle,2,0,0,1,Fire aura,377,Vesuvius
-Cloak,Legions of Shadows,Act 2: (Continued),Dragonscale cloak,2,0,0,2,Second skin,708,Kindle
-Cloak,Legions of Shadows,Act 3: The Bone Fields,Slipstream silk (M),3,0,2,0,Surge,914,Waldo's wares
-Cloak,Legions of Shadows,Act 3: The Bone Fields,Valiant spaulders (W),2,2,0,0,Overpower,815,Waldo's wares
-Cloak,Legions of Shadows,Act 3: The Bone Fields,Spiked boneguards,2,0,0,2,Piercing,759,Flesh golem
-Cloak,Legions of Shadows,Act 3: The Bone Fields,Broken wings,2,2,0,0,Fearless,906,Bone angel
-Cloak,Legions of Shadows,Act 3: The Bone Fields,Cloak of ceremonies,2,0,2,0,Radiance,892,Arthurian's vault
-Cloak,Legions of Shadows,Act 3: The Bone Fields,Stalwart shoulders,2,0,0,2,Might of stone,565,Yorvic
-Cloak,Legions of Shadows,Act 3: The Bone Fields,Gloom shade (R),2,3,0,0,Steal,622,Brothers' Grimm
-Cloak,Legions of Shadows,Act 3: The Bone Fields,Pauldrons of might (W),2,3,0,0,Fortitude,727,Brothers' Grimm
-Cloak,Legions of Shadows,Act 3: The Bone Fields,Cloak of the wind (M),3,0,0,1,Surge,762,Scout
-Cloak,Legions of Shadows,Act 3: The Bone Fields,Nemesis shroud,2,3,0,0,Dark pact,765,Malcontent
-Cloak,Legions of Shadows,Act 3: The Bone Fields,Veil of dark synergies (M),2,0,3,0,Second wind,865,Daarko
-Cloak,Legions of Shadows,Act 3: The Bone Fields,Spore shoulders (M),2,0,3,0,Spore cloud,845,Decayers
-Cloak,Legions of Shadows,Act 3: The Bone Fields,Hulking shoulders (R),2,3,0,0,Barbs,847,The wrecker
-Head,Legions of Shadows,Act 1: Tithebury Cross,Simple coif,0,1,0,1,None,175,Vendor/Tithebury Cross
-Head,Legions of Shadows,Act 1: Tithebury Cross,All-weather hat,1,0,0,0,None,243,Weather wizard
-Head,Legions of Shadows,Act 1: Tithebury Cross,Rusted helm,1,0,0,0,None,166,Skeletons
-Head,Legions of Shadows,Act 1: Tithebury Cross,Mauler's maw,1,0,0,1,Fearless,26,Mauler
-Head,Legions of Shadows,Act 1: Tithebury Cross,Troll's nose-ring,0,2,0,0,Charm,122,Bridge troll
-Head,Legions of Shadows,Act 2: Mistwood & Black Marsh,Ramrod helm,1,0,0,2,Haste,311,No Hope tinker
-Head,Legions of Shadows,Act 2: Mistwood & Black Marsh,Footpad's cover (R),0,2,0,1,None,338,Thievies' guild
-Head,Legions of Shadows,Act 2: Mistwood & Black Marsh,Skull cap,1,0,0,1,None,287,Mushroom forest
-Head,Legions of Shadows,Act 2: Mistwood & Black Marsh,Great helm,1,1,0,0,None,494,Slime
-Head,Legions of Shadows,Act 2: Mistwood & Black Marsh,Wyrm crest,0,0,1,2,None,517,Wormwood (normal)
-Head,Legions of Shadows,Act 2: Mistwood & Black Marsh,Wyrm crown,0,0,2,2,None,533,Wormwood (special)
-Head,Legions of Shadows,Act 2: Mistwood & Black Marsh,Nightguard cover,1,0,0,2,Steadfast,548,Treasure vault
-Head,Legions of Shadows,Act 2: Mistwood & Black Marsh,Flame-bathed cowl,0,2,0,1,Sear,655,Inferno
-Head,Legions of Shadows,Act 2: Mistwood & Black Marsh,Jester's cap,1,1,0,0,Last laugh,374,Jester
-Head,Legions of Shadows,Act 2: Mistwood & Black Marsh,Masque of deceit,1,0,0,2,Deceieve,422,Count (normal)
-Head,Legions of Shadows,Act 2: Mistwood & Black Marsh,Pirate's bandanna,1,2,0,0,None,716,Kalimari
-Head,Legions of Shadows,Act 2: Mistwood & Black Marsh,Vanquisher's helm (W),0,2,0,2,Vanquish,581,Armoury
-Head,Legions of Shadows,Act 2: Mistwood & Black Marsh,Night watch (R),1,2,0,0,Steadfast,583,Raptor pit
-Head,Legions of Shadows,Act 2: Mistwood & Black Marsh,Cover of darkness (R),1,2,0,0,Evade,744,Gargoyle chest
-Head,Legions of Shadows,Act 2: (Continued),Crown of command,0,1,1,0,Command,689,Stone giant
-Head,Legions of Shadows,Act 2: (Continued),Crown of command (upgrade 1),0,3,3,0,Command,689,Stone giant
-Head,Legions of Shadows,Act 2: (Continued),Crown of command (upgrade 2),0,5,5,0,Command,689,Stone giant
-Head,Legions of Shadows,Act 2: (Continued),Tri-horned hat,0,0,1,2,Charm,277,Left-hook Luke
-Head,Legions of Shadows,Act 2: (Continued),Horns of the bull,1,0,0,2,Charge,216,Zen
-Head,Legions of Shadows,Act 2: (Continued),Simian crown,1,2,0,0,Chill touch,359,King Louis
-Head,Legions of Shadows,Act 2: (Continued),Desert Keffiyeh,1,2,0,0,None,370,Nasareim
-Head,Legions of Shadows,Act 2: (Continued),Agal of shifting sands,0,0,2,2,None,370,Nasareim
-Head,Legions of Shadows,Act 2: (Continued),Wreath of woe,1,0,3,0,Barbs,346,Snapjaw
-Head,Legions of Shadows,Act 2: (Continued),Firewalker's faceguard (W),1,0,0,3,Overpower,400,Magmageddon
-Head,Legions of Shadows,Act 3: The Bone Fields,Total eclipse (R),2,3,0,0,Vanish,839,Waldo's wares
-Head,Legions of Shadows,Act 3: The Bone Fields,Wyvern jaws,0,0,3,2,None,776,Bone wyvern
-Head,Legions of Shadows,Act 3: The Bone Fields,Knuckle head (W),1,2,0,0,Slam,695,Bone construct
-Head,Legions of Shadows,Act 3: The Bone Fields,Hood of night,2,0,3,0,Charm,649,Necromancer
-Head,Legions of Shadows,Act 3: The Bone Fields,Enchanted coif (M),2,0,0,2,Deceive,677,Tor knight
-Head,Legions of Shadows,Act 3: The Bone Fields,Forked crest,1,3,0,0,Charge,775,Skeleton horde
-Head,Legions of Shadows,Act 3: The Bone Fields,Bone headdress,0,0,3,2,Charm,778,Ghoul pack
-Head,Legions of Shadows,Act 3: The Bone Fields,Cracked spectacles,2,0,2,0,Focus,923,Apprentice
-Head,Legions of Shadows,Act 3: The Bone Fields,Crown of ice,2,0,3,0,Barbs,874,Sammain (special)
-Head,Legions of Shadows,Act 3: The Bone Fields,Bone halo,2,0,3,0,Focus,906,Bone angel
-Head,Legions of Shadows,Act 3: The Bone Fields,Black widow,2,2,0,0,Webbed,929,Dark Arthurian
-Head,Legions of Shadows,Act 3: The Bone Fields,Diadem of mastery (M),2,0,3,0,Dominate,664,Brothers' Grimm
-Head,Legions of Shadows,Act 3: (Continued),Ghoul's collar,2,0,0,3,Piercing,702,Ghoulash
-Head,Legions of Shadows,Act 3: (Continued),Budak's blindfold (R),2,3,0,0,Second sight,733,Budak
-Head,Legions of Shadows,Act 3: (Continued),Brain infusers,2,0,0,3,Lightning,642,Lichenstein
-Head,Legions of Shadows,Act 3: (Continued),The morgue (M),2,0,3,0,Leech,765,Malcontent
-Head,Legions of Shadows,Act 3: (Continued),Cerebral helm (M),2,0,3,0,Overload,765,Death orb
-Head,Legions of Shadows,Act 3: (Continued),Cranium plate,0,2,0,3,Fortitide,665,Lord of pain
-Head,Legions of Shadows,Act 3: (Continued),Dread mask (W),2,3,0,0,Overpower,893,Daarko
-Head,Legions of Shadows,Act 3: (Continued),Drape of shadow,2,4,0,0,Chill touch,813,Ghasts
-Head,Legions of Shadows,Act 3: (Continued),Thalamus tiara (M),2,0,5,0,Haste,826,Doom orb
-Gloves,Legions of Shadows,Act 1: Tithebury Cross,Embroidered gloves,1,0,1,0,None,68,Vendor/Tithebury Cross
-Gloves,Legions of Shadows,Act 1: Tithebury Cross,Rat-bitten gloves,0,1,1,0,None,161,Rat swarm
-Gloves,Legions of Shadows,Act 1: Tithebury Cross,Half-digested gauntlets,0,1,0,1,Acid,258,Burrower wyrm
-Gloves,Legions of Shadows,Act 1: Tithebury Cross,Mason's gloves,1,0,0,0,First cut,209,Crypt chest
-Gloves,Legions of Shadows,Act 2: Mistwood & Black Marsh,Stone fists,0,2,0,1,None,522,Treasure vault
-Gloves,Legions of Shadows,Act 2: Mistwood & Black Marsh,Diamond gauntlets,0,2,0,0,Piercing,540,Rumbler
-Gloves,Legions of Shadows,Act 2: (Continued),Vambraces of might,1,0,0,2,Parry,568,Inferno
-Gloves,Legions of Shadows,Act 2: (Continued),Prophet's handwraps,0,1,0,1,Trickster,550,Jenlar's cabin
-Gloves,Legions of Shadows,Act 2: (Continued),Nightguard gloves (R),1,0,0,2,Steadfast,642,Armoury
-Gloves,Legions of Shadows,Act 2: (Continued),Nightwalker gloves (R),1,2,0,0,Nightwalker set,765,Gargoyle chest
-Gloves,Legions of Shadows,Act 2: (Continued),Battlemage's fists (M),0,0,3,3,Dominate,414,Arena champion
-Gloves,Legions of Shadows,Act 2: (Continued),Barbed bracers,1,0,0,2,Barbs,346,Snapjaw
-Gloves,Legions of Shadows,Act 2: (Continued),Gardener's gloves,1,0,0,2,Thorns,516,Alchemist bonus quest
-Gloves,Legions of Shadows,Act 2: (Continued),Hydra-scaled gloves (M),0,0,2,2,Regrowth,389,Snapjaw
-Gloves,Legions of Shadows,Act 2: (Continued),Hydra-scaled fists (M),0,0,3,2,Regrowth,418,Snapjaw
-Gloves,Legions of Shadows,Act 2: (Continued),Molten gauntlets (W),0,2,0,1,Fire aura,377,Vesuvius
-Gloves,Legions of Shadows,Act 2: (Continued),Crimson cuffs,1,0,4,0,Sear,400,Magmageddon
-Gloves,Legions of Shadows,Act 3: The Bone Fields,Mortuary gauntlets (W),1,0,0,3,Acid,803,Waldo's wares
-Gloves,Legions of Shadows,Act 3: The Bone Fields,Reaper's fists (R),1,3,0,0,Critical strike,903,Waldo's wares
-Gloves,Legions of Shadows,Act 3: The Bone Fields,Bestial gloves,0,2,0,2,Adrenaline,620,Packmaster
-Gloves,Legions of Shadows,Act 3: The Bone Fields,Gauntlets of the fallen (W),0,3,0,2,Finery of the fallen,617,Tor knight
-Gloves,Legions of Shadows,Act 3: The Bone Fields,Bone bracers,1,2,0,0,Bleed,759,Flesh golem
-Gloves,Legions of Shadows,Act 3: The Bone Fields,Branded bracers,0,2,0,2,Regrowth,880,Branded brute
-Gloves,Legions of Shadows,Act 3: The Bone Fields,Tainted wraps,1,0,3,0,Curse,912,Malaise
-Gloves,Legions of Shadows,Act 3: The Bone Fields,Devourer's grips (M),1,0,4,0,Rust,664,Brothers'Grimm
-Gloves,Legions of Shadows,Act 3: The Bone Fields,Bracelet of iron,0,2,0,3,Might of stone,736,Ghoulash chains
-Gloves,Legions of Shadows,Act 3: The Bone Fields,Bracelet of fire (M),1,0,3,0,Embers,736,Ghoulash chains
-Gloves,Legions of Shadows,Act 3: The Bone Fields,Bracelet of fury,1,4,0,0,Adrenaline,736,Ghoulash chains
-Gloves,Legions of Shadows,Act 3: (Continued),Bracelet of power (M),1,0,3,0,Focus,702,Ghoulash
-Gloves,Legions of Shadows,Act 3: (Continued),Razor fists,0,1,0,3,Rake,722,Bone giant
-Gloves,Legions of Shadows,Act 3: (Continued),Abattoir gloves (M),1,0,4,0,Bleed,642,Lichenstein
-Chest,Legions of Shadows,Act 1: Tithebury Cross,Silk robe,0,0,1,0,None,68,Vendor/Tithebury Cross
-Chest,Legions of Shadows,Act 1: Tithebury Cross,Goblin leathers,0,0,0,1,None,150,Goblin
-Chest,Legions of Shadows,Act 1: Tithebury Cross,Huntsman's jerkin,0,0,0,1,None,228,Huntsman
-Chest,Legions of Shadows,Act 1: Tithebury Cross,Studded leather,0,0,0,2,None,125/174,Were rat
-Chest,Legions of Shadows,Act 1: Tithebury Cross,Rain-soaked robe,0,0,1,1,None,243,Weather wizard
-Chest,Legions of Shadows,Act 1: Tithebury Cross,Web-coated jerkin,0,1,0,1,Webbed,206,Water cave
-Chest,Legions of Shadows,Act 1: Tithebury Cross,Spindlesilk mantle,0,0,1,1,Spindlesilk set,91,Spindle
-Chest,Legions of Shadows,Act 1: Tithebury Cross,Crusader's vestments,0,1,0,1,Heal,160,Valadin Roth
-Chest,Legions of Shadows,Act 1: Tithebury Cross,Hellfire robes,1,0,1,0,Trickster,133,Changeling
-Chest,Legions of Shadows,Act 1: Tithebury Cross,Duskleaf doubloon,1,1,0,0,Charm,80,Zalladrel
-Chest,Legions of Shadows,Act 2: Mistwood & Black Marsh,Chitinous carapace,1,0,0,2,Charm,368,Kerklick
-Chest,Legions of Shadows,Act 2: Mistwood & Black Marsh,Patchwork jerkin,1,1,0,0,Evade,374,Jester
-Chest,Legions of Shadows,Act 2: (Continued),Gown of midnight,1,0,2,0,Evade,445,Elvera
-Chest,Legions of Shadows,Act 2: (Continued),Sanguine gown,1,0,2,0,Evade,460,Clymonistra
-Chest,Legions of Shadows,Act 2: (Continued),Cinder's gown (M),1,0,3,0,Sear,655,Cinders
-Chest,Legions of Shadows,Act 2: (Continued),Scorched tunic,1,0,0,2,Charm,568,Inferno
-Chest,Legions of Shadows,Act 2: (Continued),Nightwalker tunic (R),1,2,0,0,Nightwalker set,497,Boggart
-Chest,Legions of Shadows,Act 2: (Continued),Vigilant chestguard (W),1,0,0,3,None,509,Swamp giant
-Chest,Legions of Shadows,Act 2: (Continued),Scaled vest,1,0,2,0,Swamp legs,452,Angler's cave
-Chest,Legions of Shadows,Act 2: (Continued),Ink-stained vest,2,1,0,0,None,716,Kalimari
-Chest,Legions of Shadows,Act 2: (Continued),Navigator's waistcoat,2,0,0,2,Charm,544,Leviathan
-Chest,Legions of Shadows,Act 2: (Continued),Channeler's robes (M),0,0,3,2,Focus,434,Raptor pit
-Chest,Legions of Shadows,Act 2: (Continued),Lincoln green (W),2,2,0,0,Charm,590,Raptor pit
-Chest,Legions of Shadows,Act 2: (Continued),Skulker's coat (R),1,0,0,3,Evade,583,Raptor pit
-Chest,Legions of Shadows,Act 2: (Continued),Spellplate,1,0,0,3,Focus,598,Armoury
-Chest,Legions of Shadows,Act 2: (Continued),Stone coat (W),2,0,0,2,Might of stone,706,Gargoyle chest
-Chest,Legions of Shadows,Act 2: (Continued),Breastplate of the bull,0,3,0,2,Charge,216,Zen
-Chest,Legions of Shadows,Act 2: (Continued),Hunter's hide,1,0,0,2,Immobilise,379,Nalsa
-Chest,Legions of Shadows,Act 2: (Continued),The cage (W),2,0,0,3,Iron will,414,Arena champion
-Chest,Legions of Shadows,Act 2: (Continued),Dragonscale mail (W),2,0,0,3,Second skin,708,Kindle
-Chest,Legions of Shadows,Act 3: The Bone Fields,Raider's tunic (W),2,4,0,0,Retaliation,803,Waldo's wares
-Chest,Legions of Shadows,Act 3: The Bone Fields,Slipstream gown (M),2,0,4,0,Overload,881,Waldo's wares
-Chest,Legions of Shadows,Act 3: The Bone Fields,Confessor's coat (R),2,4,0,0,Fortitude,903,Waldo's wares
-Chest,Legions of Shadows,Act 3: The Bone Fields,Titan plate,1,0,0,2,Fearless,730,Bone giants
-Chest,Legions of Shadows,Act 3: (Continued),Deathgrip robes,2,0,3,0,Corruption,770,Rotterghast
-Chest,Legions of Shadows,Act 3: (Continued),Lion's tabard,1,2,0,0,Fearless,892,Arthurian's vault
-Chest,Legions of Shadows,Act 3: (Continued),Skullplate,2,0,0,3,Dominate,906,Bone angel
-Chest,Legions of Shadows,Act 3: (Continued),Funeral gown,1,0,3,0,Charm,916,Yorvic
-Chest,Legions of Shadows,Act 3: (Continued),Redguard's tabard,2,0,0,4,Iron will,735,Special achievement
-Chest,Legions of Shadows,Act 3: (Continued),Stalker's jerkin (R),2,0,0,3,Evade,733,Budak
-Chest,Legions of Shadows,Act 3: (Continued),Silleer's robe (M),2,0,3,0,Curse,570,Silleer
-Chest,Legions of Shadows,Act 3: (Continued),Plate of the fallen (W),2,0,0,4,finery of the fallen,719,Tor knight
-Chest,Legions of Shadows,Act 3: (Continued),Funeral wraps,2,3,0,0,Bleed,765,Malcontent
-Chest,Legions of Shadows,Act 3: (Continued),Pacemaker (W),2,0,0,4,Kick start,716,The blob
-Chest,Legions of Shadows,Act 3: (Continued),Shadow bindings (R),2,3,0,0,Evade,631,Mage hunter
-Chest,Legions of Shadows,Act 3: (Continued),Dark slayer vest (R),2,4,0,0,Dominate,843,Daarko
-Chest,Legions of Shadows,Act 3: (Continued),Decayer's wraps,2,3,0,0,Disease,845,Decayers
-Chest,Legions of Shadows,Act 3: (Continued),Beast's harness (W),2,0,0,4,Knockdown,801,The wrecker
-Chest,Legions of Shadows,Act 3: (Continued),Beast's backbone (R),2,4,0,0,Savagery,847,The wrecker
-Chest,Legions of Shadows,Act 3: (Continued),Bloodied chestguard (W),2,0,0,4,Bleed,882,Sannrah
-Feet,Legions of Shadows,Act 1: Tithebury Cross,Buckled boots,1,1,0,0,None,175,Vendor/Tithebury Cross
-Feet,Legions of Shadows,Act 1: Tithebury Cross,Spindlesilk boots,1,0,1,0,Spindlesilk set,110,Vendor/Tithebury Cross
-Feet,Legions of Shadows,Act 1: Tithebury Cross,Crow's feet,1,0,1,0,None,204,Scarecrow
-Feet,Legions of Shadows,Act 1: (Continued),Goblin kickers,1,1,0,0,None,199,Hobgoblin
-Feet,Legions of Shadows,Act 1: (Continued),Rat-skin boots,1,0,0,0,None,260,Goblin chief
-Feet,Legions of Shadows,Act 1: (Continued),Dusty footpads,1,0,0,0,Charm,206,Water cave
-Feet,Legions of Shadows,Act 1: (Continued),Ruby slippers,1,0,0,1,Click your heels,155,Witch
-Feet,Legions of Shadows,Act 1: (Continued),Boar-hide boots,1,0,0,1,Steadfast,44,Humbaroth
-Feet,Legions of Shadows,Act 1: (Continued),Reed-woven sandals,1,0,1,0,Charm,122,Bridge troll
-Feet,Legions of Shadows,Act 2: Mistwood & Black Marsh,Rune-forged greaves,2,0,2,0,None,311,No Hope tinker
-Feet,Legions of Shadows,Act 2: Mistwood & Black Marsh,Boots of swift flight (R),1,2,0,0,None,338,Thievies' guild
-Feet,Legions of Shadows,Act 2: Mistwood & Black Marsh,Deerskin boots,1,1,0,0,None,287,Mushroom forest
-Feet,Legions of Shadows,Act 2: Mistwood & Black Marsh,Sludge waders,1,0,0,1,None,494,Slime
-Feet,Legions of Shadows,Act 2: Mistwood & Black Marsh,Baron's boots,1,0,0,1,Dominate,385,Baron Greylock
-Feet,Legions of Shadows,Act 2: Mistwood & Black Marsh,Velvet slippers,1,0,3,0,Haste,487,Count (special)
-Feet,Legions of Shadows,Act 2: Mistwood & Black Marsh,Scarab sandals (M),2,0,0,2,None,446,Treasure cave
-Feet,Legions of Shadows,Act 2: Mistwood & Black Marsh,Bright greaves,1,2,0,0,Steadfast,497,Boggart
-Feet,Legions of Shadows,Act 2: Mistwood & Black Marsh,Sanguine slippers (M),2,0,2,0,Charm,497,Boggart
-Feet,Legions of Shadows,Act 2: Mistwood & Black Marsh,Captain's boots,2,0,0,1,None,716,Kalimari
-Feet,Legions of Shadows,Act 2: Mistwood & Black Marsh,Scout's longboots (W),1,3,0,0,Sideswipe,590,Raptor pit
-Feet,Legions of Shadows,Act 2: Mistwood & Black Marsh,Quicksilver boots (M),2,0,1,0,Quicksilver,434,Raptor pit
-Feet,Legions of Shadows,Act 2: Mistwood & Black Marsh,Majestic greaves (W),2,2,0,0,Royal regalia,581,Armoury
-Feet,Legions of Shadows,Act 2: Mistwood & Black Marsh,Shadow treads (R),1,2,0,0,Sidestep,744,Gargoyle chest
-Feet,Legions of Shadows,Act 2: Mistwood & Black Marsh,Logan's runners (R),2,1,0,0,Sidestep,394,Logan
-Feet,Legions of Shadows,Act 2: (Continued),Barkskin greaves,1,0,0,2,Steadfast,341,Barkrot
-Feet,Legions of Shadows,Act 2: (Continued),Marsh striders,2,2,0,0,Sideswipe,389,Hydra (normal)
-Feet,Legions of Shadows,Act 2: (Continued),Marsh stalkers,2,3,0,0,Sideswipe,418,Hydra (special)
-Feet,Legions of Shadows,Act 3: The Bone Fields,Boots of shielding (M),2,0,0,1,Deflect,881,Waldo's wares
-Feet,Legions of Shadows,Act 3: The Bone Fields,Barbarous boots (W),2,3,0,0,Savagery,815,Waldo's wares
-Feet,Legions of Shadows,Act 3: The Bone Fields,Vagabond boots,2,0,0,2,Steadfast,620,Packmaster
-Feet,Legions of Shadows,Act 3: The Bone Fields,Herald's spurs,2,1,0,0,Charge,617,Tor knight
-Feet,Legions of Shadows,Act 3: The Bone Fields,Ebon boots,2,1,0,0,Fearless,649,Necromancer
-Feet,Legions of Shadows,Act 3: The Bone Fields,Bewitched boots,2,0,2,0,Dominate,802,Tomb
-Feet,Legions of Shadows,Act 3: The Bone Fields,Twisted treads,2,2,0,0,Trickster,912,Malaise
-Feet,Legions of Shadows,Act 3: The Bone Fields,Rumble thumpers,1,3,0,0,Knockdown,616,The blob
-Feet,Legions of Shadows,Act 3: The Bone Fields,Elemental greaves (M),2,0,0,2,Fire aura,865,Daarko
-Feet,Legions of Shadows,Act 3: The Bone Fields,Boots of black fortune (W),2,0,0,2,Feint,893,Daarko
-Main hand,Legions of Shadows,Act 1: Tithebury Cross,The apprentice,0,1,1,0,None,,Prologue
-Main hand,Legions of Shadows,Act 1: Tithebury Cross,Notched blade,1,1,0,0,None,175,Vendor/Tithebury Cross
-Main hand,Legions of Shadows,Act 1: Tithebury Cross,Curved blade,1,0,0,0,None,199,Hobgoblin
-Main hand,Legions of Shadows,Act 1: (Continued),Goblin hewer,1,0,0,1,None,82,Woodsman
-Main hand,Legions of Shadows,Act 1: (Continued),Huntsman's axe,0,2,0,0,None,228,Huntsman
-Main hand,Legions of Shadows,Act 1: (Continued),Meat cleaver,1,0,0,0,Bleed,260,Goblin chief
-Main hand,Legions of Shadows,Act 1: (Continued),Crone's dagger,1,0,1,0,None,40,Ruffians
-Main hand,Legions of Shadows,Act 1: (Continued),Gilbert's club,0,3,0,0,None,40,Ruffians
-Main hand,Legions of Shadows,Act 1: (Continued),Leader's edge,1,1,0,0,None,125/174,Were rat
-Main hand,Legions of Shadows,Act 1: (Continued),Acid-coated battle axe,1,1,0,0,Acid,258,Burrower wyrm
-Main hand,Legions of Shadows,Act 1: (Continued),Venomous fang,1,1,0,0,Venom,91,Spindle
-Main hand,Legions of Shadows,Act 1: (Continued),Nightbringer,1,4,0,0,Might of stone,52,Noldor (special)
-Main hand,Legions of Shadows,Act 1: (Continued),Nightfall,1,0,4,0,Might of stone,52,Noldor (special)
-Main hand,Legions of Shadows,Act 1: (Continued),Ancient sword,1,1,0,0,Bleed,222,Skeleton knight
-Main hand,Legions of Shadows,Act 1: (Continued),Dirk of deceit,1,1,0,0,Corruption,271,Fetch
-Main hand,Legions of Shadows,Act 1: (Continued),Silver silence,1,0,1,0,Immobilise,271,Fetch
-Main hand,Legions of Shadows,Act 1: (Continued),Skullbreaker,1,2,0,0,Pound,44,Humbaroth
-Main hand,Legions of Shadows,Act 2: Mistwood & Black Marsh,Dark crystal (R),1,2,0,0,Venom,311,No Hope tinker
-Main hand,Legions of Shadows,Act 2: Mistwood & Black Marsh,Black jack (R),1,3,0,0,Slam,338,Thievies' guild
-Main hand,Legions of Shadows,Act 2: Mistwood & Black Marsh,Abyssal blade (R),2,3,0,0,Deep wound,432,Sea spray Steve
-Main hand,Legions of Shadows,Act 2: Mistwood & Black Marsh,Ashen staff,1,0,2,0,None,283,Mud golem
-Main hand,Legions of Shadows,Act 2: Mistwood & Black Marsh,Shiny dirk,1,2,0,0,None,287,Mushroom forest
-Main hand,Legions of Shadows,Act 2: Mistwood & Black Marsh,Trog spear (W),1,3,0,0,None,327,Trogs
-Main hand,Legions of Shadows,Act 2: Mistwood & Black Marsh,Black fang,1,2,0,0,Parry,517,Wormwood (normal)
-Main hand,Legions of Shadows,Act 2: (Continued),Lacerator,1,3,0,0,Parry,533,Wormwood (special)
-Main hand,Legions of Shadows,Act 2: (Continued),Bone scythe,1,2,0,0,Retaliation,368,Kerklick
-Main hand,Legions of Shadows,Act 2: (Continued),Winter's bite (W),2,2,0,0,Bleed,385,Baron Greylock
-Main hand,Legions of Shadows,Act 2: (Continued),Blood harvest (M),2,0,1,0,Leech,455,Lady Roe
-Main hand,Legions of Shadows,Act 2: (Continued),Silk cut (R),2,2,0,0,Riposte,487,Count (special)
-Main hand,Legions of Shadows,Act 2: (Continued),The rock (W),0,4,0,0,Slam,540,Rumbler
-Main hand,Legions of Shadows,Act 2: (Continued),Illumanti rod (M),2,0,1,0,Overload,548,Treasure vault
-Main hand,Legions of Shadows,Act 2: (Continued),Phoenix claw,1,2,0,0,Immobilise,565,Phoenix
-Main hand,Legions of Shadows,Act 2: (Continued),Lucky fishing rod,2,1,0,0,Charm,452,Angler's cave
-Main hand,Legions of Shadows,Act 2: (Continued),Magician's crook (M),2,0,3,0,Radiance,446,Treasure cave
-Main hand,Legions of Shadows,Act 2: (Continued),Trident of the seven seas,1,0,3,0,None,479,Wreekin
-Main hand,Legions of Shadows,Act 2: (Continued),Dark malice (W),2,3,0,0,Impale,506,Scorpios
-Main hand,Legions of Shadows,Act 2: (Continued),Scorpion stinger (R),2,1,0,0,Venom,506,Scorpios
-Main hand,Legions of Shadows,Act 2: (Continued),Betsy blue anchor (W),1,4,0,0,Stun,544,Leviathan
-Main hand,Legions of Shadows,Act 2: (Continued),Spellbreaker (R),2,4,0,0,Disrupt,567,Armoury
-Main hand,Legions of Shadows,Act 2: (Continued),Frenzy (W),2,4,0,0,Cleave,581,Armoury
-Main hand,Legions of Shadows,Act 2: (Continued),Swordbreaker (M),2,0,3,0,Retaliation,593,Armoury
-Main hand,Legions of Shadows,Act 2: (Continued),Pulveriser (W),2,4,0,0,Knockdown,706,Gargoyle chest
-Main hand,Legions of Shadows,Act 2: (Continued),Torturer's rod (M),2,2,0,0,Stun,713,Gargoyle chest
-Main hand,Legions of Shadows,Act 2: (Continued),Buccaneer's rapier,1,1,0,0,Riposte,277,Left-hook Luke
-Main hand,Legions of Shadows,Act 2: (Continued),Nalsa's claws,1,2,0,0,Piercing,379,Nalsa
-Main hand,Legions of Shadows,Act 2: (Continued),Ebony,2,3,0,0,Ebony and ivory,370,Nasareim
-Main hand,Legions of Shadows,Act 2: (Continued),Brawler's shiv (R),2,4,0,0,Venom,414,Arena champion
-Main hand,Legions of Shadows,Act 2: (Continued),Fire brand (M),2,0,2,0,Fire aura,377,Vesuvius
-Main hand,Legions of Shadows,Act 2: (Continued),Burning heretic (R),3,3,0,0,Critical strike,400,Magmageddon
-Main hand,Legions of Shadows,Act 2: (Continued),Velocifero,3,3,0,0,Riposte,729,Shadowstalker
-Main hand,Legions of Shadows,Act 3: The Bone Fields,Sliver of shadow (R),2,4,0,0,Chill touch,839,Waldo's wares
-Main hand,Legions of Shadows,Act 3: The Bone Fields,Talanost's edge (R),3,5,0,0,Sear,903,Waldo's wares
-Main hand,Legions of Shadows,Act 3: The Bone Fields,Wicked claw,1,3,0,0,Critical strike,776,Bone wyvern
-Main hand,Legions of Shadows,Act 3: The Bone Fields,Bone claw,2,3,0,0,Rake,695,Bone construct
-Main hand,Legions of Shadows,Act 3: The Bone Fields,Lasher,3,3,0,0,Bleed,620,Packmaster
-Main hand,Legions of Shadows,Act 3: The Bone Fields,Tainted striker (M),3,0,3,0,Corruption,677,Tor knight
-Main hand,Legions of Shadows,Act 3: The Bone Fields,Spinal tap (W),3,4,0,0,Impale,759,Flesh golem
-Main hand,Legions of Shadows,Act 3: The Bone Fields,Bone gavel (W),3,4,0,0,Knockdown,730,Bone giants
-Main hand,Legions of Shadows,Act 3: The Bone Fields,Tenacity (R),2,5,0,0,Deep wound,770,Rotterghast
-Main hand,Legions of Shadows,Act 3: The Bone Fields,Scorn (R),2,3,0,0,Immobilise,912,Malaise
-Main hand,Legions of Shadows,Act 3: The Bone Fields,Ever-sharp (W),3,4,0,0,Deep wound,916,Yorvic
-Main hand,Legions of Shadows,Act 3: The Bone Fields,Deep freeze,2,0,3,0,Stun,869,Sammain (normal)
-Main hand,Legions of Shadows,Act 3: The Bone Fields,Hoarfrost,2,0,3,0,Chill touch,874,Sammain (special)
-Main hand,Legions of Shadows,Act 3: The Bone Fields,Grimm reaper (W),3,5,0,0,Brutality,727,Brothers' Grimm
-Main hand,Legions of Shadows,Act 3: The Bone Fields,Serenity (R),2,4,0,0,Deep wound,733,Budak
-Main hand,Legions of Shadows,Act 3: The Bone Fields,Wand of lightning (M),2,0,4,0,Shock!,570,Silleer
-Main hand,Legions of Shadows,Act 3: The Bone Fields,Pain in chains,2,4,0,0,Pound,722,Bone giants
-Main hand,Legions of Shadows,Act 3: The Bone Fields,Frost burn (M),2,0,4,0,Piercing,584,Chilblain
-Main hand,Legions of Shadows,Act 3: The Bone Fields,Belching bludger,2,4,0,0,Disease,616,The blob
-Main hand,Legions of Shadows,Act 3: The Bone Fields,Mortician's scalpel (R),3,4,0,0,Disease,642,Lichenstein
-Main hand,Legions of Shadows,Act 3: The Bone Fields,Tempest's fury,2,0,5,0,Windblast,754,Flay
-Main hand,Legions of Shadows,Act 3: The Bone Fields,Blood crescent (W),3,5,0,0,Cleave,631,Mage hunter
-Main hand,Legions of Shadows,Act 3: The Bone Fields,Orb stinger (R),3,4,0,0,Shock!,665,Death orb
-Main hand,Legions of Shadows,Act 3: The Bone Fields,Trickster's maul,3,4,0,0,Trickster,711,Lord of pain
-Main hand,Legions of Shadows,Act 3: The Bone Fields,Shadow-woven kris (R),3,5,0,0,Deep wound,843,Daarko
-Main hand,Legions of Shadows,Act 3: The Bone Fields,Sacrum of carnage (R),2,5,0,0,Fatal blow,847,The wrecker
-Main hand,Legions of Shadows,Act 3: (Continued),Aged acronium (M),2,0,5,0,Rust,878,The wrecker
-Main hand,Legions of Shadows,Act 3: (Continued),The sting (W),3,5,0,0,Impale,868,Scarrons
-Main hand,Legions of Shadows,Act 3: (Continued),Fortune's favour (M),2,0,5,0,Radiance,871,Sannrah
-Main hand,Legions of Shadows,Act 3: (Continued),Retribution (W),3,6,0,0,Feral fury,882,Sannrah
-Left hand,Legions of Shadows,Act 1: Tithebury Cross,Scaled defender,0,2,0,1,None,191,Vendor/Tithebury Cross
-Left hand,Legions of Shadows,Act 1: Tithebury Cross,Murder of crows,1,1,0,0,None,204,Scarecrow
-Left hand,Legions of Shadows,Act 1: Tithebury Cross,Crock's tooth,0,1,0,0,None,118,Crocodile
-Left hand,Legions of Shadows,Act 1: Tithebury Cross,Rennie's slicer,1,1,0,0,First cut,55/247,Rennie the rat
-Left hand,Legions of Shadows,Act 1: Tithebury Cross,Stone shield,1,0,0,2,Slam,41,Noldor (normal)
-Left hand,Legions of Shadows,Act 1: Tithebury Cross,Essence of shadow,1,0,1,0,Chill touch,43,Shadow
-Left hand,Legions of Shadows,Act 1: Tithebury Cross,Ghoul claw,1,1,0,0,Piercing,106/127 /157,Ghouls
-Left hand,Legions of Shadows,Act 1: Tithebury Cross,Dented buckler,1,0,0,1,None,166,Skeletons
-Left hand,Legions of Shadows,Act 1: Tithebury Cross,Spider's spinneret,1,0,1,0,Webbed,179,Spiders
-Left hand,Legions of Shadows,Act 1: Tithebury Cross,Rage claw,1,1,0,0,Dominate,26,Mauler
-Left hand,Legions of Shadows,Act 2: Mistwood & Black Marsh,Ardent edge,1,2,0,0,Parry,494,Slime
-Left hand,Legions of Shadows,Act 2: Mistwood & Black Marsh,Champion's blade,2,1,0,0,Bleed,283,Mud golem
-Left hand,Legions of Shadows,Act 2: Mistwood & Black Marsh,Ridgeback (W),1,0,0,2,Slam,517,Wormwood (normal)
-Left hand,Legions of Shadows,Act 2: Mistwood & Black Marsh,Razorback (W),2,0,0,2,Slam,533,Wormwood (special)
-Left hand,Legions of Shadows,Act 2: Mistwood & Black Marsh,Rockbiter,1,2,0,0,Piercing,522,Treasure vault
-Left hand,Legions of Shadows,Act 2: Mistwood & Black Marsh,Shrink ray,1,0,1,0,Zapped!,477/585,Hal Arbuckle
-Left hand,Legions of Shadows,Act 2: Mistwood & Black Marsh,Book of black deeds (M),2,0,2,0,None,445,Treasure vault
-Left hand,Legions of Shadows,Act 2: Mistwood & Black Marsh,Vampire's kiss,1,2,0,0,Leech,422,Treasure vault
-Left hand,Legions of Shadows,Act 2: Mistwood & Black Marsh,Ivory (R+W),2,2,0,0,Ebony and ivory,333,Treasure cave
-Left hand,Legions of Shadows,Act 2: Mistwood & Black Marsh,T-Bone wand (M),1,1,0,0,Bolt,449/529,Wreekin
-Left hand,Legions of Shadows,Act 2: Mistwood & Black Marsh,Wreekin net,1,2,0,0,Webbed,479,Wreekin
-Left hand,Legions of Shadows,Act 2: Mistwood & Black Marsh,Twin furies (R),1,3,0,0,None,452,Angler's cave
-Left hand,Legions of Shadows,Act 2: Mistwood & Black Marsh,Blackout,2,2,0,0,Stun,509,Swamp giant
-Left hand,Legions of Shadows,Act 2: Mistwood & Black Marsh,Tome of deep thought (M),2,0,3,0,None,550,Jenlar's cabin
-Left hand,Legions of Shadows,Act 2: Mistwood & Black Marsh,Deliverance (W),1,3,0,0,Deep wound,590,Raptor pit
-Left hand,Legions of Shadows,Act 2: Mistwood & Black Marsh,Witching hour (R),2,3,0,0,Bull's eye,583,Raptor pit
-Left hand,Legions of Shadows,Act 2: Mistwood & Black Marsh,Ebenezer's spellbook (M),2,0,2,0,Sear,434,Raptor pit
-Left hand,Legions of Shadows,Act 2: Mistwood & Black Marsh,St Elmo's fire,2,0,2,0,Lightning,544,Leviathan
-Left hand,Legions of Shadows,Act 2: Mistwood & Black Marsh,Vorpal sword (R),2,3,0,0,Vanquish,567,Armoury
-Left hand,Legions of Shadows,Act 2: Mistwood & Black Marsh,Dour claws (W),1,4,0,0,Rake,706,Gargoyle chest
-Left hand,Legions of Shadows,Act 2: Mistwood & Black Marsh,Tome of intellect (M),2,0,2,0,Focus,713,Gargoyle chest
-Left hand,Legions of Shadows,Act 2: Mistwood & Black Marsh,Stone crescent (W),2,0,0,2,Slam,443,Stone giant
-Left hand,Legions of Shadows,Act 2: Mistwood & Black Marsh,Left hook,1,2,0,0,Immobilise,277,Left-hook Luke
-Left hand,Legions of Shadows,Act 2: Mistwood & Black Marsh,Deathstrike,1,3,0,0,Bull's eye,394,Logan
-Left hand,Legions of Shadows,Act 2: Mistwood & Black Marsh,Sprig of corruption,2,0,3,0,Corruption,341,Barkrot
-Left hand,Legions of Shadows,Act 2: Mistwood & Black Marsh,Spine tooth (R),2,2,0,0,Critical strike,346,Snapjaw
-Left hand,Legions of Shadows,Act 2: (Continued),Hydra's wing (W),2,0,0,2,Deflect,389,Hydra (normal)
-Left hand,Legions of Shadows,Act 2: (Continued),Hydra's guard (W),2,0,0,3,Deflect,418,Hydra (special)
-Left hand,Legions of Shadows,Act 2: (Continued),Dragonslayer,2,4,0,0,Deep wound,708,Kindle
-Left hand,Legions of Shadows,Act 2: (Continued),Shadowblade,2,0,3,0,Retaliation,729,Shadowstalker
-Left hand,Legions of Shadows,Act 3: The Bone Fields,Talanost's wall (W),2,0,0,5,Deflect,803,Waldo's wares
-Left hand,Legions of Shadows,Act 3: The Bone Fields,Talanost's reach (M),3,0,4,0,Critical strike,881,Waldo's wares
-Left hand,Legions of Shadows,Act 3: The Bone Fields,Tor shield,2,0,0,2,Deflect,617,Tor knight
-Left hand,Legions of Shadows,Act 3: The Bone Fields,Spite,2,3,0,0,Venom,649,Necromancer
-Left hand,Legions of Shadows,Act 3: The Bone Fields,Iron curtain (W),0,3,0,2,Iron will,775,Skeleton horde
-Left hand,Legions of Shadows,Act 3: The Bone Fields,Chains of binding (M),2,0,3,0,Shackle,778,Ghouls
-Left hand,Legions of Shadows,Act 3: The Bone Fields,Shallow grave,2,3,0,0,Savagery,827,Tomb robber
-Left hand,Legions of Shadows,Act 3: The Bone Fields,Raven eye,2,3,0,0,Bolt,834,Dark ranger
-Left hand,Legions of Shadows,Act 3: The Bone Fields,Witch's finger,2,0,3,0,Curse,869,Sammain (normal)
-Left hand,Legions of Shadows,Act 3: The Bone Fields,Meat grinder,2,3,0,0,Pound,891,Clockwerk
-Left hand,Legions of Shadows,Act 3: The Bone Fields,Steel gear solid (W),2,0,0,3,Retaliation,891,Clockwerk
-Left hand,Legions of Shadows,Act 3: The Bone Fields,Justice,2,3,0,0,Knockdown,892,Arthurian's vault
-Left hand,Legions of Shadows,Act 3: The Bone Fields,Twilight claw,2,3,0,0,Rake,929,Dark arthurian
-Left hand,Legions of Shadows,Act 3: The Bone Fields,Black death (R),2,4,0,0,Critical strike,622,Brothers' Grimm
-Left hand,Legions of Shadows,Act 3: The Bone Fields,Grasping grimm (M),3,0,3,0,Rake,664,Brothers'Grimm
-Left hand,Legions of Shadows,Act 3: The Bone Fields,Grimoire of entropy (M),3,0,3,0,Sear,570,Silleer
-Left hand,Legions of Shadows,Act 3: The Bone Fields,Dark tower (W),2,0,0,4,Impale,719,Tor knight
-Left hand,Legions of Shadows,Act 3: (Continued),Thunder hammer (W),2,4,0,0,Shock!,719,Tor knight
-Left hand,Legions of Shadows,Act 3: (Continued),Shield of bones (W),0,4,0,2,Piercing,722,Bone giant
-Left hand,Legions of Shadows,Act 3: (Continued),Shield of bones (M),3,0,3,0,Dominate,762,Scout
-Left hand,Legions of Shadows,Act 3: (Continued),Shield of bones (R),2,4,0,0,Sear,762,Scout
-Left hand,Legions of Shadows,Act 3: (Continued),Bone splinter (R),2,4,0,0,Piercing,584,Chilblain
-Left hand,Legions of Shadows,Act 3: (Continued),Shield of angels,1,5,0,0,Windblast,754,Flay
-Left hand,Legions of Shadows,Act 3: (Continued),Shield of blasting (W),2,0,0,3,Lightning,665,Death orb
-Left hand,Legions of Shadows,Act 3: (Continued),Torment,2,0,4,0,Disease,711,Lord of pain
-Left hand,Legions of Shadows,Act 3: (Continued),Fang of Vengos (R),2,4,0,0,Venom,868,Scarrons
-Left hand,Legions of Shadows,Act 3: (Continued),Parasitic plate (W),2,0,0,4,Leech,845,Decayers
-Left hand,Legions of Shadows,Act 3: (Continued),Lexicon of bones (M),2,0,5,0,Haunt,813,Ghasts
-Left hand,Legions of Shadows,Act 3: (Continued),Wrecking ball (W),2,5,0,0,Demolish,801,The wrecker
-Left hand,Legions of Shadows,Act 3: (Continued),Cortical bulb (M),3,0,5,0,Brain drain,826,Doom orb
-Left hand,Legions of Shadows,Act 3: (Continued),Bone bow of grief (W),2,5,0,0,Puncture,882,Sannrah
-Left hand,Legions of Shadows,Act 3: (Continued),Final solution (R),2,5,0,0,Acid,887,Sannrah
-Talisman,Legions of Shadows,Act 1: Tithebury Cross,Stone ward,0,0,0,0,Might of stone,41,Noldor (normal)
-Talisman,Legions of Shadows,Act 1: Tithebury Cross,Spindle's eye,1,0,0,0,Charm,91,Spindle
-Talisman,Legions of Shadows,Act 1: Tithebury Cross,Third eye,1,0,0,0,Charm,155,Witch
-Talisman,Legions of Shadows,Act 1: Tithebury Cross,Demon's heart,1,0,0,0,Trickster,133,Changeling
-Talisman,Legions of Shadows,Act 2: Mistwood & Black Marsh,Avian's crest,0,1,1,0,Charm,275,Legions of Shadows,Act 2 prologue
-Talisman,Legions of Shadows,Act 2: Mistwood & Black Marsh,Sap-filled gland,1,0,0,0,Heal,283,Kerklick
-Talisman,Legions of Shadows,Act 2: Mistwood & Black Marsh,Elemental dust,0,0,1,0,Might of stone,540,Rumbler
-Talisman,Legions of Shadows,Act 2: Mistwood & Black Marsh,Phoenix ashes,0,0,1,0,Heal,565,Phoenix
-Talisman,Legions of Shadows,Act 2: Mistwood & Black Marsh,Dour's whetstone (R+W),1,0,0,0,Piercing,593,Stone puzzle
-Talisman,Legions of Shadows,Act 2: Mistwood & Black Marsh,Seal of war,1,0,0,0,Fearless,593,Stone puzzle
-Talisman,Legions of Shadows,Act 2: Mistwood & Black Marsh,Braids of the bull,1,0,0,0,Charge,216,Zen
-Talisman,Legions of Shadows,Act 2: Mistwood & Black Marsh,Tiger's heart,1,0,0,0,Cat's speed,162,Shara Khana
-Talisman,Legions of Shadows,Act 2: Mistwood & Black Marsh,Tiger's fury (W),1,0,0,0,Berserker,162,Shara Khana
-Talisman,Legions of Shadows,Act 2: Mistwood & Black Marsh,Core of flame (M),0,0,1,0,Pyromancer,407,Vesuvius
-Talisman,Legions of Shadows,Act 3: The Bone Fields,Lady of the lamp (M),0,0,0,1,Medic,680,Lansbury/medic tent
-Talisman,Legions of Shadows,Act 3: The Bone Fields,Bone fetish (M),0,0,0,1,Necromancer,692/850,Necromancer
-Talisman,Legions of Shadows,Act 3: The Bone Fields,Blinding dust,1,0,0,0,Deceive,730,Bone giants
-Talisman,Legions of Shadows,Act 3: The Bone Fields,Bag o' bones,0,0,1,0,Curse,775,Skeleton horde
-Talisman,Legions of Shadows,Act 3: The Bone Fields,Dark therapy,1,0,0,0,Regrowth,802,Tomb
-Talisman,Legions of Shadows,Act 3: The Bone Fields,Grimm ichor (R),1,0,0,0,Poison mastery,622,Brothers' Grimm
-Talisman,Legions of Shadows,Act 3: The Bone Fields,Survivor's pennant,1,1,0,0,Fortitude,735,Special achievement
-Talisman,Legions of Shadows,Act 3: The Bone Fields,Heart of the beast,1,1,0,0,Savagery,702,Ghoulash
-Talisman,Legions of Shadows,Act 3: The Bone Fields,Sands of time,1,0,0,0,Time shift,754,Flay
-Talisman,Legions of Shadows,Act 3: The Bone Fields,Winter's heart (M),0,0,1,0,Icelock,761,Chilblain
-Talisman,Legions of Shadows,Act 3: The Bone Fields,The craven's head (R),1,1,0,0,Sidestep,843,Daarko
-Talisman,Legions of Shadows,Act 3: The Bone Fields,Seed of rage (M),0,0,2,0,Dominate,878,The wrecker
-Necklace,Legions of Shadows,Act 1: Tithebury Cross,Granny's locket,0,0,1,0,None,199,Hobgoblin
-Necklace,Legions of Shadows,Act 1: Tithebury Cross,Stone collar,0,0,0,1,Charm,41,Noldor (normal)
-Necklace,Legions of Shadows,Act 1: Tithebury Cross,Beads of brilliance,0,1,1,0,None,193,Flooded cave
-Necklace,Legions of Shadows,Act 1: Tithebury Cross,Clymonistra's sorrow,0,0,1,0,Cly's adornments,112,Catacombs
-Necklace,Legions of Shadows,Act 1: Tithebury Cross,Trophy of bones,0,0,1,1,Charm,44,Humbaroth
-Necklace,Legions of Shadows,Act 2: Mistwood & Black Marsh,Black pearl,0,0,2,0,Curse,432,Sea spray Steve
-Necklace,Legions of Shadows,Act 2: Mistwood & Black Marsh,Amber-coated collar,0,0,0,1,Heal,314,Hive queen
-Necklace,Legions of Shadows,Act 2: Mistwood & Black Marsh,Beetle-shell garland,1,0,0,0,Charm,327,Trogs
-Necklace,Legions of Shadows,Act 2: Mistwood & Black Marsh,Channeler's prism,0,0,1,0,Focus,522,Treasure vault
-Necklace,Legions of Shadows,Act 2: Mistwood & Black Marsh,Silver cross,1,0,1,0,Heal,291,Dead traveller
-Necklace,Legions of Shadows,Act 2: Mistwood & Black Marsh,Vermillion heart,1,0,0,0,Life spark,455,Lady Roe
-Necklace,Legions of Shadows,Act 2: Mistwood & Black Marsh,Dour's fury,1,0,0,0,Savagery,397,Treasure chest
-Necklace,Legions of Shadows,Act 2: Mistwood & Black Marsh,Marsh pendant,0,0,1,1,Steadfast,506,Scorpios
-Necklace,Legions of Shadows,Act 2: Mistwood & Black Marsh,Pendant of foresight,1,0,0,0,Evade,550,Jenlar's cabin
-Necklace,Legions of Shadows,Act 2: Mistwood & Black Marsh,Lodestone,0,0,2,0,Rust,593,Stone puzzle
-Necklace,Legions of Shadows,Act 2: Mistwood & Black Marsh,Warder's collar (M),0,0,1,2,Might of stone,598,Armoury
-Necklace,Legions of Shadows,Act 2: Mistwood & Black Marsh,Diamond of the tundra,1,0,0,0,Piercing,359,King Louis
-Necklace,Legions of Shadows,Act 2: Mistwood & Black Marsh,Eye of shadow,1,0,0,0,Haste,729,Shadowstalker
-Necklace,Legions of Shadows,Act 3: The Bone Fields,Ghoul's teeth (R),1,0,0,0,Piercing,839,Waldo's wares
-Necklace,Legions of Shadows,Act 3: The Bone Fields,Chilblain's tears (M),0,0,1,1,Piercing,914,Waldo's wares
-Necklace,Legions of Shadows,Act 3: The Bone Fields,Leap of faith,1,0,0,0,Radiance,677,Tor knight
-Necklace,Legions of Shadows,Act 3: The Bone Fields,Horn of courage (W),1,1,0,0,Courage,770,Rotterghast
-Necklace,Legions of Shadows,Act 3: The Bone Fields,Dark queen,0,0,2,0,Heal,834,Dark ranger
-Necklace,Legions of Shadows,Act 3: The Bone Fields,Charged core,0,0,2,0,Lifespark,891,Clockwerk
-Necklace,Legions of Shadows,Act 3: The Bone Fields,Stolen hope,0,1,1,0,Deceive,929,Dark Arthurian
-Necklace,Legions of Shadows,Act 3: The Bone Fields,Inner circle,0,0,0,0,(+5 health) Curse,541,Zul
-Necklace,Legions of Shadows,Act 3: The Bone Fields,Glacial shards (W),1,1,0,0,Piercing,584,Chilblain
-Necklace,Legions of Shadows,Act 3: The Bone Fields,Winged locket,0,0,0,1,(+5 health) Courage,777,Rune chest
-Ring,Legions of Shadows,Act 1: Tithebury Cross,Widow's band,0,0,1,0,Heal,104,Martha
-Ring,Legions of Shadows,Act 1: Tithebury Cross,Missing link,0,1,1,0,None,180,Barricaded room
-Ring,Legions of Shadows,Act 1: Tithebury Cross,Traveller's band,0,1,1,0,Charm,251,Farm bedroom
-Ring,Legions of Shadows,Act 1: Tithebury Cross,Lightning ring,0,0,0,0,Lightning,243,Weather wizard
-Ring,Legions of Shadows,Act 1: Tithebury Cross,Grave dust ring,0,1,0,0,None,106/127,Ghouls
-Ring,Legions of Shadows,Act 1: Tithebury Cross,Scholar's circle,0,0,0,0,Eureka!,170,Perinold
-Ring,Legions of Shadows,Act 1: Tithebury Cross,Blackfire ring,0,0,0,0,Sear,133,Changeling
-Ring,Legions of Shadows,Act 1: Tithebury Cross,Circle of thorns,0,0,0,0,Thorns,80,Zaladrell
-Ring,Legions of Shadows,Act 2: Mistwood & Black Marsh,Splintered band (W),0,2,0,0,Retaliation,432,Sea spray Steve
-Ring,Legions of Shadows,Act 2: Mistwood & Black Marsh,My precious,0,0,0,1,Vanish,327,Trogs
-Ring,Legions of Shadows,Act 2: Mistwood & Black Marsh,Wayfarer's ring,0,1,1,0,Charm,291,Dead traveller
-Ring,Legions of Shadows,Act 2: Mistwood & Black Marsh,Vermillion rage,0,0,1,0,Bleed,422,Count (normal)
-Ring,Legions of Shadows,Act 2: Mistwood & Black Marsh,Clymonistra's folly,0,0,1,1,Cly's adornments,460,Clymonistra
-Ring,Legions of Shadows,Act 2: Mistwood & Black Marsh,Finger of fire,0,1,0,0,Sear,655,Cinders
-Ring,Legions of Shadows,Act 2: Mistwood & Black Marsh,Ring of the marshes,0,1,1,0,Swamp legs,449/529,Wreekin
-Ring,Legions of Shadows,Act 2: Mistwood & Black Marsh,Steadfast ring (M),0,0,0,1,Steadfast,446,Treasure cave
-Ring,Legions of Shadows,Act 2: Mistwood & Black Marsh,Serpent's coil (R+W),0,1,0,0,Immobilise,333,Treasure cave
-Ring,Legions of Shadows,Act 2: Mistwood & Black Marsh,Band of conquest (R+W),0,0,0,1,Fortitude,333,Treasure cave
-Ring,Legions of Shadows,Act 2: Mistwood & Black Marsh,Abyssal brimstone,0,0,1,0,Cauterise,397,Treasure chest
-Ring,Legions of Shadows,Act 2: Mistwood & Black Marsh,Avatar's circle (M),0,0,1,0,Overload,443,Stone giant
-Ring,Legions of Shadows,Act 2: Mistwood & Black Marsh,Lupine lapis,0,1,0,0,Bleed,696,Raolin Storm
-Ring,Legions of Shadows,Act 2: Mistwood & Black Marsh,Mender's marcasite,0,0,1,0,Regrowth,696,Raolin Storm
-Ring,Legions of Shadows,Act 2: Mistwood & Black Marsh,Cutter's cornelian,0,0,0,1,Piercing,696,Raolin Storm
-Ring,Legions of Shadows,Act 2: Mistwood & Black Marsh,Magpie's mischief,0,0,0,1,Steal,394,Logan
-Ring,Legions of Shadows,Act 2: Mistwood & Black Marsh,Dryad's band,0,1,0,0,Thorn armour,341,Barkrot
-Ring,Legions of Shadows,Act 3: The Bone Fields,Khana's revenge (W),0,2,0,0,Bleed,815,Waldo's wares
-Ring,Legions of Shadows,Act 3: The Bone Fields,Wrath of ages (M),0,0,2,0,Rust,914,Waldo's wares
-Ring,Legions of Shadows,Act 3: The Bone Fields,Leader of the pack,0,1,0,0,Dominate,778,Ghouls
-Ring,Legions of Shadows,Act 3: The Bone Fields,Sinister shadows,0,1,1,0,Vanish,834,Dark ranger
-Ring,Legions of Shadows,Act 3: The Bone Fields,Blood winter,0,1,0,0,Leech,869,Sammain (normal)
-Ring,Legions of Shadows,Act 3: (Continued),Hunger,0,2,0,0,Leech,874,Sammain (special)
-Ring,Legions of Shadows,Act 3: (Continued),Tooth 'n claw (W),1,1,0,0,Sideswipe,727,Brothes' Grimm
-Ring,Legions of Shadows,Act 3: (Continued),Martyr's blood,0,0,1,1,Martyr,735,Special achievement
-Ring,Legions of Shadows,Act 3: (Continued),Seven stars (R+W),0,2,0,0,Heal,577,Silleer
-Ring,Legions of Shadows,Act 3: (Continued),Wytchwood thorn (R+W),0,1,0,0,Thorns,577,Silleer
-Ring,Legions of Shadows,Act 3: (Continued),Zul's zapper,0,1,1,0,Zapped!,541,Zul
-Ring,Legions of Shadows,Act 3: (Continued),Band of elements (W+M),0,0,2,0,Lightning,724,Budak
-Ring,Legions of Shadows,Act 3: (Continued),Budak's signet (W+M),0,1,1,0,Steal,724,Budak
-Ring,Legions of Shadows,Act 3: (Continued),Spider sapphire (R+M),0,0,1,1,Webbed,726,Tor knight
-Ring,Legions of Shadows,Act 3: (Continued),Serpentine spiral (R+M),0,1,0,1,Immobilise,726,Tor knight
-Ring,Legions of Shadows,Act 3: (Continued),Conduit of shadow (M),0,0,3,0,Overload,865,Daarko
-Ring,Legions of Shadows,Act 3: (Continued),Stria of Genna (M),0,0,1,2,Shock!,826,Doom orb
+Cloak,The Legion of Shadow,Act 1: Tithebury Cross,Patchwork cloak,1,0,0,0,None,68,Vendor/Tithebury Cross
+Cloak,The Legion of Shadow,Act 1: Tithebury Cross,Bat cape,1,0,0,1,None,114,Vendor/Tithebury Cross
+Cloak,The Legion of Shadow,Act 1: Tithebury Cross,Spindlesilk cloak,1,0,0,2,Spindlesilk set,132,Vendor/Tithebury Cross
+Cloak,The Legion of Shadow,Act 1: Tithebury Cross,Chieftain's furs,0,0,0,1,None,260,Goblin chief
+Cloak,The Legion of Shadow,Act 1: Tithebury Cross,Traveller's cloak,0,0,1,1,Charm,251,Farmhouse bedroom
+Cloak,The Legion of Shadow,Act 1: Tithebury Cross,Moth-eaten blanket,1,0,0,0,None,40,Ruffians
+Cloak,The Legion of Shadow,Act 1: Tithebury Cross,Crusader's mantle,1,0,0,0,Charm,160,Valadin Roth
+Cloak,The Legion of Shadow,Act 1: Tithebury Cross,Hag's shawl,0,0,1,1,Charm,155,Witch
+Cloak,The Legion of Shadow,Act 1: Tithebury Cross,Savage pelt,0,1,1,0,Savagery,26,Mauler
+Cloak,The Legion of Shadow,Act 2: Mistwood & Black Marsh,Mottled cloak,1,0,0,1,None,283,Mud golem
+Cloak,The Legion of Shadow,Act 2: Mistwood & Black Marsh,Diaphanous wings,1,0,1,0,Haste,314,Hive queen
+Cloak,The Legion of Shadow,Act 2: Mistwood & Black Marsh,Cloak of white winter,1,2,0,0,Piercing,385,Baron Greylock
+Cloak,The Legion of Shadow,Act 2: Mistwood & Black Marsh,Cloak of shadows,1,0,0,2,Feint,487,Count(special)
+Cloak,The Legion of Shadow,Act 2: Mistwood & Black Marsh,Golden fleece,1,0,0,2,Radiance,548,Treasure vault
+Cloak,The Legion of Shadow,Act 2: Mistwood & Black Marsh,Phoenix feathers,1,0,0,1,Charm,565,Phoenix
+Cloak,The Legion of Shadow,Act 2: Mistwood & Black Marsh,Destroyer's drape,2,0,0,1,Backfire,568,Inferno
+Cloak,The Legion of Shadow,Act 2: Mistwood & Black Marsh,Majestic shoulders (W),2,0,0,2,Royal regalia set,397,Puzzle chest
+Cloak,The Legion of Shadow,Act 2: Mistwood & Black Marsh,Sparkcraft mantle (M),2,0,2,0,Lifespark,509,Swamp giant
+Cloak,The Legion of Shadow,Act 2: (Continued),Kaggadour's cloak,2,2,0,0,Savagery,443,Stone giant
+Cloak,The Legion of Shadow,Act 2: (Continued),Mantle of spite (M),2,0,3,0,Curse,713,Gargoyle chest
+Cloak,The Legion of Shadow,Act 2: (Continued),Mane of the Black Lion,1,3,0,0,Fearless,379,Nalsa
+Cloak,The Legion of Shadow,Act 2: (Continued),Winter pelt,2,0,0,2,Savagery,359,King Louis
+Cloak,The Legion of Shadow,Act 2: (Continued),Flame mantle,2,0,0,1,Fire aura,377,Vesuvius
+Cloak,The Legion of Shadow,Act 2: (Continued),Dragonscale cloak,2,0,0,2,Second skin,708,Kindle
+Cloak,The Legion of Shadow,Act 3: The Bone Fields,Slipstream silk (M),3,0,2,0,Surge,914,Waldo's wares
+Cloak,The Legion of Shadow,Act 3: The Bone Fields,Valiant spaulders (W),2,2,0,0,Overpower,815,Waldo's wares
+Cloak,The Legion of Shadow,Act 3: The Bone Fields,Spiked boneguards,2,0,0,2,Piercing,759,Flesh golem
+Cloak,The Legion of Shadow,Act 3: The Bone Fields,Broken wings,2,2,0,0,Fearless,906,Bone angel
+Cloak,The Legion of Shadow,Act 3: The Bone Fields,Cloak of ceremonies,2,0,2,0,Radiance,892,Arthurian's vault
+Cloak,The Legion of Shadow,Act 3: The Bone Fields,Stalwart shoulders,2,0,0,2,Might of stone,565,Yorvic
+Cloak,The Legion of Shadow,Act 3: The Bone Fields,Gloom shade (R),2,3,0,0,Steal,622,Brothers' Grimm
+Cloak,The Legion of Shadow,Act 3: The Bone Fields,Pauldrons of might (W),2,3,0,0,Fortitude,727,Brothers' Grimm
+Cloak,The Legion of Shadow,Act 3: The Bone Fields,Cloak of the wind (M),3,0,0,1,Surge,762,Scout
+Cloak,The Legion of Shadow,Act 3: The Bone Fields,Nemesis shroud,2,3,0,0,Dark pact,765,Malcontent
+Cloak,The Legion of Shadow,Act 3: The Bone Fields,Veil of dark synergies (M),2,0,3,0,Second wind,865,Daarko
+Cloak,The Legion of Shadow,Act 3: The Bone Fields,Spore shoulders (M),2,0,3,0,Spore cloud,845,Decayers
+Cloak,The Legion of Shadow,Act 3: The Bone Fields,Hulking shoulders (R),2,3,0,0,Barbs,847,The wrecker
+Head,The Legion of Shadow,Act 1: Tithebury Cross,Simple coif,0,1,0,1,None,175,Vendor/Tithebury Cross
+Head,The Legion of Shadow,Act 1: Tithebury Cross,All-weather hat,1,0,0,0,None,243,Weather wizard
+Head,The Legion of Shadow,Act 1: Tithebury Cross,Rusted helm,1,0,0,0,None,166,Skeletons
+Head,The Legion of Shadow,Act 1: Tithebury Cross,Mauler's maw,1,0,0,1,Fearless,26,Mauler
+Head,The Legion of Shadow,Act 1: Tithebury Cross,Troll's nose-ring,0,2,0,0,Charm,122,Bridge troll
+Head,The Legion of Shadow,Act 2: Mistwood & Black Marsh,Ramrod helm,1,0,0,2,Haste,311,No Hope tinker
+Head,The Legion of Shadow,Act 2: Mistwood & Black Marsh,Footpad's cover (R),0,2,0,1,None,338,Thievies' guild
+Head,The Legion of Shadow,Act 2: Mistwood & Black Marsh,Skull cap,1,0,0,1,None,287,Mushroom forest
+Head,The Legion of Shadow,Act 2: Mistwood & Black Marsh,Great helm,1,1,0,0,None,494,Slime
+Head,The Legion of Shadow,Act 2: Mistwood & Black Marsh,Wyrm crest,0,0,1,2,None,517,Wormwood (normal)
+Head,The Legion of Shadow,Act 2: Mistwood & Black Marsh,Wyrm crown,0,0,2,2,None,533,Wormwood (special)
+Head,The Legion of Shadow,Act 2: Mistwood & Black Marsh,Nightguard cover,1,0,0,2,Steadfast,548,Treasure vault
+Head,The Legion of Shadow,Act 2: Mistwood & Black Marsh,Flame-bathed cowl,0,2,0,1,Sear,655,Inferno
+Head,The Legion of Shadow,Act 2: Mistwood & Black Marsh,Jester's cap,1,1,0,0,Last laugh,374,Jester
+Head,The Legion of Shadow,Act 2: Mistwood & Black Marsh,Masque of deceit,1,0,0,2,Deceieve,422,Count (normal)
+Head,The Legion of Shadow,Act 2: Mistwood & Black Marsh,Pirate's bandanna,1,2,0,0,None,716,Kalimari
+Head,The Legion of Shadow,Act 2: Mistwood & Black Marsh,Vanquisher's helm (W),0,2,0,2,Vanquish,581,Armoury
+Head,The Legion of Shadow,Act 2: Mistwood & Black Marsh,Night watch (R),1,2,0,0,Steadfast,583,Raptor pit
+Head,The Legion of Shadow,Act 2: Mistwood & Black Marsh,Cover of darkness (R),1,2,0,0,Evade,744,Gargoyle chest
+Head,The Legion of Shadow,Act 2: (Continued),Crown of command,0,1,1,0,Command,689,Stone giant
+Head,The Legion of Shadow,Act 2: (Continued),Crown of command (upgrade 1),0,3,3,0,Command,689,Stone giant
+Head,The Legion of Shadow,Act 2: (Continued),Crown of command (upgrade 2),0,5,5,0,Command,689,Stone giant
+Head,The Legion of Shadow,Act 2: (Continued),Tri-horned hat,0,0,1,2,Charm,277,Left-hook Luke
+Head,The Legion of Shadow,Act 2: (Continued),Horns of the bull,1,0,0,2,Charge,216,Zen
+Head,The Legion of Shadow,Act 2: (Continued),Simian crown,1,2,0,0,Chill touch,359,King Louis
+Head,The Legion of Shadow,Act 2: (Continued),Desert Keffiyeh,1,2,0,0,None,370,Nasareim
+Head,The Legion of Shadow,Act 2: (Continued),Agal of shifting sands,0,0,2,2,None,370,Nasareim
+Head,The Legion of Shadow,Act 2: (Continued),Wreath of woe,1,0,3,0,Barbs,346,Snapjaw
+Head,The Legion of Shadow,Act 2: (Continued),Firewalker's faceguard (W),1,0,0,3,Overpower,400,Magmageddon
+Head,The Legion of Shadow,Act 3: The Bone Fields,Total eclipse (R),2,3,0,0,Vanish,839,Waldo's wares
+Head,The Legion of Shadow,Act 3: The Bone Fields,Wyvern jaws,0,0,3,2,None,776,Bone wyvern
+Head,The Legion of Shadow,Act 3: The Bone Fields,Knuckle head (W),1,2,0,0,Slam,695,Bone construct
+Head,The Legion of Shadow,Act 3: The Bone Fields,Hood of night,2,0,3,0,Charm,649,Necromancer
+Head,The Legion of Shadow,Act 3: The Bone Fields,Enchanted coif (M),2,0,0,2,Deceive,677,Tor knight
+Head,The Legion of Shadow,Act 3: The Bone Fields,Forked crest,1,3,0,0,Charge,775,Skeleton horde
+Head,The Legion of Shadow,Act 3: The Bone Fields,Bone headdress,0,0,3,2,Charm,778,Ghoul pack
+Head,The Legion of Shadow,Act 3: The Bone Fields,Cracked spectacles,2,0,2,0,Focus,923,Apprentice
+Head,The Legion of Shadow,Act 3: The Bone Fields,Crown of ice,2,0,3,0,Barbs,874,Sammain (special)
+Head,The Legion of Shadow,Act 3: The Bone Fields,Bone halo,2,0,3,0,Focus,906,Bone angel
+Head,The Legion of Shadow,Act 3: The Bone Fields,Black widow,2,2,0,0,Webbed,929,Dark Arthurian
+Head,The Legion of Shadow,Act 3: The Bone Fields,Diadem of mastery (M),2,0,3,0,Dominate,664,Brothers' Grimm
+Head,The Legion of Shadow,Act 3: (Continued),Ghoul's collar,2,0,0,3,Piercing,702,Ghoulash
+Head,The Legion of Shadow,Act 3: (Continued),Budak's blindfold (R),2,3,0,0,Second sight,733,Budak
+Head,The Legion of Shadow,Act 3: (Continued),Brain infusers,2,0,0,3,Lightning,642,Lichenstein
+Head,The Legion of Shadow,Act 3: (Continued),The morgue (M),2,0,3,0,Leech,765,Malcontent
+Head,The Legion of Shadow,Act 3: (Continued),Cerebral helm (M),2,0,3,0,Overload,765,Death orb
+Head,The Legion of Shadow,Act 3: (Continued),Cranium plate,0,2,0,3,Fortitide,665,Lord of pain
+Head,The Legion of Shadow,Act 3: (Continued),Dread mask (W),2,3,0,0,Overpower,893,Daarko
+Head,The Legion of Shadow,Act 3: (Continued),Drape of shadow,2,4,0,0,Chill touch,813,Ghasts
+Head,The Legion of Shadow,Act 3: (Continued),Thalamus tiara (M),2,0,5,0,Haste,826,Doom orb
+Gloves,The Legion of Shadow,Act 1: Tithebury Cross,Embroidered gloves,1,0,1,0,None,68,Vendor/Tithebury Cross
+Gloves,The Legion of Shadow,Act 1: Tithebury Cross,Rat-bitten gloves,0,1,1,0,None,161,Rat swarm
+Gloves,The Legion of Shadow,Act 1: Tithebury Cross,Half-digested gauntlets,0,1,0,1,Acid,258,Burrower wyrm
+Gloves,The Legion of Shadow,Act 1: Tithebury Cross,Mason's gloves,1,0,0,0,First cut,209,Crypt chest
+Gloves,The Legion of Shadow,Act 2: Mistwood & Black Marsh,Stone fists,0,2,0,1,None,522,Treasure vault
+Gloves,The Legion of Shadow,Act 2: Mistwood & Black Marsh,Diamond gauntlets,0,2,0,0,Piercing,540,Rumbler
+Gloves,The Legion of Shadow,Act 2: (Continued),Vambraces of might,1,0,0,2,Parry,568,Inferno
+Gloves,The Legion of Shadow,Act 2: (Continued),Prophet's handwraps,0,1,0,1,Trickster,550,Jenlar's cabin
+Gloves,The Legion of Shadow,Act 2: (Continued),Nightguard gloves (R),1,0,0,2,Steadfast,642,Armoury
+Gloves,The Legion of Shadow,Act 2: (Continued),Nightwalker gloves (R),1,2,0,0,Nightwalker set,765,Gargoyle chest
+Gloves,The Legion of Shadow,Act 2: (Continued),Battlemage's fists (M),0,0,3,3,Dominate,414,Arena champion
+Gloves,The Legion of Shadow,Act 2: (Continued),Barbed bracers,1,0,0,2,Barbs,346,Snapjaw
+Gloves,The Legion of Shadow,Act 2: (Continued),Gardener's gloves,1,0,0,2,Thorns,516,Alchemist bonus quest
+Gloves,The Legion of Shadow,Act 2: (Continued),Hydra-scaled gloves (M),0,0,2,2,Regrowth,389,Snapjaw
+Gloves,The Legion of Shadow,Act 2: (Continued),Hydra-scaled fists (M),0,0,3,2,Regrowth,418,Snapjaw
+Gloves,The Legion of Shadow,Act 2: (Continued),Molten gauntlets (W),0,2,0,1,Fire aura,377,Vesuvius
+Gloves,The Legion of Shadow,Act 2: (Continued),Crimson cuffs,1,0,4,0,Sear,400,Magmageddon
+Gloves,The Legion of Shadow,Act 3: The Bone Fields,Mortuary gauntlets (W),1,0,0,3,Acid,803,Waldo's wares
+Gloves,The Legion of Shadow,Act 3: The Bone Fields,Reaper's fists (R),1,3,0,0,Critical strike,903,Waldo's wares
+Gloves,The Legion of Shadow,Act 3: The Bone Fields,Bestial gloves,0,2,0,2,Adrenaline,620,Packmaster
+Gloves,The Legion of Shadow,Act 3: The Bone Fields,Gauntlets of the fallen (W),0,3,0,2,Finery of the fallen,617,Tor knight
+Gloves,The Legion of Shadow,Act 3: The Bone Fields,Bone bracers,1,2,0,0,Bleed,759,Flesh golem
+Gloves,The Legion of Shadow,Act 3: The Bone Fields,Branded bracers,0,2,0,2,Regrowth,880,Branded brute
+Gloves,The Legion of Shadow,Act 3: The Bone Fields,Tainted wraps,1,0,3,0,Curse,912,Malaise
+Gloves,The Legion of Shadow,Act 3: The Bone Fields,Devourer's grips (M),1,0,4,0,Rust,664,Brothers'Grimm
+Gloves,The Legion of Shadow,Act 3: The Bone Fields,Bracelet of iron,0,2,0,3,Might of stone,736,Ghoulash chains
+Gloves,The Legion of Shadow,Act 3: The Bone Fields,Bracelet of fire (M),1,0,3,0,Embers,736,Ghoulash chains
+Gloves,The Legion of Shadow,Act 3: The Bone Fields,Bracelet of fury,1,4,0,0,Adrenaline,736,Ghoulash chains
+Gloves,The Legion of Shadow,Act 3: (Continued),Bracelet of power (M),1,0,3,0,Focus,702,Ghoulash
+Gloves,The Legion of Shadow,Act 3: (Continued),Razor fists,0,1,0,3,Rake,722,Bone giant
+Gloves,The Legion of Shadow,Act 3: (Continued),Abattoir gloves (M),1,0,4,0,Bleed,642,Lichenstein
+Chest,The Legion of Shadow,Act 1: Tithebury Cross,Silk robe,0,0,1,0,None,68,Vendor/Tithebury Cross
+Chest,The Legion of Shadow,Act 1: Tithebury Cross,Goblin leathers,0,0,0,1,None,150,Goblin
+Chest,The Legion of Shadow,Act 1: Tithebury Cross,Huntsman's jerkin,0,0,0,1,None,228,Huntsman
+Chest,The Legion of Shadow,Act 1: Tithebury Cross,Studded leather,0,0,0,2,None,125/174,Were rat
+Chest,The Legion of Shadow,Act 1: Tithebury Cross,Rain-soaked robe,0,0,1,1,None,243,Weather wizard
+Chest,The Legion of Shadow,Act 1: Tithebury Cross,Web-coated jerkin,0,1,0,1,Webbed,206,Water cave
+Chest,The Legion of Shadow,Act 1: Tithebury Cross,Spindlesilk mantle,0,0,1,1,Spindlesilk set,91,Spindle
+Chest,The Legion of Shadow,Act 1: Tithebury Cross,Crusader's vestments,0,1,0,1,Heal,160,Valadin Roth
+Chest,The Legion of Shadow,Act 1: Tithebury Cross,Hellfire robes,1,0,1,0,Trickster,133,Changeling
+Chest,The Legion of Shadow,Act 1: Tithebury Cross,Duskleaf doubloon,1,1,0,0,Charm,80,Zalladrel
+Chest,The Legion of Shadow,Act 2: Mistwood & Black Marsh,Chitinous carapace,1,0,0,2,Charm,368,Kerklick
+Chest,The Legion of Shadow,Act 2: Mistwood & Black Marsh,Patchwork jerkin,1,1,0,0,Evade,374,Jester
+Chest,The Legion of Shadow,Act 2: (Continued),Gown of midnight,1,0,2,0,Evade,445,Elvera
+Chest,The Legion of Shadow,Act 2: (Continued),Sanguine gown,1,0,2,0,Evade,460,Clymonistra
+Chest,The Legion of Shadow,Act 2: (Continued),Cinder's gown (M),1,0,3,0,Sear,655,Cinders
+Chest,The Legion of Shadow,Act 2: (Continued),Scorched tunic,1,0,0,2,Charm,568,Inferno
+Chest,The Legion of Shadow,Act 2: (Continued),Nightwalker tunic (R),1,2,0,0,Nightwalker set,497,Boggart
+Chest,The Legion of Shadow,Act 2: (Continued),Vigilant chestguard (W),1,0,0,3,None,509,Swamp giant
+Chest,The Legion of Shadow,Act 2: (Continued),Scaled vest,1,0,2,0,Swamp legs,452,Angler's cave
+Chest,The Legion of Shadow,Act 2: (Continued),Ink-stained vest,2,1,0,0,None,716,Kalimari
+Chest,The Legion of Shadow,Act 2: (Continued),Navigator's waistcoat,2,0,0,2,Charm,544,Leviathan
+Chest,The Legion of Shadow,Act 2: (Continued),Channeler's robes (M),0,0,3,2,Focus,434,Raptor pit
+Chest,The Legion of Shadow,Act 2: (Continued),Lincoln green (W),2,2,0,0,Charm,590,Raptor pit
+Chest,The Legion of Shadow,Act 2: (Continued),Skulker's coat (R),1,0,0,3,Evade,583,Raptor pit
+Chest,The Legion of Shadow,Act 2: (Continued),Spellplate,1,0,0,3,Focus,598,Armoury
+Chest,The Legion of Shadow,Act 2: (Continued),Stone coat (W),2,0,0,2,Might of stone,706,Gargoyle chest
+Chest,The Legion of Shadow,Act 2: (Continued),Breastplate of the bull,0,3,0,2,Charge,216,Zen
+Chest,The Legion of Shadow,Act 2: (Continued),Hunter's hide,1,0,0,2,Immobilise,379,Nalsa
+Chest,The Legion of Shadow,Act 2: (Continued),The cage (W),2,0,0,3,Iron will,414,Arena champion
+Chest,The Legion of Shadow,Act 2: (Continued),Dragonscale mail (W),2,0,0,3,Second skin,708,Kindle
+Chest,The Legion of Shadow,Act 3: The Bone Fields,Raider's tunic (W),2,4,0,0,Retaliation,803,Waldo's wares
+Chest,The Legion of Shadow,Act 3: The Bone Fields,Slipstream gown (M),2,0,4,0,Overload,881,Waldo's wares
+Chest,The Legion of Shadow,Act 3: The Bone Fields,Confessor's coat (R),2,4,0,0,Fortitude,903,Waldo's wares
+Chest,The Legion of Shadow,Act 3: The Bone Fields,Titan plate,1,0,0,2,Fearless,730,Bone giants
+Chest,The Legion of Shadow,Act 3: (Continued),Deathgrip robes,2,0,3,0,Corruption,770,Rotterghast
+Chest,The Legion of Shadow,Act 3: (Continued),Lion's tabard,1,2,0,0,Fearless,892,Arthurian's vault
+Chest,The Legion of Shadow,Act 3: (Continued),Skullplate,2,0,0,3,Dominate,906,Bone angel
+Chest,The Legion of Shadow,Act 3: (Continued),Funeral gown,1,0,3,0,Charm,916,Yorvic
+Chest,The Legion of Shadow,Act 3: (Continued),Redguard's tabard,2,0,0,4,Iron will,735,Special achievement
+Chest,The Legion of Shadow,Act 3: (Continued),Stalker's jerkin (R),2,0,0,3,Evade,733,Budak
+Chest,The Legion of Shadow,Act 3: (Continued),Silleer's robe (M),2,0,3,0,Curse,570,Silleer
+Chest,The Legion of Shadow,Act 3: (Continued),Plate of the fallen (W),2,0,0,4,finery of the fallen,719,Tor knight
+Chest,The Legion of Shadow,Act 3: (Continued),Funeral wraps,2,3,0,0,Bleed,765,Malcontent
+Chest,The Legion of Shadow,Act 3: (Continued),Pacemaker (W),2,0,0,4,Kick start,716,The blob
+Chest,The Legion of Shadow,Act 3: (Continued),Shadow bindings (R),2,3,0,0,Evade,631,Mage hunter
+Chest,The Legion of Shadow,Act 3: (Continued),Dark slayer vest (R),2,4,0,0,Dominate,843,Daarko
+Chest,The Legion of Shadow,Act 3: (Continued),Decayer's wraps,2,3,0,0,Disease,845,Decayers
+Chest,The Legion of Shadow,Act 3: (Continued),Beast's harness (W),2,0,0,4,Knockdown,801,The wrecker
+Chest,The Legion of Shadow,Act 3: (Continued),Beast's backbone (R),2,4,0,0,Savagery,847,The wrecker
+Chest,The Legion of Shadow,Act 3: (Continued),Bloodied chestguard (W),2,0,0,4,Bleed,882,Sannrah
+Feet,The Legion of Shadow,Act 1: Tithebury Cross,Buckled boots,1,1,0,0,None,175,Vendor/Tithebury Cross
+Feet,The Legion of Shadow,Act 1: Tithebury Cross,Spindlesilk boots,1,0,1,0,Spindlesilk set,110,Vendor/Tithebury Cross
+Feet,The Legion of Shadow,Act 1: Tithebury Cross,Crow's feet,1,0,1,0,None,204,Scarecrow
+Feet,The Legion of Shadow,Act 1: (Continued),Goblin kickers,1,1,0,0,None,199,Hobgoblin
+Feet,The Legion of Shadow,Act 1: (Continued),Rat-skin boots,1,0,0,0,None,260,Goblin chief
+Feet,The Legion of Shadow,Act 1: (Continued),Dusty footpads,1,0,0,0,Charm,206,Water cave
+Feet,The Legion of Shadow,Act 1: (Continued),Ruby slippers,1,0,0,1,Click your heels,155,Witch
+Feet,The Legion of Shadow,Act 1: (Continued),Boar-hide boots,1,0,0,1,Steadfast,44,Humbaroth
+Feet,The Legion of Shadow,Act 1: (Continued),Reed-woven sandals,1,0,1,0,Charm,122,Bridge troll
+Feet,The Legion of Shadow,Act 2: Mistwood & Black Marsh,Rune-forged greaves,2,0,2,0,None,311,No Hope tinker
+Feet,The Legion of Shadow,Act 2: Mistwood & Black Marsh,Boots of swift flight (R),1,2,0,0,None,338,Thievies' guild
+Feet,The Legion of Shadow,Act 2: Mistwood & Black Marsh,Deerskin boots,1,1,0,0,None,287,Mushroom forest
+Feet,The Legion of Shadow,Act 2: Mistwood & Black Marsh,Sludge waders,1,0,0,1,None,494,Slime
+Feet,The Legion of Shadow,Act 2: Mistwood & Black Marsh,Baron's boots,1,0,0,1,Dominate,385,Baron Greylock
+Feet,The Legion of Shadow,Act 2: Mistwood & Black Marsh,Velvet slippers,1,0,3,0,Haste,487,Count (special)
+Feet,The Legion of Shadow,Act 2: Mistwood & Black Marsh,Scarab sandals (M),2,0,0,2,None,446,Treasure cave
+Feet,The Legion of Shadow,Act 2: Mistwood & Black Marsh,Bright greaves,1,2,0,0,Steadfast,497,Boggart
+Feet,The Legion of Shadow,Act 2: Mistwood & Black Marsh,Sanguine slippers (M),2,0,2,0,Charm,497,Boggart
+Feet,The Legion of Shadow,Act 2: Mistwood & Black Marsh,Captain's boots,2,0,0,1,None,716,Kalimari
+Feet,The Legion of Shadow,Act 2: Mistwood & Black Marsh,Scout's longboots (W),1,3,0,0,Sideswipe,590,Raptor pit
+Feet,The Legion of Shadow,Act 2: Mistwood & Black Marsh,Quicksilver boots (M),2,0,1,0,Quicksilver,434,Raptor pit
+Feet,The Legion of Shadow,Act 2: Mistwood & Black Marsh,Majestic greaves (W),2,2,0,0,Royal regalia,581,Armoury
+Feet,The Legion of Shadow,Act 2: Mistwood & Black Marsh,Shadow treads (R),1,2,0,0,Sidestep,744,Gargoyle chest
+Feet,The Legion of Shadow,Act 2: Mistwood & Black Marsh,Logan's runners (R),2,1,0,0,Sidestep,394,Logan
+Feet,The Legion of Shadow,Act 2: (Continued),Barkskin greaves,1,0,0,2,Steadfast,341,Barkrot
+Feet,The Legion of Shadow,Act 2: (Continued),Marsh striders,2,2,0,0,Sideswipe,389,Hydra (normal)
+Feet,The Legion of Shadow,Act 2: (Continued),Marsh stalkers,2,3,0,0,Sideswipe,418,Hydra (special)
+Feet,The Legion of Shadow,Act 3: The Bone Fields,Boots of shielding (M),2,0,0,1,Deflect,881,Waldo's wares
+Feet,The Legion of Shadow,Act 3: The Bone Fields,Barbarous boots (W),2,3,0,0,Savagery,815,Waldo's wares
+Feet,The Legion of Shadow,Act 3: The Bone Fields,Vagabond boots,2,0,0,2,Steadfast,620,Packmaster
+Feet,The Legion of Shadow,Act 3: The Bone Fields,Herald's spurs,2,1,0,0,Charge,617,Tor knight
+Feet,The Legion of Shadow,Act 3: The Bone Fields,Ebon boots,2,1,0,0,Fearless,649,Necromancer
+Feet,The Legion of Shadow,Act 3: The Bone Fields,Bewitched boots,2,0,2,0,Dominate,802,Tomb
+Feet,The Legion of Shadow,Act 3: The Bone Fields,Twisted treads,2,2,0,0,Trickster,912,Malaise
+Feet,The Legion of Shadow,Act 3: The Bone Fields,Rumble thumpers,1,3,0,0,Knockdown,616,The blob
+Feet,The Legion of Shadow,Act 3: The Bone Fields,Elemental greaves (M),2,0,0,2,Fire aura,865,Daarko
+Feet,The Legion of Shadow,Act 3: The Bone Fields,Boots of black fortune (W),2,0,0,2,Feint,893,Daarko
+Main hand,The Legion of Shadow,Act 1: Tithebury Cross,The apprentice,0,1,1,0,None,,Prologue
+Main hand,The Legion of Shadow,Act 1: Tithebury Cross,Notched blade,1,1,0,0,None,175,Vendor/Tithebury Cross
+Main hand,The Legion of Shadow,Act 1: Tithebury Cross,Curved blade,1,0,0,0,None,199,Hobgoblin
+Main hand,The Legion of Shadow,Act 1: (Continued),Goblin hewer,1,0,0,1,None,82,Woodsman
+Main hand,The Legion of Shadow,Act 1: (Continued),Huntsman's axe,0,2,0,0,None,228,Huntsman
+Main hand,The Legion of Shadow,Act 1: (Continued),Meat cleaver,1,0,0,0,Bleed,260,Goblin chief
+Main hand,The Legion of Shadow,Act 1: (Continued),Crone's dagger,1,0,1,0,None,40,Ruffians
+Main hand,The Legion of Shadow,Act 1: (Continued),Gilbert's club,0,3,0,0,None,40,Ruffians
+Main hand,The Legion of Shadow,Act 1: (Continued),Leader's edge,1,1,0,0,None,125/174,Were rat
+Main hand,The Legion of Shadow,Act 1: (Continued),Acid-coated battle axe,1,1,0,0,Acid,258,Burrower wyrm
+Main hand,The Legion of Shadow,Act 1: (Continued),Venomous fang,1,1,0,0,Venom,91,Spindle
+Main hand,The Legion of Shadow,Act 1: (Continued),Nightbringer,1,4,0,0,Might of stone,52,Noldor (special)
+Main hand,The Legion of Shadow,Act 1: (Continued),Nightfall,1,0,4,0,Might of stone,52,Noldor (special)
+Main hand,The Legion of Shadow,Act 1: (Continued),Ancient sword,1,1,0,0,Bleed,222,Skeleton knight
+Main hand,The Legion of Shadow,Act 1: (Continued),Dirk of deceit,1,1,0,0,Corruption,271,Fetch
+Main hand,The Legion of Shadow,Act 1: (Continued),Silver silence,1,0,1,0,Immobilise,271,Fetch
+Main hand,The Legion of Shadow,Act 1: (Continued),Skullbreaker,1,2,0,0,Pound,44,Humbaroth
+Main hand,The Legion of Shadow,Act 2: Mistwood & Black Marsh,Dark crystal (R),1,2,0,0,Venom,311,No Hope tinker
+Main hand,The Legion of Shadow,Act 2: Mistwood & Black Marsh,Black jack (R),1,3,0,0,Slam,338,Thievies' guild
+Main hand,The Legion of Shadow,Act 2: Mistwood & Black Marsh,Abyssal blade (R),2,3,0,0,Deep wound,432,Sea spray Steve
+Main hand,The Legion of Shadow,Act 2: Mistwood & Black Marsh,Ashen staff,1,0,2,0,None,283,Mud golem
+Main hand,The Legion of Shadow,Act 2: Mistwood & Black Marsh,Shiny dirk,1,2,0,0,None,287,Mushroom forest
+Main hand,The Legion of Shadow,Act 2: Mistwood & Black Marsh,Trog spear (W),1,3,0,0,None,327,Trogs
+Main hand,The Legion of Shadow,Act 2: Mistwood & Black Marsh,Black fang,1,2,0,0,Parry,517,Wormwood (normal)
+Main hand,The Legion of Shadow,Act 2: (Continued),Lacerator,1,3,0,0,Parry,533,Wormwood (special)
+Main hand,The Legion of Shadow,Act 2: (Continued),Bone scythe,1,2,0,0,Retaliation,368,Kerklick
+Main hand,The Legion of Shadow,Act 2: (Continued),Winter's bite (W),2,2,0,0,Bleed,385,Baron Greylock
+Main hand,The Legion of Shadow,Act 2: (Continued),Blood harvest (M),2,0,1,0,Leech,455,Lady Roe
+Main hand,The Legion of Shadow,Act 2: (Continued),Silk cut (R),2,2,0,0,Riposte,487,Count (special)
+Main hand,The Legion of Shadow,Act 2: (Continued),The rock (W),0,4,0,0,Slam,540,Rumbler
+Main hand,The Legion of Shadow,Act 2: (Continued),Illumanti rod (M),2,0,1,0,Overload,548,Treasure vault
+Main hand,The Legion of Shadow,Act 2: (Continued),Phoenix claw,1,2,0,0,Immobilise,565,Phoenix
+Main hand,The Legion of Shadow,Act 2: (Continued),Lucky fishing rod,2,1,0,0,Charm,452,Angler's cave
+Main hand,The Legion of Shadow,Act 2: (Continued),Magician's crook (M),2,0,3,0,Radiance,446,Treasure cave
+Main hand,The Legion of Shadow,Act 2: (Continued),Trident of the seven seas,1,0,3,0,None,479,Wreekin
+Main hand,The Legion of Shadow,Act 2: (Continued),Dark malice (W),2,3,0,0,Impale,506,Scorpios
+Main hand,The Legion of Shadow,Act 2: (Continued),Scorpion stinger (R),2,1,0,0,Venom,506,Scorpios
+Main hand,The Legion of Shadow,Act 2: (Continued),Betsy blue anchor (W),1,4,0,0,Stun,544,Leviathan
+Main hand,The Legion of Shadow,Act 2: (Continued),Spellbreaker (R),2,4,0,0,Disrupt,567,Armoury
+Main hand,The Legion of Shadow,Act 2: (Continued),Frenzy (W),2,4,0,0,Cleave,581,Armoury
+Main hand,The Legion of Shadow,Act 2: (Continued),Swordbreaker (M),2,0,3,0,Retaliation,593,Armoury
+Main hand,The Legion of Shadow,Act 2: (Continued),Pulveriser (W),2,4,0,0,Knockdown,706,Gargoyle chest
+Main hand,The Legion of Shadow,Act 2: (Continued),Torturer's rod (M),2,2,0,0,Stun,713,Gargoyle chest
+Main hand,The Legion of Shadow,Act 2: (Continued),Buccaneer's rapier,1,1,0,0,Riposte,277,Left-hook Luke
+Main hand,The Legion of Shadow,Act 2: (Continued),Nalsa's claws,1,2,0,0,Piercing,379,Nalsa
+Main hand,The Legion of Shadow,Act 2: (Continued),Ebony,2,3,0,0,Ebony and ivory,370,Nasareim
+Main hand,The Legion of Shadow,Act 2: (Continued),Brawler's shiv (R),2,4,0,0,Venom,414,Arena champion
+Main hand,The Legion of Shadow,Act 2: (Continued),Fire brand (M),2,0,2,0,Fire aura,377,Vesuvius
+Main hand,The Legion of Shadow,Act 2: (Continued),Burning heretic (R),3,3,0,0,Critical strike,400,Magmageddon
+Main hand,The Legion of Shadow,Act 2: (Continued),Velocifero,3,3,0,0,Riposte,729,Shadowstalker
+Main hand,The Legion of Shadow,Act 3: The Bone Fields,Sliver of shadow (R),2,4,0,0,Chill touch,839,Waldo's wares
+Main hand,The Legion of Shadow,Act 3: The Bone Fields,Talanost's edge (R),3,5,0,0,Sear,903,Waldo's wares
+Main hand,The Legion of Shadow,Act 3: The Bone Fields,Wicked claw,1,3,0,0,Critical strike,776,Bone wyvern
+Main hand,The Legion of Shadow,Act 3: The Bone Fields,Bone claw,2,3,0,0,Rake,695,Bone construct
+Main hand,The Legion of Shadow,Act 3: The Bone Fields,Lasher,3,3,0,0,Bleed,620,Packmaster
+Main hand,The Legion of Shadow,Act 3: The Bone Fields,Tainted striker (M),3,0,3,0,Corruption,677,Tor knight
+Main hand,The Legion of Shadow,Act 3: The Bone Fields,Spinal tap (W),3,4,0,0,Impale,759,Flesh golem
+Main hand,The Legion of Shadow,Act 3: The Bone Fields,Bone gavel (W),3,4,0,0,Knockdown,730,Bone giants
+Main hand,The Legion of Shadow,Act 3: The Bone Fields,Tenacity (R),2,5,0,0,Deep wound,770,Rotterghast
+Main hand,The Legion of Shadow,Act 3: The Bone Fields,Scorn (R),2,3,0,0,Immobilise,912,Malaise
+Main hand,The Legion of Shadow,Act 3: The Bone Fields,Ever-sharp (W),3,4,0,0,Deep wound,916,Yorvic
+Main hand,The Legion of Shadow,Act 3: The Bone Fields,Deep freeze,2,0,3,0,Stun,869,Sammain (normal)
+Main hand,The Legion of Shadow,Act 3: The Bone Fields,Hoarfrost,2,0,3,0,Chill touch,874,Sammain (special)
+Main hand,The Legion of Shadow,Act 3: The Bone Fields,Grimm reaper (W),3,5,0,0,Brutality,727,Brothers' Grimm
+Main hand,The Legion of Shadow,Act 3: The Bone Fields,Serenity (R),2,4,0,0,Deep wound,733,Budak
+Main hand,The Legion of Shadow,Act 3: The Bone Fields,Wand of lightning (M),2,0,4,0,Shock!,570,Silleer
+Main hand,The Legion of Shadow,Act 3: The Bone Fields,Pain in chains,2,4,0,0,Pound,722,Bone giants
+Main hand,The Legion of Shadow,Act 3: The Bone Fields,Frost burn (M),2,0,4,0,Piercing,584,Chilblain
+Main hand,The Legion of Shadow,Act 3: The Bone Fields,Belching bludger,2,4,0,0,Disease,616,The blob
+Main hand,The Legion of Shadow,Act 3: The Bone Fields,Mortician's scalpel (R),3,4,0,0,Disease,642,Lichenstein
+Main hand,The Legion of Shadow,Act 3: The Bone Fields,Tempest's fury,2,0,5,0,Windblast,754,Flay
+Main hand,The Legion of Shadow,Act 3: The Bone Fields,Blood crescent (W),3,5,0,0,Cleave,631,Mage hunter
+Main hand,The Legion of Shadow,Act 3: The Bone Fields,Orb stinger (R),3,4,0,0,Shock!,665,Death orb
+Main hand,The Legion of Shadow,Act 3: The Bone Fields,Trickster's maul,3,4,0,0,Trickster,711,Lord of pain
+Main hand,The Legion of Shadow,Act 3: The Bone Fields,Shadow-woven kris (R),3,5,0,0,Deep wound,843,Daarko
+Main hand,The Legion of Shadow,Act 3: The Bone Fields,Sacrum of carnage (R),2,5,0,0,Fatal blow,847,The wrecker
+Main hand,The Legion of Shadow,Act 3: (Continued),Aged acronium (M),2,0,5,0,Rust,878,The wrecker
+Main hand,The Legion of Shadow,Act 3: (Continued),The sting (W),3,5,0,0,Impale,868,Scarrons
+Main hand,The Legion of Shadow,Act 3: (Continued),Fortune's favour (M),2,0,5,0,Radiance,871,Sannrah
+Main hand,The Legion of Shadow,Act 3: (Continued),Retribution (W),3,6,0,0,Feral fury,882,Sannrah
+Left hand,The Legion of Shadow,Act 1: Tithebury Cross,Scaled defender,0,2,0,1,None,191,Vendor/Tithebury Cross
+Left hand,The Legion of Shadow,Act 1: Tithebury Cross,Murder of crows,1,1,0,0,None,204,Scarecrow
+Left hand,The Legion of Shadow,Act 1: Tithebury Cross,Crock's tooth,0,1,0,0,None,118,Crocodile
+Left hand,The Legion of Shadow,Act 1: Tithebury Cross,Rennie's slicer,1,1,0,0,First cut,55/247,Rennie the rat
+Left hand,The Legion of Shadow,Act 1: Tithebury Cross,Stone shield,1,0,0,2,Slam,41,Noldor (normal)
+Left hand,The Legion of Shadow,Act 1: Tithebury Cross,Essence of shadow,1,0,1,0,Chill touch,43,Shadow
+Left hand,The Legion of Shadow,Act 1: Tithebury Cross,Ghoul claw,1,1,0,0,Piercing,106/127 /157,Ghouls
+Left hand,The Legion of Shadow,Act 1: Tithebury Cross,Dented buckler,1,0,0,1,None,166,Skeletons
+Left hand,The Legion of Shadow,Act 1: Tithebury Cross,Spider's spinneret,1,0,1,0,Webbed,179,Spiders
+Left hand,The Legion of Shadow,Act 1: Tithebury Cross,Rage claw,1,1,0,0,Dominate,26,Mauler
+Left hand,The Legion of Shadow,Act 2: Mistwood & Black Marsh,Ardent edge,1,2,0,0,Parry,494,Slime
+Left hand,The Legion of Shadow,Act 2: Mistwood & Black Marsh,Champion's blade,2,1,0,0,Bleed,283,Mud golem
+Left hand,The Legion of Shadow,Act 2: Mistwood & Black Marsh,Ridgeback (W),1,0,0,2,Slam,517,Wormwood (normal)
+Left hand,The Legion of Shadow,Act 2: Mistwood & Black Marsh,Razorback (W),2,0,0,2,Slam,533,Wormwood (special)
+Left hand,The Legion of Shadow,Act 2: Mistwood & Black Marsh,Rockbiter,1,2,0,0,Piercing,522,Treasure vault
+Left hand,The Legion of Shadow,Act 2: Mistwood & Black Marsh,Shrink ray,1,0,1,0,Zapped!,477/585,Hal Arbuckle
+Left hand,The Legion of Shadow,Act 2: Mistwood & Black Marsh,Book of black deeds (M),2,0,2,0,None,445,Treasure vault
+Left hand,The Legion of Shadow,Act 2: Mistwood & Black Marsh,Vampire's kiss,1,2,0,0,Leech,422,Treasure vault
+Left hand,The Legion of Shadow,Act 2: Mistwood & Black Marsh,Ivory (R+W),2,2,0,0,Ebony and ivory,333,Treasure cave
+Left hand,The Legion of Shadow,Act 2: Mistwood & Black Marsh,T-Bone wand (M),1,1,0,0,Bolt,449/529,Wreekin
+Left hand,The Legion of Shadow,Act 2: Mistwood & Black Marsh,Wreekin net,1,2,0,0,Webbed,479,Wreekin
+Left hand,The Legion of Shadow,Act 2: Mistwood & Black Marsh,Twin furies (R),1,3,0,0,None,452,Angler's cave
+Left hand,The Legion of Shadow,Act 2: Mistwood & Black Marsh,Blackout,2,2,0,0,Stun,509,Swamp giant
+Left hand,The Legion of Shadow,Act 2: Mistwood & Black Marsh,Tome of deep thought (M),2,0,3,0,None,550,Jenlar's cabin
+Left hand,The Legion of Shadow,Act 2: Mistwood & Black Marsh,Deliverance (W),1,3,0,0,Deep wound,590,Raptor pit
+Left hand,The Legion of Shadow,Act 2: Mistwood & Black Marsh,Witching hour (R),2,3,0,0,Bull's eye,583,Raptor pit
+Left hand,The Legion of Shadow,Act 2: Mistwood & Black Marsh,Ebenezer's spellbook (M),2,0,2,0,Sear,434,Raptor pit
+Left hand,The Legion of Shadow,Act 2: Mistwood & Black Marsh,St Elmo's fire,2,0,2,0,Lightning,544,Leviathan
+Left hand,The Legion of Shadow,Act 2: Mistwood & Black Marsh,Vorpal sword (R),2,3,0,0,Vanquish,567,Armoury
+Left hand,The Legion of Shadow,Act 2: Mistwood & Black Marsh,Dour claws (W),1,4,0,0,Rake,706,Gargoyle chest
+Left hand,The Legion of Shadow,Act 2: Mistwood & Black Marsh,Tome of intellect (M),2,0,2,0,Focus,713,Gargoyle chest
+Left hand,The Legion of Shadow,Act 2: Mistwood & Black Marsh,Stone crescent (W),2,0,0,2,Slam,443,Stone giant
+Left hand,The Legion of Shadow,Act 2: Mistwood & Black Marsh,Left hook,1,2,0,0,Immobilise,277,Left-hook Luke
+Left hand,The Legion of Shadow,Act 2: Mistwood & Black Marsh,Deathstrike,1,3,0,0,Bull's eye,394,Logan
+Left hand,The Legion of Shadow,Act 2: Mistwood & Black Marsh,Sprig of corruption,2,0,3,0,Corruption,341,Barkrot
+Left hand,The Legion of Shadow,Act 2: Mistwood & Black Marsh,Spine tooth (R),2,2,0,0,Critical strike,346,Snapjaw
+Left hand,The Legion of Shadow,Act 2: (Continued),Hydra's wing (W),2,0,0,2,Deflect,389,Hydra (normal)
+Left hand,The Legion of Shadow,Act 2: (Continued),Hydra's guard (W),2,0,0,3,Deflect,418,Hydra (special)
+Left hand,The Legion of Shadow,Act 2: (Continued),Dragonslayer,2,4,0,0,Deep wound,708,Kindle
+Left hand,The Legion of Shadow,Act 2: (Continued),Shadowblade,2,0,3,0,Retaliation,729,Shadowstalker
+Left hand,The Legion of Shadow,Act 3: The Bone Fields,Talanost's wall (W),2,0,0,5,Deflect,803,Waldo's wares
+Left hand,The Legion of Shadow,Act 3: The Bone Fields,Talanost's reach (M),3,0,4,0,Critical strike,881,Waldo's wares
+Left hand,The Legion of Shadow,Act 3: The Bone Fields,Tor shield,2,0,0,2,Deflect,617,Tor knight
+Left hand,The Legion of Shadow,Act 3: The Bone Fields,Spite,2,3,0,0,Venom,649,Necromancer
+Left hand,The Legion of Shadow,Act 3: The Bone Fields,Iron curtain (W),0,3,0,2,Iron will,775,Skeleton horde
+Left hand,The Legion of Shadow,Act 3: The Bone Fields,Chains of binding (M),2,0,3,0,Shackle,778,Ghouls
+Left hand,The Legion of Shadow,Act 3: The Bone Fields,Shallow grave,2,3,0,0,Savagery,827,Tomb robber
+Left hand,The Legion of Shadow,Act 3: The Bone Fields,Raven eye,2,3,0,0,Bolt,834,Dark ranger
+Left hand,The Legion of Shadow,Act 3: The Bone Fields,Witch's finger,2,0,3,0,Curse,869,Sammain (normal)
+Left hand,The Legion of Shadow,Act 3: The Bone Fields,Meat grinder,2,3,0,0,Pound,891,Clockwerk
+Left hand,The Legion of Shadow,Act 3: The Bone Fields,Steel gear solid (W),2,0,0,3,Retaliation,891,Clockwerk
+Left hand,The Legion of Shadow,Act 3: The Bone Fields,Justice,2,3,0,0,Knockdown,892,Arthurian's vault
+Left hand,The Legion of Shadow,Act 3: The Bone Fields,Twilight claw,2,3,0,0,Rake,929,Dark arthurian
+Left hand,The Legion of Shadow,Act 3: The Bone Fields,Black death (R),2,4,0,0,Critical strike,622,Brothers' Grimm
+Left hand,The Legion of Shadow,Act 3: The Bone Fields,Grasping grimm (M),3,0,3,0,Rake,664,Brothers'Grimm
+Left hand,The Legion of Shadow,Act 3: The Bone Fields,Grimoire of entropy (M),3,0,3,0,Sear,570,Silleer
+Left hand,The Legion of Shadow,Act 3: The Bone Fields,Dark tower (W),2,0,0,4,Impale,719,Tor knight
+Left hand,The Legion of Shadow,Act 3: (Continued),Thunder hammer (W),2,4,0,0,Shock!,719,Tor knight
+Left hand,The Legion of Shadow,Act 3: (Continued),Shield of bones (W),0,4,0,2,Piercing,722,Bone giant
+Left hand,The Legion of Shadow,Act 3: (Continued),Shield of bones (M),3,0,3,0,Dominate,762,Scout
+Left hand,The Legion of Shadow,Act 3: (Continued),Shield of bones (R),2,4,0,0,Sear,762,Scout
+Left hand,The Legion of Shadow,Act 3: (Continued),Bone splinter (R),2,4,0,0,Piercing,584,Chilblain
+Left hand,The Legion of Shadow,Act 3: (Continued),Shield of angels,1,5,0,0,Windblast,754,Flay
+Left hand,The Legion of Shadow,Act 3: (Continued),Shield of blasting (W),2,0,0,3,Lightning,665,Death orb
+Left hand,The Legion of Shadow,Act 3: (Continued),Torment,2,0,4,0,Disease,711,Lord of pain
+Left hand,The Legion of Shadow,Act 3: (Continued),Fang of Vengos (R),2,4,0,0,Venom,868,Scarrons
+Left hand,The Legion of Shadow,Act 3: (Continued),Parasitic plate (W),2,0,0,4,Leech,845,Decayers
+Left hand,The Legion of Shadow,Act 3: (Continued),Lexicon of bones (M),2,0,5,0,Haunt,813,Ghasts
+Left hand,The Legion of Shadow,Act 3: (Continued),Wrecking ball (W),2,5,0,0,Demolish,801,The wrecker
+Left hand,The Legion of Shadow,Act 3: (Continued),Cortical bulb (M),3,0,5,0,Brain drain,826,Doom orb
+Left hand,The Legion of Shadow,Act 3: (Continued),Bone bow of grief (W),2,5,0,0,Puncture,882,Sannrah
+Left hand,The Legion of Shadow,Act 3: (Continued),Final solution (R),2,5,0,0,Acid,887,Sannrah
+Talisman,The Legion of Shadow,Act 1: Tithebury Cross,Stone ward,0,0,0,0,Might of stone,41,Noldor (normal)
+Talisman,The Legion of Shadow,Act 1: Tithebury Cross,Spindle's eye,1,0,0,0,Charm,91,Spindle
+Talisman,The Legion of Shadow,Act 1: Tithebury Cross,Third eye,1,0,0,0,Charm,155,Witch
+Talisman,The Legion of Shadow,Act 1: Tithebury Cross,Demon's heart,1,0,0,0,Trickster,133,Changeling
+Talisman,The Legion of Shadow,Act 2: Mistwood & Black Marsh,Avian's crest,0,1,1,0,Charm,275,The Legion of Shadow,Act 2 prologue
+Talisman,The Legion of Shadow,Act 2: Mistwood & Black Marsh,Sap-filled gland,1,0,0,0,Heal,283,Kerklick
+Talisman,The Legion of Shadow,Act 2: Mistwood & Black Marsh,Elemental dust,0,0,1,0,Might of stone,540,Rumbler
+Talisman,The Legion of Shadow,Act 2: Mistwood & Black Marsh,Phoenix ashes,0,0,1,0,Heal,565,Phoenix
+Talisman,The Legion of Shadow,Act 2: Mistwood & Black Marsh,Dour's whetstone (R+W),1,0,0,0,Piercing,593,Stone puzzle
+Talisman,The Legion of Shadow,Act 2: Mistwood & Black Marsh,Seal of war,1,0,0,0,Fearless,593,Stone puzzle
+Talisman,The Legion of Shadow,Act 2: Mistwood & Black Marsh,Braids of the bull,1,0,0,0,Charge,216,Zen
+Talisman,The Legion of Shadow,Act 2: Mistwood & Black Marsh,Tiger's heart,1,0,0,0,Cat's speed,162,Shara Khana
+Talisman,The Legion of Shadow,Act 2: Mistwood & Black Marsh,Tiger's fury (W),1,0,0,0,Berserker,162,Shara Khana
+Talisman,The Legion of Shadow,Act 2: Mistwood & Black Marsh,Core of flame (M),0,0,1,0,Pyromancer,407,Vesuvius
+Talisman,The Legion of Shadow,Act 3: The Bone Fields,Lady of the lamp (M),0,0,0,1,Medic,680,Lansbury/medic tent
+Talisman,The Legion of Shadow,Act 3: The Bone Fields,Bone fetish (M),0,0,0,1,Necromancer,692/850,Necromancer
+Talisman,The Legion of Shadow,Act 3: The Bone Fields,Blinding dust,1,0,0,0,Deceive,730,Bone giants
+Talisman,The Legion of Shadow,Act 3: The Bone Fields,Bag o' bones,0,0,1,0,Curse,775,Skeleton horde
+Talisman,The Legion of Shadow,Act 3: The Bone Fields,Dark therapy,1,0,0,0,Regrowth,802,Tomb
+Talisman,The Legion of Shadow,Act 3: The Bone Fields,Grimm ichor (R),1,0,0,0,Poison mastery,622,Brothers' Grimm
+Talisman,The Legion of Shadow,Act 3: The Bone Fields,Survivor's pennant,1,1,0,0,Fortitude,735,Special achievement
+Talisman,The Legion of Shadow,Act 3: The Bone Fields,Heart of the beast,1,1,0,0,Savagery,702,Ghoulash
+Talisman,The Legion of Shadow,Act 3: The Bone Fields,Sands of time,1,0,0,0,Time shift,754,Flay
+Talisman,The Legion of Shadow,Act 3: The Bone Fields,Winter's heart (M),0,0,1,0,Icelock,761,Chilblain
+Talisman,The Legion of Shadow,Act 3: The Bone Fields,The craven's head (R),1,1,0,0,Sidestep,843,Daarko
+Talisman,The Legion of Shadow,Act 3: The Bone Fields,Seed of rage (M),0,0,2,0,Dominate,878,The wrecker
+Necklace,The Legion of Shadow,Act 1: Tithebury Cross,Granny's locket,0,0,1,0,None,199,Hobgoblin
+Necklace,The Legion of Shadow,Act 1: Tithebury Cross,Stone collar,0,0,0,1,Charm,41,Noldor (normal)
+Necklace,The Legion of Shadow,Act 1: Tithebury Cross,Beads of brilliance,0,1,1,0,None,193,Flooded cave
+Necklace,The Legion of Shadow,Act 1: Tithebury Cross,Clymonistra's sorrow,0,0,1,0,Cly's adornments,112,Catacombs
+Necklace,The Legion of Shadow,Act 1: Tithebury Cross,Trophy of bones,0,0,1,1,Charm,44,Humbaroth
+Necklace,The Legion of Shadow,Act 2: Mistwood & Black Marsh,Black pearl,0,0,2,0,Curse,432,Sea spray Steve
+Necklace,The Legion of Shadow,Act 2: Mistwood & Black Marsh,Amber-coated collar,0,0,0,1,Heal,314,Hive queen
+Necklace,The Legion of Shadow,Act 2: Mistwood & Black Marsh,Beetle-shell garland,1,0,0,0,Charm,327,Trogs
+Necklace,The Legion of Shadow,Act 2: Mistwood & Black Marsh,Channeler's prism,0,0,1,0,Focus,522,Treasure vault
+Necklace,The Legion of Shadow,Act 2: Mistwood & Black Marsh,Silver cross,1,0,1,0,Heal,291,Dead traveller
+Necklace,The Legion of Shadow,Act 2: Mistwood & Black Marsh,Vermillion heart,1,0,0,0,Life spark,455,Lady Roe
+Necklace,The Legion of Shadow,Act 2: Mistwood & Black Marsh,Dour's fury,1,0,0,0,Savagery,397,Treasure chest
+Necklace,The Legion of Shadow,Act 2: Mistwood & Black Marsh,Marsh pendant,0,0,1,1,Steadfast,506,Scorpios
+Necklace,The Legion of Shadow,Act 2: Mistwood & Black Marsh,Pendant of foresight,1,0,0,0,Evade,550,Jenlar's cabin
+Necklace,The Legion of Shadow,Act 2: Mistwood & Black Marsh,Lodestone,0,0,2,0,Rust,593,Stone puzzle
+Necklace,The Legion of Shadow,Act 2: Mistwood & Black Marsh,Warder's collar (M),0,0,1,2,Might of stone,598,Armoury
+Necklace,The Legion of Shadow,Act 2: Mistwood & Black Marsh,Diamond of the tundra,1,0,0,0,Piercing,359,King Louis
+Necklace,The Legion of Shadow,Act 2: Mistwood & Black Marsh,Eye of shadow,1,0,0,0,Haste,729,Shadowstalker
+Necklace,The Legion of Shadow,Act 3: The Bone Fields,Ghoul's teeth (R),1,0,0,0,Piercing,839,Waldo's wares
+Necklace,The Legion of Shadow,Act 3: The Bone Fields,Chilblain's tears (M),0,0,1,1,Piercing,914,Waldo's wares
+Necklace,The Legion of Shadow,Act 3: The Bone Fields,Leap of faith,1,0,0,0,Radiance,677,Tor knight
+Necklace,The Legion of Shadow,Act 3: The Bone Fields,Horn of courage (W),1,1,0,0,Courage,770,Rotterghast
+Necklace,The Legion of Shadow,Act 3: The Bone Fields,Dark queen,0,0,2,0,Heal,834,Dark ranger
+Necklace,The Legion of Shadow,Act 3: The Bone Fields,Charged core,0,0,2,0,Lifespark,891,Clockwerk
+Necklace,The Legion of Shadow,Act 3: The Bone Fields,Stolen hope,0,1,1,0,Deceive,929,Dark Arthurian
+Necklace,The Legion of Shadow,Act 3: The Bone Fields,Inner circle,0,0,0,0,(+5 health) Curse,541,Zul
+Necklace,The Legion of Shadow,Act 3: The Bone Fields,Glacial shards (W),1,1,0,0,Piercing,584,Chilblain
+Necklace,The Legion of Shadow,Act 3: The Bone Fields,Winged locket,0,0,0,1,(+5 health) Courage,777,Rune chest
+Ring,The Legion of Shadow,Act 1: Tithebury Cross,Widow's band,0,0,1,0,Heal,104,Martha
+Ring,The Legion of Shadow,Act 1: Tithebury Cross,Missing link,0,1,1,0,None,180,Barricaded room
+Ring,The Legion of Shadow,Act 1: Tithebury Cross,Traveller's band,0,1,1,0,Charm,251,Farm bedroom
+Ring,The Legion of Shadow,Act 1: Tithebury Cross,Lightning ring,0,0,0,0,Lightning,243,Weather wizard
+Ring,The Legion of Shadow,Act 1: Tithebury Cross,Grave dust ring,0,1,0,0,None,106/127,Ghouls
+Ring,The Legion of Shadow,Act 1: Tithebury Cross,Scholar's circle,0,0,0,0,Eureka!,170,Perinold
+Ring,The Legion of Shadow,Act 1: Tithebury Cross,Blackfire ring,0,0,0,0,Sear,133,Changeling
+Ring,The Legion of Shadow,Act 1: Tithebury Cross,Circle of thorns,0,0,0,0,Thorns,80,Zaladrell
+Ring,The Legion of Shadow,Act 2: Mistwood & Black Marsh,Splintered band (W),0,2,0,0,Retaliation,432,Sea spray Steve
+Ring,The Legion of Shadow,Act 2: Mistwood & Black Marsh,My precious,0,0,0,1,Vanish,327,Trogs
+Ring,The Legion of Shadow,Act 2: Mistwood & Black Marsh,Wayfarer's ring,0,1,1,0,Charm,291,Dead traveller
+Ring,The Legion of Shadow,Act 2: Mistwood & Black Marsh,Vermillion rage,0,0,1,0,Bleed,422,Count (normal)
+Ring,The Legion of Shadow,Act 2: Mistwood & Black Marsh,Clymonistra's folly,0,0,1,1,Cly's adornments,460,Clymonistra
+Ring,The Legion of Shadow,Act 2: Mistwood & Black Marsh,Finger of fire,0,1,0,0,Sear,655,Cinders
+Ring,The Legion of Shadow,Act 2: Mistwood & Black Marsh,Ring of the marshes,0,1,1,0,Swamp legs,449/529,Wreekin
+Ring,The Legion of Shadow,Act 2: Mistwood & Black Marsh,Steadfast ring (M),0,0,0,1,Steadfast,446,Treasure cave
+Ring,The Legion of Shadow,Act 2: Mistwood & Black Marsh,Serpent's coil (R+W),0,1,0,0,Immobilise,333,Treasure cave
+Ring,The Legion of Shadow,Act 2: Mistwood & Black Marsh,Band of conquest (R+W),0,0,0,1,Fortitude,333,Treasure cave
+Ring,The Legion of Shadow,Act 2: Mistwood & Black Marsh,Abyssal brimstone,0,0,1,0,Cauterise,397,Treasure chest
+Ring,The Legion of Shadow,Act 2: Mistwood & Black Marsh,Avatar's circle (M),0,0,1,0,Overload,443,Stone giant
+Ring,The Legion of Shadow,Act 2: Mistwood & Black Marsh,Lupine lapis,0,1,0,0,Bleed,696,Raolin Storm
+Ring,The Legion of Shadow,Act 2: Mistwood & Black Marsh,Mender's marcasite,0,0,1,0,Regrowth,696,Raolin Storm
+Ring,The Legion of Shadow,Act 2: Mistwood & Black Marsh,Cutter's cornelian,0,0,0,1,Piercing,696,Raolin Storm
+Ring,The Legion of Shadow,Act 2: Mistwood & Black Marsh,Magpie's mischief,0,0,0,1,Steal,394,Logan
+Ring,The Legion of Shadow,Act 2: Mistwood & Black Marsh,Dryad's band,0,1,0,0,Thorn armour,341,Barkrot
+Ring,The Legion of Shadow,Act 3: The Bone Fields,Khana's revenge (W),0,2,0,0,Bleed,815,Waldo's wares
+Ring,The Legion of Shadow,Act 3: The Bone Fields,Wrath of ages (M),0,0,2,0,Rust,914,Waldo's wares
+Ring,The Legion of Shadow,Act 3: The Bone Fields,Leader of the pack,0,1,0,0,Dominate,778,Ghouls
+Ring,The Legion of Shadow,Act 3: The Bone Fields,Sinister shadows,0,1,1,0,Vanish,834,Dark ranger
+Ring,The Legion of Shadow,Act 3: The Bone Fields,Blood winter,0,1,0,0,Leech,869,Sammain (normal)
+Ring,The Legion of Shadow,Act 3: (Continued),Hunger,0,2,0,0,Leech,874,Sammain (special)
+Ring,The Legion of Shadow,Act 3: (Continued),Tooth 'n claw (W),1,1,0,0,Sideswipe,727,Brothes' Grimm
+Ring,The Legion of Shadow,Act 3: (Continued),Martyr's blood,0,0,1,1,Martyr,735,Special achievement
+Ring,The Legion of Shadow,Act 3: (Continued),Seven stars (R+W),0,2,0,0,Heal,577,Silleer
+Ring,The Legion of Shadow,Act 3: (Continued),Wytchwood thorn (R+W),0,1,0,0,Thorns,577,Silleer
+Ring,The Legion of Shadow,Act 3: (Continued),Zul's zapper,0,1,1,0,Zapped!,541,Zul
+Ring,The Legion of Shadow,Act 3: (Continued),Band of elements (W+M),0,0,2,0,Lightning,724,Budak
+Ring,The Legion of Shadow,Act 3: (Continued),Budak's signet (W+M),0,1,1,0,Steal,724,Budak
+Ring,The Legion of Shadow,Act 3: (Continued),Spider sapphire (R+M),0,0,1,1,Webbed,726,Tor knight
+Ring,The Legion of Shadow,Act 3: (Continued),Serpentine spiral (R+M),0,1,0,1,Immobilise,726,Tor knight
+Ring,The Legion of Shadow,Act 3: (Continued),Conduit of shadow (M),0,0,3,0,Overload,865,Daarko
+Ring,The Legion of Shadow,Act 3: (Continued),Stria of Genna (M),0,0,1,2,Shock!,826,Doom orb
 Cloak,The Heart of Fire,Act 1: Fenstone Moors,Saddle blanket,0,0,0,1,None,,Prologue
 Cloak,The Heart of Fire,Act 1: Fenstone Moors,Inscribed mantle,0,0,1,1,Iron will,22,Vendor/Carvel
 Cloak,The Heart of Fire,Act 1: Fenstone Moors,Shadow-dyed cloak,0,0,1,0,Wisdom,50,Barrow

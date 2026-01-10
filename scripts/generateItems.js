@@ -43,9 +43,7 @@ const processName = (name) => {
     return { name: cleanName, career };
 };
 
-const processedItems = rawData.slice(1).map((line, index) => {
-    if (line.startsWith('#')) return null;
-
+function parseLine(line) {
     const parts = [];
     let current = '';
     let inQuotes = false;
@@ -61,6 +59,13 @@ const processedItems = rawData.slice(1).map((line, index) => {
         }
     }
     parts.push(current);
+    return parts;
+}
+
+const processedItems = rawData.slice(1).map((line, index) => {
+    if (line.startsWith('#')) return null;
+
+    const parts = parseLine(line);
     if (parts.length < 9) return null;
 
     const itemBox = parts[0].trim();

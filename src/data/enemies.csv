@@ -1,27 +1,126 @@
-# Act,Enemy Name,Entry,S,B,M,A,H,Special Abilities / Logic Hooks
-1,Ruffians,40,3,2,-,0,15,None (Intro/Tutorial)
-1,Mauler,26,5,4,-,0,25,Savagery: +1 Brawn for combat
-1,Zombie,68,2,4,-,0,20,Undead: Immune to psychology
-1,Spindlesilk,132,7,5,-,1,35,Webbed: -1 Speed to hero on hit
-1,The Witch (Hag),155,4,-,5,0,20,Charm: Re-roll 1 die
-1,Valadin Roth,160,6,6,-,1,40,Boss: Hero-type abilities
-1,Ratling,233,4,3,-,0,18,Tail Lash: 1 dmg for every 1 rolled
-1,Goblin Chieftain,260,5,5,-,2,30,Command: Cancel 1 hero attack
-1,Trog Spearman,327,5,6,-,1,25,Impale: Bonus dmg on winning round
-2,Mud Golem,283,4,7,-,3,50,Body of Stone: Immune to Bleed/Venom
-2,Logan,313,10,9,-,2,50,Legendary: High baseline stats
-2,Hive Queen,314,8,-,8,2,65,Infest: Passive round-end damage
-2,King Louis,359,8,9,-,2,55,Agility: Avoids 1st hit of combat
-2,Vesuvius,377,7,-,11,2,60,Sear: Bonus magic damage
-2,Nalsa,379,9,9,-,2,55,Roar: -2 Brawn/Magic to hero
-2,Zen,382,9,10,-,3,65,Counter: Damage hero on a tie
-2,Baron Greyloc,385,10,12,-,4,80,Legendary: Multi-phase boss logic
-2,Shara Khana,386,10,11,-,2,70,Swift: Re-roll speed dice
-2,Stone Giant,443,5,11,-,8,75,Body of Rock: Immune to piercing
-2,The Count,487,9,10,-,3,60,Feint: Force hero Speed re-roll
-2,Swamp Giant,509,6,10,-,7,70,Knockdown: -1 Speed to hero
-2,Phoenix,565,9,-,10,1,60,Fire Aura: 2 passive dmg / round
-3,Kindle,454,12,11,-,9,90,Haste: Permanent speed buff
-3,Grindle,708,10,12,-,5,85,Dragonscale: Dmg mitigation
-3,Magmageddon,738,11,12,12,10,100,Hybrid: Brawn and Magic attacks
-3,Sharroth,782,12,15,15,6,150,Final Boss: Multi-turn mechanics
+# Book,Act,Enemy Name,Entry,S,B,M,A,H,Special Abilities / Logic Hooks,Notes
+The Legion of Shadow,1,Mauler,18,5,8,-,5,30,"Ferocity: If Mauler wins a combat round and inflicts health damage on your hero,the beast automatically raises its speed to 7 for the next round.",
+The Legion of Shadow,1,Humbaroth,29,4,9,-,4,35,"Punishing blows: Each time Humbaroth inflicts health damage, your armour is lowered by 1. (The armour value is restored after the combat is over)",
+The Legion of Shadow,1,Storm Elemental,33,2,-,1,1,25,"Charged: Each time you inflict health damage on the elemental, you take 2 damage in return. This ability ignores armour.",
+The Legion of Shadow,1,Malachi of Fire,35,4,-,4,2,20,"Fiery aura: You automatically take 3 health damage at the end of the round. This ability ignores armour.",
+The Legion of Shadow,1,Goblin poachers,37,0,1,-,0,20,,"If the goblins habe been reduced to 10 health or less, turn to 77"
+The Legion of Shadow,1,Zalladell,49,5,-,7,4,40,"Black sigill: At the end of each combat round, your hero suffers 1 damage. This ability ignores armour.;Bewitched: Reroll any 1 or 2 dice results for Zalldell. The results of the rerolled dice must be used.",
+The Legion of Shadow,1,Ghouls,59,5,3,-,2,30,"Piercing claws: The ghouls' attacks ignore armour.",
+The Legion of Shadow,1,Spindle,60,5,5,-,3,30,"Webbed: The spiders's sticky webbing inhibits your movement. At the start of every combat round, roll a die. If you roll a 1 or 2, your speed is reduced by 1 for the round.;Venom: Once you have taken health damage from the spider, at the end of every combat round you must automatically lose 2 health.","Ignore the Webbed ability if the web was set to fire with the Torch"
+The Legion of Shadow,1,Ruffians,62,2,3,-,1,15,"Crone's dagger: If the Ruffians roll a 6 for damage, the crone's dagger automatically inflicts 1 extra point of health damage.",
+The Legion of Shadow,1,Turnips,63,0,0,-,1,10,"",
+The Legion of Shadow,1,Mist stalker,65,0,1,-,0,10,"",
+The Legion of Shadow,1,Rennie,70,3,2,-,2,15,"First cut",
+The Legion of Shadow,1,Lake Spirit,81,4,-,5,2,50,"","If you survive to the end of 5 combat rounds, turn to 234"
+The Legion of Shadow,1,Skeleton guards,90,4,4,-,3,25,"Body of bone: Immune to Bleed and Venom",
+The Legion of Shadow,1,Grey hag,92,6,6,-,3,40,"Warts and all: At the end of each combat round, roll a die. If the result is 1, the witch has temporarily transformed you into a warty toad. As a toad you can only roll 1 speed die.",
+The Legion of Shadow,1,Tree roots,93,5,4,-,230,"",
+The Legion of Shadow,1,Ancient knight,98,5,4,-,2,25,"Body of bone: Immune to Bleed and Venom",
+The Legion of Shadow,1,Ghouls,100,5,3,-,2,30,"Piercing claws: The ghouls' attacks ignore armour.",
+The Legion of Shadow,1,Allura of Water,105,5,4,-,1,25,"Healing touch: At the end of the combat round, Allura heals 2 health. Once her health has been reduced to 0, she cannot heal.",
+The Legion of Shadow,1,Valadin Roth,109,5,4,-,3,35,"Faithful duty: For every 6 that Valadin rolls, he heals 2 damage. This cannot take him above the initial 35 health.;Body of bone: Immune to Bleed and Venom.",
+The Legion of Shadow,1,Goblin poacher,118,0,1,-,0,10,"",
+The Legion of Shadow,1,Changeling,121,5,5,-,3,45,"Blacke fire: At the end of the combat round, your hero takes 2 damage from the flames that surround the demon. This ability ignores armour.",
+The Legion of Shadow,1,Huntsman,125,1,1,-,1,15,"",
+The Legion of Shadow,1,Target dummy,126,5,6,-,6,25,"Sack and straw: Immune to Lightning, Piercing, Immobilise, Venom, Thorns, Corruption.",
+The Legion of Shadow,1,Rabid rats,130,3,1,-,0,30,"",
+The Legion of Shadow,1,Ghoul,138,5,2,-,2,15,"Piercing claws: The ghouls' attacks ignore armour.",
+The Legion of Shadow,1,Scarecrow,139,0,1,-,0,8,"",
+The Legion of Shadow,1,Leader,144,2,3,-,4,25,"","Once the leader's health is reduced to 12 or less, turn to 230"
+The Legion of Shadow,1,Troll,156,5,6,-,3,60,"Knowndown: If your hero takes health damage from the troll, you must reduce your speed for the next combat round by 1; Regeneration: At the start of the combat round, the Troll regains 2 health. Once the trolls health has been reduced to 0, he cannot heal.",
+The Legion of Shadow,1,Giant crocodile,159,0,1,-,1,10,"",
+The Legion of Shadow,1,Shadow,178,5,-,4,3,20,"",
+The Legion of Shadow,1,Hobgoblin,184,0,1,-,1,12,"",
+The Legion of Shadow,1,Giant spider,189,4,3,-,2,20,"Venom",
+The Legion of Shadow,1,Leader,201,2,3,-,4,25,"","Once the leader's health is reduced to 12 or less, turn to 233"
+The Legion of Shadow,1,Noldor,207,7,5,-,4,60,"","TODO: You can use runes against this enemy."
+The Legion of Shadow,1,Changeling,217,5,-,4,2,40,"Hellfire:  At the end of the combat round, your hero takes 2 damage from the flames that surround the demon. This ability ignores armour.",
+The Legion of Shadow,1,Rennie,220,3,2,-,2,15,"First cut",
+The Legion of Shadow,1,Voldring of Earth,221,4,3,-,5,20,"Mighty blows: Voldring rolls 2 damage dice.",
+The Legion of Shadow,1,Rattling,230,3,3,-,2,12,"Tail lash: For every 1 you roll, the ratling hits you for 1 damage, ignoring armour.",
+The Legion of Shadow,1,Burrower Alpha,232,5,5,-,4,25,"Acid: Roll a die at the start of each combat round. If you roll a 1 or 2, you automatically take 2 damage. This ability ignores armour.",
+The Legion of Shadow,1,Rattling,233,3,3,-,2,12,"Tail lash: For every 1 you roll, the ratling hits you for 1 damage, ignoring armour.",
+The Legion of Shadow,1,Giant spiders,239,4,4,-,2,25,"Venom",
+The Legion of Shadow,1,Big bad wolf,240,0,1,-,1,15,"",
+The Legion of Shadow,1,Goblin chief,242,0,1,-,1,15,"",
+The Legion of Shadow,1,Talos of Air,244,4,4,-,2,20,"Wind-dancer: Talos moves like the wind. You cannot use potions or special abilities during this combat.",
+The Legion of Shadow,1,Ghoul,253,5,2,-,2,20,"Piercing claws: The ghouls' attacks ignore armour.",
+The Legion of Shadow,1,Burrower wurm,262,4,4,-,3,20,"Acid",
+The Legion of Shadow,1,Burrower wurm,273,4,4,-,3,20,"Acid",
+The Legion of Shadow,1,Ghouls,274,5,3,-,2,30,"Piercing claws: The ghouls' attacks ignore armour.;Holy Water: You may add 2 to your damage score in this combat.",
+The Legion of Shadow,1,Fetch,280,5,4,-,3,35,"Dark disciple: All hero rolls of a 6 become a 1 automatically.",
+The Legion of Shadow,1,Nalsa,293,11,10,-,6,50,"Mighty roar: If Nalsa wins two consecutives rounds and causes damage in each, on the start of the third round he gains +4 speed and +4 brawn for the rest of the combat. Can only be used once.",
+The Legion of Shadow,2,Batwing,295,5,4,-,2,25,"Bleed",
+The Legion of Shadow,2,Lady Roe,302,8,-,8,5,50,"Blood harvest: Each time you take health damage from Lady Roe, she heals 2 damage.;Vampire;Wounded: You cannot heal after this combat.",
+The Legion of Shadow,2,Baron Greylock,306,8,8,-,5,60,"Vampire;Wounded: You cannot heal after this combat.",
+The Legion of Shadow,2,Logan,313,10,10,-,9,50,"Poisened arrow: At the end of each combat round you lose 2 health.",
+The Legion of Shadow,2,Left hook Luke,320,7,8,-,4,50,"By hook: For each 1 you roll you immediately lose 2 health. Ignores armour.;And by crook: Once Luke's health falls below 20, he only rolls 1 die for speed but 2 for damage.",
+The Legion of Shadow,2,Bat swarm,322,7,8,-,4,20,"Watch your step: If you roll a 1 for attack speed, you lose the combat. Rerolling is allowed.;Wounded",
+The Legion of Shadow,2,Wreeking mage,323,10,-,6,5,45,"Charge her up: The wreeking mage does not roll for damage if they win a round. Instead, for every 2 rounds it wins, it deals 10 damage ignoring armour. Immune to Vanish, Evade, Sidestep.",
+The Legion of Shadow,2,Vesuvius,335,10,-,13,9,45,"Molten armour: At the end of the round the hero takes 4 damage ignoring armour.;Body of Flame: Immune to Sear, Fire aura, Bleed",
+The Legion of Shadow,2,Mud Golen,337,5,5,-,3,35,"Mud pie: At the end of the round, roll 2 dice. If the amount is higher than your speed, take 2 damage ignoring armour.",
+The Legion of Shadow,2,Hydra,350,12,15,-,10,60,"Many heads: At the start of round 4, Hydra restores all health.; Venom",
+The Legion of Shadow,2,Nasareim,352,12,10,-,12,60,"Dervish: Attacks ignore armour.; Whirlwird: Each time Nasareim rolls a 6 damage die, he rolls another damage die. This can repeat.",
+The Legion of Shadow,2,Fargin,354,6,5,-,4,25,"",
+The Legion of Shadow,2,Barkrot,357,10,7,-,10,30,"Tangled roots:: At the start of each round, roll a die. If you roll a 1 or 2 you lose 5 health ignoring armour.;Air of corruption: You cannot use any special availabilties. You can use potions and backpack items.",
+The Legion of Shadow,2,Hive Queen,358,6,-,6,4,35,"Wing buffet: You must reduce your speed by 1 for the entire combat.;Venom",
+The Legion of Shadow,2,Clymonistra,360,7,5,-,4,40,"Piercing; Vampire; Wounded",
+The Legion of Shadow,2,Cave trogs,361,6,7,-,3,40,"",
+The Legion of Shadow,2,Snapjaw,364,12,12,-,10,60,"Strangle vines: At the start of each round, loose round # * 2 health, ignoring armour.",
+The Legion of Shadow,2,Drones,365,7,3,-,4,40,"Stingers: Attacks ignore armour.",
+The Legion of Shadow,2,Wreeking hunter,366,8,8,-,5,40,"After this enemy is killed, the hero wins the combat.",
+The Legion of Shadow,2,Wreeking net,366,-,-,-,52,15,"Entrapment: You can only roll 1 die to determine your attack speed while you have the net around your legs.",
+The Legion of Shadow,2,Centipede,375,5,5,-,3,60,"Downsized: For every 10 health that the Centipede loses, one of its body segments is destroying its speed and branch by 1 each time.",
+The Legion of Shadow,2,Zen,382,10,10,-,8,60,"Charge: Zen can roll 3 dice of speed in the first round of combat. Immune to any abilities that reduce his speed dice for this first round.;Trample",
+The Legion of Shadow,2,Shara Khana,386,10,12,-,12,60,"Cat's speed: Shara Khana rolls 3 dice to determine her attack speed. Your hero special abilities can be used to reduce this number if available.",
+The Legion of Shadow,2,Kings Louis,391,12,12,-,12,50,"King of the swingers: At the end of every combat you automatically take 15 damage. Armour can be used to absorb this damage.",
+The Legion of Shadow,2,KerKlick,393,7,5,-,7,40,"Pincer movement: If you roll a 1 when rolling for attack speed, you are immediately guard in KerKlick's pincer and automatically lose 2 health ignoring armour. If you have an ability that let's you reroll dice you may try to avoid this.;Unnatural growth: At the end of every combat round, KerKlick raises its brawn by 1, up to max of 10.",
+The Legion of Shadow,2,Jenkins,402,7,8,-,5,30,"",
+The Legion of Shadow,2,Cinders,426,8,-,9,6,45,"Vortex of fire: At the end of each combat round, roll 2 dice. If the amount is higher than your speed you lose 4 health ignoring armour.;Body of flame: Immune to Sear, Bleed, Fire Aura, Burn and Ignite.",
+The Legion of Shadow,2,Elvera,429,7,0,6,5,35,"Black coils: At the end of every combat round you automatically lose 2 health ignoring armour; Vampire",
+The Legion of Shadow,2,Jester,435,6,6,-,4,40,"Itchy and scratchy: At the start of each combat round roll a die: If you roll a 1, your speed is reduced by 1 for this combat round; Vampire",
+The Legion of Shadow,2,The Angler,438,10,10,-,16,60,"Indigestion: If you win a round, you can strike as normal against or lose 5 health and ignore armour.",
+The Legion of Shadow,2,Shadow Stalker,442,12,12,-,12,75,"Deadly venom: Once you have taken health damage, you lose 3 health at the end of each combat round.",
+The Legion of Shadow,2,Kindle,454,12,11,-,9,90,"Dragon breath: At the end of every combat round, roll 3 dice. If the result is higher than your speed you lose 5 health ignoring armour; Dragon hide: Immune to Piercing, Impale, Thorns, Barbs",
+The Legion of Shadow,2,Boggart,462,10,8,-,5,60,"Dread: Causes Fear, reducing brawn and magic by for the entire combat.",
+The Legion of Shadow,2,Count,464,9,8,-,5,40,"Wayling Bride: At the end of each combat round, you must lower your speed, brawn and magic by 1.;Vampire",
+The Legion of Shadow,2,Countess,464,-,-,-,-,35,"Painted veil: Immune to Venom and Bleed.",
+The Legion of Shadow,2,Shadow Terror,466,10,9,-,4,50,"Fed from fear: At the end of each combat round, the armour is increased by 1.",
+The Legion of Shadow,2,Leviathan,470,11,-,10,8,50,"",
+The Legion of Shadow,2,Snappers,470,-,-,-,-,20,"Snappers: At the end of every combat round, lose 2 health ignoring armour.",
+The Legion of Shadow,2,Poison Needles,470,-,-,-,-,20,"Poison Needles: At the end of every combat round, lose 2 health.",
+The Legion of Shadow,2,Thorn Spines,470,-,-,-,-,20,"Thorn Spines: Reduce hero speed by 1 for the entire combat.",
+The Legion of Shadow,2,Purple worm,472,5,5,-,5,40,"Split personality: For every 10 healh it loses, increase speed and brawn by 1.",
+The Legion of Shadow,2,Giant Ooze,481,6,4,-,4,40,"Glutinous maximus: Everytime you win a combat round, you are reduced to 1 speed die for the next attack roll. Cannot be avoided.",
+The Legion of Shadow,2,Scorpios,482,10,7,-,4,60,"Black venom: After a successful attack causing damage, lose 2 health on every end of a round, ignoring armour.",
+The Legion of Shadow,2,Swamp Giant,486,10,10,-,7,70,"Knockdown; Body of rock: Immune to Piercing, Impale, Bleed, Venom, Thorns, Barbs, Lightning",
+The Legion of Shadow,2,Wormwood,490,7,7,-,4,50,"Soft spot: If you win a combat round, roll 1 die. If you roll 1 or 2, you cannot roll for damage.",
+The Legion of Shadow,2,Wreeking mage,491,10,-,-,5,50,"Charge her up!",
+The Legion of Shadow,2,Ancient ancestors,493,10,8,-,8,30,"Body of bone",
+The Legion of Shadow,2,Roumbler,496,7,8,-,5,40,"Knockdown; Body of rock",
+The Legion of Shadow,2,Count,505,9,8,-,5,40,"Blood drinker: If the count rolls a 6 for damage, he rolls an extra die for damage and restores 2 health.;Vampire;Wounded",
+The Legion of Shadow,2,Kalimari,510,11,10,-,9,60,"Ink bombs: If you roll a 1 during speed rolls, hero is blinded and loses the round. You can only use pssive abilities in this round. Dice can be rerolled.",
+The Legion of Shadow,2,Inferno,527,9,8,-,7,50,"Blazing armour: Immune to Piercing, Sear, Impale, Bleed, Burn Ignute",
+The Legion of Shadow,2,Wreeking hunter,529,8,8,-,5,40,"After this enemy is killed, the hero wins the combat.",
+The Legion of Shadow,2,Wreeking net,529,-,-,-,52,15,"Entrapment: You can only roll 1 die to determine your attack speed while you have the net around your legs.",
+The Legion of Shadow,2,Scout,531,14,15,-,14,85,"",
+The Legion of Shadow,2,Count,535,9,8,-,5,40,"Blood drinker: If the count rolls a 6 for damage, he rolls an extra die for damage and restores 2 health.;Vampire;Wounded",
+The Legion of Shadow,2,Phoenix,543,8,-,7,5,30,"Body of flame;From the ashes: At the end of the combat, the Phoenix rises again as Phoenix risen",
+The Legion of Shadow,2,Risen Phoenix,543,7,-,6,5,30,"Body of flame",
+The Legion of Shadow,2,Count,545,9,8,-,5,40,"Blood drinker: If the count rolls a 6 for damage, he rolls an extra die for damage and restores 2 health.;Vampire;Wounded",
+The Legion of Shadow,2,Stone Giant,554,10,10,-,12,50,"Knockdown;Body of rock; Spawns 4 Stone Golem",
+The Legion of Shadow,2,Stone Golem,554,-,-,-,6,15,"Body of rock; Stone Golem: At the end of the round, take 1 damage ignoring armour.",
+The Legion of Shadow,2,Bone Giant,555,15,14,-,12,140,"Knockdown;Body of bone",
+The Legion of Shadow,2,The Blob,557,14,15,-,12,120,"Knockdown; Bloated body: Immunte to Piercing, Impale, Barbs, Thorns",
+The Legion of Shadow,2,Gargoyles,563,11,10,-,9,50,"Body of rock",
+The Legion of Shadow,2,Chilblain,564,13,13,-,20,80,"Ice armour: Spawns 4 Ice Pillar; Body of Ice: Immune to Venom, Disease, Bleed, but takes double damage from Sear, Fira Aura, Burn.;",
+The Legion of Shadow,2,Ice Pillar,564,-,-,-,8,20,"Ice pillar: When a pillar is destroyed, the Chilblain's armour is set to 10.;Body of Ice",
+The Legion of Shadow,2,Inferno,578,9,8,-,7,50,"Blazing armour; Crazy hal: When you roll for damage, Crazy hal adds 1 extra damage score.",
+The Legion of Shadow,2,Flay,582,15,-,15,16,100,"Maelstrom: For each 1 you roll, loose 8 health ignoring armour.; Body of air: Immune to Bleed, Venom, Disease.",
+The Legion of Shadow,2,Malcontent,595,15,-,15,13,100,"Leech: For each damage inflicted to the hero, heal the same amount.;Spawns 1 Carrion Crows.",
+The Legion of Shadow,2,Carrion Crows,595,-,-,-,8,40,"Carrion Crows: At the start of each round, the hero loses 4 health.",
+The Legion of Shadow,2,,,,-,-,,25,"",
+The Legion of Shadow,2,,,,-,-,,25,"",
+The Legion of Shadow,2,,,,-,-,,25,"",
+The Legion of Shadow,2,,,,-,-,,25,"",
+The Legion of Shadow,2,,,,-,-,,25,"",
