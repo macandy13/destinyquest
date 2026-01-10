@@ -6,6 +6,7 @@ registerAbility({
     name: 'Trample',
     type: 'special',
     description: 'If the enemy rolls a 6 on their damage roll, add 5 to the damage.',
+    reviewed: true,
     onDamageCalculate: (state: CombatState, context: AbilityContext) => {
         if (context.owner !== 'enemy' || context.target !== 'hero') {
             return 0;

@@ -6,7 +6,9 @@ registerAbility({
     name: 'Barbs',
     type: 'passive',
     description: 'At the end of every combat round, automatically inflict 1 damage to all opponents.',
+    reviewed: true,
     onPassiveAbility: (state, { owner }) => {
+        // TODO: Handle multiple opponents.
         return dealDamage(
             state,
             'Barbs',

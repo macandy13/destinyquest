@@ -15,6 +15,7 @@ registerAbility({
     name: 'Venom',
     type: 'passive',
     description: 'If causing health damage, opponent loses 2 health (ignoring armour) at the end of every round.',
+    reviewed: true,
     onDamageDealt(state, { target }, _source, damageDealt) {
         if (!target) return state;
         if (damageDealt > 0 && !hasEffect(state, target, 'Venom')) {

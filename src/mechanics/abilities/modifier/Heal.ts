@@ -6,6 +6,7 @@ registerAbility({
     type: 'modifier',
     description: 'Instantly restore 4 health.',
     icon: '❤️',
+    reviewed: true,
     canActivate: (state, { owner }) => {
         const char = getCombatant(state, owner);
         return char.stats.health < char.stats.maxHealth;

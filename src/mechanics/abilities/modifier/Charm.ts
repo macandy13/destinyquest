@@ -7,6 +7,7 @@ registerAbility({
     type: 'modifier',
     description: 'Re-roll one of your hero\'s dice; you must accept the second result.',
     icon: '🎲',
+    reviewed: true,
     canActivate: (state) => state.phase === 'speed-roll' || (state.phase === 'damage-roll' && state.winner === 'hero'),
     onActivate: (state, context) => {
         if (!context.ability) return state;

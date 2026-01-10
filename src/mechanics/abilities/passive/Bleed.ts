@@ -6,10 +6,10 @@ registerAbility({
     name: 'Bleed',
     type: 'passive',
     description: 'If your damage causes health damage, the opponent continues to take 1 damage (ignoring armour) at the end of each combat round.',
+    reviewed: true,
     onDamageDealt(state, { target }, _source, damageDealt) {
         if (!target) return state;
         if (damageDealt === 0 || hasEffect(state, target, 'Bleed')) return state;
-        // TODO: Put into modification function & log
         return appendEffect(state, target, {
             stats: {},
             source: 'Bleed',
