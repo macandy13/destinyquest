@@ -1,6 +1,6 @@
 import { registerAbility } from '../../abilityRegistry';
-import { getOpponent } from '../../../types/character';
-import { appendEffect, dealDamage, hasEffect, hasAbility } from '../../../types/combatState';
+import { CharacterType, getOpponent } from '../../../types/character';
+import { appendEffect, dealDamage, hasEffect, hasAbility, CombatState } from '../../../types/combatState';
 
 function getDamage(state: CombatState, target: CharacterType) {
     let damage = 2;
