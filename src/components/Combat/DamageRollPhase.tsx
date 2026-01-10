@@ -116,7 +116,7 @@ const DamageRollPhase: React.FC<DamageRollPhaseProps> = ({
                                         <th title="Roll">{getStatIcon('die')}</th>
                                         {!!breakdown.skill && <th title="Base Stat">{breakdown.skillName === 'brawn' ? getStatIcon('brawn') : getStatIcon('magic')}</th>}
                                         {!!breakdown.modifiersTotal && <th title="Modifiers">{getStatIcon('modifier')}</th>}
-                                        {!!breakdown.armor && <th title="Armour">{getStatIcon('armour')}</th>}
+                                        {!!breakdown.armour && <th title="Armour">{getStatIcon('armour')}</th>}
                                         <th></th>
                                     </tr>
                                 </thead>
@@ -125,7 +125,7 @@ const DamageRollPhase: React.FC<DamageRollPhaseProps> = ({
                                         <td>{breakdown.diceTotal}</td>
                                         {!!breakdown.skill && <td>{breakdown.skill}</td>}
                                         {!!breakdown.modifiersTotal && <td>{breakdown.modifiersTotal > 0 ? `+${breakdown.modifiersTotal}` : breakdown.modifiersTotal}</td>}
-                                        {!!breakdown.armor && <td>-{breakdown.armor}</td>}
+                                        {!!breakdown.armour && <td>-{breakdown.armour}</td>}
                                         <td className="dice-result-total">= {breakdown.totalDamage}</td>
                                     </tr>
                                 </tbody>

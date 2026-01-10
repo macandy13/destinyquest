@@ -433,7 +433,7 @@ export interface DamageBreakdown {
     skillName: string;
     modifiers: { source: string; amount: number }[];
     modifiersTotal: number;
-    armor: number;
+    armour: number;
     totalDamage: number;
 }
 
@@ -458,12 +458,12 @@ export function calculateDamageBreakdown(state: CombatState): DamageBreakdown | 
     const totalModifiersValue = modifiers.reduce((a, b) => a + b.amount, 0);
     const victim = getOpponent(winnerType);
     const victimStats = victim === 'hero' ? effectiveStats.hero : effectiveStats.enemy;
-    const armor = victimStats.armour;
+    const armour = victimStats.armour;
     const totalDamage = Math.max(0,
         totalDiceValue
         + skill
         + totalModifiersValue
-        - armor);
+        - armour);
 
     return {
         diceTotal: totalDiceValue,
@@ -471,13 +471,13 @@ export function calculateDamageBreakdown(state: CombatState): DamageBreakdown | 
         skillName,
         modifiers,
         modifiersTotal: totalModifiersValue,
-        armor,
+        armour,
         totalDamage
     };
 }
 
 /**
- * Applies all collected damage to the victim after subtracting the armor.
+ * Applies all collected damage to the victim after subtracting the armour.
  */
 export function applyDamage(state: CombatState): CombatState {
     const breakdown = calculateDamageBreakdown(state);
@@ -495,7 +495,7 @@ export function applyDamage(state: CombatState): CombatState {
         AttackSource,
         victim,
         breakdown.totalDamage,
-        `Total attack damage to ${victim}: ${breakdown.totalDamage} = ${breakdown.diceTotal} + ${breakdown.skill} + ${breakdown.modifiersTotal} - ${breakdown.armor}`
+        `Total attack damage to ${victim}: ${breakdown.totalDamage} = ${breakdown.diceTotal} + ${breakdown.skill} + ${breakdown.modifiersTotal} - ${breakdown.armour}`
     );
     return checkForCombatEnd(state);
 }

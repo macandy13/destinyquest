@@ -35,13 +35,13 @@ describe('calculateDamageBreakdown', () => {
     });
 
     it('should calculate basic damage correctly', () => {
-        // Hero Brawn: 5, Roll: 3, Enemy Armor: 0
+        // Hero Brawn: 5, Roll: 3, Enemy Armour: 0
         // Total = 3 + 5 - 0 = 8
         const breakdown = calculateDamageBreakdown(state);
         expect(breakdown).not.toBeNull();
         expect(breakdown?.diceTotal).toBe(3);
         expect(breakdown?.skill).toBe(5);
-        expect(breakdown?.armor).toBe(0);
+        expect(breakdown?.armour).toBe(0);
         expect(breakdown?.modifiersTotal).toBe(0);
         expect(breakdown?.totalDamage).toBe(8);
         expect(breakdown?.skillName).toBe('brawn');
@@ -57,7 +57,7 @@ describe('calculateDamageBreakdown', () => {
 
     it('should include modifiers', () => {
         state.damage!.modifiers.push({ source: 'Buff', amount: 2, target: 'enemy' });
-        // Hero Brawn: 5, Roll: 3, Mod: +2, Enemy Armor: 0
+        // Hero Brawn: 5, Roll: 3, Mod: +2, Enemy Armour: 0
         // Total = 3 + 5 + 2 - 0 = 10
         const breakdown = calculateDamageBreakdown(state);
         expect(breakdown?.modifiersTotal).toBe(2);
@@ -65,20 +65,20 @@ describe('calculateDamageBreakdown', () => {
         expect(breakdown?.modifiers).toHaveLength(1);
     });
 
-    it('should account for armor', () => {
-        // Give enemy some armor
+    it('should account for armour', () => {
+        // Give enemy some armour
         state.enemy.stats.armour = 2;
-        // Hero Brawn: 5, Roll: 3, Enemy Armor: 2
+        // Hero Brawn: 5, Roll: 3, Enemy Armour: 2
         // Total = 3 + 5 - 2 = 6
         const breakdown = calculateDamageBreakdown(state);
-        expect(breakdown?.armor).toBe(2);
+        expect(breakdown?.armour).toBe(2);
         expect(breakdown?.totalDamage).toBe(6);
     });
 
     it('should clamp damage to 0', () => {
-        // Give huge armor
+        // Give huge armour
         state.enemy.stats.armour = 20;
-        // Hero Brawn: 5, Roll: 3, Enemy Armor: 20
+        // Hero Brawn: 5, Roll: 3, Enemy Armour: 20
         // Total = 3 + 5 - 20 = -12 => 0
         const breakdown = calculateDamageBreakdown(state);
         expect(breakdown?.totalDamage).toBe(0);
