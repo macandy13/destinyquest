@@ -15,7 +15,8 @@ registerAbility({
             source: 'Bleed',
             target,
             duration: undefined, // for the rest of the combat (or until cauterized)
-            icon: '🩸'
+            icon: '🩸',
+            description: 'Takes 1 damage (ignoring armour) at the end of each round.'
         });
     },
     onPassiveAbility: (state, { owner }) => {

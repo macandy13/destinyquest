@@ -16,6 +16,8 @@ const ActiveEffectOverlay: React.FC<ActiveEffectOverlayProps> = ({ effect, onClo
         icon = getAbilityIcon(def);
     }
 
+    const effectDescription = formatEffect(effect);
+
     return (
         <CombatOverlay
             title={effect.source}
@@ -23,7 +25,7 @@ const ActiveEffectOverlay: React.FC<ActiveEffectOverlayProps> = ({ effect, onClo
             onClose={onClose}>
             <CombatOverlay.Content>
                 <div style={{ textAlign: 'center' }}>
-                    <p>{formatEffect(effect)}</p>
+                    {effectDescription && <p>{effectDescription}</p>}
                     <p style={{ fontStyle: 'italic', marginTop: '0.5rem', color: 'var(--dq-light-grey)' }}>
                         Duration: {effect.duration === undefined ? 'Infinite' : `${effect.duration} rounds`}
                     </p>

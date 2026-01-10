@@ -8,9 +8,11 @@ export interface Effect {
     duration?: number; // undefined means infinite
     visible?: boolean; // If the effect should be presented to the user or if it is an internal states
     icon?: string; // Optional icon override
+    description?: string; // Optional text description
 }
 
 export function formatEffect(effect: Effect): string {
+    if (effect.description) return effect.description;
     return Object.entries(effect.stats)
         .map(([stat, value]) => {
             if (!value) return null;
