@@ -13,7 +13,7 @@ export const ENEMIES: Enemy[] = [
       "maxHealth": 30
     },
     "abilities": [
-      "Ferocity: If Mauler wins a combat round and inflicts health damage on your hero,the beast automatically raises its speed to 7 for the next round."
+      "Ferocity"
     ],
     "bookRef": {
       "book": "The Legion of Shadow",
@@ -33,7 +33,7 @@ export const ENEMIES: Enemy[] = [
       "maxHealth": 35
     },
     "abilities": [
-      "Punishing blows: Each time Humbaroth inflicts health damage, your armour is lowered by 1. (The armour value is restored after the combat is over)"
+      "Punishing blows"
     ],
     "bookRef": {
       "book": "The Legion of Shadow",
@@ -53,7 +53,7 @@ export const ENEMIES: Enemy[] = [
       "maxHealth": 25
     },
     "abilities": [
-      "Charged: Each time you inflict health damage on the elemental, you take 2 damage in return. This ability ignores armour."
+      "Charged"
     ],
     "bookRef": {
       "book": "The Legion of Shadow",
@@ -73,7 +73,7 @@ export const ENEMIES: Enemy[] = [
       "maxHealth": 20
     },
     "abilities": [
-      "Fiery aura: You automatically take 3 health damage at the end of the round. This ability ignores armour."
+      "Fiery aura"
     ],
     "bookRef": {
       "book": "The Legion of Shadow",
@@ -92,14 +92,13 @@ export const ENEMIES: Enemy[] = [
       "health": 20,
       "maxHealth": 20
     },
-    "abilities": [
-      ""
-    ],
+    "abilities": [],
     "bookRef": {
       "book": "The Legion of Shadow",
       "act": 1,
       "section": 37
-    }
+    },
+    "notes": "If the goblins habe been reduced to 10 health or less, turn to 77"
   },
   {
     "type": "enemy",
@@ -113,8 +112,8 @@ export const ENEMIES: Enemy[] = [
       "maxHealth": 40
     },
     "abilities": [
-      "Black sigill: At the end of each combat round, your hero suffers 1 damage. This ability ignores armour.",
-      "Bewitched: Reroll any 1 or 2 dice results for Zalldell. The results of the rerolled dice must be used."
+      "Black sigill",
+      "Bewitched"
     ],
     "bookRef": {
       "book": "The Legion of Shadow",
@@ -134,7 +133,7 @@ export const ENEMIES: Enemy[] = [
       "maxHealth": 30
     },
     "abilities": [
-      "Piercing claws: The ghouls' attacks ignore armour."
+      "Piercing claws"
     ],
     "bookRef": {
       "book": "The Legion of Shadow",
@@ -154,14 +153,15 @@ export const ENEMIES: Enemy[] = [
       "maxHealth": 30
     },
     "abilities": [
-      "Webbed: The spiders's sticky webbing inhibits your movement. At the start of every combat round, roll a die. If you roll a 1 or 2, your speed is reduced by 1 for the round.",
-      "Venom: Once you have taken health damage from the spider, at the end of every combat round you must automatically lose 2 health."
+      "Webbed",
+      "Venom"
     ],
     "bookRef": {
       "book": "The Legion of Shadow",
       "act": 1,
       "section": 60
-    }
+    },
+    "notes": "Ignore the Webbed ability if the web was set to fire with the Torch"
   },
   {
     "type": "enemy",
@@ -175,7 +175,7 @@ export const ENEMIES: Enemy[] = [
       "maxHealth": 15
     },
     "abilities": [
-      "Crone's dagger: If the Ruffians roll a 6 for damage, the crone's dagger automatically inflicts 1 extra point of health damage."
+      "Crone's dagger"
     ],
     "bookRef": {
       "book": "The Legion of Shadow",
@@ -194,9 +194,7 @@ export const ENEMIES: Enemy[] = [
       "health": 10,
       "maxHealth": 10
     },
-    "abilities": [
-      ""
-    ],
+    "abilities": [],
     "bookRef": {
       "book": "The Legion of Shadow",
       "act": 1,
@@ -214,9 +212,7 @@ export const ENEMIES: Enemy[] = [
       "health": 10,
       "maxHealth": 10
     },
-    "abilities": [
-      ""
-    ],
+    "abilities": [],
     "bookRef": {
       "book": "The Legion of Shadow",
       "act": 1,
@@ -254,14 +250,13 @@ export const ENEMIES: Enemy[] = [
       "health": 50,
       "maxHealth": 50
     },
-    "abilities": [
-      ""
-    ],
+    "abilities": [],
     "bookRef": {
       "book": "The Legion of Shadow",
       "act": 1,
       "section": 81
-    }
+    },
+    "notes": "If you survive to the end of 5 combat rounds, turn to 234"
   },
   {
     "type": "enemy",
@@ -275,7 +270,7 @@ export const ENEMIES: Enemy[] = [
       "maxHealth": 25
     },
     "abilities": [
-      "Body of bone: Immune to Bleed and Venom"
+      "Body of bone"
     ],
     "bookRef": {
       "book": "The Legion of Shadow",
@@ -295,7 +290,7 @@ export const ENEMIES: Enemy[] = [
       "maxHealth": 40
     },
     "abilities": [
-      "Warts and all: At the end of each combat round, roll a die. If the result is 1, the witch has temporarily transformed you into a warty toad. As a toad you can only roll 1 speed die."
+      "Warts and all"
     ],
     "bookRef": {
       "book": "The Legion of Shadow",
@@ -314,9 +309,7 @@ export const ENEMIES: Enemy[] = [
       "health": null,
       "maxHealth": null
     },
-    "abilities": [
-      ""
-    ],
+    "abilities": [],
     "bookRef": {
       "book": "The Legion of Shadow",
       "act": 1,
@@ -335,7 +328,7 @@ export const ENEMIES: Enemy[] = [
       "maxHealth": 25
     },
     "abilities": [
-      "Body of bone: Immune to Bleed and Venom"
+      "Body of bone"
     ],
     "bookRef": {
       "book": "The Legion of Shadow",
@@ -355,7 +348,7 @@ export const ENEMIES: Enemy[] = [
       "maxHealth": 30
     },
     "abilities": [
-      "Piercing claws: The ghouls' attacks ignore armour."
+      "Piercing claws"
     ],
     "bookRef": {
       "book": "The Legion of Shadow",
@@ -375,7 +368,7 @@ export const ENEMIES: Enemy[] = [
       "maxHealth": 25
     },
     "abilities": [
-      "Healing touch: At the end of the combat round, Allura heals 2 health. Once her health has been reduced to 0, she cannot heal."
+      "Healing touch"
     ],
     "bookRef": {
       "book": "The Legion of Shadow",
@@ -395,8 +388,8 @@ export const ENEMIES: Enemy[] = [
       "maxHealth": 35
     },
     "abilities": [
-      "Faithful duty: For every 6 that Valadin rolls, he heals 2 damage. This cannot take him above the initial 35 health.",
-      "Body of bone: Immune to Bleed and Venom."
+      "Faithful duty",
+      "Body of bone"
     ],
     "bookRef": {
       "book": "The Legion of Shadow",
@@ -415,9 +408,7 @@ export const ENEMIES: Enemy[] = [
       "health": 10,
       "maxHealth": 10
     },
-    "abilities": [
-      ""
-    ],
+    "abilities": [],
     "bookRef": {
       "book": "The Legion of Shadow",
       "act": 1,
@@ -436,7 +427,7 @@ export const ENEMIES: Enemy[] = [
       "maxHealth": 45
     },
     "abilities": [
-      "Blacke fire: At the end of the combat round, your hero takes 2 damage from the flames that surround the demon. This ability ignores armour."
+      "Blacke fire"
     ],
     "bookRef": {
       "book": "The Legion of Shadow",
@@ -455,9 +446,7 @@ export const ENEMIES: Enemy[] = [
       "health": 15,
       "maxHealth": 15
     },
-    "abilities": [
-      ""
-    ],
+    "abilities": [],
     "bookRef": {
       "book": "The Legion of Shadow",
       "act": 1,
@@ -476,7 +465,7 @@ export const ENEMIES: Enemy[] = [
       "maxHealth": 25
     },
     "abilities": [
-      "Sack and straw: Immune to Lightning, Piercing, Immobilise, Venom, Thorns, Corruption."
+      "Sack and straw"
     ],
     "bookRef": {
       "book": "The Legion of Shadow",
@@ -495,9 +484,7 @@ export const ENEMIES: Enemy[] = [
       "health": 30,
       "maxHealth": 30
     },
-    "abilities": [
-      ""
-    ],
+    "abilities": [],
     "bookRef": {
       "book": "The Legion of Shadow",
       "act": 1,
@@ -516,7 +503,7 @@ export const ENEMIES: Enemy[] = [
       "maxHealth": 15
     },
     "abilities": [
-      "Piercing claws: The ghouls' attacks ignore armour."
+      "Piercing claws"
     ],
     "bookRef": {
       "book": "The Legion of Shadow",
@@ -535,9 +522,7 @@ export const ENEMIES: Enemy[] = [
       "health": 8,
       "maxHealth": 8
     },
-    "abilities": [
-      ""
-    ],
+    "abilities": [],
     "bookRef": {
       "book": "The Legion of Shadow",
       "act": 1,
@@ -555,14 +540,13 @@ export const ENEMIES: Enemy[] = [
       "health": 25,
       "maxHealth": 25
     },
-    "abilities": [
-      ""
-    ],
+    "abilities": [],
     "bookRef": {
       "book": "The Legion of Shadow",
       "act": 1,
       "section": 144
-    }
+    },
+    "notes": "Once the leader's health is reduced to 12 or less, turn to 230"
   },
   {
     "type": "enemy",
@@ -576,8 +560,8 @@ export const ENEMIES: Enemy[] = [
       "maxHealth": 60
     },
     "abilities": [
-      "Knowndown: If your hero takes health damage from the troll, you must reduce your speed for the next combat round by 1",
-      " Regeneration: At the start of the combat round, the Troll regains 2 health. Once the trolls health has been reduced to 0, he cannot heal."
+      "Knowndown",
+      "Regeneration"
     ],
     "bookRef": {
       "book": "The Legion of Shadow",
@@ -596,9 +580,7 @@ export const ENEMIES: Enemy[] = [
       "health": 10,
       "maxHealth": 10
     },
-    "abilities": [
-      ""
-    ],
+    "abilities": [],
     "bookRef": {
       "book": "The Legion of Shadow",
       "act": 1,
@@ -616,9 +598,7 @@ export const ENEMIES: Enemy[] = [
       "health": 20,
       "maxHealth": 20
     },
-    "abilities": [
-      ""
-    ],
+    "abilities": [],
     "bookRef": {
       "book": "The Legion of Shadow",
       "act": 1,
@@ -636,9 +616,7 @@ export const ENEMIES: Enemy[] = [
       "health": 12,
       "maxHealth": 12
     },
-    "abilities": [
-      ""
-    ],
+    "abilities": [],
     "bookRef": {
       "book": "The Legion of Shadow",
       "act": 1,
@@ -676,14 +654,13 @@ export const ENEMIES: Enemy[] = [
       "health": 25,
       "maxHealth": 25
     },
-    "abilities": [
-      ""
-    ],
+    "abilities": [],
     "bookRef": {
       "book": "The Legion of Shadow",
       "act": 1,
       "section": 201
-    }
+    },
+    "notes": "Once the leader's health is reduced to 12 or less, turn to 233"
   },
   {
     "type": "enemy",
@@ -696,14 +673,13 @@ export const ENEMIES: Enemy[] = [
       "health": 60,
       "maxHealth": 60
     },
-    "abilities": [
-      ""
-    ],
+    "abilities": [],
     "bookRef": {
       "book": "The Legion of Shadow",
       "act": 1,
       "section": 207
-    }
+    },
+    "notes": "TODO: You can use runes against this enemy."
   },
   {
     "type": "enemy",
@@ -717,7 +693,7 @@ export const ENEMIES: Enemy[] = [
       "maxHealth": 40
     },
     "abilities": [
-      "Hellfire:  At the end of the combat round, your hero takes 2 damage from the flames that surround the demon. This ability ignores armour."
+      "Hellfire"
     ],
     "bookRef": {
       "book": "The Legion of Shadow",
@@ -757,7 +733,7 @@ export const ENEMIES: Enemy[] = [
       "maxHealth": 20
     },
     "abilities": [
-      "Mighty blows: Voldring rolls 2 damage dice."
+      "Mighty blows"
     ],
     "bookRef": {
       "book": "The Legion of Shadow",
@@ -777,7 +753,7 @@ export const ENEMIES: Enemy[] = [
       "maxHealth": 12
     },
     "abilities": [
-      "Tail lash: For every 1 you roll, the ratling hits you for 1 damage, ignoring armour."
+      "Tail lash"
     ],
     "bookRef": {
       "book": "The Legion of Shadow",
@@ -797,7 +773,7 @@ export const ENEMIES: Enemy[] = [
       "maxHealth": 25
     },
     "abilities": [
-      "Acid: Roll a die at the start of each combat round. If you roll a 1 or 2, you automatically take 2 damage. This ability ignores armour."
+      "Acid"
     ],
     "bookRef": {
       "book": "The Legion of Shadow",
@@ -817,7 +793,7 @@ export const ENEMIES: Enemy[] = [
       "maxHealth": 12
     },
     "abilities": [
-      "Tail lash: For every 1 you roll, the ratling hits you for 1 damage, ignoring armour."
+      "Tail lash"
     ],
     "bookRef": {
       "book": "The Legion of Shadow",
@@ -856,9 +832,7 @@ export const ENEMIES: Enemy[] = [
       "health": 15,
       "maxHealth": 15
     },
-    "abilities": [
-      ""
-    ],
+    "abilities": [],
     "bookRef": {
       "book": "The Legion of Shadow",
       "act": 1,
@@ -876,9 +850,7 @@ export const ENEMIES: Enemy[] = [
       "health": 15,
       "maxHealth": 15
     },
-    "abilities": [
-      ""
-    ],
+    "abilities": [],
     "bookRef": {
       "book": "The Legion of Shadow",
       "act": 1,
@@ -897,7 +869,7 @@ export const ENEMIES: Enemy[] = [
       "maxHealth": 20
     },
     "abilities": [
-      "Wind-dancer: Talos moves like the wind. You cannot use potions or special abilities during this combat."
+      "Wind-dancer"
     ],
     "bookRef": {
       "book": "The Legion of Shadow",
@@ -917,7 +889,7 @@ export const ENEMIES: Enemy[] = [
       "maxHealth": 20
     },
     "abilities": [
-      "Piercing claws: The ghouls' attacks ignore armour."
+      "Piercing claws"
     ],
     "bookRef": {
       "book": "The Legion of Shadow",
@@ -977,8 +949,8 @@ export const ENEMIES: Enemy[] = [
       "maxHealth": 30
     },
     "abilities": [
-      "Piercing claws: The ghouls' attacks ignore armour.",
-      "Holy Water: You may add 2 to your damage score in this combat."
+      "Piercing claws",
+      "Holy Water"
     ],
     "bookRef": {
       "book": "The Legion of Shadow",
@@ -998,7 +970,7 @@ export const ENEMIES: Enemy[] = [
       "maxHealth": 35
     },
     "abilities": [
-      "Dark disciple: All hero rolls of a 6 become a 1 automatically."
+      "Dark disciple"
     ],
     "bookRef": {
       "book": "The Legion of Shadow",
@@ -1018,7 +990,7 @@ export const ENEMIES: Enemy[] = [
       "maxHealth": 50
     },
     "abilities": [
-      "Mighty roar: If Nalsa wins two consecutives rounds and causes damage in each, on the start of the third round he gains +4 speed and +4 brawn for the rest of the combat. Can only be used once."
+      "Mighty roar"
     ],
     "bookRef": {
       "book": "The Legion of Shadow",
@@ -1058,9 +1030,9 @@ export const ENEMIES: Enemy[] = [
       "maxHealth": 50
     },
     "abilities": [
-      "Blood harvest: Each time you take health damage from Lady Roe, she heals 2 damage.",
+      "Blood harvest",
       "Vampire",
-      "Wounded: You cannot heal after this combat."
+      "Wounded"
     ],
     "bookRef": {
       "book": "The Legion of Shadow",
@@ -1081,7 +1053,7 @@ export const ENEMIES: Enemy[] = [
     },
     "abilities": [
       "Vampire",
-      "Wounded: You cannot heal after this combat."
+      "Wounded"
     ],
     "bookRef": {
       "book": "The Legion of Shadow",
@@ -1101,7 +1073,7 @@ export const ENEMIES: Enemy[] = [
       "maxHealth": 50
     },
     "abilities": [
-      "Poisened arrow: At the end of each combat round you lose 2 health."
+      "Poisened arrow"
     ],
     "bookRef": {
       "book": "The Legion of Shadow",
@@ -1121,8 +1093,8 @@ export const ENEMIES: Enemy[] = [
       "maxHealth": 50
     },
     "abilities": [
-      "By hook: For each 1 you roll you immediately lose 2 health. Ignores armour.",
-      "And by crook: Once Luke's health falls below 20, he only rolls 1 die for speed but 2 for damage."
+      "By hook",
+      "And by crook"
     ],
     "bookRef": {
       "book": "The Legion of Shadow",
@@ -1142,7 +1114,7 @@ export const ENEMIES: Enemy[] = [
       "maxHealth": 20
     },
     "abilities": [
-      "Watch your step: If you roll a 1 for attack speed, you lose the combat. Rerolling is allowed.",
+      "Watch your step",
       "Wounded"
     ],
     "bookRef": {
@@ -1163,7 +1135,7 @@ export const ENEMIES: Enemy[] = [
       "maxHealth": 45
     },
     "abilities": [
-      "Charge her up: The wreeking mage does not roll for damage if they win a round. Instead, for every 2 rounds it wins, it deals 10 damage ignoring armour. Immune to Vanish, Evade, Sidestep."
+      "Charge her up"
     ],
     "bookRef": {
       "book": "The Legion of Shadow",
@@ -1183,8 +1155,8 @@ export const ENEMIES: Enemy[] = [
       "maxHealth": 45
     },
     "abilities": [
-      "Molten armour: At the end of the round the hero takes 4 damage ignoring armour.",
-      "Body of Flame: Immune to Sear, Fire aura, Bleed"
+      "Molten armour",
+      "Body of Flame"
     ],
     "bookRef": {
       "book": "The Legion of Shadow",
@@ -1204,7 +1176,7 @@ export const ENEMIES: Enemy[] = [
       "maxHealth": 35
     },
     "abilities": [
-      "Mud pie: At the end of the round, roll 2 dice. If the amount is higher than your speed, take 2 damage ignoring armour."
+      "Mud pie"
     ],
     "bookRef": {
       "book": "The Legion of Shadow",
@@ -1224,8 +1196,8 @@ export const ENEMIES: Enemy[] = [
       "maxHealth": 60
     },
     "abilities": [
-      "Many heads: At the start of round 4, Hydra restores all health.",
-      " Venom"
+      "Many heads",
+      "Venom"
     ],
     "bookRef": {
       "book": "The Legion of Shadow",
@@ -1245,8 +1217,8 @@ export const ENEMIES: Enemy[] = [
       "maxHealth": 60
     },
     "abilities": [
-      "Dervish: Attacks ignore armour.",
-      " Whirlwird: Each time Nasareim rolls a 6 damage die, he rolls another damage die. This can repeat."
+      "Dervish",
+      "Whirlwird"
     ],
     "bookRef": {
       "book": "The Legion of Shadow",
@@ -1265,9 +1237,7 @@ export const ENEMIES: Enemy[] = [
       "health": 25,
       "maxHealth": 25
     },
-    "abilities": [
-      ""
-    ],
+    "abilities": [],
     "bookRef": {
       "book": "The Legion of Shadow",
       "act": 2,
@@ -1286,8 +1256,8 @@ export const ENEMIES: Enemy[] = [
       "maxHealth": 30
     },
     "abilities": [
-      "Tangled roots:: At the start of each round, roll a die. If you roll a 1 or 2 you lose 5 health ignoring armour.",
-      "Air of corruption: You cannot use any special availabilties. You can use potions and backpack items."
+      "Tangled roots",
+      "Air of corruption"
     ],
     "bookRef": {
       "book": "The Legion of Shadow",
@@ -1307,7 +1277,7 @@ export const ENEMIES: Enemy[] = [
       "maxHealth": 35
     },
     "abilities": [
-      "Wing buffet: You must reduce your speed by 1 for the entire combat.",
+      "Wing buffet",
       "Venom"
     ],
     "bookRef": {
@@ -1329,8 +1299,8 @@ export const ENEMIES: Enemy[] = [
     },
     "abilities": [
       "Piercing",
-      " Vampire",
-      " Wounded"
+      "Vampire",
+      "Wounded"
     ],
     "bookRef": {
       "book": "The Legion of Shadow",
@@ -1349,9 +1319,7 @@ export const ENEMIES: Enemy[] = [
       "health": 40,
       "maxHealth": 40
     },
-    "abilities": [
-      ""
-    ],
+    "abilities": [],
     "bookRef": {
       "book": "The Legion of Shadow",
       "act": 2,
@@ -1370,7 +1338,7 @@ export const ENEMIES: Enemy[] = [
       "maxHealth": 60
     },
     "abilities": [
-      "Strangle vines: At the start of each round, loose round # * 2 health, ignoring armour."
+      "Strangle vines"
     ],
     "bookRef": {
       "book": "The Legion of Shadow",
@@ -1390,7 +1358,7 @@ export const ENEMIES: Enemy[] = [
       "maxHealth": 40
     },
     "abilities": [
-      "Stingers: Attacks ignore armour."
+      "Stingers"
     ],
     "bookRef": {
       "book": "The Legion of Shadow",
@@ -1430,7 +1398,7 @@ export const ENEMIES: Enemy[] = [
       "maxHealth": 15
     },
     "abilities": [
-      "Entrapment: You can only roll 1 die to determine your attack speed while you have the net around your legs."
+      "Entrapment"
     ],
     "bookRef": {
       "book": "The Legion of Shadow",
@@ -1450,7 +1418,7 @@ export const ENEMIES: Enemy[] = [
       "maxHealth": 60
     },
     "abilities": [
-      "Downsized: For every 10 health that the Centipede loses, one of its body segments is destroying its speed and branch by 1 each time."
+      "Downsized"
     ],
     "bookRef": {
       "book": "The Legion of Shadow",
@@ -1470,7 +1438,7 @@ export const ENEMIES: Enemy[] = [
       "maxHealth": 60
     },
     "abilities": [
-      "Charge: Zen can roll 3 dice of speed in the first round of combat. Immune to any abilities that reduce his speed dice for this first round.",
+      "Charge",
       "Trample"
     ],
     "bookRef": {
@@ -1491,7 +1459,7 @@ export const ENEMIES: Enemy[] = [
       "maxHealth": 60
     },
     "abilities": [
-      "Cat's speed: Shara Khana rolls 3 dice to determine her attack speed. Your hero special abilities can be used to reduce this number if available."
+      "Cat's speed"
     ],
     "bookRef": {
       "book": "The Legion of Shadow",
@@ -1511,7 +1479,7 @@ export const ENEMIES: Enemy[] = [
       "maxHealth": 50
     },
     "abilities": [
-      "King of the swingers: At the end of every combat you automatically take 15 damage. Armour can be used to absorb this damage."
+      "King of the swingers"
     ],
     "bookRef": {
       "book": "The Legion of Shadow",
@@ -1531,8 +1499,8 @@ export const ENEMIES: Enemy[] = [
       "maxHealth": 40
     },
     "abilities": [
-      "Pincer movement: If you roll a 1 when rolling for attack speed, you are immediately guard in KerKlick's pincer and automatically lose 2 health ignoring armour. If you have an ability that let's you reroll dice you may try to avoid this.",
-      "Unnatural growth: At the end of every combat round, KerKlick raises its brawn by 1, up to max of 10."
+      "Pincer movement",
+      "Unnatural growth"
     ],
     "bookRef": {
       "book": "The Legion of Shadow",
@@ -1551,9 +1519,7 @@ export const ENEMIES: Enemy[] = [
       "health": 30,
       "maxHealth": 30
     },
-    "abilities": [
-      ""
-    ],
+    "abilities": [],
     "bookRef": {
       "book": "The Legion of Shadow",
       "act": 2,
@@ -1572,8 +1538,8 @@ export const ENEMIES: Enemy[] = [
       "maxHealth": 45
     },
     "abilities": [
-      "Vortex of fire: At the end of each combat round, roll 2 dice. If the amount is higher than your speed you lose 4 health ignoring armour.",
-      "Body of flame: Immune to Sear, Bleed, Fire Aura, Burn and Ignite."
+      "Vortex of fire",
+      "Body of flame"
     ],
     "bookRef": {
       "book": "The Legion of Shadow",
@@ -1593,8 +1559,8 @@ export const ENEMIES: Enemy[] = [
       "maxHealth": 35
     },
     "abilities": [
-      "Black coils: At the end of every combat round you automatically lose 2 health ignoring armour",
-      " Vampire"
+      "Black coils",
+      "Vampire"
     ],
     "bookRef": {
       "book": "The Legion of Shadow",
@@ -1614,8 +1580,8 @@ export const ENEMIES: Enemy[] = [
       "maxHealth": 40
     },
     "abilities": [
-      "Itchy and scratchy: At the start of each combat round roll a die: If you roll a 1, your speed is reduced by 1 for this combat round",
-      " Vampire"
+      "Itchy and scratchy",
+      "Vampire"
     ],
     "bookRef": {
       "book": "The Legion of Shadow",
@@ -1635,7 +1601,7 @@ export const ENEMIES: Enemy[] = [
       "maxHealth": 60
     },
     "abilities": [
-      "Indigestion: If you win a round, you can strike as normal against or lose 5 health and ignore armour."
+      "Indigestion"
     ],
     "bookRef": {
       "book": "The Legion of Shadow",
@@ -1655,7 +1621,7 @@ export const ENEMIES: Enemy[] = [
       "maxHealth": 75
     },
     "abilities": [
-      "Deadly venom: Once you have taken health damage, you lose 3 health at the end of each combat round."
+      "Deadly venom"
     ],
     "bookRef": {
       "book": "The Legion of Shadow",
@@ -1675,8 +1641,8 @@ export const ENEMIES: Enemy[] = [
       "maxHealth": 90
     },
     "abilities": [
-      "Dragon breath: At the end of every combat round, roll 3 dice. If the result is higher than your speed you lose 5 health ignoring armour",
-      " Dragon hide: Immune to Piercing, Impale, Thorns, Barbs"
+      "Dragon breath",
+      "Dragon hide"
     ],
     "bookRef": {
       "book": "The Legion of Shadow",
@@ -1696,7 +1662,7 @@ export const ENEMIES: Enemy[] = [
       "maxHealth": 60
     },
     "abilities": [
-      "Dread: Causes Fear, reducing brawn and magic by for the entire combat."
+      "Dread"
     ],
     "bookRef": {
       "book": "The Legion of Shadow",
@@ -1716,7 +1682,7 @@ export const ENEMIES: Enemy[] = [
       "maxHealth": 40
     },
     "abilities": [
-      "Wayling Bride: At the end of each combat round, you must lower your speed, brawn and magic by 1.",
+      "Wayling Bride",
       "Vampire"
     ],
     "bookRef": {
@@ -1737,7 +1703,7 @@ export const ENEMIES: Enemy[] = [
       "maxHealth": 35
     },
     "abilities": [
-      "Painted veil: Immune to Venom and Bleed."
+      "Painted veil"
     ],
     "bookRef": {
       "book": "The Legion of Shadow",
@@ -1757,7 +1723,7 @@ export const ENEMIES: Enemy[] = [
       "maxHealth": 50
     },
     "abilities": [
-      "Fed from fear: At the end of each combat round, the armour is increased by 1."
+      "Fed from fear"
     ],
     "bookRef": {
       "book": "The Legion of Shadow",
@@ -1776,9 +1742,7 @@ export const ENEMIES: Enemy[] = [
       "health": 50,
       "maxHealth": 50
     },
-    "abilities": [
-      ""
-    ],
+    "abilities": [],
     "bookRef": {
       "book": "The Legion of Shadow",
       "act": 2,
@@ -1797,7 +1761,7 @@ export const ENEMIES: Enemy[] = [
       "maxHealth": 20
     },
     "abilities": [
-      "Snappers: At the end of every combat round, lose 2 health ignoring armour."
+      "Snappers"
     ],
     "bookRef": {
       "book": "The Legion of Shadow",
@@ -1817,7 +1781,7 @@ export const ENEMIES: Enemy[] = [
       "maxHealth": 20
     },
     "abilities": [
-      "Poison Needles: At the end of every combat round, lose 2 health."
+      "Poison Needles"
     ],
     "bookRef": {
       "book": "The Legion of Shadow",
@@ -1837,7 +1801,7 @@ export const ENEMIES: Enemy[] = [
       "maxHealth": 20
     },
     "abilities": [
-      "Thorn Spines: Reduce hero speed by 1 for the entire combat."
+      "Thorn Spines"
     ],
     "bookRef": {
       "book": "The Legion of Shadow",
@@ -1857,7 +1821,7 @@ export const ENEMIES: Enemy[] = [
       "maxHealth": 40
     },
     "abilities": [
-      "Split personality: For every 10 healh it loses, increase speed and brawn by 1."
+      "Split personality"
     ],
     "bookRef": {
       "book": "The Legion of Shadow",
@@ -1877,7 +1841,7 @@ export const ENEMIES: Enemy[] = [
       "maxHealth": 40
     },
     "abilities": [
-      "Glutinous maximus: Everytime you win a combat round, you are reduced to 1 speed die for the next attack roll. Cannot be avoided."
+      "Glutinous maximus"
     ],
     "bookRef": {
       "book": "The Legion of Shadow",
@@ -1897,7 +1861,7 @@ export const ENEMIES: Enemy[] = [
       "maxHealth": 60
     },
     "abilities": [
-      "Black venom: After a successful attack causing damage, lose 2 health on every end of a round, ignoring armour."
+      "Black venom"
     ],
     "bookRef": {
       "book": "The Legion of Shadow",
@@ -1918,7 +1882,7 @@ export const ENEMIES: Enemy[] = [
     },
     "abilities": [
       "Knockdown",
-      " Body of rock: Immune to Piercing, Impale, Bleed, Venom, Thorns, Barbs, Lightning"
+      "Body of rock"
     ],
     "bookRef": {
       "book": "The Legion of Shadow",
@@ -1938,7 +1902,7 @@ export const ENEMIES: Enemy[] = [
       "maxHealth": 50
     },
     "abilities": [
-      "Soft spot: If you win a combat round, roll 1 die. If you roll 1 or 2, you cannot roll for damage."
+      "Soft spot"
     ],
     "bookRef": {
       "book": "The Legion of Shadow",
@@ -1999,7 +1963,7 @@ export const ENEMIES: Enemy[] = [
     },
     "abilities": [
       "Knockdown",
-      " Body of rock"
+      "Body of rock"
     ],
     "bookRef": {
       "book": "The Legion of Shadow",
@@ -2019,7 +1983,7 @@ export const ENEMIES: Enemy[] = [
       "maxHealth": 40
     },
     "abilities": [
-      "Blood drinker: If the count rolls a 6 for damage, he rolls an extra die for damage and restores 2 health.",
+      "Blood drinker",
       "Vampire",
       "Wounded"
     ],
@@ -2041,7 +2005,7 @@ export const ENEMIES: Enemy[] = [
       "maxHealth": 60
     },
     "abilities": [
-      "Ink bombs: If you roll a 1 during speed rolls, hero is blinded and loses the round. You can only use pssive abilities in this round. Dice can be rerolled."
+      "Ink bombs"
     ],
     "bookRef": {
       "book": "The Legion of Shadow",
@@ -2061,7 +2025,7 @@ export const ENEMIES: Enemy[] = [
       "maxHealth": 50
     },
     "abilities": [
-      "Blazing armour: Immune to Piercing, Sear, Impale, Bleed, Burn Ignute"
+      "Blazing armour"
     ],
     "bookRef": {
       "book": "The Legion of Shadow",
@@ -2101,7 +2065,7 @@ export const ENEMIES: Enemy[] = [
       "maxHealth": 15
     },
     "abilities": [
-      "Entrapment: You can only roll 1 die to determine your attack speed while you have the net around your legs."
+      "Entrapment"
     ],
     "bookRef": {
       "book": "The Legion of Shadow",
@@ -2120,9 +2084,7 @@ export const ENEMIES: Enemy[] = [
       "health": 85,
       "maxHealth": 85
     },
-    "abilities": [
-      ""
-    ],
+    "abilities": [],
     "bookRef": {
       "book": "The Legion of Shadow",
       "act": 2,
@@ -2141,7 +2103,7 @@ export const ENEMIES: Enemy[] = [
       "maxHealth": 40
     },
     "abilities": [
-      "Blood drinker: If the count rolls a 6 for damage, he rolls an extra die for damage and restores 2 health.",
+      "Blood drinker",
       "Vampire",
       "Wounded"
     ],
@@ -2164,7 +2126,7 @@ export const ENEMIES: Enemy[] = [
     },
     "abilities": [
       "Body of flame",
-      "From the ashes: At the end of the combat, the Phoenix rises again as Phoenix risen"
+      "From the ashes"
     ],
     "bookRef": {
       "book": "The Legion of Shadow",
@@ -2204,7 +2166,7 @@ export const ENEMIES: Enemy[] = [
       "maxHealth": 40
     },
     "abilities": [
-      "Blood drinker: If the count rolls a 6 for damage, he rolls an extra die for damage and restores 2 health.",
+      "Blood drinker",
       "Vampire",
       "Wounded"
     ],
@@ -2227,12 +2189,17 @@ export const ENEMIES: Enemy[] = [
     },
     "abilities": [
       "Knockdown",
-      "Body of rock",
-      " Spawns 4 Stone Golem"
+      "Body of rock"
+    ],
+    "spawns": [
+      "Stone Golem",
+      "Stone Golem",
+      "Stone Golem",
+      "Stone Golem"
     ],
     "bookRef": {
       "book": "The Legion of Shadow",
-      "act": 2,
+      "act": 3,
       "section": 554
     }
   },
@@ -2249,11 +2216,11 @@ export const ENEMIES: Enemy[] = [
     },
     "abilities": [
       "Body of rock",
-      " Stone Golem: At the end of the round, take 1 damage ignoring armour."
+      "Stone Golem"
     ],
     "bookRef": {
       "book": "The Legion of Shadow",
-      "act": 2,
+      "act": 3,
       "section": 554
     }
   },
@@ -2274,7 +2241,7 @@ export const ENEMIES: Enemy[] = [
     ],
     "bookRef": {
       "book": "The Legion of Shadow",
-      "act": 2,
+      "act": 3,
       "section": 555
     }
   },
@@ -2291,11 +2258,11 @@ export const ENEMIES: Enemy[] = [
     },
     "abilities": [
       "Knockdown",
-      " Bloated body: Immunte to Piercing, Impale, Barbs, Thorns"
+      "Bloated body"
     ],
     "bookRef": {
       "book": "The Legion of Shadow",
-      "act": 2,
+      "act": 3,
       "section": 557
     }
   },
@@ -2315,7 +2282,7 @@ export const ENEMIES: Enemy[] = [
     ],
     "bookRef": {
       "book": "The Legion of Shadow",
-      "act": 2,
+      "act": 3,
       "section": 563
     }
   },
@@ -2331,13 +2298,12 @@ export const ENEMIES: Enemy[] = [
       "maxHealth": 80
     },
     "abilities": [
-      "Ice armour: Spawns 4 Ice Pillar",
-      " Body of Ice: Immune to Venom, Disease, Bleed, but takes double damage from Sear, Fira Aura, Burn.",
-      ""
+      "Ice armour",
+      "Body of Ice"
     ],
     "bookRef": {
       "book": "The Legion of Shadow",
-      "act": 2,
+      "act": 3,
       "section": 564
     }
   },
@@ -2353,12 +2319,12 @@ export const ENEMIES: Enemy[] = [
       "maxHealth": 20
     },
     "abilities": [
-      "Ice pillar: When a pillar is destroyed, the Chilblain's armour is set to 10.",
+      "Ice pillar",
       "Body of Ice"
     ],
     "bookRef": {
       "book": "The Legion of Shadow",
-      "act": 2,
+      "act": 3,
       "section": 564
     }
   },
@@ -2375,11 +2341,11 @@ export const ENEMIES: Enemy[] = [
     },
     "abilities": [
       "Blazing armour",
-      " Crazy hal: When you roll for damage, Crazy hal adds 1 extra damage score."
+      "Crazy hal"
     ],
     "bookRef": {
       "book": "The Legion of Shadow",
-      "act": 2,
+      "act": 3,
       "section": 578
     }
   },
@@ -2395,12 +2361,12 @@ export const ENEMIES: Enemy[] = [
       "maxHealth": 100
     },
     "abilities": [
-      "Maelstrom: For each 1 you roll, loose 8 health ignoring armour.",
-      " Body of air: Immune to Bleed, Venom, Disease."
+      "Maelstrom",
+      "Body of air"
     ],
     "bookRef": {
       "book": "The Legion of Shadow",
-      "act": 2,
+      "act": 3,
       "section": 582
     }
   },
@@ -2416,12 +2382,14 @@ export const ENEMIES: Enemy[] = [
       "maxHealth": 100
     },
     "abilities": [
-      "Leech: For each damage inflicted to the hero, heal the same amount.",
-      "Spawns 1 Carrion Crows."
+      "Leech"
+    ],
+    "spawns": [
+      "Carrion Crows"
     ],
     "bookRef": {
       "book": "The Legion of Shadow",
-      "act": 2,
+      "act": 3,
       "section": 595
     }
   },
@@ -2437,97 +2405,816 @@ export const ENEMIES: Enemy[] = [
       "maxHealth": 40
     },
     "abilities": [
-      "Carrion Crows: At the start of each round, the hero loses 4 health."
+      "Carrion Crows"
     ],
     "bookRef": {
       "book": "The Legion of Shadow",
-      "act": 2,
+      "act": 3,
       "section": 595
     }
   },
   {
     "type": "enemy",
-    "name": "",
+    "name": "Budak",
     "stats": {
-      "speed": null,
-      "brawn": 0,
+      "speed": 14,
+      "brawn": 14,
       "magic": 0,
-      "armour": null,
-      "health": 25,
-      "maxHealth": 25
+      "armour": 12,
+      "health": 110,
+      "maxHealth": 110
     },
     "abilities": [
-      ""
+      "Lightning reflex"
     ],
     "bookRef": {
       "book": "The Legion of Shadow",
-      "act": 2,
-      "section": null
+      "act": 3,
+      "section": 601
     }
   },
   {
     "type": "enemy",
-    "name": "",
+    "name": "Flesh Golem",
     "stats": {
-      "speed": null,
-      "brawn": 0,
+      "speed": 13,
+      "brawn": 13,
       "magic": 0,
-      "armour": null,
-      "health": 25,
-      "maxHealth": 25
+      "armour": 12,
+      "health": 80,
+      "maxHealth": 80
     },
     "abilities": [
-      ""
+      "Distraction"
     ],
     "bookRef": {
       "book": "The Legion of Shadow",
-      "act": 2,
-      "section": null
+      "act": 3,
+      "section": 615
     }
   },
   {
     "type": "enemy",
-    "name": "",
+    "name": "Tor Knight",
     "stats": {
-      "speed": null,
-      "brawn": 0,
+      "speed": 13,
+      "brawn": 12,
       "magic": 0,
-      "armour": null,
-      "health": 25,
-      "maxHealth": 25
+      "armour": 24,
+      "health": 50,
+      "maxHealth": 50
     },
     "abilities": [
-      ""
+      "Dismantle",
+      "Steel yourself"
     ],
     "bookRef": {
       "book": "The Legion of Shadow",
-      "act": 2,
-      "section": null
+      "act": 3,
+      "section": 625
     }
   },
   {
     "type": "enemy",
-    "name": "",
+    "name": "Lord of Pain",
     "stats": {
-      "speed": null,
+      "speed": 15,
       "brawn": 0,
-      "magic": 0,
-      "armour": null,
-      "health": 25,
-      "maxHealth": 25
+      "magic": 14,
+      "armour": 13,
+      "health": 100,
+      "maxHealth": 100
     },
     "abilities": [
-      ""
+      "Disease"
     ],
     "bookRef": {
       "book": "The Legion of Shadow",
-      "act": 2,
-      "section": null
+      "act": 3,
+      "section": 627
     }
   },
   {
     "type": "enemy",
-    "name": "",
+    "name": "Rottaghast",
+    "stats": {
+      "speed": 14,
+      "brawn": 14,
+      "magic": 0,
+      "armour": 15,
+      "health": 100,
+      "maxHealth": 100
+    },
+    "abilities": [
+      "Body of bone"
+    ],
+    "spawns": [
+      "Carrion Beetles"
+    ],
+    "bookRef": {
+      "book": "The Legion of Shadow",
+      "act": 3,
+      "section": 650
+    }
+  },
+  {
+    "type": "enemy",
+    "name": "Carrion beetles",
+    "stats": {
+      "speed": 0,
+      "brawn": 0,
+      "magic": 0,
+      "armour": 10,
+      "health": 40,
+      "maxHealth": 40
+    },
+    "abilities": [
+      "Carrion beetles"
+    ],
+    "bookRef": {
+      "book": "The Legion of Shadow",
+      "act": 3,
+      "section": 650
+    }
+  },
+  {
+    "type": "enemy",
+    "name": "Stone Giant",
+    "stats": {
+      "speed": 10,
+      "brawn": 10,
+      "magic": 0,
+      "armour": 12,
+      "health": 40,
+      "maxHealth": 40
+    },
+    "abilities": [
+      "Knockdown",
+      "Body of rock"
+    ],
+    "spawns": [
+      "Stone Golem",
+      "Stone Golem",
+      "Stone Golem",
+      "Stone Golem"
+    ],
+    "bookRef": {
+      "book": "The Legion of Shadow",
+      "act": 3,
+      "section": 652
+    }
+  },
+  {
+    "type": "enemy",
+    "name": "Stone Golem",
+    "stats": {
+      "speed": 0,
+      "brawn": 0,
+      "magic": 0,
+      "armour": 6,
+      "health": 15,
+      "maxHealth": 15
+    },
+    "abilities": [
+      "Body of rock",
+      "Stone Golem"
+    ],
+    "bookRef": {
+      "book": "The Legion of Shadow",
+      "act": 3,
+      "section": 652
+    }
+  },
+  {
+    "type": "enemy",
+    "name": "Brothers Grimm",
+    "stats": {
+      "speed": 13,
+      "brawn": 13,
+      "magic": 0,
+      "armour": 10,
+      "health": 120,
+      "maxHealth": 120
+    },
+    "abilities": [
+      "Got ma eyes an yer",
+      "Helping Hand"
+    ],
+    "bookRef": {
+      "book": "The Legion of Shadow",
+      "act": 3,
+      "section": 653
+    }
+  },
+  {
+    "type": "enemy",
+    "name": "Stone Giant",
+    "stats": {
+      "speed": 10,
+      "brawn": 10,
+      "magic": 0,
+      "armour": 12,
+      "health": 50,
+      "maxHealth": 50
+    },
+    "abilities": [
+      "Knockdown",
+      "Body of rock"
+    ],
+    "spawns": [
+      "Stone Golem",
+      "Stone Golem"
+    ],
+    "bookRef": {
+      "book": "The Legion of Shadow",
+      "act": 3,
+      "section": 658
+    }
+  },
+  {
+    "type": "enemy",
+    "name": "Stone Golem",
+    "stats": {
+      "speed": 0,
+      "brawn": 0,
+      "magic": 0,
+      "armour": 6,
+      "health": 15,
+      "maxHealth": 15
+    },
+    "abilities": [
+      "Body of rock",
+      "Stone Golem"
+    ],
+    "bookRef": {
+      "book": "The Legion of Shadow",
+      "act": 3,
+      "section": 658
+    }
+  },
+  {
+    "type": "enemy",
+    "name": "Necromancer",
+    "stats": {
+      "speed": 13,
+      "brawn": 0,
+      "magic": 10,
+      "armour": 10,
+      "health": 70,
+      "maxHealth": 70
+    },
+    "abilities": [
+      "Heightened Magic",
+      "Venom"
+    ],
+    "bookRef": {
+      "book": "The Legion of Shadow",
+      "act": 3,
+      "section": 662
+    }
+  },
+  {
+    "type": "enemy",
+    "name": "Caeleb",
+    "stats": {
+      "speed": 13,
+      "brawn": 16,
+      "magic": 0,
+      "armour": 14,
+      "health": 65,
+      "maxHealth": 65
+    },
+    "abilities": [
+      "Shield Slam"
+    ],
+    "bookRef": {
+      "book": "The Legion of Shadow",
+      "act": 3,
+      "section": 676
+    }
+  },
+  {
+    "type": "enemy",
+    "name": "Bone Wyvern",
+    "stats": {
+      "speed": 12,
+      "brawn": 12,
+      "magic": 0,
+      "armour": 10,
+      "health": 50,
+      "maxHealth": 50
+    },
+    "abilities": [
+      "Snapping Beak",
+      "Body of bone"
+    ],
+    "bookRef": {
+      "book": "The Legion of Shadow",
+      "act": 3,
+      "section": 681
+    }
+  },
+  {
+    "type": "enemy",
+    "name": "Death Orb",
+    "stats": {
+      "speed": 15,
+      "brawn": 0,
+      "magic": 12,
+      "armour": 11,
+      "health": 100,
+      "maxHealth": 100
+    },
+    "abilities": [
+      "Eye Beam"
+    ],
+    "bookRef": {
+      "book": "The Legion of Shadow",
+      "act": 3,
+      "section": 684
+    }
+  },
+  {
+    "type": "enemy",
+    "name": "Crawlers",
+    "stats": {
+      "speed": 13,
+      "brawn": 12,
+      "magic": 0,
+      "armour": 10,
+      "health": 100,
+      "maxHealth": 100
+    },
+    "abilities": [],
+    "bookRef": {
+      "book": "The Legion of Shadow",
+      "act": 3,
+      "section": 687
+    }
+  },
+  {
+    "type": "enemy",
+    "name": "Mathis",
+    "stats": {
+      "speed": 15,
+      "brawn": 14,
+      "magic": 0,
+      "armour": 19,
+      "health": 250,
+      "maxHealth": 250
+    },
+    "abilities": [
+      "Snap out of it!"
+    ],
+    "bookRef": {
+      "book": "The Legion of Shadow",
+      "act": 3,
+      "section": 700
+    }
+  },
+  {
+    "type": "enemy",
+    "name": "Raptors",
+    "stats": {
+      "speed": 12,
+      "brawn": 6,
+      "magic": 0,
+      "armour": 8,
+      "health": 60,
+      "maxHealth": 60
+    },
+    "abilities": [
+      "Piercing"
+    ],
+    "bookRef": {
+      "book": "The Legion of Shadow",
+      "act": 3,
+      "section": 701
+    }
+  },
+  {
+    "type": "enemy",
+    "name": "Wights",
+    "stats": {
+      "speed": 13,
+      "brawn": 12,
+      "magic": 0,
+      "armour": 10,
+      "health": 100,
+      "maxHealth": 100
+    },
+    "abilities": [],
+    "bookRef": {
+      "book": "The Legion of Shadow",
+      "act": 3,
+      "section": 703
+    }
+  },
+  {
+    "type": "enemy",
+    "name": "Bone Ghouls",
+    "stats": {
+      "speed": 13,
+      "brawn": 10,
+      "magic": 0,
+      "armour": 12,
+      "health": 100,
+      "maxHealth": 100
+    },
+    "abilities": [
+      "Piercing claws"
+    ],
+    "bookRef": {
+      "book": "The Legion of Shadow",
+      "act": 3,
+      "section": 712
+    }
+  },
+  {
+    "type": "enemy",
+    "name": "Packmasters",
+    "stats": {
+      "speed": 13,
+      "brawn": 12,
+      "magic": 0,
+      "armour": 10,
+      "health": 60,
+      "maxHealth": 60
+    },
+    "abilities": [],
+    "spawns": [
+      "Ghoul Pack"
+    ],
+    "bookRef": {
+      "book": "The Legion of Shadow",
+      "act": 3,
+      "section": 717
+    }
+  },
+  {
+    "type": "enemy",
+    "name": "Ghoul Pack",
+    "stats": {
+      "speed": 12,
+      "brawn": 9,
+      "magic": 0,
+      "armour": 8,
+      "health": 45,
+      "maxHealth": 45
+    },
+    "abilities": [
+      "Frenzy",
+      "Piercing claws"
+    ],
+    "bookRef": {
+      "book": "The Legion of Shadow",
+      "act": 3,
+      "section": 717
+    }
+  },
+  {
+    "type": "enemy",
+    "name": "Ghoulash",
+    "stats": {
+      "speed": 14,
+      "brawn": 13,
+      "magic": 0,
+      "armour": 15,
+      "health": 100,
+      "maxHealth": 100
+    },
+    "abilities": [],
+    "spawns": [
+      "Bracelet",
+      "Bracelet",
+      "Bracelet",
+      "Bracelet"
+    ],
+    "bookRef": {
+      "book": "The Legion of Shadow",
+      "act": 3,
+      "section": 720
+    }
+  },
+  {
+    "type": "enemy",
+    "name": "Bracelet",
+    "stats": {
+      "speed": null,
+      "brawn": 0,
+      "magic": 0,
+      "armour": 8,
+      "health": 20,
+      "maxHealth": 20
+    },
+    "abilities": [
+      "Iron Clad"
+    ],
+    "bookRef": {
+      "book": "The Legion of Shadow",
+      "act": 3,
+      "section": 720
+    }
+  },
+  {
+    "type": "enemy",
+    "name": "Shades",
+    "stats": {
+      "speed": 13,
+      "brawn": 0,
+      "magic": 12,
+      "armour": 12,
+      "health": 120,
+      "maxHealth": 120
+    },
+    "abilities": [
+      "Grave Chill"
+    ],
+    "bookRef": {
+      "book": "The Legion of Shadow",
+      "act": 3,
+      "section": 721
+    }
+  },
+  {
+    "type": "enemy",
+    "name": "Animated weapons",
+    "stats": {
+      "speed": 12,
+      "brawn": 12,
+      "magic": 0,
+      "armour": 9,
+      "health": 40,
+      "maxHealth": 40
+    },
+    "abilities": [
+      "Whirling Blades",
+      "Sinister Steel"
+    ],
+    "bookRef": {
+      "book": "The Legion of Shadow",
+      "act": 3,
+      "section": 725
+    }
+  },
+  {
+    "type": "enemy",
+    "name": "Silleer",
+    "stats": {
+      "speed": 14,
+      "brawn": 0,
+      "magic": 13,
+      "armour": 12,
+      "health": 120,
+      "maxHealth": 120
+    },
+    "abilities": [
+      "Deadly Charge"
+    ],
+    "bookRef": {
+      "book": "The Legion of Shadow",
+      "act": 3,
+      "section": 734
+    }
+  },
+  {
+    "type": "enemy",
+    "name": "Magmageddon",
+    "stats": {
+      "speed": 11,
+      "brawn": 0,
+      "magic": 11,
+      "armour": 9,
+      "health": 60,
+      "maxHealth": 60
+    },
+    "abilities": [
+      "Heat Exposure",
+      "Body of Flame"
+    ],
+    "spawns": [
+      "3 Fire Sprite"
+    ],
+    "bookRef": {
+      "book": "The Legion of Shadow",
+      "act": 3,
+      "section": 738
+    }
+  },
+  {
+    "type": "enemy",
+    "name": "Fire Sprite",
+    "stats": {
+      "speed": null,
+      "brawn": 0,
+      "magic": 0,
+      "armour": 5,
+      "health": 15,
+      "maxHealth": 15
+    },
+    "abilities": [
+      "Fire Sprite"
+    ],
+    "spawns": [
+      "Body of Flame"
+    ],
+    "bookRef": {
+      "book": "The Legion of Shadow",
+      "act": 3,
+      "section": 738
+    }
+  },
+  {
+    "type": "enemy",
+    "name": "Zul Ator",
+    "stats": {
+      "speed": 14,
+      "brawn": 0,
+      "magic": 15,
+      "armour": 12,
+      "health": 100,
+      "maxHealth": 100
+    },
+    "abilities": [
+      "Black Lightening",
+      "Heightened Magic"
+    ],
+    "bookRef": {
+      "book": "The Legion of Shadow",
+      "act": 3,
+      "section": 745
+    }
+  },
+  {
+    "type": "enemy",
+    "name": "Snaide",
+    "stats": {
+      "speed": 14,
+      "brawn": 12,
+      "magic": 0,
+      "armour": 12,
+      "health": 80,
+      "maxHealth": 80
+    },
+    "abilities": [
+      "Dark Claw"
+    ],
+    "bookRef": {
+      "book": "The Legion of Shadow",
+      "act": 3,
+      "section": 746
+    }
+  },
+  {
+    "type": "enemy",
+    "name": "Snaide (Shadow Infusion)",
+    "stats": {
+      "speed": 16,
+      "brawn": 12,
+      "magic": 0,
+      "armour": 12,
+      "health": 80,
+      "maxHealth": 80
+    },
+    "abilities": [
+      "Dark Claw"
+    ],
+    "bookRef": {
+      "book": "The Legion of Shadow",
+      "act": 3,
+      "section": 746
+    }
+  },
+  {
+    "type": "enemy",
+    "name": "Mage Hunter",
+    "stats": {
+      "speed": 14,
+      "brawn": 14,
+      "magic": 0,
+      "armour": 14,
+      "health": 90,
+      "maxHealth": 90
+    },
+    "abilities": [
+      "Whirling Blades",
+      "Black Poison",
+      "Wounded"
+    ],
+    "bookRef": {
+      "book": "The Legion of Shadow",
+      "act": 3,
+      "section": 748
+    }
+  },
+  {
+    "type": "enemy",
+    "name": "Dr. Liechtenstein",
+    "stats": {
+      "speed": 15,
+      "brawn": 14,
+      "magic": 0,
+      "armour": 10,
+      "health": 120,
+      "maxHealth": 120
+    },
+    "abilities": [
+      "Mad Scientist"
+    ],
+    "bookRef": {
+      "book": "The Legion of Shadow",
+      "act": 3,
+      "section": 752
+    }
+  },
+  {
+    "type": "enemy",
+    "name": "Nyms",
+    "stats": {
+      "speed": 13,
+      "brawn": 13,
+      "magic": 0,
+      "armour": 12,
+      "health": 65,
+      "maxHealth": 65
+    },
+    "abilities": [
+      "Double Danger",
+      "Lightning Reflexes"
+    ],
+    "bookRef": {
+      "book": "The Legion of Shadow",
+      "act": 3,
+      "section": 753
+    }
+  },
+  {
+    "type": "enemy",
+    "name": "Packmasater",
+    "stats": {
+      "speed": 13,
+      "brawn": 12,
+      "magic": 0,
+      "armour": 12,
+      "health": 50,
+      "maxHealth": 50
+    },
+    "abilities": [
+      "Whiplash"
+    ],
+    "bookRef": {
+      "book": "The Legion of Shadow",
+      "act": 3,
+      "section": 756
+    }
+  },
+  {
+    "type": "enemy",
+    "name": "Bone Giants",
+    "stats": {
+      "speed": 13,
+      "brawn": 14,
+      "magic": 0,
+      "armour": 14,
+      "health": 100,
+      "maxHealth": 100
+    },
+    "abilities": [
+      "Knockdown",
+      "Body of Bone"
+    ],
+    "bookRef": {
+      "book": "The Legion of Shadow",
+      "act": 3,
+      "section": 758
+    }
+  },
+  {
+    "type": "enemy",
+    "name": "Horrors",
+    "stats": {
+      "speed": 14,
+      "brawn": 12,
+      "magic": 0,
+      "armour": 10,
+      "health": 100,
+      "maxHealth": 100
+    },
+    "abilities": [
+      "Sucker Punch"
+    ],
+    "spawns": [
+      "Locust"
+    ],
+    "bookRef": {
+      "book": "The Legion of Shadow",
+      "act": 3,
+      "section": 764
+    }
+  },
+  {
+    "type": "enemy",
+    "name": "Locust",
     "stats": {
       "speed": null,
       "brawn": 0,
@@ -2537,12 +3224,1063 @@ export const ENEMIES: Enemy[] = [
       "maxHealth": 25
     },
     "abilities": [
-      ""
+      "Nasty Nibblers"
     ],
     "bookRef": {
       "book": "The Legion of Shadow",
-      "act": 2,
-      "section": null
+      "act": 3,
+      "section": 764
+    }
+  },
+  {
+    "type": "enemy",
+    "name": "Necromancer",
+    "stats": {
+      "speed": 14,
+      "brawn": 0,
+      "magic": 12,
+      "armour": 8,
+      "health": 50,
+      "maxHealth": 50
+    },
+    "abilities": [
+      "Raise Dead"
+    ],
+    "spawns": [
+      "Skeleton Horde"
+    ],
+    "bookRef": {
+      "book": "The Legion of Shadow",
+      "act": 3,
+      "section": 768
+    }
+  },
+  {
+    "type": "enemy",
+    "name": "Skeleton Horde",
+    "stats": {
+      "speed": 13,
+      "brawn": 0,
+      "magic": 8,
+      "armour": 10,
+      "health": 60,
+      "maxHealth": 60
+    },
+    "abilities": [
+      "Body of Bone"
+    ],
+    "bookRef": {
+      "book": "The Legion of Shadow",
+      "act": 3,
+      "section": 768
+    }
+  },
+  {
+    "type": "enemy",
+    "name": "Bone Construct",
+    "stats": {
+      "speed": 12,
+      "brawn": 12,
+      "magic": 0,
+      "armour": 10,
+      "health": 50,
+      "maxHealth": 50
+    },
+    "abilities": [
+      "Raking Claws",
+      "Wyvern Talons",
+      "Body of Bone"
+    ],
+    "bookRef": {
+      "book": "The Legion of Shadow",
+      "act": 3,
+      "section": 772
+    }
+  },
+  {
+    "type": "enemy",
+    "name": "Tor Knight",
+    "stats": {
+      "speed": 13,
+      "brawn": 14,
+      "magic": 0,
+      "armour": 24,
+      "health": 80,
+      "maxHealth": 80
+    },
+    "abilities": [
+      "Dismantle",
+      "Steel yourself"
+    ],
+    "bookRef": {
+      "book": "The Legion of Shadow",
+      "act": 3,
+      "section": 773
+    }
+  },
+  {
+    "type": "enemy",
+    "name": "Ghoul Pack",
+    "stats": {
+      "speed": 13,
+      "brawn": 7,
+      "magic": 0,
+      "armour": 12,
+      "health": 60,
+      "maxHealth": 60
+    },
+    "abilities": [
+      "Piercing Claws"
+    ],
+    "bookRef": {
+      "book": "The Legion of Shadow",
+      "act": 3,
+      "section": 781
+    }
+  },
+  {
+    "type": "enemy",
+    "name": "Sharroth",
+    "stats": {
+      "speed": 14,
+      "brawn": 0,
+      "magic": 14,
+      "armour": 12,
+      "health": 100,
+      "maxHealth": 100
+    },
+    "abilities": [],
+    "spawns": [
+      "Tentacle",
+      "Tentacle",
+      "Tentacle",
+      "Tentacle"
+    ],
+    "bookRef": {
+      "book": "The Legion of Shadow",
+      "act": 3,
+      "section": 782
+    }
+  },
+  {
+    "type": "enemy",
+    "name": "Tentacle",
+    "stats": {
+      "speed": null,
+      "brawn": 0,
+      "magic": 0,
+      "armour": 6,
+      "health": 20,
+      "maxHealth": 20
+    },
+    "abilities": [
+      "Oozing Tentacles"
+    ],
+    "bookRef": {
+      "book": "The Legion of Shadow",
+      "act": 3,
+      "section": 782
+    }
+  },
+  {
+    "type": "enemy",
+    "name": "Baalim",
+    "stats": {
+      "speed": 12,
+      "brawn": 10,
+      "magic": 0,
+      "armour": 10,
+      "health": 80,
+      "maxHealth": 80
+    },
+    "abilities": [
+      "Thorn Fists",
+      "Heightened Senses"
+    ],
+    "bookRef": {
+      "book": "The Legion of Shadow",
+      "act": 3,
+      "section": 784
+    }
+  },
+  {
+    "type": "enemy",
+    "name": "Dark Arthurian",
+    "stats": {
+      "speed": 13,
+      "brawn": 0,
+      "magic": 12,
+      "armour": 13,
+      "health": 80,
+      "maxHealth": 80
+    },
+    "abilities": [
+      "Dark Mending",
+      "Team Effort",
+      "Heal me"
+    ],
+    "spawns": [
+      "Necromancer",
+      "Necromancer",
+      "Necromancer"
+    ],
+    "bookRef": {
+      "book": "The Legion of Shadow",
+      "act": 3,
+      "section": 790
+    }
+  },
+  {
+    "type": "enemy",
+    "name": "Necromancer",
+    "stats": {
+      "speed": 0,
+      "brawn": 0,
+      "magic": 0,
+      "armour": 6,
+      "health": 20,
+      "maxHealth": 20
+    },
+    "abilities": [
+      "Raise Dead"
+    ],
+    "spawns": [
+      "Skeleton Horde"
+    ],
+    "bookRef": {
+      "book": "The Legion of Shadow",
+      "act": 3,
+      "section": 790
+    }
+  },
+  {
+    "type": "enemy",
+    "name": "The Architect",
+    "stats": {
+      "speed": 12,
+      "brawn": 13,
+      "magic": 0,
+      "armour": 15,
+      "health": 80,
+      "maxHealth": 80
+    },
+    "abilities": [],
+    "spawns": [
+      "Holy Flame",
+      "Holy Circle",
+      "Holy Shield"
+    ],
+    "bookRef": {
+      "book": "The Legion of Shadow",
+      "act": 3,
+      "section": 804
+    }
+  },
+  {
+    "type": "enemy",
+    "name": "Holy Flame",
+    "stats": {
+      "speed": null,
+      "brawn": 0,
+      "magic": 0,
+      "armour": 4,
+      "health": 15,
+      "maxHealth": 15
+    },
+    "abilities": [
+      "Holy Flame"
+    ],
+    "bookRef": {
+      "book": "The Legion of Shadow",
+      "act": 3,
+      "section": 804
+    }
+  },
+  {
+    "type": "enemy",
+    "name": "Holy Circle",
+    "stats": {
+      "speed": null,
+      "brawn": 0,
+      "magic": 0,
+      "armour": 4,
+      "health": 15,
+      "maxHealth": 15
+    },
+    "abilities": [
+      "Holy Circle"
+    ],
+    "bookRef": {
+      "book": "The Legion of Shadow",
+      "act": 3,
+      "section": 804
+    }
+  },
+  {
+    "type": "enemy",
+    "name": "Holy Shield",
+    "stats": {
+      "speed": null,
+      "brawn": 0,
+      "magic": 0,
+      "armour": 4,
+      "health": 15,
+      "maxHealth": 15
+    },
+    "abilities": [
+      "Holy Shield"
+    ],
+    "bookRef": {
+      "book": "The Legion of Shadow",
+      "act": 3,
+      "section": 804
+    }
+  },
+  {
+    "type": "enemy",
+    "name": "Daarko",
+    "stats": {
+      "speed": 15,
+      "brawn": 0,
+      "magic": 0,
+      "armour": null,
+      "health": 140,
+      "maxHealth": 140
+    },
+    "abilities": [
+      "Elemental Master"
+    ],
+    "bookRef": {
+      "book": "The Legion of Shadow",
+      "act": 3,
+      "section": 807
+    }
+  },
+  {
+    "type": "enemy",
+    "name": "Daarko (Shadow Form)",
+    "stats": {
+      "speed": 15,
+      "brawn": 0,
+      "magic": 11,
+      "armour": 12,
+      "health": 140,
+      "maxHealth": 140
+    },
+    "abilities": [
+      "Elemental Master",
+      "Shadow Form"
+    ],
+    "bookRef": {
+      "book": "The Legion of Shadow",
+      "act": 3,
+      "section": 807
+    }
+  },
+  {
+    "type": "enemy",
+    "name": "Daarko (Flame Form)",
+    "stats": {
+      "speed": 15,
+      "brawn": 0,
+      "magic": 16,
+      "armour": 10,
+      "health": 140,
+      "maxHealth": 140
+    },
+    "abilities": [
+      "Elemental Master",
+      "Flame Form"
+    ],
+    "bookRef": {
+      "book": "The Legion of Shadow",
+      "act": 3,
+      "section": 807
+    }
+  },
+  {
+    "type": "enemy",
+    "name": "Daarko (Rock Form)",
+    "stats": {
+      "speed": 15,
+      "brawn": 0,
+      "magic": 13,
+      "armour": 20,
+      "health": 140,
+      "maxHealth": 140
+    },
+    "abilities": [
+      "Elemental Master",
+      "Rock Form"
+    ],
+    "bookRef": {
+      "book": "The Legion of Shadow",
+      "act": 3,
+      "section": 807
+    }
+  },
+  {
+    "type": "enemy",
+    "name": "Sanrah",
+    "stats": {
+      "speed": 15,
+      "brawn": 10,
+      "magic": 0,
+      "armour": 11,
+      "health": 140,
+      "maxHealth": 140
+    },
+    "abilities": [
+      "Retaliation",
+      "Inquisitor's Wrath",
+      "Healer's Gift"
+    ],
+    "bookRef": {
+      "book": "The Legion of Shadow",
+      "act": 3,
+      "section": 809
+    }
+  },
+  {
+    "type": "enemy",
+    "name": "Tomb Robber",
+    "stats": {
+      "speed": 12,
+      "brawn": 11,
+      "magic": 0,
+      "armour": 8,
+      "health": 70,
+      "maxHealth": 70
+    },
+    "abilities": [
+      "Keen Edge"
+    ],
+    "bookRef": {
+      "book": "The Legion of Shadow",
+      "act": 3,
+      "section": 816
+    }
+  },
+  {
+    "type": "enemy",
+    "name": "Gorgis",
+    "stats": {
+      "speed": 14,
+      "brawn": 8,
+      "magic": 0,
+      "armour": 13,
+      "health": 100,
+      "maxHealth": 100
+    },
+    "abilities": [
+      "Fatigue",
+      "Piercing",
+      "Iron-Mane"
+    ],
+    "bookRef": {
+      "book": "The Legion of Shadow",
+      "act": 3,
+      "section": 817
+    }
+  },
+  {
+    "type": "enemy",
+    "name": "Sentient Anomaly",
+    "stats": {
+      "speed": 12,
+      "brawn": 0,
+      "magic": 16,
+      "armour": 0,
+      "health": 0,
+      "maxHealth": 0
+    },
+    "abilities": [
+      "Absorption",
+      "Concentration"
+    ],
+    "bookRef": {
+      "book": "The Legion of Shadow",
+      "act": 3,
+      "section": 818
+    }
+  },
+  {
+    "type": "enemy",
+    "name": "Scarron",
+    "stats": {
+      "speed": 16,
+      "brawn": 15,
+      "magic": 0,
+      "armour": 10,
+      "health": 30,
+      "maxHealth": 30
+    },
+    "abilities": [
+      "A Siege of Scarrons"
+    ],
+    "bookRef": {
+      "book": "The Legion of Shadow",
+      "act": 3,
+      "section": 821
+    }
+  },
+  {
+    "type": "enemy",
+    "name": "Scarron",
+    "stats": {
+      "speed": 15,
+      "brawn": 12,
+      "magic": 0,
+      "armour": 8,
+      "health": 25,
+      "maxHealth": 25
+    },
+    "abilities": [
+      "A Siege of Scarrons"
+    ],
+    "bookRef": {
+      "book": "The Legion of Shadow",
+      "act": 3,
+      "section": 821
+    }
+  },
+  {
+    "type": "enemy",
+    "name": "Scarron",
+    "stats": {
+      "speed": 15,
+      "brawn": 14,
+      "magic": 0,
+      "armour": 10,
+      "health": 30,
+      "maxHealth": 30
+    },
+    "abilities": [
+      "A Siege of Scarrons"
+    ],
+    "bookRef": {
+      "book": "The Legion of Shadow",
+      "act": 3,
+      "section": 821
+    }
+  },
+  {
+    "type": "enemy",
+    "name": "Scarron",
+    "stats": {
+      "speed": 15,
+      "brawn": 12,
+      "magic": 0,
+      "armour": 8,
+      "health": 25,
+      "maxHealth": 25
+    },
+    "abilities": [
+      "A Siege of Scarrons"
+    ],
+    "bookRef": {
+      "book": "The Legion of Shadow",
+      "act": 3,
+      "section": 821
+    }
+  },
+  {
+    "type": "enemy",
+    "name": "Scarron",
+    "stats": {
+      "speed": 15,
+      "brawn": 14,
+      "magic": 0,
+      "armour": 10,
+      "health": 30,
+      "maxHealth": 30
+    },
+    "abilities": [
+      "A Siege of Scarrons"
+    ],
+    "bookRef": {
+      "book": "The Legion of Shadow",
+      "act": 3,
+      "section": 821
+    }
+  },
+  {
+    "type": "enemy",
+    "name": "Viprus",
+    "stats": {
+      "speed": 14,
+      "brawn": 13,
+      "magic": 0,
+      "armour": 10,
+      "health": 100,
+      "maxHealth": 100
+    },
+    "abilities": [
+      "Deadly Venom"
+    ],
+    "spawns": [
+      "Snakes"
+    ],
+    "bookRef": {
+      "book": "The Legion of Shadow",
+      "act": 3,
+      "section": 835
+    }
+  },
+  {
+    "type": "enemy",
+    "name": "Snakes",
+    "stats": {
+      "speed": 0,
+      "brawn": 0,
+      "magic": 0,
+      "armour": 8,
+      "health": 50,
+      "maxHealth": 50
+    },
+    "abilities": [
+      "Tight Spot"
+    ],
+    "bookRef": {
+      "book": "The Legion of Shadow",
+      "act": 3,
+      "section": 835
+    }
+  },
+  {
+    "type": "enemy",
+    "name": "Sammain",
+    "stats": {
+      "speed": 13,
+      "brawn": 0,
+      "magic": 10,
+      "armour": 20,
+      "health": 90,
+      "maxHealth": 90
+    },
+    "abilities": [
+      "Wrath of Winter",
+      "Shatter Shield"
+    ],
+    "bookRef": {
+      "book": "The Legion of Shadow",
+      "act": 3,
+      "section": 842
+    }
+  },
+  {
+    "type": "enemy",
+    "name": "Bone Angel",
+    "stats": {
+      "speed": 13,
+      "brawn": 11,
+      "magic": 0,
+      "armour": 11,
+      "health": 90,
+      "maxHealth": 90
+    },
+    "abilities": [
+      "Terrible Talons",
+      "Holy Aura",
+      "Caaleb's Shield"
+    ],
+    "bookRef": {
+      "book": "The Legion of Shadow",
+      "act": 3,
+      "section": 849
+    }
+  },
+  {
+    "type": "enemy",
+    "name": "Ghasts",
+    "stats": {
+      "speed": 16,
+      "brawn": 9,
+      "magic": 0,
+      "armour": 7,
+      "health": 140,
+      "maxHealth": 140
+    },
+    "abilities": [
+      "Gathering of Ghasts",
+      "Bolt from the Blue"
+    ],
+    "bookRef": {
+      "book": "The Legion of Shadow",
+      "act": 3,
+      "section": 854
+    }
+  },
+  {
+    "type": "enemy",
+    "name": "Styraxian Steed",
+    "stats": {
+      "speed": 15,
+      "brawn": 13,
+      "magic": 0,
+      "armour": 16,
+      "health": 90,
+      "maxHealth": 90
+    },
+    "abilities": [
+      "Blindside",
+      "Sharpshooter"
+    ],
+    "bookRef": {
+      "book": "The Legion of Shadow",
+      "act": 3,
+      "section": 861
+    }
+  },
+  {
+    "type": "enemy",
+    "name": "Clockwerk",
+    "stats": {
+      "speed": 12,
+      "brawn": 11,
+      "magic": 0,
+      "armour": 10,
+      "health": 80,
+      "maxHealth": 80
+    },
+    "abilities": [
+      "Body of Metal"
+    ],
+    "bookRef": {
+      "book": "The Legion of Shadow",
+      "act": 3,
+      "section": 872
+    }
+  },
+  {
+    "type": "enemy",
+    "name": "Cerebral Cortex",
+    "stats": {
+      "speed": 15,
+      "brawn": 0,
+      "magic": 10,
+      "armour": 8,
+      "health": 180,
+      "maxHealth": 180
+    },
+    "abilities": [
+      "Neural Blast",
+      "Magic Shield"
+    ],
+    "bookRef": {
+      "book": "The Legion of Shadow",
+      "act": 3,
+      "section": 877
+    }
+  },
+  {
+    "type": "enemy",
+    "name": "Jorvic",
+    "stats": {
+      "speed": 12,
+      "brawn": 13,
+      "magic": 0,
+      "armour": 10,
+      "health": 100,
+      "maxHealth": 100
+    },
+    "abilities": [
+      "Two Arms!",
+      "Heal me!",
+      "Team Effort"
+    ],
+    "bookRef": {
+      "book": "The Legion of Shadow",
+      "act": 3,
+      "section": 878
+    }
+  },
+  {
+    "type": "enemy",
+    "name": "Keldred",
+    "stats": {
+      "speed": 13,
+      "brawn": 10,
+      "magic": 0,
+      "armour": 8,
+      "health": 90,
+      "maxHealth": 90
+    },
+    "abilities": [
+      "Mark of Fury",
+      "Heightened Senses"
+    ],
+    "bookRef": {
+      "book": "The Legion of Shadow",
+      "act": 3,
+      "section": 886
+    }
+  },
+  {
+    "type": "enemy",
+    "name": "Malaise",
+    "stats": {
+      "speed": 12,
+      "brawn": 11,
+      "magic": 0,
+      "armour": 10,
+      "health": 90,
+      "maxHealth": 90
+    },
+    "abilities": [
+      "Withering Strikes",
+      "Deadly Venom"
+    ],
+    "bookRef": {
+      "book": "The Legion of Shadow",
+      "act": 3,
+      "section": 904
+    }
+  },
+  {
+    "type": "enemy",
+    "name": "Apprentice",
+    "stats": {
+      "speed": 12,
+      "brawn": 0,
+      "magic": 9,
+      "armour": 8,
+      "health": 85,
+      "maxHealth": 85
+    },
+    "abilities": [
+      "Giblets",
+      "Dark Master"
+    ],
+    "bookRef": {
+      "book": "The Legion of Shadow",
+      "act": 3,
+      "section": 911
+    }
+  },
+  {
+    "type": "enemy",
+    "name": "Branded Brute",
+    "stats": {
+      "speed": 13,
+      "brawn": 14,
+      "magic": 0,
+      "armour": 8,
+      "health": 110,
+      "maxHealth": 110
+    },
+    "abilities": [
+      "Power of Shadow",
+      "Dark Runes"
+    ],
+    "bookRef": {
+      "book": "The Legion of Shadow",
+      "act": 3,
+      "section": 919
+    }
+  },
+  {
+    "type": "enemy",
+    "name": "Sentries",
+    "stats": {
+      "speed": 15,
+      "brawn": 0,
+      "magic": 12,
+      "armour": 0,
+      "health": 25,
+      "maxHealth": 25
+    },
+    "abilities": [
+      "Endless Swarm"
+    ],
+    "bookRef": {
+      "book": "The Legion of Shadow",
+      "act": 3,
+      "section": 921
+    }
+  },
+  {
+    "type": "enemy",
+    "name": "Membrane",
+    "stats": {
+      "speed": 0,
+      "brawn": 0,
+      "magic": 0,
+      "armour": 19,
+      "health": 80,
+      "maxHealth": 80
+    },
+    "abilities": [
+      "Avian's aid"
+    ],
+    "bookRef": {
+      "book": "The Legion of Shadow",
+      "act": 3,
+      "section": 921
+    }
+  },
+  {
+    "type": "enemy",
+    "name": "Poison Nodes",
+    "stats": {
+      "speed": 0,
+      "brawn": 0,
+      "magic": 0,
+      "armour": 5,
+      "health": 60,
+      "maxHealth": 60
+    },
+    "abilities": [
+      "Poison Nodes"
+    ],
+    "bookRef": {
+      "book": "The Legion of Shadow",
+      "act": 3,
+      "section": 921
+    }
+  },
+  {
+    "type": "enemy",
+    "name": "Decayers",
+    "stats": {
+      "speed": 15,
+      "brawn": 13,
+      "magic": 0,
+      "armour": 7,
+      "health": 100,
+      "maxHealth": 100
+    },
+    "abilities": [
+      "Disease"
+    ],
+    "bookRef": {
+      "book": "The Legion of Shadow",
+      "act": 3,
+      "section": 924
+    }
+  },
+  {
+    "type": "enemy",
+    "name": "Spore Cloud",
+    "stats": {
+      "speed": 0,
+      "brawn": 0,
+      "magic": 0,
+      "armour": 4,
+      "health": 40,
+      "maxHealth": 40
+    },
+    "abilities": [
+      "Swarm of Spores",
+      "Natural Immunity"
+    ],
+    "bookRef": {
+      "book": "The Legion of Shadow",
+      "act": 3,
+      "section": 924
+    }
+  },
+  {
+    "type": "enemy",
+    "name": "Lansbury's Shield",
+    "stats": {
+      "speed": 0,
+      "brawn": 0,
+      "magic": 0,
+      "armour": 0,
+      "health": 25,
+      "maxHealth": 25
+    },
+    "abilities": [],
+    "bookRef": {
+      "book": "The Legion of Shadow",
+      "act": 3,
+      "section": 924
+    }
+  },
+  {
+    "type": "enemy",
+    "name": "The Wrecker",
+    "stats": {
+      "speed": 15,
+      "brawn": 14,
+      "magic": 0,
+      "armour": 11,
+      "health": 120,
+      "maxHealth": 120
+    },
+    "abilities": [
+      "Clobbering Time",
+      "Inquisitor's Wrath",
+      "Healer's Gift"
+    ],
+    "bookRef": {
+      "book": "The Legion of Shadow",
+      "act": 3,
+      "section": 930
+    }
+  },
+  {
+    "type": "enemy",
+    "name": "Banshee",
+    "stats": {
+      "speed": 14,
+      "brawn": 13,
+      "magic": 0,
+      "armour": 8,
+      "health": 76,
+      "maxHealth": 76
+    },
+    "abilities": [
+      "Gathering Darkness",
+      "Wail of the Banshee"
+    ],
+    "bookRef": {
+      "book": "The Legion of Shadow",
+      "act": 3,
+      "section": 932
+    }
+  },
+  {
+    "type": "enemy",
+    "name": "Lorcan",
+    "stats": {
+      "speed": 15,
+      "brawn": 0,
+      "magic": 13,
+      "armour": 8,
+      "health": 100,
+      "maxHealth": 100
+    },
+    "abilities": [
+      "Enduring Spirit"
+    ],
+    "bookRef": {
+      "book": "The Legion of Shadow",
+      "act": 3,
+      "section": 939
+    }
+  },
+  {
+    "type": "enemy",
+    "name": "Statue",
+    "stats": {
+      "speed": 0,
+      "brawn": 0,
+      "magic": 0,
+      "armour": 10,
+      "health": 24,
+      "maxHealth": 24
+    },
+    "abilities": [
+      "Stomping Statues",
+      "Magic of the Makers",
+      "Enchanted Stone"
+    ],
+    "bookRef": {
+      "book": "The Legion of Shadow",
+      "act": 3,
+      "section": 939
     }
   }
 ];

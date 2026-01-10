@@ -28,8 +28,15 @@ function parseCSV(content) {
     // Act,Enemy Name,Entry,S,B,M,A,H,Special Abilities / Logic Hooks
     // Map headers to simpler keys if needed, but we can just rely on index or standard mapping
 
-    return lines.slice(1).map(line => {
+    return lines.map(line => {
+        if (line.startsWith('#')) {
+            return;
+        }
         const parts = parseLine(line);
+        if (parts.length < 10) {
+            console.error('Too few columns, skipping line:', line);
+            return;
+        }
 
         // CSV columns: Act,Enemy Name,Entry,S,B,M,A,H,Abilities
         const book = parts[0];
@@ -43,10 +50,11 @@ function parseCSV(content) {
         const magic = parseStat(parts[6]);
         const armour = parseStat(parts[7]);
         const health = parseStat(parts[8]);
-        const abilities = parts[9].trim().split(';');
+        const abilities = parts[9].trim().split(';').map(s => s.trim());
+        const spawns = parts[10]?.trim().split(';').map(s => s.trim());
+        const notes = parts[11]?.trim();
 
         // TODO: Handle minions.
-
         return {
             type: 'enemy',
             name,
@@ -58,15 +66,17 @@ function parseCSV(content) {
                 health,
                 maxHealth: health
             },
-            abilities: abilities,
+            abilities: abilities?.length === 1 && abilities[0] === '' ? [] : abilities,
+            spawns: spawns?.length === 1 && spawns[0] === '' ? undefined : spawns,
             bookRef: {
                 book: book,
                 act: act,
                 section: parseInt(entry, 10)
-            }
+            },
+            notes: notes || undefined,
         };
 
-    });
+    }).filter(e => e !== undefined);
 }
 
 const __filename = fileURLToPath(import.meta.url);

@@ -1,16 +1,29 @@
-# Item Name,Effect,Uses,Notes,Book,Act,Reference Number
-Healing Potion,+6 health,1,Sold by the Apothecary,The Legion of Shadow,1,56
-Speed Potion,+2 speed / 1 rd,1,Sold by the Apothecary,The Legion of Shadow,1,56
-Brawn Potion,+2 brawn / 1 rd,1,Sold by the Apothecary,The Legion of Shadow,1,56
-Magic Potion,+2 magic / 1 rd,1,Sold by the Apothecary,The Legion of Shadow,1,56
-Crocodile Skin,,0,Dropped by the Crocodile,The Legion of Shadow,1,118
-Goblin Grog,+4 health,2,Found in Goblin loot,The Legion of Shadow,1,125
-Healing Salve,+6 health,1,Found in Goblin loot,The Legion of Shadow,1,125
-Miracle Grow,+2 brawn / 1 rd,1,Found in Goblin loot,The Legion of Shadow,1,125
-Ghoul Hair,,0,Dropped by Ghouls,The Legion of Shadow,1,127
-Explosives / Bombs,+10 damage,1,Sold by the Tinker,The Legion of Shadow,1,175
-Spider's Leg,,0,Dropped by Spiders,The Legion of Shadow,1,179
-Goblin Grog,+4 health,2,Found in Goblin Chief's loot,The Legion of Shadow,1,260
-Da Boss,+10 damage,1,Sold by Sea-Spray Steve,The Legion of Shadow,1,432
-
-Spindle Silk,,2,Perhaps a master clothier could do something with this fine silk,The Legion of Shadow,1,48
+# Book,Act,Reference,Item Name,Effect,Uses,Descriptions,Notes
+The Legion of Shadow,1,56,Healing Potion,+6 health,1,,Sold by the Apothecary
+The Legion of Shadow,1,56,Speed Potion,+2 speed / 1 rd,1,,Sold by the Apothecary
+The Legion of Shadow,1,56,Brawn Potion,+2 brawn / 1 rd,1,,Sold by the Apothecary
+The Legion of Shadow,1,56,Magic Potion,+2 magic / 1 rd,1,,Sold by the Apothecary
+The Legion of Shadow,1,118,Crocodile Skin,,0,,Dropped by the Crocodile
+The Legion of Shadow,1,125,Goblin Grog,+4 health,2,,Found in Goblin loot
+The Legion of Shadow,1,125,Healing Salve,+6 health,1,,Found in Goblin loot
+The Legion of Shadow,1,125,Miracle Grow,+2 brawn / 1 rd,1,,Found in Goblin loot
+The Legion of Shadow,1,127,Ghoul Hair,,0,,Dropped by Ghouls
+The Legion of Shadow,1,175,Explosives / Bombs,+10 damage,1,,Sold by the Tinker
+The Legion of Shadow,1,179,Spider's Leg,,0,,Dropped by Spiders
+The Legion of Shadow,1,260,Goblin Grog,+4 health,2,,Found in Goblin Chief's loot
+The Legion of Shadow,1,432,Da Boss,+10 damage,1,,Sold by Sea-Spray Steve
+The Legion of Shadow,1,48,Spindle Silk,,2,Perhaps a master clothier could do something with this fine silk
+The Legion of Shadow,1,640,Jar of Night Creeps,,0,They're slimey,
+The Legion of Shadow,1,648,Borehole Explosives,,0,Warning: Handle with Care,
+The Legion of Shadow,1,697,Flask of Healing,+10 health,1,,Sold by Lansbury
+The Legion of Shadow,1,697,Elixir of Swiftness,+4 speed / 1 rd,1,,Sold by Lansbury
+The Legion of Shadow,1,724,Pot of Mending,+12 health,1,,Found
+The Legion of Shadow,1,726,Pot of Mending,+12 health,1,,Found
+The Legion of Shadow,1,776,Elixir of Life,Restore health,1,,Found
+The Legion of Shadow,1,776,Fluffy dice,,1,The ultimate in backpack accessories,Found
+The Legion of Shadow,1,785,Scarron bile,Vitriol,2,It smells bad. Very bad.,Dropped by Scarrons
+The Legion of Shadow,1,794,Spirit Tincture,-4 health; +2 brawn|magic / combat,1,,Dropped by Ghasts
+The Legion of Shadow,1,802,Ghoolish Gloup,+2 armour / combat,2,,Dropped by Mages
+The Legion of Shadow,1,808,Arthurian's Horn,+20 damage,1,,Dropped by Necromancers
+The Legion of Shadow,1,827,Oil flask,2 damage dice instead of damage score,2,,
+The Legion of Shadow,1,890,Portable Shield,-10 damage,1,,

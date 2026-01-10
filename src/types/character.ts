@@ -19,4 +19,6 @@ export interface Enemy extends Character {
     abilities: string[];
     preventHealing?: boolean;
     bookRef: BookRef;
+    spawns?: string[];
+    notes?: string;
 }
