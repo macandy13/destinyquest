@@ -2,12 +2,6 @@ import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
-
-const CSV_PATH = path.join(__dirname, '../src/data/enemies.csv');
-const OUTPUT_PATH = path.join(__dirname, '../src/data/enemies.ts');
-
 function parseCSV(content) {
     const lines = content.trim().split('\n');
     const headers = lines[0].split(',').map(h => h.trim());
@@ -69,18 +63,13 @@ function parseCSV(content) {
     });
 }
 
-try {
-    const content = fs.readFileSync(CSV_PATH, 'utf-8');
-    const enemies = parseCSV(content);
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+const inputFile = path.join(__dirname, '../src/data/enemies.csv');
+const content = fs.readFileSync(inputFile, 'utf-8');
+const enemies = parseCSV(content);
 
-    const fileContent = `import { Enemy } from '../types/character';
+console.log(`import { Enemy } from '../types/character';
 
 export const ENEMIES: Enemy[] = ${JSON.stringify(enemies, null, 2)};
-`;
-
-    fs.writeFileSync(OUTPUT_PATH, fileContent);
-    console.log(`Successfully generated enemies.ts with ${enemies.length} enemies.`);
-} catch (error) {
-    console.error('Error generating enemies:', error);
-    process.exit(1);
-}
+`);

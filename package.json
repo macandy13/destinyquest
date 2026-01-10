@@ -8,9 +8,9 @@
         "build": "tsc && vite build",
         "preview": "vite preview",
         "test": "vitest run",
-        "generate:enemies": "node scripts/generateEnemies.js",
-        "generate:items": "node scripts/parse_items.js > src/data/items.ts",
-        "generate:backpack": "node scripts/parse_backpack.js > src/data/backpackItems.ts"
+        "generate:enemies": "node scripts/generateEnemies.js > src/data/enemies.ts",
+        "generate:items": "node scripts/generateItems.js > src/data/items.ts",
+        "generate:backpack": "node scripts/generateBackpackItems.js > src/data/backpackItems.ts"
     },
     "dependencies": {
         "glob": "^13.0.0",
