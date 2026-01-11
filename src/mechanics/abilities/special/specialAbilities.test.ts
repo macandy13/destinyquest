@@ -1,10 +1,13 @@
-import { describe, expect, it, beforeEach } from 'vitest';
+import { describe, expect, it, beforeEach, assert } from 'vitest';
 import { CombatState, hasAbility, hasEffect } from '../../../types/combatState';
-import { createCombatant, MOCK_HERO, MOCK_ENEMY, INITIAL_STATE } from '../../../tests/testUtils';
-import { getAbilityDefinition } from '../../abilityRegistry';
+import { createCombatant, MOCK_HERO, MOCK_ENEMY, INITIAL_STATE, mockDiceRolls } from '../../../tests/testUtils';
+import { AbilityDefinition, getAbilityDefinition } from '../../abilityRegistry';
 import './immunities';
 import './passiveDamage';
 import './statModifiers';
+import './Acid';
+import './AndByCrook';
+import './Bewitched';
 import './specialAbilityPatterns';
 
 describe('Special Abilities Patterns', () => {
@@ -122,6 +125,92 @@ describe('Special Abilities Patterns', () => {
             const effect = state.hero.activeEffects.find(e => e.source === 'Holy Aura');
             expect(effect).toBeDefined();
             expect(effect?.stats?.brawn).toBe(2);
+        });
+    });
+
+    describe('Round Start Abilities', () => {
+        it('should trigger Acid damage on roll of 1 or 2', () => {
+            const def = getAbilityDefinition('Acid');
+            assert(def && def.onRoundStart);
+            const ability = def!;
+
+            const enemy = {
+                ...MOCK_ENEMY,
+                abilities: [ability.name]
+            };
+            state.enemy = createCombatant(enemy);
+            state.hero = createCombatant(MOCK_HERO);
+
+            mockDiceRolls([1]);
+
+            state = ability.onRoundStart!(state, { ability: undefined, owner: 'enemy', target: 'hero' });
+
+            expect(state.hero.stats.health).toBeLessThan(MOCK_HERO.stats.health);
+            expect(state.logs.some(l => l.message.includes('Acid check: rolled 1'))).toBe(true);
+        });
+
+        it('should apply And by crook modifiers when health < 20', () => {
+            const def = getAbilityDefinition('And by crook');
+            assert(def && def.onRoundStart);
+            const ability = def!;
+
+            const enemy = {
+                ...MOCK_ENEMY,
+                abilities: ['And by crook'],
+                stats: { ...MOCK_ENEMY.stats, health: 30, maxHealth: 30 }
+            };
+            state.enemy = createCombatant(enemy);
+
+            state = ability.onRoundStart!(state, { ability: undefined, owner: 'enemy' });
+            expect(hasEffect(state, 'enemy', 'And by crook')).toBe(false);
+
+            // 2. Reduce health to 15
+            state.enemy.stats.health = 15;
+            state = ability.onRoundStart!(state, { ability: undefined, owner: 'enemy' });
+            expect(hasEffect(state, 'enemy', 'And by crook')).toBe(true);
+
+            // Check effective stats would have speedDice=1 (2-1) and damageDice=2 (1+1)
+            // (Assuming base defaults 2 and 1)
+            const effect = state.enemy.activeEffects.find(e => e.source === 'And by crook');
+            expect(effect?.stats.speedDice).toBe(-1);
+            expect(effect?.stats.damageDice).toBe(1);
+
+            // 3. Heal back to 25
+            state.enemy.stats.health = 25;
+            state = ability.onRoundStart!(state, { ability: undefined, owner: 'enemy' });
+            expect(hasEffect(state, 'enemy', 'And by crook')).toBe(false);
+        });
+    });
+
+
+    describe('Reroll Abilities', () => {
+        it('should reroll low dice (Bewitched)', () => {
+            const enemy = {
+                ...MOCK_ENEMY,
+                abilities: ['Bewitched']
+            };
+            state.enemy = createCombatant(enemy);
+
+            const def = getAbilityDefinition('Bewitched');
+            assert(def && def.onSpeedRoll);
+
+            // Setup speed rolls with 1s and 2s
+            state.enemySpeedRolls = [
+                { value: 1, isRerolled: false },
+                { value: 2, isRerolled: false },
+                { value: 6, isRerolled: false }
+            ];
+
+            mockDiceRolls([3, 4]);
+            state = def!.onSpeedRoll!(state, { ability: undefined, owner: 'enemy' });
+
+            // Expect 1 and 2 to be rerolled to 6. 6 should stay 6.
+            expect(state.enemySpeedRolls).toEqual([
+                { value: 3, isRerolled: true },
+                { value: 4, isRerolled: true },
+                { value: 6, isRerolled: false }
+            ]);
+            expect(state.logs.some(l => l.message.includes('Bewitched'))).toBe(true);
         });
     });
 });

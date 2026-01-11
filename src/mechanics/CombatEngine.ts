@@ -210,6 +210,12 @@ export function startRound(state: CombatState): CombatState {
         damageDealt: [],
         usedAbilities: [],
     };
+    // Execute onRoundStart hooks
+    forEachActiveAbility(state, (ability, def) => {
+        if (def.onRoundStart) {
+            state = def.onRoundStart(state, { ability, owner: ability.owner });
+        }
+    });
     return addLogs(state, { message: 'Round started.', });
 }
 

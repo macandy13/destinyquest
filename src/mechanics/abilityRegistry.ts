@@ -18,6 +18,8 @@ export interface AbilityHooks {
 
     onCombatStart?: (state: CombatState, context: AbilityContext) => CombatState;
 
+    onRoundStart?: (state: CombatState, context: AbilityContext) => CombatState;
+
     // Triggered after speed dice are rolled
     onSpeedRoll?: (state: CombatState, context: AbilityContext) => CombatState;
 
