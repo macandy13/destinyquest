@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Hero, INITIAL_HERO, HeroStats, EquipmentItem, EquipmentSlot, BackpackItem } from '../types/hero';
+import { getCareer } from '../data/careers';
 
 const STORAGE_KEY = 'dq-hero-v1';
 
@@ -22,8 +23,13 @@ export function useHero() {
         magic: 0,
         armour: 0,
         health: hero.stats.health, // Persisted
-        maxHealth: hero.stats.maxHealth // Persisted (or should this be derived too? keeping persisted for now)
+        maxHealth: hero.stats.maxHealth // Base persisted
     };
+
+    // Apply Path bonuses
+    if (hero.path === 'Warrior') effectiveStats.maxHealth += 15;
+    if (hero.path === 'Mage') effectiveStats.maxHealth += 10;
+    if (hero.path === 'Rogue') effectiveStats.maxHealth += 5;
 
     // Add stats from equipment
     Object.values(hero.equipment).forEach(item => {
@@ -32,7 +38,6 @@ export function useHero() {
             if (item.stats.brawn) effectiveStats.brawn += item.stats.brawn;
             if (item.stats.magic) effectiveStats.magic += item.stats.magic;
             if (item.stats.armour) effectiveStats.armour += item.stats.armour;
-            // Health bonuses usually add to Max Health, assuming that for now:
             if (item.stats.maxHealth) effectiveStats.maxHealth += item.stats.maxHealth;
         }
     });
@@ -42,15 +47,20 @@ export function useHero() {
         stats: effectiveStats
     };
 
+    // Collect active abilities from equipment and career
+    const activeAbilities = Array.from(new Set<string>([
+        // Equipment abilities
+        ...Object.values(hero.equipment).flatMap(item => item?.abilities || []),
+        // Career abilities
+        ...(getCareer(hero.career)?.abilities || [])
+    ]));
+
     const updateHealth = (value: number) => {
         setHero(prev => ({
             ...prev,
             stats: {
                 ...prev.stats,
-                health: Math.min(Math.max(0, value), prev.stats.maxHealth) // Note: using base maxHealth for clamping might be wrong if equip gives bonus.
-                // But for persistence, we likely want to store relative health or absolute?
-                // Let's store absolute, but we need to be careful if maxHealth changes.
-                // For now, simple update.
+                health: Math.min(Math.max(0, value), effectiveStats.maxHealth) // Clamp to effective max
             }
         }));
     };
@@ -60,7 +70,15 @@ export function useHero() {
     };
 
     const updatePath = (path: Hero['path']) => {
-        setHero(prev => ({ ...prev, path }));
+        setHero(prev => ({
+            ...prev,
+            path,
+            career: '' // Reset career when path changes
+        }));
+    };
+
+    const updateCareer = (career: string) => {
+        setHero(prev => ({ ...prev, career }));
     };
 
     const updateMoney = (value: number) => {
@@ -122,9 +140,11 @@ export function useHero() {
 
     return {
         hero: effectiveHero,
+        activeAbilities,
         updateHealth,
         updateName,
         updatePath,
+        updateCareer,
         updateMoney,
         equipItem,
         unequipItem,

@@ -173,7 +173,7 @@ const EnemySelector: React.FC<EnemySelectorProps> = ({ onSelect }) => {
                                 <span className="stat-label">Name</span>
                                 <input
                                     type="text"
-                                    className="dq-input"
+                                    className="enemy-name-input"
                                     value={customEnemy.name}
                                     onChange={e => handleCustomChange('name', e.target.value)}
                                 />

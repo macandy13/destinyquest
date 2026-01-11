@@ -20,6 +20,7 @@
   --dq-card-bg: var(--dq-dark-grey);
   --dq-hero-color: var(--dq-gold-dim);
   --dq-enemy-color: var(--dq-crimson);
+  --dq-input-field-bg: var(--dq-dark-grey);
 
   /* Typography */
   --font-heading: 'IM Fell English', Georgia, "Times New Roman", Times, serif;
@@ -218,4 +219,24 @@ button {
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+
+input,
+select {
+  font-size: var(--font-base);
+  font-family: var(--font-heading);
+  color: white;
+  background: var(--dq-input-field-bg);
+  border: none;
+  border-bottom: 1px solid var(--dq-hero-color);
+  border-radius: var(--radius-sm);
+  width: 70%;
+  line-height: 1;
+  padding: var(--spacing-xs);
+}
+
+
+input:hover,
+select:hover {
+  border: 1px solid var(--dq-hero-color);
 }

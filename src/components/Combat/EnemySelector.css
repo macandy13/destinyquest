@@ -8,6 +8,16 @@
     border-bottom: var(--border-sm) solid var(--border-color);
 }
 
+.enemy-name-input {
+    display: flex;
+    gap: var(--spacing-sm);
+    border-bottom: var(--border-sm) solid var(--dq-enemy-color);
+}
+
+.enemy-name-input:hover {
+    border: var(--border-sm) solid var(--dq-enemy-color);
+}
+
 .tab-btn {
     background: none;
     border: none;

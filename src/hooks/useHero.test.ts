@@ -46,7 +46,45 @@ describe('useHero Hook', () => {
 
         expect(result.current.hero.equipment.mainHand).toEqual(MOCK_ITEM);
         // Stats should be recalculated
-        // Note: exact value depends on base stats implementation, but it should increase
         expect(result.current.hero.stats.brawn).toBeGreaterThan(initialBrawn);
+    });
+
+    it('should update name', () => {
+        const { result } = renderHook(() => useHero());
+        act(() => {
+            result.current.updateName('Test Hero');
+        });
+        expect(result.current.hero.name).toBe('Test Hero');
+    });
+
+    it('should update path and apply health bonuses', () => {
+        const { result } = renderHook(() => useHero());
+        const baseMaxHealth = result.current.hero.stats.maxHealth;
+
+        act(() => {
+            result.current.updatePath('Warrior');
+        });
+        expect(result.current.hero.path).toBe('Warrior');
+        expect(result.current.hero.stats.maxHealth).toBe(baseMaxHealth + 15);
+
+        act(() => {
+            result.current.updatePath('Mage');
+        });
+        expect(result.current.hero.stats.maxHealth).toBe(baseMaxHealth + 10);
+    });
+
+    it('should update career and add active abilities', () => {
+        const { result } = renderHook(() => useHero());
+
+        // First set a path so careers are valid (though hook doesn't strictly enforce career matching path in updateCareer, UI does)
+        act(() => {
+            result.current.updatePath('Warrior');
+            result.current.updateCareer('Gladiator');
+        });
+
+        expect(result.current.hero.career).toBe('Gladiator');
+        // Check for Gladiator abilities (Blood Rage, Head Butt)
+        expect(result.current.activeAbilities).toContain('Blood Rage');
+        expect(result.current.activeAbilities).toContain('Head Butt');
     });
 });

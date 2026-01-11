@@ -130,18 +130,6 @@
 
 .dq-input {
     flex: 1;
-    padding: var(--spacing-xs);
-    background: var(--dq-black);
-    border: 1px solid var(--dq-gold-dim);
-    border-radius: var(--radius-sm);
-    color: var(--dq-light-grey);
-    font-size: var(--font-base);
-    outline: none;
-    /* margins handled by gap in parent */
-}
-
-.dq-input:focus {
-    border-color: var(--dq-gold);
 }
 
 .items-list {

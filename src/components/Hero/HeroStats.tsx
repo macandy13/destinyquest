@@ -1,16 +1,21 @@
 import React from 'react';
-import { HeroStats as HeroStatsType, Hero } from '../../types/hero';
+import { HeroStats as HeroStatsType, Hero, HeroPath } from '../../types/hero';
 import NumberControl from '../Shared/NumberControl';
 import './HeroStats.css';
 import { getStatIcon } from '../../types/stats';
 import { getAbilityDefinition, getAbilityIcon } from '../../mechanics/abilityRegistry';
+import { getCareersForPath } from '../../data/careers';
 
 import DqCard from '../Shared/DqCard';
 
 interface HeroStatsProps {
     hero: Hero;
+    activeAbilities: string[];
     onHealthChange: (value: number) => void;
     onMoneyChange: (value: number) => void;
+    onNameChange: (value: string) => void;
+    onPathChange: (value: HeroPath) => void;
+    onCareerChange: (value: string) => void;
 }
 
 const STAT_CONFIG: Array<{ key: keyof HeroStatsType; label: string }> = [
@@ -20,30 +25,68 @@ const STAT_CONFIG: Array<{ key: keyof HeroStatsType; label: string }> = [
     { key: 'armour', label: 'Armour' },
 ];
 
-const HeroStats: React.FC<HeroStatsProps> = ({ hero, onHealthChange, onMoneyChange }) => {
+const HeroStats: React.FC<HeroStatsProps> = ({
+    hero,
+    activeAbilities,
+    onHealthChange,
+    onMoneyChange,
+    onNameChange,
+    onPathChange,
+    onCareerChange
+}) => {
     const { stats, money } = hero;
 
-    // Collect unique abilities from all equipment
-    const activeAbilities = React.useMemo(() => {
+    // Process abilities for display (count duplicates)
+    const processedAbilities = React.useMemo(() => {
         const abilities = new Map<string, number>();
-        Object.values(hero.equipment).forEach(item => {
-            if (item && item.abilities) {
-                item.abilities.forEach(a => abilities.set(a, (abilities.get(a) || 0) + 1));
-            }
-        });
-        return Array.from(abilities).sort((a, b) => a[1] - b[1]);
-    }, [hero.equipment]);
+        activeAbilities.forEach(a => abilities.set(a, (abilities.get(a) || 0) + 1));
+        return Array.from(abilities).sort((a, b) => a[0].localeCompare(b[0]));
+    }, [activeAbilities]);
 
-    const headerContent = (
-        <div className="hero-details">
-            <div className="hero-name">{hero.name}</div>
-            <div className="text-dim hero-path">{hero.path || 'Novice'}</div>
-        </div>
-    );
+    const availableCareers = React.useMemo(() =>
+        getCareersForPath(hero.path), [hero.path]);
 
     return (
-        <DqCard title="Hero Sheet" headerContent={headerContent}>
+        <DqCard title="Hero Sheet" headerContent={null}>
             <div className="hero-stats-container">
+                <div className="stat-row">
+                    <span className="stat-label">Name</span>
+                    <input
+                        className="hero-input"
+                        value={hero.name}
+                        onChange={(e) => onNameChange(e.target.value)}
+                        placeholder="Hero Name"
+                    />
+                </div>
+                <div className="stat-row">
+                    <span className="stat-label">Path</span>
+                    <select
+                        className="hero-input"
+                        value={hero.path}
+                        onChange={(e) => onPathChange(e.target.value as HeroPath)}
+                    >
+                        <option value="">No Path</option>
+                        <option value="Warrior">Warrior (+15 HP)</option>
+                        <option value="Mage">Mage (+10 HP)</option>
+                        <option value="Rogue">Rogue (+5 HP)</option>
+                    </select>
+                </div>
+
+                <div className="stat-row">
+                    <span className="stat-label">Career</span>
+                    <select
+                        className="hero-input"
+                        value={hero.career}
+                        disabled={!hero.path}
+                        onChange={(e) => onCareerChange(e.target.value)}
+                    >
+                        <option value="">Select Career...</option>
+                        {availableCareers.map(c => (
+                            <option key={c.name} value={c.name}>{c.name}</option>
+                        ))}
+                    </select>
+                </div>
+
                 {/* Health is special - Editable */}
                 <div className="stat-row health">
                     <span className="stat-label">
@@ -88,11 +131,11 @@ const HeroStats: React.FC<HeroStatsProps> = ({ hero, onHealthChange, onMoneyChan
                 </div>
 
                 {/* Active Abilities Section */}
-                {activeAbilities.length > 0 && (
+                {processedAbilities.length > 0 && (
                     <div className="abilities-section">
                         <h4>Active Abilities</h4>
                         <div className="abilities-list">
-                            {activeAbilities.map(([abilityName, count]) => {
+                            {processedAbilities.map(([abilityName, count]) => {
                                 const def = getAbilityDefinition(abilityName);
                                 const icon = getAbilityIcon(def);
                                 return (
@@ -116,7 +159,7 @@ const HeroStats: React.FC<HeroStatsProps> = ({ hero, onHealthChange, onMoneyChan
                     </div>
                 )}
             </div>
-        </DqCard>
+        </DqCard >
     );
 };
 

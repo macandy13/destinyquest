@@ -11,7 +11,20 @@ import { useHero } from './hooks/useHero';
 
 function App() {
     const [activeTab, setActiveTab] = useState<'stats' | 'equipment' | 'combat'>('stats');
-    const { hero, updateHealth, updateMoney, equipItem, unequipItem, setBackpackItem, deleteBackpackItem, updateBackpack } = useHero();
+    const {
+        hero,
+        activeAbilities,
+        updateHealth,
+        updateMoney,
+        updateName,
+        updatePath,
+        updateCareer,
+        equipItem,
+        unequipItem,
+        setBackpackItem,
+        deleteBackpackItem,
+        updateBackpack
+    } = useHero();
 
     const handleCombatFinish = (results: { health?: number, backpack: (any)[] }) => {
         if (results.health) updateHealth(results.health);
@@ -29,8 +42,12 @@ function App() {
                 {activeTab === 'stats' && (
                     <HeroStats
                         hero={hero}
+                        activeAbilities={activeAbilities}
                         onHealthChange={updateHealth}
                         onMoneyChange={updateMoney}
+                        onNameChange={updateName}
+                        onPathChange={updatePath}
+                        onCareerChange={updateCareer}
                     />
                 )}
 
