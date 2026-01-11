@@ -70,6 +70,10 @@ export function useCombat(hero: Hero, enemy: Enemy) {
         setCombat(prev => engineResolveInteraction(prev, data));
     };
 
+    const updateCombatState = (state: CombatState) => {
+        setCombat(state);
+    };
+
     return {
         combat,
         activateAbility,
@@ -82,5 +86,6 @@ export function useCombat(hero: Hero, enemy: Enemy) {
         endCombat,
         restartCombat,
         resolveInteraction,
+        updateCombatState,
     };
 }

@@ -42,7 +42,8 @@ const CombatArena: React.FC<CombatArenaProps> = ({ hero, enemy, onCombatFinish }
         confirmBonusDamage,
         resolveInteraction,
         nextRound,
-        restartCombat
+        restartCombat,
+        updateCombatState
     } = useCombat(hero, enemy);
 
     const [interactionData, setInteractionData] = useState<InteractionTracker | null>(null);
@@ -174,6 +175,7 @@ const CombatArena: React.FC<CombatArenaProps> = ({ hero, enemy, onCombatFinish }
                         nextRound={nextRound}
                         activateAbility={activateAbility}
                         useBackpackItem={useBackpackItem}
+                        onUpdateState={updateCombatState}
                     />
                 )}
                 {combat.phase === 'round-end' && (

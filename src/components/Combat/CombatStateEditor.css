@@ -1,0 +1,53 @@
+.combat-state-editor-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: var(--dq-background);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.combat-state-editor-modal {
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px var(--dq-shadow);
+    color: var(--dq-text);
+    min-width: 300px;
+}
+
+.editor-fields {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+.field-group {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+}
+
+.field-group label {
+    font-weight: bold;
+}
+
+.field-group input {
+    padding: 0.5rem;
+    border-radius: 4px;
+    border: 1px solid #7f8c8d;
+    background-color: #34495e;
+    color: white;
+    width: 80px;
+}
+
+.editor-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 1rem;
+}
