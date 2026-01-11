@@ -85,7 +85,6 @@ describe('Venom', () => {
 
         const updates = ability.onPassiveAbility!(state, { owner: 'hero' });
 
-
         const damageEntry = updates.damageDealt?.find(d => d.source === 'Venom');
         expect(damageEntry?.amount).toBe(3);
     });

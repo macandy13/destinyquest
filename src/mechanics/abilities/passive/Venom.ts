@@ -2,10 +2,10 @@ import { registerAbility } from '../../abilityRegistry';
 import { CharacterType, getOpponent } from '../../../types/character';
 import { appendEffect, dealDamage, hasEffect, hasAbility, CombatState } from '../../../types/combatState';
 
-function getDamage(state: CombatState, target: CharacterType) {
+function getDamage(state: CombatState, owner: CharacterType) {
     let damage = 2;
-    const hasMastery = hasAbility(state, target, 'Poison Mastery');
-    const hasDeadly = hasAbility(state, target, 'Deadly Poisons');
+    const hasMastery = hasAbility(state, owner, 'Poison Mastery');
+    const hasDeadly = hasAbility(state, owner, 'Deadly Poisons');
     if (hasMastery) damage = 4;
     else if (hasDeadly) damage = 3;
     return damage;
@@ -35,7 +35,7 @@ registerAbility({
         const opponent = getOpponent(owner);
         if (!hasEffect(state, opponent, 'Venom')) return state;
 
-        const damage = getDamage(state, opponent);
+        const damage = getDamage(state, owner);
         return dealDamage(state, 'Venom', opponent, damage, `Venom deals ${damage} damage to ${opponent}`);
     }
 });

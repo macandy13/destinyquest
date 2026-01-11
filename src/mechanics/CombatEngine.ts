@@ -23,7 +23,18 @@
  * 4. nextRound: Resets for the next round, handling cooldowns and duration ticks.
  */
 
-import { CombatState, Combatant, ActiveAbility, addLogs, applyEffect, forEachActiveAbility, dealDamage, AttackSource, setDamageRoll, InteractionResponse } from '../types/combatState';
+import {
+    CombatState,
+    Combatant,
+    ActiveAbility,
+    addLogs,
+    applyEffect,
+    forEachActiveAbility,
+    dealDamage,
+    AttackSource,
+    setDamageRoll,
+    InteractionResponse
+} from '../types/combatState';
 import { sumDice, rollDice, formatDice, DiceRoll } from '../types/dice';
 import { Hero, HeroStats, BackpackItem } from '../types/hero';
 import { getAbilityDefinition, toCanonicalName } from './abilityRegistry';
@@ -309,6 +320,11 @@ export function useBackpackItem(state: CombatState, idx: number): CombatState {
     }
     state = applyEffect(state, item.effect);
     state = reduceBackpackItem(state, idx);
+    forEachActiveAbility(state, (ability, def) => {
+        if (def.onBackpackItemUse) {
+            state = def.onBackpackItemUse(state, { ability, owner: ability.owner }, item);
+        }
+    });
     if (state.phase === 'speed-roll') {
         state = updateWinner(state);
     }

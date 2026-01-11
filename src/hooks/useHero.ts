@@ -1,6 +1,7 @@
 import { useState, useEffect, useMemo } from 'react';
 import { Hero, INITIAL_HERO, HeroStats, EquipmentItem, EquipmentSlot, BackpackItem } from '../types/hero';
 import { getCareer } from '../data/careers';
+import { getAbilityDefinition } from '../mechanics/abilityRegistry';
 
 const STORAGE_KEY = 'dq-hero-v1';
 
@@ -89,13 +90,27 @@ export function useHero() {
     };
 
     const equipItem = (item: EquipmentItem, slot: EquipmentSlot) => {
-        setHero(prev => ({
-            ...prev,
-            equipment: {
-                ...prev.equipment,
-                [slot]: item
-            }
-        }));
+        setHero(prev => {
+            let money = prev.money;
+            // Trigger onEquipItem hooks
+            activeAbilities.forEach(abilityName => {
+                const def = getAbilityDefinition(abilityName);
+                if (def && def.onEquipItem) {
+                    const updatedHero = def.onEquipItem(prev, item, slot);
+                    // Update local vars if needed. MidasTouch only updates money.
+                    money = updatedHero.money;
+                }
+            });
+
+            return {
+                ...prev,
+                money,
+                equipment: {
+                    ...prev.equipment,
+                    [slot]: item
+                }
+            };
+        });
     };
 
     const unequipItem = (slot: EquipmentSlot) => {

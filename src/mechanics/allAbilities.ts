@@ -90,22 +90,29 @@ import './abilities/modifier/Vanquish';
 import './abilities/modifier/Watchful';
 import './abilities/passive/Acid';
 import './abilities/passive/Barbs';
+import './abilities/passive/BeepBeep';
 import './abilities/passive/Bleed';
 import './abilities/passive/Burn';
 import './abilities/passive/CleansingLight';
 import './abilities/passive/DarkClaw';
 import './abilities/passive/DeadlyPoisons';
 import './abilities/passive/Disease';
+import './abilities/passive/EbonyAndIvory';
 import './abilities/passive/Embers';
 import './abilities/passive/FireAura';
 import './abilities/passive/FirstCut';
 import './abilities/passive/FirstStrike';
+import './abilities/passive/GoodTaste';
 import './abilities/passive/KickStart';
 import './abilities/passive/Leech';
 import './abilities/passive/LifeSpark';
 import './abilities/passive/Lightning';
+import './abilities/passive/LootMaster';
 import './abilities/passive/Merciless';
+import './abilities/passive/MidasTouch';
+import './abilities/passive/PatchworkPauper';
 import './abilities/passive/PoisonMastery';
+import './abilities/passive/RoyalRegalia';
 import './abilities/passive/Sear';
 import './abilities/passive/SecondSkin';
 import './abilities/passive/SeeingRed';
@@ -142,3 +149,6 @@ import './abilities/speed/TimeShift';
 import './abilities/speed/Webbed';
 import './abilities/speed/Windblast';
 import './abilities/speed/Zapped';
+
+// Since the files self-register when imported (using registerAbility from abilityRegistry), 
+// we just need to import them. (Wait, let me verify they self-register)

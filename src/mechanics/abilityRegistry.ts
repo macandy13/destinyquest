@@ -1,6 +1,7 @@
 import { ActiveAbility, CombatState } from '../types/combatState';
 import { CharacterType } from '../types/character';
 import { AbilityType } from '../types/abilityDescription';
+import { Hero, EquipmentItem, EquipmentSlot, BackpackItem } from '../types/hero';
 
 export interface AbilityContext {
     ability?: ActiveAbility;
@@ -34,6 +35,12 @@ export interface AbilityHooks {
 
     // Called when damage phase is over and passive abilities are triggered.
     onPassiveAbility?: (state: CombatState, context: AbilityContext) => CombatState;
+
+    // Called when a backpack item is used
+    onBackpackItemUse?: (state: CombatState, context: AbilityContext, item: BackpackItem) => CombatState;
+
+    // Called when an item is equipped (outside of combat)
+    onEquipItem?: (hero: Hero, item: EquipmentItem, slot: EquipmentSlot) => Hero;
 }
 
 export interface AbilityDefinition extends AbilityHooks {
