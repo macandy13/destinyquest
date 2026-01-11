@@ -306,8 +306,8 @@ export const ENEMIES: Enemy[] = [
       "brawn": 4,
       "magic": 0,
       "armour": 230,
-      "health": null,
-      "maxHealth": null
+      "health": 0,
+      "maxHealth": 0
     },
     "abilities": [],
     "bookRef": {
@@ -2900,7 +2900,7 @@ export const ENEMIES: Enemy[] = [
     "type": "enemy",
     "name": "Bracelet",
     "stats": {
-      "speed": null,
+      "speed": 0,
       "brawn": 0,
       "magic": 0,
       "armour": 8,
@@ -3005,7 +3005,7 @@ export const ENEMIES: Enemy[] = [
     "type": "enemy",
     "name": "Fire Sprite",
     "stats": {
-      "speed": null,
+      "speed": 0,
       "brawn": 0,
       "magic": 0,
       "armour": 5,
@@ -3216,10 +3216,10 @@ export const ENEMIES: Enemy[] = [
     "type": "enemy",
     "name": "Locust",
     "stats": {
-      "speed": null,
+      "speed": 0,
       "brawn": 0,
       "magic": 0,
-      "armour": null,
+      "armour": 0,
       "health": 25,
       "maxHealth": 25
     },
@@ -3366,7 +3366,7 @@ export const ENEMIES: Enemy[] = [
     "type": "enemy",
     "name": "Tentacle",
     "stats": {
-      "speed": null,
+      "speed": 0,
       "brawn": 0,
       "magic": 0,
       "armour": 6,
@@ -3480,7 +3480,7 @@ export const ENEMIES: Enemy[] = [
     "type": "enemy",
     "name": "Holy Flame",
     "stats": {
-      "speed": null,
+      "speed": 0,
       "brawn": 0,
       "magic": 0,
       "armour": 4,
@@ -3500,7 +3500,7 @@ export const ENEMIES: Enemy[] = [
     "type": "enemy",
     "name": "Holy Circle",
     "stats": {
-      "speed": null,
+      "speed": 0,
       "brawn": 0,
       "magic": 0,
       "armour": 4,
@@ -3520,7 +3520,7 @@ export const ENEMIES: Enemy[] = [
     "type": "enemy",
     "name": "Holy Shield",
     "stats": {
-      "speed": null,
+      "speed": 0,
       "brawn": 0,
       "magic": 0,
       "armour": 4,
@@ -3543,7 +3543,7 @@ export const ENEMIES: Enemy[] = [
       "speed": 15,
       "brawn": 0,
       "magic": 0,
-      "armour": null,
+      "armour": 0,
       "health": 140,
       "maxHealth": 140
     },

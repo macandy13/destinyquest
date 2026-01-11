@@ -52,7 +52,7 @@ export function useHero() {
         // Equipment abilities
         ...Object.values(hero.equipment).flatMap(item => item?.abilities || []),
         // Career abilities
-        ...(getCareer(hero.career)?.abilities || [])
+        ...(hero.career ? getCareer(hero.career)?.abilities ?? [] : [])
     ])), [hero.equipment, hero.career]);
 
     const updateHealth = (value: number) => {

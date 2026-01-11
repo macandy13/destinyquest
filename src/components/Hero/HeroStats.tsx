@@ -44,7 +44,7 @@ const HeroStats: React.FC<HeroStatsProps> = ({
     }, [activeAbilities]);
 
     const availableCareers = React.useMemo(() =>
-        getCareersForPath(hero.path), [hero.path]);
+        hero.path ? getCareersForPath(hero.path) : [], [hero.path]);
 
     return (
         <DqCard title="Hero Sheet" headerContent={null}>

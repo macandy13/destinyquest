@@ -43,8 +43,8 @@ export interface BackpackItem extends Item {
 
 export interface Hero extends Character {
     name: string;
-    path: HeroPath;
-    career: string;
+    path?: HeroPath;
+    career?: string;
     stats: HeroStats;
     equipment: Partial<Record<EquipmentSlot, EquipmentItem>>;
     backpack: (BackpackItem | null)[];

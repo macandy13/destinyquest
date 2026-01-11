@@ -73,6 +73,7 @@ describe('Combat Ability Usage Limits', () => {
             name: 'Test Hero',
             type: 'hero',
             stats: { speed: 1, brawn: 1, magic: 1, armour: 0, health: 10, maxHealth: 10 },
+            money: 0,
             backpack: [],
             equipment: {}
         };

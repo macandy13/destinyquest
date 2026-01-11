@@ -59,12 +59,12 @@ function parseCSV(content) {
             type: 'enemy',
             name,
             stats: {
-                speed,
-                brawn,
-                magic,
-                armour,
-                health,
-                maxHealth: health
+                speed: speed || 0,
+                brawn: brawn || 0,
+                magic: magic || 0,
+                armour: armour || 0,
+                health: health || 0,
+                maxHealth: health || 0
             },
             abilities: abilities?.length === 1 && abilities[0] === '' ? [] : abilities,
             spawns: spawns?.length === 1 && spawns[0] === '' ? undefined : spawns,
