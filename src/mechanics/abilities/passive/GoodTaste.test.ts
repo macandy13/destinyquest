@@ -3,6 +3,7 @@ import { Hero } from '../../../types/hero';
 import { Enemy } from '../../../types/character';
 import { registerAbility } from '../../abilityRegistry';
 import { goodTaste } from './GoodTaste';
+import { mockDiceRolls } from '../../../tests/testUtils';
 
 describe('Good taste', () => {
     beforeAll(() => {
@@ -52,6 +53,7 @@ describe('Good taste', () => {
 
         let state = startCombat(hero, enemy);
         // Use potion at index 0
+        mockDiceRolls([3]);
         state = useBackpackItem(state, 0);
 
         // Check active effects
@@ -61,6 +63,6 @@ describe('Good taste', () => {
 
         const boostEffect = state.hero.activeEffects.find(e => e.source === 'Good taste');
         expect(boostEffect).toBeDefined();
-        expect(boostEffect?.stats.magic).toBe(1);
+        expect(boostEffect?.stats.magic).toBe(3);
     });
 });

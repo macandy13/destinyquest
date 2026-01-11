@@ -653,7 +653,7 @@ Sentries cannot be defated.
 
 ## Poison Nodes
 
-At the end of each combat round, the hero takes 24damage ignoring armour.
+At the end of each combat round, the hero takes 2 damage ignoring armour.
 
 ## Avian's aid
 

@@ -124,6 +124,9 @@ import './abilities/passive/SwiftStrikes';
 import './abilities/passive/Thorns';
 import './abilities/passive/Venom';
 import './abilities/passive/Vitriol';
+import './abilities/special/immunities';
+import './abilities/special/passiveDamage';
+import './abilities/special/statModifiers';
 import './abilities/special/Trample';
 import './abilities/speed/Adrenaline';
 import './abilities/speed/CatsSpeed';
@@ -149,6 +152,3 @@ import './abilities/speed/TimeShift';
 import './abilities/speed/Webbed';
 import './abilities/speed/Windblast';
 import './abilities/speed/Zapped';
-
-// Since the files self-register when imported (using registerAbility from abilityRegistry), 
-// we just need to import them. (Wait, let me verify they self-register)
