@@ -1,7 +1,7 @@
 import { deterministicRoll, TEST_BOOK } from "../../tests/testUtils";
 import { Enemy } from "../../types/character";
 import { Hero } from "../../types/hero";
-import { applyDamage, applyPassiveAbilities, endRound, rollForDamage, rollForSpeed, startCombat, startRound, useBackpackItem } from "../CombatEngine";
+import { applyDamage, applyPassiveAbilities, endRound, rollForDamage, rollForSpeed, startCombat, startRound } from "../CombatEngine";
 
 describe('Scenario: Sir Hugo vs Serpent', () => {
     it('works', () => {
