@@ -261,6 +261,45 @@ describe('CombatEngine', () => {
             state = useBackpackItem(state, 0);
             expect(state.backpack.length).toBe(1);
         });
+
+        it('should recalculate winner if used during speed-roll', () => {
+            const heroWithSpeedPotion = {
+                ...MOCK_HERO,
+                stats: { ...MOCK_HERO.stats, speed: 2 }, // Base speed 2
+                backpack: [testBackpackItem({
+                    name: 'Speed Potion',
+                    effect: { source: 'Potion', target: 'hero', stats: { speed: 5 }, duration: 1 },
+                    uses: 1
+                }), null, null, null, null]
+            };
+            const fastEnemy = {
+                ...MOCK_ENEMY,
+                stats: { ...MOCK_ENEMY.stats, speed: 5 } // Base speed 5
+            };
+
+            let state = startCombat(heroWithSpeedPotion, fastEnemy);
+            state = startRound(state);
+
+            // Hero rolls 1, Enemy rolls 1.
+            // Hero Total: 2 + 1 = 3.
+            // Enemy Total: 5 + 1 = 6.
+            // Enemy wins.
+            const roll = deterministicRoll([1, 1]);
+            state = rollForSpeed(state, roll, roll);
+
+            expect(state.phase).toBe('speed-roll');
+            expect(state.winner).toBe('enemy');
+
+            // Use potion found at index 0. +5 Speed.
+            // New Hero Total: 2 + 5 (buff) + 1 (roll) = 8.
+            // Enemy Total: 6.
+            // Hero should win.
+            state = useBackpackItem(state, 0);
+
+            expect(state.winner).toBe('hero');
+            expect(state.hero.activeEffects).toHaveLength(1);
+            expect(state.hero.activeEffects[0].stats.speed).toBe(5);
+        });
     });
 
     describe('endRound', () => {

@@ -281,6 +281,9 @@ export function useBackpackItem(state: CombatState, idx: number): CombatState {
     }
     state = applyEffect(state, item.effect);
     state = reduceBackpackItem(state, idx);
+    if (state.phase === 'speed-roll') {
+        state = updateWinner(state);
+    }
     return checkForCombatEnd(state);
 }
 
