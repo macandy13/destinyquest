@@ -19,6 +19,13 @@ const CombatAbilitySelector: React.FC<CombatAbilitySelectorProps> = ({ combat, o
     const canActivateAbility = (abilityName: string) => {
         const def = getAbilityDefinition(abilityName);
         if (!def || def.type === 'passive' || !def.onActivate) return false;
+
+        // Check per-round limits
+        if (['speed', 'combat'].includes(def.type)) {
+            const used = combat.usedAbilities || [];
+            if (used.some(a => a.type === def.type)) return false;
+        }
+
         if (def.canActivate) return def.canActivate(combat, { owner: 'hero' });
         return true;
     };

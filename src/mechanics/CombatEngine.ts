@@ -197,6 +197,7 @@ export function startRound(state: CombatState): CombatState {
         winner: undefined,
         damage: undefined,
         damageDealt: [],
+        usedAbilities: [],
     };
     return addLogs(state, { message: 'Round started.', });
 }
@@ -209,6 +210,15 @@ export function activateAbility(state: CombatState, rawAbilityName: string): Com
     const definition = getAbilityDefinition(abilityName);
     if (!definition || !definition.onActivate) return state;
 
+    // Check usage limits
+    if (['speed', 'combat'].includes(definition.type)) {
+        const used = state.usedAbilities || [];
+        if (used.some(a => a.type === definition.type)) {
+            // Already used an ability of this type
+            return state;
+        }
+    }
+
     state = definition.onActivate(state, { owner: ability.owner, ability });
     if (state.pendingInteraction) {
         return state;
@@ -218,6 +228,15 @@ export function activateAbility(state: CombatState, rawAbilityName: string): Com
     if (!ability.uses || ability.uses === 0) {
         state.hero.activeAbilities.delete(abilityName);
     }
+
+    // Track usage
+    if (['speed', 'combat'].includes(definition.type)) {
+        state = {
+            ...state,
+            usedAbilities: [...(state.usedAbilities || []), { name: abilityName, type: definition.type }]
+        };
+    }
+
     return checkForCombatEnd(state);
 }
 
@@ -236,6 +255,15 @@ export function resolveInteraction(state: CombatState, data: InteractionResponse
     if (ability.uses) ability.uses -= 1;
     if (!ability.uses || ability.uses === 0) {
         nextState.hero.activeAbilities.delete(toCanonicalName(ability.name));
+    }
+
+    // Track usage for interactions (as they were delayed activations)
+    const definition = getAbilityDefinition(ability.name);
+    if (definition && ['speed', 'combat'].includes(definition.type)) {
+        nextState = {
+            ...nextState,
+            usedAbilities: [...(nextState.usedAbilities || []), { name: ability.name, type: definition.type }]
+        };
     }
 
     if (requests.some(r => r.type === 'dice')) {

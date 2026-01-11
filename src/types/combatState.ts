@@ -1,5 +1,5 @@
 import { AbilityDefinition, getAbilityDefinition, toCanonicalName } from '../mechanics/abilityRegistry';
-import { AbilityDescription } from './abilityDescription';
+import { AbilityDescription, AbilityType } from './abilityDescription';
 import { Character, Enemy, CharacterType, getOpponent } from './character';
 import { CombatLog, getDamageType } from './combatLog';
 import { DiceRoll, formatDice, sumDice } from './dice';
@@ -100,6 +100,9 @@ export interface CombatState {
 
     /* Pending interaction request from an ability */
     pendingInteraction?: PendingInteraction;
+
+    /* Abilities used in the current round */
+    usedAbilities?: { name: string; type: AbilityType }[];
 }
 
 export function forEachActiveAbility(state: CombatState, callback: (ability: ActiveAbility, def: AbilityDefinition) => void) {
