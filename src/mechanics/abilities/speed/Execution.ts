@@ -1,13 +1,14 @@
 import { registerAbility } from '../../abilityRegistry';
-import { CombatState, dealDamage } from '../../../types/combatState';
+import { Combatant, CombatState, dealDamage, hasEquipment } from '../../../types/combatState';
 import { CharacterType } from '../../../types/character';
+import { Hero } from '../../../types/hero';
 
 function canActivate(state: CombatState, { owner }: { owner: CharacterType }): boolean {
     if (owner !== 'hero') return false;
     const ownSpeed = state.hero!.stats.speed || 0;
     const opponentHealth = state.enemy!.stats.health || 0;
     return ['round-start', 'start-combat'].includes(state.phase)
-        && /sword/i.test(state.hero!.original.equipment['mainHand']?.name ?? '')
+        && hasEquipment(state.hero!, /sword/, ['mainHand', 'leftHand'])
         && opponentHealth > 0
         && opponentHealth <= ownSpeed;
 }
@@ -25,3 +26,4 @@ registerAbility({
         return dealDamage(state, 'Execution', 'enemy', opponentHealth);
     },
 });
+

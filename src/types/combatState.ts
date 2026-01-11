@@ -4,7 +4,7 @@ import { Character, Enemy, CharacterType, getOpponent } from './character';
 import { CombatLog, getDamageType } from './combatLog';
 import { DiceRoll, formatDice, sumDice } from './dice';
 import { Effect, applyStatsModification, formatEffect } from './effect';
-import { Hero, BackpackItem, EquipmentItem } from './hero';
+import { Hero, BackpackItem, EquipmentItem, EquipmentSlot } from './hero';
 import { Stats } from './stats';
 
 export type CombatPhase = 'combat-start' | 'round-start' | 'speed-roll' | 'damage-roll' | 'apply-damage' | 'passive-damage' | 'round-end' | 'combat-end';
@@ -284,6 +284,12 @@ export function removeEffect(state: CombatState, target: CharacterType, source: 
     });
     return state;
 }
+
+export function hasEquipment(hero: Combatant<Hero>, equipmentName: RegExp, locations?: EquipmentSlot[]): boolean {
+    const candidateLocations = locations ?? Object.keys(hero.original.equipment) as EquipmentSlot[];
+    return candidateLocations.some(slot => hero.original.equipment[slot]?.name?.match(equipmentName));
+}
+
 
 export function skipDamagePhase(state: CombatState, message: string): CombatState {
     return {
