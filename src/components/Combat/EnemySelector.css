@@ -1,5 +1,5 @@
 .enemy-selector-card {
-    border-color: var(--dq-crimson);
+    border-color: var(--dq-enemy-color);
 }
 
 .enemy-tabs {

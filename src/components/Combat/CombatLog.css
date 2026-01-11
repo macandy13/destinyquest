@@ -90,11 +90,11 @@
 }
 
 .log-entry.damage-hero {
-    color: var(--dq-crimson);
+    color: var(--dq-enemy-color);
 }
 
 .log-entry.damage-enemy {
-    color: var(--dq-gold);
+    color: var(--dq-hero-color);
 }
 
 .log-entry.info {
@@ -102,11 +102,11 @@
 }
 
 .log-entry.win {
-    color: var(--dq-gold);
+    color: var(--dq-hero-color);
     font-weight: bold;
 }
 
 .log-entry.loss {
-    color: var(--dq-crimson);
+    color: var(--dq-enemy-color);
     font-weight: bold;
 }

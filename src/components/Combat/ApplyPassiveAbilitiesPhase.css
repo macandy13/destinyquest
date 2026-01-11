@@ -7,9 +7,9 @@
 }
 
 .passive-preview-item.hero {
-    border-left: 3px solid var(--dq-gold);
+    border-left: 3px solid var(--dq-hero-color);
 }
 
 .passive-preview-item.enemy {
-    border-left: 3px solid var(--dq-crimson);
+    border-left: 3px solid var(--dq-enemy-color);
 }

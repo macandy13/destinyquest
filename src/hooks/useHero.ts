@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 import { Hero, INITIAL_HERO, HeroStats, EquipmentItem, EquipmentSlot, BackpackItem } from '../types/hero';
 import { getCareer } from '../data/careers';
 
@@ -48,12 +48,12 @@ export function useHero() {
     };
 
     // Collect active abilities from equipment and career
-    const activeAbilities = Array.from(new Set<string>([
+    const activeAbilities = useMemo(() => Array.from(new Set<string>([
         // Equipment abilities
         ...Object.values(hero.equipment).flatMap(item => item?.abilities || []),
         // Career abilities
         ...(getCareer(hero.career)?.abilities || [])
-    ]));
+    ])), [hero.equipment, hero.career]);
 
     const updateHealth = (value: number) => {
         setHero(prev => ({
