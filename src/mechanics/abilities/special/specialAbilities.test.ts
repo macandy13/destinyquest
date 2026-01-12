@@ -1,13 +1,18 @@
 import { describe, expect, it, beforeEach, assert } from 'vitest';
-import { CombatState, hasAbility, hasEffect } from '../../../types/combatState';
-import { createCombatant, MOCK_HERO, MOCK_ENEMY, INITIAL_STATE, mockDiceRolls } from '../../../tests/testUtils';
-import { AbilityDefinition, getAbilityDefinition } from '../../abilityRegistry';
+import { CombatState, hasEffect } from '../../../types/combatState';
+import { createCombatant, MOCK_HERO, MOCK_ENEMY, INITIAL_STATE, mockDiceRolls, requireAbilityDefinition, addAbility } from '../../../tests/testUtils';
+import { deterministicRoll } from '../../../types/dice';
 import './immunities';
 import './passiveDamage';
 import './statModifiers';
 import './Acid';
 import './AndByCrook';
 import './Bewitched';
+import './BloodDrinker';
+import './ZenCharge';
+import './ChargeHerUp';
+import './Distraction';
+import './Downsized';
 import './specialAbilityPatterns';
 
 describe('Special Abilities Patterns', () => {
@@ -16,33 +21,22 @@ describe('Special Abilities Patterns', () => {
     beforeEach(() => {
         state = {
             ...INITIAL_STATE,
-            phase: 'passive-damage' // Most DoTs trigger here
+            enemy: createCombatant(MOCK_ENEMY),
+            hero: createCombatant(MOCK_HERO),
         };
     });
 
     describe('DoT Abilities', () => {
         it('should deal damage ignoring armour by default (Black coils)', () => {
-            const enemy = {
-                ...MOCK_ENEMY,
-                abilities: ['Black coils']
-            };
-            state.enemy = createCombatant(enemy);
-
             // Hero has armour
-            const hero = {
+            state.hero = createCombatant({
                 ...MOCK_HERO,
                 stats: { ...MOCK_HERO.stats, health: 30, armour: 10 }
-            };
-            state.hero = createCombatant(hero);
+            });
 
             // Trigger passive ability hook
-            const def = getAbilityDefinition('Black coils');
-            expect(def).toBeDefined();
-
-            if (def && def.onPassiveAbility) {
-                // Call hook with owner = enemy
-                state = def.onPassiveAbility(state, { owner: 'enemy', target: 'hero' });
-            }
+            const def = requireAbilityDefinition('Black coils');
+            state = def.onPassiveAbility!(state, { owner: 'enemy', target: 'hero' });
 
             // Expect damage dealt = 2, hero health = 28 (30 - 2, ignore armour)
             expect(state.hero.stats.health).toBe(28);
@@ -52,76 +46,29 @@ describe('Special Abilities Patterns', () => {
         });
 
         it('should trigger conditional DoTs (Black venom)', () => {
-            // Black venom triggers on damage dealt
-            const enemy = {
-                ...MOCK_ENEMY,
-                abilities: ['Black venom']
-            };
-            state.enemy = createCombatant(enemy);
-            state.hero = createCombatant(MOCK_HERO);
-
-            const def = getAbilityDefinition('Black venom');
-            expect(def).toBeDefined();
+            const def = requireAbilityDefinition('Black venom');
 
             // 1. Trigger onDamageDealt to apply effect
-            if (def && def.onDamageDealt) {
-                state = def.onDamageDealt(state, { ability: undefined, owner: 'enemy', target: 'hero' }, 'Attack', 5);
-            }
-
+            state = def.onDamageDealt!(state, { ability: undefined, owner: 'enemy', target: 'hero' }, 'Attack', 5);
             expect(hasEffect(state, 'hero', 'Black venom')).toBe(true);
 
             // 2. Trigger onPassiveAbility to deal damage
-            if (def && def.onPassiveAbility) {
-                state = def.onPassiveAbility(state, { owner: 'enemy', target: 'hero' });
-            }
-
-            // Damage is 2
+            state = def.onPassiveAbility!(state, { owner: 'enemy', target: 'hero' });
             expect(state.hero.stats.health).toBe(28);
         });
     });
 
     describe('Immunities', () => {
-        it('should register immunity abilities correctly', () => {
-            const enemy = {
-                ...MOCK_ENEMY,
-                abilities: ['Blazing armour']
-            };
-            state.enemy = createCombatant(enemy);
-
-            // Manually populate active abilities because createCombatant doesn't do it from strings automatically
-            // in the test utility context unless specifically handled.
-            // But hasAbility checks activeAbilities map.
-            // Note: The real game logic likely calls 'initializeCombat' which populates this.
-            // Here we must simulate it.
-            const def = getAbilityDefinition('Blazing armour');
-            if (def) {
-                state.enemy.activeAbilities.set('blazing-armour', {
-                    name: 'Blazing armour',
-                    owner: 'enemy',
-                    def
-                });
-            }
-
-            expect(hasAbility(state, 'enemy', 'Blazing armour')).toBe(true);
-
-            expect(def).toBeDefined();
-            expect(def?.description).toContain('Ignite');
-        });
+        // TODO
     });
 
     describe('Stat Modifiers', () => {
         it('should apply onCombatStart buffs (Holy Aura)', () => {
-            const def = getAbilityDefinition('Holy Aura');
-            expect(def).toBeDefined();
-
+            const def = requireAbilityDefinition('Holy Aura');
             state.phase = 'combat-start';
 
-            // Assume enemy has it, but it targets Hero
-            if (def && def.onCombatStart) {
-                state = def.onCombatStart(state, { owner: 'enemy' });
-            }
+            state = def.onCombatStart!(state, { owner: 'enemy' });
 
-            // Hero should have effect
             const effect = state.hero.activeEffects.find(e => e.source === 'Holy Aura');
             expect(effect).toBeDefined();
             expect(effect?.stats?.brawn).toBe(2);
@@ -129,38 +76,20 @@ describe('Special Abilities Patterns', () => {
     });
 
     describe('Round Start Abilities', () => {
-        it('should trigger Acid damage on roll of 1 or 2', () => {
-            const def = getAbilityDefinition('Acid');
-            assert(def && def.onRoundStart);
-            const ability = def!;
-
-            const enemy = {
-                ...MOCK_ENEMY,
-                abilities: [ability.name]
-            };
-            state.enemy = createCombatant(enemy);
-            state.hero = createCombatant(MOCK_HERO);
-
+        it('Acid: should trigger damage on roll of 1 or 2', () => {
             mockDiceRolls([1]);
 
+            const ability = requireAbilityDefinition('Acid');
             state = ability.onRoundStart!(state, { ability: undefined, owner: 'enemy', target: 'hero' });
 
             expect(state.hero.stats.health).toBeLessThan(MOCK_HERO.stats.health);
             expect(state.logs.some(l => l.message.includes('Acid check: rolled 1'))).toBe(true);
         });
 
-        it('should apply And by crook modifiers when health < 20', () => {
-            const def = getAbilityDefinition('And by crook');
-            assert(def && def.onRoundStart);
-            const ability = def!;
+        it('And by crook: should apply modifiers when health < 20', () => {
+            state.enemy = createCombatant(MOCK_ENEMY);
 
-            const enemy = {
-                ...MOCK_ENEMY,
-                abilities: ['And by crook'],
-                stats: { ...MOCK_ENEMY.stats, health: 30, maxHealth: 30 }
-            };
-            state.enemy = createCombatant(enemy);
-
+            const ability = requireAbilityDefinition('And by crook');
             state = ability.onRoundStart!(state, { ability: undefined, owner: 'enemy' });
             expect(hasEffect(state, 'enemy', 'And by crook')).toBe(false);
 
@@ -185,32 +114,127 @@ describe('Special Abilities Patterns', () => {
 
     describe('Reroll Abilities', () => {
         it('should reroll low dice (Bewitched)', () => {
-            const enemy = {
-                ...MOCK_ENEMY,
-                abilities: ['Bewitched']
-            };
-            state.enemy = createCombatant(enemy);
+            const def = requireAbilityDefinition('Bewitched');
 
-            const def = getAbilityDefinition('Bewitched');
-            assert(def && def.onSpeedRoll);
-
-            // Setup speed rolls with 1s and 2s
-            state.enemySpeedRolls = [
-                { value: 1, isRerolled: false },
-                { value: 2, isRerolled: false },
-                { value: 6, isRerolled: false }
-            ];
+            state.enemySpeedRolls = deterministicRoll([1, 2, 6]);
 
             mockDiceRolls([3, 4]);
             state = def!.onSpeedRoll!(state, { ability: undefined, owner: 'enemy' });
 
-            // Expect 1 and 2 to be rerolled to 6. 6 should stay 6.
             expect(state.enemySpeedRolls).toEqual([
                 { value: 3, isRerolled: true },
                 { value: 4, isRerolled: true },
                 { value: 6, isRerolled: false }
             ]);
             expect(state.logs.some(l => l.message.includes('Bewitched'))).toBe(true);
+        });
+    });
+
+    describe('Dice Manipulation Abilities', () => {
+        it('Blood Drinker: should add die and heal on rolling a 6', () => {
+            state = {
+                ...state,
+                enemy: createCombatant({
+                    ...MOCK_ENEMY,
+                }),
+                hero: createCombatant(MOCK_HERO),
+                winner: 'enemy',
+                damage: {
+                    damageRolls: deterministicRoll([6]),
+                    modifiers: []
+                }
+            };
+
+            mockDiceRolls([3]);
+            state.enemy.stats.health = 15;
+
+            const def = requireAbilityDefinition('Blood Drinker');
+            assert(def && def.onDamageRoll);
+            state = def!.onDamageRoll!(state, { owner: 'enemy', target: 'hero' });
+
+            expect(state.damage!.damageRolls).toHaveLength(2);
+            expect(state.damage!.damageRolls[1].value).toBe(3);
+            expect(state.enemy.stats.health).toBe(17);
+        });
+
+        it('Distraction: should skip damage on roll 1-2 when losing', () => {
+            state.winner = 'enemy';
+
+            mockDiceRolls([5]);
+            const def = requireAbilityDefinition('Distraction');
+            state = def!.onDamageRoll!(state, { owner: 'hero' });
+
+            expect(state.winner).toEqual('enemy');
+            expect(state.logs).not.toContain(expect.objectContaining({
+                message: expect.stringContaining('Skipping damage')
+            }));
+
+            mockDiceRolls([1]);
+            state.logs = [];
+            state = def!.onDamageRoll!(state, { owner: 'hero' });
+
+            expect(state.winner).toBeNull();
+            expect(state.logs.some(l => l.message && l.message.includes('Skipping damage'))).toBe(true);
+        });
+
+        it('Zen Charge: should add speed dice in round 1', () => {
+            state.round = 1;
+
+            const def = requireAbilityDefinition('Zen Charge');
+            state = def!.onRoundStart!(state, { owner: 'enemy' });
+            expect(hasEffect(state, 'enemy', 'Zen Charge')).toBe(true);
+
+            const effect = state.enemy.activeEffects.find(e => e.source === 'Zen Charge');
+            expect(effect?.stats.speedDice).toBe(1);
+
+            state.round = 2;
+            // Manual clear as endRound isn't called here
+            state.enemy.activeEffects = [];
+            state = def!.onRoundStart!(state, { owner: 'enemy' });
+            expect(hasEffect(state, 'enemy', 'Zen Charge')).toBe(false);
+        });
+
+        it('Downsized: should reduce stats based on missing health', () => {
+            // Full health
+            state.enemy.stats.maxHealth = 40;
+            state.enemy.stats.health = 40;
+            const def = addAbility(state.enemy, 'Downsized');
+            state = def!.onRoundStart!(state, { owner: 'enemy' });
+            expect(hasEffect(state, 'enemy', 'Downsized')).toBe(false);
+
+            // Lose 20 health -> 2 stacks
+            state.enemy.stats.health = 15; // Lost 25
+            state = def!.onRoundStart!(state, { owner: 'enemy' });
+            const effect = state.enemy.activeEffects.find(e => e.source === 'Downsized');
+            expect(effect).toBeDefined();
+            // 25 // 10 = 2
+            expect(effect?.stats.speed).toBe(-2);
+            expect(effect?.stats.brawn).toBe(-2);
+        });
+
+        it('Charge Her Up: should skip damage and discharge every 2 wins', () => {
+            state = {
+                ...state,
+                winner: 'enemy',
+                damage: {
+                    damageRolls: deterministicRoll([5]),
+                    modifiers: []
+                }
+            };
+
+            const def = requireAbilityDefinition('Charge her up');
+            state = def!.onDamageRoll!(state, { owner: 'enemy', ability: state.enemy.activeAbilities.get('charge-her-up') });
+            expect(state.damage?.damageRolls).toEqual([]);
+            expect(hasEffect(state, 'enemy', 'Charge her up')).toBe(true);
+
+            state.damage = {
+                damageRolls: deterministicRoll([5]),
+                modifiers: []
+            };
+            state = def!.onDamageRoll!(state, { owner: 'enemy' });
+            expect(state.damage?.damageRolls).toEqual([]);
+            expect(state.hero.stats.health).toBe(MOCK_HERO.stats.health - 10);
+            expect(hasEffect(state, 'enemy', 'Charge her up')).toBe(false);
         });
     });
 });

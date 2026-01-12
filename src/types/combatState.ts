@@ -105,14 +105,21 @@ export interface CombatState {
     usedAbilities?: { name: string; type: AbilityType }[];
 }
 
+const activeAbilities = new Set<string>();
+
 export function forEachActiveAbility(state: CombatState, callback: (ability: ActiveAbility, def: AbilityDefinition) => void) {
     [
         ...state.hero.activeAbilities.values(),
         ...state.enemy.activeAbilities.values()
     ].forEach(ability => {
         const def = getAbilityDefinition(ability.name);
-        if (!def) return;
+        // Avoid recursion during ability processing.
+        if (!def || activeAbilities.has(ability.name)) return;
+        activeAbilities.add(ability.name);
+        console.log('Processing ability', ability.name); // TODO: Remove in final version
         callback(ability, def);
+        console.log('Finished processing ability', ability.name);// TODO: Remove in final version
+        activeAbilities.delete(ability.name);
     });
 }
 
@@ -177,7 +184,24 @@ export function setDamageRoll(state: CombatState, damageRolls?: DiceRoll[]): Com
         }
     };
     state = addLogs(state, {
-        message: `Damage rolled ${formatDice(state.damage!.damageRolls!)}=${sumDice(state.damage!.damageRolls!)}`,
+        message: `Damage roll: ${formatDice(state.damage!.damageRolls!)}=${sumDice(state.damage!.damageRolls!)}`,
+    });
+    state = runOnDamageRollHooks(state);
+    state = runOnDamageCalculateHooks(state);
+    return state;
+}
+
+export function modifyDamageRolls(state: CombatState, damageRolls: DiceRoll[], source: string): CombatState {
+    const originalRolls = state.damage!.damageRolls;
+    state = {
+        ...state,
+        damage: {
+            ...state.damage!,
+            damageRolls,
+        }
+    };
+    state = addLogs(state, {
+        message: `Damage roll modified by (${source}). Changed from ${formatDice(originalRolls!)} to ${formatDice(damageRolls)}`,
     });
     state = runOnDamageRollHooks(state);
     state = runOnDamageCalculateHooks(state);

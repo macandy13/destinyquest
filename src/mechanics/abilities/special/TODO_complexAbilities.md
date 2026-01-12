@@ -2,14 +2,6 @@
 
 The following abilities contain complex logic or unique mechanics that were not covered by the standard patterns and need individual implementation.
 
-- Acid (Conditional DoT)
-- And by crook
-- Bewitched
-- Blood drinker
-- Charge
-- Charge her up
-- Distraction
-- Downsized
 - Dragon breath
 - Entrapment
 - Eye Beam

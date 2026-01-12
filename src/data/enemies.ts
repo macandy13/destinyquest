@@ -1438,7 +1438,7 @@ export const ENEMIES: Enemy[] = [
       "maxHealth": 60
     },
     "abilities": [
-      "Charge",
+      "Zen Charge",
       "Trample"
     ],
     "bookRef": {

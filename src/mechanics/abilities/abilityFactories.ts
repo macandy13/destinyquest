@@ -163,25 +163,6 @@ export function modifySpeedRolls(
     return state;
 }
 
-export function modifyDamageRolls(
-    state: CombatState,
-    roller: CharacterType,
-    modifier: (rolls: DiceRoll[]) => DiceRoll[]
-): CombatState {
-    if (state.winner !== roller) return state;
-    if (!state.damage || !state.damage.damageRolls) return state;
-
-    const newRolls = modifier([...state.damage.damageRolls]);
-
-    return {
-        ...state,
-        damage: {
-            ...state.damage,
-            damageRolls: newRolls
-        }
-    };
-}
-
 export interface ReactionAbilityConfig {
     name: string;
     description: string;

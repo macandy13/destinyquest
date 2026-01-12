@@ -107,6 +107,7 @@ export function createImmunityAbility(config: {
         onDamageDealt: (state, { owner, target }, source, damageDealt) => {
             if (!target || owner !== target) return state;
             if (immunities.includes(source)) {
+                // TODO: Likely better to prevent the damage instead of healing it again.
                 state = healDamage(state, config.name, target, damageDealt, 'Immune');
                 state = addLogs(state, {
                     message: `${target} is immune to ${source}.`,
