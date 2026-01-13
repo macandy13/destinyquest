@@ -4,7 +4,6 @@ import { CombatState, Combatant } from '../types/combatState';
 import { DiceRoll } from '../types/dice';
 import { BackpackItem, EquipmentItem, Hero } from '../types/hero';
 import { Enemy } from '../types/character';
-import { AbilityDefinition, getAbilityDefinition, toCanonicalName } from '../mechanics/abilityRegistry';
 
 export const MOCK_HERO: Hero = {
     type: 'hero',

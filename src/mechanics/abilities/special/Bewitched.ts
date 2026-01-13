@@ -8,8 +8,7 @@ function rerollLowDice(rolls: DiceRoll[]): { newRolls: DiceRoll[], rerolled: boo
     let rerolled = false;
     const newRolls = rolls.map(die => {
         if (die.value <= 2 && !die.isRerolled) {
-            rerolled = true;
-            return rerollDie(die);
+            return rerollDie();
         }
         return die;
     });

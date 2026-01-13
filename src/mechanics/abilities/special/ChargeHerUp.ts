@@ -1,5 +1,4 @@
-
-import { AbilityDefinition, registerAbility, toCanonicalName } from '../../abilityRegistry';
+import { AbilityDefinition, registerAbility } from '../../abilityRegistry';
 import { appendEffect, dealDamage, hasEffect, removeEffect } from '../../../types/combatState';
 import { getOpponent } from '../../../types/character';
 

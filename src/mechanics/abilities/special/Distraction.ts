@@ -1,7 +1,6 @@
-
 import { AbilityDefinition, registerAbility } from '../../abilityRegistry';
-import { rollDice, rollDie } from '../../../types/dice';
-import { addLogs, skipDamagePhase } from '../../../types/combatState';
+import { rollDie } from '../../../types/dice';
+import { addLogs } from '../../../types/combatState';
 
 export const Distraction: AbilityDefinition = {
     name: 'Distraction',

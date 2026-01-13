@@ -9,23 +9,7 @@ interface CombatStateEditorProps {
 }
 
 const CombatStateEditor: React.FC<CombatStateEditorProps> = ({ combat, onApply, onCancel }) => {
-    const [heroHealth, setHeroHealth] = useState(combat.hero.stats.health);
-    const [enemyHealth, setEnemyHealth] = useState(combat.enemy.stats.health);
-
-    const handleApply = () => {
-        // Construct the partial update
-        // We need to fetch the current combatants to keep other stats intact
-        // or rely on React helper logic. 
-        const newHero = {
-            ...combat.hero,
-            stats: { ...combat.hero.stats, health: heroHealth }
-        };
-        const newEnemy = {
-            ...combat.enemy,
-            stats: { ...combat.enemy.stats, health: enemyHealth }
-        };
-        onApply(heroHealth, enemyHealth);
-    };
+    const [state, setState] = useState(combat);
 
     return (
         <div className="combat-state-editor-overlay">
@@ -36,22 +20,22 @@ const CombatStateEditor: React.FC<CombatStateEditorProps> = ({ combat, onApply, 
                         <label>Hero Health</label>
                         <input
                             type="number"
-                            value={heroHealth}
-                            onChange={(e) => setHeroHealth(Number(e.target.value))}
+                            value={state.hero.stats.health}
+                            onChange={(e) => setState({ ...state, hero: { ...state.hero, stats: { ...state.hero.stats, health: Number(e.target.value) } } })}
                         />
                     </div>
                     <div className="field-group">
                         <label>Enemy Health</label>
                         <input
                             type="number"
-                            value={enemyHealth}
-                            onChange={(e) => setEnemyHealth(Number(e.target.value))}
+                            value={state.enemy.stats.health}
+                            onChange={(e) => setState({ ...state, enemy: { ...state.enemy, stats: { ...state.enemy.stats, health: Number(e.target.value) } } })}
                         />
                     </div>
                 </div>
                 <div className="editor-actions">
                     <button className="btn btn-secondary" onClick={onCancel}>Cancel</button>
-                    <button className="btn btn-primary" onClick={handleApply}>Apply Changes</button>
+                    <button className="btn btn-primary" onClick={() => onApply(state)}>Apply Changes</button>
                 </div>
             </div>
         </div>

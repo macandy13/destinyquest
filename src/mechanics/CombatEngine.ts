@@ -94,10 +94,8 @@ function createEnemyCombatant(character: Enemy | Combatant<Enemy>): Combatant<En
         activeEffects: []
     };
     Object.values(enemy.abilities).forEach(rawAbilityName => {
-        Object.values(enemy.abilities).forEach(item => {
-            const def = requireAbilityDefinition(rawAbilityName);
-            addAbility(combatant, def);
-        });
+        const def = requireAbilityDefinition(rawAbilityName);
+        addAbility(combatant, def);
     });
     return combatant;
 }
