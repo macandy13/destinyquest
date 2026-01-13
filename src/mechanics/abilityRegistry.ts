@@ -16,8 +16,10 @@ export interface AbilityHooks {
     // For active abilities: returns partial state or null if activation failed/invalid
     onActivate?: (state: CombatState, context: AbilityContext) => CombatState;
 
+    // Called when combat starts
     onCombatStart?: (state: CombatState, context: AbilityContext) => CombatState;
 
+    // Called on round start
     onRoundStart?: (state: CombatState, context: AbilityContext) => CombatState;
 
     // Triggered after speed dice are rolled
@@ -43,6 +45,9 @@ export interface AbilityHooks {
 
     // Called when an item is equipped (outside of combat)
     onEquipItem?: (hero: Hero, item: EquipmentItem, slot: EquipmentSlot) => Hero;
+
+    // Called when combat ends. Can change the state to another phase.
+    onCombatEnd?: (state: CombatState, context: AbilityContext) => CombatState;
 }
 
 export interface AbilityDefinition extends AbilityHooks {

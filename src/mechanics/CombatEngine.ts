@@ -571,11 +571,22 @@ export function checkForCombatEnd(state: CombatState): CombatState {
     return state;
 }
 
+function runOnCombatEndHooks(state: CombatState): CombatState {
+    forEachActiveAbility(state, (ability, def) => {
+        if (def.onCombatEnd) {
+            state = def.onCombatEnd(state, { ability, owner: ability.owner });
+        }
+    });
+    return state;
+}
+
 /**
  * Transitions to 'combat-end'.
  */
 export function endCombat(state: CombatState): CombatState {
     state = { ...state, phase: 'combat-end' };
+    state = runOnCombatEndHooks(state);
+    if (state.phase !== 'combat-end') return state;
     state = addLogs(state, { message: 'Combat ended' });
     state.hero.original.backpack = state.backpack;
     state.hero.original.backpack = state.hero.original.backpack.fill(null, state.backpack.length, 5);

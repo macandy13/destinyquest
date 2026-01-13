@@ -2,11 +2,6 @@
 
 The following abilities contain complex logic or unique mechanics that were not covered by the standard patterns and need individual implementation.
 
-- Frenzy
-- From the ashes
-- Glutinous maximus
-- Ink bombs
-- King of the swingers
 - Knockdown
 - Leech
 - Maelstrom

@@ -2,23 +2,7 @@ import { describe, expect, it, beforeEach, assert } from 'vitest';
 import { addAbility, CombatState, getEffect, hasEffect, requireAbilityDefinition } from '../../../types/combatState';
 import { createCombatant, MOCK_HERO, MOCK_ENEMY, INITIAL_STATE, mockDiceRolls } from '../../../tests/testUtils';
 import { deterministicRoll } from '../../../types/dice';
-import './Acid';
-import './AndByCrook';
-import './Bewitched';
-import './BloodDrinker';
-import './ChargeHerUp';
-import './Distraction';
-import './Downsized';
-import './DragonBreath';
-import './Entrapment';
-import './EyeBeam';
-import './FaithfulDuty';
-import './Ferocity';
-import './immunities';
-import './passiveDamage';
-import './specialAbilityPatterns';
-import './statModifiers';
-import './ZenCharge';
+import '../../allAbilities';
 
 describe('Special Abilities Patterns', () => {
     let state: CombatState;
@@ -316,6 +300,48 @@ describe('Special Abilities Patterns', () => {
             state = def.onSpeedRoll!(state, { ability, owner: 'hero' });
 
             expect(hasEffect(state, 'hero', 'Ferocity')).toBe(true);
+        });
+
+        it('Frenzy: should add damage die on combat start', () => {
+            const def = requireAbilityDefinition('Frenzy');
+            console.log(def);
+
+            state = def.onRoundStart!(state, { owner: 'enemy' });
+
+            expect(hasEffect(state, 'enemy', 'Frenzy')).toBe(true);
+            const effect = getEffect(state, 'enemy', 'Frenzy');
+            expect(effect?.stats.damageDice).toBe(1);
+        });
+
+        it('Glutinous maximus: should reduce hero speed dice on win', () => {
+            const def = requireAbilityDefinition('Glutinous maximus');
+            state.winner = 'hero';
+
+            state = def.onDamageRoll!(state, { owner: 'enemy' });
+
+            expect(hasEffect(state, 'hero', 'Glutinous maximus')).toBe(true);
+            const effect = getEffect(state, 'hero', 'Glutinous maximus');
+            expect(effect?.stats.speedDice).toBe(-1);
+        });
+
+        it('Ink bombs: should make hero lose round on rolling 1', () => {
+            const def = requireAbilityDefinition('Ink bombs');
+            state.heroSpeedRolls = deterministicRoll([1, 3]);
+
+            state = def.onSpeedRoll!(state, { owner: 'enemy' });
+
+            expect(state.winner).toBe('enemy');
+        });
+
+        it('King of the swingers: should deal passive damage reduced by armour', () => {
+            const def = requireAbilityDefinition('King of the swingers');
+            state.hero.stats.armour = 5;
+            state.hero.stats.health = 30;
+
+            state = def.onPassiveAbility!(state, { owner: 'enemy' });
+
+            // 15 - 5 armour = 10 damage
+            expect(state.hero.stats.health).toBe(20);
         });
     });
 });
