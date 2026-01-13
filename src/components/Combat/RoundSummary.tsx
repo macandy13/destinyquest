@@ -37,7 +37,7 @@ const RoundSummary: React.FC<RoundSummaryProps> = ({
                 </>
             }
         >
-            <<div>>TODO: Show summary of the changes in this round</div>
+            <div>TODO: Show summary of the changes in this round</div>
             {isEditing && (
                 <CombatStateEditor
                     combat={combat}
