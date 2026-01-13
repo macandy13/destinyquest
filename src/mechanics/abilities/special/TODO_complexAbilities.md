@@ -2,11 +2,6 @@
 
 The following abilities contain complex logic or unique mechanics that were not covered by the standard patterns and need individual implementation.
 
-- Dragon breath
-- Entrapment
-- Eye Beam
-- Faithful duty
-- Ferocity
 - Frenzy
 - From the ashes
 - Glutinous maximus

@@ -1,19 +1,24 @@
 import { describe, expect, it, beforeEach, assert } from 'vitest';
-import { CombatState, hasEffect } from '../../../types/combatState';
-import { createCombatant, MOCK_HERO, MOCK_ENEMY, INITIAL_STATE, mockDiceRolls, requireAbilityDefinition, addAbility } from '../../../tests/testUtils';
+import { addAbility, CombatState, getEffect, hasEffect, requireAbilityDefinition } from '../../../types/combatState';
+import { createCombatant, MOCK_HERO, MOCK_ENEMY, INITIAL_STATE, mockDiceRolls } from '../../../tests/testUtils';
 import { deterministicRoll } from '../../../types/dice';
-import './immunities';
-import './passiveDamage';
-import './statModifiers';
 import './Acid';
 import './AndByCrook';
 import './Bewitched';
 import './BloodDrinker';
-import './ZenCharge';
 import './ChargeHerUp';
 import './Distraction';
 import './Downsized';
+import './DragonBreath';
+import './Entrapment';
+import './EyeBeam';
+import './FaithfulDuty';
+import './Ferocity';
+import './immunities';
+import './passiveDamage';
 import './specialAbilityPatterns';
+import './statModifiers';
+import './ZenCharge';
 
 describe('Special Abilities Patterns', () => {
     let state: CombatState;
@@ -58,9 +63,7 @@ describe('Special Abilities Patterns', () => {
         });
     });
 
-    describe('Immunities', () => {
-        // TODO
-    });
+
 
     describe('Stat Modifiers', () => {
         it('should apply onCombatStart buffs (Holy Aura)', () => {
@@ -198,13 +201,13 @@ describe('Special Abilities Patterns', () => {
             // Full health
             state.enemy.stats.maxHealth = 40;
             state.enemy.stats.health = 40;
-            const def = addAbility(state.enemy, 'Downsized');
-            state = def!.onRoundStart!(state, { owner: 'enemy' });
+            const def = requireAbilityDefinition('Downsized');
+            state = def.onRoundStart!(state, { owner: 'enemy' });
             expect(hasEffect(state, 'enemy', 'Downsized')).toBe(false);
 
             // Lose 20 health -> 2 stacks
             state.enemy.stats.health = 15; // Lost 25
-            state = def!.onRoundStart!(state, { owner: 'enemy' });
+            state = def.onRoundStart!(state, { owner: 'enemy' });
             const effect = state.enemy.activeEffects.find(e => e.source === 'Downsized');
             expect(effect).toBeDefined();
             // 25 // 10 = 2
@@ -235,6 +238,84 @@ describe('Special Abilities Patterns', () => {
             expect(state.damage?.damageRolls).toEqual([]);
             expect(state.hero.stats.health).toBe(MOCK_HERO.stats.health - 10);
             expect(hasEffect(state, 'enemy', 'Charge her up')).toBe(false);
+        });
+    });
+
+    describe('Other abilities', () => {
+        it('Dragon Breath: should deal damage if opponent is burning', () => {
+            // Mock burn effect
+            state.hero = createCombatant(MOCK_HERO);
+            state.hero.activeEffects.push({
+                source: 'Ignite',
+                target: 'hero',
+                stats: {},
+                duration: 1
+            });
+
+            const def = requireAbilityDefinition('Dragon breath');
+            state = def.onRoundStart!(state, { owner: 'enemy' });
+
+            expect(state.damageDealt).toContainEqual({
+                target: 'hero',
+                source: 'Dragon breath',
+                amount: 2
+            });
+        });
+
+        it('Entrapment: should reduce opponent speed dice on win', () => {
+            const ability = requireAbilityDefinition('Entrapment');
+            state.winner = 'hero';
+
+            state = ability.onDamageRoll!(state, { owner: 'hero' });
+
+            const effect = getEffect(state, 'enemy', 'Entrapment');
+            expect(effect).toBeDefined();
+            expect(effect?.stats.speedDice).toBe(-1);
+        });
+
+        it('Eye Beam: should deal damage on speed roll 6', () => {
+            state.heroSpeedRolls = deterministicRoll([6]);
+
+            const ability = requireAbilityDefinition('Eye Beam');
+            state = ability.onSpeedRoll!(state, { owner: 'hero' });
+
+            expect(state.damageDealt).toContainEqual({
+                target: 'enemy',
+                source: 'Eye Beam',
+                amount: 2
+            });
+        });
+
+        it('Faithful Duty: should heal when low health and trigger only once', () => {
+            const def = requireAbilityDefinition('Faithful duty');
+            const ability = addAbility(state.hero, def);
+            state.hero.stats.health = 4;
+            expect(ability?.uses).toBe(1);
+
+            // First trigger
+            state = def.onDamageDealt!(state,
+                { ability, owner: 'hero' }, 'Attack', 5);
+
+            expect(state.hero.stats.health).toBe(14); // 4 + 10
+            expect(ability?.uses).toBe(0);
+
+            // Second trigger (should fail)
+            state.hero.stats.health = 4;
+            state = def.onDamageDealt!(state,
+                { ability, owner: 'hero' }, 'Attack', 5);
+            expect(state.hero.stats.health).toBe(4); // No heal
+        });
+
+        it('Ferocity: should add damage die on speed roll 6', () => {
+            const def = requireAbilityDefinition('Ferocity');
+            const ability = addAbility(state.hero, def);
+
+            // Mock speed roll with 6
+            state.heroSpeedRolls = deterministicRoll([6]);
+
+            state = def.onSpeedRoll!(state, { ability, owner: 'hero' });
+
+            expect(hasEffect(state, 'hero', 'Ferocity')).toBe(true);
         });
     });
 });

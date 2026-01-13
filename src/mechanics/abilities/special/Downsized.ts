@@ -1,4 +1,3 @@
-
 import { AbilityDefinition, registerAbility } from '../../abilityRegistry';
 import { appendEffect, removeEffect } from '../../../types/combatState';
 

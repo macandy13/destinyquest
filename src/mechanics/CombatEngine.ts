@@ -33,7 +33,10 @@ import {
     dealDamage,
     AttackSource,
     setDamageRoll,
-    InteractionResponse
+    InteractionResponse,
+    addAbility,
+    requireAbilityDefinition,
+    useAbility
 } from '../types/combatState';
 import { sumDice, rollDice, formatDice, DiceRoll } from '../types/dice';
 import { Hero, HeroStats, BackpackItem } from '../types/hero';
@@ -72,34 +75,8 @@ function createHeroCombatant(character: Hero | Combatant<Hero>): Combatant<Hero>
     };
     Object.values(hero.equipment).forEach(item => {
         item?.abilities?.forEach(rawAbilityName => {
-            const abilityName = toCanonicalName(rawAbilityName);
-            let ability = combatant.activeAbilities.get(abilityName);
-            if (!ability) {
-                const def = getAbilityDefinition(abilityName) ?? {
-                    name: rawAbilityName,
-                    type: 'combat',
-                    description: 'Unknown hero ability'
-                };
-                ability = {
-                    name: rawAbilityName,
-                    owner: combatant.type,
-                    def,
-                    sources: [],
-                    uses: ['speed', 'combat', 'modifier'].includes(def.type) ? 0 : undefined,
-                };
-                combatant.activeAbilities.set(abilityName, ability!);
-            }
-            switch (ability!.def.type) {
-                case 'speed':
-                case 'combat':
-                case 'modifier':
-                    ability!.uses! += 1;
-                    break;
-                case 'passive':
-                case 'special':
-                    break;
-            }
-            ability!.sources!.push(item);
+            const def = requireAbilityDefinition(rawAbilityName);
+            addAbility(combatant, def, item);
         });
     });
     return combatant;
@@ -117,17 +94,9 @@ function createEnemyCombatant(character: Enemy | Combatant<Enemy>): Combatant<En
         activeEffects: []
     };
     Object.values(enemy.abilities).forEach(rawAbilityName => {
-        const abilityName = toCanonicalName(rawAbilityName);
-        combatant.activeAbilities.set(abilityName, {
-            name: rawAbilityName,
-            owner: 'enemy',
-            def: getAbilityDefinition(abilityName) ?? {
-                name: rawAbilityName,
-                type: 'special',
-                description: 'Unknown enemy ability'
-            },
-            uses: undefined,
-            sources: []
+        Object.values(enemy.abilities).forEach(item => {
+            const def = requireAbilityDefinition(rawAbilityName);
+            addAbility(combatant, def);
         });
     });
     return combatant;
@@ -227,11 +196,11 @@ export function activateAbility(state: CombatState, rawAbilityName: string): Com
     const definition = getAbilityDefinition(abilityName);
     if (!definition || !definition.onActivate) return state;
 
-    // Check usage limits
+    // Check usage limits, some types can only be used once per round.
+    // TODO: Look-up the rule for that again.
     if (['speed', 'combat'].includes(definition.type)) {
         const used = state.usedAbilities || [];
         if (used.some(a => a.type === definition.type)) {
-            // Already used an ability of this type
             return state;
         }
     }
@@ -241,10 +210,7 @@ export function activateAbility(state: CombatState, rawAbilityName: string): Com
         return state;
     }
 
-    if (ability.uses) ability.uses -= 1;
-    if (!ability.uses || ability.uses === 0) {
-        state.hero.activeAbilities.delete(abilityName);
-    }
+    state = useAbility(state, 'hero', abilityName);
 
     // Track usage
     if (['speed', 'combat'].includes(definition.type)) {

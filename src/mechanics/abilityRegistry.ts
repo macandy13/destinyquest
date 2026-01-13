@@ -51,6 +51,8 @@ export interface AbilityDefinition extends AbilityHooks {
     type: AbilityType,
     icon?: string;
     reviewed?: boolean;
+    // Optional max number of usages.
+    uses?: number;
 }
 
 export const ABILITY_REGISTRY: Record<string, AbilityDefinition> = {};

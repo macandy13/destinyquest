@@ -247,6 +247,51 @@ export function healDamage(state: CombatState, source: string, target: Character
     return state;
 }
 
+export function requireAbilityDefinition(name: string): AbilityDefinition {
+    const def = getAbilityDefinition(name);
+    if (!def) throw new Error(`Ability ${name} not found`);
+    return def;
+}
+
+export function addAbility(combatant: any, def: AbilityDefinition, item?: EquipmentItem): ActiveAbility {
+    let activeAbility: ActiveAbility;
+    const canonical = toCanonicalName(def.name);
+    if (combatant.activeAbilities.has(canonical)) {
+        activeAbility = combatant.activeAbilities.get(canonical)!;
+    } else {
+        activeAbility = {
+            name: def.name,
+            owner: combatant.type,
+            def,
+        };
+        combatant.activeAbilities.set(canonical, activeAbility);
+    }
+    switch (def.type) {
+        case 'speed':
+        case 'combat':
+        case 'modifier':
+        case 'special':
+            activeAbility.uses = (activeAbility.uses ?? 0) + (def.uses ?? 1);
+            break;
+        default:
+            break;
+    }
+    if (item) activeAbility!.sources = [...(activeAbility!.sources ?? []), item];
+    return activeAbility;
+};
+
+export function useAbility(state: CombatState, target: CharacterType, name: string) {
+    const activeAbilities = getCombatant(state, target).activeAbilities;
+    const canonicalName = toCanonicalName(name);
+    const ability = activeAbilities.get(canonicalName);
+    if (!ability) return state;
+    ability.uses!--;
+    if (ability.uses === 0) {
+        activeAbilities.delete(canonicalName);
+    }
+    return state;
+}
+
 export function hasAbility(state: CombatState, target: CharacterType, name: string) {
     const activeAbilities = getCombatant(state, target).activeAbilities;
     const canonicalName = toCanonicalName(name);
@@ -258,6 +303,10 @@ export function hasAbility(state: CombatState, target: CharacterType, name: stri
 
 export function hasEffect(state: CombatState, target: CharacterType, source: string) {
     return getCombatant(state, target).activeEffects.some(e => e.source === source);
+}
+
+export function getEffect(state: CombatState, target: CharacterType, source: string) {
+    return getCombatant(state, target).activeEffects.find(e => e.source === source);
 }
 
 export function appendEffect(state: CombatState, target: CharacterType, effect: Effect) {

@@ -128,24 +128,6 @@ export function createCombatant<T extends Hero | Enemy>(char: T): Combatant<T> {
     };
 }
 
-export function requireAbilityDefinition(name: string): AbilityDefinition {
-    const def = getAbilityDefinition(name);
-    if (!def) throw new Error(`Ability ${name} not found`);
-    return def;
-}
-
-export function addAbility(combatant: any, name: string): AbilityDefinition {
-    const def = requireAbilityDefinition(name);
-    const canonical = toCanonicalName(name);
-    combatant.activeAbilities.set(canonical, {
-        name,
-        owner: combatant.type,
-        def,
-        uses: undefined
-    });
-    return def;
-};
-
 export function mockDiceRolls(rolls: number[]) {
     const rollValues = rolls.map(r => (r - 1) / 6);
     vi.spyOn(Math, 'random').mockImplementation(() => {
