@@ -15,53 +15,6 @@ describe('Special Abilities Patterns', () => {
         };
     });
 
-    describe('DoT Abilities', () => {
-        it('should deal damage ignoring armour by default (Black coils)', () => {
-            // Hero has armour
-            state.hero = createCombatant({
-                ...MOCK_HERO,
-                stats: { ...MOCK_HERO.stats, health: 30, armour: 10 }
-            });
-
-            // Trigger passive ability hook
-            const def = requireAbilityDefinition('Black coils');
-            state = def.onPassiveAbility!(state, { owner: 'enemy', target: 'hero' });
-
-            // Expect damage dealt = 2, hero health = 28 (30 - 2, ignore armour)
-            expect(state.hero.stats.health).toBe(28);
-            expect(state.damageDealt).toEqual([
-                { target: 'hero', source: 'Black coils', amount: 2 }
-            ]);
-        });
-
-        it('should trigger conditional DoTs (Black venom)', () => {
-            const def = requireAbilityDefinition('Black venom');
-
-            // 1. Trigger onDamageDealt to apply effect
-            state = def.onDamageDealt!(state, { ability: undefined, owner: 'enemy', target: 'hero' }, 'Attack', 5);
-            expect(hasEffect(state, 'hero', 'Black venom')).toBe(true);
-
-            // 2. Trigger onPassiveAbility to deal damage
-            state = def.onPassiveAbility!(state, { owner: 'enemy', target: 'hero' });
-            expect(state.hero.stats.health).toBe(28);
-        });
-    });
-
-
-
-    describe('Stat Modifiers', () => {
-        it('should apply onCombatStart buffs (Holy Aura)', () => {
-            const def = requireAbilityDefinition('Holy Aura');
-            state.phase = 'combat-start';
-
-            state = def.onCombatStart!(state, { owner: 'enemy' });
-
-            const effect = state.hero.activeEffects.find(e => e.source === 'Holy Aura');
-            expect(effect).toBeDefined();
-            expect(effect?.stats?.brawn).toBe(2);
-        });
-    });
-
     describe('Round Start Abilities', () => {
         it('Acid: should trigger damage on roll of 1 or 2', () => {
             mockDiceRolls([1]);

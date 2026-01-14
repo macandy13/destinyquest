@@ -1,4 +1,39 @@
-import { createImmunityAbility } from './specialAbilityPatterns';
+import { registerAbility, toCanonicalName } from '../../abilityRegistry';
+import { healDamage, addLogs } from '../../../types/combatState';
+
+/**
+ * Creates an immunity ability.
+ * TODO: This only reverts damage, but it also needs to avoid adding effects
+ */
+export function createImmunityAbility(config: {
+    name: string;
+    immunities: string[];
+    description?: string;
+}) {
+    const desc = config.description ||
+        `Immune to ${config.immunities.join(', ')}.`;
+    const immunities = config.immunities.map(i => toCanonicalName(i));
+    registerAbility({
+        name: config.name,
+        type: 'passive',
+        description: desc,
+        icon: '🛡️',
+        reviewed: true,
+        onDamageDealt: (state, { owner, target }, source, damageDealt) => {
+            if (!target || owner !== target) return state;
+            if (immunities.includes(source)) {
+                state = healDamage(state, config.name, target, damageDealt, 'Immune');
+                state = addLogs(state, {
+                    message: `${target} is immune to ${source}.`,
+                });
+                return state;
+            }
+            return state;
+        }
+    });
+}
+
+// Immunity abilities
 
 createImmunityAbility({
     name: 'Blazing armour',
@@ -13,18 +48,11 @@ createImmunityAbility({
 createImmunityAbility({
     name: 'Body of Flame',
     immunities: ['Sear', 'Fire aura', 'Bleed', 'Burn', 'Ignite']
-    // Note: There are two "Body of Flame" entries in the MD with slightly different lists. 
-    // Merging them for robustness or picking the superset.
-    // First: Sear, Fire aura, Bleed
-    // Second: Sear, Bleed, Fire Aura, Burn, Ignite.
-    // Using superset.
 });
 
 createImmunityAbility({
     name: 'Body of Ice',
     immunities: ['Venom', 'Disease', 'Bleed']
-    // TODO: "takes double damage from Sear..." logic needs separate implementation or expansion of helper.
-    // For now dealing with immunity part.
 });
 
 createImmunityAbility({
@@ -110,10 +138,7 @@ createImmunityAbility({
 createImmunityAbility({
     name: 'Natural Immunity',
     description: 'Immune to all passive effects.',
-    immunities: [] // TODO: Needs special handling actually. 
-    // If it's "all passive effects", standard immunities list might not cover it unless we add "Passive" as a keyword/category check.
-    // Typically this blocks debuffs. 
-    // I can register it here so it exists. The effect system needs to check for "Natural Immunity".
+    immunities: []
 });
 
 createImmunityAbility({
