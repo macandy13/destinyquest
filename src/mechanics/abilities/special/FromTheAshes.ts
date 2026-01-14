@@ -1,7 +1,5 @@
 import { AbilityDefinition, registerAbility } from '../../abilityRegistry';
-import { addLogs } from '../../../types/combatState';
-import { createCombatant } from '../../../tests/testUtils';
-import { Enemy } from '../../../types/character';
+import { addAbility, addLogs, requireAbilityDefinition } from '../../../types/combatState';
 
 export const FromTheAshes: AbilityDefinition = {
     name: 'From the ashes',
@@ -19,7 +17,8 @@ export const FromTheAshes: AbilityDefinition = {
             state = {
                 ...state,
                 phase: 'round-start',
-                enemy: createCombatant({
+                enemy: {
+                    ...state.enemy,
                     name: 'Phoenix risen',
                     stats: {
                         ...state.enemy.stats,
@@ -27,11 +26,11 @@ export const FromTheAshes: AbilityDefinition = {
                         maxHealth: 10,
                         speedDice: 2,
                         damageDice: 2
-                    }
-                    // TODO: Add Phoenix risen stats
-                } as Enemy)
+                    },
+                    activeEffects: []
+                }
             }
-
+            addAbility(state.enemy, requireAbilityDefinition('Body of flame'));
         }
         return state;
     }
