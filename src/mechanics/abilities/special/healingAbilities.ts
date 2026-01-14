@@ -92,3 +92,13 @@ createHealingAbility({
     trigger: 'round-end',
     stopAtZero: true
 });
+
+createHealingAbility({
+    name: 'Gathering Darkness',
+    description:
+        'At the end of each combat round, the enemy heals 8 health if not ' +
+        'defeated.',
+    amount: 8,
+    trigger: 'round-end',
+    stopAtZero: true
+});
