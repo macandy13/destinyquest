@@ -118,33 +118,3 @@ export function createImmunityAbility(config: {
         }
     });
 }
-
-/**
- * Creates a simple stat modifier ability (e.g., +2 Damage).
- */
-export function createStatCombatModifierAbility(config: {
-    name: string;
-    description: string;
-    stats: Partial<Stats>;
-    target?: CharacterType;
-    icon?: string;
-}) {
-    const skillIcons = Object.keys(config.stats).map(name => getStatIcon(name as string));
-    const icon = config.icon ?? skillIcons.length > 0 ? skillIcons[0] : getStatIcon('enemy');
-    registerAbility({
-        name: config.name,
-        type: 'modifier',
-        description: config.description,
-        icon: icon,
-        onCombatStart(state, { owner }) {
-            state = appendEffect(state, config.target ?? owner, {
-                stats: config.stats,
-                source: config.name,
-                target: owner,
-                duration: undefined,
-                icon: icon,
-            });
-            return state;
-        },
-    });
-}

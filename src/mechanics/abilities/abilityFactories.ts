@@ -8,7 +8,7 @@ import { getStatIcon, Stats } from '../../types/stats';
 
 export type TargetType = 'hero' | 'enemy' | 'owner' | 'opponent' | 'winner' | 'loser';
 
-function resolveTarget(target: TargetType, state: CombatState, context: AbilityContext): CharacterType {
+export function resolveTarget(state: CombatState, context: AbilityContext, target: TargetType): CharacterType {
     switch (target) {
         case 'hero':
             return 'hero';
@@ -89,7 +89,7 @@ export function createStatModifierAbility(config: StatModifierAbilityConfig): Ab
                 return state;
             }
 
-            const target = resolveTarget(config.target || context.owner, state, context);
+            const target = resolveTarget(state, context, config.target || context.owner);
             const effect: Effect = config.effect || {
                 source: config.name,
                 target: target,

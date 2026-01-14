@@ -98,7 +98,6 @@ describe('Special Abilities Patterns', () => {
         });
     });
 
-
     describe('Reroll Abilities', () => {
         it('should reroll low dice (Bewitched)', () => {
             const def = requireAbilityDefinition('Bewitched');
