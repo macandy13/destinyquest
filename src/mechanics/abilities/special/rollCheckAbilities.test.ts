@@ -1,8 +1,6 @@
 import { describe, expect, it, beforeEach } from 'vitest';
 import {
     CombatState,
-    hasEffect,
-    getEffect,
     requireAbilityDefinition
 } from '../../../types/combatState';
 import {

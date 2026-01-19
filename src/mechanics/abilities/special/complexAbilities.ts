@@ -12,7 +12,7 @@ import {
     skipDamagePhase
 } from '../../../types/combatState';
 import { getOpponent } from '../../../types/character';
-import { DiceRoll, formatDice, rollDie } from '../../../types/dice';
+import { formatDice, rollDie } from '../../../types/dice';
 
 // Snap out of it!
 // Roll a die at round start. If 6, apply Hopeless state (TODO: define what this means)

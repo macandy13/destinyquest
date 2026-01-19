@@ -1,7 +1,7 @@
 import React from 'react';
 import { Effect, formatEffect } from '../../types/effect';
 import CombatOverlay from './CombatOverlay';
-import { PrimaryButton, SecondaryButton } from '../Shared/Button';
+import { PrimaryButton } from '../Shared/Button';
 import {
     getAbilityDefinition,
     getAbilityIcon

@@ -1,7 +1,6 @@
 import { registerAbility } from '../../abilityRegistry';
 import { dealDamage } from '../../../types/combatState';
-import { CharacterType, getOpponent } from '../../../types/character';
-import { resolveTarget, TargetType } from '../abilityFactories';
+import { CharacterType } from '../../../types/character';
 
 /**
  * Creates an ability that deals damage based on rolled dice values.

@@ -4,7 +4,6 @@ import {
     hasEffect,
     getEffect,
     requireAbilityDefinition,
-    addAbility
 } from '../../../types/combatState';
 import {
     createCombatant,
@@ -255,7 +254,12 @@ describe('Complex Abilities', () => {
                 name: 'Potion',
                 type: 'backpack',
                 description: '',
-                bookRef: { book: 'test', act: 1 }
+                bookRef: { book: 'test', act: 1 },
+                effect: {
+                    stats: { health: 10 },
+                    source: 'potion',
+                    target: 'hero'
+                }
             }];
 
             const def = requireAbilityDefinition('Wind-dancer');
