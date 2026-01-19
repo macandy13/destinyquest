@@ -13,6 +13,7 @@ import {
     endCombat as engineEndCombat,
     applyPassiveAbilities,
     resolveInteraction as engineResolveInteraction,
+    checkForCombatEnd,
 } from '../mechanics/CombatEngine';
 import { CombatState } from '../types/combatState';
 
@@ -71,7 +72,8 @@ export function useCombat(hero: Hero, enemy: Enemy) {
     };
 
     const updateCombatState = (state: CombatState) => {
-        setCombat(state);
+        // After manual state edits, check if combat should end (e.g., health <= 0)
+        setCombat(checkForCombatEnd(state));
     };
 
     return {

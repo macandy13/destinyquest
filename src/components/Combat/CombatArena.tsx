@@ -191,6 +191,7 @@ const CombatArena: React.FC<CombatArenaProps> = ({ hero, enemy, onCombatFinish }
                         combat={combat}
                         onCombatFinish={onCombatFinish}
                         restartCombat={restartCombat}
+                        onUpdateState={updateCombatState}
                     />
                 )}
             </div>

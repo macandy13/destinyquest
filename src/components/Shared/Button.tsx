@@ -38,7 +38,7 @@ const SecondaryButton: React.FC<ButtonProps> = ({
     ...props
 }) => {
     return (
-        <Button variant="primary" className={className} {...props}>
+        <Button variant="secondary" className={className} {...props}>
             {children}
         </Button>
     );
