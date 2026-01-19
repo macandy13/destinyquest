@@ -1,0 +1,23 @@
+.effect-overlay-content {
+    text-align: center;
+}
+
+.effect-overlay-content p {
+    margin: 0 0 var(--spacing-sm) 0;
+}
+
+.effect-overlay-duration {
+    font-style: italic;
+    color: var(--dq-light-grey);
+    opacity: 0.8;
+}
+
+/* Remove effect button - danger style */
+.btn-remove-effect {
+    background-color: var(--dq-crimson);
+}
+
+.btn-remove-effect:hover {
+    background-color: #c92a25;
+    transform: scale(1.05);
+}

@@ -1,15 +1,24 @@
 import React from 'react';
 import { Effect, formatEffect } from '../../types/effect';
 import CombatOverlay from './CombatOverlay';
-import { PrimaryButton } from '../Shared/Button';
-import { getAbilityDefinition, getAbilityIcon } from '../../mechanics/abilityRegistry';
+import { PrimaryButton, SecondaryButton } from '../Shared/Button';
+import {
+    getAbilityDefinition,
+    getAbilityIcon
+} from '../../mechanics/abilityRegistry';
+import './ActiveEffectOverlay.css';
 
 interface ActiveEffectOverlayProps {
     effect: Effect;
     onClose: () => void;
+    onRemove?: () => void;
 }
 
-const ActiveEffectOverlay: React.FC<ActiveEffectOverlayProps> = ({ effect, onClose }) => {
+const ActiveEffectOverlay: React.FC<ActiveEffectOverlayProps> = ({
+    effect,
+    onClose,
+    onRemove
+}) => {
     let icon = effect.icon;
     if (!icon) {
         const def = getAbilityDefinition(effect.source);
@@ -17,6 +26,9 @@ const ActiveEffectOverlay: React.FC<ActiveEffectOverlayProps> = ({ effect, onClo
     }
 
     const effectDescription = formatEffect(effect);
+    const durationText = effect.duration === undefined
+        ? 'Infinite'
+        : `${effect.duration} rounds`;
 
     return (
         <CombatOverlay
@@ -24,18 +36,29 @@ const ActiveEffectOverlay: React.FC<ActiveEffectOverlayProps> = ({ effect, onClo
             icon={icon}
             onClose={onClose}>
             <CombatOverlay.Content>
-                <div style={{ textAlign: 'center' }}>
+                <div className="effect-overlay-content">
                     {effectDescription && <p>{effectDescription}</p>}
-                    <p style={{ fontStyle: 'italic', marginTop: '0.5rem', color: 'var(--dq-light-grey)' }}>
-                        Duration: {effect.duration === undefined ? 'Infinite' : `${effect.duration} rounds`}
+                    <p className="effect-overlay-duration">
+                        Duration: {durationText}
                     </p>
                 </div>
             </CombatOverlay.Content>
             <CombatOverlay.Actions>
-                <PrimaryButton onClick={onClose}>Close</PrimaryButton>
+                <>
+                    {onRemove ? (
+                        <PrimaryButton
+                            className="btn-remove-effect"
+                            onClick={onRemove}>
+                            Remove Effect
+                        </PrimaryButton>
+                    ) : (
+                        <PrimaryButton onClick={onClose}>Close</PrimaryButton>
+                    )}
+                </>
             </CombatOverlay.Actions>
         </CombatOverlay>
     );
 };
 
 export default ActiveEffectOverlay;
+

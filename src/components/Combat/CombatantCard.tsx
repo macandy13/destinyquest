@@ -2,7 +2,6 @@ import React from 'react';
 import { getStatIcon } from '../../types/stats';
 import { Effect } from '../../types/effect';
 import ActiveEffectIcon from './ActiveEffectIcon';
-import ActiveEffectOverlay from './ActiveEffectOverlay';
 import './CombatantCard.css';
 
 interface CombatantCardProps {
@@ -28,7 +27,6 @@ const CombatantCard: React.FC<CombatantCardProps> = ({
     isEnemy = false,
     activeEffects = []
 }) => {
-    const [selectedEffect, setSelectedEffect] = React.useState<Effect | null>(null);
     const healthPct = Math.max(0, Math.min(100, (currentHealth / maxHealth) * 100));
 
     return (
@@ -52,20 +50,13 @@ const CombatantCard: React.FC<CombatantCardProps> = ({
                         <ActiveEffectIcon
                             key={idx}
                             effect={effect}
-                            onClick={() => setSelectedEffect(effect)}
                         />
                     ))}
                 </div>
-            )}
-
-            {selectedEffect && (
-                <ActiveEffectOverlay
-                    effect={selectedEffect}
-                    onClose={() => setSelectedEffect(null)}
-                />
             )}
         </div>
     );
 };
 
 export default CombatantCard;
+

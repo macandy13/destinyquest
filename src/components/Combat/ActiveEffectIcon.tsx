@@ -1,18 +1,25 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Effect } from '../../types/effect';
 import { getStatIcon } from '../../types/stats';
+import ActiveEffectOverlay from './ActiveEffectOverlay';
 import './ActiveEffectIcon.css';
 
 interface ActiveEffectIconProps {
     effect: Effect;
-    onClick: () => void;
+    onClick?: () => void;
+    onRemove?: () => void;
 }
 
-const ActiveEffectIcon: React.FC<ActiveEffectIconProps> = ({ effect, onClick }) => {
+const ActiveEffectIcon: React.FC<ActiveEffectIconProps> = ({
+    effect,
+    onClick,
+    onRemove
+}) => {
+    const [showOverlay, setShowOverlay] = useState(false);
+
     // Determine icon based on what stat is modified
     let icon = '✨'; // Default magic sparkle
 
-    // Check keys in order of precedence/importance or logic
     // Check keys in order of precedence/importance or logic
     let value: number | undefined;
     const s = effect.stats;
@@ -32,13 +39,49 @@ const ActiveEffectIcon: React.FC<ActiveEffectIconProps> = ({ effect, onClick }) 
     if (value ?? 0 > 0) valueDisplay = '+' + valueDisplay;
 
     const durationDisplay = effect.duration === undefined ? '∞' : effect.duration;
+
+    const handleClick = () => {
+        if (onClick) {
+            onClick();
+        }
+        setShowOverlay(true);
+    };
+
+    const handleClose = () => {
+        setShowOverlay(false);
+    };
+
+    const handleRemove = onRemove ? () => {
+        onRemove();
+        setShowOverlay(false);
+    } : undefined;
+
     return (
-        <div className="active-effect-icon" onClick={onClick} title={effect.source}>
-            <span>{icon}</span>
-            {valueDisplay ? <span className="effect-value">{valueDisplay}</span> : null}
-            {durationDisplay ? <span className="effect-duration-badge">{durationDisplay}</span> : null}
-        </div>
+        <>
+            <div
+                className="active-effect-icon"
+                onClick={handleClick}
+                title={effect.source}
+            >
+                <span>{icon}</span>
+                {valueDisplay ? (
+                    <span className="effect-value">{valueDisplay}</span>
+                ) : null}
+                {durationDisplay ? (
+                    <span className="effect-duration-badge">{durationDisplay}</span>
+                ) : null}
+            </div>
+
+            {showOverlay && (
+                <ActiveEffectOverlay
+                    effect={effect}
+                    onClose={handleClose}
+                    onRemove={handleRemove}
+                />
+            )}
+        </>
     );
 };
 
 export default ActiveEffectIcon;
+
