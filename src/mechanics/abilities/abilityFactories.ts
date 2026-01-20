@@ -248,3 +248,23 @@ export function createRetaliationAbility(config: RetaliationAbilityConfig): Abil
         }
     };
 }
+
+/**
+ * Creates a no-operation ability that only displays its description.
+ * Used for abilities that aren't yet implemented or require complex
+ * multi-enemy combat support.
+ */
+export interface NoopAbilityConfig {
+    name: string;
+    description: string;
+}
+
+export function createNoopAbility(config: NoopAbilityConfig): AbilityDefinition {
+    return {
+        name: config.name,
+        type: 'special',
+        description: config.description,
+        icon: '🚫',
+        reviewed: false,
+    };
+}

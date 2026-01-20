@@ -154,3 +154,10 @@ createStatCombatModifierAbility({
     target: 'hero',
 });
 
+createStatCombatModifierAbility({
+    name: 'Crazy hal',
+    description:
+        'When you roll for damage, Crazy hal adds 1 extra damage score.',
+    stats: { damageModifier: 1 },
+    target: 'enemy',
+});

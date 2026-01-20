@@ -132,3 +132,14 @@ createRollCheckAbility({
     damage: 5,
     icon: '🌿'
 });
+
+createRollCheckAbility({
+    name: 'Bolt from the Blue',
+    description:
+        'At the end of the combat round, roll a die. If the result is ' +
+        '1, 2, or 3, take 5 damage ignoring armour.',
+    diceCount: 1,
+    triggerCondition: { type: 'fixed', values: [1, 2, 3] },
+    damage: 5,
+    icon: '⚡'
+});

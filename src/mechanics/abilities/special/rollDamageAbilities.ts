@@ -138,3 +138,27 @@ createRollDamageAbility({
     damageTarget: 'hero',
 });
 
+createRollDamageAbility({
+    name: 'Crone\'s dagger',
+    description:
+        'If the Ruffians roll a 6 for damage, the crone\'s dagger ' +
+        'automatically inflicts 1 extra point of health damage.',
+    triggerValues: [6],
+    damagePerTrigger: 1,
+    rollType: 'damage',
+    rollsTarget: 'enemy',
+    damageTarget: 'hero',
+});
+
+createRollDamageAbility({
+    name: 'Keen Edge',
+    description:
+        'If the enemy rolls a 5 or 6 for their damage score, ' +
+        'they add 4 more damage.',
+    triggerValues: [5, 6],
+    damagePerTrigger: 4,
+    rollType: 'damage',
+    rollsTarget: 'enemy',
+    damageTarget: 'hero',
+});
+

@@ -150,6 +150,7 @@ import './abilities/special/retaliationAbilities';
 import './abilities/special/rollCheckAbilities';
 import './abilities/special/rollDamageAbilities';
 import './abilities/special/statModifiersAbilities';
+import './abilities/special/noopAbilities';
 import './abilities/special/Trample';
 import './abilities/special/ZenCharge';
 import './abilities/speed/Adrenaline';

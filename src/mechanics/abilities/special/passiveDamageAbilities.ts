@@ -316,3 +316,29 @@ createDoTAbility({
     damage: 4,
     condition: 'always'
 });
+
+createDoTAbility({
+    name: 'Neural Blast',
+    description:
+        'At the end of the combat round, the hero takes 10 damage ' +
+        'ignoring armour.',
+    damage: 10,
+    condition: 'always'
+});
+
+createDoTAbility({
+    name: 'Tight Spot',
+    description:
+        'At the end of the round, take 5 damage ignoring armour.',
+    damage: 5,
+    condition: 'always'
+});
+
+createDoTAbility({
+    name: 'Oozing Tentacles',
+    description:
+        'At the end of the round, you take 2 damage ignoring armour ' +
+        'from every Tentacle.',
+    damage: 2,
+    condition: 'always'
+});
