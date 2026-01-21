@@ -1395,7 +1395,7 @@ export const ENEMIES: Enemy[] = [
       "speed": 0,
       "brawn": 0,
       "magic": 0,
-      "armour": 52,
+      "armour": 2,
       "health": 15,
       "maxHealth": 15
     },
