@@ -44,6 +44,7 @@ import { getAbilityDefinition, toCanonicalName } from './abilityRegistry';
 import { calculateEffectiveStatsForType, Effect } from '../types/effect';
 import { getOpponent, Enemy, CharacterType } from '../types/character';
 import { Stats } from '../types/stats';
+import { resolveSpawns } from './enemyRegistry';
 import './allAbilities'; // Ensure abilities are registered
 
 // Default easy enemy for testing or fallback
@@ -82,11 +83,14 @@ function createHeroCombatant(character: Hero | Combatant<Hero>): Combatant<Hero>
     return combatant;
 }
 
-function createEnemyCombatant(character: Enemy | Combatant<Enemy>): Combatant<Enemy> {
+function createEnemyCombatant(
+    character: Enemy | Combatant<Enemy>,
+    index: number = 0
+): Combatant<Enemy> {
     const enemy: Enemy = 'original' in character ? character.original : character;
     const combatant: Combatant<Enemy> = {
         type: enemy.type,
-        id: 'enemy',
+        id: `enemy-${index}`,
         name: enemy.name,
         stats: { ...enemy.stats },
         original: { ...enemy },
@@ -113,14 +117,17 @@ function printActiveAbilities(activeAbilities: Map<string, ActiveAbility>) {
  * Calculates the current effective stats for both combatants, taking into account
  * all active modifications (buffs/debuffs) currently in the state.
  */
-export function calculateEffectiveStats(state: CombatState): { hero: HeroStats, enemy: Stats } {
+export function calculateEffectiveStats(
+    state: CombatState,
+): { hero: HeroStats, enemy: Stats } {
+    const enemy = state.enemies[state.activeEnemyIndex];
     const effectiveHeroStats = calculateEffectiveStatsForType(
         state.hero.stats,
         state.hero.activeEffects,
         'hero') as HeroStats;
     const effectiveEnemyStats = calculateEffectiveStatsForType(
-        state.enemy.stats,
-        state.enemy.activeEffects,
+        enemy.stats,
+        enemy.activeEffects,
         'enemy');
     return { hero: effectiveHeroStats, enemy: effectiveEnemyStats };
 }
@@ -134,12 +141,15 @@ function runCombatStartHook(state: CombatState): CombatState {
     return state;
 }
 
-export function startCombat(hero: Hero, enemy: Enemy): CombatState {
+export function startCombat(hero: Hero, initialEnemies: Enemy[]): CombatState {
+    const enemies = resolveSpawns(initialEnemies);
+    const enemyCombatants = enemies.map((e, i) => createEnemyCombatant(e, i));
     let state: CombatState = {
         phase: 'combat-start',
         round: 0,
         hero: createHeroCombatant(hero),
-        enemy: createEnemyCombatant(enemy),
+        enemies: enemyCombatants,
+        activeEnemyIndex: 0,
         logs: [],
         backpack: hero.backpack.filter(i => i && (!i?.uses || i.uses > 0)) as BackpackItem[],
         damageDealt: [],
@@ -157,11 +167,14 @@ export function startCombat(hero: Hero, enemy: Enemy): CombatState {
             message: `Active hero abilities: ${printActiveAbilities(state.hero.activeAbilities)}`,
         });
     }
-    if (state.enemy.activeAbilities.size > 0) {
-        state = addLogs(state, {
-            message: `Active enemy abilities: ${printActiveAbilities(state.enemy.activeAbilities)}`,
-        });
-    }
+    // Log abilities for all enemies
+    state.enemies.forEach((enemy, _idx) => {
+        if (enemy.activeAbilities.size > 0) {
+            state = addLogs(state, {
+                message: `Active ${enemy.name} abilities: ${printActiveAbilities(enemy.activeAbilities)}`,
+            });
+        }
+    });
     return state;
 }
 
@@ -380,15 +393,21 @@ export function getPassiveAbilityPreview(state: CombatState): { previews: Passiv
                     });
                 }
 
-                const enemyHealthDiff = tempState.enemy.stats.health - beforeState.enemy.stats.health;
-                if (enemyHealthDiff !== 0) {
-                    changes.push({
-                        target: 'enemy',
-                        type: enemyHealthDiff > 0 ? 'heal' : 'damage',
-                        amount: Math.abs(enemyHealthDiff),
-                        message: `${enemyHealthDiff > 0 ? 'Heals' : 'Deals'} ${Math.abs(enemyHealthDiff)} damage to ${beforeState.enemy.name}`
-                    });
-                }
+                // Check health changes for all enemies
+                tempState.enemies.forEach((enemy, idx) => {
+                    const beforeEnemy = beforeState.enemies[idx];
+                    if (beforeEnemy) {
+                        const enemyHealthDiff = enemy.stats.health - beforeEnemy.stats.health;
+                        if (enemyHealthDiff !== 0) {
+                            changes.push({
+                                target: 'enemy',
+                                type: enemyHealthDiff > 0 ? 'heal' : 'damage',
+                                amount: Math.abs(enemyHealthDiff),
+                                message: `${enemyHealthDiff > 0 ? 'Heals' : 'Deals'} ${Math.abs(enemyHealthDiff)} damage to ${beforeEnemy.name}`
+                            });
+                        }
+                    }
+                });
 
                 // Check for new effects (simplified check)
                 // We're iterating active abilities, so 'ability.owner' is the source.
@@ -553,10 +572,10 @@ export function endRound(state: CombatState): CombatState {
             ...state.hero,
             activeEffects: updateEffects(state.hero.activeEffects)
         },
-        enemy: {
-            ...state.enemy,
-            activeEffects: updateEffects(state.enemy.activeEffects)
-        }
+        enemies: state.enemies.map(enemy => ({
+            ...enemy,
+            activeEffects: updateEffects(enemy.activeEffects)
+        }))
     };
 
     state = addLogs(state, { message: 'Round ended' });
@@ -565,7 +584,16 @@ export function endRound(state: CombatState): CombatState {
 
 export function checkForCombatEnd(state: CombatState): CombatState {
     if (state.phase === 'combat-end') return state;
-    if (state.hero.stats.health <= 0 || state.enemy.stats.health <= 0) {
+    if (state.hero.stats.health <= 0) {
+        return endCombat(state);
+    }
+    // Check if master enemy is dead (instant win)
+    const masterDead = state.enemies.some(
+        e => e.original.isMaster && e.stats.health <= 0
+    );
+    // Or all enemies are dead
+    const allDead = !state.enemies.some(e => e.stats.health > 0);
+    if (masterDead || allDead) {
         return endCombat(state);
     }
     return state;

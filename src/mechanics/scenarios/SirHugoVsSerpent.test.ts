@@ -40,7 +40,7 @@ describe('Scenario: Sir Hugo vs Serpent', () => {
             abilities: ['Venom']
         };
 
-        let state = startCombat(SIR_HUGO, SERPENT);
+        let state = startCombat(SIR_HUGO, [SERPENT]);
         state = startRound(state);
 
         // --- ROUND 1 ---
@@ -56,7 +56,7 @@ describe('Scenario: Sir Hugo vs Serpent', () => {
         state = endRound(state);
 
         expect(state.hero!.stats.health).toBe(24); // 30 - 4 - 2
-        expect(state.enemy!.stats.health).toBe(12);
+        expect(state.enemies[0].stats.health).toBe(12);
 
         state = startRound(state);
         state = rollForSpeed(
@@ -70,6 +70,6 @@ describe('Scenario: Sir Hugo vs Serpent', () => {
         state = endRound(state);
 
         expect(state.hero!.stats.health).toBe(22);
-        expect(state.enemy!.stats.health).toBe(2);
+        expect(state.enemies[0].stats.health).toBe(2);
     });
 });

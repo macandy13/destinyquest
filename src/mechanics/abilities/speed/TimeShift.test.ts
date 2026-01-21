@@ -17,7 +17,7 @@ describe('Time Shift', () => {
         const state: CombatState = {
             ...INITIAL_STATE,
             hero: { ...INITIAL_STATE.hero!, stats: { ...INITIAL_STATE.hero!.stats, speed: 0 } },
-            enemy: { ...INITIAL_STATE.enemy!, stats: { ...INITIAL_STATE.enemy!.stats, speed: 4 } },
+            enemies: [{ ...INITIAL_STATE.enemies[0], stats: { ...INITIAL_STATE.enemies[0].stats, speed: 4 } }],
         };
         const result = ability.onActivate?.(state, { owner: 'hero' });
 
@@ -31,7 +31,7 @@ describe('Time Shift', () => {
         const state = {
             ...INITIAL_STATE,
             hero: { ...INITIAL_STATE.hero!, stats: { ...INITIAL_STATE.hero!.stats, speed: 5 } },
-            enemy: { ...INITIAL_STATE.enemy!, stats: { ...INITIAL_STATE.enemy!.stats, speed: 2 } },
+            enemies: [{ ...INITIAL_STATE.enemies[0], stats: { ...INITIAL_STATE.enemies[0].stats, speed: 2 } }],
             logs: []
         };
         const result = ability.onActivate?.(state, { owner: 'hero' });

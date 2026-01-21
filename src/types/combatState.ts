@@ -11,6 +11,15 @@ export type CombatPhase = 'combat-start' | 'round-start' | 'speed-roll' | 'damag
 
 export const AttackSource = 'Attack';
 
+// Target for enemy-specific operations
+export type EnemyTarget = number | 'main';
+
+// Selector for any combatant (replaces CharacterType in targeting contexts)
+export interface CombatantSelector {
+    type: CharacterType;
+    enemyIndex?: number;  // Only used when type === 'enemy', defaults to 0
+}
+
 export interface ActiveAbility {
     name: string;
     owner: CharacterType;
@@ -66,7 +75,8 @@ export interface PendingInteraction {
 }
 
 export interface CombatState {
-    enemy: Combatant<Enemy>;
+    enemies: Combatant<Enemy>[];
+    activeEnemyIndex: number;  // Currently displayed enemy in UI
     hero: Combatant<Hero>;
 
     round: number;
@@ -107,18 +117,20 @@ export interface CombatState {
 
 const activeAbilities = new Set<string>();
 
-export function forEachActiveAbility(state: CombatState, callback: (ability: ActiveAbility, def: AbilityDefinition) => void) {
-    [
+export function forEachActiveAbility(
+    state: CombatState,
+    callback: (ability: ActiveAbility, def: AbilityDefinition) => void
+) {
+    const allAbilities = [
         ...state.hero.activeAbilities.values(),
-        ...state.enemy.activeAbilities.values()
-    ].forEach(ability => {
+        ...state.enemies.flatMap(e => [...e.activeAbilities.values()])
+    ];
+    allAbilities.forEach(ability => {
         const def = getAbilityDefinition(ability.name);
         // Avoid recursion during ability processing.
         if (!def || activeAbilities.has(ability.name)) return;
         activeAbilities.add(ability.name);
-        console.log('Processing ability', ability.name); // TODO: Remove in final version
         callback(ability, def);
-        console.log('Finished processing ability', ability.name);// TODO: Remove in final version
         activeAbilities.delete(ability.name);
     });
 }
@@ -320,7 +332,7 @@ export function appendEffect(state: CombatState, target: CharacterType, effect: 
     };
     state = updateCombatant(state, target, newChar);
     state = addLogs(state, {
-        message: `${effect.source} applied effect ${formatEffect(effect)} to ${state[target].name}`,
+        message: `${effect.source} applied effect ${formatEffect(effect)} to ${char.name}`,
     });
     return state;
 }
@@ -400,20 +412,46 @@ export function addLogs(arg: CombatState | CombatLog[], ...logs: Partial<CombatL
     return { ...arg, logs: [...arg.logs, ...fullLogs] };
 }
 
-export function getCombatant(state: CombatState, type: CharacterType): Combatant {
-    return type === 'hero' ? state.hero : state.enemy;
+// Helper to get the main enemy (first in array, always the "main" target)
+export function getActiveEnemy(state: CombatState): Combatant<Enemy> {
+    return state.enemies[0];
 }
 
-export function updateCombatant(state: CombatState, type: CharacterType, combatant: Combatant): CombatState {
+// Helper to get enemy by target (index or 'main')
+export function getEnemy(
+    state: CombatState,
+    target: EnemyTarget = 'main'
+): Combatant<Enemy> {
+    const index = target === 'main' ? 0 : target;
+    return state.enemies[index];
+}
+
+// Get all alive enemies
+export function getAliveEnemies(state: CombatState): Combatant<Enemy>[] {
+    return state.enemies.filter(e => e.stats.health > 0);
+}
+
+export function getCombatant(
+    state: CombatState,
+    selector: CombatantSelector | CharacterType
+): Combatant {
+    const type = typeof selector === 'string' ? selector : selector.type;
+    if (type === 'hero') return state.hero;
+    const index = typeof selector === 'object' ? selector.enemyIndex ?? 0 : 0;
+    return state.enemies[index];
+}
+
+export function updateCombatant(
+    state: CombatState,
+    selector: CombatantSelector | CharacterType,
+    combatant: Combatant
+): CombatState {
+    const type = typeof selector === 'string' ? selector : selector.type;
     if (type === 'hero') {
-        return {
-            ...state,
-            hero: combatant as Combatant<Hero>
-        };
-    } else {
-        return {
-            ...state,
-            enemy: combatant as Combatant<Enemy>
-        };
+        return { ...state, hero: combatant as Combatant<Hero> };
     }
+    const index = typeof selector === 'object' ? selector.enemyIndex ?? 0 : 0;
+    const newEnemies = [...state.enemies];
+    newEnemies[index] = combatant as Combatant<Enemy>;
+    return { ...state, enemies: newEnemies };
 }

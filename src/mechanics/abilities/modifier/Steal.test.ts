@@ -28,7 +28,7 @@ const MOCK_ENEMY: Enemy = {
 describe('Steal Ability', () => {
     it('should request stat selection and apply modification', () => {
         // Start combat
-        let state = startCombat(MOCK_HERO, MOCK_ENEMY);
+        let state = startCombat(MOCK_HERO, [MOCK_ENEMY]);
 
         // Add Steal ability
         const def = getAbilityDefinition('Steal');
@@ -74,7 +74,7 @@ describe('Steal Ability', () => {
 
     it('should not apply negative modification if hero stat is higher', () => {
         // Hero Brawn 5, Enemy Brawn 2.
-        let state = startCombat(MOCK_HERO, MOCK_ENEMY);
+        let state = startCombat(MOCK_HERO, [MOCK_ENEMY]);
         const def = getAbilityDefinition('Steal');
         if (!def) throw new Error('Steal ability not registered');
 

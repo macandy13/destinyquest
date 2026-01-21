@@ -27,7 +27,7 @@ registerAbility({
 
                     if (!attribute) return currentState;
 
-                    const enemyValue = currentState.enemy.stats[attribute] ?? 0;
+                    const enemyValue = currentState.enemies[0].stats[attribute] ?? 0;
                     const heroValue = currentState.hero.stats[attribute] ?? 0;
                     const diff = Math.max(0, enemyValue - heroValue);
 

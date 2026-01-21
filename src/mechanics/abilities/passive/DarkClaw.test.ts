@@ -16,7 +16,7 @@ describe('Dark Claw', () => {
         const state = {
             ...INITIAL_STATE,
             hero: heroWithStats({ speed: 4 }),
-            enemy: enemyWithStats({ health: 20 })
+            enemies: [enemyWithStats({ health: 20 })], activeEnemyIndex: 0
         };
         const doubles = [{ value: 3, isRerolled: false }, { value: 3, isRerolled: false }];
         state.heroSpeedRolls = doubles;
@@ -48,7 +48,7 @@ describe('Dark Claw', () => {
             phase: 'damage-roll' as const,
             winner: 'hero' as const,
             hero: heroWithStats({ speed: 4 }),
-            enemy: enemyWithStats({ health: 20 })
+            enemies: [enemyWithStats({ health: 20 })], activeEnemyIndex: 0
         };
         const doubles = [{ value: 5, isRerolled: false }, { value: 5, isRerolled: false }];
         state.damage = { damageRolls: doubles, modifiers: [] };
@@ -62,7 +62,7 @@ describe('Dark Claw', () => {
         const state = {
             ...INITIAL_STATE,
             hero: heroWithStats({ speed: 4 }),
-            enemy: enemyWithStats({ health: 20 })
+            enemies: [enemyWithStats({ health: 20 })], activeEnemyIndex: 0
         };
         const nonDoubles = [{ value: 3, isRerolled: false }, { value: 4, isRerolled: false }];
         state.heroSpeedRolls = nonDoubles;
@@ -77,7 +77,7 @@ describe('Dark Claw', () => {
             ...INITIAL_STATE,
             winner: 'hero' as const,
             hero: heroWithStats({ speed: 4 }),
-            enemy: enemyWithStats({ health: 20 })
+            enemies: [enemyWithStats({ health: 20 })], activeEnemyIndex: 0
         };
         const nonDoubles = [{ value: 5, isRerolled: false }, { value: 2, isRerolled: false }];
         state.damage = { damageRolls: nonDoubles, modifiers: [] };

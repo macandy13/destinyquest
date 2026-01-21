@@ -17,13 +17,13 @@ describe('Ice Shards', () => {
         const state: CombatState = {
             ...INITIAL_STATE,
             hero: heroWithStats({ magic: 5 }),
-            enemy: enemyWithStats(),
+            enemies: [enemyWithStats()], activeEnemyIndex: 0,
             phase: 'damage-roll' as const,
             winner: 'hero' as const,
         };
         const result = ability.onActivate?.(state, { owner: 'hero' });
         expect(result?.logs.some(l => l.message?.includes('Ice Shards'))).toBe(true);
         // Also check if health decreased (magic is 5)
-        expect(result?.enemy.stats.health).toBe(INITIAL_STATE.enemy!.stats.health - 5);
+        expect(result?.enemies[0].stats.health).toBe(INITIAL_STATE.enemies[0].stats.health - 5);
     });
 });

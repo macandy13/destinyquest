@@ -2,6 +2,7 @@ import { describe, it, expect, beforeEach } from 'vitest';
 import { AbilityDefinition, getAbilityDefinition } from '../../abilityRegistry';
 import './Ensnare';
 import { INITIAL_STATE } from '../../../tests/testUtils';
+import { getActiveEnemy } from '../../../types/combatState';
 
 describe('Ensnare', () => {
     let ability: AbilityDefinition;
@@ -14,7 +15,7 @@ describe('Ensnare', () => {
 
     it('should apply Ensnare effect', () => {
         const enemy = {
-            ...INITIAL_STATE.enemy,
+            ...getActiveEnemy(INITIAL_STATE),
             activeAbilities: new Map([['Dodge', {
                 name: 'Dodge',
                 type: 'combat',
@@ -26,11 +27,11 @@ describe('Ensnare', () => {
         };
         const state = {
             ...INITIAL_STATE,
-            enemy
+            enemies: [enemy]
         };
         const result = ability.onActivate?.(state, { owner: 'hero' });
 
-        expect(result?.enemy.activeEffects).toHaveLength(1);
-        expect(result?.enemy.activeEffects[0].source).toBe('Ensnare');
+        expect(getActiveEnemy(result!).activeEffects).toHaveLength(1);
+        expect(getActiveEnemy(result!).activeEffects[0].source).toBe('Ensnare');
     });
 });

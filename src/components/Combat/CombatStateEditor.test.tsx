@@ -9,7 +9,7 @@ import '@testing-library/jest-dom';
 const createMockCombatState = (
     options?: {
         heroEffects?: CombatState['hero']['activeEffects'];
-        enemyEffects?: CombatState['enemy']['activeEffects'];
+        enemyEffects?: CombatState['enemies'][0]['activeEffects'];
     }
 ): CombatState => {
     const mockHero: Hero = {
@@ -53,7 +53,7 @@ const createMockCombatState = (
             activeAbilities: new Map(),
             activeEffects: options?.heroEffects ?? []
         },
-        enemy: {
+        enemies: [{
             type: 'enemy',
             id: 'enemy',
             name: mockEnemy.name,
@@ -61,7 +61,8 @@ const createMockCombatState = (
             original: mockEnemy,
             activeAbilities: new Map(),
             activeEffects: options?.enemyEffects ?? []
-        },
+        }],
+        activeEnemyIndex: 0,
         round: 1,
         phase: 'round-end',
         logs: [],
@@ -85,10 +86,11 @@ describe('CombatStateEditor', () => {
         );
 
         // Should show tabs with combatant names
-        expect(screen.getByRole('button', { name: /Test Hero/ }))
-            .toBeInTheDocument();
-        expect(screen.getByRole('button', { name: /Test Enemy/ }))
-            .toBeInTheDocument();
+        expect(screen.getByRole('button', { name: /🦸 Test Hero/i })).toBeInTheDocument();
+        expect(screen.getByRole('button', { name: /👹 Test Enemy/i })).toBeInTheDocument();
+
+        // Default shows hero health
+        expect(screen.getByText('25')).toBeInTheDocument();
     });
 
     it('displays hero health with NumberControl', () => {
@@ -127,7 +129,7 @@ describe('CombatStateEditor', () => {
         expect(screen.getByText('/ 30')).toBeInTheDocument();
 
         // Click enemy tab
-        fireEvent.click(screen.getByRole('button', { name: /Test Enemy/ }));
+        fireEvent.click(screen.getByRole('button', { name: /👹 Test Enemy/i }));
 
         // Now shows enemy (15/20)
         expect(screen.getByText('15')).toBeInTheDocument();
@@ -168,7 +170,7 @@ describe('CombatStateEditor', () => {
         expect(screen.getByTitle('Buff Spell')).toBeInTheDocument();
 
         // Switch to enemy tab
-        fireEvent.click(screen.getByRole('button', { name: /Test Enemy/ }));
+        fireEvent.click(screen.getByRole('button', { name: /👹 Test Enemy/i }));
 
         // Enemy effect shown
         expect(screen.getByTitle('Poison')).toBeInTheDocument();

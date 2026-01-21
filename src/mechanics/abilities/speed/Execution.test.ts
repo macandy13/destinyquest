@@ -1,7 +1,7 @@
 import { describe, it, expect, beforeEach } from 'vitest';
 import { AbilityDefinition, getAbilityDefinition } from '../../abilityRegistry';
 import { INITIAL_STATE, testEquipment } from '../../../tests/testUtils';
-import { CombatState } from '../../../types/combatState';
+import { CombatState, getActiveEnemy } from '../../../types/combatState';
 import './Execution';
 
 const TEST_STATE: CombatState = {
@@ -21,20 +21,20 @@ describe('Execution', () => {
     it('should reduce enemy health to zero if conditions are met', () => {
         const state = TEST_STATE;
         state.hero!.stats.speed = 5;
-        state.enemy!.stats.health = 5;
+        state.enemies[0].stats.health = 5;
         state.hero!.original.equipment.mainHand = testEquipment({ name: 'sword' });
 
         expect(ability.canActivate?.(state, { owner: 'hero' })).toBe(true);
 
         const result = ability.onActivate!(state, { owner: 'hero' });
         expect(result.logs?.[0].message).toContain('Execution dealt 5 damage');
-        expect(result.enemy!.stats.health).toBe(0);
+        expect(getActiveEnemy(result).stats.health).toBe(0);
     });
 
     it('should fail if enemy health is greater than hero speed', () => {
         const state = TEST_STATE;
         state.hero!.stats.speed = 4;
-        state.enemy!.stats.health = 6;
+        state.enemies[0].stats.health = 6;
         state.hero!.original.equipment.mainHand = testEquipment({ name: 'sword' });
 
         expect(ability.canActivate?.(state, { owner: 'hero' })).toBe(false);
@@ -46,7 +46,7 @@ describe('Execution', () => {
     it('should fail if hero has now sword', () => {
         const state = TEST_STATE;
         state.hero!.stats.speed = 5;
-        state.enemy!.stats.health = 5;
+        state.enemies[0].stats.health = 5;
         state.hero!.original.equipment.mainHand = testEquipment({ name: 'axe' });
 
         expect(ability.canActivate?.(state, { owner: 'hero' })).toBe(false);

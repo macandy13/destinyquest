@@ -5,6 +5,7 @@ import { Enemy } from '../../types/character';
 import { BackpackItem } from '../../types/hero';
 import CombatLog from './CombatLog';
 import CombatantCard from './CombatantCard';
+import EnemyCarousel from './EnemyCarousel';
 import CombatStartPhase from './CombatStartPhase';
 import RoundStartPhase from './RoundStartPhase';
 import SpeedRollPhase from './SpeedRollPhase';
@@ -43,7 +44,8 @@ const CombatArena: React.FC<CombatArenaProps> = ({ hero, enemy, onCombatFinish }
         resolveInteraction,
         nextRound,
         restartCombat,
-        updateCombatState
+        updateCombatState,
+        setActiveEnemy
     } = useCombat(hero, enemy);
 
     const [interactionData, setInteractionData] = useState<InteractionTracker | null>(null);
@@ -99,17 +101,11 @@ const CombatArena: React.FC<CombatArenaProps> = ({ hero, enemy, onCombatFinish }
                     {/* VS Separator */}
                     <div className="vs-separator">VS</div>
 
-                    {/* Enemy Card */}
-                    <CombatantCard
-                        name={combat.enemy.name}
-                        currentHealth={combat.enemy.stats.health}
-                        maxHealth={combat.enemy.stats.maxHealth}
-                        speed={combat.enemy.stats.speed}
-                        brawn={combat.enemy.stats.brawn}
-                        magic={combat.enemy.stats.magic}
-                        armour={combat.enemy.stats.armour}
-                        isEnemy={true}
-                        activeEffects={combat.enemy.activeEffects}
+                    {/* Enemy Carousel */}
+                    <EnemyCarousel
+                        enemies={combat.enemies}
+                        activeIndex={combat.activeEnemyIndex}
+                        onSelect={setActiveEnemy}
                     />
                 </div>
             </div>

@@ -37,7 +37,7 @@ describe('Multiple Interaction Resolution', () => {
             { type: 'choices', mode: 'select', count: 1, choices: ['C', 'D'] }
         ];
 
-        let state = startCombat(MOCK_HERO, MOCK_ENEMY);
+        let state = startCombat(MOCK_HERO, [MOCK_ENEMY]);
 
         // Inject a pending interacton
         state = {
@@ -78,7 +78,7 @@ describe('Multiple Interaction Resolution', () => {
 
         const request: InteractionRequest = { type: 'dice', mode: 'select', count: 2 };
 
-        let state = startCombat(MOCK_HERO, MOCK_ENEMY);
+        let state = startCombat(MOCK_HERO, [MOCK_ENEMY]);
 
         state = {
             ...state,

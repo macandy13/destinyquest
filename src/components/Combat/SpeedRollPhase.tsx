@@ -1,5 +1,5 @@
 import React from 'react';
-import { CombatState, InteractionRequest, InteractionResponse } from '../../types/combatState';
+import { CombatState, InteractionRequest, InteractionResponse, getActiveEnemy } from '../../types/combatState';
 import { sumDice } from '../../types/dice';
 import { calculateEffectiveStats } from '../../mechanics/CombatEngine';
 import CombatDice from './CombatDice';
@@ -50,7 +50,7 @@ const SpeedRollPhase: React.FC<SpeedRollPhaseProps> = ({
     const enemySpeed = effectiveStats.enemy.speed;
     const enemySpeedRoll = sumDice(combat.enemySpeedRolls || []);
     const enemySpeedTotal = enemySpeed + enemySpeedRoll;
-    const enemySpeedDiff = enemySpeed - combat.enemy.stats.speed;
+    const enemySpeedDiff = enemySpeed - getActiveEnemy(combat).stats.speed;
 
     const isInteracting = currentInteraction?.type === 'dice';
     const canInteractHero = isInteracting && (currentInteraction?.target === 'hero' || !currentInteraction?.target);
@@ -162,7 +162,7 @@ const SpeedRollPhase: React.FC<SpeedRollPhaseProps> = ({
                             <tbody>
                                 <tr>
                                     <td>{sumDice(combat.enemySpeedRolls)}</td>
-                                    <td>{combat.enemy.stats.speed}</td>
+                                    <td>{getActiveEnemy(combat).stats.speed}</td>
                                     {!!enemySpeedDiff && <td>{enemySpeedDiff > 0 ? `+${enemySpeedDiff}` : enemySpeedDiff}</td>}
                                     <td className="dice-result-total">= {enemySpeedTotal}</td>
                                 </tr>

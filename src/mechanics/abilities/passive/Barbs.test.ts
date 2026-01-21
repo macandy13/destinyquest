@@ -8,7 +8,7 @@ describe('Barbs', () => {
         const barbs = getAbilityDefinition('Barbs');
         const state = {
             ...INITIAL_STATE,
-            enemy: enemyWithStats({ health: 10 })
+            enemies: [enemyWithStats({ health: 10 })], activeEnemyIndex: 0
         };
 
         const updates = barbs?.onPassiveAbility?.(state, { owner: 'hero' });

@@ -1,7 +1,7 @@
 import { describe, it, expect, beforeEach } from 'vitest';
 import { AbilityDefinition, getAbilityDefinition } from '../../abilityRegistry';
 import './Impale';
-import { INITIAL_STATE } from '../../../tests/testUtils';
+import { INITIAL_STATE } from '../../../tests/testUtils'; import { getActiveEnemy } from '../../../types/combatState';
 
 describe('Impale', () => {
     let ability: AbilityDefinition;
@@ -20,7 +20,7 @@ describe('Impale', () => {
         expect(result?.hero.activeEffects).toContainEqual(expect.objectContaining({
             stats: expect.objectContaining({ damageModifier: 3 })
         }));
-        expect(result?.enemy.activeEffects).toContainEqual(expect.objectContaining({
+        expect(getActiveEnemy(result!).activeEffects).toContainEqual(expect.objectContaining({
             stats: expect.objectContaining({ speed: -1 })
         }));
     });

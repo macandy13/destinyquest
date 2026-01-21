@@ -13,6 +13,7 @@ import {
 import { TEST_BOOK, deterministicRoll, mockDiceRolls } from '../../tests/testUtils';
 import { Hero } from '../../types/hero';
 import { Enemy } from '../../types/character';
+import { getActiveEnemy } from '../../types/combatState';
 
 describe('Scenario: Ben vs Minorian', () => {
     it('works', () => {
@@ -75,8 +76,8 @@ describe('Scenario: Ben vs Minorian', () => {
         // --- START ---
 
         mockDiceRolls([2]);
-        let state = startCombat(BEN_NEVIS, MINORIAN);
-        expect(state.enemy!.stats.health).toBe(78); // 80 - 2 (First Strike)
+        let state = startCombat(BEN_NEVIS, [MINORIAN]);
+        expect(getActiveEnemy(state).stats.health).toBe(78); // 80 - 2 (First Strike)
         state = startRound(state);
 
         // --- ROUND 1 ---
@@ -93,7 +94,7 @@ describe('Scenario: Ben vs Minorian', () => {
         state = endRound(state);
 
         expect(state.hero!.stats.health).toBe(35); // Sidestep avoids damage.
-        expect(state.enemy!.stats.health).toBe(74); // -1 Bleed & -3 Venom
+        expect(getActiveEnemy(state).stats.health).toBe(74); // -1 Bleed & -3 Venom
 
         // --- ROUND 2 ---
         state = startRound(state);
@@ -114,7 +115,7 @@ describe('Scenario: Ben vs Minorian', () => {
         state = endRound(state);
 
         expect(state.hero!.stats.health).toBe(25); // 35 - 9 (dmg) - 1 (bleed)
-        expect(state.enemy!.stats.health).toBe(70); // 74 - 4 (Bleed & Venom)
+        expect(getActiveEnemy(state).stats.health).toBe(70); // 74 - 4 (Bleed & Venom)
 
         // --- ROUND 3 ---
         state = startRound(state);
@@ -132,7 +133,7 @@ describe('Scenario: Ben vs Minorian', () => {
         state = endRound(state);
 
         // Dmg: 5 + 12(Brawn) + 2(Pot) = 19. Armour 0 (Piercing).
-        expect(state.enemy!.stats.health).toBe(47); // 70 - 19 - 4
+        expect(getActiveEnemy(state).stats.health).toBe(47); // 70 - 19 - 4
         expect(state.hero!.stats.health).toBe(24); // 26 (No damage)
 
         // --- ROUND 4 ---
@@ -156,7 +157,7 @@ describe('Scenario: Ben vs Minorian', () => {
 
         // Dmg: 3 + 10 = 13. Armour 3. 10 Dmg.
         expect(state.hero!.stats.health).toBe(13); // 24 - 10 - 1
-        expect(state.enemy!.stats.health).toBe(43); // 47 - 4
+        expect(getActiveEnemy(state).stats.health).toBe(43); // 47 - 4
 
         // --- POST R4 HEAL ---
         state = useBackpackItem(state, 0); // Gourd +6
@@ -182,7 +183,7 @@ describe('Scenario: Ben vs Minorian', () => {
         state = endRound(state);
 
         // Dmg: 6+6 + 12 = 24. Armour 8. 16 Dmg.
-        expect(state.enemy!.stats.health).toBe(23); // 43 - 16 - 4
+        expect(getActiveEnemy(state).stats.health).toBe(23); // 43 - 16 - 4
         expect(state.hero!.stats.health).toBe(26); // 23 + 4 - 1 = 26
 
         // --- ROUND 6 ---
@@ -201,7 +202,7 @@ describe('Scenario: Ben vs Minorian', () => {
         // Dmg: 6 + 10 + 5(Trample) = 21. Armour 3. 18 Dmg.
         // HP: 30 (26+4) - 18 - 1 = 11.
         expect(state.hero!.stats.health).toBe(11);
-        expect(state.enemy!.stats.health).toBe(19); // 23 - 4
+        expect(getActiveEnemy(state).stats.health).toBe(19); // 23 - 4
 
         // --- ROUND 7 ---
         state = startRound(state);
@@ -217,7 +218,7 @@ describe('Scenario: Ben vs Minorian', () => {
         state = endRound(state);
 
         // Dmg: 1 + 12 = 13. Armour 8. 5 Dmg.
-        expect(state.enemy!.stats.health).toBe(10); // 19 - 5 - 4
+        expect(getActiveEnemy(state).stats.health).toBe(10); // 19 - 5 - 4
         expect(state.hero!.stats.health).toBe(10); // 11 - 1 (bleed)
 
         // --- ROUND 8 ---
@@ -233,7 +234,7 @@ describe('Scenario: Ben vs Minorian', () => {
         state = endRound(state);
 
         // Dmg: 2 + 12 = 14. Armour 8. 6 Dmg.
-        expect(state.enemy!.stats.health).toBe(0); // 10 - 6 - 4 => 0.
+        expect(getActiveEnemy(state).stats.health).toBe(0); // 10 - 6 - 4 => 0.
         expect(state.hero!.stats.health).toBe(9); // 10 - 1 (bleed)
     });
 });

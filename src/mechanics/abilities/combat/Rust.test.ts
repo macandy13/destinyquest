@@ -20,8 +20,8 @@ describe('Rust', () => {
 
         const result = ability.onDamageDealt!(state, { owner: 'hero', target: 'enemy' }, 'Attack', 5);
 
-        expect(result.enemy!.activeEffects).toHaveLength(1);
-        expect(result.enemy!.activeEffects[0].stats.armour).toBe(-2);
+        expect(result.enemies[0]!.activeEffects).toHaveLength(1);
+        expect(result.enemies[0]!.activeEffects[0].stats.armour).toBe(-2);
     });
 
     it('should not activate if no damage dealt', () => {

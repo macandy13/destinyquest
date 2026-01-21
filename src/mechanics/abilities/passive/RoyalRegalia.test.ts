@@ -46,7 +46,7 @@ describe('Royal regalia', () => {
             abilities: []
         };
 
-        let state = startCombat(hero, enemy);
+        let state = startCombat(hero, [enemy]);
 
         expect(state.hero.activeAbilities.has('cripple')).toBe(true);
     });
@@ -77,7 +77,7 @@ describe('Royal regalia', () => {
             abilities: []
         };
 
-        let state = startCombat(hero, enemy);
+        let state = startCombat(hero, [enemy]);
 
         expect(state.hero.activeAbilities.has('cripple')).toBe(false);
     });

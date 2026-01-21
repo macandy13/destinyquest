@@ -68,7 +68,7 @@ The Legion of Shadow,2,Clymonistra,360,7,5,-,4,40,Piercing; Vampire; Wounded,,
 The Legion of Shadow,2,Cave trogs,361,6,7,-,3,40,,,
 The Legion of Shadow,2,Snapjaw,364,12,12,-,10,60,Strangle vines,,
 The Legion of Shadow,2,Drones,365,7,3,-,4,40,Stingers,,
-The Legion of Shadow,2,Wreeking hunter,366,8,8,-,5,40,"After this enemy is killed, the hero wins the combat.",,
+The Legion of Shadow,2,Wreeking hunter,366,8,8,-,5,40,,Wreeking net,"After this enemy is killed, the hero wins the combat."
 The Legion of Shadow,2,Wreeking net,366,-,-,-,52,15,Entrapment,,
 The Legion of Shadow,2,Centipede,375,5,5,-,3,60,Downsized,,
 The Legion of Shadow,2,Zen,382,10,10,-,8,60,Charge; Trample,,

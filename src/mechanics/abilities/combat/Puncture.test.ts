@@ -16,7 +16,7 @@ describe('Puncture', () => {
             ...INITIAL_STATE,
             phase: 'damage-roll' as const,
             winner: 'hero' as const,
-            enemy: { ...INITIAL_STATE.enemy!, stats: { ...INITIAL_STATE.enemy!.stats, armour: 5 } }
+            enemies: [{ ...INITIAL_STATE.enemies[0], stats: { ...INITIAL_STATE.enemies[0].stats, armour: 5 } }]
         };
 
         expect(ability.canActivate?.(state, { owner: 'hero' })).toBe(true);
@@ -32,9 +32,9 @@ describe('Puncture', () => {
         // Effects are applied. calculateEffectiveStats handles it, but here we check if effect was appended or applied?
         // Returning CombatState with modified stats?
         // `createStatModification` returns `Effect`. `appendEffect` adds to `activeEffects`.
-        // `INITIAL_STATE.enemy.activeEffects` should have it.
+        // `INITIAL_STATE.enemies[0].activeEffects` should have it.
         // Wait, `dealDamage` returns state. `state.enemy` might be a new reference.
         // `appendEffect` returns state with new enemy ref.
-        expect(result?.enemy?.activeEffects.some(e => e.source === 'Puncture' && e.stats.armour === -1)).toBe(true);
+        expect(result?.enemies[0]?.activeEffects.some(e => e.source === 'Puncture' && e.stats.armour === -1)).toBe(true);
     });
 });

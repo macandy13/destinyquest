@@ -53,7 +53,7 @@ describe('Ability Interactions', () => {
         registerAbility(testAbility);
 
         // 2. Start combat and give hero the ability
-        let state = startCombat(MOCK_HERO, MOCK_ENEMY);
+        let state = startCombat(MOCK_HERO, [MOCK_ENEMY]);
         state.hero.activeAbilities.set('dice-selector', {
             name: 'Dice Selector',
             owner: 'hero',
@@ -106,7 +106,7 @@ describe('Ability Interactions', () => {
         };
         registerAbility(testAbility);
 
-        let state = startCombat(MOCK_HERO, MOCK_ENEMY);
+        let state = startCombat(MOCK_HERO, [MOCK_ENEMY]);
         state.hero.activeAbilities.set('cancellable-ability', {
             name: 'Cancellable Ability',
             owner: 'hero',

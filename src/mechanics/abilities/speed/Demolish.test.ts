@@ -2,6 +2,7 @@ import { describe, it, expect, beforeEach } from 'vitest';
 import { AbilityDefinition, getAbilityDefinition } from '../../abilityRegistry';
 import './Demolish';
 import { INITIAL_STATE } from '../../../tests/testUtils';
+import { getActiveEnemy } from '../../../types/combatState';
 
 describe('Demolish', () => {
     let ability: AbilityDefinition;
@@ -16,14 +17,14 @@ describe('Demolish', () => {
         const state = INITIAL_STATE;
         const result = ability.onActivate?.(state, { owner: 'hero' });
 
-        expect(result?.enemy.activeEffects).toHaveLength(2);
+        expect(getActiveEnemy(result!).activeEffects).toHaveLength(2);
 
-        const speedMod = result?.enemy.activeEffects?.find(m => m.stats.speedDice === -1);
+        const speedMod = getActiveEnemy(result!).activeEffects?.find(m => m.stats.speedDice === -1);
         expect(speedMod).toBeDefined();
         expect(speedMod?.target).toBe('enemy');
         expect(speedMod?.duration).toBe(1);
 
-        const armourMod = result?.enemy.activeEffects?.find(m => m.stats.armour === -1);
+        const armourMod = getActiveEnemy(result!).activeEffects?.find(m => m.stats.armour === -1);
         expect(armourMod).toBeDefined();
         expect(armourMod?.target).toBe('enemy');
         expect(armourMod?.duration).toBeUndefined(); // Remainder of combat

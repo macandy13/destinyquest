@@ -9,7 +9,8 @@ import {
     hasEffect,
     healDamage,
     removeEffect,
-    skipDamagePhase
+    skipDamagePhase,
+    updateCombatant
 } from '../../../types/combatState';
 import { getOpponent } from '../../../types/character';
 import { formatDice, rollDie } from '../../../types/dice';
@@ -369,29 +370,25 @@ registerAbility({
     name: 'Wail of the Banshee',
     type: 'special',
     description:
-        'If your health is 100 or more at the start of combat, you ' +
+        'If the Banshee\'s health is 100 or more at the start of combat, you ' +
         'automatically lose.',
     icon: '💀',
     reviewed: false,
     onCombatStart: (state, { owner }) => {
-        const target = getOpponent(owner);
-        const heroCombatant = getCombatant(state, target);
+        const banshee = getCombatant(state, owner);
 
-        if (heroCombatant.stats.health >= 100) {
-            state = addLogs(state, {
-                message: 'Wail of the Banshee: Hero health >= 100! Instant loss!'
-            });
-            // Force hero defeat by setting health to 0
-            return {
-                ...state,
-                [target]: {
-                    ...heroCombatant,
-                    stats: { ...heroCombatant.stats, health: 0 }
-                },
-                phase: 'combat-end'
-            };
-        }
-        return state;
+        if (banshee.stats.health < 100) return state;
+        state = addLogs(state, {
+            message: 'Wail of the Banshee: Health >= 100! Instant loss!'
+        });
+        return {
+            ...state,
+            hero: {
+                ...state.hero,
+                stats: { ...state.hero.stats, health: 0 }
+            },
+            phase: 'combat-end'
+        };
     }
 });
 
@@ -408,13 +405,10 @@ registerAbility({
 
         const combatant = getCombatant(state, owner);
         if (combatant.stats.health <= 0) {
-            state = {
-                ...state,
-                [owner]: {
-                    ...combatant,
-                    stats: { ...combatant.stats, health: 1 }
-                }
-            };
+            state = updateCombatant(state, owner, {
+                ...combatant,
+                stats: { ...combatant.stats, health: 1 }
+            });
             state = addLogs(state, {
                 message: 'Endless Swarm: Cannot be defeated! Health restored to 1.'
             });

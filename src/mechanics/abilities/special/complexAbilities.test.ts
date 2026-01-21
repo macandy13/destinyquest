@@ -4,6 +4,7 @@ import {
     hasEffect,
     getEffect,
     requireAbilityDefinition,
+    getActiveEnemy,
 } from '../../../types/combatState';
 import {
     createCombatant,
@@ -21,7 +22,7 @@ describe('Complex Abilities', () => {
     beforeEach(() => {
         state = {
             ...INITIAL_STATE,
-            enemy: createCombatant(MOCK_ENEMY),
+            enemies: [createCombatant(MOCK_ENEMY)], activeEnemyIndex: 0,
             hero: createCombatant(MOCK_HERO),
         };
     });
@@ -171,8 +172,8 @@ describe('Complex Abilities', () => {
 
     describe('Split personality', () => {
         it('should gain +1 speed/brawn per 10 health lost', () => {
-            state.enemy.stats.maxHealth = 50;
-            state.enemy.stats.health = 25; // Lost 25 = 2 stacks
+            state.enemies[0].stats.maxHealth = 50;
+            state.enemies[0].stats.health = 25; // Lost 25 = 2 stacks
 
             const def = requireAbilityDefinition('Split personality');
             state = def.onRoundStart!(state, { owner: 'enemy' });
@@ -183,8 +184,8 @@ describe('Complex Abilities', () => {
         });
 
         it('should not apply if no health lost', () => {
-            state.enemy.stats.maxHealth = 50;
-            state.enemy.stats.health = 50;
+            state.enemies[0].stats.maxHealth = 50;
+            state.enemies[0].stats.health = 50;
 
             const def = requireAbilityDefinition('Split personality');
             state = def.onRoundStart!(state, { owner: 'enemy' });
@@ -221,24 +222,24 @@ describe('Complex Abilities', () => {
     describe('Many heads', () => {
         it('should restore all health at round 4', () => {
             state.round = 4;
-            state.enemy.stats.maxHealth = 50;
-            state.enemy.stats.health = 20;
+            state.enemies[0].stats.maxHealth = 50;
+            state.enemies[0].stats.health = 20;
 
             const def = requireAbilityDefinition('Many heads');
             state = def.onRoundStart!(state, { owner: 'enemy' });
 
-            expect(state.enemy.stats.health).toBe(50);
+            expect(state.enemies[0].stats.health).toBe(50);
         });
 
         it('should not trigger before round 4', () => {
             state.round = 3;
-            state.enemy.stats.maxHealth = 50;
-            state.enemy.stats.health = 20;
+            state.enemies[0].stats.maxHealth = 50;
+            state.enemies[0].stats.health = 20;
 
             const def = requireAbilityDefinition('Many heads');
             state = def.onRoundStart!(state, { owner: 'enemy' });
 
-            expect(state.enemy.stats.health).toBe(20);
+            expect(state.enemies[0].stats.health).toBe(20);
         });
     });
 
@@ -272,8 +273,8 @@ describe('Complex Abilities', () => {
 
     describe('Wail of the Banshee', () => {
         it('should defeat hero if health >= 100', () => {
-            state.hero.stats.health = 100;
-            state.hero.stats.maxHealth = 100;
+            state.enemies[0].stats.health = 100;
+            state.enemies[0].stats.maxHealth = 100;
 
             const def = requireAbilityDefinition('Wail of the Banshee');
             state = def.onCombatStart!(state, { owner: 'enemy' });
@@ -294,7 +295,7 @@ describe('Complex Abilities', () => {
 
     describe('Endless Swarm', () => {
         it('should prevent enemy defeat by restoring to 1 health', () => {
-            state.enemy.stats.health = 0;
+            state.enemies[0].stats.health = 0;
 
             const def = requireAbilityDefinition('Endless Swarm');
             state = def.onDamageDealt!(
@@ -304,7 +305,7 @@ describe('Complex Abilities', () => {
                 10
             );
 
-            expect(state.enemy.stats.health).toBe(1);
+            expect(getActiveEnemy(state).stats.health).toBe(1);
         });
 
         it('should not affect hero damage', () => {
@@ -324,23 +325,23 @@ describe('Complex Abilities', () => {
 
     describe('Gathering Darkness (in healingAbilities)', () => {
         it('should heal 8 health at round end', () => {
-            state.enemy.stats.maxHealth = 50;
-            state.enemy.stats.health = 30;
+            state.enemies[0].stats.maxHealth = 50;
+            state.enemies[0].stats.health = 30;
 
             const def = requireAbilityDefinition('Gathering Darkness');
             state = def.onPassiveAbility!(state, { owner: 'enemy' });
 
-            expect(state.enemy.stats.health).toBe(38);
+            expect(state.enemies[0].stats.health).toBe(38);
         });
 
         it('should not heal if at 0 health', () => {
-            state.enemy.stats.maxHealth = 50;
-            state.enemy.stats.health = 0;
+            state.enemies[0].stats.maxHealth = 50;
+            state.enemies[0].stats.health = 0;
 
             const def = requireAbilityDefinition('Gathering Darkness');
             state = def.onPassiveAbility!(state, { owner: 'enemy' });
 
-            expect(state.enemy.stats.health).toBe(0);
+            expect(state.enemies[0].stats.health).toBe(0);
         });
     });
 });

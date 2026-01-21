@@ -2,6 +2,7 @@ import { describe, it, expect, beforeEach } from 'vitest';
 import { AbilityDefinition, getAbilityDefinition } from '../../abilityRegistry';
 import './Cripple';
 import { INITIAL_STATE } from '../../../tests/testUtils';
+import { getActiveEnemy } from '../../../types/combatState';
 
 describe('Cripple', () => {
     let ability: AbilityDefinition;
@@ -23,9 +24,9 @@ describe('Cripple', () => {
         const result = ability.onActivate?.(state, { owner: 'hero' });
 
         expect(result).toBeDefined();
-        expect(result?.enemy.activeEffects).toHaveLength(1);
-        expect(result?.enemy!.activeEffects[0].stats.speed).toBe(-1);
-        expect(result?.enemy!.activeEffects[0].duration).toBe(3);
+        expect(getActiveEnemy(result!).activeEffects).toHaveLength(1);
+        expect(getActiveEnemy(result!).activeEffects[0].stats.speed).toBe(-1);
+        expect(getActiveEnemy(result!).activeEffects[0].duration).toBe(3);
     });
 
     it('should not activate if no damage dealt to enemy', () => {

@@ -17,7 +17,7 @@ describe('Lightning', () => {
         const state = {
             ...INITIAL_STATE,
             hero: heroWithStats({ health: 20 }),
-            enemy: enemyWithStats({ health: 20 })
+            enemies: [enemyWithStats({ health: 20 })], activeEnemyIndex: 0
         };
 
         // Hero takes damage (target='hero')
@@ -31,7 +31,7 @@ describe('Lightning', () => {
         const state = {
             ...INITIAL_STATE,
             hero: heroWithStats({ health: 20 }),
-            enemy: enemyWithStats({ health: 20 })
+            enemies: [enemyWithStats({ health: 20 })], activeEnemyIndex: 0
         };
 
         // Enemy takes damage (target='enemy')

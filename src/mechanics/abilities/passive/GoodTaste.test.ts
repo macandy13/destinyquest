@@ -51,7 +51,7 @@ describe('Good taste', () => {
             abilities: []
         };
 
-        let state = startCombat(hero, enemy);
+        let state = startCombat(hero, [enemy]);
         // Use potion at index 0
         mockDiceRolls([3]);
         state = useBackpackItem(state, 0);

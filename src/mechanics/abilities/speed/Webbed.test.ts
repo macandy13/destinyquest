@@ -17,7 +17,7 @@ describe('Webbed', () => {
 
         const updates = ability.onActivate?.(state, { owner: 'hero' });
 
-        expect(updates!.enemy.activeEffects[0].stats.speedDice).toBe(-1);
-        expect(updates!.enemy.activeEffects[0].target).toBe('enemy');
+        expect(updates!.enemies[0].activeEffects[0].stats.speedDice).toBe(-1);
+        expect(updates!.enemies[0].activeEffects[0].target).toBe('enemy');
     });
 });

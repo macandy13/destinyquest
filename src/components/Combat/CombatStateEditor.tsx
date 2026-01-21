@@ -70,7 +70,7 @@ const CombatStateEditor: React.FC<CombatStateEditorProps> = ({
     onCancel
 }) => {
     const [state, setState] = useState(combat);
-    const [activeTab, setActiveTab] = useState<CharacterType>('hero');
+    const [selectedTab, setSelectedTab] = useState<'hero' | number>('hero');
 
     const updateHeroHealth = (health: number) => {
         setState({
@@ -83,12 +83,17 @@ const CombatStateEditor: React.FC<CombatStateEditorProps> = ({
     };
 
     const updateEnemyHealth = (health: number) => {
+        if (typeof selectedTab !== 'number') return;
+
+        const newEnemies = [...state.enemies];
+        newEnemies[selectedTab] = {
+            ...newEnemies[selectedTab],
+            stats: { ...newEnemies[selectedTab].stats, health }
+        };
+
         setState({
             ...state,
-            enemy: {
-                ...state.enemy,
-                stats: { ...state.enemy.stats, health }
-            }
+            enemies: newEnemies
         });
     };
 
@@ -105,14 +110,21 @@ const CombatStateEditor: React.FC<CombatStateEditorProps> = ({
     };
 
     const removeEnemyEffect = (index: number) => {
+        if (typeof selectedTab !== 'number') return;
+
+        const newEnemies = [...state.enemies];
+        const targetEnemy = newEnemies[selectedTab];
+
+        newEnemies[selectedTab] = {
+            ...targetEnemy,
+            activeEffects: targetEnemy.activeEffects.filter(
+                (_, i) => i !== index
+            )
+        };
+
         setState({
             ...state,
-            enemy: {
-                ...state.enemy,
-                activeEffects: state.enemy.activeEffects.filter(
-                    (_, i) => i !== index
-                )
-            }
+            enemies: newEnemies
         });
     };
 
@@ -125,22 +137,27 @@ const CombatStateEditor: React.FC<CombatStateEditorProps> = ({
             <div className="selector-header">
                 <div className="editor-tabs">
                     <button
-                        className={`tab-btn ${activeTab === 'hero' ? 'active' : ''}`}
-                        onClick={() => setActiveTab('hero')}
+                        className={`tab-btn ${selectedTab === 'hero' ? 'active' : ''}`}
+                        onClick={() => setSelectedTab('hero')}
                     >
                         🦸 {state.hero.name}
                     </button>
-                    <button
-                        className={`tab-btn ${activeTab === 'enemy' ? 'active' : ''}`}
-                        onClick={() => setActiveTab('enemy')}
-                    >
-                        👹 {state.enemy.name}
-                    </button>
+
+                    {state.enemies.map((enemy, index) => (
+                        <button
+                            key={index}
+                            className={`tab-btn ${selectedTab === index ? 'active' : ''}`}
+                            onClick={() => setSelectedTab(index)}
+                        >
+                            👹 {enemy.name}
+                            {enemy.stats.health <= 0 && ' (Defeated)'}
+                        </button>
+                    ))}
                 </div>
             </div>
 
             <div className="editor-tab-content">
-                {activeTab === 'hero' ? (
+                {selectedTab === 'hero' ? (
                     <CombatantEditor
                         combatant={state.hero}
                         type="hero"
@@ -149,7 +166,8 @@ const CombatStateEditor: React.FC<CombatStateEditorProps> = ({
                     />
                 ) : (
                     <CombatantEditor
-                        combatant={state.enemy}
+                        key={selectedTab} /* Force re-mount on switch */
+                        combatant={state.enemies[selectedTab]}
                         type="enemy"
                         onHealthChange={updateEnemyHealth}
                         onRemoveEffect={removeEnemyEffect}

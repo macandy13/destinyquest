@@ -16,13 +16,13 @@ describe('Bleed', () => {
     it('should deal 1 damage at round end', () => {
         let state: CombatState = {
             ...INITIAL_STATE,
-            enemy: enemyWithStats({ health: 20 }),
+            enemies: [enemyWithStats({ health: 20 })], activeEnemyIndex: 0,
             winner: 'hero' as const,
             damageDealt: [{ target: 'enemy' as const, amount: 5, source: 'Attack' }]
         };
 
         state = ability.onDamageDealt!(state, { owner: 'hero', target: 'enemy' as const }, 'Attack', 5);
-        expect(state.enemy!.activeEffects).toEqual(
+        expect(state.enemies[0].activeEffects).toEqual(
             expect.arrayContaining([
                 expect.objectContaining({
                     source: 'Bleed',

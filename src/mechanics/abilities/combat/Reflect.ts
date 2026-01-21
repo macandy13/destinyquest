@@ -15,7 +15,7 @@ registerAbility({
 
         if (owner !== target || amount <= 0) return state;
 
-        const enemy = state.enemy;
+        const enemy = state.enemies[0];
         if (!enemy) return state;
         if (!enemy.original.abilities.includes('Vampire')) return state;
 

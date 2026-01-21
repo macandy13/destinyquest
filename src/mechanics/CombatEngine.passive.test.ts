@@ -10,17 +10,13 @@ describe('Passive Ability Preview', () => {
         description: 'Test Passive',
         onPassiveAbility: (state, { }) => {
             // Mock effect: Deal 5 damage to enemy
-            const newEnemyHealth = state.enemy.stats.health - 5;
-            return {
-                ...state,
-                enemy: {
-                    ...state.enemy,
-                    stats: {
-                        ...state.enemy.stats,
-                        health: newEnemyHealth
-                    }
-                }
+            const newEnemyHealth = state.enemies[0].stats.health - 5;
+            const newEnemies = [...state.enemies];
+            newEnemies[0] = {
+                ...newEnemies[0],
+                stats: { ...newEnemies[0].stats, health: newEnemyHealth }
             };
+            return { ...state, enemies: newEnemies };
         }
     });
 
@@ -44,7 +40,7 @@ describe('Passive Ability Preview', () => {
             }
         };
 
-        let state = startCombat(hero, MOCK_ENEMY);
+        let state = startCombat(hero, [MOCK_ENEMY]);
 
         // Ensure ability is active (startCombat should activate equipment abilities)
         expect(state.hero.activeAbilities.has(toCanonicalName('MockVenom'))).toBe(true);
@@ -85,7 +81,7 @@ describe('Passive Ability Preview', () => {
             }
         };
 
-        let state = startCombat(hero, MOCK_ENEMY);
+        let state = startCombat(hero, [MOCK_ENEMY]);
         const { previews } = getPassiveAbilityPreview(state);
         expect(previews).toHaveLength(0);
     });

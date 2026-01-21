@@ -1,5 +1,5 @@
 import { AbilityDefinition, registerAbility } from '../../abilityRegistry';
-import { dealDamage, hasEffect } from '../../../types/combatState';
+import { dealDamage, hasEffect, getCombatant } from '../../../types/combatState';
 import { getOpponent } from '../../../types/character';
 
 export const DragonBreath: AbilityDefinition = {
@@ -18,7 +18,7 @@ export const DragonBreath: AbilityDefinition = {
 
         // TODO: Verify how statuses are applied. For now, check for effect with source 'Ignite' or similar.
         // User text says "'burn' status".
-        const hasBurn = hasEffect(state, target, 'Ignite') || state[target].activeEffects.some(e => e.source.toLowerCase().includes('burn'));
+        const hasBurn = hasEffect(state, target, 'Ignite') || getCombatant(state, target).activeEffects.some(e => e.source.toLowerCase().includes('burn'));
 
         if (hasBurn) {
             state = dealDamage(state, 'Dragon breath', target, 2, 'Opponent is burning! Dragon breath deals 2 damage.');

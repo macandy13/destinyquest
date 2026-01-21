@@ -1377,14 +1377,16 @@ export const ENEMIES: Enemy[] = [
       "health": 40,
       "maxHealth": 40
     },
-    "abilities": [
-      "After this enemy is killed, the hero wins the combat."
+    "abilities": [],
+    "spawns": [
+      "Wreeking net"
     ],
     "bookRef": {
       "book": "The Legion of Shadow",
       "act": 2,
       "section": 366
-    }
+    },
+    "notes": "After this enemy is killed, the hero wins the combat."
   },
   {
     "type": "enemy",
@@ -1438,7 +1440,7 @@ export const ENEMIES: Enemy[] = [
       "maxHealth": 60
     },
     "abilities": [
-      "Zen Charge",
+      "Charge",
       "Trample"
     ],
     "bookRef": {
@@ -1952,7 +1954,7 @@ export const ENEMIES: Enemy[] = [
   },
   {
     "type": "enemy",
-    "name": "Roumbler",
+    "name": "Rumbler",
     "stats": {
       "speed": 7,
       "brawn": 8,

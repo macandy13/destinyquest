@@ -14,11 +14,11 @@ describe('Piercing', () => {
 
     it('should reduce enemy armour to 0', () => {
         const enemy = enemyWithStats({ armour: 5 });
-        const state = { ...INITIAL_STATE, enemy };
+        const state = { ...INITIAL_STATE, enemies: [enemy] };
 
         const updates = ability.onActivate?.(state, { owner: 'hero' });
 
-        expect(updates!.enemy.activeEffects[0].stats.armour).toBe(-5);
-        expect(updates!.enemy.activeEffects[0].target).toBe('enemy');
+        expect(updates!.enemies[0].activeEffects[0].stats.armour).toBe(-5);
+        expect(updates!.enemies[0].activeEffects[0].target).toBe('enemy');
     });
 });

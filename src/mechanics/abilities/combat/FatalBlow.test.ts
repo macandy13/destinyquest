@@ -2,6 +2,7 @@ import { describe, it, expect, beforeEach } from 'vitest';
 import { AbilityDefinition, getAbilityDefinition } from '../../abilityRegistry';
 import './FatalBlow';
 import { INITIAL_STATE } from '../../../tests/testUtils';
+import { getActiveEnemy } from '../../../types/combatState';
 
 describe('Fatal Blow', () => {
     let ability: AbilityDefinition;
@@ -16,7 +17,7 @@ describe('Fatal Blow', () => {
         const state = INITIAL_STATE;
         const result = ability.onActivate?.(state, { owner: 'hero' });
 
-        expect(result?.enemy.activeEffects).toHaveLength(1);
-        expect(result?.enemy.activeEffects[0].source).toBe('Fatal Blow');
+        expect(getActiveEnemy(result!).activeEffects).toHaveLength(1);
+        expect(getActiveEnemy(result!).activeEffects[0].source).toBe('Fatal Blow');
     });
 });

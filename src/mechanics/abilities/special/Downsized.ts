@@ -1,5 +1,5 @@
 import { AbilityDefinition, registerAbility } from '../../abilityRegistry';
-import { appendEffect, removeEffect } from '../../../types/combatState';
+import { appendEffect, removeEffect, getCombatant } from '../../../types/combatState';
 
 export const Downsized: AbilityDefinition = {
     name: 'Downsized',
@@ -7,7 +7,7 @@ export const Downsized: AbilityDefinition = {
     description: 'For every 10 health that the Centipede loses, one of its body segments is destroying its speed and branch (brawn) by 1 each time.',
     reviewed: false,
     onRoundStart: (state, { owner }) => {
-        const char = state[owner];
+        const char = getCombatant(state, owner);
         const lost = char.stats.maxHealth - char.stats.health;
         const stacks = Math.floor(lost / 10);
 

@@ -2,6 +2,7 @@ import { describe, it, expect, beforeEach } from 'vitest';
 import { AbilityDefinition, getAbilityDefinition } from '../../abilityRegistry';
 import './Retaliation';
 import { enemyWithStats, INITIAL_STATE, mockDiceRolls } from '../../../tests/testUtils';
+import { getActiveEnemy } from '../../../types/combatState';
 
 describe('Retaliation', () => {
     let ability: AbilityDefinition;
@@ -15,7 +16,7 @@ describe('Retaliation', () => {
     it('should inflict damage back', () => {
         const state = {
             ...INITIAL_STATE,
-            enemy: enemyWithStats({ health: 10 }),
+            enemies: [enemyWithStats({ health: 10 })], activeEnemyIndex: 0,
             logs: []
         };
 
@@ -25,7 +26,7 @@ describe('Retaliation', () => {
 
         // Result is the state. DealDamage modifies logs and stats.
         // It updates `enemy.stats.health`.
-        expect(result?.enemy.stats.health).toBeLessThan(10);
+        expect(getActiveEnemy(result!).stats.health).toBeLessThan(10);
         // It also adds a log.
         expect(result?.logs.some(l => l.message?.includes('Retaliation'))).toBe(true);
     });

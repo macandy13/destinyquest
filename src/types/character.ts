@@ -21,4 +21,5 @@ export interface Enemy extends Character {
     bookRef: BookRef;
     spawns?: string[];
     notes?: string;
+    isMaster?: boolean;  // If true, killing this enemy wins the combat
 }

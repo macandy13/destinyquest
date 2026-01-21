@@ -18,6 +18,6 @@ describe('Spore Cloud', () => {
 
         const result = ability.onDamageDealt?.(state, { owner: 'hero', target: 'hero' }, 'Attack', 5);
 
-        expect(result?.enemy.stats.health).toBe(INITIAL_STATE.enemy.stats.health - 5);
+        expect(result?.enemies[0].stats.health).toBe(INITIAL_STATE.enemies[0].stats.health - 5);
     });
 });

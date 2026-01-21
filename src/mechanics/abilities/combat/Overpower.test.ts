@@ -40,7 +40,7 @@ describe('Overpower', () => {
 
         expect(result?.phase).toBe('passive-damage');
         expect(result?.damage?.damageRolls).toEqual([]);
-        expect(result?.enemy?.stats.health).toBe(11);
+        expect(result?.enemies[0].stats.health).toBe(11);
     });
 
     it('should return empty object if conditions not met', () => {

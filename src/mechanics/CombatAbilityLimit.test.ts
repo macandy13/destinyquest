@@ -85,7 +85,7 @@ describe('Combat Ability Usage Limits', () => {
             bookRef: { book: 'Test', act: 1 }
         };
 
-        initialState = startCombat(hero, enemy);
+        initialState = startCombat(hero, [enemy]);
         // Add abilities manually to hero
         initialState.hero.activeAbilities.set('mock-speed', { name: 'Mock Speed', owner: 'hero', def: mockSpeedAbility, uses: 1 });
         initialState.hero.activeAbilities.set('mock-speed-2', { name: 'Mock Speed 2', owner: 'hero', def: mockSpeedAbility2, uses: 1 });

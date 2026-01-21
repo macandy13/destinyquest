@@ -22,7 +22,7 @@ describe('InteractionOverlay', () => {
             stats: { health: 10, maxHealth: 10, speed: 2, magic: 0, brawn: 0, armour: 0 },
             original: {} as any // simplified
         },
-        enemy: {
+        enemies: [{
             id: 'enemy',
             name: 'Enemy',
             type: 'enemy',
@@ -30,7 +30,8 @@ describe('InteractionOverlay', () => {
             activeEffects: [],
             stats: { health: 10, maxHealth: 10, speed: 2, magic: 0, brawn: 0, armour: 0 },
             original: {} as any
-        },
+        }],
+        activeEnemyIndex: 0,
         round: 1,
         phase: 'combat-start',
         logs: [],

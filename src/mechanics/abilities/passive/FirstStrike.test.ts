@@ -21,7 +21,7 @@ describe('First Strike', () => {
 
         const updates = ability.onCombatStart!(state, { owner: 'hero' });
 
-        expect(updates.enemy!.stats.health).toBe(16); // 20 - 4
+        expect(updates.enemies[0].stats.health).toBe(16); // 20 - 4
         expect(updates.logs![0].message).toContain('First Strike dealt 4 damage');
 
         vi.restoreAllMocks();

@@ -1,5 +1,5 @@
 import React from 'react';
-import { CombatState } from '../../types/combatState';
+import { CombatState, getActiveEnemy } from '../../types/combatState';
 import { BackpackItem } from '../../types/hero';
 import CombatPhaseLayout from './CombatPhaseLayout';
 import CombatStateEditor from './CombatStateEditor';
@@ -23,7 +23,7 @@ const CombatEndPhase: React.FC<CombatEndPhaseProps> = ({
 }) => {
     const [isEditing, setIsEditing] = React.useState(false);
     const isVictory = (combat.hero?.stats.health ?? 0) > 0;
-    const enemyName = combat.enemy?.original?.name || 'Enemy';
+    const enemyName = getActiveEnemy(combat)?.original?.name || 'Enemy';
 
     const healAndMoveOn = () => {
         onCombatFinish({

@@ -15,7 +15,7 @@ registerAbility({
         const dmgRolls = rollDice(2);
         const dmg = sumDice(dmgRolls);
 
-        const enemy = state.enemy;
+        const enemy = state.enemies[0];
         if (!enemy) return state; // Should be safe with isHeroDamageRollPhase logic usually
 
         const statMod: Effect = {

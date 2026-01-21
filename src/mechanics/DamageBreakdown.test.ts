@@ -24,7 +24,7 @@ describe('calculateDamageBreakdown', () => {
     let state: CombatState;
 
     beforeEach(() => {
-        state = startCombat(mockHero, MOCK_ENEMY);
+        state = startCombat(mockHero, [MOCK_ENEMY]);
         // Force state to match damage roll phase requirements
         state.phase = 'damage-roll';
         state.winner = 'hero';
@@ -67,7 +67,7 @@ describe('calculateDamageBreakdown', () => {
 
     it('should account for armour', () => {
         // Give enemy some armour
-        state.enemy.stats.armour = 2;
+        state.enemies[0].stats.armour = 2;
         // Hero Brawn: 5, Roll: 3, Enemy Armour: 2
         // Total = 3 + 5 - 2 = 6
         const breakdown = calculateDamageBreakdown(state);
@@ -77,7 +77,7 @@ describe('calculateDamageBreakdown', () => {
 
     it('should clamp damage to 0', () => {
         // Give huge armour
-        state.enemy.stats.armour = 20;
+        state.enemies[0].stats.armour = 20;
         // Hero Brawn: 5, Roll: 3, Enemy Armour: 20
         // Total = 3 + 5 - 20 = -12 => 0
         const breakdown = calculateDamageBreakdown(state);

@@ -13,11 +13,39 @@
 }
 
 /* Tab styling - reusing pattern from EnemySelector */
+/* Tab styling - reusing pattern from EnemySelector */
 .combat-state-editor-card .editor-tabs {
     display: flex;
     gap: var(--spacing-sm);
     border-bottom: var(--border-sm) solid var(--dq-gold-dim);
     flex-shrink: 0;
+}
+
+.enemy-selection-tabs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--spacing-xs);
+    margin-bottom: var(--spacing-md);
+    padding-bottom: var(--spacing-sm);
+    border-bottom: 1px dashed var(--dq-grey-light);
+}
+
+.enemy-tab-btn {
+    background: transparent;
+    border: 1px solid var(--dq-grey);
+    color: var(--dq-light-grey);
+    padding: 4px 8px;
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    font-size: var(--font-xs);
+    font-family: var(--font-body);
+}
+
+.enemy-tab-btn.active {
+    background: var(--dq-gold-dim);
+    border-color: var(--dq-gold);
+    color: var(--dq-black);
+    font-weight: bold;
 }
 
 .combat-state-editor-card .tab-btn {

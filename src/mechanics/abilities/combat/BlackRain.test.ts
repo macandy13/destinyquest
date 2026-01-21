@@ -26,11 +26,11 @@ describe('Black Rain', () => {
 
         expect(result).toEqual(expect.objectContaining({
             phase: 'passive-damage',
-            enemy: expect.objectContaining({
+            enemies: [expect.objectContaining({
                 stats: expect.objectContaining({
-                    health: INITIAL_STATE.enemy.stats.health - 6
+                    health: INITIAL_STATE.enemies[0].stats.health - 6
                 })
-            })
+            })]
         }));
     });
 });

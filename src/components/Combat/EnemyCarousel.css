@@ -1,0 +1,91 @@
+.enemy-carousel {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0 auto;
+}
+
+.carousel-container {
+    width: 100%;
+}
+
+/* Base style for carousel buttons to override some nc-btn defaults if needed or position them */
+.carousel-btn {
+    position: absolute;
+    bottom: -30px;
+    transform: translateY(-50%);
+    z-index: 20;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+    opacity: 0.8;
+    font-size: var(--font-sm);
+}
+
+.carousel-btn:hover {
+    opacity: 1;
+    transform: translateY(-50%) scale(1.1);
+}
+
+.prev-btn {
+    left: -15px;
+}
+
+.next-btn {
+    right: -15px;
+}
+
+.carousel-dot-indicator {
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 6px;
+    z-index: 20;
+    background: rgba(0, 0, 0, 0.6);
+    padding: 4px 8px;
+    border-radius: 12px;
+    border: 1px solid rgba(212, 175, 55, 0.3);
+    /* Subtle gold border */
+}
+
+.indicator-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    border: 2px solid var(--dq-gold-dim);
+    transition: all 0.2s;
+    background: transparent;
+}
+
+.indicator-dot.active {
+    background: var(--dq-gold);
+    border-color: var(--dq-gold);
+    transform: scale(1.2);
+}
+
+.indicator-dot.dead {
+    border-color: var(--dq-crimson);
+}
+
+.indicator-dot.dead.active {
+    background: var(--dq-crimson);
+}
+
+.enemy-status-badge {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(0, 0, 0, 0.8);
+    color: var(--dq-crimson);
+    padding: 1rem;
+    border: 2px solid var(--dq-crimson);
+    border-radius: var(--radius-md);
+    font-size: var(--font-lg);
+    font-weight: bold;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.7);
+    z-index: 15;
+    font-family: var(--font-heading);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}

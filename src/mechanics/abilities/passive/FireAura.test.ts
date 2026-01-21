@@ -16,12 +16,12 @@ describe('Fire Aura', () => {
     it('should inflict 1 damage to enemy on round end', () => {
         const state = {
             ...INITIAL_STATE,
-            enemy: enemyWithStats({ health: 10 })
+            enemies: [enemyWithStats({ health: 10 })], activeEnemyIndex: 0
         };
 
         const updates = ability?.onPassiveAbility?.(state, { owner: 'hero' });
 
-        expect(updates?.enemy?.stats.health).toBe(9);
+        expect(updates?.enemies[0].stats.health).toBe(9);
         expect(updates?.logs?.[0].message).toContain('Fire Aura dealt 1 damage to Test Enemy');
     });
 });

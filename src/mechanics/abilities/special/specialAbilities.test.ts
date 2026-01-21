@@ -10,7 +10,7 @@ describe('Special Abilities Patterns', () => {
     beforeEach(() => {
         state = {
             ...INITIAL_STATE,
-            enemy: createCombatant(MOCK_ENEMY),
+            enemies: [createCombatant(MOCK_ENEMY)], activeEnemyIndex: 0,
             hero: createCombatant(MOCK_HERO),
         };
     });
@@ -27,25 +27,25 @@ describe('Special Abilities Patterns', () => {
         });
 
         it('And by crook: should apply modifiers when health < 20', () => {
-            state.enemy = createCombatant(MOCK_ENEMY);
+            state.enemies[0] = createCombatant(MOCK_ENEMY);
 
             const ability = requireAbilityDefinition('And by crook');
             state = ability.onRoundStart!(state, { ability: undefined, owner: 'enemy' });
             expect(hasEffect(state, 'enemy', 'And by crook')).toBe(false);
 
             // 2. Reduce health to 15
-            state.enemy.stats.health = 15;
+            state.enemies[0].stats.health = 15;
             state = ability.onRoundStart!(state, { ability: undefined, owner: 'enemy' });
             expect(hasEffect(state, 'enemy', 'And by crook')).toBe(true);
 
             // Check effective stats would have speedDice=1 (2-1) and damageDice=2 (1+1)
             // (Assuming base defaults 2 and 1)
-            const effect = state.enemy.activeEffects.find(e => e.source === 'And by crook');
+            const effect = state.enemies[0].activeEffects.find(e => e.source === 'And by crook');
             expect(effect?.stats.speedDice).toBe(-1);
             expect(effect?.stats.damageDice).toBe(1);
 
             // 3. Heal back to 25
-            state.enemy.stats.health = 25;
+            state.enemies[0].stats.health = 25;
             state = ability.onRoundStart!(state, { ability: undefined, owner: 'enemy' });
             expect(hasEffect(state, 'enemy', 'And by crook')).toBe(false);
         });
@@ -73,9 +73,9 @@ describe('Special Abilities Patterns', () => {
         it('Blood Drinker: should add die and heal on rolling a 6', () => {
             state = {
                 ...state,
-                enemy: createCombatant({
+                enemies: [createCombatant({
                     ...MOCK_ENEMY,
-                }),
+                })],
                 hero: createCombatant(MOCK_HERO),
                 winner: 'enemy',
                 damage: {
@@ -85,7 +85,7 @@ describe('Special Abilities Patterns', () => {
             };
 
             mockDiceRolls([3]);
-            state.enemy.stats.health = 15;
+            state.enemies[0].stats.health = 15;
 
             const def = requireAbilityDefinition('Blood Drinker');
             assert(def && def.onDamageRoll);
@@ -93,7 +93,7 @@ describe('Special Abilities Patterns', () => {
 
             expect(state.damage!.damageRolls).toHaveLength(2);
             expect(state.damage!.damageRolls[1].value).toBe(3);
-            expect(state.enemy.stats.health).toBe(17);
+            expect(state.enemies[0].stats.health).toBe(17);
         });
 
         it('Distraction: should skip damage on roll 1-2 when losing', () => {
@@ -123,28 +123,28 @@ describe('Special Abilities Patterns', () => {
             state = def!.onRoundStart!(state, { owner: 'enemy' });
             expect(hasEffect(state, 'enemy', 'Zen Charge')).toBe(true);
 
-            const effect = state.enemy.activeEffects.find(e => e.source === 'Zen Charge');
+            const effect = state.enemies[0].activeEffects.find(e => e.source === 'Zen Charge');
             expect(effect?.stats.speedDice).toBe(1);
 
             state.round = 2;
             // Manual clear as endRound isn't called here
-            state.enemy.activeEffects = [];
+            state.enemies[0].activeEffects = [];
             state = def!.onRoundStart!(state, { owner: 'enemy' });
             expect(hasEffect(state, 'enemy', 'Zen Charge')).toBe(false);
         });
 
         it('Downsized: should reduce stats based on missing health', () => {
             // Full health
-            state.enemy.stats.maxHealth = 40;
-            state.enemy.stats.health = 40;
+            state!.enemies[0].stats.maxHealth = 40;
+            state!.enemies[0].stats.health = 40;
             const def = requireAbilityDefinition('Downsized');
             state = def.onRoundStart!(state, { owner: 'enemy' });
             expect(hasEffect(state, 'enemy', 'Downsized')).toBe(false);
 
             // Lose 20 health -> 2 stacks
-            state.enemy.stats.health = 15; // Lost 25
+            state.enemies[0].stats.health = 15; // Lost 25
             state = def.onRoundStart!(state, { owner: 'enemy' });
-            const effect = state.enemy.activeEffects.find(e => e.source === 'Downsized');
+            const effect = state.enemies[0].activeEffects.find(e => e.source === 'Downsized');
             expect(effect).toBeDefined();
             // 25 // 10 = 2
             expect(effect?.stats.speed).toBe(-2);
@@ -162,7 +162,7 @@ describe('Special Abilities Patterns', () => {
             };
 
             const def = requireAbilityDefinition('Charge her up');
-            state = def!.onDamageRoll!(state, { owner: 'enemy', ability: state.enemy.activeAbilities.get('charge-her-up') });
+            state = def!.onDamageRoll!(state, { owner: 'enemy', ability: state.enemies[0].activeAbilities.get('charge-her-up') });
             expect(state.damage?.damageRolls).toEqual([]);
             expect(hasEffect(state, 'enemy', 'Charge her up')).toBe(true);
 

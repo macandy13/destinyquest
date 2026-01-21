@@ -14,7 +14,7 @@ registerAbility({
     onActivate: (state, context) => {
         if (!canActivate(state, context)) return state;
 
-        const enemy = state.enemy;
+        const enemy = state.enemies[0];
         if (!enemy) return state;
 
         const magic = state.hero?.stats.magic || 0;

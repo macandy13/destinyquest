@@ -1,5 +1,5 @@
 import { AbilityDefinition, registerAbility } from '../../abilityRegistry';
-import { appendEffect, hasEffect, healDamage, useAbility } from '../../../types/combatState';
+import { appendEffect, hasEffect, healDamage, useAbility, getCombatant } from '../../../types/combatState';
 
 export const FaithfulDuty: AbilityDefinition = {
     name: 'Faithful duty',
@@ -12,7 +12,7 @@ export const FaithfulDuty: AbilityDefinition = {
             return state;
         }
 
-        const currentHealth = state[owner].stats.health;
+        const currentHealth = getCombatant(state, owner).stats.health;
         if (currentHealth > 4) return state;
 
         state = appendEffect(state, owner, {

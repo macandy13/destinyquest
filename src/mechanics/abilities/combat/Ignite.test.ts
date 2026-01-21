@@ -2,6 +2,7 @@ import { describe, it, expect, beforeEach } from 'vitest';
 import { AbilityDefinition, getAbilityDefinition } from '../../abilityRegistry';
 import './Ignite';
 import { INITIAL_STATE } from '../../../tests/testUtils';
+import { getActiveEnemy } from '../../../types/combatState';
 
 describe('Ignite', () => {
     let ability: AbilityDefinition;
@@ -27,6 +28,6 @@ describe('Ignite', () => {
         // Check logs for damage
         expect(result?.logs.some(l => l.message?.includes('Ignite dealt'))).toBe(true);
         // Check for burn effect
-        expect(result?.enemy.activeEffects.some(e => e.source === 'Ignite')).toBe(true);
+        expect(getActiveEnemy(result!).activeEffects.some(e => e.source === 'Ignite')).toBe(true);
     });
 });

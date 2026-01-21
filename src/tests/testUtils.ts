@@ -50,7 +50,8 @@ const ENEMY_COMBATANT: Combatant<Enemy> = createCombatant(MOCK_ENEMY);
 // Generic mock state for ability testing
 export const INITIAL_STATE: CombatState = {
     hero: HERO_COMBATANT,
-    enemy: ENEMY_COMBATANT,
+    enemies: [ENEMY_COMBATANT],
+    activeEnemyIndex: 0,
     round: 0,
     phase: 'combat-start',
     logs: [],
@@ -142,3 +143,21 @@ export function mockDiceRolls(rolls: number[]) {
 export function deterministicRoll(rolls: number[]): DiceRoll[] {
     return rolls.map(val => ({ value: val, isRerolled: false }));
 }
+
+// Helper to create a test CombatState - accepts either enemy or enemies
+export function createTestState(
+    overrides: Partial<Omit<CombatState, 'enemies'>> & {
+        enemy?: Combatant<Enemy>;
+        enemies?: Combatant<Enemy>[];
+    }
+): CombatState {
+    const { enemy, enemies: enemiesOverride, ...rest } = overrides;
+    const enemies = enemiesOverride ?? (enemy ? [enemy] : INITIAL_STATE.enemies);
+    return {
+        ...INITIAL_STATE,
+        ...rest,
+        enemies,
+        activeEnemyIndex: 0,
+    };
+}
+

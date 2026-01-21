@@ -40,12 +40,12 @@ describe('CombatEngine', () => {
 
     describe('startCombat', () => {
         it('should initialize combat state correctly', () => {
-            const state = startCombat(hero, enemy);
+            const state = startCombat(hero, [enemy]);
             expect(state).toEqual(expect.objectContaining({
                 phase: 'combat-start',
                 round: 0,
                 hero: expect.objectContaining({ name: hero.name }),
-                enemy: expect.objectContaining({ name: enemy.name }),
+                enemies: expect.arrayContaining([expect.objectContaining({ name: enemy.name })]),
             }));
         });
 
@@ -61,14 +61,14 @@ describe('CombatEngine', () => {
                 })
             });
             hero.equipment.mainHand = testEquipment({ abilities: [abilityName] });
-            const state = startCombat(hero, enemy);
+            const state = startCombat(hero, [enemy]);
             expect(state.hero.stats.speed).toBe(99);
         });
     });
 
     describe('startRound', () => {
         it('should increment round and set phase', () => {
-            let state = startCombat(hero, enemy);
+            let state = startCombat(hero, [enemy]);
             expect(state.round).toEqual(0);
             state = startRound(state);
             expect(state).toEqual(expect.objectContaining({
@@ -84,7 +84,7 @@ describe('CombatEngine', () => {
 
     describe('rollForSpeed', () => {
         it('should determine winner based on rolls and stats', () => {
-            let state = startCombat(hero, enemy);
+            let state = startCombat(hero, [enemy]);
             state = startRound(state);
 
             // Hero speed 1, Enemy speed 1
@@ -102,7 +102,7 @@ describe('CombatEngine', () => {
         });
 
         it('should handle draws', () => {
-            let state = startCombat(hero, enemy);
+            let state = startCombat(hero, [enemy]);
             const roll = deterministicRoll([1, 1]);
             state = rollForSpeed(state, roll, roll);
             expect(state.winner).toBeNull();
@@ -117,7 +117,7 @@ describe('CombatEngine', () => {
 
     describe('rollForDamage', () => {
         it('should roll damage dice for the winner', () => {
-            let state = startCombat(hero, enemy);
+            let state = startCombat(hero, [enemy]);
             state = { ...state, winner: 'hero' };
             const damageRolls = deterministicRoll([3]);
 
@@ -132,7 +132,7 @@ describe('CombatEngine', () => {
         });
 
         it('should not roll if no winner', () => {
-            let state = startCombat(hero, enemy);
+            let state = startCombat(hero, [enemy]);
             state = { ...state, winner: null }; // Draw
             state = rollForDamage(state);
             expect(state.damage).toBeUndefined();
@@ -141,7 +141,7 @@ describe('CombatEngine', () => {
 
     describe('applyDamage', () => {
         it('should calculate damage correctly (Roll + Skill - Armour)', () => {
-            let state = startCombat(hero, enemy);
+            let state = startCombat(hero, [enemy]);
             // Hero wins. Brawn 3. Damage Roll 3. Enemy Armour 1.
             // Damage = 3 + 3 - 1 = 5.
             state = {
@@ -155,11 +155,11 @@ describe('CombatEngine', () => {
 
             // Enemy starts with 10 health. 10 - 5 = 5.
             expect(state.phase).toBe('apply-damage');
-            expect(state.enemy.stats.health).toBe(5);
+            expect(state.enemies[0].stats.health).toBe(5);
         });
 
         it('should handle damage modifiers', () => {
-            let state = startCombat(hero, enemy);
+            let state = startCombat(hero, [enemy]);
             state = {
                 ...state,
                 winner: 'hero',
@@ -171,7 +171,7 @@ describe('CombatEngine', () => {
             };
             // Damage = 3 (roll) + 3 (brawn) + 2 (mod) - 1 (armour) = 7.
             state = applyDamage(state);
-            expect(state.enemy.stats.health).toBe(3);
+            expect(state.enemies[0].stats.health).toBe(3);
         });
     });
 
@@ -182,18 +182,22 @@ describe('CombatEngine', () => {
                 name: abilityName,
                 type: 'passive',
                 description: 'Passive Dmg',
-                onPassiveAbility: (s) => ({
-                    ...s,
-                    enemy: { ...s.enemy, stats: { ...s.enemy.stats, health: s.enemy.stats.health - 1 } }
-                })
+                onPassiveAbility: (s) => {
+                    const newEnemies = [...s.enemies];
+                    newEnemies[0] = {
+                        ...newEnemies[0],
+                        stats: { ...newEnemies[0].stats, health: newEnemies[0].stats.health - 1 }
+                    };
+                    return { ...s, enemies: newEnemies };
+                }
             });
             hero.equipment.mainHand = testEquipment({ abilities: [abilityName] });
 
-            let state = startCombat(hero, enemy);
+            let state = startCombat(hero, [enemy]);
             state = applyPassiveAbilities(state);
 
             expect(state.phase).toBe('passive-damage');
-            expect(state.enemy.stats.health).toBe(9);
+            expect(state.enemies[0].stats.health).toBe(9);
         });
     });
 
@@ -214,7 +218,7 @@ describe('CombatEngine', () => {
             item.abilities = [abilityName];
             limitedHero.equipment.mainHand = item;
 
-            let state = startCombat(limitedHero, enemy);
+            let state = startCombat(limitedHero, [enemy]);
             // Ensure it has uses. createHeroCombatant sets uses to 1 for combat abilities if checking equipment
             // But let's verify specific behavior.
             // Note: 'combat' type abilities get 1 use per item by default in createHeroCombatant
@@ -236,7 +240,7 @@ describe('CombatEngine', () => {
                 }), null, null, null, null]
             };
 
-            let state = startCombat(heroWithItem, MOCK_ENEMY);
+            let state = startCombat(heroWithItem, [MOCK_ENEMY]);
             state = {
                 ...state,
                 hero: { ...state.hero, stats: { ...state.hero.stats, health: 1 } }
@@ -257,7 +261,7 @@ describe('CombatEngine', () => {
                     // uses undefined means infinite
                 }), null, null, null, null]
             };
-            let state = startCombat(heroWithItem, MOCK_ENEMY);
+            let state = startCombat(heroWithItem, [MOCK_ENEMY]);
             state = useBackpackItem(state, 0);
             expect(state.backpack.length).toBe(1);
         });
@@ -277,7 +281,7 @@ describe('CombatEngine', () => {
                 stats: { ...MOCK_ENEMY.stats, speed: 5 } // Base speed 5
             };
 
-            let state = startCombat(heroWithSpeedPotion, fastEnemy);
+            let state = startCombat(heroWithSpeedPotion, [fastEnemy]);
             state = startRound(state);
 
             // Hero rolls 1, Enemy rolls 1.
@@ -304,7 +308,7 @@ describe('CombatEngine', () => {
 
     describe('endRound', () => {
         it('should decrement effect durations and remove expired', () => {
-            let state = startCombat(hero, enemy);
+            let state = startCombat(hero, [enemy]);
             state.hero.activeEffects = [
                 { source: 'ShortBuff', target: 'hero', stats: { speed: 1 }, duration: 1 },
                 { source: 'LongBuff', target: 'hero', stats: { brawn: 1 }, duration: 2 },
@@ -328,12 +332,12 @@ describe('CombatEngine', () => {
     describe('checkCombatEnd', () => {
         it('should end combat if health is 0 at start', () => {
             const deadHero = { ...hero, stats: { ...hero.stats, health: 0 } };
-            const state = startCombat(deadHero, enemy);
+            const state = startCombat(deadHero, [enemy]);
             expect(state.phase).toBe('combat-end');
         });
 
         it('should end combat when enemy dies', () => {
-            let state = startCombat(hero, enemy);
+            let state = startCombat(hero, [enemy]);
             state = {
                 ...state,
                 winner: 'hero',

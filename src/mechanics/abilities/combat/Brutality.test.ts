@@ -2,6 +2,7 @@ import { describe, it, expect, beforeEach } from 'vitest';
 import { AbilityDefinition, getAbilityDefinition } from '../../abilityRegistry';
 import './Brutality';
 import { deterministicRoll, INITIAL_STATE, mockDiceRolls } from '../../../tests/testUtils';
+import { getActiveEnemy } from '../../../types/combatState';
 
 describe('Brutality', () => {
     let ability: AbilityDefinition;
@@ -30,6 +31,6 @@ describe('Brutality', () => {
         const result = ability.onActivate?.(state, { owner: 'hero' });
 
         expect(result?.phase).toBe('passive-damage');
-        expect(result?.enemy.stats.health).toBe(INITIAL_STATE.enemy.stats.health - 3);
+        expect(getActiveEnemy(result!).stats.health).toBe(getActiveEnemy(INITIAL_STATE).stats.health - 3);
     });
 });

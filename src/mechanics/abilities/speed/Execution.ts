@@ -5,7 +5,7 @@ import { CharacterType } from '../../../types/character';
 function canActivate(state: CombatState, { owner }: { owner: CharacterType }): boolean {
     if (owner !== 'hero') return false;
     const ownSpeed = state.hero!.stats.speed || 0;
-    const opponentHealth = state.enemy!.stats.health || 0;
+    const opponentHealth = state.enemies[0].stats.health || 0;
     return ['round-start', 'start-combat'].includes(state.phase)
         && hasEquipment(state.hero!, /sword/, ['mainHand', 'leftHand'])
         && opponentHealth > 0
@@ -20,8 +20,8 @@ registerAbility({
     onActivate: (state, { owner }) => {
         if (!canActivate(state, { owner })) return state;
 
-        // TODO: Handle multiple enemies
-        const opponentHealth = state.enemy!.stats.health || 0;
+        // TODO: Handle multiple enemies - targeting?
+        const opponentHealth = state.enemies[0].stats.health || 0;
         return dealDamage(state, 'Execution', 'enemy', opponentHealth);
     },
 });

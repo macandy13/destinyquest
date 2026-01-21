@@ -16,7 +16,7 @@ describe('Shield Spin', () => {
         const state = {
             ...INITIAL_STATE,
             hero: heroWithStats({ health: 20 }),
-            enemy: enemyWithStats({ health: 20 }),
+            enemies: [enemyWithStats({ health: 20 })], activeEnemyIndex: 0,
             // Mock enemy rolls (Context: Hero owns ability, implies Target=Enemy)
             enemySpeedRolls: [{ value: 1, isRerolled: false }, { value: 1, isRerolled: false }, { value: 6, isRerolled: false }]
         };
@@ -24,7 +24,7 @@ describe('Shield Spin', () => {
         // ShieldSpin logic: "opponent === 'enemy' (since owner='hero')". "rolls = state.enemySpeedRolls".
         const updates = ability!.onSpeedRoll!(state, { owner: 'hero' });
 
-        expect(updates?.enemy?.stats.health).toBeLessThan(20);
+        expect(updates?.enemies[0].stats.health).toBeLessThan(20);
         expect(updates?.logs?.[0].message).toContain('Shield Spin dealt');
     });
 

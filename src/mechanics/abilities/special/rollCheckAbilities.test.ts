@@ -18,7 +18,7 @@ describe('Roll Check Abilities', () => {
     beforeEach(() => {
         state = {
             ...INITIAL_STATE,
-            enemy: createCombatant(MOCK_ENEMY),
+            enemies: [createCombatant(MOCK_ENEMY)], activeEnemyIndex: 0,
             hero: createCombatant(MOCK_HERO),
         };
     });

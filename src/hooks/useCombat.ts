@@ -17,9 +17,9 @@ import {
 } from '../mechanics/CombatEngine';
 import { CombatState } from '../types/combatState';
 
-
-export function useCombat(hero: Hero, enemy: Enemy) {
-    const combatState = startCombat(hero, enemy);
+export function useCombat(hero: Hero, enemies: Enemy | Enemy[]) {
+    const enemyArray = Array.isArray(enemies) ? enemies : [enemies];
+    const combatState = startCombat(hero, enemyArray);
     const [combat, setCombat] = useState<CombatState>(
         combatState,
     );
@@ -63,8 +63,16 @@ export function useCombat(hero: Hero, enemy: Enemy) {
     };
 
     const restartCombat = () => {
-        const combatState = startCombat(hero, enemy);
+        const enemyArray = Array.isArray(enemies) ? enemies : [enemies];
+        const combatState = startCombat(hero, enemyArray);
         setCombat(combatState);
+    };
+
+    const setActiveEnemy = (index: number) => {
+        setCombat(prev => {
+            if (index < 0 || index >= prev.enemies.length) return prev;
+            return { ...prev, activeEnemyIndex: index };
+        });
     };
 
     const resolveInteraction = (data: any) => {
@@ -89,5 +97,6 @@ export function useCombat(hero: Hero, enemy: Enemy) {
         restartCombat,
         resolveInteraction,
         updateCombatState,
+        setActiveEnemy,
     };
 }

@@ -47,10 +47,10 @@ describe('Venom', () => {
                 ...INITIAL_STATE.hero!,
                 activeAbilities: new Map([['Venom', VENOM_ABILITY]])
             },
-            enemy: {
+            enemies: [{
                 ...enemy,
                 activeEffects: [{ source: 'Venom', target: 'enemy', stats: {} }]
-            }
+            }]
         };
 
         const updates = ability.onPassiveAbility!(state, { owner: 'hero' });
@@ -77,10 +77,10 @@ describe('Venom', () => {
                     [toCanonicalName('Deadly Poisons'), DEADLY_POISONS_ABILITY]
                 ])
             },
-            enemy: {
+            enemies: [{
                 ...enemy,
                 activeEffects: [{ source: 'Venom', target: 'enemy', stats: {} }]
-            }
+            }]
         };
 
         const updates = ability.onPassiveAbility!(state, { owner: 'hero' });
@@ -102,10 +102,10 @@ describe('Venom', () => {
                     [toCanonicalName('Poison Mastery'), POISON_MASTERY]
                 ])
             },
-            enemy: {
+            enemies: [{
                 ...enemyWithStats({ health: 20 }),
                 activeEffects: [{ source: 'Venom', target: 'enemy', stats: {} }]
-            }
+            }]
         };
 
         const updates = ability.onPassiveAbility!(state, { owner: 'hero' });
@@ -124,7 +124,7 @@ describe('Venom', () => {
             hero: {
                 ...INITIAL_STATE.hero!,
             },
-            enemy, // No active effects
+            enemies: [enemy], // No active effects
         };
 
         const updates = ability.onPassiveAbility!(state, { owner: 'hero' });

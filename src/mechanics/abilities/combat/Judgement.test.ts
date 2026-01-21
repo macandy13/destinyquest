@@ -16,17 +16,17 @@ describe('Judgement', () => {
         const state = {
             ...INITIAL_STATE,
             hero: heroWithStats({ speed: 7 }),
-            enemy: enemyWithStats({ health: 10 }),
+            enemies: [enemyWithStats({ health: 10 })], activeEnemyIndex: 0,
             logs: []
         };
         const result = ability.onDamageDealt?.(state, { owner: 'hero', target: 'hero' }, 'Attack', 5);
 
         expect(result).toEqual(expect.objectContaining({
-            enemy: expect.objectContaining({
+            enemies: [expect.objectContaining({
                 stats: expect.objectContaining({
                     health: 6
                 })
-            })
+            })]
         }));
     });
 });
