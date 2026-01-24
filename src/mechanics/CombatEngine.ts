@@ -278,13 +278,21 @@ export function cancelInteraction(state: CombatState): CombatState {
 }
 
 function reduceBackpackItem(state: CombatState, idx: number): CombatState {
-    const item = state.backpack[idx];
+    const originalItem = state.backpack[idx];
+    // Clone item to avoid mutation
+    const item = { ...originalItem };
     if (item.uses !== undefined) {
         item.uses -= 1;
     }
+
+    // Create new backpack array with updated item
+    const newBackpack = [...state.backpack];
+    newBackpack[idx] = item;
+
     state = {
         ...state,
-        backpack: state.backpack.filter(i => i && (i.uses === undefined || i.uses > 0))
+        // Filter out if uses are depleted (assumes logic: 0 uses = remove)
+        backpack: newBackpack.filter(i => i && (i.uses === undefined || i.uses > 0))
     };
     state = addLogs(state, {
         message: `Used item ${item.name} (${item.description}).` + (item.uses !== undefined ? ` (${item.uses} uses left)` : ''),

@@ -3,6 +3,7 @@ import { addAbility, CombatState, getEffect, hasEffect, requireAbilityDefinition
 import { createCombatant, MOCK_HERO, MOCK_ENEMY, INITIAL_STATE, mockDiceRolls } from '../../../tests/testUtils';
 import { deterministicRoll } from '../../../types/dice';
 import '../../allAbilities';
+import { toCanonicalName } from '../../abilityRegistry';
 
 describe('Special Abilities Patterns', () => {
     let state: CombatState;
@@ -233,7 +234,7 @@ describe('Special Abilities Patterns', () => {
                 { ability, owner: 'hero' }, 'Attack', 5);
 
             expect(state.hero.stats.health).toBe(14); // 4 + 10
-            expect(ability?.uses).toBe(0);
+            expect(state.hero.activeAbilities.get(toCanonicalName(def.name))).toBeUndefined();
 
             // Second trigger (should fail)
             state.hero.stats.health = 4;

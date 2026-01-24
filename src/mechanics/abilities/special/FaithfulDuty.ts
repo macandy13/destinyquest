@@ -20,7 +20,7 @@ export const FaithfulDuty: AbilityDefinition = {
             source: 'Faithful duty',
             target: owner,
         });
-        useAbility(state, owner, 'Faithful duty');
+        state = useAbility(state, owner, 'Faithful duty');
         return healDamage(state, 'Faithful duty', owner, 10);
     }
 };

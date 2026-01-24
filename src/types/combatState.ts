@@ -172,11 +172,18 @@ function runOnDamageCalculateHooks(state: CombatState,): CombatState {
         if (def.onDamageCalculate && state.damage?.damageRolls) {
             const mod = def.onDamageCalculate(state, { ability, owner: ability.owner, target: victim });
             if (mod) {
-                state.damage.modifiers.push({
+                const newModifiers = [...state.damage!.modifiers, {
                     amount: mod,
                     source: def.name,
                     target: victim
-                });
+                }];
+                state = {
+                    ...state,
+                    damage: {
+                        ...state.damage!,
+                        modifiers: newModifiers
+                    }
+                };
                 state = addLogs(state, {
                     message: `Added damage modifier ${mod} from ${def.name}`,
                 });
@@ -210,6 +217,7 @@ export function modifyDamageRolls(state: CombatState, damageRolls: DiceRoll[], s
         damage: {
             ...state.damage!,
             damageRolls,
+            modifiers: [],
         }
     };
     state = addLogs(state, {
