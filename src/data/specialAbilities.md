@@ -581,7 +581,7 @@ For each 1 you roll, take 2 damage ignoring armour.
 
 The hero adds 2 to their brawn and magic scores.
 
-## Caleb's Shield
+## Caaleb's Shield
 
 The hero's armour is increased by 2.
 

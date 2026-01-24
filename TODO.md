@@ -20,11 +20,6 @@ Refactoring:
 
 ## Special Abilities Status
 
-### Not Implemented (Missing in Codebase)
-- Avian's aid (Membrane, Row 202)
-- Caaleb's Shield (Bone Angel, Row 191)
-- Crone's dagger (Ruffians, Row 10)
-
 ### Implemented as NOOP (Need Logic)
 - A Siege of Scarrons
 - Absorption

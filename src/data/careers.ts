@@ -63,7 +63,7 @@ export const CAREERS: Career[] = [
     }, {
         name: 'Assassin',
         path: 'Rogue',
-        abilities: ['First Strike', 'Deadly Poison']
+        abilities: ['First Strike', 'Deadly Poisons']
     }, {
         name: 'Shadowstalker',
         path: 'Rogue',

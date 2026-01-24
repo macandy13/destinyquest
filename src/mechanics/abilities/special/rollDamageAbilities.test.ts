@@ -41,4 +41,20 @@ describe('Roll-Based Damage Abilities', () => {
         // 2 sixes = 4 damage
         expect(state.hero.stats.health).toBe(26);
     });
+
+    it('Crone\'s dagger: should deal 1 extra damage if enemy rolls a 6', () => {
+        const def = requireAbilityDefinition('Crone\'s dagger');
+        state.hero.stats.health = 30;
+        state.winner = 'enemy';
+        state.damage = {
+            damageRolls: deterministicRoll([6, 2]),
+            modifiers: []
+        };
+
+        state = def.onDamageRoll!(state, { owner: 'enemy' });
+
+        // It deals damage directly via dealDamage which reduces health
+        // 1 six = 1 damage
+        expect(state.hero.stats.health).toBe(29);
+    });
 });

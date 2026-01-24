@@ -76,7 +76,7 @@ createStatCombatModifierAbility({
 });
 
 createStatCombatModifierAbility({
-    name: 'Caleb\'s Shield',
+    name: 'Caaleb\'s Shield',
     description: 'The hero\'s armour is increased by 2.',
     stats: { armour: 2 },
     target: 'hero',
