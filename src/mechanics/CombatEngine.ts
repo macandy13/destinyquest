@@ -244,11 +244,11 @@ export function resolveInteraction(state: CombatState, data: InteractionResponse
     let nextState: CombatState = { ...state, pendingInteraction: undefined };
     nextState = callback(nextState, data);
 
-    // Decrement uses if the interaction was resolved (and not just cancelled implicitly by returning same state? no, clear intent)
-    // Actually, we assume if we reach here, it's successful.
-    if (ability.uses) ability.uses -= 1;
-    if (!ability.uses || ability.uses === 0) {
-        nextState.hero.activeAbilities.delete(toCanonicalName(ability.name));
+    // Decrement uses via useAbility helper to ensure immutability
+    // We assume the ability name in pendingInteraction matches the one in activeAbilities
+    // Note: pendingInteraction.ability is a snapshot, so we use its name to look up and decrement the current state's version.
+    if (ability.uses) {
+        nextState = useAbility(nextState, ability.owner, ability.name);
     }
 
     // Track usage for interactions (as they were delayed activations)

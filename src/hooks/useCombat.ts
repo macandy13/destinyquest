@@ -19,69 +19,115 @@ import { CombatState } from '../types/combatState';
 
 export function useCombat(hero: Hero, enemies: Enemy | Enemy[]) {
     const enemyArray = Array.isArray(enemies) ? enemies : [enemies];
-    const combatState = startCombat(hero, enemyArray);
-    const [combat, setCombat] = useState<CombatState>(
-        combatState,
-    );
+    const initialCombatState = startCombat(hero, enemyArray);
+
+    // State now holds both current combat state and history
+    const [state, setState] = useState<{
+        current: CombatState;
+        history: CombatState[];
+    }>({
+        current: initialCombatState,
+        history: [],
+    });
+
+    const combat = state.current;
+
+    // Helper to update state and push to history
+    const updateCombat = (updater: (prev: CombatState) => CombatState) => {
+        setState(prevState => {
+            const nextCombatState = updater(prevState.current);
+            if (nextCombatState === prevState.current) {
+                return prevState;
+            }
+            // If the *previous* state had a pending interaction, it means we are in the middle of resolving it.
+            // We should NOT push that intermediate state to history.
+            // Instead, we keep the history as is (which points to before the interaction started).
+            const isIntermediateState = !!prevState.current.pendingInteraction;
+            if (isIntermediateState) {
+                return {
+                    current: nextCombatState,
+                    history: prevState.history,
+                };
+            }
+
+            return {
+                current: nextCombatState,
+                history: [...prevState.history, prevState.current],
+            };
+        });
+    };
+
+    const undo = () => {
+        setState(prevState => {
+            if (prevState.history.length === 0) return prevState;
+            const previous = prevState.history[prevState.history.length - 1];
+            const newHistory = prevState.history.slice(0, -1);
+            return {
+                current: previous,
+                history: newHistory,
+            };
+        });
+    };
+
+    const canUndo = state.history.length > 0;
 
     const activateAbility = (abilityName: string) => {
-        setCombat(prev => {
-            return engineActivateAbility(prev, abilityName);
-        });
+        updateCombat(prev => engineActivateAbility(prev, abilityName));
     };
 
     const useBackpackItem = (itemIndex: number) => {
-        setCombat(prev => {
-            return engineUseBackpackItem(prev, itemIndex);
-        });
+        updateCombat(prev => engineUseBackpackItem(prev, itemIndex));
     };
 
     const rollSpeedDice = () => {
-        setCombat(prev => {
-            return rollForSpeed(prev);
-        });
+        updateCombat(prev => rollForSpeed(prev));
     };
 
     const commitSpeedAndRollDamageDice = () => {
-        setCombat(prev => rollForDamage(prev));
+        updateCombat(prev => rollForDamage(prev));
     };
 
     const confirmDamageRoll = () => {
-        setCombat(prev => applyDamage(prev));
+        updateCombat(prev => applyDamage(prev));
     }
 
     const confirmBonusDamage = () => {
-        setCombat(prev => applyPassiveAbilities(prev));
+        updateCombat(prev => applyPassiveAbilities(prev));
     };
 
     const nextRound = () => {
-        setCombat(prev => startRound(endRound(prev)));
+        updateCombat(prev => startRound(endRound(prev)));
     };
 
     const endCombat = () => {
-        setCombat(prev => engineEndCombat(prev));
+        updateCombat(prev => engineEndCombat(prev));
     };
 
     const restartCombat = () => {
         const enemyArray = Array.isArray(enemies) ? enemies : [enemies];
-        const combatState = startCombat(hero, enemyArray);
-        setCombat(combatState);
+        const newCombatState = startCombat(hero, enemyArray);
+        setState({
+            current: newCombatState,
+            history: [],
+        });
     };
 
     const setActiveEnemy = (index: number) => {
-        setCombat(prev => {
+        // Changing view doesn't necessarily need to be undone, but consistent with other state changes
+        // it might be better to track it if it affects gameplay (it does for target selection).
+        updateCombat(prev => {
             if (index < 0 || index >= prev.enemies.length) return prev;
             return { ...prev, activeEnemyIndex: index };
         });
     };
 
     const resolveInteraction = (data: any) => {
-        setCombat(prev => engineResolveInteraction(prev, data));
+        updateCombat(prev => engineResolveInteraction(prev, data));
     };
 
-    const updateCombatState = (state: CombatState) => {
+    const updateCombatState = (newState: CombatState) => {
         // After manual state edits, check if combat should end (e.g., health <= 0)
-        setCombat(checkForCombatEnd(state));
+        updateCombat(_ => checkForCombatEnd(newState));
     };
 
     return {
@@ -98,5 +144,7 @@ export function useCombat(hero: Hero, enemies: Enemy | Enemy[]) {
         resolveInteraction,
         updateCombatState,
         setActiveEnemy,
+        undo,
+        canUndo,
     };
 }

@@ -15,8 +15,6 @@ Features:
 - Support nodes
 - Support full customization of state during combat
 - Implement skill checks
-- Support multiple enemies
-- Support undo
 
 Refactoring:
 - Convert from CSV to JSON during app load, avoiding the intermediate steps

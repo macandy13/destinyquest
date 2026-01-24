@@ -292,16 +292,35 @@ export function addAbility(combatant: any, def: AbilityDefinition, item?: Equipm
     return activeAbility;
 };
 
+// Helper to get active abilities map for a combatant (returns a copy if we need to mutate)
+function cloneActiveAbilities(activeAbilities: Map<string, ActiveAbility>): Map<string, ActiveAbility> {
+    return new Map(activeAbilities);
+}
+
+// Helper to update a combatant's active abilities in the state
+function updateCombatantActiveAbilities(state: CombatState, target: CharacterType, newAbilities: Map<string, ActiveAbility>): CombatState {
+    const char = getCombatant(state, target);
+    const newChar = { ...char, activeAbilities: newAbilities };
+    return updateCombatant(state, target, newChar);
+}
+
 export function useAbility(state: CombatState, target: CharacterType, name: string) {
-    const activeAbilities = getCombatant(state, target).activeAbilities;
+    const char = getCombatant(state, target);
     const canonicalName = toCanonicalName(name);
-    const ability = activeAbilities.get(canonicalName);
-    if (!ability) return state;
-    ability.uses!--;
-    if (ability.uses === 0) {
-        activeAbilities.delete(canonicalName);
+    const originalAbility = char.activeAbilities.get(canonicalName);
+
+    if (!originalAbility) return state;
+
+    const newActiveAbilities = cloneActiveAbilities(char.activeAbilities);
+    const newAbility = { ...originalAbility };
+    newAbility.uses!--;
+    if (newAbility.uses === 0) {
+        newActiveAbilities.delete(canonicalName);
+    } else {
+        newActiveAbilities.set(canonicalName, newAbility);
     }
-    return state;
+
+    return updateCombatantActiveAbilities(state, target, newActiveAbilities);
 }
 
 export function hasAbility(state: CombatState, target: CharacterType, name: string) {

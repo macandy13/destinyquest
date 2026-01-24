@@ -45,7 +45,9 @@ const CombatArena: React.FC<CombatArenaProps> = ({ hero, enemy, onCombatFinish }
         nextRound,
         restartCombat,
         updateCombatState,
-        setActiveEnemy
+        setActiveEnemy,
+        undo,
+        canUndo
     } = useCombat(hero, enemy);
 
     const [interactionData, setInteractionData] = useState<InteractionTracker | null>(null);
@@ -99,7 +101,18 @@ const CombatArena: React.FC<CombatArenaProps> = ({ hero, enemy, onCombatFinish }
                     />
 
                     {/* VS Separator */}
-                    <div className="vs-separator">VS</div>
+                    <div className="vs-separator">
+                        <div className="vs-text">VS</div>
+                        <button
+                            className="undo-button"
+                            onClick={undo}
+                            disabled={!canUndo}
+                            title="Undo last action"
+                            aria-label="Undo"
+                        >
+                            ↺
+                        </button>
+                    </div>
 
                     {/* Enemy Carousel */}
                     <EnemyCarousel
