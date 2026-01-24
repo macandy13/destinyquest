@@ -241,7 +241,7 @@ At the start of each combat round roll a die: If you roll a 1, your speed is red
 
 At the end of every combat you automatically take 15 damage. Armour can be used to absorb this damage.
 
-## Knowndown
+## Knockdown
 
 If your hero takes health damage from the troll, you must reduce your speed for the next combat round by 1
 
@@ -385,7 +385,7 @@ At the end of each combat round, roll a die. If the result is 1, the witch has t
 
 If you roll a 1 for attack speed, you lose the combat. Rerolling is allowed.
 
-## Wayling Bride
+## Wailing Bride
 
 At the end of each combat round, you must lower your speed, brawn and magic by 1.
 
@@ -401,7 +401,7 @@ At the end of each combat round, you take 2 damage ignoring armour.
 
 Immune to Piercing, Impale, Barbs, Thorns, Bleed, Venom.
 
-## Whirlwird
+## Whirlwind
 
 Each time Nasareim rolls a 6 damage die, he rolls another damage die. This can repeat.
 

@@ -560,7 +560,7 @@ export const ENEMIES: Enemy[] = [
       "maxHealth": 60
     },
     "abilities": [
-      "Knowndown",
+      "Knockdown",
       "Regeneration"
     ],
     "bookRef": {
@@ -1218,7 +1218,7 @@ export const ENEMIES: Enemy[] = [
     },
     "abilities": [
       "Dervish",
-      "Whirlwird"
+      "Whirlwind"
     ],
     "bookRef": {
       "book": "The Legion of Shadow",
@@ -1684,7 +1684,7 @@ export const ENEMIES: Enemy[] = [
       "maxHealth": 40
     },
     "abilities": [
-      "Wayling Bride",
+      "Wailing Bride",
       "Vampire"
     ],
     "bookRef": {
@@ -1924,7 +1924,7 @@ export const ENEMIES: Enemy[] = [
       "maxHealth": 50
     },
     "abilities": [
-      "Charge her up!"
+      "Charge her up"
     ],
     "bookRef": {
       "book": "The Legion of Shadow",
@@ -2046,14 +2046,13 @@ export const ENEMIES: Enemy[] = [
       "health": 40,
       "maxHealth": 40
     },
-    "abilities": [
-      "After this enemy is killed, the hero wins the combat."
-    ],
+    "abilities": [],
     "bookRef": {
       "book": "The Legion of Shadow",
       "act": 2,
       "section": 529
-    }
+    },
+    "notes": "After this enemy is killed, the hero wins the combat."
   },
   {
     "type": "enemy",
@@ -3988,7 +3987,7 @@ export const ENEMIES: Enemy[] = [
     },
     "abilities": [
       "Two Arms!",
-      "Heal me!",
+      "Heal me",
       "Team Effort"
     ],
     "bookRef": {
