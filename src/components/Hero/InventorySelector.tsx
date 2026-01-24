@@ -1,5 +1,5 @@
 import React from 'react';
-import { EquipmentSlot, EquipmentItem, BackpackItem } from '../../types/hero';
+import { EquipmentSlot, EquipmentItem, BackpackItem, HeroPath } from '../../types/hero';
 import { getItemsBySlot, ITEMS } from '../../data/items';
 import DqCard from '../Shared/DqCard';
 import './InventorySelector.css';
@@ -14,9 +14,10 @@ interface InventorySelectorProps {
     onClose: () => void;
     showAllItems?: boolean;
     customItems?: (EquipmentItem | BackpackItem)[]; // Allow passing specific list (e.g. backpack items)
+    heroPath?: HeroPath;
 }
 
-const InventorySelector: React.FC<InventorySelectorProps> = ({ slot, onSelect, onClose, showAllItems = false, customItems }) => {
+const InventorySelector: React.FC<InventorySelectorProps> = ({ slot, onSelect, onClose, showAllItems = false, customItems, heroPath }) => {
     const [searchTerm, setSearchTerm] = React.useState('');
 
     // Determine source items
@@ -37,6 +38,11 @@ const InventorySelector: React.FC<InventorySelectorProps> = ({ slot, onSelect, o
             (item.location && item.location.toLowerCase().includes(term))
         );
     });
+
+    const isAllowed = (item: EquipmentItem | BackpackItem) => {
+        if (!('pathRequirement' in item)) return true;
+        return !item.pathRequirement || item.pathRequirement == heroPath;
+    };
 
     return (
         <div className="equipment-selector-overlay" onClick={onClose}>
@@ -78,46 +84,64 @@ const InventorySelector: React.FC<InventorySelectorProps> = ({ slot, onSelect, o
                     </div>
 
                     {filteredItems.length === 0 ? (
-                        <div className="text-dim" style={{ textAlign: 'center', padding: '20px' }}>
+                        <div className="text-dim no-items-message">
                             No items found matching "{searchTerm}".
                         </div>
                     ) : (
-                        filteredItems.map(item => (
-                            <div key={item.id} className="item-card" onClick={() => onSelect(item)}>
-                                <div className="item-card-header">
-                                    <div className="item-name">{item.name}</div>
-                                    <div className="item-source">
-                                        <div className="text-dim" style={{ fontSize: '0.8rem' }}>Act {item.bookRef.act}</div>
-                                        {item.bookRef.section && <div className="text-dim" style={{ fontSize: '0.8rem' }}>📖 {item.bookRef.section}</div>}
+                        filteredItems.map(item => {
+                            return (
+                                <div
+                                    key={item.id}
+                                    className={`item-card ${!isAllowed(item) ? 'disabled-item' : ''}`}
+                                    onClick={() => isAllowed(item) && onSelect(item)}
+                                >
+                                    <div className="item-card-header">
+                                        <div className="item-name">
+                                            {item.name}
+                                            {!isAllowed(item) && (item as EquipmentItem).pathRequirement && (
+                                                <span className="requirement-tag">
+                                                    (Req: {(item as EquipmentItem).pathRequirement})
+                                                </span>
+                                            )}
+                                        </div>
+                                        <div className="item-source">
+                                            <div className="text-dim source-detail">Act {item.bookRef.act}</div>
+                                            {item.bookRef.section && <div className="text-dim source-detail">📖 {item.bookRef.section}</div>}
+                                        </div>
                                     </div>
-                                </div>
 
-                                {item.type == 'backpack' ? (
-                                    <div className="item-stats">
-                                        {formatEffect(item.effect!)}
-                                    </div>
-                                ) : (
-                                    <div className="item-stats">
-                                        {item.stats!.speed ? `${getStatIcon('speed')} ${item.stats!.speed} ` : ''}
-                                        {item.stats!.brawn ? `${getStatIcon('brawn')} ${item.stats!.brawn} ` : ''}
-                                        {item.stats!.magic ? `${getStatIcon('magic')} ${item.stats!.magic} ` : ''}
-                                        {item.stats!.armour ? `${getStatIcon('armour')} ${item.stats!.armour} ` : ''}
-                                        {'abilities' in item && (item as EquipmentItem).abilities && (item as EquipmentItem).abilities!.length > 0 && (
-                                            <div className="item-abilities-tag">
-                                                {(item as EquipmentItem).abilities!.map(a => `★ ${a} `).join(', ')}
-                                            </div>
+                                    {item.type == 'backpack' ? (
+                                        <div className="item-stats">
+                                            {formatEffect(item.effect!)}
+                                        </div>
+                                    ) : (
+                                        <div className="item-stats">
+                                            {item.stats!.speed ? `${getStatIcon('speed')} ${item.stats!.speed} ` : ''}
+                                            {item.stats!.brawn ? `${getStatIcon('brawn')} ${item.stats!.brawn} ` : ''}
+                                            {item.stats!.magic ? `${getStatIcon('magic')} ${item.stats!.magic} ` : ''}
+                                            {item.stats!.armour ? `${getStatIcon('armour')} ${item.stats!.armour} ` : ''}
+                                            {'abilities' in item && (item as EquipmentItem).abilities && (item as EquipmentItem).abilities!.length > 0 && (
+                                                <div className="item-abilities-tag">
+                                                    {(item as EquipmentItem).abilities!.map(a => `★ ${a} `).join(', ')}
+                                                </div>
+                                            )}
+                                        </div>
+                                    )}
+
+                                    {'description' in item && (item as EquipmentItem).description && <div className="item-desc">{(item as EquipmentItem).description}</div>}
+                                    {'notes' in item && (item as BackpackItem).notes && <div className="item-desc">{(item as BackpackItem).notes}</div>}
+
+                                    <div className="item-meta-container">
+                                        {item.location && <span>📍 {item.location}</span>}
+                                        {'pathRequirement' in item && (item as EquipmentItem).pathRequirement && (
+                                            <span className="requirement-meta">
+                                                Requires: {(item as EquipmentItem).pathRequirement}
+                                            </span>
                                         )}
                                     </div>
-                                )}
-
-                                {'description' in item && (item as EquipmentItem).description && <div className="item-desc">{(item as EquipmentItem).description}</div>}
-                                {'notes' in item && (item as BackpackItem).notes && <div className="item-desc">{(item as BackpackItem).notes}</div>}
-
-                                <div className="item-meta-container">
-                                    {item.location && <span>📍 {item.location}</span>}
                                 </div>
-                            </div>
-                        ))
+                            );
+                        })
                     )}
                 </div>
             </DqCard>

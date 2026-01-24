@@ -70,11 +70,30 @@ export function useHero() {
         setHero(prev => ({ ...prev, name }));
     };
 
-    const updatePath = (path: Hero['path']) => {
+    const updatePath = (path: Hero['path'], onItemsRemoved?: (items: string[]) => void) => {
+        const newEquipment = { ...hero.equipment };
+        const removedItems: string[] = [];
+
+        // Check for equipment that is no longer valid
+        (Object.keys(newEquipment) as EquipmentSlot[]).forEach(slot => {
+            const item = newEquipment[slot];
+            if (item && item.pathRequirement && item.pathRequirement !== path) {
+                delete newEquipment[slot];
+                removedItems.push(item.name);
+            }
+        });
+
+        if (removedItems.length > 0) {
+            if (onItemsRemoved) {
+                onItemsRemoved(removedItems);
+            }
+        }
+
         setHero(prev => ({
             ...prev,
             path,
-            career: '' // Reset career when path changes
+            career: '', // Reset career when path changes
+            equipment: newEquipment
         }));
     };
 

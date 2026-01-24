@@ -6,7 +6,7 @@ export const ITEMS: EquipmentItem[] = [
     "name": "Patchwork cloak",
     "type": "cloak",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 1,
       "section": 68
     },
@@ -21,7 +21,7 @@ export const ITEMS: EquipmentItem[] = [
     "name": "Bat cape",
     "type": "cloak",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 1,
       "section": 114
     },
@@ -37,7 +37,7 @@ export const ITEMS: EquipmentItem[] = [
     "name": "Spindlesilk cloak",
     "type": "cloak",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 1,
       "section": 132
     },
@@ -55,7 +55,7 @@ export const ITEMS: EquipmentItem[] = [
     "name": "Chieftain's furs",
     "type": "cloak",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 1,
       "section": 260
     },
@@ -70,7 +70,7 @@ export const ITEMS: EquipmentItem[] = [
     "name": "Traveller's cloak",
     "type": "cloak",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 1,
       "section": 251
     },
@@ -88,7 +88,7 @@ export const ITEMS: EquipmentItem[] = [
     "name": "Moth-eaten blanket",
     "type": "cloak",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 1,
       "section": 40
     },
@@ -103,7 +103,7 @@ export const ITEMS: EquipmentItem[] = [
     "name": "Crusader's mantle",
     "type": "cloak",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 1,
       "section": 160
     },
@@ -120,7 +120,7 @@ export const ITEMS: EquipmentItem[] = [
     "name": "Hag's shawl",
     "type": "cloak",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 1,
       "section": 155
     },
@@ -138,7 +138,7 @@ export const ITEMS: EquipmentItem[] = [
     "name": "Savage pelt",
     "type": "cloak",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 1,
       "section": 26
     },
@@ -156,7 +156,7 @@ export const ITEMS: EquipmentItem[] = [
     "name": "Mottled cloak",
     "type": "cloak",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 2,
       "section": 283
     },
@@ -172,7 +172,7 @@ export const ITEMS: EquipmentItem[] = [
     "name": "Diaphanous wings",
     "type": "cloak",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 2,
       "section": 314
     },
@@ -190,7 +190,7 @@ export const ITEMS: EquipmentItem[] = [
     "name": "Cloak of white winter",
     "type": "cloak",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 2,
       "section": 385
     },
@@ -208,7 +208,7 @@ export const ITEMS: EquipmentItem[] = [
     "name": "Cloak of shadows",
     "type": "cloak",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 2,
       "section": 487
     },
@@ -226,7 +226,7 @@ export const ITEMS: EquipmentItem[] = [
     "name": "Golden fleece",
     "type": "cloak",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 2,
       "section": 548
     },
@@ -244,7 +244,7 @@ export const ITEMS: EquipmentItem[] = [
     "name": "Phoenix feathers",
     "type": "cloak",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 2,
       "section": 565
     },
@@ -262,7 +262,7 @@ export const ITEMS: EquipmentItem[] = [
     "name": "Destroyer's drape",
     "type": "cloak",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 2,
       "section": 568
     },
@@ -280,7 +280,7 @@ export const ITEMS: EquipmentItem[] = [
     "name": "Majestic shoulders",
     "type": "cloak",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 2,
       "section": 397
     },
@@ -292,14 +292,14 @@ export const ITEMS: EquipmentItem[] = [
       "Royal regalia set"
     ],
     "location": "Puzzle chest",
-    "careerPreference": "Warrior"
+    "pathRequirement": "Warrior"
   },
   {
     "id": "sparkcraft_mantle",
     "name": "Sparkcraft mantle",
     "type": "cloak",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 2,
       "section": 509
     },
@@ -311,14 +311,14 @@ export const ITEMS: EquipmentItem[] = [
       "Lifespark"
     ],
     "location": "Swamp giant",
-    "careerPreference": "Mage"
+    "pathRequirement": "Mage"
   },
   {
     "id": "kaggadours_cloak",
     "name": "Kaggadour's cloak",
     "type": "cloak",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 2,
       "section": 443
     },
@@ -336,7 +336,7 @@ export const ITEMS: EquipmentItem[] = [
     "name": "Mantle of spite",
     "type": "cloak",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 2,
       "section": 713
     },
@@ -348,14 +348,14 @@ export const ITEMS: EquipmentItem[] = [
       "Curse"
     ],
     "location": "Gargoyle chest",
-    "careerPreference": "Mage"
+    "pathRequirement": "Mage"
   },
   {
     "id": "mane_of_the_black_lion",
     "name": "Mane of the Black Lion",
     "type": "cloak",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 2,
       "section": 379
     },
@@ -373,7 +373,7 @@ export const ITEMS: EquipmentItem[] = [
     "name": "Winter pelt",
     "type": "cloak",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 2,
       "section": 359
     },
@@ -391,7 +391,7 @@ export const ITEMS: EquipmentItem[] = [
     "name": "Flame mantle",
     "type": "cloak",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 2,
       "section": 377
     },
@@ -409,7 +409,7 @@ export const ITEMS: EquipmentItem[] = [
     "name": "Dragonscale cloak",
     "type": "cloak",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 2,
       "section": 708
     },
@@ -427,7 +427,7 @@ export const ITEMS: EquipmentItem[] = [
     "name": "Slipstream silk",
     "type": "cloak",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 3,
       "section": 914
     },
@@ -439,14 +439,14 @@ export const ITEMS: EquipmentItem[] = [
       "Surge"
     ],
     "location": "Waldo's wares",
-    "careerPreference": "Mage"
+    "pathRequirement": "Mage"
   },
   {
     "id": "valiant_spaulders",
     "name": "Valiant spaulders",
     "type": "cloak",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 3,
       "section": 815
     },
@@ -458,14 +458,14 @@ export const ITEMS: EquipmentItem[] = [
       "Overpower"
     ],
     "location": "Waldo's wares",
-    "careerPreference": "Warrior"
+    "pathRequirement": "Warrior"
   },
   {
     "id": "spiked_boneguards",
     "name": "Spiked boneguards",
     "type": "cloak",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 3,
       "section": 759
     },
@@ -483,7 +483,7 @@ export const ITEMS: EquipmentItem[] = [
     "name": "Broken wings",
     "type": "cloak",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 3,
       "section": 906
     },
@@ -501,7 +501,7 @@ export const ITEMS: EquipmentItem[] = [
     "name": "Cloak of ceremonies",
     "type": "cloak",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 3,
       "section": 892
     },
@@ -519,7 +519,7 @@ export const ITEMS: EquipmentItem[] = [
     "name": "Stalwart shoulders",
     "type": "cloak",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 3,
       "section": 565
     },
@@ -537,7 +537,7 @@ export const ITEMS: EquipmentItem[] = [
     "name": "Gloom shade",
     "type": "cloak",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 3,
       "section": 622
     },
@@ -549,14 +549,14 @@ export const ITEMS: EquipmentItem[] = [
       "Steal"
     ],
     "location": "Brothers' Grimm",
-    "careerPreference": "Rogue"
+    "pathRequirement": "Rogue"
   },
   {
     "id": "pauldrons_of_might",
     "name": "Pauldrons of might",
     "type": "cloak",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 3,
       "section": 727
     },
@@ -568,14 +568,14 @@ export const ITEMS: EquipmentItem[] = [
       "Fortitude"
     ],
     "location": "Brothers' Grimm",
-    "careerPreference": "Warrior"
+    "pathRequirement": "Warrior"
   },
   {
     "id": "cloak_of_the_wind",
     "name": "Cloak of the wind",
     "type": "cloak",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 3,
       "section": 762
     },
@@ -587,14 +587,14 @@ export const ITEMS: EquipmentItem[] = [
       "Surge"
     ],
     "location": "Scout",
-    "careerPreference": "Mage"
+    "pathRequirement": "Mage"
   },
   {
     "id": "nemesis_shroud",
     "name": "Nemesis shroud",
     "type": "cloak",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 3,
       "section": 765
     },
@@ -612,7 +612,7 @@ export const ITEMS: EquipmentItem[] = [
     "name": "Veil of dark synergies",
     "type": "cloak",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 3,
       "section": 865
     },
@@ -624,14 +624,14 @@ export const ITEMS: EquipmentItem[] = [
       "Second wind"
     ],
     "location": "Daarko",
-    "careerPreference": "Mage"
+    "pathRequirement": "Mage"
   },
   {
     "id": "spore_shoulders",
     "name": "Spore shoulders",
     "type": "cloak",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 3,
       "section": 845
     },
@@ -643,14 +643,14 @@ export const ITEMS: EquipmentItem[] = [
       "Spore cloud"
     ],
     "location": "Decayers",
-    "careerPreference": "Mage"
+    "pathRequirement": "Mage"
   },
   {
     "id": "hulking_shoulders",
     "name": "Hulking shoulders",
     "type": "cloak",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 3,
       "section": 847
     },
@@ -662,14 +662,14 @@ export const ITEMS: EquipmentItem[] = [
       "Barbs"
     ],
     "location": "The wrecker",
-    "careerPreference": "Rogue"
+    "pathRequirement": "Rogue"
   },
   {
     "id": "simple_coif",
     "name": "Simple coif",
     "type": "head",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 1,
       "section": 175
     },
@@ -685,7 +685,7 @@ export const ITEMS: EquipmentItem[] = [
     "name": "All-weather hat",
     "type": "head",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 1,
       "section": 243
     },
@@ -700,7 +700,7 @@ export const ITEMS: EquipmentItem[] = [
     "name": "Rusted helm",
     "type": "head",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 1,
       "section": 166
     },
@@ -715,7 +715,7 @@ export const ITEMS: EquipmentItem[] = [
     "name": "Mauler's maw",
     "type": "head",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 1,
       "section": 26
     },
@@ -733,7 +733,7 @@ export const ITEMS: EquipmentItem[] = [
     "name": "Troll's nose-ring",
     "type": "head",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 1,
       "section": 122
     },
@@ -750,7 +750,7 @@ export const ITEMS: EquipmentItem[] = [
     "name": "Ramrod helm",
     "type": "head",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 2,
       "section": 311
     },
@@ -768,7 +768,7 @@ export const ITEMS: EquipmentItem[] = [
     "name": "Footpad's cover",
     "type": "head",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 2,
       "section": 338
     },
@@ -778,14 +778,14 @@ export const ITEMS: EquipmentItem[] = [
     },
     "abilities": [],
     "location": "Thievies' guild",
-    "careerPreference": "Rogue"
+    "pathRequirement": "Rogue"
   },
   {
     "id": "skull_cap",
     "name": "Skull cap",
     "type": "head",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 2,
       "section": 287
     },
@@ -801,7 +801,7 @@ export const ITEMS: EquipmentItem[] = [
     "name": "Great helm",
     "type": "head",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 2,
       "section": 494
     },
@@ -817,7 +817,7 @@ export const ITEMS: EquipmentItem[] = [
     "name": "Wyrm crest",
     "type": "head",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 2,
       "section": 517
     },
@@ -833,7 +833,7 @@ export const ITEMS: EquipmentItem[] = [
     "name": "Wyrm crown",
     "type": "head",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 2,
       "section": 533
     },
@@ -849,7 +849,7 @@ export const ITEMS: EquipmentItem[] = [
     "name": "Nightguard cover",
     "type": "head",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 2,
       "section": 548
     },
@@ -867,7 +867,7 @@ export const ITEMS: EquipmentItem[] = [
     "name": "Flame-bathed cowl",
     "type": "head",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 2,
       "section": 655
     },
@@ -885,7 +885,7 @@ export const ITEMS: EquipmentItem[] = [
     "name": "Jester's cap",
     "type": "head",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 2,
       "section": 374
     },
@@ -903,7 +903,7 @@ export const ITEMS: EquipmentItem[] = [
     "name": "Masque of deceit",
     "type": "head",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 2,
       "section": 422
     },
@@ -921,7 +921,7 @@ export const ITEMS: EquipmentItem[] = [
     "name": "Pirate's bandanna",
     "type": "head",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 2,
       "section": 716
     },
@@ -937,7 +937,7 @@ export const ITEMS: EquipmentItem[] = [
     "name": "Vanquisher's helm",
     "type": "head",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 2,
       "section": 581
     },
@@ -949,14 +949,14 @@ export const ITEMS: EquipmentItem[] = [
       "Vanquish"
     ],
     "location": "Armoury",
-    "careerPreference": "Warrior"
+    "pathRequirement": "Warrior"
   },
   {
     "id": "night_watch",
     "name": "Night watch",
     "type": "head",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 2,
       "section": 583
     },
@@ -968,14 +968,14 @@ export const ITEMS: EquipmentItem[] = [
       "Steadfast"
     ],
     "location": "Raptor pit",
-    "careerPreference": "Rogue"
+    "pathRequirement": "Rogue"
   },
   {
     "id": "cover_of_darkness",
     "name": "Cover of darkness",
     "type": "head",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 2,
       "section": 744
     },
@@ -987,14 +987,14 @@ export const ITEMS: EquipmentItem[] = [
       "Evade"
     ],
     "location": "Gargoyle chest",
-    "careerPreference": "Rogue"
+    "pathRequirement": "Rogue"
   },
   {
     "id": "crown_of_command",
     "name": "Crown of command",
     "type": "head",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 2,
       "section": 689
     },
@@ -1012,7 +1012,7 @@ export const ITEMS: EquipmentItem[] = [
     "name": "Crown of command (upgrade 1)",
     "type": "head",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 2,
       "section": 689
     },
@@ -1030,7 +1030,7 @@ export const ITEMS: EquipmentItem[] = [
     "name": "Crown of command (upgrade 2)",
     "type": "head",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 2,
       "section": 689
     },
@@ -1048,7 +1048,7 @@ export const ITEMS: EquipmentItem[] = [
     "name": "Tri-horned hat",
     "type": "head",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 2,
       "section": 277
     },
@@ -1066,7 +1066,7 @@ export const ITEMS: EquipmentItem[] = [
     "name": "Horns of the bull",
     "type": "head",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 2,
       "section": 216
     },
@@ -1084,7 +1084,7 @@ export const ITEMS: EquipmentItem[] = [
     "name": "Simian crown",
     "type": "head",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 2,
       "section": 359
     },
@@ -1102,7 +1102,7 @@ export const ITEMS: EquipmentItem[] = [
     "name": "Desert Keffiyeh",
     "type": "head",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 2,
       "section": 370
     },
@@ -1118,7 +1118,7 @@ export const ITEMS: EquipmentItem[] = [
     "name": "Agal of shifting sands",
     "type": "head",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 2,
       "section": 370
     },
@@ -1134,7 +1134,7 @@ export const ITEMS: EquipmentItem[] = [
     "name": "Wreath of woe",
     "type": "head",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 2,
       "section": 346
     },
@@ -1152,7 +1152,7 @@ export const ITEMS: EquipmentItem[] = [
     "name": "Firewalker's faceguard",
     "type": "head",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 2,
       "section": 400
     },
@@ -1164,14 +1164,14 @@ export const ITEMS: EquipmentItem[] = [
       "Overpower"
     ],
     "location": "Magmageddon",
-    "careerPreference": "Warrior"
+    "pathRequirement": "Warrior"
   },
   {
     "id": "total_eclipse",
     "name": "Total eclipse",
     "type": "head",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 3,
       "section": 839
     },
@@ -1183,14 +1183,14 @@ export const ITEMS: EquipmentItem[] = [
       "Vanish"
     ],
     "location": "Waldo's wares",
-    "careerPreference": "Rogue"
+    "pathRequirement": "Rogue"
   },
   {
     "id": "wyvern_jaws",
     "name": "Wyvern jaws",
     "type": "head",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 3,
       "section": 776
     },
@@ -1206,7 +1206,7 @@ export const ITEMS: EquipmentItem[] = [
     "name": "Knuckle head",
     "type": "head",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 3,
       "section": 695
     },
@@ -1218,14 +1218,14 @@ export const ITEMS: EquipmentItem[] = [
       "Slam"
     ],
     "location": "Bone construct",
-    "careerPreference": "Warrior"
+    "pathRequirement": "Warrior"
   },
   {
     "id": "hood_of_night",
     "name": "Hood of night",
     "type": "head",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 3,
       "section": 649
     },
@@ -1243,7 +1243,7 @@ export const ITEMS: EquipmentItem[] = [
     "name": "Enchanted coif",
     "type": "head",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 3,
       "section": 677
     },
@@ -1255,14 +1255,14 @@ export const ITEMS: EquipmentItem[] = [
       "Deceive"
     ],
     "location": "Tor knight",
-    "careerPreference": "Mage"
+    "pathRequirement": "Mage"
   },
   {
     "id": "forked_crest",
     "name": "Forked crest",
     "type": "head",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 3,
       "section": 775
     },
@@ -1280,7 +1280,7 @@ export const ITEMS: EquipmentItem[] = [
     "name": "Bone headdress",
     "type": "head",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 3,
       "section": 778
     },
@@ -1298,7 +1298,7 @@ export const ITEMS: EquipmentItem[] = [
     "name": "Cracked spectacles",
     "type": "head",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 3,
       "section": 923
     },
@@ -1316,7 +1316,7 @@ export const ITEMS: EquipmentItem[] = [
     "name": "Crown of ice",
     "type": "head",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 3,
       "section": 874
     },
@@ -1334,7 +1334,7 @@ export const ITEMS: EquipmentItem[] = [
     "name": "Bone halo",
     "type": "head",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 3,
       "section": 906
     },
@@ -1352,7 +1352,7 @@ export const ITEMS: EquipmentItem[] = [
     "name": "Black widow",
     "type": "head",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 3,
       "section": 929
     },
@@ -1370,7 +1370,7 @@ export const ITEMS: EquipmentItem[] = [
     "name": "Diadem of mastery",
     "type": "head",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 3,
       "section": 664
     },
@@ -1382,14 +1382,14 @@ export const ITEMS: EquipmentItem[] = [
       "Dominate"
     ],
     "location": "Brothers' Grimm",
-    "careerPreference": "Mage"
+    "pathRequirement": "Mage"
   },
   {
     "id": "ghouls_collar",
     "name": "Ghoul's collar",
     "type": "head",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 3,
       "section": 702
     },
@@ -1407,7 +1407,7 @@ export const ITEMS: EquipmentItem[] = [
     "name": "Budak's blindfold",
     "type": "head",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 3,
       "section": 733
     },
@@ -1419,14 +1419,14 @@ export const ITEMS: EquipmentItem[] = [
       "Second sight"
     ],
     "location": "Budak",
-    "careerPreference": "Rogue"
+    "pathRequirement": "Rogue"
   },
   {
     "id": "brain_infusers",
     "name": "Brain infusers",
     "type": "head",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 3,
       "section": 642
     },
@@ -1444,7 +1444,7 @@ export const ITEMS: EquipmentItem[] = [
     "name": "The morgue",
     "type": "head",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 3,
       "section": 765
     },
@@ -1456,14 +1456,14 @@ export const ITEMS: EquipmentItem[] = [
       "Leech"
     ],
     "location": "Malcontent",
-    "careerPreference": "Mage"
+    "pathRequirement": "Mage"
   },
   {
     "id": "cerebral_helm",
     "name": "Cerebral helm",
     "type": "head",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 3,
       "section": 765
     },
@@ -1475,14 +1475,14 @@ export const ITEMS: EquipmentItem[] = [
       "Overload"
     ],
     "location": "Death orb",
-    "careerPreference": "Mage"
+    "pathRequirement": "Mage"
   },
   {
     "id": "cranium_plate",
     "name": "Cranium plate",
     "type": "head",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 3,
       "section": 665
     },
@@ -1500,7 +1500,7 @@ export const ITEMS: EquipmentItem[] = [
     "name": "Dread mask",
     "type": "head",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 3,
       "section": 893
     },
@@ -1512,14 +1512,14 @@ export const ITEMS: EquipmentItem[] = [
       "Overpower"
     ],
     "location": "Daarko",
-    "careerPreference": "Warrior"
+    "pathRequirement": "Warrior"
   },
   {
     "id": "drape_of_shadow",
     "name": "Drape of shadow",
     "type": "head",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 3,
       "section": 813
     },
@@ -1537,7 +1537,7 @@ export const ITEMS: EquipmentItem[] = [
     "name": "Thalamus tiara",
     "type": "head",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 3,
       "section": 826
     },
@@ -1549,14 +1549,14 @@ export const ITEMS: EquipmentItem[] = [
       "Haste"
     ],
     "location": "Doom orb",
-    "careerPreference": "Mage"
+    "pathRequirement": "Mage"
   },
   {
     "id": "embroidered_gloves",
     "name": "Embroidered gloves",
     "type": "gloves",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 1,
       "section": 68
     },
@@ -1572,7 +1572,7 @@ export const ITEMS: EquipmentItem[] = [
     "name": "Rat-bitten gloves",
     "type": "gloves",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 1,
       "section": 161
     },
@@ -1588,7 +1588,7 @@ export const ITEMS: EquipmentItem[] = [
     "name": "Half-digested gauntlets",
     "type": "gloves",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 1,
       "section": 258
     },
@@ -1606,7 +1606,7 @@ export const ITEMS: EquipmentItem[] = [
     "name": "Mason's gloves",
     "type": "gloves",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 1,
       "section": 209
     },
@@ -1623,7 +1623,7 @@ export const ITEMS: EquipmentItem[] = [
     "name": "Stone fists",
     "type": "gloves",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 2,
       "section": 522
     },
@@ -1639,7 +1639,7 @@ export const ITEMS: EquipmentItem[] = [
     "name": "Diamond gauntlets",
     "type": "gloves",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 2,
       "section": 540
     },
@@ -1656,7 +1656,7 @@ export const ITEMS: EquipmentItem[] = [
     "name": "Vambraces of might",
     "type": "gloves",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 2,
       "section": 568
     },
@@ -1674,7 +1674,7 @@ export const ITEMS: EquipmentItem[] = [
     "name": "Prophet's handwraps",
     "type": "gloves",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 2,
       "section": 550
     },
@@ -1692,7 +1692,7 @@ export const ITEMS: EquipmentItem[] = [
     "name": "Nightguard gloves",
     "type": "gloves",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 2,
       "section": 642
     },
@@ -1704,14 +1704,14 @@ export const ITEMS: EquipmentItem[] = [
       "Steadfast"
     ],
     "location": "Armoury",
-    "careerPreference": "Rogue"
+    "pathRequirement": "Rogue"
   },
   {
     "id": "nightwalker_gloves",
     "name": "Nightwalker gloves",
     "type": "gloves",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 2,
       "section": 765
     },
@@ -1723,14 +1723,14 @@ export const ITEMS: EquipmentItem[] = [
       "Nightwalker set"
     ],
     "location": "Gargoyle chest",
-    "careerPreference": "Rogue"
+    "pathRequirement": "Rogue"
   },
   {
     "id": "battlemages_fists",
     "name": "Battlemage's fists",
     "type": "gloves",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 2,
       "section": 414
     },
@@ -1742,14 +1742,14 @@ export const ITEMS: EquipmentItem[] = [
       "Dominate"
     ],
     "location": "Arena champion",
-    "careerPreference": "Mage"
+    "pathRequirement": "Mage"
   },
   {
     "id": "barbed_bracers",
     "name": "Barbed bracers",
     "type": "gloves",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 2,
       "section": 346
     },
@@ -1767,7 +1767,7 @@ export const ITEMS: EquipmentItem[] = [
     "name": "Gardener's gloves",
     "type": "gloves",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 2,
       "section": 516
     },
@@ -1785,7 +1785,7 @@ export const ITEMS: EquipmentItem[] = [
     "name": "Hydra-scaled gloves",
     "type": "gloves",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 2,
       "section": 389
     },
@@ -1797,14 +1797,14 @@ export const ITEMS: EquipmentItem[] = [
       "Regrowth"
     ],
     "location": "Snapjaw",
-    "careerPreference": "Mage"
+    "pathRequirement": "Mage"
   },
   {
     "id": "hydra_scaled_fists",
     "name": "Hydra-scaled fists",
     "type": "gloves",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 2,
       "section": 418
     },
@@ -1816,14 +1816,14 @@ export const ITEMS: EquipmentItem[] = [
       "Regrowth"
     ],
     "location": "Snapjaw",
-    "careerPreference": "Mage"
+    "pathRequirement": "Mage"
   },
   {
     "id": "molten_gauntlets",
     "name": "Molten gauntlets",
     "type": "gloves",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 2,
       "section": 377
     },
@@ -1835,14 +1835,14 @@ export const ITEMS: EquipmentItem[] = [
       "Fire aura"
     ],
     "location": "Vesuvius",
-    "careerPreference": "Warrior"
+    "pathRequirement": "Warrior"
   },
   {
     "id": "crimson_cuffs",
     "name": "Crimson cuffs",
     "type": "gloves",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 2,
       "section": 400
     },
@@ -1860,7 +1860,7 @@ export const ITEMS: EquipmentItem[] = [
     "name": "Mortuary gauntlets",
     "type": "gloves",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 3,
       "section": 803
     },
@@ -1872,14 +1872,14 @@ export const ITEMS: EquipmentItem[] = [
       "Acid"
     ],
     "location": "Waldo's wares",
-    "careerPreference": "Warrior"
+    "pathRequirement": "Warrior"
   },
   {
     "id": "reapers_fists",
     "name": "Reaper's fists",
     "type": "gloves",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 3,
       "section": 903
     },
@@ -1891,14 +1891,14 @@ export const ITEMS: EquipmentItem[] = [
       "Critical strike"
     ],
     "location": "Waldo's wares",
-    "careerPreference": "Rogue"
+    "pathRequirement": "Rogue"
   },
   {
     "id": "bestial_gloves",
     "name": "Bestial gloves",
     "type": "gloves",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 3,
       "section": 620
     },
@@ -1916,7 +1916,7 @@ export const ITEMS: EquipmentItem[] = [
     "name": "Gauntlets of the fallen",
     "type": "gloves",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 3,
       "section": 617
     },
@@ -1928,14 +1928,14 @@ export const ITEMS: EquipmentItem[] = [
       "Finery of the fallen"
     ],
     "location": "Tor knight",
-    "careerPreference": "Warrior"
+    "pathRequirement": "Warrior"
   },
   {
     "id": "bone_bracers",
     "name": "Bone bracers",
     "type": "gloves",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 3,
       "section": 759
     },
@@ -1953,7 +1953,7 @@ export const ITEMS: EquipmentItem[] = [
     "name": "Branded bracers",
     "type": "gloves",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 3,
       "section": 880
     },
@@ -1971,7 +1971,7 @@ export const ITEMS: EquipmentItem[] = [
     "name": "Tainted wraps",
     "type": "gloves",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 3,
       "section": 912
     },
@@ -1989,7 +1989,7 @@ export const ITEMS: EquipmentItem[] = [
     "name": "Devourer's grips",
     "type": "gloves",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 3,
       "section": 664
     },
@@ -2001,14 +2001,14 @@ export const ITEMS: EquipmentItem[] = [
       "Rust"
     ],
     "location": "Brothers'Grimm",
-    "careerPreference": "Mage"
+    "pathRequirement": "Mage"
   },
   {
     "id": "bracelet_of_iron",
     "name": "Bracelet of iron",
     "type": "gloves",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 3,
       "section": 736
     },
@@ -2026,7 +2026,7 @@ export const ITEMS: EquipmentItem[] = [
     "name": "Bracelet of fire",
     "type": "gloves",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 3,
       "section": 736
     },
@@ -2038,14 +2038,14 @@ export const ITEMS: EquipmentItem[] = [
       "Embers"
     ],
     "location": "Ghoulash chains",
-    "careerPreference": "Mage"
+    "pathRequirement": "Mage"
   },
   {
     "id": "bracelet_of_fury",
     "name": "Bracelet of fury",
     "type": "gloves",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 3,
       "section": 736
     },
@@ -2063,7 +2063,7 @@ export const ITEMS: EquipmentItem[] = [
     "name": "Bracelet of power",
     "type": "gloves",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 3,
       "section": 702
     },
@@ -2075,14 +2075,14 @@ export const ITEMS: EquipmentItem[] = [
       "Focus"
     ],
     "location": "Ghoulash",
-    "careerPreference": "Mage"
+    "pathRequirement": "Mage"
   },
   {
     "id": "razor_fists",
     "name": "Razor fists",
     "type": "gloves",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 3,
       "section": 722
     },
@@ -2100,7 +2100,7 @@ export const ITEMS: EquipmentItem[] = [
     "name": "Abattoir gloves",
     "type": "gloves",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 3,
       "section": 642
     },
@@ -2112,14 +2112,14 @@ export const ITEMS: EquipmentItem[] = [
       "Bleed"
     ],
     "location": "Lichenstein",
-    "careerPreference": "Mage"
+    "pathRequirement": "Mage"
   },
   {
     "id": "silk_robe",
     "name": "Silk robe",
     "type": "chest",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 1,
       "section": 68
     },
@@ -2134,7 +2134,7 @@ export const ITEMS: EquipmentItem[] = [
     "name": "Goblin leathers",
     "type": "chest",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 1,
       "section": 150
     },
@@ -2149,7 +2149,7 @@ export const ITEMS: EquipmentItem[] = [
     "name": "Huntsman's jerkin",
     "type": "chest",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 1,
       "section": 228
     },
@@ -2164,7 +2164,7 @@ export const ITEMS: EquipmentItem[] = [
     "name": "Studded leather",
     "type": "chest",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 1,
       "section": 125
     },
@@ -2179,7 +2179,7 @@ export const ITEMS: EquipmentItem[] = [
     "name": "Rain-soaked robe",
     "type": "chest",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 1,
       "section": 243
     },
@@ -2195,7 +2195,7 @@ export const ITEMS: EquipmentItem[] = [
     "name": "Web-coated jerkin",
     "type": "chest",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 1,
       "section": 206
     },
@@ -2213,7 +2213,7 @@ export const ITEMS: EquipmentItem[] = [
     "name": "Spindlesilk mantle",
     "type": "chest",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 1,
       "section": 91
     },
@@ -2231,7 +2231,7 @@ export const ITEMS: EquipmentItem[] = [
     "name": "Crusader's vestments",
     "type": "chest",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 1,
       "section": 160
     },
@@ -2249,7 +2249,7 @@ export const ITEMS: EquipmentItem[] = [
     "name": "Hellfire robes",
     "type": "chest",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 1,
       "section": 133
     },
@@ -2267,7 +2267,7 @@ export const ITEMS: EquipmentItem[] = [
     "name": "Duskleaf doubloon",
     "type": "chest",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 1,
       "section": 80
     },
@@ -2285,7 +2285,7 @@ export const ITEMS: EquipmentItem[] = [
     "name": "Chitinous carapace",
     "type": "chest",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 2,
       "section": 368
     },
@@ -2303,7 +2303,7 @@ export const ITEMS: EquipmentItem[] = [
     "name": "Patchwork jerkin",
     "type": "chest",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 2,
       "section": 374
     },
@@ -2321,7 +2321,7 @@ export const ITEMS: EquipmentItem[] = [
     "name": "Gown of midnight",
     "type": "chest",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 2,
       "section": 445
     },
@@ -2339,7 +2339,7 @@ export const ITEMS: EquipmentItem[] = [
     "name": "Sanguine gown",
     "type": "chest",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 2,
       "section": 460
     },
@@ -2357,7 +2357,7 @@ export const ITEMS: EquipmentItem[] = [
     "name": "Cinder's gown",
     "type": "chest",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 2,
       "section": 655
     },
@@ -2369,14 +2369,14 @@ export const ITEMS: EquipmentItem[] = [
       "Sear"
     ],
     "location": "Cinders",
-    "careerPreference": "Mage"
+    "pathRequirement": "Mage"
   },
   {
     "id": "scorched_tunic",
     "name": "Scorched tunic",
     "type": "chest",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 2,
       "section": 568
     },
@@ -2394,7 +2394,7 @@ export const ITEMS: EquipmentItem[] = [
     "name": "Nightwalker tunic",
     "type": "chest",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 2,
       "section": 497
     },
@@ -2406,14 +2406,14 @@ export const ITEMS: EquipmentItem[] = [
       "Nightwalker set"
     ],
     "location": "Boggart",
-    "careerPreference": "Rogue"
+    "pathRequirement": "Rogue"
   },
   {
     "id": "vigilant_chestguard",
     "name": "Vigilant chestguard",
     "type": "chest",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 2,
       "section": 509
     },
@@ -2423,14 +2423,14 @@ export const ITEMS: EquipmentItem[] = [
     },
     "abilities": [],
     "location": "Swamp giant",
-    "careerPreference": "Warrior"
+    "pathRequirement": "Warrior"
   },
   {
     "id": "scaled_vest",
     "name": "Scaled vest",
     "type": "chest",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 2,
       "section": 452
     },
@@ -2448,7 +2448,7 @@ export const ITEMS: EquipmentItem[] = [
     "name": "Ink-stained vest",
     "type": "chest",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 2,
       "section": 716
     },
@@ -2464,7 +2464,7 @@ export const ITEMS: EquipmentItem[] = [
     "name": "Navigator's waistcoat",
     "type": "chest",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 2,
       "section": 544
     },
@@ -2482,7 +2482,7 @@ export const ITEMS: EquipmentItem[] = [
     "name": "Channeler's robes",
     "type": "chest",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 2,
       "section": 434
     },
@@ -2494,14 +2494,14 @@ export const ITEMS: EquipmentItem[] = [
       "Focus"
     ],
     "location": "Raptor pit",
-    "careerPreference": "Mage"
+    "pathRequirement": "Mage"
   },
   {
     "id": "lincoln_green",
     "name": "Lincoln green",
     "type": "chest",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 2,
       "section": 590
     },
@@ -2513,14 +2513,14 @@ export const ITEMS: EquipmentItem[] = [
       "Charm"
     ],
     "location": "Raptor pit",
-    "careerPreference": "Warrior"
+    "pathRequirement": "Warrior"
   },
   {
     "id": "skulkers_coat",
     "name": "Skulker's coat",
     "type": "chest",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 2,
       "section": 583
     },
@@ -2532,14 +2532,14 @@ export const ITEMS: EquipmentItem[] = [
       "Evade"
     ],
     "location": "Raptor pit",
-    "careerPreference": "Rogue"
+    "pathRequirement": "Rogue"
   },
   {
     "id": "spellplate",
     "name": "Spellplate",
     "type": "chest",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 2,
       "section": 598
     },
@@ -2557,7 +2557,7 @@ export const ITEMS: EquipmentItem[] = [
     "name": "Stone coat",
     "type": "chest",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 2,
       "section": 706
     },
@@ -2569,14 +2569,14 @@ export const ITEMS: EquipmentItem[] = [
       "Might of stone"
     ],
     "location": "Gargoyle chest",
-    "careerPreference": "Warrior"
+    "pathRequirement": "Warrior"
   },
   {
     "id": "breastplate_of_the_bull",
     "name": "Breastplate of the bull",
     "type": "chest",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 2,
       "section": 216
     },
@@ -2594,7 +2594,7 @@ export const ITEMS: EquipmentItem[] = [
     "name": "Hunter's hide",
     "type": "chest",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 2,
       "section": 379
     },
@@ -2612,7 +2612,7 @@ export const ITEMS: EquipmentItem[] = [
     "name": "The cage",
     "type": "chest",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 2,
       "section": 414
     },
@@ -2624,14 +2624,14 @@ export const ITEMS: EquipmentItem[] = [
       "Iron will"
     ],
     "location": "Arena champion",
-    "careerPreference": "Warrior"
+    "pathRequirement": "Warrior"
   },
   {
     "id": "dragonscale_mail",
     "name": "Dragonscale mail",
     "type": "chest",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 2,
       "section": 708
     },
@@ -2643,14 +2643,14 @@ export const ITEMS: EquipmentItem[] = [
       "Second skin"
     ],
     "location": "Kindle",
-    "careerPreference": "Warrior"
+    "pathRequirement": "Warrior"
   },
   {
     "id": "raiders_tunic",
     "name": "Raider's tunic",
     "type": "chest",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 3,
       "section": 803
     },
@@ -2662,14 +2662,14 @@ export const ITEMS: EquipmentItem[] = [
       "Retaliation"
     ],
     "location": "Waldo's wares",
-    "careerPreference": "Warrior"
+    "pathRequirement": "Warrior"
   },
   {
     "id": "slipstream_gown",
     "name": "Slipstream gown",
     "type": "chest",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 3,
       "section": 881
     },
@@ -2681,14 +2681,14 @@ export const ITEMS: EquipmentItem[] = [
       "Overload"
     ],
     "location": "Waldo's wares",
-    "careerPreference": "Mage"
+    "pathRequirement": "Mage"
   },
   {
     "id": "confessors_coat",
     "name": "Confessor's coat",
     "type": "chest",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 3,
       "section": 903
     },
@@ -2700,14 +2700,14 @@ export const ITEMS: EquipmentItem[] = [
       "Fortitude"
     ],
     "location": "Waldo's wares",
-    "careerPreference": "Rogue"
+    "pathRequirement": "Rogue"
   },
   {
     "id": "titan_plate",
     "name": "Titan plate",
     "type": "chest",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 3,
       "section": 730
     },
@@ -2725,7 +2725,7 @@ export const ITEMS: EquipmentItem[] = [
     "name": "Deathgrip robes",
     "type": "chest",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 3,
       "section": 770
     },
@@ -2743,7 +2743,7 @@ export const ITEMS: EquipmentItem[] = [
     "name": "Lion's tabard",
     "type": "chest",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 3,
       "section": 892
     },
@@ -2761,7 +2761,7 @@ export const ITEMS: EquipmentItem[] = [
     "name": "Skullplate",
     "type": "chest",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 3,
       "section": 906
     },
@@ -2779,7 +2779,7 @@ export const ITEMS: EquipmentItem[] = [
     "name": "Funeral gown",
     "type": "chest",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 3,
       "section": 916
     },
@@ -2797,7 +2797,7 @@ export const ITEMS: EquipmentItem[] = [
     "name": "Redguard's tabard",
     "type": "chest",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 3,
       "section": 735
     },
@@ -2815,7 +2815,7 @@ export const ITEMS: EquipmentItem[] = [
     "name": "Stalker's jerkin",
     "type": "chest",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 3,
       "section": 733
     },
@@ -2827,14 +2827,14 @@ export const ITEMS: EquipmentItem[] = [
       "Evade"
     ],
     "location": "Budak",
-    "careerPreference": "Rogue"
+    "pathRequirement": "Rogue"
   },
   {
     "id": "silleers_robe",
     "name": "Silleer's robe",
     "type": "chest",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 3,
       "section": 570
     },
@@ -2846,14 +2846,14 @@ export const ITEMS: EquipmentItem[] = [
       "Curse"
     ],
     "location": "Silleer",
-    "careerPreference": "Mage"
+    "pathRequirement": "Mage"
   },
   {
     "id": "plate_of_the_fallen",
     "name": "Plate of the fallen",
     "type": "chest",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 3,
       "section": 719
     },
@@ -2865,14 +2865,14 @@ export const ITEMS: EquipmentItem[] = [
       "finery of the fallen"
     ],
     "location": "Tor knight",
-    "careerPreference": "Warrior"
+    "pathRequirement": "Warrior"
   },
   {
     "id": "funeral_wraps",
     "name": "Funeral wraps",
     "type": "chest",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 3,
       "section": 765
     },
@@ -2890,7 +2890,7 @@ export const ITEMS: EquipmentItem[] = [
     "name": "Pacemaker",
     "type": "chest",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 3,
       "section": 716
     },
@@ -2902,14 +2902,14 @@ export const ITEMS: EquipmentItem[] = [
       "Kick start"
     ],
     "location": "The blob",
-    "careerPreference": "Warrior"
+    "pathRequirement": "Warrior"
   },
   {
     "id": "shadow_bindings",
     "name": "Shadow bindings",
     "type": "chest",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 3,
       "section": 631
     },
@@ -2921,14 +2921,14 @@ export const ITEMS: EquipmentItem[] = [
       "Evade"
     ],
     "location": "Mage hunter",
-    "careerPreference": "Rogue"
+    "pathRequirement": "Rogue"
   },
   {
     "id": "dark_slayer_vest",
     "name": "Dark slayer vest",
     "type": "chest",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 3,
       "section": 843
     },
@@ -2940,14 +2940,14 @@ export const ITEMS: EquipmentItem[] = [
       "Dominate"
     ],
     "location": "Daarko",
-    "careerPreference": "Rogue"
+    "pathRequirement": "Rogue"
   },
   {
     "id": "decayers_wraps",
     "name": "Decayer's wraps",
     "type": "chest",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 3,
       "section": 845
     },
@@ -2965,7 +2965,7 @@ export const ITEMS: EquipmentItem[] = [
     "name": "Beast's harness",
     "type": "chest",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 3,
       "section": 801
     },
@@ -2977,14 +2977,14 @@ export const ITEMS: EquipmentItem[] = [
       "Knockdown"
     ],
     "location": "The wrecker",
-    "careerPreference": "Warrior"
+    "pathRequirement": "Warrior"
   },
   {
     "id": "beasts_backbone",
     "name": "Beast's backbone",
     "type": "chest",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 3,
       "section": 847
     },
@@ -2996,14 +2996,14 @@ export const ITEMS: EquipmentItem[] = [
       "Savagery"
     ],
     "location": "The wrecker",
-    "careerPreference": "Rogue"
+    "pathRequirement": "Rogue"
   },
   {
     "id": "bloodied_chestguard",
     "name": "Bloodied chestguard",
     "type": "chest",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 3,
       "section": 882
     },
@@ -3015,14 +3015,14 @@ export const ITEMS: EquipmentItem[] = [
       "Bleed"
     ],
     "location": "Sannrah",
-    "careerPreference": "Warrior"
+    "pathRequirement": "Warrior"
   },
   {
     "id": "buckled_boots",
     "name": "Buckled boots",
     "type": "feet",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 1,
       "section": 175
     },
@@ -3038,7 +3038,7 @@ export const ITEMS: EquipmentItem[] = [
     "name": "Spindlesilk boots",
     "type": "feet",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 1,
       "section": 110
     },
@@ -3056,7 +3056,7 @@ export const ITEMS: EquipmentItem[] = [
     "name": "Crow's feet",
     "type": "feet",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 1,
       "section": 204
     },
@@ -3072,7 +3072,7 @@ export const ITEMS: EquipmentItem[] = [
     "name": "Goblin kickers",
     "type": "feet",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 1,
       "section": 199
     },
@@ -3088,7 +3088,7 @@ export const ITEMS: EquipmentItem[] = [
     "name": "Rat-skin boots",
     "type": "feet",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 1,
       "section": 260
     },
@@ -3103,7 +3103,7 @@ export const ITEMS: EquipmentItem[] = [
     "name": "Dusty footpads",
     "type": "feet",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 1,
       "section": 206
     },
@@ -3120,7 +3120,7 @@ export const ITEMS: EquipmentItem[] = [
     "name": "Ruby slippers",
     "type": "feet",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 1,
       "section": 155
     },
@@ -3138,7 +3138,7 @@ export const ITEMS: EquipmentItem[] = [
     "name": "Boar-hide boots",
     "type": "feet",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 1,
       "section": 44
     },
@@ -3156,7 +3156,7 @@ export const ITEMS: EquipmentItem[] = [
     "name": "Reed-woven sandals",
     "type": "feet",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 1,
       "section": 122
     },
@@ -3174,7 +3174,7 @@ export const ITEMS: EquipmentItem[] = [
     "name": "Rune-forged greaves",
     "type": "feet",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 2,
       "section": 311
     },
@@ -3190,7 +3190,7 @@ export const ITEMS: EquipmentItem[] = [
     "name": "Boots of swift flight",
     "type": "feet",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 2,
       "section": 338
     },
@@ -3200,14 +3200,14 @@ export const ITEMS: EquipmentItem[] = [
     },
     "abilities": [],
     "location": "Thievies' guild",
-    "careerPreference": "Rogue"
+    "pathRequirement": "Rogue"
   },
   {
     "id": "deerskin_boots",
     "name": "Deerskin boots",
     "type": "feet",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 2,
       "section": 287
     },
@@ -3223,7 +3223,7 @@ export const ITEMS: EquipmentItem[] = [
     "name": "Sludge waders",
     "type": "feet",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 2,
       "section": 494
     },
@@ -3239,7 +3239,7 @@ export const ITEMS: EquipmentItem[] = [
     "name": "Baron's boots",
     "type": "feet",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 2,
       "section": 385
     },
@@ -3257,7 +3257,7 @@ export const ITEMS: EquipmentItem[] = [
     "name": "Velvet slippers",
     "type": "feet",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 2,
       "section": 487
     },
@@ -3275,7 +3275,7 @@ export const ITEMS: EquipmentItem[] = [
     "name": "Scarab sandals",
     "type": "feet",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 2,
       "section": 446
     },
@@ -3285,14 +3285,14 @@ export const ITEMS: EquipmentItem[] = [
     },
     "abilities": [],
     "location": "Treasure cave",
-    "careerPreference": "Mage"
+    "pathRequirement": "Mage"
   },
   {
     "id": "bright_greaves",
     "name": "Bright greaves",
     "type": "feet",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 2,
       "section": 497
     },
@@ -3310,7 +3310,7 @@ export const ITEMS: EquipmentItem[] = [
     "name": "Sanguine slippers",
     "type": "feet",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 2,
       "section": 497
     },
@@ -3322,14 +3322,14 @@ export const ITEMS: EquipmentItem[] = [
       "Charm"
     ],
     "location": "Boggart",
-    "careerPreference": "Mage"
+    "pathRequirement": "Mage"
   },
   {
     "id": "captains_boots",
     "name": "Captain's boots",
     "type": "feet",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 2,
       "section": 716
     },
@@ -3345,7 +3345,7 @@ export const ITEMS: EquipmentItem[] = [
     "name": "Scout's longboots",
     "type": "feet",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 2,
       "section": 590
     },
@@ -3357,14 +3357,14 @@ export const ITEMS: EquipmentItem[] = [
       "Sideswipe"
     ],
     "location": "Raptor pit",
-    "careerPreference": "Warrior"
+    "pathRequirement": "Warrior"
   },
   {
     "id": "quicksilver_boots",
     "name": "Quicksilver boots",
     "type": "feet",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 2,
       "section": 434
     },
@@ -3376,14 +3376,14 @@ export const ITEMS: EquipmentItem[] = [
       "Quicksilver"
     ],
     "location": "Raptor pit",
-    "careerPreference": "Mage"
+    "pathRequirement": "Mage"
   },
   {
     "id": "majestic_greaves",
     "name": "Majestic greaves",
     "type": "feet",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 2,
       "section": 581
     },
@@ -3392,17 +3392,17 @@ export const ITEMS: EquipmentItem[] = [
       "brawn": 2
     },
     "abilities": [
-      "Royal regalia"
+      "Royal regalia set"
     ],
     "location": "Armoury",
-    "careerPreference": "Warrior"
+    "pathRequirement": "Warrior"
   },
   {
     "id": "shadow_treads",
     "name": "Shadow treads",
     "type": "feet",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 2,
       "section": 744
     },
@@ -3414,14 +3414,14 @@ export const ITEMS: EquipmentItem[] = [
       "Sidestep"
     ],
     "location": "Gargoyle chest",
-    "careerPreference": "Rogue"
+    "pathRequirement": "Rogue"
   },
   {
     "id": "logans_runners",
     "name": "Logan's runners",
     "type": "feet",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 2,
       "section": 394
     },
@@ -3433,14 +3433,14 @@ export const ITEMS: EquipmentItem[] = [
       "Sidestep"
     ],
     "location": "Logan",
-    "careerPreference": "Rogue"
+    "pathRequirement": "Rogue"
   },
   {
     "id": "barkskin_greaves",
     "name": "Barkskin greaves",
     "type": "feet",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 2,
       "section": 341
     },
@@ -3458,7 +3458,7 @@ export const ITEMS: EquipmentItem[] = [
     "name": "Marsh striders",
     "type": "feet",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 2,
       "section": 389
     },
@@ -3476,7 +3476,7 @@ export const ITEMS: EquipmentItem[] = [
     "name": "Marsh stalkers",
     "type": "feet",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 2,
       "section": 418
     },
@@ -3494,7 +3494,7 @@ export const ITEMS: EquipmentItem[] = [
     "name": "Boots of shielding",
     "type": "feet",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 3,
       "section": 881
     },
@@ -3506,14 +3506,14 @@ export const ITEMS: EquipmentItem[] = [
       "Deflect"
     ],
     "location": "Waldo's wares",
-    "careerPreference": "Mage"
+    "pathRequirement": "Mage"
   },
   {
     "id": "barbarous_boots",
     "name": "Barbarous boots",
     "type": "feet",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 3,
       "section": 815
     },
@@ -3525,14 +3525,14 @@ export const ITEMS: EquipmentItem[] = [
       "Savagery"
     ],
     "location": "Waldo's wares",
-    "careerPreference": "Warrior"
+    "pathRequirement": "Warrior"
   },
   {
     "id": "vagabond_boots",
     "name": "Vagabond boots",
     "type": "feet",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 3,
       "section": 620
     },
@@ -3550,7 +3550,7 @@ export const ITEMS: EquipmentItem[] = [
     "name": "Herald's spurs",
     "type": "feet",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 3,
       "section": 617
     },
@@ -3568,7 +3568,7 @@ export const ITEMS: EquipmentItem[] = [
     "name": "Ebon boots",
     "type": "feet",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 3,
       "section": 649
     },
@@ -3586,7 +3586,7 @@ export const ITEMS: EquipmentItem[] = [
     "name": "Bewitched boots",
     "type": "feet",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 3,
       "section": 802
     },
@@ -3604,7 +3604,7 @@ export const ITEMS: EquipmentItem[] = [
     "name": "Twisted treads",
     "type": "feet",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 3,
       "section": 912
     },
@@ -3622,7 +3622,7 @@ export const ITEMS: EquipmentItem[] = [
     "name": "Rumble thumpers",
     "type": "feet",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 3,
       "section": 616
     },
@@ -3640,7 +3640,7 @@ export const ITEMS: EquipmentItem[] = [
     "name": "Elemental greaves",
     "type": "feet",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 3,
       "section": 865
     },
@@ -3652,14 +3652,14 @@ export const ITEMS: EquipmentItem[] = [
       "Fire aura"
     ],
     "location": "Daarko",
-    "careerPreference": "Mage"
+    "pathRequirement": "Mage"
   },
   {
     "id": "boots_of_black_fortune",
     "name": "Boots of black fortune",
     "type": "feet",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 3,
       "section": 893
     },
@@ -3671,14 +3671,14 @@ export const ITEMS: EquipmentItem[] = [
       "Feint"
     ],
     "location": "Daarko",
-    "careerPreference": "Warrior"
+    "pathRequirement": "Warrior"
   },
   {
     "id": "the_apprentice",
     "name": "The apprentice",
     "type": "mainHand",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 1
     },
     "stats": {
@@ -3693,7 +3693,7 @@ export const ITEMS: EquipmentItem[] = [
     "name": "Notched blade",
     "type": "mainHand",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 1,
       "section": 175
     },
@@ -3709,7 +3709,7 @@ export const ITEMS: EquipmentItem[] = [
     "name": "Curved blade",
     "type": "mainHand",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 1,
       "section": 199
     },
@@ -3724,7 +3724,7 @@ export const ITEMS: EquipmentItem[] = [
     "name": "Goblin hewer",
     "type": "mainHand",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 1,
       "section": 82
     },
@@ -3740,7 +3740,7 @@ export const ITEMS: EquipmentItem[] = [
     "name": "Huntsman's axe",
     "type": "mainHand",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 1,
       "section": 228
     },
@@ -3755,7 +3755,7 @@ export const ITEMS: EquipmentItem[] = [
     "name": "Meat cleaver",
     "type": "mainHand",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 1,
       "section": 260
     },
@@ -3772,7 +3772,7 @@ export const ITEMS: EquipmentItem[] = [
     "name": "Crone's dagger",
     "type": "mainHand",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 1,
       "section": 40
     },
@@ -3788,7 +3788,7 @@ export const ITEMS: EquipmentItem[] = [
     "name": "Gilbert's club",
     "type": "mainHand",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 1,
       "section": 40
     },
@@ -3803,7 +3803,7 @@ export const ITEMS: EquipmentItem[] = [
     "name": "Leader's edge",
     "type": "mainHand",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 1,
       "section": 125
     },
@@ -3819,7 +3819,7 @@ export const ITEMS: EquipmentItem[] = [
     "name": "Acid-coated battle axe",
     "type": "mainHand",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 1,
       "section": 258
     },
@@ -3837,7 +3837,7 @@ export const ITEMS: EquipmentItem[] = [
     "name": "Venomous fang",
     "type": "mainHand",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 1,
       "section": 91
     },
@@ -3855,7 +3855,7 @@ export const ITEMS: EquipmentItem[] = [
     "name": "Nightbringer",
     "type": "mainHand",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 1,
       "section": 52
     },
@@ -3873,7 +3873,7 @@ export const ITEMS: EquipmentItem[] = [
     "name": "Nightfall",
     "type": "mainHand",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 1,
       "section": 52
     },
@@ -3891,7 +3891,7 @@ export const ITEMS: EquipmentItem[] = [
     "name": "Ancient sword",
     "type": "mainHand",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 1,
       "section": 222
     },
@@ -3909,7 +3909,7 @@ export const ITEMS: EquipmentItem[] = [
     "name": "Dirk of deceit",
     "type": "mainHand",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 1,
       "section": 271
     },
@@ -3927,7 +3927,7 @@ export const ITEMS: EquipmentItem[] = [
     "name": "Silver silence",
     "type": "mainHand",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 1,
       "section": 271
     },
@@ -3945,7 +3945,7 @@ export const ITEMS: EquipmentItem[] = [
     "name": "Skullbreaker",
     "type": "mainHand",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 1,
       "section": 44
     },
@@ -3963,7 +3963,7 @@ export const ITEMS: EquipmentItem[] = [
     "name": "Dark crystal",
     "type": "mainHand",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 2,
       "section": 311
     },
@@ -3975,14 +3975,14 @@ export const ITEMS: EquipmentItem[] = [
       "Venom"
     ],
     "location": "No Hope tinker",
-    "careerPreference": "Rogue"
+    "pathRequirement": "Rogue"
   },
   {
     "id": "black_jack",
     "name": "Black jack",
     "type": "mainHand",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 2,
       "section": 338
     },
@@ -3994,14 +3994,14 @@ export const ITEMS: EquipmentItem[] = [
       "Slam"
     ],
     "location": "Thievies' guild",
-    "careerPreference": "Rogue"
+    "pathRequirement": "Rogue"
   },
   {
     "id": "abyssal_blade",
     "name": "Abyssal blade",
     "type": "mainHand",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 2,
       "section": 432
     },
@@ -4013,14 +4013,14 @@ export const ITEMS: EquipmentItem[] = [
       "Deep wound"
     ],
     "location": "Sea spray Steve",
-    "careerPreference": "Rogue"
+    "pathRequirement": "Rogue"
   },
   {
     "id": "ashen_staff",
     "name": "Ashen staff",
     "type": "mainHand",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 2,
       "section": 283
     },
@@ -4036,7 +4036,7 @@ export const ITEMS: EquipmentItem[] = [
     "name": "Shiny dirk",
     "type": "mainHand",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 2,
       "section": 287
     },
@@ -4052,7 +4052,7 @@ export const ITEMS: EquipmentItem[] = [
     "name": "Trog spear",
     "type": "mainHand",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 2,
       "section": 327
     },
@@ -4062,14 +4062,14 @@ export const ITEMS: EquipmentItem[] = [
     },
     "abilities": [],
     "location": "Trogs",
-    "careerPreference": "Warrior"
+    "pathRequirement": "Warrior"
   },
   {
     "id": "black_fang",
     "name": "Black fang",
     "type": "mainHand",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 2,
       "section": 517
     },
@@ -4087,7 +4087,7 @@ export const ITEMS: EquipmentItem[] = [
     "name": "Lacerator",
     "type": "mainHand",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 2,
       "section": 533
     },
@@ -4105,7 +4105,7 @@ export const ITEMS: EquipmentItem[] = [
     "name": "Bone scythe",
     "type": "mainHand",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 2,
       "section": 368
     },
@@ -4123,7 +4123,7 @@ export const ITEMS: EquipmentItem[] = [
     "name": "Winter's bite",
     "type": "mainHand",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 2,
       "section": 385
     },
@@ -4135,14 +4135,14 @@ export const ITEMS: EquipmentItem[] = [
       "Bleed"
     ],
     "location": "Baron Greylock",
-    "careerPreference": "Warrior"
+    "pathRequirement": "Warrior"
   },
   {
     "id": "blood_harvest",
     "name": "Blood harvest",
     "type": "mainHand",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 2,
       "section": 455
     },
@@ -4154,14 +4154,14 @@ export const ITEMS: EquipmentItem[] = [
       "Leech"
     ],
     "location": "Lady Roe",
-    "careerPreference": "Mage"
+    "pathRequirement": "Mage"
   },
   {
     "id": "silk_cut",
     "name": "Silk cut",
     "type": "mainHand",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 2,
       "section": 487
     },
@@ -4173,14 +4173,14 @@ export const ITEMS: EquipmentItem[] = [
       "Riposte"
     ],
     "location": "Count (special)",
-    "careerPreference": "Rogue"
+    "pathRequirement": "Rogue"
   },
   {
     "id": "the_rock",
     "name": "The rock",
     "type": "mainHand",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 2,
       "section": 540
     },
@@ -4191,14 +4191,14 @@ export const ITEMS: EquipmentItem[] = [
       "Slam"
     ],
     "location": "Rumbler",
-    "careerPreference": "Warrior"
+    "pathRequirement": "Warrior"
   },
   {
     "id": "illumanti_rod",
     "name": "Illumanti rod",
     "type": "mainHand",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 2,
       "section": 548
     },
@@ -4210,14 +4210,14 @@ export const ITEMS: EquipmentItem[] = [
       "Overload"
     ],
     "location": "Treasure vault",
-    "careerPreference": "Mage"
+    "pathRequirement": "Mage"
   },
   {
     "id": "phoenix_claw",
     "name": "Phoenix claw",
     "type": "mainHand",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 2,
       "section": 565
     },
@@ -4235,7 +4235,7 @@ export const ITEMS: EquipmentItem[] = [
     "name": "Lucky fishing rod",
     "type": "mainHand",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 2,
       "section": 452
     },
@@ -4253,7 +4253,7 @@ export const ITEMS: EquipmentItem[] = [
     "name": "Magician's crook",
     "type": "mainHand",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 2,
       "section": 446
     },
@@ -4265,14 +4265,14 @@ export const ITEMS: EquipmentItem[] = [
       "Radiance"
     ],
     "location": "Treasure cave",
-    "careerPreference": "Mage"
+    "pathRequirement": "Mage"
   },
   {
     "id": "trident_of_the_seven_seas",
     "name": "Trident of the seven seas",
     "type": "mainHand",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 2,
       "section": 479
     },
@@ -4288,7 +4288,7 @@ export const ITEMS: EquipmentItem[] = [
     "name": "Dark malice",
     "type": "mainHand",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 2,
       "section": 506
     },
@@ -4300,14 +4300,14 @@ export const ITEMS: EquipmentItem[] = [
       "Impale"
     ],
     "location": "Scorpios",
-    "careerPreference": "Warrior"
+    "pathRequirement": "Warrior"
   },
   {
     "id": "scorpion_stinger",
     "name": "Scorpion stinger",
     "type": "mainHand",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 2,
       "section": 506
     },
@@ -4319,14 +4319,14 @@ export const ITEMS: EquipmentItem[] = [
       "Venom"
     ],
     "location": "Scorpios",
-    "careerPreference": "Rogue"
+    "pathRequirement": "Rogue"
   },
   {
     "id": "betsy_blue_anchor",
     "name": "Betsy blue anchor",
     "type": "mainHand",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 2,
       "section": 544
     },
@@ -4338,14 +4338,14 @@ export const ITEMS: EquipmentItem[] = [
       "Stun"
     ],
     "location": "Leviathan",
-    "careerPreference": "Warrior"
+    "pathRequirement": "Warrior"
   },
   {
     "id": "spellbreaker",
     "name": "Spellbreaker",
     "type": "mainHand",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 2,
       "section": 567
     },
@@ -4357,14 +4357,14 @@ export const ITEMS: EquipmentItem[] = [
       "Disrupt"
     ],
     "location": "Armoury",
-    "careerPreference": "Rogue"
+    "pathRequirement": "Rogue"
   },
   {
     "id": "frenzy",
     "name": "Frenzy",
     "type": "mainHand",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 2,
       "section": 581
     },
@@ -4376,14 +4376,14 @@ export const ITEMS: EquipmentItem[] = [
       "Cleave"
     ],
     "location": "Armoury",
-    "careerPreference": "Warrior"
+    "pathRequirement": "Warrior"
   },
   {
     "id": "swordbreaker",
     "name": "Swordbreaker",
     "type": "mainHand",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 2,
       "section": 593
     },
@@ -4395,14 +4395,14 @@ export const ITEMS: EquipmentItem[] = [
       "Retaliation"
     ],
     "location": "Armoury",
-    "careerPreference": "Mage"
+    "pathRequirement": "Mage"
   },
   {
     "id": "pulveriser",
     "name": "Pulveriser",
     "type": "mainHand",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 2,
       "section": 706
     },
@@ -4414,14 +4414,14 @@ export const ITEMS: EquipmentItem[] = [
       "Knockdown"
     ],
     "location": "Gargoyle chest",
-    "careerPreference": "Warrior"
+    "pathRequirement": "Warrior"
   },
   {
     "id": "torturers_rod",
     "name": "Torturer's rod",
     "type": "mainHand",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 2,
       "section": 713
     },
@@ -4433,14 +4433,14 @@ export const ITEMS: EquipmentItem[] = [
       "Stun"
     ],
     "location": "Gargoyle chest",
-    "careerPreference": "Mage"
+    "pathRequirement": "Mage"
   },
   {
     "id": "buccaneers_rapier",
     "name": "Buccaneer's rapier",
     "type": "mainHand",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 2,
       "section": 277
     },
@@ -4458,7 +4458,7 @@ export const ITEMS: EquipmentItem[] = [
     "name": "Nalsa's claws",
     "type": "mainHand",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 2,
       "section": 379
     },
@@ -4476,7 +4476,7 @@ export const ITEMS: EquipmentItem[] = [
     "name": "Ebony",
     "type": "mainHand",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 2,
       "section": 370
     },
@@ -4494,7 +4494,7 @@ export const ITEMS: EquipmentItem[] = [
     "name": "Brawler's shiv",
     "type": "mainHand",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 2,
       "section": 414
     },
@@ -4506,14 +4506,14 @@ export const ITEMS: EquipmentItem[] = [
       "Venom"
     ],
     "location": "Arena champion",
-    "careerPreference": "Rogue"
+    "pathRequirement": "Rogue"
   },
   {
     "id": "fire_brand",
     "name": "Fire brand",
     "type": "mainHand",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 2,
       "section": 377
     },
@@ -4525,14 +4525,14 @@ export const ITEMS: EquipmentItem[] = [
       "Fire aura"
     ],
     "location": "Vesuvius",
-    "careerPreference": "Mage"
+    "pathRequirement": "Mage"
   },
   {
     "id": "burning_heretic",
     "name": "Burning heretic",
     "type": "mainHand",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 2,
       "section": 400
     },
@@ -4544,14 +4544,14 @@ export const ITEMS: EquipmentItem[] = [
       "Critical strike"
     ],
     "location": "Magmageddon",
-    "careerPreference": "Rogue"
+    "pathRequirement": "Rogue"
   },
   {
     "id": "velocifero",
     "name": "Velocifero",
     "type": "mainHand",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 2,
       "section": 729
     },
@@ -4569,7 +4569,7 @@ export const ITEMS: EquipmentItem[] = [
     "name": "Sliver of shadow",
     "type": "mainHand",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 3,
       "section": 839
     },
@@ -4581,14 +4581,14 @@ export const ITEMS: EquipmentItem[] = [
       "Chill touch"
     ],
     "location": "Waldo's wares",
-    "careerPreference": "Rogue"
+    "pathRequirement": "Rogue"
   },
   {
     "id": "talanosts_edge",
     "name": "Talanost's edge",
     "type": "mainHand",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 3,
       "section": 903
     },
@@ -4600,14 +4600,14 @@ export const ITEMS: EquipmentItem[] = [
       "Sear"
     ],
     "location": "Waldo's wares",
-    "careerPreference": "Rogue"
+    "pathRequirement": "Rogue"
   },
   {
     "id": "wicked_claw",
     "name": "Wicked claw",
     "type": "mainHand",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 3,
       "section": 776
     },
@@ -4625,7 +4625,7 @@ export const ITEMS: EquipmentItem[] = [
     "name": "Bone claw",
     "type": "mainHand",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 3,
       "section": 695
     },
@@ -4643,7 +4643,7 @@ export const ITEMS: EquipmentItem[] = [
     "name": "Lasher",
     "type": "mainHand",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 3,
       "section": 620
     },
@@ -4661,7 +4661,7 @@ export const ITEMS: EquipmentItem[] = [
     "name": "Tainted striker",
     "type": "mainHand",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 3,
       "section": 677
     },
@@ -4673,14 +4673,14 @@ export const ITEMS: EquipmentItem[] = [
       "Corruption"
     ],
     "location": "Tor knight",
-    "careerPreference": "Mage"
+    "pathRequirement": "Mage"
   },
   {
     "id": "spinal_tap",
     "name": "Spinal tap",
     "type": "mainHand",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 3,
       "section": 759
     },
@@ -4692,14 +4692,14 @@ export const ITEMS: EquipmentItem[] = [
       "Impale"
     ],
     "location": "Flesh golem",
-    "careerPreference": "Warrior"
+    "pathRequirement": "Warrior"
   },
   {
     "id": "bone_gavel",
     "name": "Bone gavel",
     "type": "mainHand",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 3,
       "section": 730
     },
@@ -4711,14 +4711,14 @@ export const ITEMS: EquipmentItem[] = [
       "Knockdown"
     ],
     "location": "Bone giants",
-    "careerPreference": "Warrior"
+    "pathRequirement": "Warrior"
   },
   {
     "id": "tenacity",
     "name": "Tenacity",
     "type": "mainHand",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 3,
       "section": 770
     },
@@ -4730,14 +4730,14 @@ export const ITEMS: EquipmentItem[] = [
       "Deep wound"
     ],
     "location": "Rotterghast",
-    "careerPreference": "Rogue"
+    "pathRequirement": "Rogue"
   },
   {
     "id": "scorn",
     "name": "Scorn",
     "type": "mainHand",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 3,
       "section": 912
     },
@@ -4749,14 +4749,14 @@ export const ITEMS: EquipmentItem[] = [
       "Immobilise"
     ],
     "location": "Malaise",
-    "careerPreference": "Rogue"
+    "pathRequirement": "Rogue"
   },
   {
     "id": "ever_sharp",
     "name": "Ever-sharp",
     "type": "mainHand",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 3,
       "section": 916
     },
@@ -4768,14 +4768,14 @@ export const ITEMS: EquipmentItem[] = [
       "Deep wound"
     ],
     "location": "Yorvic",
-    "careerPreference": "Warrior"
+    "pathRequirement": "Warrior"
   },
   {
     "id": "deep_freeze",
     "name": "Deep freeze",
     "type": "mainHand",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 3,
       "section": 869
     },
@@ -4793,7 +4793,7 @@ export const ITEMS: EquipmentItem[] = [
     "name": "Hoarfrost",
     "type": "mainHand",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 3,
       "section": 874
     },
@@ -4811,7 +4811,7 @@ export const ITEMS: EquipmentItem[] = [
     "name": "Grimm reaper",
     "type": "mainHand",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 3,
       "section": 727
     },
@@ -4823,14 +4823,14 @@ export const ITEMS: EquipmentItem[] = [
       "Brutality"
     ],
     "location": "Brothers' Grimm",
-    "careerPreference": "Warrior"
+    "pathRequirement": "Warrior"
   },
   {
     "id": "serenity",
     "name": "Serenity",
     "type": "mainHand",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 3,
       "section": 733
     },
@@ -4842,14 +4842,14 @@ export const ITEMS: EquipmentItem[] = [
       "Deep wound"
     ],
     "location": "Budak",
-    "careerPreference": "Rogue"
+    "pathRequirement": "Rogue"
   },
   {
     "id": "wand_of_lightning",
     "name": "Wand of lightning",
     "type": "mainHand",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 3,
       "section": 570
     },
@@ -4861,14 +4861,14 @@ export const ITEMS: EquipmentItem[] = [
       "Shock!"
     ],
     "location": "Silleer",
-    "careerPreference": "Mage"
+    "pathRequirement": "Mage"
   },
   {
     "id": "pain_in_chains",
     "name": "Pain in chains",
     "type": "mainHand",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 3,
       "section": 722
     },
@@ -4886,7 +4886,7 @@ export const ITEMS: EquipmentItem[] = [
     "name": "Frost burn",
     "type": "mainHand",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 3,
       "section": 584
     },
@@ -4898,14 +4898,14 @@ export const ITEMS: EquipmentItem[] = [
       "Piercing"
     ],
     "location": "Chilblain",
-    "careerPreference": "Mage"
+    "pathRequirement": "Mage"
   },
   {
     "id": "belching_bludger",
     "name": "Belching bludger",
     "type": "mainHand",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 3,
       "section": 616
     },
@@ -4923,7 +4923,7 @@ export const ITEMS: EquipmentItem[] = [
     "name": "Mortician's scalpel",
     "type": "mainHand",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 3,
       "section": 642
     },
@@ -4935,14 +4935,14 @@ export const ITEMS: EquipmentItem[] = [
       "Disease"
     ],
     "location": "Lichenstein",
-    "careerPreference": "Rogue"
+    "pathRequirement": "Rogue"
   },
   {
     "id": "tempests_fury",
     "name": "Tempest's fury",
     "type": "mainHand",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 3,
       "section": 754
     },
@@ -4960,7 +4960,7 @@ export const ITEMS: EquipmentItem[] = [
     "name": "Blood crescent",
     "type": "mainHand",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 3,
       "section": 631
     },
@@ -4972,14 +4972,14 @@ export const ITEMS: EquipmentItem[] = [
       "Cleave"
     ],
     "location": "Mage hunter",
-    "careerPreference": "Warrior"
+    "pathRequirement": "Warrior"
   },
   {
     "id": "orb_stinger",
     "name": "Orb stinger",
     "type": "mainHand",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 3,
       "section": 665
     },
@@ -4991,14 +4991,14 @@ export const ITEMS: EquipmentItem[] = [
       "Shock!"
     ],
     "location": "Death orb",
-    "careerPreference": "Rogue"
+    "pathRequirement": "Rogue"
   },
   {
     "id": "tricksters_maul",
     "name": "Trickster's maul",
     "type": "mainHand",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 3,
       "section": 711
     },
@@ -5016,7 +5016,7 @@ export const ITEMS: EquipmentItem[] = [
     "name": "Shadow-woven kris",
     "type": "mainHand",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 3,
       "section": 843
     },
@@ -5028,14 +5028,14 @@ export const ITEMS: EquipmentItem[] = [
       "Deep wound"
     ],
     "location": "Daarko",
-    "careerPreference": "Rogue"
+    "pathRequirement": "Rogue"
   },
   {
     "id": "sacrum_of_carnage",
     "name": "Sacrum of carnage",
     "type": "mainHand",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 3,
       "section": 847
     },
@@ -5047,14 +5047,14 @@ export const ITEMS: EquipmentItem[] = [
       "Fatal blow"
     ],
     "location": "The wrecker",
-    "careerPreference": "Rogue"
+    "pathRequirement": "Rogue"
   },
   {
     "id": "aged_acronium",
     "name": "Aged acronium",
     "type": "mainHand",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 3,
       "section": 878
     },
@@ -5066,14 +5066,14 @@ export const ITEMS: EquipmentItem[] = [
       "Rust"
     ],
     "location": "The wrecker",
-    "careerPreference": "Mage"
+    "pathRequirement": "Mage"
   },
   {
     "id": "the_sting",
     "name": "The sting",
     "type": "mainHand",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 3,
       "section": 868
     },
@@ -5085,14 +5085,14 @@ export const ITEMS: EquipmentItem[] = [
       "Impale"
     ],
     "location": "Scarrons",
-    "careerPreference": "Warrior"
+    "pathRequirement": "Warrior"
   },
   {
     "id": "fortunes_favour",
     "name": "Fortune's favour",
     "type": "mainHand",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 3,
       "section": 871
     },
@@ -5104,14 +5104,14 @@ export const ITEMS: EquipmentItem[] = [
       "Radiance"
     ],
     "location": "Sannrah",
-    "careerPreference": "Mage"
+    "pathRequirement": "Mage"
   },
   {
     "id": "retribution",
     "name": "Retribution",
     "type": "mainHand",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 3,
       "section": 882
     },
@@ -5123,14 +5123,14 @@ export const ITEMS: EquipmentItem[] = [
       "Feral fury"
     ],
     "location": "Sannrah",
-    "careerPreference": "Warrior"
+    "pathRequirement": "Warrior"
   },
   {
     "id": "scaled_defender",
     "name": "Scaled defender",
     "type": "leftHand",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 1,
       "section": 191
     },
@@ -5146,7 +5146,7 @@ export const ITEMS: EquipmentItem[] = [
     "name": "Murder of crows",
     "type": "leftHand",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 1,
       "section": 204
     },
@@ -5162,7 +5162,7 @@ export const ITEMS: EquipmentItem[] = [
     "name": "Crock's tooth",
     "type": "leftHand",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 1,
       "section": 118
     },
@@ -5177,7 +5177,7 @@ export const ITEMS: EquipmentItem[] = [
     "name": "Rennie's slicer",
     "type": "leftHand",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 1,
       "section": 55
     },
@@ -5195,7 +5195,7 @@ export const ITEMS: EquipmentItem[] = [
     "name": "Stone shield",
     "type": "leftHand",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 1,
       "section": 41
     },
@@ -5213,7 +5213,7 @@ export const ITEMS: EquipmentItem[] = [
     "name": "Essence of shadow",
     "type": "leftHand",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 1,
       "section": 43
     },
@@ -5231,7 +5231,7 @@ export const ITEMS: EquipmentItem[] = [
     "name": "Ghoul claw",
     "type": "leftHand",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 1,
       "section": 106
     },
@@ -5249,7 +5249,7 @@ export const ITEMS: EquipmentItem[] = [
     "name": "Dented buckler",
     "type": "leftHand",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 1,
       "section": 166
     },
@@ -5265,7 +5265,7 @@ export const ITEMS: EquipmentItem[] = [
     "name": "Spider's spinneret",
     "type": "leftHand",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 1,
       "section": 179
     },
@@ -5283,7 +5283,7 @@ export const ITEMS: EquipmentItem[] = [
     "name": "Rage claw",
     "type": "leftHand",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 1,
       "section": 26
     },
@@ -5301,7 +5301,7 @@ export const ITEMS: EquipmentItem[] = [
     "name": "Ardent edge",
     "type": "leftHand",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 2,
       "section": 494
     },
@@ -5319,7 +5319,7 @@ export const ITEMS: EquipmentItem[] = [
     "name": "Champion's blade",
     "type": "leftHand",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 2,
       "section": 283
     },
@@ -5337,7 +5337,7 @@ export const ITEMS: EquipmentItem[] = [
     "name": "Ridgeback",
     "type": "leftHand",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 2,
       "section": 517
     },
@@ -5349,14 +5349,14 @@ export const ITEMS: EquipmentItem[] = [
       "Slam"
     ],
     "location": "Wormwood (normal)",
-    "careerPreference": "Warrior"
+    "pathRequirement": "Warrior"
   },
   {
     "id": "razorback",
     "name": "Razorback",
     "type": "leftHand",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 2,
       "section": 533
     },
@@ -5368,14 +5368,14 @@ export const ITEMS: EquipmentItem[] = [
       "Slam"
     ],
     "location": "Wormwood (special)",
-    "careerPreference": "Warrior"
+    "pathRequirement": "Warrior"
   },
   {
     "id": "rockbiter",
     "name": "Rockbiter",
     "type": "leftHand",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 2,
       "section": 522
     },
@@ -5393,7 +5393,7 @@ export const ITEMS: EquipmentItem[] = [
     "name": "Shrink ray",
     "type": "leftHand",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 2,
       "section": 477
     },
@@ -5411,7 +5411,7 @@ export const ITEMS: EquipmentItem[] = [
     "name": "Book of black deeds",
     "type": "leftHand",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 2,
       "section": 445
     },
@@ -5421,14 +5421,14 @@ export const ITEMS: EquipmentItem[] = [
     },
     "abilities": [],
     "location": "Treasure vault",
-    "careerPreference": "Mage"
+    "pathRequirement": "Mage"
   },
   {
     "id": "vampires_kiss",
     "name": "Vampire's kiss",
     "type": "leftHand",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 2,
       "section": 422
     },
@@ -5446,7 +5446,7 @@ export const ITEMS: EquipmentItem[] = [
     "name": "Ivory (R+W)",
     "type": "leftHand",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 2,
       "section": 333
     },
@@ -5464,7 +5464,7 @@ export const ITEMS: EquipmentItem[] = [
     "name": "T-Bone wand",
     "type": "leftHand",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 2,
       "section": 449
     },
@@ -5476,14 +5476,14 @@ export const ITEMS: EquipmentItem[] = [
       "Bolt"
     ],
     "location": "Wreekin",
-    "careerPreference": "Mage"
+    "pathRequirement": "Mage"
   },
   {
     "id": "wreekin_net",
     "name": "Wreekin net",
     "type": "leftHand",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 2,
       "section": 479
     },
@@ -5501,7 +5501,7 @@ export const ITEMS: EquipmentItem[] = [
     "name": "Twin furies",
     "type": "leftHand",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 2,
       "section": 452
     },
@@ -5511,14 +5511,14 @@ export const ITEMS: EquipmentItem[] = [
     },
     "abilities": [],
     "location": "Angler's cave",
-    "careerPreference": "Rogue"
+    "pathRequirement": "Rogue"
   },
   {
     "id": "blackout",
     "name": "Blackout",
     "type": "leftHand",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 2,
       "section": 509
     },
@@ -5536,7 +5536,7 @@ export const ITEMS: EquipmentItem[] = [
     "name": "Tome of deep thought",
     "type": "leftHand",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 2,
       "section": 550
     },
@@ -5546,14 +5546,14 @@ export const ITEMS: EquipmentItem[] = [
     },
     "abilities": [],
     "location": "Jenlar's cabin",
-    "careerPreference": "Mage"
+    "pathRequirement": "Mage"
   },
   {
     "id": "deliverance",
     "name": "Deliverance",
     "type": "leftHand",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 2,
       "section": 590
     },
@@ -5565,14 +5565,14 @@ export const ITEMS: EquipmentItem[] = [
       "Deep wound"
     ],
     "location": "Raptor pit",
-    "careerPreference": "Warrior"
+    "pathRequirement": "Warrior"
   },
   {
     "id": "witching_hour",
     "name": "Witching hour",
     "type": "leftHand",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 2,
       "section": 583
     },
@@ -5584,14 +5584,14 @@ export const ITEMS: EquipmentItem[] = [
       "Bull's eye"
     ],
     "location": "Raptor pit",
-    "careerPreference": "Rogue"
+    "pathRequirement": "Rogue"
   },
   {
     "id": "ebenezers_spellbook",
     "name": "Ebenezer's spellbook",
     "type": "leftHand",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 2,
       "section": 434
     },
@@ -5603,14 +5603,14 @@ export const ITEMS: EquipmentItem[] = [
       "Sear"
     ],
     "location": "Raptor pit",
-    "careerPreference": "Mage"
+    "pathRequirement": "Mage"
   },
   {
     "id": "st_elmos_fire",
     "name": "St Elmo's fire",
     "type": "leftHand",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 2,
       "section": 544
     },
@@ -5628,7 +5628,7 @@ export const ITEMS: EquipmentItem[] = [
     "name": "Vorpal sword",
     "type": "leftHand",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 2,
       "section": 567
     },
@@ -5640,14 +5640,14 @@ export const ITEMS: EquipmentItem[] = [
       "Vanquish"
     ],
     "location": "Armoury",
-    "careerPreference": "Rogue"
+    "pathRequirement": "Rogue"
   },
   {
     "id": "dour_claws",
     "name": "Dour claws",
     "type": "leftHand",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 2,
       "section": 706
     },
@@ -5659,14 +5659,14 @@ export const ITEMS: EquipmentItem[] = [
       "Rake"
     ],
     "location": "Gargoyle chest",
-    "careerPreference": "Warrior"
+    "pathRequirement": "Warrior"
   },
   {
     "id": "tome_of_intellect",
     "name": "Tome of intellect",
     "type": "leftHand",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 2,
       "section": 713
     },
@@ -5678,14 +5678,14 @@ export const ITEMS: EquipmentItem[] = [
       "Focus"
     ],
     "location": "Gargoyle chest",
-    "careerPreference": "Mage"
+    "pathRequirement": "Mage"
   },
   {
     "id": "stone_crescent",
     "name": "Stone crescent",
     "type": "leftHand",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 2,
       "section": 443
     },
@@ -5697,14 +5697,14 @@ export const ITEMS: EquipmentItem[] = [
       "Slam"
     ],
     "location": "Stone giant",
-    "careerPreference": "Warrior"
+    "pathRequirement": "Warrior"
   },
   {
     "id": "left_hook",
     "name": "Left hook",
     "type": "leftHand",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 2,
       "section": 277
     },
@@ -5722,7 +5722,7 @@ export const ITEMS: EquipmentItem[] = [
     "name": "Deathstrike",
     "type": "leftHand",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 2,
       "section": 394
     },
@@ -5740,7 +5740,7 @@ export const ITEMS: EquipmentItem[] = [
     "name": "Sprig of corruption",
     "type": "leftHand",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 2,
       "section": 341
     },
@@ -5758,7 +5758,7 @@ export const ITEMS: EquipmentItem[] = [
     "name": "Spine tooth",
     "type": "leftHand",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 2,
       "section": 346
     },
@@ -5770,14 +5770,14 @@ export const ITEMS: EquipmentItem[] = [
       "Critical strike"
     ],
     "location": "Snapjaw",
-    "careerPreference": "Rogue"
+    "pathRequirement": "Rogue"
   },
   {
     "id": "hydras_wing",
     "name": "Hydra's wing",
     "type": "leftHand",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 2,
       "section": 389
     },
@@ -5789,14 +5789,14 @@ export const ITEMS: EquipmentItem[] = [
       "Deflect"
     ],
     "location": "Hydra (normal)",
-    "careerPreference": "Warrior"
+    "pathRequirement": "Warrior"
   },
   {
     "id": "hydras_guard",
     "name": "Hydra's guard",
     "type": "leftHand",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 2,
       "section": 418
     },
@@ -5808,14 +5808,14 @@ export const ITEMS: EquipmentItem[] = [
       "Deflect"
     ],
     "location": "Hydra (special)",
-    "careerPreference": "Warrior"
+    "pathRequirement": "Warrior"
   },
   {
     "id": "dragonslayer",
     "name": "Dragonslayer",
     "type": "leftHand",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 2,
       "section": 708
     },
@@ -5833,7 +5833,7 @@ export const ITEMS: EquipmentItem[] = [
     "name": "Shadowblade",
     "type": "leftHand",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 2,
       "section": 729
     },
@@ -5851,7 +5851,7 @@ export const ITEMS: EquipmentItem[] = [
     "name": "Talanost's wall",
     "type": "leftHand",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 3,
       "section": 803
     },
@@ -5863,14 +5863,14 @@ export const ITEMS: EquipmentItem[] = [
       "Deflect"
     ],
     "location": "Waldo's wares",
-    "careerPreference": "Warrior"
+    "pathRequirement": "Warrior"
   },
   {
     "id": "talanosts_reach",
     "name": "Talanost's reach",
     "type": "leftHand",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 3,
       "section": 881
     },
@@ -5882,14 +5882,14 @@ export const ITEMS: EquipmentItem[] = [
       "Critical strike"
     ],
     "location": "Waldo's wares",
-    "careerPreference": "Mage"
+    "pathRequirement": "Mage"
   },
   {
     "id": "tor_shield",
     "name": "Tor shield",
     "type": "leftHand",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 3,
       "section": 617
     },
@@ -5907,7 +5907,7 @@ export const ITEMS: EquipmentItem[] = [
     "name": "Spite",
     "type": "leftHand",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 3,
       "section": 649
     },
@@ -5925,7 +5925,7 @@ export const ITEMS: EquipmentItem[] = [
     "name": "Iron curtain",
     "type": "leftHand",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 3,
       "section": 775
     },
@@ -5937,14 +5937,14 @@ export const ITEMS: EquipmentItem[] = [
       "Iron will"
     ],
     "location": "Skeleton horde",
-    "careerPreference": "Warrior"
+    "pathRequirement": "Warrior"
   },
   {
     "id": "chains_of_binding",
     "name": "Chains of binding",
     "type": "leftHand",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 3,
       "section": 778
     },
@@ -5956,14 +5956,14 @@ export const ITEMS: EquipmentItem[] = [
       "Shackle"
     ],
     "location": "Ghouls",
-    "careerPreference": "Mage"
+    "pathRequirement": "Mage"
   },
   {
     "id": "shallow_grave",
     "name": "Shallow grave",
     "type": "leftHand",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 3,
       "section": 827
     },
@@ -5981,7 +5981,7 @@ export const ITEMS: EquipmentItem[] = [
     "name": "Raven eye",
     "type": "leftHand",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 3,
       "section": 834
     },
@@ -5999,7 +5999,7 @@ export const ITEMS: EquipmentItem[] = [
     "name": "Witch's finger",
     "type": "leftHand",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 3,
       "section": 869
     },
@@ -6017,7 +6017,7 @@ export const ITEMS: EquipmentItem[] = [
     "name": "Meat grinder",
     "type": "leftHand",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 3,
       "section": 891
     },
@@ -6035,7 +6035,7 @@ export const ITEMS: EquipmentItem[] = [
     "name": "Steel gear solid",
     "type": "leftHand",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 3,
       "section": 891
     },
@@ -6047,14 +6047,14 @@ export const ITEMS: EquipmentItem[] = [
       "Retaliation"
     ],
     "location": "Clockwerk",
-    "careerPreference": "Warrior"
+    "pathRequirement": "Warrior"
   },
   {
     "id": "justice",
     "name": "Justice",
     "type": "leftHand",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 3,
       "section": 892
     },
@@ -6072,7 +6072,7 @@ export const ITEMS: EquipmentItem[] = [
     "name": "Twilight claw",
     "type": "leftHand",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 3,
       "section": 929
     },
@@ -6090,7 +6090,7 @@ export const ITEMS: EquipmentItem[] = [
     "name": "Black death",
     "type": "leftHand",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 3,
       "section": 622
     },
@@ -6102,14 +6102,14 @@ export const ITEMS: EquipmentItem[] = [
       "Critical strike"
     ],
     "location": "Brothers' Grimm",
-    "careerPreference": "Rogue"
+    "pathRequirement": "Rogue"
   },
   {
     "id": "grasping_grimm",
     "name": "Grasping grimm",
     "type": "leftHand",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 3,
       "section": 664
     },
@@ -6121,14 +6121,14 @@ export const ITEMS: EquipmentItem[] = [
       "Rake"
     ],
     "location": "Brothers'Grimm",
-    "careerPreference": "Mage"
+    "pathRequirement": "Mage"
   },
   {
     "id": "grimoire_of_entropy",
     "name": "Grimoire of entropy",
     "type": "leftHand",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 3,
       "section": 570
     },
@@ -6140,14 +6140,14 @@ export const ITEMS: EquipmentItem[] = [
       "Sear"
     ],
     "location": "Silleer",
-    "careerPreference": "Mage"
+    "pathRequirement": "Mage"
   },
   {
     "id": "dark_tower",
     "name": "Dark tower",
     "type": "leftHand",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 3,
       "section": 719
     },
@@ -6159,14 +6159,14 @@ export const ITEMS: EquipmentItem[] = [
       "Impale"
     ],
     "location": "Tor knight",
-    "careerPreference": "Warrior"
+    "pathRequirement": "Warrior"
   },
   {
     "id": "thunder_hammer",
     "name": "Thunder hammer",
     "type": "leftHand",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 3,
       "section": 719
     },
@@ -6178,14 +6178,14 @@ export const ITEMS: EquipmentItem[] = [
       "Shock!"
     ],
     "location": "Tor knight",
-    "careerPreference": "Warrior"
+    "pathRequirement": "Warrior"
   },
   {
     "id": "shield_of_bones",
     "name": "Shield of bones",
     "type": "leftHand",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 3,
       "section": 722
     },
@@ -6197,14 +6197,14 @@ export const ITEMS: EquipmentItem[] = [
       "Piercing"
     ],
     "location": "Bone giant",
-    "careerPreference": "Warrior"
+    "pathRequirement": "Warrior"
   },
   {
     "id": "shield_of_bones",
     "name": "Shield of bones",
     "type": "leftHand",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 3,
       "section": 762
     },
@@ -6216,14 +6216,14 @@ export const ITEMS: EquipmentItem[] = [
       "Dominate"
     ],
     "location": "Scout",
-    "careerPreference": "Mage"
+    "pathRequirement": "Mage"
   },
   {
     "id": "shield_of_bones",
     "name": "Shield of bones",
     "type": "leftHand",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 3,
       "section": 762
     },
@@ -6235,14 +6235,14 @@ export const ITEMS: EquipmentItem[] = [
       "Sear"
     ],
     "location": "Scout",
-    "careerPreference": "Rogue"
+    "pathRequirement": "Rogue"
   },
   {
     "id": "bone_splinter",
     "name": "Bone splinter",
     "type": "leftHand",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 3,
       "section": 584
     },
@@ -6254,14 +6254,14 @@ export const ITEMS: EquipmentItem[] = [
       "Piercing"
     ],
     "location": "Chilblain",
-    "careerPreference": "Rogue"
+    "pathRequirement": "Rogue"
   },
   {
     "id": "shield_of_angels",
     "name": "Shield of angels",
     "type": "leftHand",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 3,
       "section": 754
     },
@@ -6279,7 +6279,7 @@ export const ITEMS: EquipmentItem[] = [
     "name": "Shield of blasting",
     "type": "leftHand",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 3,
       "section": 665
     },
@@ -6291,14 +6291,14 @@ export const ITEMS: EquipmentItem[] = [
       "Lightning"
     ],
     "location": "Death orb",
-    "careerPreference": "Warrior"
+    "pathRequirement": "Warrior"
   },
   {
     "id": "torment",
     "name": "Torment",
     "type": "leftHand",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 3,
       "section": 711
     },
@@ -6316,7 +6316,7 @@ export const ITEMS: EquipmentItem[] = [
     "name": "Fang of Vengos",
     "type": "leftHand",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 3,
       "section": 868
     },
@@ -6328,14 +6328,14 @@ export const ITEMS: EquipmentItem[] = [
       "Venom"
     ],
     "location": "Scarrons",
-    "careerPreference": "Rogue"
+    "pathRequirement": "Rogue"
   },
   {
     "id": "parasitic_plate",
     "name": "Parasitic plate",
     "type": "leftHand",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 3,
       "section": 845
     },
@@ -6347,14 +6347,14 @@ export const ITEMS: EquipmentItem[] = [
       "Leech"
     ],
     "location": "Decayers",
-    "careerPreference": "Warrior"
+    "pathRequirement": "Warrior"
   },
   {
     "id": "lexicon_of_bones",
     "name": "Lexicon of bones",
     "type": "leftHand",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 3,
       "section": 813
     },
@@ -6366,14 +6366,14 @@ export const ITEMS: EquipmentItem[] = [
       "Haunt"
     ],
     "location": "Ghasts",
-    "careerPreference": "Mage"
+    "pathRequirement": "Mage"
   },
   {
     "id": "wrecking_ball",
     "name": "Wrecking ball",
     "type": "leftHand",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 3,
       "section": 801
     },
@@ -6385,14 +6385,14 @@ export const ITEMS: EquipmentItem[] = [
       "Demolish"
     ],
     "location": "The wrecker",
-    "careerPreference": "Warrior"
+    "pathRequirement": "Warrior"
   },
   {
     "id": "cortical_bulb",
     "name": "Cortical bulb",
     "type": "leftHand",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 3,
       "section": 826
     },
@@ -6404,14 +6404,14 @@ export const ITEMS: EquipmentItem[] = [
       "Brain drain"
     ],
     "location": "Doom orb",
-    "careerPreference": "Mage"
+    "pathRequirement": "Mage"
   },
   {
     "id": "bone_bow_of_grief",
     "name": "Bone bow of grief",
     "type": "leftHand",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 3,
       "section": 882
     },
@@ -6423,14 +6423,14 @@ export const ITEMS: EquipmentItem[] = [
       "Puncture"
     ],
     "location": "Sannrah",
-    "careerPreference": "Warrior"
+    "pathRequirement": "Warrior"
   },
   {
     "id": "final_solution",
     "name": "Final solution",
     "type": "leftHand",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 3,
       "section": 887
     },
@@ -6442,14 +6442,14 @@ export const ITEMS: EquipmentItem[] = [
       "Acid"
     ],
     "location": "Sannrah",
-    "careerPreference": "Rogue"
+    "pathRequirement": "Rogue"
   },
   {
     "id": "stone_ward",
     "name": "Stone ward",
     "type": "talisman",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 1,
       "section": 41
     },
@@ -6464,7 +6464,7 @@ export const ITEMS: EquipmentItem[] = [
     "name": "Spindle's eye",
     "type": "talisman",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 1,
       "section": 91
     },
@@ -6481,7 +6481,7 @@ export const ITEMS: EquipmentItem[] = [
     "name": "Third eye",
     "type": "talisman",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 1,
       "section": 155
     },
@@ -6498,7 +6498,7 @@ export const ITEMS: EquipmentItem[] = [
     "name": "Demon's heart",
     "type": "talisman",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 1,
       "section": 133
     },
@@ -6515,7 +6515,7 @@ export const ITEMS: EquipmentItem[] = [
     "name": "Avian's crest",
     "type": "talisman",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 2,
       "section": 275
     },
@@ -6526,14 +6526,14 @@ export const ITEMS: EquipmentItem[] = [
     "abilities": [
       "Charm"
     ],
-    "location": "Legions of Shadows"
+    "location": "The Legion of Shadow"
   },
   {
     "id": "sap_filled_gland",
     "name": "Sap-filled gland",
     "type": "talisman",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 2,
       "section": 283
     },
@@ -6550,7 +6550,7 @@ export const ITEMS: EquipmentItem[] = [
     "name": "Elemental dust",
     "type": "talisman",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 2,
       "section": 540
     },
@@ -6567,7 +6567,7 @@ export const ITEMS: EquipmentItem[] = [
     "name": "Phoenix ashes",
     "type": "talisman",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 2,
       "section": 565
     },
@@ -6584,7 +6584,7 @@ export const ITEMS: EquipmentItem[] = [
     "name": "Dour's whetstone (R+W)",
     "type": "talisman",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 2,
       "section": 593
     },
@@ -6601,7 +6601,7 @@ export const ITEMS: EquipmentItem[] = [
     "name": "Seal of war",
     "type": "talisman",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 2,
       "section": 593
     },
@@ -6618,7 +6618,7 @@ export const ITEMS: EquipmentItem[] = [
     "name": "Braids of the bull",
     "type": "talisman",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 2,
       "section": 216
     },
@@ -6635,7 +6635,7 @@ export const ITEMS: EquipmentItem[] = [
     "name": "Tiger's heart",
     "type": "talisman",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 2,
       "section": 162
     },
@@ -6652,7 +6652,7 @@ export const ITEMS: EquipmentItem[] = [
     "name": "Tiger's fury",
     "type": "talisman",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 2,
       "section": 162
     },
@@ -6663,14 +6663,14 @@ export const ITEMS: EquipmentItem[] = [
       "Berserker"
     ],
     "location": "Shara Khana",
-    "careerPreference": "Warrior"
+    "pathRequirement": "Warrior"
   },
   {
     "id": "core_of_flame",
     "name": "Core of flame",
     "type": "talisman",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 2,
       "section": 407
     },
@@ -6681,14 +6681,14 @@ export const ITEMS: EquipmentItem[] = [
       "Pyromancer"
     ],
     "location": "Vesuvius",
-    "careerPreference": "Mage"
+    "pathRequirement": "Mage"
   },
   {
     "id": "lady_of_the_lamp",
     "name": "Lady of the lamp",
     "type": "talisman",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 3,
       "section": 680
     },
@@ -6699,14 +6699,14 @@ export const ITEMS: EquipmentItem[] = [
       "Medic"
     ],
     "location": "Lansbury/medic tent",
-    "careerPreference": "Mage"
+    "pathRequirement": "Mage"
   },
   {
     "id": "bone_fetish",
     "name": "Bone fetish",
     "type": "talisman",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 3,
       "section": 692
     },
@@ -6717,14 +6717,14 @@ export const ITEMS: EquipmentItem[] = [
       "Necromancer"
     ],
     "location": "Necromancer",
-    "careerPreference": "Mage"
+    "pathRequirement": "Mage"
   },
   {
     "id": "blinding_dust",
     "name": "Blinding dust",
     "type": "talisman",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 3,
       "section": 730
     },
@@ -6741,7 +6741,7 @@ export const ITEMS: EquipmentItem[] = [
     "name": "Bag o' bones",
     "type": "talisman",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 3,
       "section": 775
     },
@@ -6758,7 +6758,7 @@ export const ITEMS: EquipmentItem[] = [
     "name": "Dark therapy",
     "type": "talisman",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 3,
       "section": 802
     },
@@ -6775,7 +6775,7 @@ export const ITEMS: EquipmentItem[] = [
     "name": "Grimm ichor",
     "type": "talisman",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 3,
       "section": 622
     },
@@ -6786,14 +6786,14 @@ export const ITEMS: EquipmentItem[] = [
       "Poison mastery"
     ],
     "location": "Brothers' Grimm",
-    "careerPreference": "Rogue"
+    "pathRequirement": "Rogue"
   },
   {
     "id": "survivors_pennant",
     "name": "Survivor's pennant",
     "type": "talisman",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 3,
       "section": 735
     },
@@ -6811,7 +6811,7 @@ export const ITEMS: EquipmentItem[] = [
     "name": "Heart of the beast",
     "type": "talisman",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 3,
       "section": 702
     },
@@ -6829,7 +6829,7 @@ export const ITEMS: EquipmentItem[] = [
     "name": "Sands of time",
     "type": "talisman",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 3,
       "section": 754
     },
@@ -6846,7 +6846,7 @@ export const ITEMS: EquipmentItem[] = [
     "name": "Winter's heart",
     "type": "talisman",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 3,
       "section": 761
     },
@@ -6857,14 +6857,14 @@ export const ITEMS: EquipmentItem[] = [
       "Icelock"
     ],
     "location": "Chilblain",
-    "careerPreference": "Mage"
+    "pathRequirement": "Mage"
   },
   {
     "id": "the_cravens_head",
     "name": "The craven's head",
     "type": "talisman",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 3,
       "section": 843
     },
@@ -6876,14 +6876,14 @@ export const ITEMS: EquipmentItem[] = [
       "Sidestep"
     ],
     "location": "Daarko",
-    "careerPreference": "Rogue"
+    "pathRequirement": "Rogue"
   },
   {
     "id": "seed_of_rage",
     "name": "Seed of rage",
     "type": "talisman",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 3,
       "section": 878
     },
@@ -6894,14 +6894,14 @@ export const ITEMS: EquipmentItem[] = [
       "Dominate"
     ],
     "location": "The wrecker",
-    "careerPreference": "Mage"
+    "pathRequirement": "Mage"
   },
   {
     "id": "grannys_locket",
     "name": "Granny's locket",
     "type": "necklace",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 1,
       "section": 199
     },
@@ -6916,7 +6916,7 @@ export const ITEMS: EquipmentItem[] = [
     "name": "Stone collar",
     "type": "necklace",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 1,
       "section": 41
     },
@@ -6933,7 +6933,7 @@ export const ITEMS: EquipmentItem[] = [
     "name": "Beads of brilliance",
     "type": "necklace",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 1,
       "section": 193
     },
@@ -6949,7 +6949,7 @@ export const ITEMS: EquipmentItem[] = [
     "name": "Clymonistra's sorrow",
     "type": "necklace",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 1,
       "section": 112
     },
@@ -6966,7 +6966,7 @@ export const ITEMS: EquipmentItem[] = [
     "name": "Trophy of bones",
     "type": "necklace",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 1,
       "section": 44
     },
@@ -6984,7 +6984,7 @@ export const ITEMS: EquipmentItem[] = [
     "name": "Black pearl",
     "type": "necklace",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 2,
       "section": 432
     },
@@ -7001,7 +7001,7 @@ export const ITEMS: EquipmentItem[] = [
     "name": "Amber-coated collar",
     "type": "necklace",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 2,
       "section": 314
     },
@@ -7018,7 +7018,7 @@ export const ITEMS: EquipmentItem[] = [
     "name": "Beetle-shell garland",
     "type": "necklace",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 2,
       "section": 327
     },
@@ -7035,7 +7035,7 @@ export const ITEMS: EquipmentItem[] = [
     "name": "Channeler's prism",
     "type": "necklace",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 2,
       "section": 522
     },
@@ -7052,7 +7052,7 @@ export const ITEMS: EquipmentItem[] = [
     "name": "Silver cross",
     "type": "necklace",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 2,
       "section": 291
     },
@@ -7070,7 +7070,7 @@ export const ITEMS: EquipmentItem[] = [
     "name": "Vermillion heart",
     "type": "necklace",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 2,
       "section": 455
     },
@@ -7087,7 +7087,7 @@ export const ITEMS: EquipmentItem[] = [
     "name": "Dour's fury",
     "type": "necklace",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 2,
       "section": 397
     },
@@ -7104,7 +7104,7 @@ export const ITEMS: EquipmentItem[] = [
     "name": "Marsh pendant",
     "type": "necklace",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 2,
       "section": 506
     },
@@ -7122,7 +7122,7 @@ export const ITEMS: EquipmentItem[] = [
     "name": "Pendant of foresight",
     "type": "necklace",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 2,
       "section": 550
     },
@@ -7139,7 +7139,7 @@ export const ITEMS: EquipmentItem[] = [
     "name": "Lodestone",
     "type": "necklace",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 2,
       "section": 593
     },
@@ -7156,7 +7156,7 @@ export const ITEMS: EquipmentItem[] = [
     "name": "Warder's collar",
     "type": "necklace",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 2,
       "section": 598
     },
@@ -7168,14 +7168,14 @@ export const ITEMS: EquipmentItem[] = [
       "Might of stone"
     ],
     "location": "Armoury",
-    "careerPreference": "Mage"
+    "pathRequirement": "Mage"
   },
   {
     "id": "diamond_of_the_tundra",
     "name": "Diamond of the tundra",
     "type": "necklace",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 2,
       "section": 359
     },
@@ -7192,7 +7192,7 @@ export const ITEMS: EquipmentItem[] = [
     "name": "Eye of shadow",
     "type": "necklace",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 2,
       "section": 729
     },
@@ -7209,7 +7209,7 @@ export const ITEMS: EquipmentItem[] = [
     "name": "Ghoul's teeth",
     "type": "necklace",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 3,
       "section": 839
     },
@@ -7220,14 +7220,14 @@ export const ITEMS: EquipmentItem[] = [
       "Piercing"
     ],
     "location": "Waldo's wares",
-    "careerPreference": "Rogue"
+    "pathRequirement": "Rogue"
   },
   {
     "id": "chilblains_tears",
     "name": "Chilblain's tears",
     "type": "necklace",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 3,
       "section": 914
     },
@@ -7239,14 +7239,14 @@ export const ITEMS: EquipmentItem[] = [
       "Piercing"
     ],
     "location": "Waldo's wares",
-    "careerPreference": "Mage"
+    "pathRequirement": "Mage"
   },
   {
     "id": "leap_of_faith",
     "name": "Leap of faith",
     "type": "necklace",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 3,
       "section": 677
     },
@@ -7263,7 +7263,7 @@ export const ITEMS: EquipmentItem[] = [
     "name": "Horn of courage",
     "type": "necklace",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 3,
       "section": 770
     },
@@ -7275,14 +7275,14 @@ export const ITEMS: EquipmentItem[] = [
       "Courage"
     ],
     "location": "Rotterghast",
-    "careerPreference": "Warrior"
+    "pathRequirement": "Warrior"
   },
   {
     "id": "dark_queen",
     "name": "Dark queen",
     "type": "necklace",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 3,
       "section": 834
     },
@@ -7299,7 +7299,7 @@ export const ITEMS: EquipmentItem[] = [
     "name": "Charged core",
     "type": "necklace",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 3,
       "section": 891
     },
@@ -7316,7 +7316,7 @@ export const ITEMS: EquipmentItem[] = [
     "name": "Stolen hope",
     "type": "necklace",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 3,
       "section": 929
     },
@@ -7334,7 +7334,7 @@ export const ITEMS: EquipmentItem[] = [
     "name": "Inner circle",
     "type": "necklace",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 3,
       "section": 541
     },
@@ -7349,7 +7349,7 @@ export const ITEMS: EquipmentItem[] = [
     "name": "Glacial shards",
     "type": "necklace",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 3,
       "section": 584
     },
@@ -7361,14 +7361,14 @@ export const ITEMS: EquipmentItem[] = [
       "Piercing"
     ],
     "location": "Chilblain",
-    "careerPreference": "Warrior"
+    "pathRequirement": "Warrior"
   },
   {
     "id": "winged_locket",
     "name": "Winged locket",
     "type": "necklace",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 3,
       "section": 777
     },
@@ -7385,7 +7385,7 @@ export const ITEMS: EquipmentItem[] = [
     "name": "Widow's band",
     "type": "ring",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 1,
       "section": 104
     },
@@ -7402,7 +7402,7 @@ export const ITEMS: EquipmentItem[] = [
     "name": "Missing link",
     "type": "ring",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 1,
       "section": 180
     },
@@ -7418,7 +7418,7 @@ export const ITEMS: EquipmentItem[] = [
     "name": "Traveller's band",
     "type": "ring",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 1,
       "section": 251
     },
@@ -7436,7 +7436,7 @@ export const ITEMS: EquipmentItem[] = [
     "name": "Lightning ring",
     "type": "ring",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 1,
       "section": 243
     },
@@ -7451,7 +7451,7 @@ export const ITEMS: EquipmentItem[] = [
     "name": "Grave dust ring",
     "type": "ring",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 1,
       "section": 106
     },
@@ -7466,7 +7466,7 @@ export const ITEMS: EquipmentItem[] = [
     "name": "Scholar's circle",
     "type": "ring",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 1,
       "section": 170
     },
@@ -7481,7 +7481,7 @@ export const ITEMS: EquipmentItem[] = [
     "name": "Blackfire ring",
     "type": "ring",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 1,
       "section": 133
     },
@@ -7496,7 +7496,7 @@ export const ITEMS: EquipmentItem[] = [
     "name": "Circle of thorns",
     "type": "ring",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 1,
       "section": 80
     },
@@ -7511,7 +7511,7 @@ export const ITEMS: EquipmentItem[] = [
     "name": "Splintered band",
     "type": "ring",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 2,
       "section": 432
     },
@@ -7522,14 +7522,14 @@ export const ITEMS: EquipmentItem[] = [
       "Retaliation"
     ],
     "location": "Sea spray Steve",
-    "careerPreference": "Warrior"
+    "pathRequirement": "Warrior"
   },
   {
     "id": "my_precious",
     "name": "My precious",
     "type": "ring",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 2,
       "section": 327
     },
@@ -7546,7 +7546,7 @@ export const ITEMS: EquipmentItem[] = [
     "name": "Wayfarer's ring",
     "type": "ring",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 2,
       "section": 291
     },
@@ -7564,7 +7564,7 @@ export const ITEMS: EquipmentItem[] = [
     "name": "Vermillion rage",
     "type": "ring",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 2,
       "section": 422
     },
@@ -7581,7 +7581,7 @@ export const ITEMS: EquipmentItem[] = [
     "name": "Clymonistra's folly",
     "type": "ring",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 2,
       "section": 460
     },
@@ -7599,7 +7599,7 @@ export const ITEMS: EquipmentItem[] = [
     "name": "Finger of fire",
     "type": "ring",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 2,
       "section": 655
     },
@@ -7616,7 +7616,7 @@ export const ITEMS: EquipmentItem[] = [
     "name": "Ring of the marshes",
     "type": "ring",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 2,
       "section": 449
     },
@@ -7634,7 +7634,7 @@ export const ITEMS: EquipmentItem[] = [
     "name": "Steadfast ring",
     "type": "ring",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 2,
       "section": 446
     },
@@ -7645,14 +7645,14 @@ export const ITEMS: EquipmentItem[] = [
       "Steadfast"
     ],
     "location": "Treasure cave",
-    "careerPreference": "Mage"
+    "pathRequirement": "Mage"
   },
   {
     "id": "serpents_coil_r_w_",
     "name": "Serpent's coil (R+W)",
     "type": "ring",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 2,
       "section": 333
     },
@@ -7669,7 +7669,7 @@ export const ITEMS: EquipmentItem[] = [
     "name": "Band of conquest (R+W)",
     "type": "ring",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 2,
       "section": 333
     },
@@ -7686,7 +7686,7 @@ export const ITEMS: EquipmentItem[] = [
     "name": "Abyssal brimstone",
     "type": "ring",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 2,
       "section": 397
     },
@@ -7703,7 +7703,7 @@ export const ITEMS: EquipmentItem[] = [
     "name": "Avatar's circle",
     "type": "ring",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 2,
       "section": 443
     },
@@ -7714,14 +7714,14 @@ export const ITEMS: EquipmentItem[] = [
       "Overload"
     ],
     "location": "Stone giant",
-    "careerPreference": "Mage"
+    "pathRequirement": "Mage"
   },
   {
     "id": "lupine_lapis",
     "name": "Lupine lapis",
     "type": "ring",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 2,
       "section": 696
     },
@@ -7738,7 +7738,7 @@ export const ITEMS: EquipmentItem[] = [
     "name": "Mender's marcasite",
     "type": "ring",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 2,
       "section": 696
     },
@@ -7755,7 +7755,7 @@ export const ITEMS: EquipmentItem[] = [
     "name": "Cutter's cornelian",
     "type": "ring",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 2,
       "section": 696
     },
@@ -7772,7 +7772,7 @@ export const ITEMS: EquipmentItem[] = [
     "name": "Magpie's mischief",
     "type": "ring",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 2,
       "section": 394
     },
@@ -7789,7 +7789,7 @@ export const ITEMS: EquipmentItem[] = [
     "name": "Dryad's band",
     "type": "ring",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 2,
       "section": 341
     },
@@ -7806,7 +7806,7 @@ export const ITEMS: EquipmentItem[] = [
     "name": "Khana's revenge",
     "type": "ring",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 3,
       "section": 815
     },
@@ -7817,14 +7817,14 @@ export const ITEMS: EquipmentItem[] = [
       "Bleed"
     ],
     "location": "Waldo's wares",
-    "careerPreference": "Warrior"
+    "pathRequirement": "Warrior"
   },
   {
     "id": "wrath_of_ages",
     "name": "Wrath of ages",
     "type": "ring",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 3,
       "section": 914
     },
@@ -7835,14 +7835,14 @@ export const ITEMS: EquipmentItem[] = [
       "Rust"
     ],
     "location": "Waldo's wares",
-    "careerPreference": "Mage"
+    "pathRequirement": "Mage"
   },
   {
     "id": "leader_of_the_pack",
     "name": "Leader of the pack",
     "type": "ring",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 3,
       "section": 778
     },
@@ -7859,7 +7859,7 @@ export const ITEMS: EquipmentItem[] = [
     "name": "Sinister shadows",
     "type": "ring",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 3,
       "section": 834
     },
@@ -7877,7 +7877,7 @@ export const ITEMS: EquipmentItem[] = [
     "name": "Blood winter",
     "type": "ring",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 3,
       "section": 869
     },
@@ -7894,7 +7894,7 @@ export const ITEMS: EquipmentItem[] = [
     "name": "Hunger",
     "type": "ring",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 3,
       "section": 874
     },
@@ -7911,7 +7911,7 @@ export const ITEMS: EquipmentItem[] = [
     "name": "Tooth 'n claw",
     "type": "ring",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 3,
       "section": 727
     },
@@ -7923,14 +7923,14 @@ export const ITEMS: EquipmentItem[] = [
       "Sideswipe"
     ],
     "location": "Brothes' Grimm",
-    "careerPreference": "Warrior"
+    "pathRequirement": "Warrior"
   },
   {
     "id": "martyrs_blood",
     "name": "Martyr's blood",
     "type": "ring",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 3,
       "section": 735
     },
@@ -7948,7 +7948,7 @@ export const ITEMS: EquipmentItem[] = [
     "name": "Seven stars (R+W)",
     "type": "ring",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 3,
       "section": 577
     },
@@ -7965,7 +7965,7 @@ export const ITEMS: EquipmentItem[] = [
     "name": "Wytchwood thorn (R+W)",
     "type": "ring",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 3,
       "section": 577
     },
@@ -7982,7 +7982,7 @@ export const ITEMS: EquipmentItem[] = [
     "name": "Zul's zapper",
     "type": "ring",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 3,
       "section": 541
     },
@@ -8000,7 +8000,7 @@ export const ITEMS: EquipmentItem[] = [
     "name": "Band of elements (W+M)",
     "type": "ring",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 3,
       "section": 724
     },
@@ -8017,7 +8017,7 @@ export const ITEMS: EquipmentItem[] = [
     "name": "Budak's signet (W+M)",
     "type": "ring",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 3,
       "section": 724
     },
@@ -8035,7 +8035,7 @@ export const ITEMS: EquipmentItem[] = [
     "name": "Spider sapphire (R+M)",
     "type": "ring",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 3,
       "section": 726
     },
@@ -8053,7 +8053,7 @@ export const ITEMS: EquipmentItem[] = [
     "name": "Serpentine spiral (R+M)",
     "type": "ring",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 3,
       "section": 726
     },
@@ -8071,7 +8071,7 @@ export const ITEMS: EquipmentItem[] = [
     "name": "Conduit of shadow",
     "type": "ring",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 3,
       "section": 865
     },
@@ -8082,14 +8082,14 @@ export const ITEMS: EquipmentItem[] = [
       "Overload"
     ],
     "location": "Daarko",
-    "careerPreference": "Mage"
+    "pathRequirement": "Mage"
   },
   {
     "id": "stria_of_genna",
     "name": "Stria of Genna",
     "type": "ring",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 3,
       "section": 826
     },
@@ -8101,7 +8101,7 @@ export const ITEMS: EquipmentItem[] = [
       "Shock!"
     ],
     "location": "Doom orb",
-    "careerPreference": "Mage"
+    "pathRequirement": "Mage"
   },
   {
     "id": "saddle_blanket",
@@ -8305,7 +8305,7 @@ export const ITEMS: EquipmentItem[] = [
       "Parasite"
     ],
     "location": "Lycanth",
-    "careerPreference": "Warrior"
+    "pathRequirement": "Warrior"
   },
   {
     "id": "shades_mantle",
@@ -8324,7 +8324,7 @@ export const ITEMS: EquipmentItem[] = [
       "Trickster"
     ],
     "location": "Umbra",
-    "careerPreference": "Warrior"
+    "pathRequirement": "Warrior"
   },
   {
     "id": "hair_of_the_wolf",
@@ -8343,7 +8343,7 @@ export const ITEMS: EquipmentItem[] = [
       "Cunning"
     ],
     "location": "Lycanth",
-    "careerPreference": "Rogue"
+    "pathRequirement": "Rogue"
   },
   {
     "id": "stole_of_shadow",
@@ -8362,7 +8362,7 @@ export const ITEMS: EquipmentItem[] = [
       "Steal"
     ],
     "location": "Umbra",
-    "careerPreference": "Rogue"
+    "pathRequirement": "Rogue"
   },
   {
     "id": "twister",
@@ -8381,7 +8381,7 @@ export const ITEMS: EquipmentItem[] = [
       "Confound"
     ],
     "location": "Zephyr",
-    "careerPreference": "Mage"
+    "pathRequirement": "Mage"
   },
   {
     "id": "conch_shoulders",
@@ -8472,7 +8472,7 @@ export const ITEMS: EquipmentItem[] = [
       "Feint"
     ],
     "location": "Buckmaster Bill (side quest)",
-    "careerPreference": "Mage"
+    "pathRequirement": "Mage"
   },
   {
     "id": "cope_of_rituals",
@@ -8491,7 +8491,7 @@ export const ITEMS: EquipmentItem[] = [
       "Heal"
     ],
     "location": "Sun vault",
-    "careerPreference": "Rogue"
+    "pathRequirement": "Rogue"
   },
   {
     "id": "shredded_drape",
@@ -8510,7 +8510,7 @@ export const ITEMS: EquipmentItem[] = [
       "Channel"
     ],
     "location": "Lich",
-    "careerPreference": "Mage"
+    "pathRequirement": "Mage"
   },
   {
     "id": "cape_of_the_savage",
@@ -8529,7 +8529,7 @@ export const ITEMS: EquipmentItem[] = [
       "Primal"
     ],
     "location": "Gheira",
-    "careerPreference": "Mage"
+    "pathRequirement": "Mage"
   },
   {
     "id": "back_to_the_wild_w_r_",
@@ -8585,7 +8585,7 @@ export const ITEMS: EquipmentItem[] = [
       "Purge"
     ],
     "location": "Siren sisters (side quest)",
-    "careerPreference": "Mage"
+    "pathRequirement": "Mage"
   },
   {
     "id": "drake_skin_epaulets",
@@ -8604,7 +8604,7 @@ export const ITEMS: EquipmentItem[] = [
       "Backdraft"
     ],
     "location": "Issachar",
-    "careerPreference": "Mage"
+    "pathRequirement": "Mage"
   },
   {
     "id": "cloak_of_the_undying",
@@ -8640,7 +8640,7 @@ export const ITEMS: EquipmentItem[] = [
       "Surge"
     ],
     "location": "Furies",
-    "careerPreference": "Mage"
+    "pathRequirement": "Mage"
   },
   {
     "id": "sentry_shoulders",
@@ -8659,7 +8659,7 @@ export const ITEMS: EquipmentItem[] = [
       "Heavy blow"
     ],
     "location": "Bridge sentries",
-    "careerPreference": "Warrior"
+    "pathRequirement": "Warrior"
   },
   {
     "id": "patchwork_pulp",
@@ -8696,7 +8696,7 @@ export const ITEMS: EquipmentItem[] = [
       "Wither"
     ],
     "location": "Nephele",
-    "careerPreference": "Mage"
+    "pathRequirement": "Mage"
   },
   {
     "id": "cape_of_the_unseen",
@@ -8715,7 +8715,7 @@ export const ITEMS: EquipmentItem[] = [
       "Coup de grace"
     ],
     "location": "Nephele",
-    "careerPreference": "Rogue"
+    "pathRequirement": "Rogue"
   },
   {
     "id": "runeplate_pauldrons",
@@ -8734,7 +8734,7 @@ export const ITEMS: EquipmentItem[] = [
       "Last defence"
     ],
     "location": "Erkil",
-    "careerPreference": "Warrior"
+    "pathRequirement": "Warrior"
   },
   {
     "id": "mesh_of_sinew",
@@ -8753,7 +8753,7 @@ export const ITEMS: EquipmentItem[] = [
       "Dark pact"
     ],
     "location": "Evin Daala",
-    "careerPreference": "Rogue"
+    "pathRequirement": "Rogue"
   },
   {
     "id": "blackrock_shoulders",
@@ -8772,7 +8772,7 @@ export const ITEMS: EquipmentItem[] = [
       "Retaliation"
     ],
     "location": "Krakatoa",
-    "careerPreference": "Warrior"
+    "pathRequirement": "Warrior"
   },
   {
     "id": "plumed_helm",
@@ -8996,7 +8996,7 @@ export const ITEMS: EquipmentItem[] = [
       "Missionary's calling"
     ],
     "location": "Umbra",
-    "careerPreference": "Rogue"
+    "pathRequirement": "Rogue"
   },
   {
     "id": "umbras_cowl",
@@ -9015,7 +9015,7 @@ export const ITEMS: EquipmentItem[] = [
       "Trickster"
     ],
     "location": "Umbra",
-    "careerPreference": "Mage"
+    "pathRequirement": "Mage"
   },
   {
     "id": "braids_of_the_outcast",
@@ -9034,7 +9034,7 @@ export const ITEMS: EquipmentItem[] = [
       "Fearless"
     ],
     "location": "Lycanth",
-    "careerPreference": "Mage"
+    "pathRequirement": "Mage"
   },
   {
     "id": "coif_of_waning",
@@ -9107,7 +9107,7 @@ export const ITEMS: EquipmentItem[] = [
       "Charge"
     ],
     "location": "Guano chest",
-    "careerPreference": "Warrior"
+    "pathRequirement": "Warrior"
   },
   {
     "id": "dark_vine_pith",
@@ -9126,7 +9126,7 @@ export const ITEMS: EquipmentItem[] = [
       "Thorns"
     ],
     "location": "Buckmaster Bill",
-    "careerPreference": "Mage"
+    "pathRequirement": "Mage"
   },
   {
     "id": "maidens_mask",
@@ -9181,7 +9181,7 @@ export const ITEMS: EquipmentItem[] = [
       "Overload"
     ],
     "location": "Fisher King",
-    "careerPreference": "Mage"
+    "pathRequirement": "Mage"
   },
   {
     "id": "anansis_hood",
@@ -9200,7 +9200,7 @@ export const ITEMS: EquipmentItem[] = [
       "Webbed"
     ],
     "location": "Anansi",
-    "careerPreference": "Mage"
+    "pathRequirement": "Mage"
   },
   {
     "id": "eyes_of_the_serpent_w_r_",
@@ -9255,7 +9255,7 @@ export const ITEMS: EquipmentItem[] = [
       "Vanish"
     ],
     "location": "Issachar",
-    "careerPreference": "Rogue"
+    "pathRequirement": "Rogue"
   },
   {
     "id": "troll_tusks",
@@ -9292,7 +9292,7 @@ export const ITEMS: EquipmentItem[] = [
       "Deflect"
     ],
     "location": "Bridge sentries",
-    "careerPreference": "Mage"
+    "pathRequirement": "Mage"
   },
   {
     "id": "mourn_helm",
@@ -9311,7 +9311,7 @@ export const ITEMS: EquipmentItem[] = [
       "Impale"
     ],
     "location": "Nyx the dark wind",
-    "careerPreference": "Warrior"
+    "pathRequirement": "Warrior"
   },
   {
     "id": "wastrels_guise",
@@ -9330,7 +9330,7 @@ export const ITEMS: EquipmentItem[] = [
       "Blind"
     ],
     "location": "Kuderas",
-    "careerPreference": "Rogue"
+    "pathRequirement": "Rogue"
   },
   {
     "id": "mordant_shroud",
@@ -9349,7 +9349,7 @@ export const ITEMS: EquipmentItem[] = [
       "Acid"
     ],
     "location": "Chilopoda",
-    "careerPreference": "Mage"
+    "pathRequirement": "Mage"
   },
   {
     "id": "crimson_cover",
@@ -9368,7 +9368,7 @@ export const ITEMS: EquipmentItem[] = [
       "Bleed"
     ],
     "location": "Joss",
-    "careerPreference": "Rogue"
+    "pathRequirement": "Rogue"
   },
   {
     "id": "blood_sworn_crown",
@@ -9387,7 +9387,7 @@ export const ITEMS: EquipmentItem[] = [
       "Iron will"
     ],
     "location": "Erkil (hexed)",
-    "careerPreference": "Warrior"
+    "pathRequirement": "Warrior"
   },
   {
     "id": "volcanists_hood",
@@ -9406,7 +9406,7 @@ export const ITEMS: EquipmentItem[] = [
       "Overload"
     ],
     "location": "Erkil (hexed)",
-    "careerPreference": "Mage"
+    "pathRequirement": "Mage"
   },
   {
     "id": "prowlers_cowl",
@@ -9425,7 +9425,7 @@ export const ITEMS: EquipmentItem[] = [
       "Vanish"
     ],
     "location": "Erkil (hexed)",
-    "careerPreference": "Rogue"
+    "pathRequirement": "Rogue"
   },
   {
     "id": "gore_mask",
@@ -9444,7 +9444,7 @@ export const ITEMS: EquipmentItem[] = [
       "Mangle"
     ],
     "location": "Evin Daala",
-    "careerPreference": "Rogue"
+    "pathRequirement": "Rogue"
   },
   {
     "id": "puritans_peak",
@@ -9482,7 +9482,7 @@ export const ITEMS: EquipmentItem[] = [
       "Command"
     ],
     "location": "Krakatoa",
-    "careerPreference": "Mage"
+    "pathRequirement": "Mage"
   },
   {
     "id": "troll_skin_gloves",
@@ -9655,7 +9655,7 @@ export const ITEMS: EquipmentItem[] = [
       "Counter"
     ],
     "location": "Lycanth",
-    "careerPreference": "Warrior"
+    "pathRequirement": "Warrior"
   },
   {
     "id": "bracers_of_frenzy",
@@ -9674,7 +9674,7 @@ export const ITEMS: EquipmentItem[] = [
       "Compulsion"
     ],
     "location": "Zephyr",
-    "careerPreference": "Warrior"
+    "pathRequirement": "Warrior"
   },
   {
     "id": "fingerless_gloves",
@@ -9693,7 +9693,7 @@ export const ITEMS: EquipmentItem[] = [
       "Crawlers"
     ],
     "location": "Gaia",
-    "careerPreference": "Rogue"
+    "pathRequirement": "Rogue"
   },
   {
     "id": "shocking_scales",
@@ -9712,7 +9712,7 @@ export const ITEMS: EquipmentItem[] = [
       "Shock!"
     ],
     "location": "Boogaloo",
-    "careerPreference": "Mage"
+    "pathRequirement": "Mage"
   },
   {
     "id": "armbands_of_attraction",
@@ -9731,7 +9731,7 @@ export const ITEMS: EquipmentItem[] = [
       "Confound"
     ],
     "location": "Gaia",
-    "careerPreference": "Mage"
+    "pathRequirement": "Mage"
   },
   {
     "id": "weepers_blooms",
@@ -9750,7 +9750,7 @@ export const ITEMS: EquipmentItem[] = [
       "Call of nature"
     ],
     "location": "The weeper",
-    "careerPreference": "Mage"
+    "pathRequirement": "Mage"
   },
   {
     "id": "bone_bracelets",
@@ -9787,7 +9787,7 @@ export const ITEMS: EquipmentItem[] = [
       "Regrowth"
     ],
     "location": "Drecko",
-    "careerPreference": "Mage"
+    "pathRequirement": "Mage"
   },
   {
     "id": "the_untouchables",
@@ -9860,7 +9860,7 @@ export const ITEMS: EquipmentItem[] = [
       "Barbs"
     ],
     "location": "Sitadell",
-    "careerPreference": "Rogue"
+    "pathRequirement": "Rogue"
   },
   {
     "id": "waxen_wilds",
@@ -9879,7 +9879,7 @@ export const ITEMS: EquipmentItem[] = [
       "Surge"
     ],
     "location": "Gheira",
-    "careerPreference": "Mage"
+    "pathRequirement": "Mage"
   },
   {
     "id": "spider_grips_w_r_",
@@ -9916,7 +9916,7 @@ export const ITEMS: EquipmentItem[] = [
       "Rake"
     ],
     "location": "Issachar",
-    "careerPreference": "Warrior"
+    "pathRequirement": "Warrior"
   },
   {
     "id": "nergals_splinters",
@@ -9935,7 +9935,7 @@ export const ITEMS: EquipmentItem[] = [
       "Rake"
     ],
     "location": "Nergal",
-    "careerPreference": "Mage"
+    "pathRequirement": "Mage"
   },
   {
     "id": "warfists_of_fury",
@@ -9954,7 +9954,7 @@ export const ITEMS: EquipmentItem[] = [
       "Knockdown"
     ],
     "location": "Furies",
-    "careerPreference": "Warrior"
+    "pathRequirement": "Warrior"
   },
   {
     "id": "deft_hands",
@@ -9992,7 +9992,7 @@ export const ITEMS: EquipmentItem[] = [
       "Unstoppable"
     ],
     "location": "Kuderas",
-    "careerPreference": "Warrior"
+    "pathRequirement": "Warrior"
   },
   {
     "id": "gloves_of_the_firmament",
@@ -10011,7 +10011,7 @@ export const ITEMS: EquipmentItem[] = [
       "Resolve"
     ],
     "location": "Evin Daala",
-    "careerPreference": "Mage"
+    "pathRequirement": "Mage"
   },
   {
     "id": "gore_soaked_fists",
@@ -10030,7 +10030,7 @@ export const ITEMS: EquipmentItem[] = [
       "Slam"
     ],
     "location": "Evin Daala",
-    "careerPreference": "Warrior"
+    "pathRequirement": "Warrior"
   },
   {
     "id": "grips_of_living_stone",
@@ -10049,7 +10049,7 @@ export const ITEMS: EquipmentItem[] = [
       "Might of stone"
     ],
     "location": "Erkil",
-    "careerPreference": "Rogue"
+    "pathRequirement": "Rogue"
   },
   {
     "id": "blood_sworn_gauntlets",
@@ -10068,7 +10068,7 @@ export const ITEMS: EquipmentItem[] = [
       "Resolve"
     ],
     "location": "Nephele (hexed)",
-    "careerPreference": "Warrior"
+    "pathRequirement": "Warrior"
   },
   {
     "id": "prowlers_handguards",
@@ -10087,7 +10087,7 @@ export const ITEMS: EquipmentItem[] = [
       "Sneak"
     ],
     "location": "Nephele (hexed)",
-    "careerPreference": "Rogue"
+    "pathRequirement": "Rogue"
   },
   {
     "id": "volcanists_handwraps",
@@ -10106,7 +10106,7 @@ export const ITEMS: EquipmentItem[] = [
       "Melt"
     ],
     "location": "Nephele (hexed)",
-    "careerPreference": "Mage"
+    "pathRequirement": "Mage"
   },
   {
     "id": "riders_jerkin",
@@ -10369,7 +10369,7 @@ export const ITEMS: EquipmentItem[] = [
       "Might of stone"
     ],
     "location": "Gaia",
-    "careerPreference": "Warrior"
+    "pathRequirement": "Warrior"
   },
   {
     "id": "gravedirt_girdle",
@@ -10388,7 +10388,7 @@ export const ITEMS: EquipmentItem[] = [
       "Parasite"
     ],
     "location": "Gaia",
-    "careerPreference": "Mage"
+    "pathRequirement": "Mage"
   },
   {
     "id": "preachers_coat",
@@ -10407,7 +10407,7 @@ export const ITEMS: EquipmentItem[] = [
       "Missionary's calling"
     ],
     "location": "Gaia",
-    "careerPreference": "Rogue"
+    "pathRequirement": "Rogue"
   },
   {
     "id": "nocturnal_leathers",
@@ -10426,7 +10426,7 @@ export const ITEMS: EquipmentItem[] = [
       "Savagery"
     ],
     "location": "Umbra",
-    "careerPreference": "Warrior"
+    "pathRequirement": "Warrior"
   },
   {
     "id": "electrified_vest",
@@ -10445,7 +10445,7 @@ export const ITEMS: EquipmentItem[] = [
       "Shock!"
     ],
     "location": "Boogaloo",
-    "careerPreference": "Rogue"
+    "pathRequirement": "Rogue"
   },
   {
     "id": "forest_cuirass",
@@ -10464,7 +10464,7 @@ export const ITEMS: EquipmentItem[] = [
       "Thorn armour"
     ],
     "location": "The weeper",
-    "careerPreference": "Warrior"
+    "pathRequirement": "Warrior"
   },
   {
     "id": "gator_aid",
@@ -10501,7 +10501,7 @@ export const ITEMS: EquipmentItem[] = [
       "Radiance"
     ],
     "location": "Drecko",
-    "careerPreference": "Warrior"
+    "pathRequirement": "Warrior"
   },
   {
     "id": "desolation_robes",
@@ -10538,7 +10538,7 @@ export const ITEMS: EquipmentItem[] = [
       "Cunning"
     ],
     "location": "Buckmaster Bill",
-    "careerPreference": "Warrior"
+    "pathRequirement": "Warrior"
   },
   {
     "id": "snipers_jacket",
@@ -10593,7 +10593,7 @@ export const ITEMS: EquipmentItem[] = [
       "Vanish"
     ],
     "location": "Buckmaster Bill (side quest)",
-    "careerPreference": "Warrior"
+    "pathRequirement": "Warrior"
   },
   {
     "id": "burnished_breastplate",
@@ -10630,7 +10630,7 @@ export const ITEMS: EquipmentItem[] = [
       "Channel"
     ],
     "location": "Sun vault",
-    "careerPreference": "Mage"
+    "pathRequirement": "Mage"
   },
   {
     "id": "widows_weave",
@@ -10649,7 +10649,7 @@ export const ITEMS: EquipmentItem[] = [
       "Weaver"
     ],
     "location": "Anansi",
-    "careerPreference": "Mage"
+    "pathRequirement": "Mage"
   },
   {
     "id": "snakeskin_coat",
@@ -10668,7 +10668,7 @@ export const ITEMS: EquipmentItem[] = [
       "Deceive"
     ],
     "location": "Kaala",
-    "careerPreference": "Rogue"
+    "pathRequirement": "Rogue"
   },
   {
     "id": "drakefire_raiment",
@@ -10687,7 +10687,7 @@ export const ITEMS: EquipmentItem[] = [
       "Fire aura"
     ],
     "location": "Issachar",
-    "careerPreference": "Mage"
+    "pathRequirement": "Mage"
   },
   {
     "id": "drakefire_chestguard",
@@ -10706,7 +10706,7 @@ export const ITEMS: EquipmentItem[] = [
       "Barbs"
     ],
     "location": "Issachar",
-    "careerPreference": "Warrior"
+    "pathRequirement": "Warrior"
   },
   {
     "id": "brace_of_fury",
@@ -10725,7 +10725,7 @@ export const ITEMS: EquipmentItem[] = [
       "Critical strike"
     ],
     "location": "Furies",
-    "careerPreference": "Rogue"
+    "pathRequirement": "Rogue"
   },
   {
     "id": "magma_hide",
@@ -10744,7 +10744,7 @@ export const ITEMS: EquipmentItem[] = [
       "Backdraft"
     ],
     "location": "Magma hounds",
-    "careerPreference": "Warrior"
+    "pathRequirement": "Warrior"
   },
   {
     "id": "sanguine_surcoat",
@@ -10763,7 +10763,7 @@ export const ITEMS: EquipmentItem[] = [
       "Dark pact"
     ],
     "location": "Joss",
-    "careerPreference": "Mage"
+    "pathRequirement": "Mage"
   },
   {
     "id": "mucus_membrane",
@@ -10782,7 +10782,7 @@ export const ITEMS: EquipmentItem[] = [
       "Immobilise"
     ],
     "location": "Chilopoda",
-    "careerPreference": "Warrior"
+    "pathRequirement": "Warrior"
   },
   {
     "id": "gluttons_robes",
@@ -10801,7 +10801,7 @@ export const ITEMS: EquipmentItem[] = [
       "Leech"
     ],
     "location": "Kuderas",
-    "careerPreference": "Mage"
+    "pathRequirement": "Mage"
   },
   {
     "id": "titan_forged_hauberk",
@@ -10820,7 +10820,7 @@ export const ITEMS: EquipmentItem[] = [
       "Thorn armour"
     ],
     "location": "Erkil",
-    "careerPreference": "Mage"
+    "pathRequirement": "Mage"
   },
   {
     "id": "crystal_plate",
@@ -10839,7 +10839,7 @@ export const ITEMS: EquipmentItem[] = [
       "Overpower"
     ],
     "location": "Nephele",
-    "careerPreference": "Warrior"
+    "pathRequirement": "Warrior"
   },
   {
     "id": "blood_sworn_chestguard",
@@ -10858,7 +10858,7 @@ export const ITEMS: EquipmentItem[] = [
       "Unstoppable"
     ],
     "location": "Ixion (hexed)",
-    "careerPreference": "Warrior"
+    "pathRequirement": "Warrior"
   },
   {
     "id": "prowlers_tunic",
@@ -10913,7 +10913,7 @@ export const ITEMS: EquipmentItem[] = [
       "Gouge"
     ],
     "location": "Krakatoa",
-    "careerPreference": "Rogue"
+    "pathRequirement": "Rogue"
   },
   {
     "id": "krakkas_casing",
@@ -10932,7 +10932,7 @@ export const ITEMS: EquipmentItem[] = [
       "Thorn armour"
     ],
     "location": "Krakatoa",
-    "careerPreference": "Warrior"
+    "pathRequirement": "Warrior"
   },
   {
     "id": "pilgrims_progress",
@@ -11109,7 +11109,7 @@ export const ITEMS: EquipmentItem[] = [
       "Unstoppable"
     ],
     "location": "Gaia",
-    "careerPreference": "Warrior"
+    "pathRequirement": "Warrior"
   },
   {
     "id": "storm_riders",
@@ -11128,7 +11128,7 @@ export const ITEMS: EquipmentItem[] = [
       "Pagan's spirit"
     ],
     "location": "Zephyr",
-    "careerPreference": "Rogue"
+    "pathRequirement": "Rogue"
   },
   {
     "id": "conga_kickers",
@@ -11147,7 +11147,7 @@ export const ITEMS: EquipmentItem[] = [
       "Lightning"
     ],
     "location": "Boogaloo",
-    "careerPreference": "Rogue"
+    "pathRequirement": "Rogue"
   },
   {
     "id": "lightning_loafers",
@@ -11166,7 +11166,7 @@ export const ITEMS: EquipmentItem[] = [
       "Lightning"
     ],
     "location": "Boogaloo",
-    "careerPreference": "Mage"
+    "pathRequirement": "Mage"
   },
   {
     "id": "stone_walkers",
@@ -11220,7 +11220,7 @@ export const ITEMS: EquipmentItem[] = [
       "Compulsion"
     ],
     "location": "Buckmaster Bill (side quest)",
-    "careerPreference": "Warrior"
+    "pathRequirement": "Warrior"
   },
   {
     "id": "rough_pelt_moccasins",
@@ -11239,7 +11239,7 @@ export const ITEMS: EquipmentItem[] = [
       "Dominate"
     ],
     "location": "Terral devil",
-    "careerPreference": "Mage"
+    "pathRequirement": "Mage"
   },
   {
     "id": "golden_greaves",
@@ -11258,7 +11258,7 @@ export const ITEMS: EquipmentItem[] = [
       "Charm"
     ],
     "location": "Sun vault",
-    "careerPreference": "Warrior"
+    "pathRequirement": "Warrior"
   },
   {
     "id": "enchanted_boots",
@@ -11313,7 +11313,7 @@ export const ITEMS: EquipmentItem[] = [
       "Fatal blow"
     ],
     "location": "Issachar",
-    "careerPreference": "Rogue"
+    "pathRequirement": "Rogue"
   },
   {
     "id": "lava_pads",
@@ -11332,7 +11332,7 @@ export const ITEMS: EquipmentItem[] = [
       "Fire shield"
     ],
     "location": "Magma hounds",
-    "careerPreference": "Mage"
+    "pathRequirement": "Mage"
   },
   {
     "id": "slime_skimmers",
@@ -11369,7 +11369,7 @@ export const ITEMS: EquipmentItem[] = [
       "Haste"
     ],
     "location": "Joss",
-    "careerPreference": "Warrior"
+    "pathRequirement": "Warrior"
   },
   {
     "id": "singed_footpads",
@@ -11388,7 +11388,7 @@ export const ITEMS: EquipmentItem[] = [
       "Sidestep"
     ],
     "location": "Ixion",
-    "careerPreference": "Rogue"
+    "pathRequirement": "Rogue"
   },
   {
     "id": "ixions_shackles",
@@ -11407,7 +11407,7 @@ export const ITEMS: EquipmentItem[] = [
       "Immobilise"
     ],
     "location": "Ixion",
-    "careerPreference": "Mage"
+    "pathRequirement": "Mage"
   },
   {
     "id": "frost_spike_boots",
@@ -11426,7 +11426,7 @@ export const ITEMS: EquipmentItem[] = [
       "Barbs"
     ],
     "location": "Nephele",
-    "careerPreference": "Warrior"
+    "pathRequirement": "Warrior"
   },
   {
     "id": "cornerstone_boots",
@@ -11445,7 +11445,7 @@ export const ITEMS: EquipmentItem[] = [
       "Insulated"
     ],
     "location": "Erkil",
-    "careerPreference": "Mage"
+    "pathRequirement": "Mage"
   },
   {
     "id": "knights_folly",
@@ -11796,7 +11796,7 @@ export const ITEMS: EquipmentItem[] = [
       "Critical strike"
     ],
     "location": "Stone giants",
-    "careerPreference": "Rogue"
+    "pathRequirement": "Rogue"
   },
   {
     "id": "black_peak",
@@ -11814,7 +11814,7 @@ export const ITEMS: EquipmentItem[] = [
       "Deep wound"
     ],
     "location": "Stone giants (special)",
-    "careerPreference": "Rogue"
+    "pathRequirement": "Rogue"
   },
   {
     "id": "twilight_scepter",
@@ -11833,7 +11833,7 @@ export const ITEMS: EquipmentItem[] = [
       "Wither"
     ],
     "location": "Custodian",
-    "careerPreference": "Mage"
+    "pathRequirement": "Mage"
   },
   {
     "id": "inscribed_fist",
@@ -11852,7 +11852,7 @@ export const ITEMS: EquipmentItem[] = [
       "Knockdown"
     ],
     "location": "White abbot",
-    "careerPreference": "Warrior"
+    "pathRequirement": "Warrior"
   },
   {
     "id": "frost_reavers_tongue",
@@ -11925,7 +11925,7 @@ export const ITEMS: EquipmentItem[] = [
       "Impale"
     ],
     "location": "Vendor/Emerald Isle",
-    "careerPreference": "Warrior"
+    "pathRequirement": "Warrior"
   },
   {
     "id": "abracabamba",
@@ -11944,7 +11944,7 @@ export const ITEMS: EquipmentItem[] = [
       "Blink"
     ],
     "location": "Vendor/Emerald Isle",
-    "careerPreference": "Mage"
+    "pathRequirement": "Mage"
   },
   {
     "id": "thunder",
@@ -11963,7 +11963,7 @@ export const ITEMS: EquipmentItem[] = [
       "Savage arms"
     ],
     "location": "Gaia",
-    "careerPreference": "Warrior"
+    "pathRequirement": "Warrior"
   },
   {
     "id": "broken_blade",
@@ -11982,7 +11982,7 @@ export const ITEMS: EquipmentItem[] = [
       "Bleed"
     ],
     "location": "Gaia",
-    "careerPreference": "Mage"
+    "pathRequirement": "Mage"
   },
   {
     "id": "tremor_stick",
@@ -12001,7 +12001,7 @@ export const ITEMS: EquipmentItem[] = [
       "Shock!"
     ],
     "location": "Boogaloo",
-    "careerPreference": "Warrior"
+    "pathRequirement": "Warrior"
   },
   {
     "id": "wind_baton",
@@ -12020,7 +12020,7 @@ export const ITEMS: EquipmentItem[] = [
       "Windblast"
     ],
     "location": "Zephyr",
-    "careerPreference": "Mage"
+    "pathRequirement": "Mage"
   },
   {
     "id": "glaive_of_souls",
@@ -12148,7 +12148,7 @@ export const ITEMS: EquipmentItem[] = [
       "Knockdown"
     ],
     "location": "Buckmaster Bill (side quest)",
-    "careerPreference": "Warrior"
+    "pathRequirement": "Warrior"
   },
   {
     "id": "nelsons_column",
@@ -12167,7 +12167,7 @@ export const ITEMS: EquipmentItem[] = [
       "Knockdown"
     ],
     "location": "Nelson",
-    "careerPreference": "Warrior"
+    "pathRequirement": "Warrior"
   },
   {
     "id": "bone_wild",
@@ -12222,7 +12222,7 @@ export const ITEMS: EquipmentItem[] = [
       "Rake"
     ],
     "location": "Perez",
-    "careerPreference": "Warrior"
+    "pathRequirement": "Warrior"
   },
   {
     "id": "crystal_dagger",
@@ -12241,7 +12241,7 @@ export const ITEMS: EquipmentItem[] = [
       "Gut ripper"
     ],
     "location": "Buckmaster Bill (side quest)",
-    "careerPreference": "Rogue"
+    "pathRequirement": "Rogue"
   },
   {
     "id": "ebon_cutlass",
@@ -12260,7 +12260,7 @@ export const ITEMS: EquipmentItem[] = [
       "Deep wound"
     ],
     "location": "Buckmaster Bill (side quest)",
-    "careerPreference": "Rogue"
+    "pathRequirement": "Rogue"
   },
   {
     "id": "sun_blaze",
@@ -12297,7 +12297,7 @@ export const ITEMS: EquipmentItem[] = [
       "Spirt hunter"
     ],
     "location": "Font of souls",
-    "careerPreference": "Warrior"
+    "pathRequirement": "Warrior"
   },
   {
     "id": "ancestral_blade",
@@ -12317,7 +12317,7 @@ export const ITEMS: EquipmentItem[] = [
       "bleed"
     ],
     "location": "Font of souls",
-    "careerPreference": "Rogue"
+    "pathRequirement": "Rogue"
   },
   {
     "id": "ancestral_stave",
@@ -12337,7 +12337,7 @@ export const ITEMS: EquipmentItem[] = [
       "focus"
     ],
     "location": "Font of souls",
-    "careerPreference": "Mage"
+    "pathRequirement": "Mage"
   },
   {
     "id": "ceremonial_dagger",
@@ -12375,7 +12375,7 @@ export const ITEMS: EquipmentItem[] = [
       "Fatal blow"
     ],
     "location": "Golden guards",
-    "careerPreference": "Warrior"
+    "pathRequirement": "Warrior"
   },
   {
     "id": "mortal_coil",
@@ -12394,7 +12394,7 @@ export const ITEMS: EquipmentItem[] = [
       "Reaper"
     ],
     "location": "Lich",
-    "careerPreference": "Rogue"
+    "pathRequirement": "Rogue"
   },
   {
     "id": "hunting_fork",
@@ -12413,7 +12413,7 @@ export const ITEMS: EquipmentItem[] = [
       "Skewer"
     ],
     "location": "Fisher king",
-    "careerPreference": "Warrior"
+    "pathRequirement": "Warrior"
   },
   {
     "id": "untamed_will",
@@ -12432,7 +12432,7 @@ export const ITEMS: EquipmentItem[] = [
       "Piercing"
     ],
     "location": "Gheira",
-    "careerPreference": "Rogue"
+    "pathRequirement": "Rogue"
   },
   {
     "id": "death_rattle",
@@ -12451,7 +12451,7 @@ export const ITEMS: EquipmentItem[] = [
       "Near death"
     ],
     "location": "Kaala",
-    "careerPreference": "Mage"
+    "pathRequirement": "Mage"
   },
   {
     "id": "comb_of_sailors_fingers",
@@ -12488,7 +12488,7 @@ export const ITEMS: EquipmentItem[] = [
       "Wish master"
     ],
     "location": "Hanuman",
-    "careerPreference": "Mage"
+    "pathRequirement": "Mage"
   },
   {
     "id": "dooms_harbinger",
@@ -12599,7 +12599,7 @@ export const ITEMS: EquipmentItem[] = [
       "Might of stone"
     ],
     "location": "Treasure vault",
-    "careerPreference": "Mage"
+    "pathRequirement": "Mage"
   },
   {
     "id": "crystal_hammer",
@@ -12618,7 +12618,7 @@ export const ITEMS: EquipmentItem[] = [
       "Stagger"
     ],
     "location": "Tourmalus",
-    "careerPreference": "Warrior"
+    "pathRequirement": "Warrior"
   },
   {
     "id": "serrated_scapula",
@@ -12637,7 +12637,7 @@ export const ITEMS: EquipmentItem[] = [
       "Fallen hero"
     ],
     "location": "Evin Daala",
-    "careerPreference": "Warrior"
+    "pathRequirement": "Warrior"
   },
   {
     "id": "spoke_of_the_wheel",
@@ -12656,7 +12656,7 @@ export const ITEMS: EquipmentItem[] = [
       "Deep wound"
     ],
     "location": "Ixion",
-    "careerPreference": "Rogue"
+    "pathRequirement": "Rogue"
   },
   {
     "id": "abandoned_hope",
@@ -12675,7 +12675,7 @@ export const ITEMS: EquipmentItem[] = [
       "Gut ripper"
     ],
     "location": "Nephele",
-    "careerPreference": "Rogue"
+    "pathRequirement": "Rogue"
   },
   {
     "id": "azure_embers",
@@ -12694,7 +12694,7 @@ export const ITEMS: EquipmentItem[] = [
       "Disrupt"
     ],
     "location": "Nephele",
-    "careerPreference": "Mage"
+    "pathRequirement": "Mage"
   },
   {
     "id": "hellslide_halberd",
@@ -12713,7 +12713,7 @@ export const ITEMS: EquipmentItem[] = [
       "Impale"
     ],
     "location": "Krakatoa",
-    "careerPreference": "Warrior"
+    "pathRequirement": "Warrior"
   },
   {
     "id": "avalanche",
@@ -12732,7 +12732,7 @@ export const ITEMS: EquipmentItem[] = [
       "Shatter"
     ],
     "location": "Krakatoa",
-    "careerPreference": "Mage"
+    "pathRequirement": "Mage"
   },
   {
     "id": "silver_leaf",
@@ -13148,7 +13148,7 @@ export const ITEMS: EquipmentItem[] = [
       "Pound"
     ],
     "location": "White abbot",
-    "careerPreference": "Warrior"
+    "pathRequirement": "Warrior"
   },
   {
     "id": "dawnlight",
@@ -13185,7 +13185,7 @@ export const ITEMS: EquipmentItem[] = [
       "Venom"
     ],
     "location": "Vendor/Emerald Isle",
-    "careerPreference": "Rogue"
+    "pathRequirement": "Rogue"
   },
   {
     "id": "monarch_viper",
@@ -13204,7 +13204,7 @@ export const ITEMS: EquipmentItem[] = [
       "Venom"
     ],
     "location": "Vendor/Emerald Isle",
-    "careerPreference": "Rogue"
+    "pathRequirement": "Rogue"
   },
   {
     "id": "lesser_bushmaster",
@@ -13223,7 +13223,7 @@ export const ITEMS: EquipmentItem[] = [
       "Constrictor"
     ],
     "location": "Vendor/Emerald Isle",
-    "careerPreference": "Rogue"
+    "pathRequirement": "Rogue"
   },
   {
     "id": "bogglespiffs_digest",
@@ -13260,7 +13260,7 @@ export const ITEMS: EquipmentItem[] = [
       "Savage arms"
     ],
     "location": "Zephyr",
-    "careerPreference": "Warrior"
+    "pathRequirement": "Warrior"
   },
   {
     "id": "silver_flight",
@@ -13279,7 +13279,7 @@ export const ITEMS: EquipmentItem[] = [
       "Charm"
     ],
     "location": "Zephyr",
-    "careerPreference": "Rogue"
+    "pathRequirement": "Rogue"
   },
   {
     "id": "lost_scriptures",
@@ -13298,7 +13298,7 @@ export const ITEMS: EquipmentItem[] = [
       "Cistene's chattels"
     ],
     "location": "Zephyr",
-    "careerPreference": "Mage"
+    "pathRequirement": "Mage"
   },
   {
     "id": "feral_falcate",
@@ -13317,7 +13317,7 @@ export const ITEMS: EquipmentItem[] = [
       "Pagan's spirit"
     ],
     "location": "Lycanth",
-    "careerPreference": "Rogue"
+    "pathRequirement": "Rogue"
   },
   {
     "id": "bone_shaker",
@@ -13336,7 +13336,7 @@ export const ITEMS: EquipmentItem[] = [
       "Fear"
     ],
     "location": "Witch",
-    "careerPreference": "Mage"
+    "pathRequirement": "Mage"
   },
   {
     "id": "creek_guard",
@@ -13355,7 +13355,7 @@ export const ITEMS: EquipmentItem[] = [
       "Retaliation"
     ],
     "location": "Alligator",
-    "careerPreference": "Warrior"
+    "pathRequirement": "Warrior"
   },
   {
     "id": "shrunken_hand",
@@ -13392,7 +13392,7 @@ export const ITEMS: EquipmentItem[] = [
       "Roll with it"
     ],
     "location": "Tigris cages (special)",
-    "careerPreference": "Warrior"
+    "pathRequirement": "Warrior"
   },
   {
     "id": "brazen_bar",
@@ -13447,7 +13447,7 @@ export const ITEMS: EquipmentItem[] = [
       "Critical strike"
     ],
     "location": "Nelson",
-    "careerPreference": "Rogue"
+    "pathRequirement": "Rogue"
   },
   {
     "id": "the_nosepicker",
@@ -13520,7 +13520,7 @@ export const ITEMS: EquipmentItem[] = [
       "Venom"
     ],
     "location": "Buckmaster Bill (side quest)",
-    "careerPreference": "Rogue"
+    "pathRequirement": "Rogue"
   },
   {
     "id": "medicine_staff",
@@ -13539,7 +13539,7 @@ export const ITEMS: EquipmentItem[] = [
       "Greater heal"
     ],
     "location": "Buckmaster Bill (side quest)",
-    "careerPreference": "Mage"
+    "pathRequirement": "Mage"
   },
   {
     "id": "high_priests_scepter",
@@ -13666,7 +13666,7 @@ export const ITEMS: EquipmentItem[] = [
       "Piercing"
     ],
     "location": "Anansi",
-    "careerPreference": "Rogue"
+    "pathRequirement": "Rogue"
   },
   {
     "id": "carapace_crest",
@@ -13685,7 +13685,7 @@ export const ITEMS: EquipmentItem[] = [
       "Webbed"
     ],
     "location": "Anansi",
-    "careerPreference": "Warrior"
+    "pathRequirement": "Warrior"
   },
   {
     "id": "spinneret_of_shadows",
@@ -13704,7 +13704,7 @@ export const ITEMS: EquipmentItem[] = [
       "Webbed"
     ],
     "location": "Anansi",
-    "careerPreference": "Mage"
+    "pathRequirement": "Mage"
   },
   {
     "id": "drakes_defender",
@@ -13723,7 +13723,7 @@ export const ITEMS: EquipmentItem[] = [
       "Piercing"
     ],
     "location": "Issachar",
-    "careerPreference": "Warrior"
+    "pathRequirement": "Warrior"
   },
   {
     "id": "self_published_grimoire",
@@ -13742,7 +13742,7 @@ export const ITEMS: EquipmentItem[] = [
       "Dark pact"
     ],
     "location": "Printing press",
-    "careerPreference": "Mage"
+    "pathRequirement": "Mage"
   },
   {
     "id": "self_published_grimoire",
@@ -13761,7 +13761,7 @@ export const ITEMS: EquipmentItem[] = [
       "Surge"
     ],
     "location": "Printing press",
-    "careerPreference": "Mage"
+    "pathRequirement": "Mage"
   },
   {
     "id": "self_published_grimoire",
@@ -13780,7 +13780,7 @@ export const ITEMS: EquipmentItem[] = [
       "Regrowth"
     ],
     "location": "Printing press",
-    "careerPreference": "Mage"
+    "pathRequirement": "Mage"
   },
   {
     "id": "self_published_grimoire",
@@ -13799,7 +13799,7 @@ export const ITEMS: EquipmentItem[] = [
       "Trickster"
     ],
     "location": "Printing press",
-    "careerPreference": "Mage"
+    "pathRequirement": "Mage"
   },
   {
     "id": "self_published_tome",
@@ -13818,7 +13818,7 @@ export const ITEMS: EquipmentItem[] = [
       "Dark pact"
     ],
     "location": "Printing press",
-    "careerPreference": "Mage"
+    "pathRequirement": "Mage"
   },
   {
     "id": "self_published_tome",
@@ -13837,7 +13837,7 @@ export const ITEMS: EquipmentItem[] = [
       "Trickster"
     ],
     "location": "Printing press",
-    "careerPreference": "Mage"
+    "pathRequirement": "Mage"
   },
   {
     "id": "self_published_tome",
@@ -13856,7 +13856,7 @@ export const ITEMS: EquipmentItem[] = [
       "Regrowth"
     ],
     "location": "Printing press",
-    "careerPreference": "Mage"
+    "pathRequirement": "Mage"
   },
   {
     "id": "self_published_tome",
@@ -13875,7 +13875,7 @@ export const ITEMS: EquipmentItem[] = [
       "Surge"
     ],
     "location": "Printing press",
-    "careerPreference": "Mage"
+    "pathRequirement": "Mage"
   },
   {
     "id": "mortis_shard_of_doom_w_r_",
@@ -13914,7 +13914,7 @@ export const ITEMS: EquipmentItem[] = [
       "sear"
     ],
     "location": "Rune forge",
-    "careerPreference": "Mage"
+    "pathRequirement": "Mage"
   },
   {
     "id": "light_forged_bulwark",
@@ -13933,7 +13933,7 @@ export const ITEMS: EquipmentItem[] = [
       "Defender"
     ],
     "location": "Vendor/Haunted shop",
-    "careerPreference": "Warrior"
+    "pathRequirement": "Warrior"
   },
   {
     "id": "hound_hook",
@@ -13952,7 +13952,7 @@ export const ITEMS: EquipmentItem[] = [
       "Gouge"
     ],
     "location": "Magma hounds",
-    "careerPreference": "Rogue"
+    "pathRequirement": "Rogue"
   },
   {
     "id": "bone_rot",
@@ -13971,7 +13971,7 @@ export const ITEMS: EquipmentItem[] = [
       "Leech"
     ],
     "location": "Nergal",
-    "careerPreference": "Warrior"
+    "pathRequirement": "Warrior"
   },
   {
     "id": "dark_star",
@@ -14044,7 +14044,7 @@ export const ITEMS: EquipmentItem[] = [
       "Blood archer"
     ],
     "location": "Joss",
-    "careerPreference": "Rogue"
+    "pathRequirement": "Rogue"
   },
   {
     "id": "blood_thorn",
@@ -14063,7 +14063,7 @@ export const ITEMS: EquipmentItem[] = [
       "Gouge"
     ],
     "location": "Evin Daala",
-    "careerPreference": "Rogue"
+    "pathRequirement": "Rogue"
   },
   {
     "id": "ixions_wheel",
@@ -14082,7 +14082,7 @@ export const ITEMS: EquipmentItem[] = [
       "Fire aura"
     ],
     "location": "Ixion",
-    "careerPreference": "Warrior"
+    "pathRequirement": "Warrior"
   },
   {
     "id": "b_is_for_banshee",
@@ -14101,7 +14101,7 @@ export const ITEMS: EquipmentItem[] = [
       "Windblast"
     ],
     "location": "Nephele",
-    "careerPreference": "Mage"
+    "pathRequirement": "Mage"
   },
   {
     "id": "shiverspine",
@@ -14120,7 +14120,7 @@ export const ITEMS: EquipmentItem[] = [
       "frostbite"
     ],
     "location": "Nephele",
-    "careerPreference": "Rogue"
+    "pathRequirement": "Rogue"
   },
   {
     "id": "erkils_hacker",
@@ -14139,7 +14139,7 @@ export const ITEMS: EquipmentItem[] = [
       "Compulsion"
     ],
     "location": "Erkil",
-    "careerPreference": "Warrior"
+    "pathRequirement": "Warrior"
   },
   {
     "id": "blackthorn_twister",
@@ -14158,7 +14158,7 @@ export const ITEMS: EquipmentItem[] = [
       "Cruel twist"
     ],
     "location": "Erkil",
-    "careerPreference": "Rogue"
+    "pathRequirement": "Rogue"
   },
   {
     "id": "krakkas_vengeance",
@@ -14177,7 +14177,7 @@ export const ITEMS: EquipmentItem[] = [
       "Piercing"
     ],
     "location": "Krakatoa",
-    "careerPreference": "Rogue"
+    "pathRequirement": "Rogue"
   },
   {
     "id": "stones_of_dissolution",
@@ -14196,7 +14196,7 @@ export const ITEMS: EquipmentItem[] = [
       "Confound"
     ],
     "location": "Krakatoa",
-    "careerPreference": "Mage"
+    "pathRequirement": "Mage"
   },
   {
     "id": "wolfs_paw",
@@ -14323,7 +14323,7 @@ export const ITEMS: EquipmentItem[] = [
       "Druid"
     ],
     "location": "Damaris",
-    "careerPreference": "Mage"
+    "pathRequirement": "Mage"
   },
   {
     "id": "benediction",
@@ -14341,7 +14341,7 @@ export const ITEMS: EquipmentItem[] = [
       "Acolyte"
     ],
     "location": "Benin",
-    "careerPreference": "Mage"
+    "pathRequirement": "Mage"
   },
   {
     "id": "earthen_ashes",
@@ -14410,7 +14410,7 @@ export const ITEMS: EquipmentItem[] = [
       "Trickster"
     ],
     "location": "Umbra",
-    "careerPreference": "Rogue"
+    "pathRequirement": "Rogue"
   },
   {
     "id": "screaming_skull",
@@ -14480,7 +14480,7 @@ export const ITEMS: EquipmentItem[] = [
       "Disrupt"
     ],
     "location": "Sitadell",
-    "careerPreference": "Warrior"
+    "pathRequirement": "Warrior"
   },
   {
     "id": "lich_stone",
@@ -14498,7 +14498,7 @@ export const ITEMS: EquipmentItem[] = [
       "Runecaster"
     ],
     "location": "Lich",
-    "careerPreference": "Mage"
+    "pathRequirement": "Mage"
   },
   {
     "id": "eye_of_a_kraken_w_r_",
@@ -14533,7 +14533,7 @@ export const ITEMS: EquipmentItem[] = [
       "Venommancer"
     ],
     "location": "Kaala",
-    "careerPreference": "Rogue"
+    "pathRequirement": "Rogue"
   },
   {
     "id": "drake_spirit",
@@ -14551,7 +14551,7 @@ export const ITEMS: EquipmentItem[] = [
       "Drake"
     ],
     "location": "Kaala",
-    "careerPreference": "Warrior"
+    "pathRequirement": "Warrior"
   },
   {
     "id": "fade_splinter_of_shadow",
@@ -14604,7 +14604,7 @@ export const ITEMS: EquipmentItem[] = [
       "Geomancer"
     ],
     "location": "Secure vault",
-    "careerPreference": "Mage"
+    "pathRequirement": "Mage"
   },
   {
     "id": "blood_soul",
@@ -14623,7 +14623,7 @@ export const ITEMS: EquipmentItem[] = [
       "Weaver"
     ],
     "location": "Evin Daala",
-    "careerPreference": "Warrior"
+    "pathRequirement": "Warrior"
   },
   {
     "id": "frozen_heart",
@@ -14658,7 +14658,7 @@ export const ITEMS: EquipmentItem[] = [
       "Titan"
     ],
     "location": "Erkil",
-    "careerPreference": "Warrior"
+    "pathRequirement": "Warrior"
   },
   {
     "id": "wanderers_wytchstone",
@@ -14876,7 +14876,7 @@ export const ITEMS: EquipmentItem[] = [
       "Seraphim's symbols"
     ],
     "location": "Boogaloo",
-    "careerPreference": "Warrior"
+    "pathRequirement": "Warrior"
   },
   {
     "id": "silver_bullet",
@@ -14894,7 +14894,7 @@ export const ITEMS: EquipmentItem[] = [
       "Quicksilver"
     ],
     "location": "Lycanth",
-    "careerPreference": "Mage"
+    "pathRequirement": "Mage"
   },
   {
     "id": "black_pearl_rosary",
@@ -14912,7 +14912,7 @@ export const ITEMS: EquipmentItem[] = [
       "Cistene's chattels"
     ],
     "location": "Umbra",
-    "careerPreference": "Mage"
+    "pathRequirement": "Mage"
   },
   {
     "id": "wish_bone",
@@ -14947,7 +14947,7 @@ export const ITEMS: EquipmentItem[] = [
       "Wither"
     ],
     "location": "Grub knight",
-    "careerPreference": "Mage"
+    "pathRequirement": "Mage"
   },
   {
     "id": "brocks_medallion",
@@ -15050,7 +15050,7 @@ export const ITEMS: EquipmentItem[] = [
       "Piercing"
     ],
     "location": "Sitadell",
-    "careerPreference": "Mage"
+    "pathRequirement": "Mage"
   },
   {
     "id": "hanumans_hair",
@@ -15086,7 +15086,7 @@ export const ITEMS: EquipmentItem[] = [
       "Wave"
     ],
     "location": "Fisher king",
-    "careerPreference": "Mage"
+    "pathRequirement": "Mage"
   },
   {
     "id": "hunters_heart",
@@ -15104,7 +15104,7 @@ export const ITEMS: EquipmentItem[] = [
       "Savage call"
     ],
     "location": "Gheira",
-    "careerPreference": "Warrior"
+    "pathRequirement": "Warrior"
   },
   {
     "id": "illumanti_circlet",
@@ -15123,7 +15123,7 @@ export const ITEMS: EquipmentItem[] = [
       "Confound"
     ],
     "location": "Goblin looters",
-    "careerPreference": "Mage"
+    "pathRequirement": "Mage"
   },
   {
     "id": "gullet_scales",
@@ -15159,7 +15159,7 @@ export const ITEMS: EquipmentItem[] = [
       "Greater heal"
     ],
     "location": "Evin Daala",
-    "careerPreference": "Mage"
+    "pathRequirement": "Mage"
   },
   {
     "id": "soldering_iron",
@@ -15178,7 +15178,7 @@ export const ITEMS: EquipmentItem[] = [
       "Dominate"
     ],
     "location": "Ixion",
-    "careerPreference": "Warrior"
+    "pathRequirement": "Warrior"
   },
   {
     "id": "chained_heart",
@@ -15197,7 +15197,7 @@ export const ITEMS: EquipmentItem[] = [
       "Channel"
     ],
     "location": "Ixion",
-    "careerPreference": "Mage"
+    "pathRequirement": "Mage"
   },
   {
     "id": "garms_whistle",
@@ -15234,7 +15234,7 @@ export const ITEMS: EquipmentItem[] = [
       "Sweet spot"
     ],
     "location": "Krakatoa",
-    "careerPreference": "Rogue"
+    "pathRequirement": "Rogue"
   },
   {
     "id": "puritans_band",
@@ -15523,7 +15523,7 @@ export const ITEMS: EquipmentItem[] = [
       "Underhand"
     ],
     "location": "Gaia",
-    "careerPreference": "Rogue"
+    "pathRequirement": "Rogue"
   },
   {
     "id": "pious_halo",
@@ -15541,7 +15541,7 @@ export const ITEMS: EquipmentItem[] = [
       "Seraphim's symbols"
     ],
     "location": "Umbra",
-    "careerPreference": "Warrior"
+    "pathRequirement": "Warrior"
   },
   {
     "id": "shard_of_sky",
@@ -15559,7 +15559,7 @@ export const ITEMS: EquipmentItem[] = [
       "Blind"
     ],
     "location": "Zephyr",
-    "careerPreference": "Rogue"
+    "pathRequirement": "Rogue"
   },
   {
     "id": "circle_of_storms",
@@ -15577,7 +15577,7 @@ export const ITEMS: EquipmentItem[] = [
       "Lightning"
     ],
     "location": "Zephyr",
-    "careerPreference": "Warrior"
+    "pathRequirement": "Warrior"
   },
   {
     "id": "weirdstone",
@@ -15595,7 +15595,7 @@ export const ITEMS: EquipmentItem[] = [
       "Focus"
     ],
     "location": "Lycanth",
-    "careerPreference": "Mage"
+    "pathRequirement": "Mage"
   },
   {
     "id": "rain_dance",
@@ -15613,7 +15613,7 @@ export const ITEMS: EquipmentItem[] = [
       "Call of nature"
     ],
     "location": "Boogaloo",
-    "careerPreference": "Mage"
+    "pathRequirement": "Mage"
   },
   {
     "id": "seal_of_shadows",
@@ -15632,7 +15632,7 @@ export const ITEMS: EquipmentItem[] = [
       "Veil"
     ],
     "location": "Umbra",
-    "careerPreference": "Mage"
+    "pathRequirement": "Mage"
   },
   {
     "id": "zilla_bling",
@@ -15703,7 +15703,7 @@ export const ITEMS: EquipmentItem[] = [
       "Might of stone"
     ],
     "location": "Guano chest",
-    "careerPreference": "Mage"
+    "pathRequirement": "Mage"
   },
   {
     "id": "ring_of_remedies",
@@ -15721,7 +15721,7 @@ export const ITEMS: EquipmentItem[] = [
       "Cauterise"
     ],
     "location": "Buckmaster Bill (side quest)",
-    "careerPreference": "Mage"
+    "pathRequirement": "Mage"
   },
   {
     "id": "fyre_fiend",
@@ -15754,7 +15754,7 @@ export const ITEMS: EquipmentItem[] = [
       "(+4 health) Refresh"
     ],
     "location": "Lich",
-    "careerPreference": "Warrior"
+    "pathRequirement": "Warrior"
   },
   {
     "id": "fishers_friend",
@@ -15772,7 +15772,7 @@ export const ITEMS: EquipmentItem[] = [
       "Hooked"
     ],
     "location": "Fisher king",
-    "careerPreference": "Rogue"
+    "pathRequirement": "Rogue"
   },
   {
     "id": "kiss_of_a_princess",
@@ -15807,7 +15807,7 @@ export const ITEMS: EquipmentItem[] = [
       "Disease"
     ],
     "location": "Gheira",
-    "careerPreference": "Mage"
+    "pathRequirement": "Mage"
   },
   {
     "id": "spark_stone",
@@ -15825,7 +15825,7 @@ export const ITEMS: EquipmentItem[] = [
       "Lightning"
     ],
     "location": "Issachar",
-    "careerPreference": "Rogue"
+    "pathRequirement": "Rogue"
   },
   {
     "id": "twilight_tinder",
@@ -15843,7 +15843,7 @@ export const ITEMS: EquipmentItem[] = [
       "Overload"
     ],
     "location": "Issachar",
-    "careerPreference": "Mage"
+    "pathRequirement": "Mage"
   },
   {
     "id": "abyssal_firestone",
@@ -15878,7 +15878,7 @@ export const ITEMS: EquipmentItem[] = [
       "Vortex"
     ],
     "location": "Book wyrm",
-    "careerPreference": "Mage"
+    "pathRequirement": "Mage"
   },
   {
     "id": "aethereal",
@@ -15913,7 +15913,7 @@ export const ITEMS: EquipmentItem[] = [
       "Bleed"
     ],
     "location": "Evin Daala",
-    "careerPreference": "Mage"
+    "pathRequirement": "Mage"
   },
   {
     "id": "heat_of_ardour",
@@ -15931,7 +15931,7 @@ export const ITEMS: EquipmentItem[] = [
       "Sear"
     ],
     "location": "Ixion",
-    "careerPreference": "Warrior"
+    "pathRequirement": "Warrior"
   },
   {
     "id": "crucifixion_nail",
@@ -15949,7 +15949,7 @@ export const ITEMS: EquipmentItem[] = [
       "Sweet spot"
     ],
     "location": "Ixion",
-    "careerPreference": "Rogue"
+    "pathRequirement": "Rogue"
   },
   {
     "id": "circle_of_sacrifice",
@@ -15967,7 +15967,7 @@ export const ITEMS: EquipmentItem[] = [
       "Penance"
     ],
     "location": "Ixion",
-    "careerPreference": "Mage"
+    "pathRequirement": "Mage"
   },
   {
     "id": "the_dispossessed",
@@ -15986,7 +15986,7 @@ export const ITEMS: EquipmentItem[] = [
       "Steal"
     ],
     "location": "Nephele",
-    "careerPreference": "Rogue"
+    "pathRequirement": "Rogue"
   },
   {
     "id": "ironbeard_band",
@@ -16004,14 +16004,14 @@ export const ITEMS: EquipmentItem[] = [
       "Counter"
     ],
     "location": "Erkil",
-    "careerPreference": "Warrior"
+    "pathRequirement": "Warrior"
   }
 ];
 
 export const getItemsBySlot = (slot: string) => {
-  return ITEMS.filter(item => {
-    if (slot === 'ring1' || slot === 'ring2') return item.type === 'ring';
-    return item.type === slot;
-  });
+    return ITEMS.filter(item => {
+        if (slot === 'ring1' || slot === 'ring2') return item.type === 'ring';
+        return item.type === slot;
+    });
 };
 

@@ -7,6 +7,7 @@ import { getAbilityDefinition, getAbilityIcon } from '../../mechanics/abilityReg
 import { getCareersForPath } from '../../data/careers';
 
 import DqCard from '../Shared/DqCard';
+import Modal from '../Shared/Modal';
 
 interface HeroStatsProps {
     hero: Hero;
@@ -14,7 +15,7 @@ interface HeroStatsProps {
     onHealthChange: (value: number) => void;
     onMoneyChange: (value: number) => void;
     onNameChange: (value: string) => void;
-    onPathChange: (value: HeroPath) => void;
+    onPathChange: (value: HeroPath, onItemsRemoved?: (items: string[]) => void) => void;
     onCareerChange: (value: string) => void;
 }
 
@@ -35,6 +36,7 @@ const HeroStats: React.FC<HeroStatsProps> = ({
     onCareerChange
 }) => {
     const { stats, money } = hero;
+    const [warningMessage, setWarningMessage] = React.useState<string | null>(null);
 
     // Process abilities for display (count duplicates)
     const processedAbilities = React.useMemo(() => {
@@ -45,6 +47,13 @@ const HeroStats: React.FC<HeroStatsProps> = ({
 
     const availableCareers = React.useMemo(() =>
         hero.path ? getCareersForPath(hero.path) : [], [hero.path]);
+
+    const handlePathChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+        const newPath = e.target.value as HeroPath;
+        onPathChange(newPath, (removedItems) => {
+            setWarningMessage(`The following items were unequipped due to path requirements:\n\n${removedItems.join('\n')}`);
+        });
+    };
 
     return (
         <DqCard title="Hero Sheet" headerContent={null}>
@@ -63,7 +72,7 @@ const HeroStats: React.FC<HeroStatsProps> = ({
                     <select
                         className="hero-input"
                         value={hero.path}
-                        onChange={(e) => onPathChange(e.target.value as HeroPath)}
+                        onChange={handlePathChange}
                     >
                         <option value="">No Path</option>
                         <option value="Warrior">Warrior (+15 HP)</option>
@@ -159,6 +168,19 @@ const HeroStats: React.FC<HeroStatsProps> = ({
                     </div>
                 )}
             </div>
+            {warningMessage && (
+                <Modal
+                    title="Equipment Removed"
+                    onClose={() => setWarningMessage(null)}
+                    actions={
+                        <button className="btn btn-primary" onClick={() => setWarningMessage(null)}>
+                            OK
+                        </button>
+                    }
+                >
+                    <div style={{ whiteSpace: 'pre-line' }}>{warningMessage}</div>
+                </Modal>
+            )}
         </DqCard >
     );
 };

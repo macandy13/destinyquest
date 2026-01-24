@@ -98,7 +98,7 @@ const processedItems = rawData.slice(1).map((line, index) => {
         stats: {},
         abilities: abilities.map(a => a.trim()).filter(a => a !== 'None'),
         location: location,
-        careerPreference: career
+        pathRequirement: career
     };
 
 

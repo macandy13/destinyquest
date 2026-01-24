@@ -70,6 +70,7 @@ const EquipmentSlots: React.FC<EquipmentSlotsProps> = ({ hero, onEquip, onUnequi
           slot={selectedSlot}
           onSelect={(item) => handleEquip(item as EquipmentItem)}
           onClose={() => setSelectedSlot(null)}
+          heroPath={hero.path}
         />
       )}
     </div>

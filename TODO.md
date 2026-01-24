@@ -1,14 +1,12 @@
 Bugs:
 - Roll Damage might only be applied once all rolls are confirmed (at damage dealing time)
-
-Optimizations
-- [x] Skip passive abilities phase if there are no passive abilities
-- Obey path requirements in equipment (filter)
+- When changing the path, the current health should be set to max health.
 
 Features:
 - Support nodes
 - Support full customization of state during combat
 - Implement skill checks
+- Support manually changing max health
 
 Refactoring:
 - Consolidate hero and enemy skills

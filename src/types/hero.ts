@@ -25,7 +25,7 @@ export interface Item {
 export interface EquipmentItem extends Item {
     type: EquipmentType; // The type of item (e.g., 'ring')
     cost?: number; // Cost in gold (if applicable)
-    careerPreference?: HeroPath; // W/M/R requirement
+    pathRequirement?: HeroPath; // W/M/R requirement
     description?: string;
     stats?: Partial<HeroStats>;
     abilities?: string[];
