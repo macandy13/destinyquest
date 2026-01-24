@@ -241,22 +241,22 @@ export function resolveInteraction(state: CombatState, data: InteractionResponse
     }
 
     const { requests, ability, callback } = state.pendingInteraction;
-    let nextState: CombatState = { ...state, pendingInteraction: undefined };
-    nextState = callback(nextState, data);
+    state = { ...state, pendingInteraction: undefined };
+    state = callback(state, data);
 
     // Decrement uses via useAbility helper to ensure immutability
     // We assume the ability name in pendingInteraction matches the one in activeAbilities
     // Note: pendingInteraction.ability is a snapshot, so we use its name to look up and decrement the current state's version.
     if (ability.uses) {
-        nextState = useAbility(nextState, ability.owner, ability.name);
+        state = useAbility(state, ability.owner, ability.name);
     }
 
     // Track usage for interactions (as they were delayed activations)
     const definition = getAbilityDefinition(ability.name);
     if (definition && ['speed', 'combat'].includes(definition.type)) {
-        nextState = {
-            ...nextState,
-            usedAbilities: [...(nextState.usedAbilities || []), { name: ability.name, type: definition.type }]
+        state = {
+            ...state,
+            usedAbilities: [...(state.usedAbilities || []), { name: ability.name, type: definition.type }]
         };
     }
 
@@ -267,7 +267,7 @@ export function resolveInteraction(state: CombatState, data: InteractionResponse
             state = setDamageRoll(state, state.damage?.damageRolls);
         }
     }
-    return checkForCombatEnd(nextState);
+    return checkForCombatEnd(state);
 }
 
 export function cancelInteraction(state: CombatState): CombatState {

@@ -1,6 +1,5 @@
 Bugs:
 - Heal does not work
-- Charm does not recalculate winner
 - Evade does not skip damage
 
 Optimizations
