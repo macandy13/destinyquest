@@ -154,7 +154,6 @@ describe('CombatEngine', () => {
             state = applyDamage(state);
 
             // Enemy starts with 10 health. 10 - 5 = 5.
-            expect(state.phase).toBe('apply-damage');
             expect(state.enemies[0].stats.health).toBe(5);
         });
 

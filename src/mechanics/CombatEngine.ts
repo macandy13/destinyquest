@@ -541,7 +541,15 @@ export function applyDamage(state: CombatState): CombatState {
         breakdown.totalDamage,
         `Total attack damage to ${victim}: ${breakdown.totalDamage} = ${breakdown.diceTotal} + ${breakdown.skill} + ${breakdown.modifiersTotal} - ${breakdown.armour}`
     );
-    return checkForCombatEnd(state);
+    state = checkForCombatEnd(state);
+    if (state.phase === 'combat-end') return state;
+
+    const { previews } = getPassiveAbilityPreview(state);
+    if (previews.length === 0) {
+        return applyPassiveAbilities(state);
+    }
+
+    return state;
 }
 
 function runOnPassiveAbilityHooks(state: CombatState): CombatState {

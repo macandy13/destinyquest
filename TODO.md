@@ -1,14 +1,9 @@
 Bugs:
-- Heal does not work
-- Evade does not skip damage
+- Roll Damage might only be applied once all rolls are confirmed (at damage dealing time)
 
 Optimizations
-- Skip passive abilities phase if there are no passive abilities
+- [x] Skip passive abilities phase if there are no passive abilities
 - Obey path requirements in equipment (filter)
-
-Skills:
-- Implement missing special skills
-- Consolidate hero and enemy skills
 
 Features:
 - Support nodes
@@ -16,6 +11,7 @@ Features:
 - Implement skill checks
 
 Refactoring:
+- Consolidate hero and enemy skills
 - Convert from CSV to JSON during app load, avoiding the intermediate steps
 
 ## Special Abilities Status
