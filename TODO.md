@@ -6,7 +6,10 @@ Features:
 - Support nodes
 - Support full customization of state during combat
 - Implement skill checks
-- Support manually changing max health
+- Support manually changing max 
+- Save heros in the Cloud
+- Support multiple heros
+- Select current book/act and restrict items and monsters
 
 Refactoring:
 - Consolidate hero and enemy skills

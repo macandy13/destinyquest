@@ -89,11 +89,30 @@ export function useHero() {
             }
         }
 
+        // Calculate new max health to reset current health
+        let newMaxHealth = hero.stats.maxHealth;
+
+        // Add Path bonuses
+        if (path === 'Warrior') newMaxHealth += 15;
+        if (path === 'Mage') newMaxHealth += 10;
+        if (path === 'Rogue') newMaxHealth += 5;
+
+        // Add stats from remaining equipment
+        Object.values(newEquipment).forEach(item => {
+            if (item && item.stats && item.stats.maxHealth) {
+                newMaxHealth += item.stats.maxHealth;
+            }
+        });
+
         setHero(prev => ({
             ...prev,
             path,
             career: '', // Reset career when path changes
-            equipment: newEquipment
+            equipment: newEquipment,
+            stats: {
+                ...prev.stats,
+                health: newMaxHealth
+            }
         }));
     };
 

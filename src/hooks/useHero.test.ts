@@ -16,7 +16,12 @@ const MOCK_ITEM: EquipmentItem = testEquipment({
     }
 });
 
+
 describe('useHero Hook', () => {
+    beforeEach(() => {
+        localStorage.clear();
+    });
+
     it('should initialize with default stats', () => {
         const { result } = renderHook(() => useHero());
         expect(result.current.hero.stats.maxHealth).toBeGreaterThan(0);
@@ -86,5 +91,26 @@ describe('useHero Hook', () => {
         // Check for Gladiator abilities (Blood Rage, Head Butt)
         expect(result.current.activeAbilities).toContain('Blood Rage');
         expect(result.current.activeAbilities).toContain('Head Butt');
+    });
+
+    it('should update current health to max health when path changes', () => {
+        const { result } = renderHook(() => useHero());
+        const baseMaxHealth = result.current.hero.stats.maxHealth;
+
+        // Reduce health first
+        act(() => {
+            result.current.updateHealth(10);
+        });
+        expect(result.current.hero.stats.health).toBe(10);
+
+        // Change path to Warrior (+15 Max HP)
+        act(() => {
+            result.current.updatePath('Warrior');
+        });
+
+        const expectedMax = baseMaxHealth + 15;
+        expect(result.current.hero.stats.maxHealth).toBe(expectedMax);
+        // Current health should be reset to full
+        expect(result.current.hero.stats.health).toBe(expectedMax);
     });
 });
