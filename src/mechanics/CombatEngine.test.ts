@@ -303,6 +303,38 @@ describe('CombatEngine', () => {
             expect(state.hero.activeEffects).toHaveLength(1);
             expect(state.hero.activeEffects[0].stats.speed).toBe(5);
         });
+
+        it('should limit item usage to 1 per round', () => {
+            const heroWithItems = {
+                ...MOCK_HERO,
+                backpack: [
+                    testBackpackItem({
+                        name: 'Potion 1',
+                        effect: { source: 'Potion 1', target: 'hero', stats: { health: 5 }, duration: 0 },
+                        uses: 1
+                    }),
+                    testBackpackItem({
+                        name: 'Potion 2',
+                        effect: { source: 'Potion 2', target: 'hero', stats: { health: 5 }, duration: 0 },
+                        uses: 1
+                    }),
+                    null, null, null
+                ]
+            };
+
+            let state = startCombat(heroWithItems, [MOCK_ENEMY]);
+            state = startRound(state);
+
+            // Use first item
+            state = useBackpackItem(state, 0);
+            expect(state.itemsUsedThisRound).toBe(1);
+
+            // Try to use second item in same round (now at index 0 because first was removed)
+            state = useBackpackItem(state, 0);
+
+            // Should be blocked
+            expect(state.itemsUsedThisRound).toBe(1);
+        });
     });
 
     describe('endRound', () => {

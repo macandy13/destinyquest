@@ -5,9 +5,10 @@ import './CombatBackpackItem.css';
 interface CombatBackpackItemProps {
     item: BackpackItem;
     onClick: () => void;
+    disabled?: boolean;
 }
 
-const CombatBackpackItem: React.FC<CombatBackpackItemProps> = ({ item, onClick }) => {
+const CombatBackpackItem: React.FC<CombatBackpackItemProps> = ({ item, onClick, disabled }) => {
     // Determine icon based on item type or name, or just generic
     // If we had an item registry for icons, we'd use it. For now, use generic potion/item icon.
     // Maybe try to guess based on name?
@@ -25,8 +26,8 @@ const CombatBackpackItem: React.FC<CombatBackpackItemProps> = ({ item, onClick }
         <button
             className={`combat-backpack-item`}
             onClick={onClick}
-            disabled={item.uses === 0}
-            title={`${item.name} (Uses: ${item.uses})`}
+            disabled={disabled || item.uses === 0}
+            title={`${item.name} (Uses: ${item.uses})` + (disabled ? ' (Limit reached)' : '')}
         >
             <div className="backpack-icon-large">{icon}</div>
             <div className="backpack-name-compact">{item.name}</div>

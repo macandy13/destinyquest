@@ -57,11 +57,12 @@ const CombatAbilitySelector: React.FC<CombatAbilitySelectorProps> = ({ combat, o
                         onClick={() => setSelectedAbility(ability)}
                     />
                 ))}
-                {combat.hero?.original.backpack.map((item, index: number) => (
-                    item && (item.uses === undefined || item.uses > 0) && <CombatBackpackItem
+                {combat.backpack.map((item, index) => (
+                    <CombatBackpackItem
                         key={`backpack-${index}`}
                         item={item}
                         onClick={() => handleBackpackClick(index)}
+                        disabled={(combat.itemsUsedThisRound ?? 0) >= 1}
                     />
                 ))}
             </div>

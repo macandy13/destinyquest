@@ -189,6 +189,7 @@ export function startRound(state: CombatState): CombatState {
         damage: undefined,
         damageDealt: [],
         usedAbilities: [],
+        itemsUsedThisRound: 0,
     };
     // Execute onRoundStart hooks
     forEachActiveAbility(state, (ability, def) => {
@@ -309,13 +310,31 @@ export function useBackpackItem(state: CombatState, idx: number): CombatState {
         });
         return state;
     }
+
+    // Check usage limit (max 1 item per round)
+    if ((state.itemsUsedThisRound ?? 0) >= 1) {
+        state = addLogs(state, {
+            message: `Cannot use item. Limit of 1 item per round reached.`,
+            type: 'warning'
+        });
+        return state;
+    }
+
     state = applyEffect(state, item.effect);
     state = reduceBackpackItem(state, idx);
+
+    // Track usage
+    state = {
+        ...state,
+        itemsUsedThisRound: (state.itemsUsedThisRound ?? 0) + 1
+    };
+
     forEachActiveAbility(state, (ability, def) => {
         if (def.onBackpackItemUse) {
             state = def.onBackpackItemUse(state, { ability, owner: ability.owner }, item);
         }
     });
+
     if (state.phase === 'speed-roll') {
         state = updateWinner(state);
     }

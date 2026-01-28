@@ -59,3 +59,14 @@
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
     z-index: 2;
 }
+
+.combat-backpack-item:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    filter: grayscale(100%);
+}
+
+.combat-backpack-item:disabled:hover {
+    transform: none;
+    box-shadow: none;
+}

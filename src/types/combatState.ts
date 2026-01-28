@@ -113,6 +113,9 @@ export interface CombatState {
 
     /* Abilities used in the current round */
     usedAbilities?: { name: string; type: AbilityType }[];
+
+    /* Items used in the current round */
+    itemsUsedThisRound?: number;
 }
 
 const activeAbilities = new Set<string>();
