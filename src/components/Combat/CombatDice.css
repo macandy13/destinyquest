@@ -106,17 +106,16 @@
     border-collapse: collapse;
     font-size: var(--font-sm);
     text-align: center;
+    display: flex;
+    flex-direction: row;
+    gap: var(--spacing-xs);
 }
 
-.dice-breakdown-table th {
-    font-size: var(--font-sm);
-    line-height: 1;
-    padding: var(--spacing-xs);
-}
-
-.dice-breakdown-table td {
-    font-variant-numeric: tabular-nums;
-    padding: var(--spacing-xs);
+.dice-breakdown-table div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--spacing-xs);
 }
 
 .dice-result-total {

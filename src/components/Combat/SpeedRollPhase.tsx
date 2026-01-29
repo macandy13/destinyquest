@@ -122,24 +122,12 @@ const SpeedRollPhase: React.FC<SpeedRollPhaseProps> = ({
                         selectedIndices={selectedDice}
                     />
                     {combat.heroSpeedRolls && (
-                        <table className="dice-breakdown-table">
-                            <thead>
-                                <tr>
-                                    <th title="Roll">{getStatIcon('die')}</th>
-                                    <th title="Base Stat">{getStatIcon('speed')}</th>
-                                    {!!heroSpeedDiff && <th title="Modifiers">+/-</th>}
-                                    <th></th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>{sumDice(combat.heroSpeedRolls)}</td>
-                                    <td>{combat.hero.stats.speed}</td>
-                                    {!!heroSpeedDiff && <td>{heroSpeedDiff > 0 ? `+${heroSpeedDiff}` : heroSpeedDiff}</td>}
-                                    <td className="dice-result-total">= {heroSpeedTotal}</td>
-                                </tr>
-                            </tbody>
-                        </table>
+                        <div className="dice-breakdown-table">
+                            <div>{sumDice(combat.heroSpeedRolls)} {getStatIcon('die')}</div>
+                            <div>+ {combat.hero.stats.speed} {getStatIcon('speed')}</div>
+                            {!!heroSpeedDiff && <div>+ {heroSpeedDiff > 0 ? `+${heroSpeedDiff}` : heroSpeedDiff}</div>}
+                            <div className="dice-result-total">= {heroSpeedTotal}</div>
+                        </div>
                     )}
                 </div>
                 <div className="speed-dice-container">
@@ -150,24 +138,12 @@ const SpeedRollPhase: React.FC<SpeedRollPhaseProps> = ({
                         mode={canInteractEnemy ? 'select-die' : (isInteracting ? 'disabled' : 'normal')}
                     />
                     {combat.enemySpeedRolls && (
-                        <table className="dice-breakdown-table">
-                            <thead>
-                                <tr>
-                                    <th title="Roll">{getStatIcon('die')}</th>
-                                    <th title="Base Stat">{getStatIcon('speed')}</th>
-                                    {!!enemySpeedDiff && <th title="Modifiers">+/-</th>}
-                                    <th></th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>{sumDice(combat.enemySpeedRolls)}</td>
-                                    <td>{getActiveEnemy(combat).stats.speed}</td>
-                                    {!!enemySpeedDiff && <td>{enemySpeedDiff > 0 ? `+${enemySpeedDiff}` : enemySpeedDiff}</td>}
-                                    <td className="dice-result-total">= {enemySpeedTotal}</td>
-                                </tr>
-                            </tbody>
-                        </table>
+                        <div className="dice-breakdown-table">
+                            <div>{sumDice(combat.enemySpeedRolls)} {getStatIcon('die')}</div>
+                            <div>+ {getActiveEnemy(combat).stats.speed} {getStatIcon('speed')}</div>
+                            {!!enemySpeedDiff && <div>+ {enemySpeedDiff > 0 ? `+${enemySpeedDiff}` : enemySpeedDiff}</div>}
+                            <div className="dice-result-total">= {enemySpeedTotal}</div>
+                        </div>
                     )}
                 </div>
             </div>

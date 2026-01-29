@@ -110,26 +110,13 @@ const DamageRollPhase: React.FC<DamageRollPhaseProps> = ({
 
                     <div className="damage-breakdown-container">
                         {breakdown && (
-                            <table className="dice-breakdown-table">
-                                <thead>
-                                    <tr>
-                                        <th title="Roll">{getStatIcon('die')}</th>
-                                        {!!breakdown.skill && <th title="Base Stat">{breakdown.skillName === 'brawn' ? getStatIcon('brawn') : getStatIcon('magic')}</th>}
-                                        {!!breakdown.modifiersTotal && <th title="Modifiers">{getStatIcon('modifier')}</th>}
-                                        {!!breakdown.armour && <th title="Armour">{getStatIcon('armour')}</th>}
-                                        <th></th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>{breakdown.diceTotal}</td>
-                                        {!!breakdown.skill && <td>{breakdown.skill}</td>}
-                                        {!!breakdown.modifiersTotal && <td>{breakdown.modifiersTotal > 0 ? `+${breakdown.modifiersTotal}` : breakdown.modifiersTotal}</td>}
-                                        {!!breakdown.armour && <td>-{breakdown.armour}</td>}
-                                        <td className="dice-result-total">= {breakdown.totalDamage}</td>
-                                    </tr>
-                                </tbody>
-                            </table>
+                            <div className="dice-breakdown-table">
+                                <div>{breakdown.diceTotal} {getStatIcon('die')}</div>
+                                {!!breakdown.skill && <div>+ {breakdown.skill} {breakdown.skillName === 'brawn' ? getStatIcon('brawn') : getStatIcon('magic')}</div>}
+                                {!!breakdown.modifiersTotal && <div>+ {breakdown.modifiersTotal > 0 ? `+${breakdown.modifiersTotal}` : breakdown.modifiersTotal} {getStatIcon('modifier')}</div>}
+                                {!!breakdown.armour && <div>- {breakdown.armour} {getStatIcon('armour')}</div>}
+                                <div className="dice-result-total">= {breakdown.totalDamage}</div>
+                            </div>
                         )}
                     </div>
                 </div>

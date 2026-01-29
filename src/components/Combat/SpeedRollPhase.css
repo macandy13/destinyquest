@@ -14,4 +14,5 @@
     border-radius: var(--radius-md);
     width: 40vw;
     align-items: center;
+    padding: var(--spacing-md);
 }
