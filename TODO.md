@@ -10,6 +10,8 @@ Features:
 - Save heros in the Cloud
 - Support multiple heros
 - Select current book/act and restrict items and monsters
+- Support multiple heros
+- Set current act
 
 Refactoring:
 - Consolidate hero and enemy skills
