@@ -1,5 +1,5 @@
 import { hasEquipment } from '../../../types/combatState';
-import { AbilityDefinition, getAbilityDefinition } from '../../abilityRegistry';
+import { AbilityDefinition, getAbilityDefinition, registerAbility } from '../../abilityRegistry';
 import { ActiveAbility } from '../../../types/combatState';
 
 export const ebonyAndIvory: AbilityDefinition = {
@@ -21,7 +21,6 @@ export const ebonyAndIvory: AbilityDefinition = {
                     name: 'Cripple',
                     owner: 'hero',
                     def: crippleDef,
-                    uses: undefined,
                     // TODO: Use sources (Ebony and Ivory)
                 };
                 // We need to register it so it can be used/triggered
@@ -31,3 +30,6 @@ export const ebonyAndIvory: AbilityDefinition = {
         return state;
     }
 };
+
+registerAbility(ebonyAndIvory);
+

@@ -177,3 +177,4 @@ import './abilities/speed/TimeShift';
 import './abilities/speed/Webbed';
 import './abilities/speed/Windblast';
 import './abilities/speed/Zapped';
+import './abilities/missingItemAbilities';
