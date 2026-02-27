@@ -30453,6 +30453,7 @@ registerAbility({
     for (let i = 1; i < newOpponentRolls.length; i++) {
       if (newOpponentRolls[i].value > newOpponentRolls[maxOpponentIndex].value) maxOpponentIndex = i;
     }
+    if (ownerRolls[minOwnerIndex] >= opponentRolls[maxOpponentIndex]) return state;
     const temp = newOwnerRolls[minOwnerIndex].value;
     newOwnerRolls[minOwnerIndex] = { ...newOwnerRolls[minOwnerIndex], value: newOpponentRolls[maxOpponentIndex].value, isRerolled: true };
     newOpponentRolls[maxOpponentIndex] = { ...newOpponentRolls[maxOpponentIndex], value: temp, isRerolled: true };
@@ -35181,4 +35182,4 @@ function App() {
 client.createRoot(document.getElementById("root")).render(
   /* @__PURE__ */ jsxRuntimeExports.jsx(React.StrictMode, { children: /* @__PURE__ */ jsxRuntimeExports.jsx(App, {}) })
 );
-//# sourceMappingURL=index-BQO2Tu9K.js.map
+//# sourceMappingURL=index-C22uJmYe.js.map
