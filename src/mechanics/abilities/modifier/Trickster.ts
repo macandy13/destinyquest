@@ -29,6 +29,8 @@ registerAbility({
             if (newOpponentRolls[i].value > newOpponentRolls[maxOpponentIndex].value) maxOpponentIndex = i;
         }
 
+        if (ownerRolls[minOwnerIndex] >= opponentRolls[maxOpponentIndex]) return state;
+
         const temp = newOwnerRolls[minOwnerIndex].value;
         newOwnerRolls[minOwnerIndex] = { ...newOwnerRolls[minOwnerIndex], value: newOpponentRolls[maxOpponentIndex].value, isRerolled: true };
         newOpponentRolls[maxOpponentIndex] = { ...newOpponentRolls[maxOpponentIndex], value: temp, isRerolled: true };
