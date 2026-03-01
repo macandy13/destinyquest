@@ -66,7 +66,7 @@ export const MOCK_ENEMY: Enemy = {
 function createHeroCombatant(character: Hero | Combatant<Hero>): Combatant<Hero> {
     const hero: Hero = 'original' in character ? character.original : character;
     const combatant: Combatant<Hero> = {
-        type: hero.type,
+        type: hero.type ?? 'hero',
         id: 'hero',
         name: hero.name,
         stats: { ...hero.stats },
@@ -89,7 +89,7 @@ function createEnemyCombatant(
 ): Combatant<Enemy> {
     const enemy: Enemy = 'original' in character ? character.original : character;
     const combatant: Combatant<Enemy> = {
-        type: enemy.type,
+        type: enemy.type ?? 'enemy',
         id: `enemy-${index}`,
         name: enemy.name,
         stats: { ...enemy.stats },
