@@ -8,6 +8,7 @@ describe('HeroStats', () => {
         hero: MOCK_HERO,
         activeAbilities: [],
         onHealthChange: vi.fn(),
+        onMaxHealthChange: vi.fn(),
         onMoneyChange: vi.fn(),
         onNameChange: vi.fn(),
         onPathChange: vi.fn(),

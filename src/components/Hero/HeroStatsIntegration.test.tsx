@@ -9,6 +9,7 @@ const TestWrapper = () => {
         hero,
         activeAbilities,
         updateHealth,
+        updateMaxHealth,
         updateMoney,
         updateName,
         updatePath,
@@ -20,6 +21,7 @@ const TestWrapper = () => {
             hero={hero}
             activeAbilities={activeAbilities}
             onHealthChange={updateHealth}
+            onMaxHealthChange={updateMaxHealth}
             onMoneyChange={updateMoney}
             onNameChange={updateName}
             onPathChange={updatePath}

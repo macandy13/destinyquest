@@ -66,6 +66,48 @@ export function useHero() {
         }));
     };
 
+    const updateMaxHealth = (effectiveMax: number) => {
+        // Current effective max (matches what the UI shows as max before the change)
+        let currentEffectiveMax = hero.stats.maxHealth;
+
+        if (hero.path === 'Warrior') currentEffectiveMax += 15;
+        if (hero.path === 'Mage') currentEffectiveMax += 10;
+        if (hero.path === 'Rogue') currentEffectiveMax += 5;
+
+        Object.values(hero.equipment).forEach(item => {
+            if (item?.stats?.maxHealth) currentEffectiveMax += item.stats.maxHealth;
+        });
+
+        // Derive the new base max from the requested effective max
+        let pathBonus = 0;
+        if (hero.path === 'Warrior') pathBonus = 15;
+        if (hero.path === 'Mage') pathBonus = 10;
+        if (hero.path === 'Rogue') pathBonus = 5;
+
+        let equipmentBonus = 0;
+        Object.values(hero.equipment).forEach(item => {
+            if (item?.stats?.maxHealth) equipmentBonus += item.stats.maxHealth;
+        });
+
+        const newBaseMax = Math.max(1, effectiveMax - pathBonus - equipmentBonus);
+
+        setHero(prev => {
+            const wasAtOldMax = prev.stats.health === currentEffectiveMax;
+
+            return {
+                ...prev,
+                stats: {
+                    ...prev.stats,
+                    maxHealth: newBaseMax,
+                    // If they were at max, keep them at the new max; otherwise clamp
+                    health: wasAtOldMax
+                        ? effectiveMax
+                        : Math.min(prev.stats.health, effectiveMax)
+                }
+            };
+        });
+    };
+
     const updateName = (name: string) => {
         setHero(prev => ({ ...prev, name }));
     };
@@ -195,6 +237,7 @@ export function useHero() {
         hero: effectiveHero,
         activeAbilities,
         updateHealth,
+        updateMaxHealth,
         updateName,
         updatePath,
         updateCareer,

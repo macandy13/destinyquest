@@ -17,6 +17,7 @@ function App() {
         hero,
         activeAbilities,
         updateHealth,
+        updateMaxHealth,
         updateMoney,
         updateName,
         updatePath,
@@ -57,6 +58,7 @@ function App() {
                         hero={hero}
                         activeAbilities={activeAbilities}
                         onHealthChange={updateHealth}
+                        onMaxHealthChange={updateMaxHealth}
                         onMoneyChange={updateMoney}
                         onNameChange={updateName}
                         onPathChange={updatePath}
