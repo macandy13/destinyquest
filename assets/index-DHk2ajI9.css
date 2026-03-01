@@ -534,6 +534,37 @@ select:hover {
 .nav-divider {
     width: var(--border-sm);
     background-color: var(--dq-grey);
+}.book-act-selector {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--spacing-xs);
+    justify-content: center;
+    padding: 0 var(--spacing-md) var(--spacing-sm);
+}
+
+.filter-pill {
+    background: var(--dq-grey);
+    border: var(--border-sm) solid var(--dq-gold-dim);
+    border-radius: var(--radius-md);
+    color: var(--dq-light-grey);
+    font-family: var(--font-heading);
+    font-size: var(--font-xs);
+    padding: var(--spacing-2xs) var(--spacing-sm);
+    cursor: pointer;
+    transition: all 0.2s;
+    white-space: nowrap;
+}
+
+.filter-pill:hover {
+    border-color: var(--dq-gold);
+    background: rgba(212, 175, 55, 0.1);
+}
+
+.filter-pill.active {
+    background: var(--dq-gold);
+    color: var(--dq-black);
+    border-color: var(--dq-gold);
+    font-weight: bold;
 }.number-control {
     display: flex;
     align-items: center;

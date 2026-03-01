@@ -7046,6 +7046,111 @@ const BottomNav = ({ activeTab, onTabChange }) => {
     )
   ] });
 };
+const BOOKS = [
+  {
+    book: "The Legion of Shadow",
+    acts: [1, 2, 3]
+  }
+];
+const STORAGE_KEY$1 = "dq-book-filter-v1";
+function loadFilter() {
+  try {
+    const saved = localStorage.getItem(STORAGE_KEY$1);
+    if (saved) {
+      return JSON.parse(saved);
+    }
+  } catch {
+  }
+  return { type: "all" };
+}
+function saveFilter(filter) {
+  localStorage.setItem(
+    STORAGE_KEY$1,
+    JSON.stringify(filter)
+  );
+}
+function matchesFilter(filter, bookRef) {
+  switch (filter.type) {
+    case "all":
+      return true;
+    case "book":
+      return bookRef.book === filter.book;
+    case "act":
+      return bookRef.book === filter.book && bookRef.act === filter.act;
+  }
+}
+function useBookFilter() {
+  const [filter, setFilterState] = reactExports.useState(loadFilter);
+  const setFilter = (newFilter) => {
+    setFilterState(newFilter);
+    saveFilter(newFilter);
+  };
+  const filterFn = (bookRef) => matchesFilter(filter, bookRef);
+  return { filter, setFilter, filterFn };
+}
+function isActive(current, candidate) {
+  if (current.type === "all" && candidate.type === "all") {
+    return true;
+  }
+  if (current.type === "book" && candidate.type === "book") {
+    return current.book === candidate.book;
+  }
+  if (current.type === "act" && candidate.type === "act") {
+    return current.book === candidate.book && current.act === candidate.act;
+  }
+  return false;
+}
+const BookActSelector = ({ filter, onFilterChange }) => {
+  return /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "book-act-selector", children: [
+    /* @__PURE__ */ jsxRuntimeExports.jsx(
+      "button",
+      {
+        className: `filter-pill ${isActive(filter, { type: "all" }) ? "active" : ""}`,
+        onClick: () => onFilterChange({ type: "all" }),
+        children: "All"
+      }
+    ),
+    BOOKS.map((bookInfo) => /* @__PURE__ */ jsxRuntimeExports.jsxs(React.Fragment, { children: [
+      /* @__PURE__ */ jsxRuntimeExports.jsxs(
+        "button",
+        {
+          className: `filter-pill ${isActive(filter, {
+            type: "book",
+            book: bookInfo.book
+          }) ? "active" : ""}`,
+          onClick: () => onFilterChange({
+            type: "book",
+            book: bookInfo.book
+          }),
+          children: [
+            "📖 ",
+            bookInfo.book
+          ]
+        }
+      ),
+      bookInfo.acts.map((act) => /* @__PURE__ */ jsxRuntimeExports.jsxs(
+        "button",
+        {
+          className: `filter-pill ${isActive(filter, {
+            type: "act",
+            book: bookInfo.book,
+            act
+          }) ? "active" : ""}`,
+          onClick: () => onFilterChange({
+            type: "act",
+            book: bookInfo.book,
+            act
+          }),
+          children: [
+            "Act ",
+            act
+          ]
+        },
+        act
+      ))
+    ] }, bookInfo.book))
+  ] });
+};
 const NumberControl = ({ value, onChange, min = 0, max = 9999, label }) => {
   const handleChange = (delta) => {
     const newValue = Math.min(max, Math.max(min, value + delta));
@@ -23489,7 +23594,15 @@ const getItemsBySlot = (slot) => {
     return item.type === slot;
   });
 };
-const InventorySelector = ({ slot, onSelect, onClose, showAllItems = false, customItems, heroPath }) => {
+const InventorySelector = ({
+  slot,
+  onSelect,
+  onClose,
+  showAllItems = false,
+  customItems,
+  heroPath,
+  filterFn
+}) => {
   const [searchTerm, setSearchTerm] = React.useState("");
   let items = [];
   if (customItems) {
@@ -23499,7 +23612,8 @@ const InventorySelector = ({ slot, onSelect, onClose, showAllItems = false, cust
   } else if (slot) {
     items = getItemsBySlot(slot);
   }
-  const filteredItems = items.filter((item) => {
+  const bookFiltered = filterFn ? items.filter((item) => filterFn(item.bookRef)) : items;
+  const filteredItems = bookFiltered.filter((item) => {
     const term = searchTerm.toLowerCase();
     return item.name.toLowerCase().includes(term) || item.bookRef.section && item.bookRef.section.toString().includes(term) || item.location && item.location.toLowerCase().includes(term);
   });
@@ -23619,7 +23733,7 @@ const SLOT_CONFIG = {
   ring1: { top: "60%", left: "40%", label: "Ring 1", icon: "💍" },
   feet: { top: "88%", left: "50%", label: "Feet", icon: "👢" }
 };
-const EquipmentSlots = ({ hero, onEquip, onUnequip }) => {
+const EquipmentSlots = ({ hero, onEquip, onUnequip, filterFn }) => {
   const [selectedSlot, setSelectedSlot] = reactExports.useState(null);
   const handleEquip = (item) => {
     if (selectedSlot) {
@@ -23659,7 +23773,8 @@ const EquipmentSlots = ({ hero, onEquip, onUnequip }) => {
         slot: selectedSlot,
         onSelect: (item) => handleEquip(item),
         onClose: () => setSelectedSlot(null),
-        heroPath: hero.path
+        heroPath: hero.path,
+        filterFn
       }
     )
   ] });
@@ -23933,7 +24048,12 @@ const BACKPACK_ITEMS = [
     }
   }
 ];
-const Backpack = ({ hero, onSetItem, onDeleteItem }) => {
+const Backpack = ({
+  hero,
+  onSetItem,
+  onDeleteItem,
+  filterFn
+}) => {
   const [selectedIndex, setSelectedIndex] = reactExports.useState(null);
   return /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "backpack-container", children: [
     /* @__PURE__ */ jsxRuntimeExports.jsxs("h4", { children: [
@@ -23969,19 +24089,28 @@ const Backpack = ({ hero, onSetItem, onDeleteItem }) => {
           setSelectedIndex(null);
         },
         onClose: () => setSelectedIndex(null),
-        customItems: BACKPACK_ITEMS
+        customItems: BACKPACK_ITEMS,
+        filterFn
       }
     )
   ] });
 };
-const HeroEquipment = ({ hero, onEquip, onUnequip, onSetBackpackItem, onDeleteBackpackItem }) => {
+const HeroEquipment = ({
+  hero,
+  onEquip,
+  onUnequip,
+  onSetBackpackItem,
+  onDeleteBackpackItem,
+  filterFn
+}) => {
   return /* @__PURE__ */ jsxRuntimeExports.jsxs(DqCard, { title: "Inventory", className: "equipment-section", children: [
     /* @__PURE__ */ jsxRuntimeExports.jsx(
       EquipmentSlots,
       {
         hero,
         onEquip,
-        onUnequip
+        onUnequip,
+        filterFn
       }
     ),
     /* @__PURE__ */ jsxRuntimeExports.jsx(
@@ -23989,7 +24118,8 @@ const HeroEquipment = ({ hero, onEquip, onUnequip, onSetBackpackItem, onDeleteBa
       {
         hero,
         onSetItem: onSetBackpackItem,
-        onDeleteItem: onDeleteBackpackItem
+        onDeleteItem: onDeleteBackpackItem,
+        filterFn
       }
     )
   ] });
@@ -28279,7 +28409,7 @@ const ENEMIES = [
     }
   }
 ];
-const EnemySelector = ({ onSelect }) => {
+const EnemySelector = ({ onSelect, filterFn }) => {
   const [mode, setMode] = reactExports.useState("list");
   const [searchTerm, setSearchTerm] = reactExports.useState("");
   const [customEnemy, setCustomEnemy] = reactExports.useState({
@@ -28299,10 +28429,13 @@ const EnemySelector = ({ onSelect }) => {
     },
     abilities: []
   });
-  const filteredEnemies = ENEMIES.filter((enemy) => {
-    const term = searchTerm.toLowerCase();
-    return enemy.name.toLowerCase().includes(term) || enemy.bookRef.section && enemy.bookRef.section.toString().includes(term);
-  });
+  const bookFiltered = filterFn ? ENEMIES.filter((e) => filterFn(e.bookRef)) : ENEMIES;
+  const filteredEnemies = bookFiltered.filter(
+    (enemy) => {
+      const term = searchTerm.toLowerCase();
+      return enemy.name.toLowerCase().includes(term) || enemy.bookRef.section && enemy.bookRef.section.toString().includes(term);
+    }
+  );
   const handleCustomChange = (field, value) => {
     if (field === "name") {
       setCustomEnemy((prev) => ({ ...prev, name: String(value) }));
@@ -33922,11 +34055,11 @@ const EnemyCarousel = ({ enemies, activeIndex, onSelect }) => {
       ),
       /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "carousel-dot-indicator", children: enemies.map((enemy, index) => {
         const isDead = enemy.stats.health <= 0;
-        const isActive = index === activeIndex;
+        const isActive2 = index === activeIndex;
         return /* @__PURE__ */ jsxRuntimeExports.jsx(
           "div",
           {
-            className: `indicator-dot ${isActive ? "active" : ""} ${isDead ? "dead" : ""}`,
+            className: `indicator-dot ${isActive2 ? "active" : ""} ${isDead ? "dead" : ""}`,
             title: `${enemy.name} ${isDead ? "(Defeated)" : ""}`
           },
           enemy.id
@@ -34912,14 +35045,24 @@ const CombatArena = ({ hero, enemy, onCombatFinish }) => {
     /* @__PURE__ */ jsxRuntimeExports.jsx(CombatLog, { logs: combat.logs })
   ] });
 };
-const CombatTab = ({ hero, onCombatFinish }) => {
+const CombatTab = ({
+  hero,
+  onCombatFinish,
+  filterFn
+}) => {
   const [selectedEnemy, setSelectedEnemy] = reactExports.useState(null);
   const handleCombatFinish = (results) => {
     setSelectedEnemy(null);
     onCombatFinish(results);
   };
   if (!selectedEnemy) {
-    return /* @__PURE__ */ jsxRuntimeExports.jsx(EnemySelector, { onSelect: setSelectedEnemy });
+    return /* @__PURE__ */ jsxRuntimeExports.jsx(
+      EnemySelector,
+      {
+        onSelect: setSelectedEnemy,
+        filterFn
+      }
+    );
   }
   return /* @__PURE__ */ jsxRuntimeExports.jsx(
     CombatArena,
@@ -35138,6 +35281,11 @@ function App() {
     deleteBackpackItem,
     updateBackpack
   } = useHero();
+  const {
+    filter,
+    setFilter,
+    filterFn
+  } = useBookFilter();
   const handleCombatFinish = (results) => {
     if (results.health) updateHealth(results.health);
     updateBackpack(results.backpack);
@@ -35145,6 +35293,13 @@ function App() {
   };
   return /* @__PURE__ */ jsxRuntimeExports.jsxs(MobileLayout, { children: [
     /* @__PURE__ */ jsxRuntimeExports.jsx("header", { className: "app-header", children: /* @__PURE__ */ jsxRuntimeExports.jsx("img", { src: logo, alt: "Destiny Quest", className: "app-logo" }) }),
+    /* @__PURE__ */ jsxRuntimeExports.jsx(
+      BookActSelector,
+      {
+        filter,
+        onFilterChange: setFilter
+      }
+    ),
     /* @__PURE__ */ jsxRuntimeExports.jsxs("main", { className: "app-main", children: [
       activeTab === "stats" && /* @__PURE__ */ jsxRuntimeExports.jsx(
         HeroStats,
@@ -35165,14 +35320,16 @@ function App() {
           onEquip: equipItem,
           onUnequip: unequipItem,
           onSetBackpackItem: setBackpackItem,
-          onDeleteBackpackItem: deleteBackpackItem
+          onDeleteBackpackItem: deleteBackpackItem,
+          filterFn
         }
       ),
       activeTab === "combat" && /* @__PURE__ */ jsxRuntimeExports.jsx(
         CombatTab,
         {
           hero,
-          onCombatFinish: handleCombatFinish
+          onCombatFinish: handleCombatFinish,
+          filterFn
         }
       )
     ] }),
@@ -35182,4 +35339,4 @@ function App() {
 client.createRoot(document.getElementById("root")).render(
   /* @__PURE__ */ jsxRuntimeExports.jsx(React.StrictMode, { children: /* @__PURE__ */ jsxRuntimeExports.jsx(App, {}) })
 );
-//# sourceMappingURL=index-C22uJmYe.js.map
+//# sourceMappingURL=index-CRgwrH7Y.js.map
