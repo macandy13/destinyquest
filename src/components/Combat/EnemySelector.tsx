@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Stats } from '../../types/stats';
 import { Enemy } from '../../types/character';
+import { BookRef } from '../../types/bookRef';
 import { ENEMIES } from '../../data/enemies';
 import { getStatIcon } from '../../types/stats';
 import NumberControl from '../Shared/NumberControl';
@@ -9,9 +10,10 @@ import './EnemySelector.css';
 
 interface EnemySelectorProps {
     onSelect: (enemy: Enemy) => void;
+    filterFn?: (bookRef: BookRef) => boolean;
 }
 
-const EnemySelector: React.FC<EnemySelectorProps> = ({ onSelect }) => {
+const EnemySelector: React.FC<EnemySelectorProps> = ({ onSelect, filterFn }) => {
     const [mode, setMode] = useState<'list' | 'custom'>('list');
     const [searchTerm, setSearchTerm] = useState('');
 
@@ -34,13 +36,24 @@ const EnemySelector: React.FC<EnemySelectorProps> = ({ onSelect }) => {
         abilities: []
     });
 
-    const filteredEnemies = ENEMIES.filter(enemy => {
-        const term = searchTerm.toLowerCase();
-        return (
-            enemy.name.toLowerCase().includes(term) ||
-            (enemy.bookRef.section && enemy.bookRef.section.toString().includes(term))
-        );
-    });
+    const bookFiltered = filterFn
+        ? ENEMIES.filter(e => filterFn(e.bookRef))
+        : ENEMIES;
+
+    const filteredEnemies = bookFiltered.filter(
+        enemy => {
+            const term = searchTerm.toLowerCase();
+            return (
+                enemy.name
+                    .toLowerCase()
+                    .includes(term) ||
+                (enemy.bookRef.section &&
+                    enemy.bookRef.section
+                        .toString()
+                        .includes(term))
+            );
+        }
+    );
 
     const handleCustomChange = (field: keyof Enemy | keyof Stats, value: string | number) => {
         if (field === 'name') {

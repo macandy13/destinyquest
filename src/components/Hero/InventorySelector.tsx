@@ -1,5 +1,6 @@
 import React from 'react';
 import { EquipmentSlot, EquipmentItem, BackpackItem, HeroPath } from '../../types/hero';
+import { BookRef } from '../../types/bookRef';
 import { getItemsBySlot, ITEMS } from '../../data/items';
 import DqCard from '../Shared/DqCard';
 import './InventorySelector.css';
@@ -13,11 +14,20 @@ interface InventorySelectorProps {
     onSelect: (item: EquipmentItem | BackpackItem | null) => void;
     onClose: () => void;
     showAllItems?: boolean;
-    customItems?: (EquipmentItem | BackpackItem)[]; // Allow passing specific list (e.g. backpack items)
+    customItems?: (EquipmentItem | BackpackItem)[];
     heroPath?: HeroPath;
+    filterFn?: (bookRef: BookRef) => boolean;
 }
 
-const InventorySelector: React.FC<InventorySelectorProps> = ({ slot, onSelect, onClose, showAllItems = false, customItems, heroPath }) => {
+const InventorySelector: React.FC<InventorySelectorProps> = ({
+    slot,
+    onSelect,
+    onClose,
+    showAllItems = false,
+    customItems,
+    heroPath,
+    filterFn
+}) => {
     const [searchTerm, setSearchTerm] = React.useState('');
 
     // Determine source items
@@ -30,12 +40,22 @@ const InventorySelector: React.FC<InventorySelectorProps> = ({ slot, onSelect, o
         items = getItemsBySlot(slot);
     }
 
-    const filteredItems = items.filter(item => {
+    const bookFiltered = filterFn
+        ? items.filter(item => filterFn(item.bookRef))
+        : items;
+
+    const filteredItems = bookFiltered.filter(item => {
         const term = searchTerm.toLowerCase();
         return (
             item.name.toLowerCase().includes(term) ||
-            (item.bookRef.section && item.bookRef.section.toString().includes(term)) ||
-            (item.location && item.location.toLowerCase().includes(term))
+            (item.bookRef.section &&
+                item.bookRef.section
+                    .toString()
+                    .includes(term)) ||
+            (item.location &&
+                item.location
+                    .toLowerCase()
+                    .includes(term))
         );
     });
 

@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Hero, EquipmentSlot as EquipmentSlotType, EquipmentItem } from '../../types/hero';
+import { BookRef } from '../../types/bookRef';
 import EquipmentSlot from './EquipmentSlot';
 import InventorySelector from './InventorySelector';
 import heroSilhouette from '../../assets/hero_silhouette.png';
@@ -9,6 +10,7 @@ interface EquipmentSlotsProps {
   hero: Hero;
   onEquip: (item: EquipmentItem, slot: EquipmentSlotType) => void;
   onUnequip: (slot: EquipmentSlotType) => void;
+  filterFn?: (bookRef: BookRef) => boolean;
 }
 
 const SLOT_CONFIG: Record<EquipmentSlotType, { top: string; left: string; label: string; icon: string }> = {
@@ -25,7 +27,7 @@ const SLOT_CONFIG: Record<EquipmentSlotType, { top: string; left: string; label:
   feet: { top: '88%', left: '50%', label: 'Feet', icon: '👢' },
 };
 
-const EquipmentSlots: React.FC<EquipmentSlotsProps> = ({ hero, onEquip, onUnequip }) => {
+const EquipmentSlots: React.FC<EquipmentSlotsProps> = ({ hero, onEquip, onUnequip, filterFn }) => {
   const [selectedSlot, setSelectedSlot] = useState<EquipmentSlotType | null>(null);
 
   const handleEquip = (item: EquipmentItem | null) => {
@@ -71,6 +73,7 @@ const EquipmentSlots: React.FC<EquipmentSlotsProps> = ({ hero, onEquip, onUnequi
           onSelect={(item) => handleEquip(item as EquipmentItem)}
           onClose={() => setSelectedSlot(null)}
           heroPath={hero.path}
+          filterFn={filterFn}
         />
       )}
     </div>

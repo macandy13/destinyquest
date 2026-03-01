@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Hero, BackpackItem } from '../../types/hero';
+import { BookRef } from '../../types/bookRef';
 import EquipmentSlot from './EquipmentSlot';
 import InventorySelector from './InventorySelector';
 import { BACKPACK_ITEMS } from '../../data/backpackItems';
@@ -9,9 +10,15 @@ interface BackpackProps {
     hero: Hero;
     onSetItem: (item: BackpackItem, index: number) => void;
     onDeleteItem: (index: number) => void;
+    filterFn?: (bookRef: BookRef) => boolean;
 }
 
-const Backpack: React.FC<BackpackProps> = ({ hero, onSetItem, onDeleteItem }) => {
+const Backpack: React.FC<BackpackProps> = ({
+    hero,
+    onSetItem,
+    onDeleteItem,
+    filterFn
+}) => {
     const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
 
     return (
@@ -45,6 +52,7 @@ const Backpack: React.FC<BackpackProps> = ({ hero, onSetItem, onDeleteItem }) =>
                     }}
                     onClose={() => setSelectedIndex(null)}
                     customItems={BACKPACK_ITEMS}
+                    filterFn={filterFn}
                 />
             )}
         </div>
