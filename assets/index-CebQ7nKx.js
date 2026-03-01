@@ -33236,7 +33236,7 @@ registerAbility(createNoopAbility({ name: "frostbite", description: "Not impleme
 function createHeroCombatant(character) {
   const hero = "original" in character ? character.original : character;
   const combatant = {
-    type: hero.type,
+    type: hero.type ?? "hero",
     id: "hero",
     name: hero.name,
     stats: { ...hero.stats },
@@ -33256,7 +33256,7 @@ function createHeroCombatant(character) {
 function createEnemyCombatant(character, index = 0) {
   const enemy = "original" in character ? character.original : character;
   const combatant = {
-    type: enemy.type,
+    type: enemy.type ?? "enemy",
     id: `enemy-${index}`,
     name: enemy.name,
     stats: { ...enemy.stats },
@@ -35339,4 +35339,4 @@ function App() {
 client.createRoot(document.getElementById("root")).render(
   /* @__PURE__ */ jsxRuntimeExports.jsx(React.StrictMode, { children: /* @__PURE__ */ jsxRuntimeExports.jsx(App, {}) })
 );
-//# sourceMappingURL=index-CRgwrH7Y.js.map
+//# sourceMappingURL=index-CebQ7nKx.js.map
