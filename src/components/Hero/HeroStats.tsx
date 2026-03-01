@@ -1,5 +1,6 @@
 import React from 'react';
 import { HeroStats as HeroStatsType, Hero, HeroPath } from '../../types/hero';
+import HealthControl from '../Shared/HealthControl';
 import NumberControl from '../Shared/NumberControl';
 import './HeroStats.css';
 import { getStatIcon } from '../../types/stats';
@@ -13,6 +14,7 @@ interface HeroStatsProps {
     hero: Hero;
     activeAbilities: string[];
     onHealthChange: (value: number) => void;
+    onMaxHealthChange: (value: number) => void;
     onMoneyChange: (value: number) => void;
     onNameChange: (value: string) => void;
     onPathChange: (value: HeroPath, onItemsRemoved?: (items: string[]) => void) => void;
@@ -30,6 +32,7 @@ const HeroStats: React.FC<HeroStatsProps> = ({
     hero,
     activeAbilities,
     onHealthChange,
+    onMaxHealthChange,
     onMoneyChange,
     onNameChange,
     onPathChange,
@@ -96,18 +99,17 @@ const HeroStats: React.FC<HeroStatsProps> = ({
                     </select>
                 </div>
 
-                {/* Health is special - Editable */}
+                {/* Health is special - Editable current and max (click number to switch) */}
                 <div className="stat-row health">
                     <span className="stat-label">
                         <span className="stat-icon">{getStatIcon('health')}</span> Health
                     </span>
                     <div className="stat-controls">
-                        <NumberControl
-                            value={stats.health}
-                            onChange={onHealthChange}
+                        <HealthControl
+                            current={stats.health}
                             max={stats.maxHealth}
-                            min={0}
-                            label={`/ ${stats.maxHealth}`}
+                            onCurrentChange={onHealthChange}
+                            onMaxChange={onMaxHealthChange}
                         />
                     </div>
                 </div>
