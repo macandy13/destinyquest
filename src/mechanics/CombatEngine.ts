@@ -232,6 +232,11 @@ export function activateAbility(state: CombatState, rawAbilityName: string): Com
         };
     }
 
+    // Recalculate winner if speed rolls were modified (e.g. Trickster)
+    if (state.phase === 'speed-roll' && state.heroSpeedRolls && state.enemySpeedRolls) {
+        state = updateWinner(state);
+    }
+
     return checkForCombatEnd(state);
 }
 

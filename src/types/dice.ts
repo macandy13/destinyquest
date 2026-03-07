@@ -1,6 +1,8 @@
 export interface DiceRoll {
     value: number;
     isRerolled: boolean;
+    /** When true, CombatDice will not animate this die when its value changes (e.g. Trickster swap). */
+    skipAnimation?: boolean;
 }
 
 /**

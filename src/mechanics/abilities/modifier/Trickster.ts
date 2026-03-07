@@ -1,7 +1,7 @@
 // This module logic is already unit tested! Adapt any test cases in your test files to fit changes in type usage or APIs here.
 
 import { registerAbility } from '../../abilityRegistry';
-import { canModifySpeedDice, modifySpeedRolls } from '../abilityFactories';
+import { modifySpeedRolls } from '../abilityFactories';
 import { getOpponent, CharacterType } from '../../../types/character';
 
 /**
@@ -56,8 +56,8 @@ function swapRollsAndUpdateState(
     const newOpponentRolls = [...opponentRolls];
 
     const temp = newOwnerRolls[minOwnerIndex].value;
-    newOwnerRolls[minOwnerIndex] = { ...newOwnerRolls[minOwnerIndex], value: newOpponentRolls[maxOpponentIndex].value, isRerolled: true };
-    newOpponentRolls[maxOpponentIndex] = { ...newOpponentRolls[maxOpponentIndex], value: temp, isRerolled: true };
+    newOwnerRolls[minOwnerIndex] = { ...newOwnerRolls[minOwnerIndex], value: newOpponentRolls[maxOpponentIndex].value, isRerolled: true, skipAnimation: true };
+    newOpponentRolls[maxOpponentIndex] = { ...newOpponentRolls[maxOpponentIndex], value: temp, isRerolled: true, skipAnimation: true };
 
     let newState = modifySpeedRolls(state, owner, () => newOwnerRolls);
     newState = modifySpeedRolls(newState, opponent, () => newOpponentRolls);

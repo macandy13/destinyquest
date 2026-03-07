@@ -41,7 +41,8 @@ const CombatDice: React.FC<CombatDiceProps> = ({
                 // 3. Reroll status changed (e.g. became rerolled, even if value is same by chance, visual feedback is good)
                 // Note: If strictly identical 3->3 and no flag change, we skip animation, which is desirable to "keep others stable".
                 // If rerolling 3->3, logic would usually flag isRerolled true, so it triggers.
-                if (!prev || prev.value !== val.value || prev.isRerolled !== val.isRerolled) {
+                // skipAnimation (e.g. Trickster swap) suppresses animation for value swaps.
+                if ((!prev || prev.value !== val.value || prev.isRerolled !== val.isRerolled) && !val.skipAnimation) {
                     newRollingIndices.push(i);
                 }
             });
