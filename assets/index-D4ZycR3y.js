@@ -7151,6 +7151,93 @@ const BookActSelector = ({ filter, onFilterChange }) => {
     ] }, bookInfo.book))
   ] });
 };
+const HealthControl = ({
+  current,
+  max,
+  onCurrentChange,
+  onMaxChange
+}) => {
+  const [mode, setMode] = reactExports.useState("current");
+  const value = mode === "current" ? current : max;
+  const onChange = mode === "current" ? onCurrentChange : onMaxChange;
+  const min = mode === "current" ? 0 : 1;
+  const maxVal = mode === "current" ? max : 9999;
+  const handleChange = (delta) => {
+    const newValue = Math.min(maxVal, Math.max(min, value + delta));
+    onChange(newValue);
+  };
+  return /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "number-control health-control", children: [
+    /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "nc-buttons left", children: [
+      /* @__PURE__ */ jsxRuntimeExports.jsx(
+        "button",
+        {
+          className: "nc-btn nc-btn-large",
+          onClick: () => handleChange(-10),
+          disabled: value - 10 < min,
+          "aria-label": "Decrease by 10",
+          children: "-10"
+        }
+      ),
+      /* @__PURE__ */ jsxRuntimeExports.jsx(
+        "button",
+        {
+          className: "nc-btn",
+          onClick: () => handleChange(-1),
+          disabled: value <= min,
+          "aria-label": "Decrease by 1",
+          children: "-"
+        }
+      )
+    ] }),
+    /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "nc-display health-display", children: [
+      /* @__PURE__ */ jsxRuntimeExports.jsx(
+        "span",
+        {
+          className: `nc-value health-value ${mode === "current" ? "active" : "clickable"}`,
+          onClick: mode !== "current" ? () => setMode("current") : void 0,
+          role: mode !== "current" ? "button" : void 0,
+          tabIndex: mode !== "current" ? 0 : void 0,
+          onKeyDown: mode !== "current" ? (e) => e.key === "Enter" && setMode("current") : void 0,
+          children: current
+        }
+      ),
+      /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "nc-separator", children: "/" }),
+      /* @__PURE__ */ jsxRuntimeExports.jsx(
+        "span",
+        {
+          className: `nc-value health-value ${mode === "max" ? "active" : "clickable"}`,
+          onClick: mode !== "max" ? () => setMode("max") : void 0,
+          role: mode !== "max" ? "button" : void 0,
+          tabIndex: mode !== "max" ? 0 : void 0,
+          onKeyDown: mode !== "max" ? (e) => e.key === "Enter" && setMode("max") : void 0,
+          children: max
+        }
+      )
+    ] }),
+    /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "nc-buttons right", children: [
+      /* @__PURE__ */ jsxRuntimeExports.jsx(
+        "button",
+        {
+          className: "nc-btn",
+          onClick: () => handleChange(1),
+          disabled: value >= maxVal,
+          "aria-label": "Increase by 1",
+          children: "+"
+        }
+      ),
+      /* @__PURE__ */ jsxRuntimeExports.jsx(
+        "button",
+        {
+          className: "nc-btn nc-btn-large",
+          onClick: () => handleChange(10),
+          disabled: value + 10 > maxVal,
+          "aria-label": "Increase by 10",
+          children: "+10"
+        }
+      )
+    ] })
+  ] });
+};
 const NumberControl = ({ value, onChange, min = 0, max = 9999, label }) => {
   const handleChange = (delta) => {
     const newValue = Math.min(max, Math.max(min, value + delta));
@@ -7381,6 +7468,7 @@ const HeroStats = ({
   hero,
   activeAbilities: activeAbilities2,
   onHealthChange,
+  onMaxHealthChange,
   onMoneyChange,
   onNameChange,
   onPathChange,
@@ -7455,13 +7543,12 @@ ${removedItems.join("\n")}`);
           " Health"
         ] }),
         /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "stat-controls", children: /* @__PURE__ */ jsxRuntimeExports.jsx(
-          NumberControl,
+          HealthControl,
           {
-            value: stats.health,
-            onChange: onHealthChange,
+            current: stats.health,
             max: stats.maxHealth,
-            min: 0,
-            label: `/ ${stats.maxHealth}`
+            onCurrentChange: onHealthChange,
+            onMaxChange: onMaxHealthChange
           }
         ) })
       ] }),
@@ -30566,33 +30653,52 @@ registerAbility({
     return newState;
   }
 });
+function findSwapIndexes(ownerRolls, opponentRolls) {
+  if (!ownerRolls.length || !opponentRolls.length) return null;
+  let minOwnerIndex = 0;
+  for (let i = 1; i < ownerRolls.length; i++) {
+    if (ownerRolls[i].value < ownerRolls[minOwnerIndex].value) minOwnerIndex = i;
+  }
+  let maxOpponentIndex = 0;
+  for (let i = 1; i < opponentRolls.length; i++) {
+    if (opponentRolls[i].value > opponentRolls[maxOpponentIndex].value) maxOpponentIndex = i;
+  }
+  if (ownerRolls[minOwnerIndex].value >= opponentRolls[maxOpponentIndex].value) return null;
+  return { minOwnerIndex, maxOpponentIndex };
+}
+function getOwnerAndOpponentRolls(state, owner) {
+  const opponent = getOpponent(owner);
+  const ownerRolls = state[owner === "hero" ? "heroSpeedRolls" : "enemySpeedRolls"];
+  const opponentRolls = state[opponent === "hero" ? "heroSpeedRolls" : "enemySpeedRolls"];
+  return { ownerRolls, opponentRolls, opponent };
+}
+function swapRollsAndUpdateState(state, owner, ownerRolls, opponent, opponentRolls, minOwnerIndex, maxOpponentIndex) {
+  const newOwnerRolls = [...ownerRolls];
+  const newOpponentRolls = [...opponentRolls];
+  const temp = newOwnerRolls[minOwnerIndex].value;
+  newOwnerRolls[minOwnerIndex] = { ...newOwnerRolls[minOwnerIndex], value: newOpponentRolls[maxOpponentIndex].value, isRerolled: true, skipAnimation: true };
+  newOpponentRolls[maxOpponentIndex] = { ...newOpponentRolls[maxOpponentIndex], value: temp, isRerolled: true, skipAnimation: true };
+  let newState = modifySpeedRolls(state, owner, () => newOwnerRolls);
+  newState = modifySpeedRolls(newState, opponent, () => newOpponentRolls);
+  return newState;
+}
 registerAbility({
   name: "Trickster",
   type: "modifier",
   description: "Swap one of your opponent's speed dice for your own.",
-  // Same as Deceive.
-  onSpeedRoll: (state, { owner }) => {
-    const opponent = getOpponent(owner);
-    const ownerRolls = state[owner === "hero" ? "heroSpeedRolls" : "enemySpeedRolls"];
-    const opponentRolls = state[opponent === "hero" ? "heroSpeedRolls" : "enemySpeedRolls"];
-    if (!ownerRolls || !opponentRolls || ownerRolls.length === 0 || opponentRolls.length === 0) return state;
-    const newOwnerRolls = [...ownerRolls];
-    const newOpponentRolls = [...opponentRolls];
-    let minOwnerIndex = 0;
-    for (let i = 1; i < newOwnerRolls.length; i++) {
-      if (newOwnerRolls[i].value < newOwnerRolls[minOwnerIndex].value) minOwnerIndex = i;
-    }
-    let maxOpponentIndex = 0;
-    for (let i = 1; i < newOpponentRolls.length; i++) {
-      if (newOpponentRolls[i].value > newOpponentRolls[maxOpponentIndex].value) maxOpponentIndex = i;
-    }
-    if (ownerRolls[minOwnerIndex] >= opponentRolls[maxOpponentIndex]) return state;
-    const temp = newOwnerRolls[minOwnerIndex].value;
-    newOwnerRolls[minOwnerIndex] = { ...newOwnerRolls[minOwnerIndex], value: newOpponentRolls[maxOpponentIndex].value, isRerolled: true };
-    newOpponentRolls[maxOpponentIndex] = { ...newOpponentRolls[maxOpponentIndex], value: temp, isRerolled: true };
-    state = modifySpeedRolls(state, owner, () => newOwnerRolls);
-    state = modifySpeedRolls(state, opponent, () => newOpponentRolls);
-    return state;
+  canActivate: (state, { owner }) => {
+    if (state.phase !== "speed-roll") return false;
+    const { ownerRolls, opponentRolls } = getOwnerAndOpponentRolls(state, owner);
+    if (!ownerRolls || !opponentRolls) return false;
+    return !!findSwapIndexes(ownerRolls, opponentRolls);
+  },
+  onActivate: (state, { owner }) => {
+    const { ownerRolls, opponentRolls, opponent } = getOwnerAndOpponentRolls(state, owner);
+    if (!ownerRolls || !opponentRolls) return state;
+    const indexes = findSwapIndexes(ownerRolls, opponentRolls);
+    if (!indexes) return state;
+    const { minOwnerIndex, maxOpponentIndex } = indexes;
+    return swapRollsAndUpdateState(state, owner, ownerRolls, opponent, opponentRolls, minOwnerIndex, maxOpponentIndex);
   }
 });
 registerAbility({
@@ -33375,6 +33481,9 @@ function activateAbility(state, rawAbilityName) {
       usedAbilities: [...state.usedAbilities || [], { name: abilityName, type: definition.type }]
     };
   }
+  if (state.phase === "speed-roll" && state.heroSpeedRolls && state.enemySpeedRolls) {
+    state = updateWinner(state);
+  }
   return checkForCombatEnd(state);
 }
 function resolveInteraction(state, data) {
@@ -34244,7 +34353,7 @@ const CombatDice = ({
       const newRollingIndices = [];
       values.forEach((val, i) => {
         const prev = prevValues[i];
-        if (!prev || prev.value !== val.value || prev.isRerolled !== val.isRerolled) {
+        if ((!prev || prev.value !== val.value || prev.isRerolled !== val.isRerolled) && !val.skipAnimation) {
           newRollingIndices.push(i);
         }
       });
@@ -35146,6 +35255,38 @@ function useHero() {
       }
     }));
   };
+  const updateMaxHealth = (effectiveMax) => {
+    let currentEffectiveMax = hero.stats.maxHealth;
+    if (hero.path === "Warrior") currentEffectiveMax += 15;
+    if (hero.path === "Mage") currentEffectiveMax += 10;
+    if (hero.path === "Rogue") currentEffectiveMax += 5;
+    Object.values(hero.equipment).forEach((item) => {
+      var _a;
+      if ((_a = item == null ? void 0 : item.stats) == null ? void 0 : _a.maxHealth) currentEffectiveMax += item.stats.maxHealth;
+    });
+    let pathBonus = 0;
+    if (hero.path === "Warrior") pathBonus = 15;
+    if (hero.path === "Mage") pathBonus = 10;
+    if (hero.path === "Rogue") pathBonus = 5;
+    let equipmentBonus = 0;
+    Object.values(hero.equipment).forEach((item) => {
+      var _a;
+      if ((_a = item == null ? void 0 : item.stats) == null ? void 0 : _a.maxHealth) equipmentBonus += item.stats.maxHealth;
+    });
+    const newBaseMax = Math.max(1, effectiveMax - pathBonus - equipmentBonus);
+    setHero((prev) => {
+      const wasAtOldMax = prev.stats.health === currentEffectiveMax;
+      return {
+        ...prev,
+        stats: {
+          ...prev.stats,
+          maxHealth: newBaseMax,
+          // If they were at max, keep them at the new max; otherwise clamp
+          health: wasAtOldMax ? effectiveMax : Math.min(prev.stats.health, effectiveMax)
+        }
+      };
+    });
+  };
   const updateName = (name) => {
     setHero((prev) => ({ ...prev, name }));
   };
@@ -35254,6 +35395,7 @@ function useHero() {
     hero: effectiveHero,
     activeAbilities: activeAbilities2,
     updateHealth,
+    updateMaxHealth,
     updateName,
     updatePath,
     updateCareer,
@@ -35271,6 +35413,7 @@ function App() {
     hero,
     activeAbilities: activeAbilities2,
     updateHealth,
+    updateMaxHealth,
     updateMoney,
     updateName,
     updatePath,
@@ -35307,6 +35450,7 @@ function App() {
           hero,
           activeAbilities: activeAbilities2,
           onHealthChange: updateHealth,
+          onMaxHealthChange: updateMaxHealth,
           onMoneyChange: updateMoney,
           onNameChange: updateName,
           onPathChange: updatePath,
@@ -35339,4 +35483,4 @@ function App() {
 client.createRoot(document.getElementById("root")).render(
   /* @__PURE__ */ jsxRuntimeExports.jsx(React.StrictMode, { children: /* @__PURE__ */ jsxRuntimeExports.jsx(App, {}) })
 );
-//# sourceMappingURL=index-CebQ7nKx.js.map
+//# sourceMappingURL=index-D4ZycR3y.js.map
