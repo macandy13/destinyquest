@@ -4,7 +4,6 @@ Bugs:
 
 Features:
 - Support nodes
-- Full edit mode
 - Support full customization of state during combat
 - Implement skill checks
 - Save heros in the Cloud
