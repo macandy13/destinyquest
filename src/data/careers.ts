@@ -31,7 +31,7 @@ export const CAREERS: Career[] = [
     }, {
         name: 'Ranger',
         path: 'Warrior',
-        abilities: ['Lay of the Land', 'Nature's Revenge'],
+        abilities: ['Lay of the Land', "Nature's Revenge"],
         bookRef: {
             book: 'The Legion of Shadow',
             act: 2,
@@ -148,6 +148,125 @@ export const CAREERS: Career[] = [
             book: 'The Legion of Shadow',
             act: 3,
             section: 611
+        }
+    },
+    // Heart of Fire Careers
+    {
+        name: 'Monk',
+        path: 'Warrior',
+        abilities: ['Focused strike', 'Meditation'],
+        bookRef: {
+            book: 'The Heart of Fire',
+            act: 1,
+            section: 502
+        }
+    }, {
+        name: 'Brigand',
+        path: 'Warrior',
+        abilities: ['War paint', 'Pillage'],
+        bookRef: {
+            book: 'The Heart of Fire',
+            act: 1,
+            section: 446
+        }
+    }, {
+        name: 'Drake',
+        path: 'Warrior',
+        abilities: ['Fiery temper', 'Searing mantle'],
+        bookRef: {
+            book: 'The Heart of Fire',
+            act: 2,
+            section: 745
+        }
+    }, {
+        name: 'Titan',
+        path: 'Warrior',
+        abilities: ['Stone skin', 'Trample'],
+        bookRef: {
+            book: 'The Heart of Fire',
+            act: 3,
+            section: 834
+        }
+    }, {
+        name: 'Acolyte',
+        path: 'Mage',
+        abilities: ['Bless', 'Last rites'],
+        bookRef: {
+            book: 'The Heart of Fire',
+            act: 1,
+            section: 487
+        }
+    }, {
+        name: 'Druid',
+        path: 'Mage',
+        abilities: ['Thorn cage', 'Ley line infusion'],
+        bookRef: {
+            book: 'The Heart of Fire',
+            act: 1,
+            section: 403
+        }
+    }, {
+        name: 'Scholar',
+        path: 'Mage',
+        abilities: ['Tome raider', 'Bright spark'],
+        bookRef: {
+            book: 'The Heart of Fire',
+            act: 2,
+            section: 622
+        }
+    }, {
+        name: 'Runecaster',
+        path: 'Mage',
+        abilities: ['Refresh', 'Magic tap'],
+        bookRef: {
+            book: 'The Heart of Fire',
+            act: 2,
+            section: 778
+        }
+    }, {
+        name: 'Pilgrim',
+        path: 'Rogue',
+        abilities: ['Charm offensive', 'Blessed blades'],
+        bookRef: {
+            book: 'The Heart of Fire',
+            act: 1,
+            section: 481
+        }
+    }, {
+        name: 'Pariah',
+        path: 'Rogue',
+        abilities: ['Beguile', 'Double punch'],
+        bookRef: {
+            book: 'The Heart of Fire',
+            act: 1,
+            section: 302
+        }
+    }, {
+        name: 'Thief',
+        path: 'Rogue',
+        abilities: ['Backstab', 'Cutpurse'],
+        bookRef: {
+            book: 'The Heart of Fire',
+            act: 2,
+            section: 753
+        }
+    }, {
+        name: 'Venomancer',
+        path: 'Rogue',
+        abilities: ['Snake strike', 'Toxicology'],
+        bookRef: {
+            book: 'The Heart of Fire',
+            act: 2,
+            section: 473
+        }
+    }, {
+        name: 'Blood archer',
+        path: 'Rogue',
+        abilities: ['Blood hail', 'Blood thief'],
+        bookRef: {
+            book: 'The Heart of Fire',
+            act: 3,
+            section: 846
         }
     }
 ];
