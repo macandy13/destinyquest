@@ -10,6 +10,9 @@ export const BOOKS: BookInfo[] = [
     {
         book: 'The Legion of Shadow',
         acts: [1, 2, 3]
+    }, {
+        book: 'The Heart of Fire',
+        acts: [1, 2, 3]
     }
 ];
 

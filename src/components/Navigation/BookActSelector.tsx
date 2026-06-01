@@ -10,95 +10,51 @@ interface BookActSelectorProps {
     onFilterChange: (filter: BookFilter) => void;
 }
 
-function isActive(
-    current: BookFilter,
-    candidate: BookFilter
-): boolean {
-    if (
-        current.type === 'all' &&
-        candidate.type === 'all'
-    ) {
-        return true;
-    }
-    if (
-        current.type === 'book' &&
-        candidate.type === 'book'
-    ) {
-        return current.book === candidate.book;
-    }
-    if (
-        current.type === 'act' &&
-        candidate.type === 'act'
-    ) {
-        return (
-            current.book === candidate.book &&
-            current.act === candidate.act
-        );
-    }
-    return false;
-}
-
 const BookActSelector: React.FC<
     BookActSelectorProps
 > = ({ filter, onFilterChange }) => {
+    const selectedBook = filter.type === 'book' || filter.type === 'act' ? filter.book : '';
+    const selectedAct = filter.type === 'act' ? filter.act : '';
+
+    const handleBookChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
+        const book = event.target.value;
+        if (book === 'all') {
+            onFilterChange({ type: 'all' });
+        } else {
+            onFilterChange({ type: 'book', book });
+        }
+    };
+
+    const handleActChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
+        const act = parseInt(event.target.value, 10);
+        if (selectedBook) {
+            onFilterChange({ type: 'act', book: selectedBook, act });
+        }
+    };
+
+    const currentBookInfo = BOOKS.find(book => book.book === selectedBook);
+
     return (
         <div className="book-act-selector">
-            <button
-                className={`filter-pill ${isActive(filter, { type: 'all' })
-                        ? 'active'
-                        : ''
-                    }`}
-                onClick={() =>
-                    onFilterChange({ type: 'all' })
-                }
-            >
-                All
-            </button>
-
-            {BOOKS.map((bookInfo) => (
-                <React.Fragment key={bookInfo.book}>
-                    <button
-                        className={`filter-pill ${isActive(filter, {
-                            type: 'book',
-                            book: bookInfo.book
-                        })
-                                ? 'active'
-                                : ''
-                            }`}
-                        onClick={() =>
-                            onFilterChange({
-                                type: 'book',
-                                book: bookInfo.book
-                            })
-                        }
-                    >
+            <select className="filter-dropdown" value={selectedBook === '' ? 'all' : selectedBook} onChange={handleBookChange}>
+                <option value="all">All</option>
+                {BOOKS.map((bookInfo) => (
+                    <option key={bookInfo.book} value={bookInfo.book}>
                         📖 {bookInfo.book}
-                    </button>
+                    </option>
+                ))}
+            </select>
 
-                    {bookInfo.acts.map((act) => (
-                        <button
-                            key={act}
-                            className={`filter-pill ${isActive(filter, {
-                                type: 'act',
-                                book: bookInfo.book,
-                                act
-                            })
-                                    ? 'active'
-                                    : ''
-                                }`}
-                            onClick={() =>
-                                onFilterChange({
-                                    type: 'act',
-                                    book: bookInfo.book,
-                                    act
-                                })
-                            }
-                        >
-                            Act {act}
-                        </button>
+            {selectedBook && currentBookInfo && (
+                <select className="filter-dropdown" value={selectedAct === '' ? 'all' : selectedAct} onChange={handleActChange}>
+                    <option value="all">All Acts</option>
+                    {currentBookInfo.acts.map((act) => (
+                        <option key={act} value={act}>
+                            Akt {act}
+                        </option>
                     ))}
-                </React.Fragment>
-            ))}
+                </select>
+            )}
         </div>
     );
 };

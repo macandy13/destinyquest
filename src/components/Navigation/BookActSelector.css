@@ -1,12 +1,14 @@
 .book-act-selector {
     display: flex;
-    flex-wrap: wrap;
+    flex-direction: row;
+    /* Stack dropdowns vertically */
     gap: var(--spacing-xs);
-    justify-content: center;
+    align-items: center;
+    /* Center dropdowns */
     padding: 0 var(--spacing-md) var(--spacing-sm);
 }
 
-.filter-pill {
+.filter-dropdown {
     background: var(--dq-grey);
     border: var(--border-sm) solid var(--dq-gold-dim);
     border-radius: var(--radius-md);
@@ -17,16 +19,26 @@
     cursor: pointer;
     transition: all 0.2s;
     white-space: nowrap;
+    width: 200px;
+    /* Adjust width as needed */
+    -webkit-appearance: none;
+    /* Remove default browser styling */
+    -moz-appearance: none;
+    appearance: none;
+    background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%20viewBox%3D%220%200%20292.4%20292.4%22%3E%3Cpath%20fill%3D%22%23d4af37%22%20d%3D%22M287%2C118.8L154.1%2C251.7c-4.2%2C4.2-9.6%2C6.3-15%2C6.3c-5.4%2C0-10.8-2.1-15-6.3L5.4%2C118.8C-1.8%2C111.6-1.8%2C100.4%2C5.4%2C93.3c7.2-7.2%2C18.9-7.2%2C26.1%2C0l116.6%2C116.6l116.6-116.6c7.2-7.2%2C18.9-7.2%2C26.1%2C0C294.2%2C100.4%2C294.2%2C111.6%2C287%2C118.8z%22%2F%3E%3C%2Fsvg%3E');
+    /* Custom arrow */
+    background-repeat: no-repeat;
+    background-position: right 10px top 50%;
+    background-size: 12px;
 }
 
-.filter-pill:hover {
+.filter-dropdown:hover {
     border-color: var(--dq-gold);
-    background: rgba(212, 175, 55, 0.1);
+    background-color: rgba(212, 175, 55, 0.1);
 }
 
-.filter-pill.active {
-    background: var(--dq-gold);
-    color: var(--dq-black);
+.filter-dropdown:focus {
+    outline: none;
     border-color: var(--dq-gold);
-    font-weight: bold;
+    box-shadow: 0 0 0 2px rgba(212, 175, 55, 0.5);
 }
