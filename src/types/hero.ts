@@ -35,10 +35,11 @@ export type HeroPath = '' | 'Warrior' | 'Mage' | 'Rogue';
 
 export interface BackpackItem extends Item {
     type: 'backpack';
-    description: string; // Full modifier string (e.g. "+2 speed")
+    description?: string; // Full modifier string (e.g. "+2 speed")
     effect: Effect;
     notes?: string;
     uses?: number;
+    targetItemTypes?: string[]; // Optional target item type for the effect (instead of a temporary effect)
 }
 
 export interface Hero extends Character {

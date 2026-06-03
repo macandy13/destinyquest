@@ -2,1386 +2,1516 @@ import { BackpackItem } from '../types/hero';
 
 export const BACKPACK_ITEMS: BackpackItem[] = [
   {
-    "id": "the_legion_of_shadow",
-    "name": "The Legion of Shadow",
+    "id": "healing_potion",
+    "name": "Healing Potion",
     "type": "backpack",
     "effect": {
-      "stats": {},
-      "source": "The Legion of Shadow",
+      "stats": {
+        "health": 6
+      },
+      "source": "Healing Potion",
       "target": "hero",
       "duration": 0
     },
-    "uses": 56,
-    "notes": "Healing Potion",
+    "uses": 1,
+    "description": "",
+    "notes": "Sold by the Apothecary",
     "bookRef": {
-      "book": "+6 health",
+      "book": "The Legion of Shadow",
       "act": 1,
-      "section": 0
-    },
-    "location": "Sold by the Apothecary"
-  },
-  {
-    "id": "the_legion_of_shadow",
-    "name": "The Legion of Shadow",
-    "type": "backpack",
-    "effect": {
-      "stats": {},
-      "source": "The Legion of Shadow",
-      "target": "hero",
-      "duration": 0
-    },
-    "uses": 56,
-    "notes": "Speed Potion",
-    "bookRef": {
-      "book": "+2 speed / 1 rd",
-      "act": 1,
-      "section": 0
-    },
-    "location": "Sold by the Apothecary"
-  },
-  {
-    "id": "the_legion_of_shadow",
-    "name": "The Legion of Shadow",
-    "type": "backpack",
-    "effect": {
-      "stats": {},
-      "source": "The Legion of Shadow",
-      "target": "hero",
-      "duration": 0
-    },
-    "uses": 56,
-    "notes": "Brawn Potion",
-    "bookRef": {
-      "book": "+2 brawn / 1 rd",
-      "act": 1,
-      "section": 0
-    },
-    "location": "Sold by the Apothecary"
-  },
-  {
-    "id": "the_legion_of_shadow",
-    "name": "The Legion of Shadow",
-    "type": "backpack",
-    "effect": {
-      "stats": {},
-      "source": "The Legion of Shadow",
-      "target": "hero",
-      "duration": 0
-    },
-    "uses": 56,
-    "notes": "Magic Potion",
-    "bookRef": {
-      "book": "+2 magic / 1 rd",
-      "act": 1,
-      "section": 0
-    },
-    "location": "Sold by the Apothecary"
-  },
-  {
-    "id": "the_legion_of_shadow",
-    "name": "The Legion of Shadow",
-    "type": "backpack",
-    "effect": {
-      "stats": {},
-      "source": "The Legion of Shadow",
-      "target": "hero",
-      "duration": 0
-    },
-    "uses": 118,
-    "notes": "Crocodile Skin",
-    "bookRef": {
-      "book": "",
-      "act": 0,
-      "section": 0
-    },
-    "location": "Dropped by the Crocodile"
-  },
-  {
-    "id": "the_legion_of_shadow",
-    "name": "The Legion of Shadow",
-    "type": "backpack",
-    "effect": {
-      "stats": {},
-      "source": "The Legion of Shadow",
-      "target": "hero",
-      "duration": 0
-    },
-    "uses": 125,
-    "notes": "Goblin Grog",
-    "bookRef": {
-      "book": "+4 health",
-      "act": 2,
-      "section": 0
-    },
-    "location": "Found in Goblin loot"
-  },
-  {
-    "id": "the_legion_of_shadow",
-    "name": "The Legion of Shadow",
-    "type": "backpack",
-    "effect": {
-      "stats": {},
-      "source": "The Legion of Shadow",
-      "target": "hero",
-      "duration": 0
-    },
-    "uses": 125,
-    "notes": "Healing Salve",
-    "bookRef": {
-      "book": "+6 health",
-      "act": 1,
-      "section": 0
-    },
-    "location": "Found in Goblin loot"
-  },
-  {
-    "id": "the_legion_of_shadow",
-    "name": "The Legion of Shadow",
-    "type": "backpack",
-    "effect": {
-      "stats": {},
-      "source": "The Legion of Shadow",
-      "target": "hero",
-      "duration": 0
-    },
-    "uses": 125,
-    "notes": "Miracle Grow",
-    "bookRef": {
-      "book": "+2 brawn / 1 rd",
-      "act": 1,
-      "section": 0
-    },
-    "location": "Found in Goblin loot"
-  },
-  {
-    "id": "the_legion_of_shadow",
-    "name": "The Legion of Shadow",
-    "type": "backpack",
-    "effect": {
-      "stats": {},
-      "source": "The Legion of Shadow",
-      "target": "hero",
-      "duration": 0
-    },
-    "uses": 127,
-    "notes": "Ghoul Hair",
-    "bookRef": {
-      "book": "",
-      "act": 0,
-      "section": 0
-    },
-    "location": "Dropped by Ghouls"
-  },
-  {
-    "id": "the_legion_of_shadow",
-    "name": "The Legion of Shadow",
-    "type": "backpack",
-    "effect": {
-      "stats": {},
-      "source": "The Legion of Shadow",
-      "target": "hero",
-      "duration": 0
-    },
-    "uses": 175,
-    "notes": "Explosives / Bombs",
-    "bookRef": {
-      "book": "+10 damage",
-      "act": 1,
-      "section": 0
-    },
-    "location": "Sold by the Tinker"
-  },
-  {
-    "id": "the_legion_of_shadow",
-    "name": "The Legion of Shadow",
-    "type": "backpack",
-    "effect": {
-      "stats": {},
-      "source": "The Legion of Shadow",
-      "target": "hero",
-      "duration": 0
-    },
-    "uses": 179,
-    "notes": "Spider's Leg",
-    "bookRef": {
-      "book": "",
-      "act": 0,
-      "section": 0
-    },
-    "location": "Dropped by Spiders"
-  },
-  {
-    "id": "the_legion_of_shadow",
-    "name": "The Legion of Shadow",
-    "type": "backpack",
-    "effect": {
-      "stats": {},
-      "source": "The Legion of Shadow",
-      "target": "hero",
-      "duration": 0
-    },
-    "uses": 260,
-    "notes": "Goblin Grog",
-    "bookRef": {
-      "book": "+4 health",
-      "act": 2,
-      "section": 0
-    },
-    "location": "Found in Goblin Chief's loot"
-  },
-  {
-    "id": "the_legion_of_shadow",
-    "name": "The Legion of Shadow",
-    "type": "backpack",
-    "effect": {
-      "stats": {},
-      "source": "The Legion of Shadow",
-      "target": "hero",
-      "duration": 0
-    },
-    "uses": 432,
-    "notes": "Da Boss",
-    "bookRef": {
-      "book": "+10 damage",
-      "act": 1,
-      "section": 0
-    },
-    "location": "Sold by Sea-Spray Steve"
-  },
-  {
-    "id": "the_legion_of_shadow",
-    "name": "The Legion of Shadow",
-    "type": "backpack",
-    "effect": {
-      "stats": {},
-      "source": "The Legion of Shadow",
-      "target": "hero",
-      "duration": 0
-    },
-    "uses": 48,
-    "notes": "Spindle Silk",
-    "bookRef": {
-      "book": "",
-      "act": 2,
-      "section": 0
+      "section": 56
     }
   },
   {
-    "id": "the_legion_of_shadow",
-    "name": "The Legion of Shadow",
+    "id": "speed_potion",
+    "name": "Speed Potion",
     "type": "backpack",
     "effect": {
-      "stats": {},
-      "source": "The Legion of Shadow",
+      "stats": {
+        "speed": 2
+      },
+      "source": "Speed Potion",
       "target": "hero",
-      "duration": 0
+      "duration": 1
     },
-    "uses": 640,
-    "notes": "Jar of Night Creeps",
+    "uses": 1,
+    "description": "",
+    "notes": "Sold by the Apothecary",
     "bookRef": {
-      "book": "",
-      "act": 0,
-      "section": 0
+      "book": "The Legion of Shadow",
+      "act": 1,
+      "section": 56
     }
   },
   {
-    "id": "the_legion_of_shadow",
-    "name": "The Legion of Shadow",
+    "id": "brawn_potion",
+    "name": "Brawn Potion",
     "type": "backpack",
     "effect": {
-      "stats": {},
-      "source": "The Legion of Shadow",
+      "stats": {
+        "brawn": 2
+      },
+      "source": "Brawn Potion",
       "target": "hero",
-      "duration": 0
+      "duration": 1
     },
-    "uses": 648,
-    "notes": "Borehole Explosives",
+    "uses": 1,
+    "description": "",
+    "notes": "Sold by the Apothecary",
     "bookRef": {
-      "book": "",
-      "act": 0,
-      "section": 0
+      "book": "The Legion of Shadow",
+      "act": 1,
+      "section": 56
     }
   },
   {
-    "id": "the_legion_of_shadow",
-    "name": "The Legion of Shadow",
+    "id": "magic_potion",
+    "name": "Magic Potion",
     "type": "backpack",
     "effect": {
-      "stats": {},
-      "source": "The Legion of Shadow",
+      "stats": {
+        "magic": 2
+      },
+      "source": "Magic Potion",
       "target": "hero",
-      "duration": 0
+      "duration": 1
     },
-    "uses": 697,
-    "notes": "Flask of Healing",
+    "uses": 1,
+    "description": "",
+    "notes": "Sold by the Apothecary",
     "bookRef": {
-      "book": "+10 health",
+      "book": "The Legion of Shadow",
       "act": 1,
-      "section": 0
-    },
-    "location": "Sold by Lansbury"
-  },
-  {
-    "id": "the_legion_of_shadow",
-    "name": "The Legion of Shadow",
-    "type": "backpack",
-    "effect": {
-      "stats": {},
-      "source": "The Legion of Shadow",
-      "target": "hero",
-      "duration": 0
-    },
-    "uses": 697,
-    "notes": "Elixir of Swiftness",
-    "bookRef": {
-      "book": "+4 speed / 1 rd",
-      "act": 1,
-      "section": 0
-    },
-    "location": "Sold by Lansbury"
-  },
-  {
-    "id": "the_legion_of_shadow",
-    "name": "The Legion of Shadow",
-    "type": "backpack",
-    "effect": {
-      "stats": {},
-      "source": "The Legion of Shadow",
-      "target": "hero",
-      "duration": 0
-    },
-    "uses": 724,
-    "notes": "Pot of Mending",
-    "bookRef": {
-      "book": "+12 health",
-      "act": 1,
-      "section": 0
-    },
-    "location": "Found"
-  },
-  {
-    "id": "the_legion_of_shadow",
-    "name": "The Legion of Shadow",
-    "type": "backpack",
-    "effect": {
-      "stats": {},
-      "source": "The Legion of Shadow",
-      "target": "hero",
-      "duration": 0
-    },
-    "uses": 726,
-    "notes": "Pot of Mending",
-    "bookRef": {
-      "book": "+12 health",
-      "act": 1,
-      "section": 0
-    },
-    "location": "Found"
-  },
-  {
-    "id": "the_legion_of_shadow",
-    "name": "The Legion of Shadow",
-    "type": "backpack",
-    "effect": {
-      "stats": {},
-      "source": "The Legion of Shadow",
-      "target": "hero",
-      "duration": 0
-    },
-    "uses": 776,
-    "notes": "Elixir of Life",
-    "bookRef": {
-      "book": "Restore health",
-      "act": 1,
-      "section": 0
-    },
-    "location": "Found"
-  },
-  {
-    "id": "the_legion_of_shadow",
-    "name": "The Legion of Shadow",
-    "type": "backpack",
-    "effect": {
-      "stats": {},
-      "source": "The Legion of Shadow",
-      "target": "hero",
-      "duration": 0
-    },
-    "uses": 776,
-    "notes": "Fluffy dice",
-    "bookRef": {
-      "book": "",
-      "act": 1,
-      "section": 0
-    },
-    "location": "Found"
-  },
-  {
-    "id": "the_legion_of_shadow",
-    "name": "The Legion of Shadow",
-    "type": "backpack",
-    "effect": {
-      "stats": {},
-      "source": "The Legion of Shadow",
-      "target": "hero",
-      "duration": 0
-    },
-    "uses": 785,
-    "notes": "Scarron bile",
-    "bookRef": {
-      "book": "Vitriol",
-      "act": 2,
-      "section": 0
-    },
-    "location": "Dropped by Scarrons"
-  },
-  {
-    "id": "the_legion_of_shadow",
-    "name": "The Legion of Shadow",
-    "type": "backpack",
-    "effect": {
-      "stats": {},
-      "source": "The Legion of Shadow",
-      "target": "hero",
-      "duration": 0
-    },
-    "uses": 794,
-    "notes": "Spirit Tincture",
-    "bookRef": {
-      "book": "-4 health; +2 brawn|magic / combat",
-      "act": 1,
-      "section": 0
-    },
-    "location": "Dropped by Ghasts"
-  },
-  {
-    "id": "the_legion_of_shadow",
-    "name": "The Legion of Shadow",
-    "type": "backpack",
-    "effect": {
-      "stats": {},
-      "source": "The Legion of Shadow",
-      "target": "hero",
-      "duration": 0
-    },
-    "uses": 802,
-    "notes": "Ghoolish Gloup",
-    "bookRef": {
-      "book": "+2 armour / combat",
-      "act": 2,
-      "section": 0
-    },
-    "location": "Dropped by Mages"
-  },
-  {
-    "id": "the_legion_of_shadow",
-    "name": "The Legion of Shadow",
-    "type": "backpack",
-    "effect": {
-      "stats": {},
-      "source": "The Legion of Shadow",
-      "target": "hero",
-      "duration": 0
-    },
-    "uses": 808,
-    "notes": "Arthurian's Horn",
-    "bookRef": {
-      "book": "+20 damage",
-      "act": 1,
-      "section": 0
-    },
-    "location": "Dropped by Necromancers"
-  },
-  {
-    "id": "the_legion_of_shadow",
-    "name": "The Legion of Shadow",
-    "type": "backpack",
-    "effect": {
-      "stats": {},
-      "source": "The Legion of Shadow",
-      "target": "hero",
-      "duration": 0
-    },
-    "uses": 827,
-    "notes": "Oil flask",
-    "bookRef": {
-      "book": "2 damage dice instead of damage score",
-      "act": 2,
-      "section": 0
+      "section": 56
     }
   },
   {
-    "id": "the_legion_of_shadow",
-    "name": "The Legion of Shadow",
+    "id": "crocodile_skin",
+    "name": "Crocodile Skin",
     "type": "backpack",
     "effect": {
       "stats": {},
-      "source": "The Legion of Shadow",
+      "source": "Crocodile Skin",
       "target": "hero",
       "duration": 0
     },
-    "uses": 890,
-    "notes": "Portable Shield",
+    "uses": 0,
+    "description": "",
+    "notes": "Dropped by the Crocodile",
     "bookRef": {
-      "book": "-10 damage",
+      "book": "The Legion of Shadow",
       "act": 1,
-      "section": 0
+      "section": 118
     }
   },
   {
-    "id": "the_heart_of_fire",
-    "name": "The Heart of Fire",
+    "id": "goblin_grog",
+    "name": "Goblin Grog",
     "type": "backpack",
     "effect": {
-      "stats": {},
-      "source": "The Heart of Fire",
+      "stats": {
+        "health": 4
+      },
+      "source": "Goblin Grog",
       "target": "hero",
       "duration": 0
     },
-    "uses": 43,
-    "notes": "Troll's bones",
+    "uses": 2,
+    "description": "",
+    "notes": "Found in Goblin loot",
     "bookRef": {
-      "book": "",
+      "book": "The Legion of Shadow",
       "act": 1,
-      "section": 0
+      "section": 125
     }
   },
   {
-    "id": "the_heart_of_fire",
-    "name": "The Heart of Fire",
+    "id": "healing_salve",
+    "name": "Healing Salve",
     "type": "backpack",
     "effect": {
-      "stats": {},
-      "source": "The Heart of Fire",
+      "stats": {
+        "health": 6
+      },
+      "source": "Healing Salve",
       "target": "hero",
       "duration": 0
     },
-    "uses": 69,
-    "notes": "Pot of healing",
+    "uses": 1,
+    "description": "",
+    "notes": "Found in Goblin loot",
     "bookRef": {
-      "book": "+4 health",
+      "book": "The Legion of Shadow",
       "act": 1,
-      "section": 0
-    },
-    "location": "Donated by Benin"
-  },
-  {
-    "id": "the_heart_of_fire",
-    "name": "The Heart of Fire",
-    "type": "backpack",
-    "effect": {
-      "stats": {},
-      "source": "The Heart of Fire",
-      "target": "hero",
-      "duration": 0
-    },
-    "uses": 69,
-    "notes": "Flask of healing",
-    "bookRef": {
-      "book": "+6 health",
-      "act": 1,
-      "section": 0
-    },
-    "location": "Donated by Benin"
-  },
-  {
-    "id": "the_heart_of_fire",
-    "name": "The Heart of Fire",
-    "type": "backpack",
-    "effect": {
-      "stats": {},
-      "source": "The Heart of Fire",
-      "target": "hero",
-      "duration": 0
-    },
-    "uses": 69,
-    "notes": "Pot of magic",
-    "bookRef": {
-      "book": "+2 magic / 1 rd",
-      "act": 1,
-      "section": 0
-    },
-    "location": "Donated by Benin"
-  },
-  {
-    "id": "the_heart_of_fire",
-    "name": "The Heart of Fire",
-    "type": "backpack",
-    "effect": {
-      "stats": {},
-      "source": "The Heart of Fire",
-      "target": "hero",
-      "duration": 0
-    },
-    "uses": 81,
-    "notes": "Book of binding",
-    "bookRef": {
-      "book": "",
-      "act": 1,
-      "section": 0
-    },
-    "location": "Deciphered"
-  },
-  {
-    "id": "the_heart_of_fire",
-    "name": "The Heart of Fire",
-    "type": "backpack",
-    "effect": {
-      "stats": {},
-      "source": "The Heart of Fire",
-      "target": "hero",
-      "duration": 0
-    },
-    "uses": 83,
-    "notes": "Unknown elixir",
-    "bookRef": {
-      "book": "",
-      "act": 1,
-      "section": 0
-    },
-    "location": "Brewn"
-  },
-  {
-    "id": "the_heart_of_fire",
-    "name": "The Heart of Fire",
-    "type": "backpack",
-    "effect": {
-      "stats": {},
-      "source": "The Heart of Fire",
-      "target": "hero",
-      "duration": 0
-    },
-    "uses": 88,
-    "notes": "Healing salve",
-    "bookRef": {
-      "book": "+2 health at start of combat round",
-      "act": 2,
-      "section": 0
+      "section": 125
     }
   },
   {
-    "id": "the_heart_of_fire",
-    "name": "The Heart of Fire",
+    "id": "miracle_grow",
+    "name": "Miracle Grow",
     "type": "backpack",
     "effect": {
-      "stats": {},
-      "source": "The Heart of Fire",
+      "stats": {
+        "brawn": 2
+      },
+      "source": "Miracle Grow",
       "target": "hero",
-      "duration": 0
+      "duration": 1
     },
-    "uses": 88,
-    "notes": "Elixir of life",
+    "uses": 1,
+    "description": "",
+    "notes": "Found in Goblin loot",
     "bookRef": {
-      "book": "Restore full health",
+      "book": "The Legion of Shadow",
       "act": 1,
-      "section": 0
+      "section": 125
     }
   },
   {
-    "id": "the_heart_of_fire",
-    "name": "The Heart of Fire",
+    "id": "ghoul_hair",
+    "name": "Ghoul Hair",
     "type": "backpack",
     "effect": {
       "stats": {},
-      "source": "The Heart of Fire",
+      "source": "Ghoul Hair",
       "target": "hero",
       "duration": 0
     },
-    "uses": 120,
-    "notes": "Pot of healing",
+    "uses": 0,
+    "description": "",
+    "notes": "Dropped by Ghouls",
     "bookRef": {
-      "book": "+4 health",
+      "book": "The Legion of Shadow",
       "act": 1,
-      "section": 0
+      "section": 127
     }
   },
   {
-    "id": "the_heart_of_fire",
-    "name": "The Heart of Fire",
+    "id": "explosives_bombs",
+    "name": "Explosives / Bombs",
     "type": "backpack",
     "effect": {
-      "stats": {},
-      "source": "The Heart of Fire",
+      "stats": {
+        "damageModifier": 10
+      },
+      "source": "Explosives / Bombs",
       "target": "hero",
       "duration": 0
     },
-    "uses": 120,
-    "notes": "Pot of brawn",
+    "uses": 1,
+    "description": "",
+    "notes": "Sold by the Tinker",
     "bookRef": {
-      "book": "+2 brawn / 1 rd",
+      "book": "The Legion of Shadow",
       "act": 1,
-      "section": 0
+      "section": 175
     }
   },
   {
-    "id": "the_heart_of_fire",
-    "name": "The Heart of Fire",
+    "id": "spiders_leg",
+    "name": "Spider's Leg",
     "type": "backpack",
     "effect": {
       "stats": {},
-      "source": "The Heart of Fire",
+      "source": "Spider's Leg",
       "target": "hero",
       "duration": 0
     },
-    "uses": 120,
-    "notes": "Pot of magic",
+    "uses": 0,
+    "description": "",
+    "notes": "Dropped by Spiders",
     "bookRef": {
-      "book": "+2 magic / 1 rd",
+      "book": "The Legion of Shadow",
       "act": 1,
-      "section": 0
+      "section": 179
     }
   },
   {
-    "id": "the_heart_of_fire",
-    "name": "The Heart of Fire",
+    "id": "goblin_grog",
+    "name": "Goblin Grog",
     "type": "backpack",
     "effect": {
-      "stats": {},
-      "source": "The Heart of Fire",
+      "stats": {
+        "health": 4
+      },
+      "source": "Goblin Grog",
       "target": "hero",
       "duration": 0
     },
-    "uses": 164,
-    "notes": "Goblin bones",
+    "uses": 2,
+    "description": "",
+    "notes": "Found in Goblin Chief's loot",
     "bookRef": {
-      "book": "",
+      "book": "The Legion of Shadow",
       "act": 1,
-      "section": 0
+      "section": 260
     }
   },
   {
-    "id": "the_heart_of_fire",
-    "name": "The Heart of Fire",
+    "id": "da_boss",
+    "name": "Da Boss",
     "type": "backpack",
     "effect": {
-      "stats": {},
-      "source": "The Heart of Fire",
+      "stats": {
+        "damageModifier": 10
+      },
+      "source": "Da Boss",
       "target": "hero",
       "duration": 0
     },
-    "uses": 164,
-    "notes": "Pot of speed",
+    "uses": 1,
+    "description": "",
+    "notes": "Sold by Sea-Spray Steve",
     "bookRef": {
-      "book": "",
+      "book": "The Legion of Shadow",
       "act": 1,
-      "section": 2
-    },
-    "location": "2"
+      "section": 432
+    }
   },
   {
-    "id": "the_heart_of_fire",
-    "name": "The Heart of Fire",
+    "id": "spindle_silk",
+    "name": "Spindle Silk",
     "type": "backpack",
     "effect": {
       "stats": {},
-      "source": "The Heart of Fire",
+      "source": "Spindle Silk",
       "target": "hero",
       "duration": 0
     },
-    "uses": 176,
-    "notes": "Glyph of Power",
+    "uses": 2,
+    "description": "Perhaps a master clothier could do something with this fine silk",
     "bookRef": {
-      "book": "+1 magic for an item",
+      "book": "The Legion of Shadow",
       "act": 1,
-      "section": 0
+      "section": 48
     }
   },
   {
-    "id": "the_heart_of_fire",
-    "name": "The Heart of Fire",
+    "id": "jar_of_night_creeps",
+    "name": "Jar of Night Creeps",
     "type": "backpack",
     "effect": {
       "stats": {},
-      "source": "The Heart of Fire",
+      "source": "Jar of Night Creeps",
       "target": "hero",
       "duration": 0
     },
-    "uses": 176,
-    "notes": "Rune of Healing",
-    "bookRef": {
-      "book": "Add Heal ability to item",
-      "act": 1,
-      "section": 0
-    }
-  },
-  {
-    "id": "the_heart_of_fire",
-    "name": "The Heart of Fire",
-    "type": "backpack",
-    "effect": {
-      "stats": {},
-      "source": "The Heart of Fire",
-      "target": "hero",
-      "duration": 0
-    },
-    "uses": 189,
-    "notes": "Borehole Charge",
-    "bookRef": {
-      "book": "",
-      "act": 1,
-      "section": 0
-    }
-  },
-  {
-    "id": "the_heart_of_fire",
-    "name": "The Heart of Fire",
-    "type": "backpack",
-    "effect": {
-      "stats": {},
-      "source": "The Heart of Fire",
-      "target": "hero",
-      "duration": 0
-    },
-    "uses": 201,
-    "notes": "Pumpkin Squash",
-    "bookRef": {
-      "book": "+1 brawn/magic / 1 rd",
-      "act": 2,
-      "section": 0
-    }
-  },
-  {
-    "id": "the_heart_of_fire",
-    "name": "The Heart of Fire",
-    "type": "backpack",
-    "effect": {
-      "stats": {},
-      "source": "The Heart of Fire",
-      "target": "hero",
-      "duration": 0
-    },
-    "uses": 205,
-    "notes": "Goblin bones",
-    "bookRef": {
-      "book": "",
-      "act": 1,
-      "section": 0
-    }
-  },
-  {
-    "id": "the_heart_of_fire",
-    "name": "The Heart of Fire",
-    "type": "backpack",
-    "effect": {
-      "stats": {},
-      "source": "The Heart of Fire",
-      "target": "hero",
-      "duration": 0
-    },
-    "uses": 234,
-    "notes": "Giant bones",
-    "bookRef": {
-      "book": "",
-      "act": 1,
-      "section": 0
-    }
-  },
-  {
-    "id": "the_heart_of_fire",
-    "name": "The Heart of Fire",
-    "type": "backpack",
-    "effect": {
-      "stats": {},
-      "source": "The Heart of Fire",
-      "target": "hero",
-      "duration": 0
-    },
-    "uses": 239,
-    "notes": "Book of Alpha",
-    "bookRef": {
-      "book": "",
-      "act": 1,
-      "section": 0
-    },
-    "location": "Found in Temple"
-  },
-  {
-    "id": "the_heart_of_fire",
-    "name": "The Heart of Fire",
-    "type": "backpack",
-    "effect": {
-      "stats": {},
-      "source": "The Heart of Fire",
-      "target": "hero",
-      "duration": 0
-    },
-    "uses": 258,
-    "notes": "Goblin bones",
-    "bookRef": {
-      "book": "",
-      "act": 1,
-      "section": 0
-    }
-  },
-  {
-    "id": "the_heart_of_fire",
-    "name": "The Heart of Fire",
-    "type": "backpack",
-    "effect": {
-      "stats": {},
-      "source": "The Heart of Fire",
-      "target": "hero",
-      "duration": 0
-    },
-    "uses": 292,
-    "notes": "Goblin bones",
-    "bookRef": {
-      "book": "",
-      "act": 1,
-      "section": 0
-    }
-  },
-  {
-    "id": "the_heart_of_fire",
-    "name": "The Heart of Fire",
-    "type": "backpack",
-    "effect": {
-      "stats": {},
-      "source": "The Heart of Fire",
-      "target": "hero",
-      "duration": 0
-    },
-    "uses": 318,
-    "notes": "A bottle of wisps",
-    "bookRef": {
-      "book": "",
-      "act": 1,
-      "section": 0
-    }
-  },
-  {
-    "id": "the_heart_of_fire",
-    "name": "The Heart of Fire",
-    "type": "backpack",
-    "effect": {
-      "stats": {},
-      "source": "The Heart of Fire",
-      "target": "hero",
-      "duration": 0
-    },
-    "uses": 336,
-    "notes": "Goblin bones",
-    "bookRef": {
-      "book": "",
-      "act": 1,
-      "section": 0
-    }
-  },
-  {
-    "id": "the_heart_of_fire",
-    "name": "The Heart of Fire",
-    "type": "backpack",
-    "effect": {
-      "stats": {},
-      "source": "The Heart of Fire",
-      "target": "hero",
-      "duration": 0
-    },
-    "uses": 340,
-    "notes": "Sanctified ashes",
-    "bookRef": {
-      "book": "Ability: Ashes",
-      "act": 2,
-      "section": 0
-    }
-  },
-  {
-    "id": "the_heart_of_fire",
-    "name": "The Heart of Fire",
-    "type": "backpack",
-    "effect": {
-      "stats": {},
-      "source": "The Heart of Fire",
-      "target": "hero",
-      "duration": 0
-    },
-    "uses": 340,
-    "notes": "Holy water",
-    "bookRef": {
-      "book": "Instead of rolling for damage roll 2 damage dice (against undead) ignoring armour",
-      "act": 2,
-      "section": 0
-    }
-  },
-  {
-    "id": "the_heart_of_fire",
-    "name": "The Heart of Fire",
-    "type": "backpack",
-    "effect": {
-      "stats": {},
-      "source": "The Heart of Fire",
-      "target": "hero",
-      "duration": 0
-    },
-    "uses": 340,
-    "notes": "Angelica wreath",
-    "bookRef": {
-      "book": "Ability: Holy protector",
-      "act": 1,
-      "section": 0
-    }
-  },
-  {
-    "id": "the_heart_of_fire",
-    "name": "The Heart of Fire",
-    "type": "backpack",
-    "effect": {
-      "stats": {},
-      "source": "The Heart of Fire",
-      "target": "hero",
-      "duration": 0
-    },
-    "uses": 345,
-    "notes": "Borehole Charge",
-    "bookRef": {
-      "book": "",
-      "act": 1,
-      "section": 0
-    }
-  },
-  {
-    "id": "the_heart_of_fire",
-    "name": "The Heart of Fire",
-    "type": "backpack",
-    "effect": {
-      "stats": {},
-      "source": "The Heart of Fire",
-      "target": "hero",
-      "duration": 0
-    },
-    "uses": 349,
-    "notes": "Might monster metal",
-    "bookRef": {
-      "book": "\"+1 armour for a head",
-      "act": 1,
-      "section": 0
-    },
-    "location": "feet"
-  },
-  {
-    "id": "the_heart_of_fire",
-    "name": "The Heart of Fire",
-    "type": "backpack",
-    "effect": {
-      "stats": {},
-      "source": "The Heart of Fire",
-      "target": "hero",
-      "duration": 0
-    },
-    "uses": 349,
-    "notes": "Putrid pixie puke",
-    "bookRef": {
-      "book": "\"+1 magic for a head",
-      "act": 1,
-      "section": 0
-    },
-    "location": "feet"
-  },
-  {
-    "id": "the_heart_of_fire",
-    "name": "The Heart of Fire",
-    "type": "backpack",
-    "effect": {
-      "stats": {},
-      "source": "The Heart of Fire",
-      "target": "hero",
-      "duration": 0
-    },
-    "uses": 349,
-    "notes": "Slimy stringy snot",
-    "bookRef": {
-      "book": "\"+1 brawn for a head",
-      "act": 1,
-      "section": 0
-    },
-    "location": "feet"
-  },
-  {
-    "id": "the_heart_of_fire",
-    "name": "The Heart of Fire",
-    "type": "backpack",
-    "effect": {
-      "stats": {},
-      "source": "The Heart of Fire",
-      "target": "hero",
-      "duration": 0
-    },
-    "uses": 367,
-    "notes": "Coat of many scales",
-    "bookRef": {
-      "book": "",
-      "act": 1,
-      "section": 0
-    }
-  },
-  {
-    "id": "the_heart_of_fire",
-    "name": "The Heart of Fire",
-    "type": "backpack",
-    "effect": {
-      "stats": {},
-      "source": "The Heart of Fire",
-      "target": "hero",
-      "duration": 0
-    },
-    "uses": 367,
-    "notes": "Pot of speed",
-    "bookRef": {
-      "book": "+2 speed / 1 rd",
-      "act": 2,
-      "section": 0
-    }
-  },
-  {
-    "id": "the_heart_of_fire",
-    "name": "The Heart of Fire",
-    "type": "backpack",
-    "effect": {
-      "stats": {},
-      "source": "The Heart of Fire",
-      "target": "hero",
-      "duration": 0
-    },
-    "uses": 368,
-    "notes": "Saints blessing",
-    "bookRef": {
-      "book": "Restore full health",
-      "act": 1,
-      "section": 0
-    }
-  },
-  {
-    "id": "the_heart_of_fire",
-    "name": "The Heart of Fire",
-    "type": "backpack",
-    "effect": {
-      "stats": {},
-      "source": "The Heart of Fire",
-      "target": "hero",
-      "duration": 0
-    },
-    "uses": 377,
-    "notes": "Runed rod",
-    "bookRef": {
-      "book": "",
-      "act": 1,
-      "section": 0
-    }
-  },
-  {
-    "id": "the_heart_of_fire",
-    "name": "The Heart of Fire",
-    "type": "backpack",
-    "effect": {
-      "stats": {},
-      "source": "The Heart of Fire",
-      "target": "hero",
-      "duration": 0
-    },
-    "uses": 425,
-    "notes": "Mother's medicine",
-    "bookRef": {
-      "book": "+4 health",
-      "act": 2,
-      "section": 0
-    }
-  },
-  {
-    "id": "the_heart_of_fire",
-    "name": "The Heart of Fire",
-    "type": "backpack",
-    "effect": {
-      "stats": {},
-      "source": "The Heart of Fire",
-      "target": "hero",
-      "duration": 0
-    },
-    "uses": 425,
-    "notes": "Jacob's special mix",
-    "bookRef": {
-      "book": "+1 speed / 1 rd",
-      "act": 2,
-      "section": 0
-    }
-  },
-  {
-    "id": "the_heart_of_fire",
-    "name": "The Heart of Fire",
-    "type": "backpack",
-    "effect": {
-      "stats": {},
-      "source": "The Heart of Fire",
-      "target": "hero",
-      "duration": 0
-    },
-    "uses": 425,
-    "notes": "Secret brew",
-    "bookRef": {
-      "book": "+2 brawn / 1 rd",
-      "act": 1,
-      "section": 0
-    }
-  },
-  {
-    "id": "the_heart_of_fire",
-    "name": "The Heart of Fire",
-    "type": "backpack",
-    "effect": {
-      "stats": {},
-      "source": "The Heart of Fire",
-      "target": "hero",
-      "duration": 0
-    },
-    "uses": 433,
-    "notes": "Snakebite shake",
-    "bookRef": {
-      "book": "Remove venom",
-      "act": 1,
-      "section": 0
-    }
-  },
-  {
-    "id": "the_heart_of_fire",
-    "name": "The Heart of Fire",
-    "type": "backpack",
-    "effect": {
-      "stats": {},
-      "source": "The Heart of Fire",
-      "target": "hero",
-      "duration": 0
-    },
-    "uses": 433,
-    "notes": "Gourd of healing",
-    "bookRef": {
-      "book": "+6 health",
-      "act": 1,
-      "section": 0
-    }
-  },
-  {
-    "id": "the_heart_of_fire",
-    "name": "The Heart of Fire",
-    "type": "backpack",
-    "effect": {
-      "stats": {},
-      "source": "The Heart of Fire",
-      "target": "hero",
-      "duration": 0
-    },
-    "uses": 433,
-    "notes": "Elixir of invisibility",
-    "bookRef": {
-      "book": "Ability: Vanish",
-      "act": 1,
-      "section": 0
-    }
-  },
-  {
-    "id": "the_heart_of_fire",
-    "name": "The Heart of Fire",
-    "type": "backpack",
-    "effect": {
-      "stats": {},
-      "source": "The Heart of Fire",
-      "target": "hero",
-      "duration": 0
-    },
-    "uses": 201,
+    "uses": 0,
+    "description": "They're slimey",
     "notes": "",
     "bookRef": {
-      "book": "",
+      "book": "The Legion of Shadow",
       "act": 1,
-      "section": 0
+      "section": 640
     }
   },
   {
-    "id": "the_heart_of_fire",
-    "name": "The Heart of Fire",
+    "id": "borehole_explosives",
+    "name": "Borehole Explosives",
     "type": "backpack",
     "effect": {
       "stats": {},
-      "source": "The Heart of Fire",
+      "source": "Borehole Explosives",
       "target": "hero",
       "duration": 0
     },
-    "uses": 201,
+    "uses": 0,
+    "description": "Warning: Handle with Care",
     "notes": "",
     "bookRef": {
-      "book": "",
+      "book": "The Legion of Shadow",
       "act": 1,
-      "section": 0
+      "section": 648
     }
   },
   {
-    "id": "the_heart_of_fire",
-    "name": "The Heart of Fire",
+    "id": "flask_of_healing",
+    "name": "Flask of Healing",
     "type": "backpack",
     "effect": {
-      "stats": {},
-      "source": "The Heart of Fire",
+      "stats": {
+        "health": 10
+      },
+      "source": "Flask of Healing",
       "target": "hero",
       "duration": 0
     },
-    "uses": 201,
-    "notes": "",
+    "uses": 1,
+    "description": "",
+    "notes": "Sold by Lansbury",
     "bookRef": {
-      "book": "",
+      "book": "The Legion of Shadow",
       "act": 1,
-      "section": 0
+      "section": 697
     }
   },
   {
-    "id": "the_heart_of_fire",
-    "name": "The Heart of Fire",
+    "id": "elixir_of_swiftness",
+    "name": "Elixir of Swiftness",
     "type": "backpack",
     "effect": {
-      "stats": {},
-      "source": "The Heart of Fire",
+      "stats": {
+        "speed": 4
+      },
+      "source": "Elixir of Swiftness",
       "target": "hero",
-      "duration": 0
+      "duration": 1
     },
-    "uses": 201,
-    "notes": "",
+    "uses": 1,
+    "description": "",
+    "notes": "Sold by Lansbury",
     "bookRef": {
-      "book": "",
+      "book": "The Legion of Shadow",
       "act": 1,
-      "section": 0
+      "section": 697
     }
   },
   {
-    "id": "the_heart_of_fire",
-    "name": "The Heart of Fire",
+    "id": "pot_of_mending",
+    "name": "Pot of Mending",
     "type": "backpack",
     "effect": {
-      "stats": {},
-      "source": "The Heart of Fire",
+      "stats": {
+        "health": 12
+      },
+      "source": "Pot of Mending",
       "target": "hero",
       "duration": 0
     },
-    "uses": 201,
-    "notes": "",
+    "uses": 1,
+    "description": "",
+    "notes": "Found",
     "bookRef": {
-      "book": "",
+      "book": "The Legion of Shadow",
       "act": 1,
-      "section": 0
+      "section": 724
     }
   },
   {
-    "id": "the_heart_of_fire",
-    "name": "The Heart of Fire",
+    "id": "pot_of_mending",
+    "name": "Pot of Mending",
     "type": "backpack",
     "effect": {
-      "stats": {},
-      "source": "The Heart of Fire",
+      "stats": {
+        "health": 12
+      },
+      "source": "Pot of Mending",
       "target": "hero",
       "duration": 0
     },
-    "uses": 201,
+    "uses": 1,
+    "description": "",
+    "notes": "Found",
+    "bookRef": {
+      "book": "The Legion of Shadow",
+      "act": 1,
+      "section": 726
+    }
+  },
+  {
+    "id": "elixir_of_life",
+    "name": "Elixir of Life",
+    "type": "backpack",
+    "effect": {
+      "stats": {
+        "health": -1
+      },
+      "source": "Elixir of Life",
+      "target": "hero",
+      "duration": 0
+    },
+    "uses": 1,
+    "description": "",
+    "notes": "Found",
+    "bookRef": {
+      "book": "The Legion of Shadow",
+      "act": 1,
+      "section": 776
+    }
+  },
+  {
+    "id": "fluffy_dice",
+    "name": "Fluffy dice",
+    "type": "backpack",
+    "effect": {
+      "stats": {},
+      "source": "Fluffy dice",
+      "target": "hero",
+      "duration": 0
+    },
+    "uses": 1,
+    "description": "The ultimate in backpack accessories",
+    "notes": "Found",
+    "bookRef": {
+      "book": "The Legion of Shadow",
+      "act": 1,
+      "section": 776
+    }
+  },
+  {
+    "id": "scarron_bile",
+    "name": "Scarron bile",
+    "type": "backpack",
+    "effect": {
+      "stats": {},
+      "source": "Scarron bile",
+      "target": "hero",
+      "duration": 0
+    },
+    "uses": 2,
+    "description": "It smells bad. Very bad.",
+    "notes": "Dropped by Scarrons",
+    "bookRef": {
+      "book": "The Legion of Shadow",
+      "act": 1,
+      "section": 785
+    }
+  },
+  {
+    "id": "spirit_tincture",
+    "name": "Spirit Tincture",
+    "type": "backpack",
+    "effect": {
+      "stats": {
+        "health": -4,
+        "brawn": 2,
+        "magic": 2
+      },
+      "source": "Spirit Tincture",
+      "target": "hero",
+      "duration": 0
+    },
+    "uses": 1,
+    "description": "",
+    "notes": "Dropped by Ghasts",
+    "bookRef": {
+      "book": "The Legion of Shadow",
+      "act": 1,
+      "section": 794
+    }
+  },
+  {
+    "id": "ghoolish_gloup",
+    "name": "Ghoolish Gloup",
+    "type": "backpack",
+    "effect": {
+      "stats": {
+        "armour": 2
+      },
+      "source": "Ghoolish Gloup",
+      "target": "hero",
+      "duration": 0
+    },
+    "uses": 2,
+    "description": "",
+    "notes": "Dropped by Mages",
+    "bookRef": {
+      "book": "The Legion of Shadow",
+      "act": 1,
+      "section": 802
+    }
+  },
+  {
+    "id": "arthurians_horn",
+    "name": "Arthurian's Horn",
+    "type": "backpack",
+    "effect": {
+      "stats": {
+        "damageModifier": 20
+      },
+      "source": "Arthurian's Horn",
+      "target": "hero",
+      "duration": 0
+    },
+    "uses": 1,
+    "description": "",
+    "notes": "Dropped by Necromancers",
+    "bookRef": {
+      "book": "The Legion of Shadow",
+      "act": 3,
+      "section": 808
+    }
+  },
+  {
+    "id": "oil_flask",
+    "name": "Oil flask",
+    "type": "backpack",
+    "effect": {
+      "stats": {
+        "damageModifier": 0
+      },
+      "source": "Oil flask",
+      "target": "hero",
+      "duration": 0
+    },
+    "uses": 2,
+    "description": "",
     "notes": "",
     "bookRef": {
-      "book": "",
+      "book": "The Legion of Shadow",
+      "act": 3,
+      "section": 827
+    }
+  },
+  {
+    "id": "portable_shield",
+    "name": "Portable Shield",
+    "type": "backpack",
+    "effect": {
+      "stats": {
+        "damageModifier": -10
+      },
+      "source": "Portable Shield",
+      "target": "hero",
+      "duration": 0
+    },
+    "uses": 1,
+    "description": "",
+    "notes": "",
+    "bookRef": {
+      "book": "The Legion of Shadow",
+      "act": 3,
+      "section": 890
+    }
+  },
+  {
+    "id": "trolls_bones",
+    "name": "Troll's bones",
+    "type": "backpack",
+    "effect": {
+      "stats": {},
+      "source": "Troll's bones",
+      "target": "hero",
+      "duration": 0
+    },
+    "uses": 1,
+    "description": "These might prove valuable to the right person",
+    "notes": "",
+    "bookRef": {
+      "book": "The Heart of Fire",
       "act": 1,
-      "section": 0
+      "section": 43
+    }
+  },
+  {
+    "id": "pot_of_healing",
+    "name": "Pot of healing",
+    "type": "backpack",
+    "effect": {
+      "stats": {
+        "health": 4
+      },
+      "source": "Pot of healing",
+      "target": "hero",
+      "duration": 0
+    },
+    "uses": 1,
+    "description": "",
+    "notes": "Donated by Benin",
+    "bookRef": {
+      "book": "The Heart of Fire",
+      "act": 1,
+      "section": 69
+    }
+  },
+  {
+    "id": "flask_of_healing",
+    "name": "Flask of healing",
+    "type": "backpack",
+    "effect": {
+      "stats": {
+        "health": 6
+      },
+      "source": "Flask of healing",
+      "target": "hero",
+      "duration": 0
+    },
+    "uses": 1,
+    "description": "",
+    "notes": "Donated by Benin",
+    "bookRef": {
+      "book": "The Heart of Fire",
+      "act": 1,
+      "section": 69
+    }
+  },
+  {
+    "id": "pot_of_magic",
+    "name": "Pot of magic",
+    "type": "backpack",
+    "effect": {
+      "stats": {
+        "magic": 2
+      },
+      "source": "Pot of magic",
+      "target": "hero",
+      "duration": 1
+    },
+    "uses": 1,
+    "description": "",
+    "notes": "Donated by Benin",
+    "bookRef": {
+      "book": "The Heart of Fire",
+      "act": 1,
+      "section": 69
+    }
+  },
+  {
+    "id": "book_of_binding",
+    "name": "Book of binding",
+    "type": "backpack",
+    "effect": {
+      "stats": {},
+      "source": "Book of binding",
+      "target": "hero",
+      "duration": 0
+    },
+    "uses": 1,
+    "description": "This ancient tome might prove useful in the future",
+    "notes": "Deciphered",
+    "bookRef": {
+      "book": "The Heart of Fire",
+      "act": 1,
+      "section": 81
+    }
+  },
+  {
+    "id": "unknown_elixir",
+    "name": "Unknown elixir",
+    "type": "backpack",
+    "effect": {
+      "stats": {},
+      "source": "Unknown elixir",
+      "target": "hero",
+      "duration": 0
+    },
+    "uses": 1,
+    "description": "This could be the miraclecure that Eldias needs",
+    "notes": "Brewn",
+    "bookRef": {
+      "book": "The Heart of Fire",
+      "act": 1,
+      "section": 83
+    }
+  },
+  {
+    "id": "healing_salve",
+    "name": "Healing salve",
+    "type": "backpack",
+    "effect": {
+      "stats": {
+        "health": 2
+      },
+      "source": "Healing salve",
+      "target": "hero"
+    },
+    "uses": 2,
+    "description": "",
+    "notes": "",
+    "bookRef": {
+      "book": "The Heart of Fire",
+      "act": 1,
+      "section": 88
+    }
+  },
+  {
+    "id": "elixir_of_life",
+    "name": "Elixir of life",
+    "type": "backpack",
+    "effect": {
+      "stats": {
+        "health": -1
+      },
+      "source": "Elixir of life",
+      "target": "hero",
+      "duration": 0
+    },
+    "uses": 1,
+    "description": "",
+    "notes": "",
+    "bookRef": {
+      "book": "The Heart of Fire",
+      "act": 1,
+      "section": 88
+    }
+  },
+  {
+    "id": "pot_of_healing",
+    "name": "Pot of healing",
+    "type": "backpack",
+    "effect": {
+      "stats": {
+        "health": 4
+      },
+      "source": "Pot of healing",
+      "target": "hero",
+      "duration": 0
+    },
+    "uses": 1,
+    "description": "",
+    "notes": "",
+    "bookRef": {
+      "book": "The Heart of Fire",
+      "act": 1,
+      "section": 120
+    }
+  },
+  {
+    "id": "pot_of_brawn",
+    "name": "Pot of brawn",
+    "type": "backpack",
+    "effect": {
+      "stats": {
+        "brawn": 2
+      },
+      "source": "Pot of brawn",
+      "target": "hero",
+      "duration": 1
+    },
+    "uses": 1,
+    "description": "",
+    "notes": "",
+    "bookRef": {
+      "book": "The Heart of Fire",
+      "act": 1,
+      "section": 120
+    }
+  },
+  {
+    "id": "pot_of_magic",
+    "name": "Pot of magic",
+    "type": "backpack",
+    "effect": {
+      "stats": {
+        "magic": 2
+      },
+      "source": "Pot of magic",
+      "target": "hero",
+      "duration": 1
+    },
+    "uses": 1,
+    "description": "",
+    "notes": "",
+    "bookRef": {
+      "book": "The Heart of Fire",
+      "act": 1,
+      "section": 120
+    }
+  },
+  {
+    "id": "goblin_bones",
+    "name": "Goblin bones",
+    "type": "backpack",
+    "effect": {
+      "stats": {},
+      "source": "Goblin bones",
+      "target": "hero",
+      "duration": 0
+    },
+    "uses": 1,
+    "description": "These might prove valuable to the right person",
+    "notes": "",
+    "bookRef": {
+      "book": "The Heart of Fire",
+      "act": 1,
+      "section": 164
+    }
+  },
+  {
+    "id": "pot_of_speed",
+    "name": "Pot of speed",
+    "type": "backpack",
+    "effect": {
+      "stats": {
+        "speed": 2
+      },
+      "source": "Pot of speed",
+      "target": "hero",
+      "duration": 1
+    },
+    "uses": 1,
+    "description": "",
+    "notes": "2",
+    "bookRef": {
+      "book": "The Heart of Fire",
+      "act": 1,
+      "section": 164
+    }
+  },
+  {
+    "id": "glyph_of_power",
+    "name": "Glyph of Power",
+    "type": "backpack",
+    "effect": {
+      "stats": {
+        "magic": 1
+      },
+      "source": "Glyph of Power",
+      "target": "hero",
+      "duration": 0
+    },
+    "uses": 1,
+    "description": "Use on any item to add 1 magic",
+    "notes": "",
+    "bookRef": {
+      "book": "The Heart of Fire",
+      "act": 1,
+      "section": 176
+    }
+  },
+  {
+    "id": "rune_of_healing",
+    "name": "Rune of Healing",
+    "type": "backpack",
+    "effect": {
+      "stats": {},
+      "source": "Rune of Healing",
+      "target": "hero",
+      "duration": 0
+    },
+    "uses": 1,
+    "description": "Use on any item to add Heal ability",
+    "notes": "",
+    "bookRef": {
+      "book": "The Heart of Fire",
+      "act": 1,
+      "section": 176
+    }
+  },
+  {
+    "id": "borehole_charge",
+    "name": "Borehole Charge",
+    "type": "backpack",
+    "effect": {
+      "stats": {},
+      "source": "Borehole Charge",
+      "target": "hero",
+      "duration": 0
+    },
+    "uses": 1,
+    "description": "The writing on the side states: Handle with care",
+    "notes": "",
+    "bookRef": {
+      "book": "The Heart of Fire",
+      "act": 1,
+      "section": 189
+    }
+  },
+  {
+    "id": "pumpkin_squash",
+    "name": "Pumpkin Squash",
+    "type": "backpack",
+    "effect": {
+      "stats": {
+        "brawn": 1,
+        "magic": 1
+      },
+      "source": "Pumpkin Squash",
+      "target": "hero",
+      "duration": 1
+    },
+    "uses": 2,
+    "description": "",
+    "notes": "",
+    "bookRef": {
+      "book": "The Heart of Fire",
+      "act": 1,
+      "section": 201
+    }
+  },
+  {
+    "id": "goblin_bones",
+    "name": "Goblin bones",
+    "type": "backpack",
+    "effect": {
+      "stats": {},
+      "source": "Goblin bones",
+      "target": "hero",
+      "duration": 0
+    },
+    "uses": 1,
+    "description": "These might prove valuable to the right person",
+    "notes": "",
+    "bookRef": {
+      "book": "The Heart of Fire",
+      "act": 1,
+      "section": 205
+    }
+  },
+  {
+    "id": "giant_bones",
+    "name": "Giant bones",
+    "type": "backpack",
+    "effect": {
+      "stats": {},
+      "source": "Giant bones",
+      "target": "hero",
+      "duration": 0
+    },
+    "uses": 1,
+    "description": "These might prove valuable to the right person",
+    "notes": "",
+    "bookRef": {
+      "book": "The Heart of Fire",
+      "act": 1,
+      "section": 234
+    }
+  },
+  {
+    "id": "book_of_alpha",
+    "name": "Book of Alpha",
+    "type": "backpack",
+    "effect": {
+      "stats": {},
+      "source": "Book of Alpha",
+      "target": "hero",
+      "duration": 0
+    },
+    "uses": 1,
+    "description": "An ancient Lamuri spell book",
+    "notes": "Found in Temple",
+    "bookRef": {
+      "book": "The Heart of Fire",
+      "act": 2,
+      "section": 239
+    }
+  },
+  {
+    "id": "goblin_bones",
+    "name": "Goblin bones",
+    "type": "backpack",
+    "effect": {
+      "stats": {},
+      "source": "Goblin bones",
+      "target": "hero",
+      "duration": 0
+    },
+    "uses": 1,
+    "description": "These might prove valuable to the right person",
+    "notes": "",
+    "bookRef": {
+      "book": "The Heart of Fire",
+      "act": 1,
+      "section": 258
+    }
+  },
+  {
+    "id": "goblin_bones",
+    "name": "Goblin bones",
+    "type": "backpack",
+    "effect": {
+      "stats": {},
+      "source": "Goblin bones",
+      "target": "hero",
+      "duration": 0
+    },
+    "uses": 1,
+    "description": "These might prove valuable to the right person",
+    "notes": "",
+    "bookRef": {
+      "book": "The Heart of Fire",
+      "act": 1,
+      "section": 292
+    }
+  },
+  {
+    "id": "a_bottle_of_wisps",
+    "name": "A bottle of wisps",
+    "type": "backpack",
+    "effect": {
+      "stats": {},
+      "source": "A bottle of wisps",
+      "target": "hero",
+      "duration": 0
+    },
+    "uses": 1,
+    "description": "Tiny glowing lights are trapped inside",
+    "notes": "",
+    "bookRef": {
+      "book": "The Heart of Fire",
+      "act": 1,
+      "section": 318
+    }
+  },
+  {
+    "id": "goblin_bones",
+    "name": "Goblin bones",
+    "type": "backpack",
+    "effect": {
+      "stats": {},
+      "source": "Goblin bones",
+      "target": "hero",
+      "duration": 0
+    },
+    "uses": 1,
+    "description": "These might prove valuable to the right person",
+    "notes": "",
+    "bookRef": {
+      "book": "The Heart of Fire",
+      "act": 1,
+      "section": 336
+    }
+  },
+  {
+    "id": "sanctified_ashes",
+    "name": "Sanctified ashes",
+    "type": "backpack",
+    "effect": {
+      "stats": {},
+      "source": "Sanctified ashes",
+      "target": "hero",
+      "duration": 0
+    },
+    "uses": 2,
+    "description": "",
+    "notes": "",
+    "bookRef": {
+      "book": "The Heart of Fire",
+      "act": 1,
+      "section": 340
+    }
+  },
+  {
+    "id": "holy_water",
+    "name": "Holy water",
+    "type": "backpack",
+    "effect": {
+      "stats": {
+        "damageModifier": 2
+      },
+      "source": "Holy water",
+      "target": "hero",
+      "duration": 0
+    },
+    "uses": 2,
+    "description": "",
+    "notes": "",
+    "bookRef": {
+      "book": "The Heart of Fire",
+      "act": 1,
+      "section": 340
+    }
+  },
+  {
+    "id": "angelica_wreath",
+    "name": "Angelica wreath",
+    "type": "backpack",
+    "effect": {
+      "stats": {},
+      "source": "Angelica wreath",
+      "target": "hero",
+      "duration": 0
+    },
+    "uses": 1,
+    "description": "",
+    "notes": "",
+    "bookRef": {
+      "book": "The Heart of Fire",
+      "act": 1,
+      "section": 340
+    }
+  },
+  {
+    "id": "borehole_charge",
+    "name": "Borehole Charge",
+    "type": "backpack",
+    "effect": {
+      "stats": {},
+      "source": "Borehole Charge",
+      "target": "hero",
+      "duration": 0
+    },
+    "uses": 1,
+    "description": "The writing on the side states: Handle with care",
+    "notes": "",
+    "bookRef": {
+      "book": "The Heart of Fire",
+      "act": 1,
+      "section": 345
+    }
+  },
+  {
+    "id": "might_monster_metal",
+    "name": "Might monster metal",
+    "type": "backpack",
+    "effect": {
+      "stats": {
+        "armour": 1
+      },
+      "source": "Might monster metal",
+      "target": "hero",
+      "duration": 0
+    },
+    "uses": 1,
+    "description": "",
+    "notes": "",
+    "bookRef": {
+      "book": "The Heart of Fire",
+      "act": 1,
+      "section": 349
+    }
+  },
+  {
+    "id": "putrid_pixie_puke",
+    "name": "Putrid pixie puke",
+    "type": "backpack",
+    "effect": {
+      "stats": {
+        "magic": 1
+      },
+      "source": "Putrid pixie puke",
+      "target": "hero",
+      "duration": 0
+    },
+    "uses": 1,
+    "description": "",
+    "notes": "",
+    "bookRef": {
+      "book": "The Heart of Fire",
+      "act": 1,
+      "section": 349
+    }
+  },
+  {
+    "id": "slimy_stringy_snot",
+    "name": "Slimy stringy snot",
+    "type": "backpack",
+    "effect": {
+      "stats": {
+        "brawn": 1
+      },
+      "source": "Slimy stringy snot",
+      "target": "hero",
+      "duration": 0
+    },
+    "uses": 1,
+    "description": "",
+    "notes": "",
+    "bookRef": {
+      "book": "The Heart of Fire",
+      "act": 1,
+      "section": 349
+    }
+  },
+  {
+    "id": "coat_of_many_scales",
+    "name": "Coat of many scales",
+    "type": "backpack",
+    "effect": {
+      "stats": {},
+      "source": "Coat of many scales",
+      "target": "hero",
+      "duration": 0
+    },
+    "uses": 1,
+    "description": "A dazzling coat made of basilisk scales",
+    "notes": "",
+    "bookRef": {
+      "book": "The Heart of Fire",
+      "act": 1,
+      "section": 367
+    }
+  },
+  {
+    "id": "pot_of_speed",
+    "name": "Pot of speed",
+    "type": "backpack",
+    "effect": {
+      "stats": {
+        "speed": 2
+      },
+      "source": "Pot of speed",
+      "target": "hero",
+      "duration": 1
+    },
+    "uses": 2,
+    "description": "",
+    "notes": "",
+    "bookRef": {
+      "book": "The Heart of Fire",
+      "act": 1,
+      "section": 367
+    }
+  },
+  {
+    "id": "saints_blessing",
+    "name": "Saints blessing",
+    "type": "backpack",
+    "effect": {
+      "stats": {
+        "health": -1
+      },
+      "source": "Saints blessing",
+      "target": "hero",
+      "duration": 0
+    },
+    "uses": 1,
+    "description": "",
+    "notes": "",
+    "bookRef": {
+      "book": "The Heart of Fire",
+      "act": 1,
+      "section": 368
+    }
+  },
+  {
+    "id": "runed_rod",
+    "name": "Runed rod",
+    "type": "backpack",
+    "effect": {
+      "stats": {},
+      "source": "Runed rod",
+      "target": "hero",
+      "duration": 0
+    },
+    "uses": 1,
+    "description": "A splintered length of black metal",
+    "notes": "",
+    "bookRef": {
+      "book": "The Heart of Fire",
+      "act": 1,
+      "section": 377
+    }
+  },
+  {
+    "id": "mothers_medicine",
+    "name": "Mother's medicine",
+    "type": "backpack",
+    "effect": {
+      "stats": {
+        "health": 4
+      },
+      "source": "Mother's medicine",
+      "target": "hero",
+      "duration": 0
+    },
+    "uses": 2,
+    "description": "",
+    "notes": "",
+    "bookRef": {
+      "book": "The Heart of Fire",
+      "act": 2,
+      "section": 425
+    }
+  },
+  {
+    "id": "jacobs_special_mix",
+    "name": "Jacob's special mix",
+    "type": "backpack",
+    "effect": {
+      "stats": {
+        "speed": 1
+      },
+      "source": "Jacob's special mix",
+      "target": "hero",
+      "duration": 1
+    },
+    "uses": 2,
+    "description": "",
+    "notes": "",
+    "bookRef": {
+      "book": "The Heart of Fire",
+      "act": 2,
+      "section": 425
+    }
+  },
+  {
+    "id": "secret_brew",
+    "name": "Secret brew",
+    "type": "backpack",
+    "effect": {
+      "stats": {
+        "brawn": 2
+      },
+      "source": "Secret brew",
+      "target": "hero",
+      "duration": 1
+    },
+    "uses": 1,
+    "description": "",
+    "notes": "",
+    "bookRef": {
+      "book": "The Heart of Fire",
+      "act": 2,
+      "section": 425
+    }
+  },
+  {
+    "id": "snakebite_shake",
+    "name": "Snakebite shake",
+    "type": "backpack",
+    "effect": {
+      "stats": {},
+      "conditions": {
+        "remove": [
+          "venom"
+        ]
+      },
+      "source": "Snakebite shake",
+      "target": "hero",
+      "duration": 0
+    },
+    "uses": 1,
+    "description": "",
+    "notes": "",
+    "bookRef": {
+      "book": "The Heart of Fire",
+      "act": 2,
+      "section": 433
+    }
+  },
+  {
+    "id": "gourd_of_healing",
+    "name": "Gourd of healing",
+    "type": "backpack",
+    "effect": {
+      "stats": {
+        "health": 6
+      },
+      "source": "Gourd of healing",
+      "target": "hero",
+      "duration": 0
+    },
+    "uses": 1,
+    "description": "",
+    "notes": "",
+    "bookRef": {
+      "book": "The Heart of Fire",
+      "act": 1,
+      "section": 433
+    }
+  },
+  {
+    "id": "elixir_of_invisibility",
+    "name": "Elixir of invisibility",
+    "type": "backpack",
+    "effect": {
+      "stats": {},
+      "source": "Elixir of invisibility",
+      "target": "hero",
+      "duration": 0
+    },
+    "uses": 1,
+    "description": "",
+    "notes": "",
+    "bookRef": {
+      "book": "The Heart of Fire",
+      "act": 1,
+      "section": 433
+    }
+  },
+  {
+    "id": "",
+    "name": "",
+    "type": "backpack",
+    "effect": {
+      "stats": {},
+      "source": "",
+      "target": "hero",
+      "duration": 0
+    },
+    "uses": 1,
+    "description": "",
+    "notes": "",
+    "bookRef": {
+      "book": "The Heart of Fire",
+      "act": 1,
+      "section": 201
+    }
+  },
+  {
+    "id": "",
+    "name": "",
+    "type": "backpack",
+    "effect": {
+      "stats": {},
+      "source": "",
+      "target": "hero",
+      "duration": 0
+    },
+    "uses": 1,
+    "description": "",
+    "notes": "",
+    "bookRef": {
+      "book": "The Heart of Fire",
+      "act": 1,
+      "section": 201
+    }
+  },
+  {
+    "id": "",
+    "name": "",
+    "type": "backpack",
+    "effect": {
+      "stats": {},
+      "source": "",
+      "target": "hero",
+      "duration": 0
+    },
+    "uses": 1,
+    "description": "",
+    "notes": "",
+    "bookRef": {
+      "book": "The Heart of Fire",
+      "act": 1,
+      "section": 201
+    }
+  },
+  {
+    "id": "",
+    "name": "",
+    "type": "backpack",
+    "effect": {
+      "stats": {},
+      "source": "",
+      "target": "hero",
+      "duration": 0
+    },
+    "uses": 1,
+    "description": "",
+    "notes": "",
+    "bookRef": {
+      "book": "The Heart of Fire",
+      "act": 1,
+      "section": 201
+    }
+  },
+  {
+    "id": "",
+    "name": "",
+    "type": "backpack",
+    "effect": {
+      "stats": {},
+      "source": "",
+      "target": "hero",
+      "duration": 0
+    },
+    "uses": 1,
+    "description": "",
+    "notes": "",
+    "bookRef": {
+      "book": "The Heart of Fire",
+      "act": 1,
+      "section": 201
+    }
+  },
+  {
+    "id": "",
+    "name": "",
+    "type": "backpack",
+    "effect": {
+      "stats": {},
+      "source": "",
+      "target": "hero",
+      "duration": 0
+    },
+    "uses": 1,
+    "description": "",
+    "notes": "",
+    "bookRef": {
+      "book": "The Heart of Fire",
+      "act": 1,
+      "section": 201
     }
   }
 ];

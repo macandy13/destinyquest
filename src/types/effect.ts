@@ -3,6 +3,10 @@ import { Stats } from "./stats";
 
 export interface Effect {
     stats: Partial<Stats>;
+    conditions?: {
+        add?: string[]; // New abilities or effects to add
+        remove?: string[]; // Abilities or effects to remove
+    };
     source: string; // The name of the ability or item causing the modification
     target: CharacterType; // Who the modification applies to
     duration?: number; // undefined means infinite
@@ -13,20 +17,26 @@ export interface Effect {
 
 export function formatEffect(effect: Effect): string {
     if (effect.description) return effect.description;
+    if (effect.conditions) {
+        return [...(effect.conditions.add?.map(s => `+${s}`) || []), ...(effect.conditions.remove?.map(s => `-${s}`) || [])].join(', ');
+    }
     return Object.entries(effect.stats)
         .map(([stat, value]) => {
             if (!value) return null;
-            const statEffect = (value > 0 ? `+${value}` : `${value}`) + ` ${stat}`;
+            const statEffect = (value > 0 ? `+${value}` : value === -1 ? 'max' : `${value}`) + ` ${stat}`;
             let effectDescription = '';
             switch (effect.duration) {
                 case undefined:
-                    effectDescription = statEffect + '/∞';
+                    effectDescription = statEffect + ' * ∞';
                     break;
                 case 0:
                     effectDescription = statEffect;
                     break;
+                case 1:
+                    effectDescription = statEffect + ` * 1rd`;
+                    break;
                 default:
-                    effectDescription = statEffect + `/${effect.duration}rd`;
+                    effectDescription = statEffect + ` * ${effect.duration}rds`;
             }
             if (!effect.visible) {
                 effectDescription = `[${effectDescription}]`;
@@ -47,6 +57,7 @@ export function applyStatsModification(base: Stats, mod: Partial<Stats>): Stats 
     newStats.health = Math.min(newStats.maxHealth, newStats.health + (mod.health ?? 0));
     newStats.speedDice = (newStats.speedDice ?? 2) + (mod.speedDice ?? 0);
     newStats.damageDice = (newStats.damageDice ?? 1) + (mod.damageDice ?? 0);
+    // TODO: Handle clearing the damage score.
     newStats.damageModifier = (newStats.damageModifier ?? 0) + (mod.damageModifier ?? 0);
     return newStats;
 }
