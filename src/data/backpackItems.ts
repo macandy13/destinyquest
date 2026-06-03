@@ -1377,7 +1377,7 @@ export const BACKPACK_ITEMS: BackpackItem[] = [
     "notes": "",
     "bookRef": {
       "book": "The Heart of Fire",
-      "act": 1,
+      "act": 2,
       "section": 433
     }
   },
@@ -1396,74 +1396,81 @@ export const BACKPACK_ITEMS: BackpackItem[] = [
     "notes": "",
     "bookRef": {
       "book": "The Heart of Fire",
-      "act": 1,
+      "act": 2,
       "section": 433
     }
   },
   {
-    "id": "",
-    "name": "",
+    "id": "book_of_omega",
+    "name": "Book of Omega",
     "type": "backpack",
     "effect": {
       "stats": {},
-      "source": "",
+      "source": "Book of Omega",
       "target": "hero",
       "duration": 0
     },
     "uses": 1,
-    "description": "",
+    "description": "An ancient Lamuri spell book",
     "notes": "",
     "bookRef": {
       "book": "The Heart of Fire",
-      "act": 1,
-      "section": 201
+      "act": 2,
+      "section": 465
     }
   },
   {
-    "id": "",
-    "name": "",
+    "id": "onyx_blade",
+    "name": "Onyx blade",
     "type": "backpack",
     "effect": {
       "stats": {},
-      "source": "",
+      "source": "Onyx blade",
       "target": "hero",
       "duration": 0
     },
     "uses": 1,
-    "description": "",
+    "description": "A crescent-shaped blade for a mighty weapon",
     "notes": "",
     "bookRef": {
       "book": "The Heart of Fire",
-      "act": 1,
-      "section": 201
+      "act": 2,
+      "section": 470
     }
   },
   {
-    "id": "",
-    "name": "",
+    "id": "mambas_memory_stones",
+    "name": "Mamba's memory stones",
     "type": "backpack",
     "effect": {
-      "stats": {},
-      "source": "",
+      "stats": {
+        "health": 4
+      },
+      "source": "Mamba's memory stones",
       "target": "hero",
       "duration": 0
     },
-    "uses": 1,
+    "uses": 2,
     "description": "",
     "notes": "",
     "bookRef": {
       "book": "The Heart of Fire",
-      "act": 1,
-      "section": 201
+      "act": 2,
+      "section": 483
     }
   },
   {
-    "id": "",
-    "name": "",
+    "id": "snakebite_shake",
+    "name": "Snakebite shake",
     "type": "backpack",
     "effect": {
       "stats": {},
-      "source": "",
+      "conditions": {
+        "remove": [
+          "venom"
+        ]
+      },
+      "source": "Snakebite shake",
       "target": "hero",
       "duration": 0
     },
@@ -1472,36 +1479,60 @@ export const BACKPACK_ITEMS: BackpackItem[] = [
     "notes": "",
     "bookRef": {
       "book": "The Heart of Fire",
-      "act": 1,
-      "section": 201
+      "act": 2,
+      "section": 501
     }
   },
   {
-    "id": "",
-    "name": "",
+    "id": "quetzal_egg",
+    "name": "Quetzal egg",
     "type": "backpack",
     "effect": {
       "stats": {},
-      "source": "",
+      "source": "Quetzal egg",
       "target": "hero",
       "duration": 0
     },
     "uses": 1,
-    "description": "",
+    "description": "A large, oval, red-speckled egg",
     "notes": "",
     "bookRef": {
       "book": "The Heart of Fire",
-      "act": 1,
-      "section": 201
+      "act": 2,
+      "section": 509
     }
   },
   {
-    "id": "",
-    "name": "",
+    "id": "book_of_enigma",
+    "name": "Book of enigma",
     "type": "backpack",
     "effect": {
       "stats": {},
-      "source": "",
+      "source": "Book of enigma",
+      "target": "hero",
+      "duration": 0
+    },
+    "uses": 1,
+    "description": "An ancient Lamuri spell book",
+    "notes": "",
+    "bookRef": {
+      "book": "The Heart of Fire",
+      "act": 2,
+      "section": 540
+    }
+  },
+  {
+    "id": "snakebite_shake",
+    "name": "Snakebite shake",
+    "type": "backpack",
+    "effect": {
+      "stats": {},
+      "conditions": {
+        "remove": [
+          "venom"
+        ]
+      },
+      "source": "Snakebite shake",
       "target": "hero",
       "duration": 0
     },
@@ -1510,8 +1541,53 @@ export const BACKPACK_ITEMS: BackpackItem[] = [
     "notes": "",
     "bookRef": {
       "book": "The Heart of Fire",
-      "act": 1,
-      "section": 201
+      "act": 2,
+      "section": 593
+    }
+  },
+  {
+    "id": "travellers_tonic",
+    "name": "Traveller's tonic",
+    "type": "backpack",
+    "effect": {
+      "stats": {
+        "health": 6
+      },
+      "source": "Traveller's tonic",
+      "target": "hero",
+      "duration": 0
+    },
+    "uses": 1,
+    "description": "",
+    "notes": "",
+    "bookRef": {
+      "book": "The Heart of Fire",
+      "act": 2,
+      "section": 593
+    }
+  },
+  {
+    "id": "first_aid_kit",
+    "name": "First aid kit",
+    "type": "backpack",
+    "effect": {
+      "stats": {},
+      "conditions": {
+        "remove": [
+          "delirium"
+        ]
+      },
+      "source": "First aid kit",
+      "target": "hero",
+      "duration": 0
+    },
+    "uses": 1,
+    "description": "",
+    "notes": "",
+    "bookRef": {
+      "book": "The Heart of Fire",
+      "act": 2,
+      "section": 593
     }
   }
 ];

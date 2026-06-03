@@ -5772,74 +5772,699 @@ export const ENEMIES: Enemy[] = [
   },
   {
     "type": "enemy",
-    "name": "",
+    "name": "Succubus",
     "stats": {
-      "speed": 0,
+      "speed": 10,
       "brawn": 0,
-      "magic": 0,
-      "armour": 0,
-      "health": 0,
-      "maxHealth": 0
+      "magic": 5,
+      "armour": 9,
+      "health": 80,
+      "maxHealth": 80
     },
-    "abilities": [],
+    "abilities": [
+      "Mental daggers: -2 health * rd (Hero)",
+      "Delirium: Inflicted when Hero takes damage. When hero wins a round, roll a die. 1-2: Skip damage roll phase",
+      "Revenge of the tigris: +2 damage (hero)"
+    ],
     "bookRef": {
       "book": "The Heart of Fire",
-      "act": 1,
-      "section": null
+      "act": 2,
+      "section": 463
     }
   },
   {
     "type": "enemy",
-    "name": "",
+    "name": "Bill",
     "stats": {
-      "speed": 0,
-      "brawn": 0,
+      "speed": 9,
+      "brawn": 8,
       "magic": 0,
-      "armour": 0,
-      "health": 0,
-      "maxHealth": 0
+      "armour": 8,
+      "health": 90,
+      "maxHealth": 90
     },
-    "abilities": [],
+    "abilities": [
+      "Backshot barrage: At the end of round, take a speed challenge. 1-14: 10 damage (hero)",
+      "Animal attraction: If you have the rhinosaur pheromone & the rhinosaur has been freed from its cage, instead of rolling for damage: -4 health * every rd (enemy)",
+      "Survival of the fittest: Immune to Strength in Numbers"
+    ],
     "bookRef": {
       "book": "The Heart of Fire",
-      "act": 1,
-      "section": null
+      "act": 2,
+      "section": 466
     }
   },
   {
     "type": "enemy",
-    "name": "",
+    "name": "Orgorath",
     "stats": {
-      "speed": 0,
-      "brawn": 0,
+      "speed": 5,
+      "brawn": 5,
       "magic": 0,
-      "armour": 0,
-      "health": 0,
-      "maxHealth": 0
+      "armour": 4,
+      "health": 40,
+      "maxHealth": 40
     },
-    "abilities": [],
+    "abilities": [
+      "Deadly thorns: -3 health * rd (hero)"
+    ],
     "bookRef": {
       "book": "The Heart of Fire",
       "act": 1,
-      "section": null
+      "section": 468
     }
   },
   {
     "type": "enemy",
-    "name": "",
+    "name": "Sniper",
     "stats": {
-      "speed": 0,
-      "brawn": 0,
+      "speed": 9,
+      "brawn": 6,
       "magic": 0,
-      "armour": 0,
-      "health": 0,
-      "maxHealth": 0
+      "armour": 5,
+      "health": 60,
+      "maxHealth": 60
     },
     "abilities": [],
     "bookRef": {
       "book": "The Heart of Fire",
-      "act": 1,
-      "section": null
+      "act": 2,
+      "section": 482
+    }
+  },
+  {
+    "type": "enemy",
+    "name": "Maximus",
+    "stats": {
+      "speed": 5,
+      "brawn": 5,
+      "magic": 0,
+      "armour": 15,
+      "health": 40,
+      "maxHealth": 40
+    },
+    "abilities": [
+      "Dismantle: Instead of rolling for damage: -3 armour (enemy, min 0)",
+      "Body or iron: Immune to bleed, thorsn and thorn cage"
+    ],
+    "bookRef": {
+      "book": "The Heart of Fire",
+      "act": 2,
+      "section": 484
+    }
+  },
+  {
+    "type": "enemy",
+    "name": "The furnace",
+    "stats": {
+      "speed": 5,
+      "brawn": 0,
+      "magic": 4,
+      "armour": 2,
+      "health": 70,
+      "maxHealth": 70
+    },
+    "abilities": [
+      "Fury of the furnace: -3 health * rd (hero)",
+      "Holy vengeance: +3 damage (hero)"
+    ],
+    "bookRef": {
+      "book": "The Heart of Fire",
+      "act": 2,
+      "section": 490
+    }
+  },
+  {
+    "type": "enemy",
+    "name": "Lycanth",
+    "stats": {
+      "speed": 5,
+      "brawn": 5,
+      "magic": 0,
+      "armour": 4,
+      "health": 55,
+      "maxHealth": 55
+    },
+    "abilities": [
+      "Miasma of decay: -3 health * rd (hero)",
+      "Disease"
+    ],
+    "bookRef": {
+      "book": "The Heart of Fire",
+      "act": 2,
+      "section": 495
+    }
+  },
+  {
+    "type": "enemy",
+    "name": "Succubus",
+    "stats": {
+      "speed": 10,
+      "brawn": 0,
+      "magic": 5,
+      "armour": 9,
+      "health": 80,
+      "maxHealth": 80
+    },
+    "abilities": [
+      "Mental daggers: -2 health * rd (Hero)",
+      "Delirium: Inflicted when Hero takes damage. When hero wins a round, roll a die. 1-2: Skip damage roll phase",
+      "Revenge of the tigris: +4 damage (hero)"
+    ],
+    "bookRef": {
+      "book": "The Heart of Fire",
+      "act": 2,
+      "section": 505
+    }
+  },
+  {
+    "type": "enemy",
+    "name": "Mandrills",
+    "stats": {
+      "speed": 9,
+      "brawn": 6,
+      "magic": 0,
+      "armour": 8,
+      "health": 50,
+      "maxHealth": 50
+    },
+    "abilities": [
+      "Feral frency: +1 speed * rd (enemy, max 14)"
+    ],
+    "bookRef": {
+      "book": "The Heart of Fire",
+      "act": 2,
+      "section": 517
+    }
+  },
+  {
+    "type": "enemy",
+    "name": "Hunters",
+    "stats": {
+      "speed": 9,
+      "brawn": 7,
+      "magic": 0,
+      "armour": 4,
+      "health": 35,
+      "maxHealth": 35
+    },
+    "abilities": [],
+    "bookRef": {
+      "book": "The Heart of Fire",
+      "act": 2,
+      "section": 521
+    }
+  },
+  {
+    "type": "enemy",
+    "name": "Grub knight",
+    "stats": {
+      "speed": 6,
+      "brawn": 5,
+      "magic": 0,
+      "armour": 4,
+      "health": 55,
+      "maxHealth": 55
+    },
+    "abilities": [
+      "Grappling grubs: Damage (hero) -> roll a die. 1-3: -1 speed (hero)",
+      "Disease"
+    ],
+    "bookRef": {
+      "book": "The Heart of Fire",
+      "act": 2,
+      "section": 523
+    }
+  },
+  {
+    "type": "enemy",
+    "name": "Fengz",
+    "stats": {
+      "speed": 11,
+      "brawn": 0,
+      "magic": 7,
+      "armour": 3,
+      "health": 40,
+      "maxHealth": 40
+    },
+    "abilities": [
+      "Whirling chains: -4 health * rd (hero)",
+      "Ghost of a victory"
+    ],
+    "bookRef": {
+      "book": "The Heart of Fire",
+      "act": 2,
+      "section": 533
+    }
+  },
+  {
+    "type": "enemy",
+    "name": "Furies",
+    "stats": {
+      "speed": 11,
+      "brawn": 0,
+      "magic": 7,
+      "armour": 3,
+      "health": 100,
+      "maxHealth": 100
+    },
+    "abilities": [
+      "Endless assault: At the end of the round, roll a die. 1-2: +4 health (enemy), +4 maxHealth (enemy)",
+      "Fury of the swarm: -2 health * rd (hero)"
+    ],
+    "bookRef": {
+      "book": "The Heart of Fire",
+      "act": 2,
+      "section": 538
+    }
+  },
+  {
+    "type": "enemy",
+    "name": "Boogaloo",
+    "stats": {
+      "speed": 6,
+      "brawn": 4,
+      "magic": 0,
+      "armour": 3,
+      "health": 50,
+      "maxHealth": 50
+    },
+    "abilities": [
+      "It's `lectric: If not Insulated, -(2 + armour) health (hero)"
+    ],
+    "bookRef": {
+      "book": "The Heart of Fire",
+      "act": 2,
+      "section": 552
+    }
+  },
+  {
+    "type": "enemy",
+    "name": "Hounds",
+    "stats": {
+      "speed": 11,
+      "brawn": 7,
+      "magic": 0,
+      "armour": 5,
+      "health": 90,
+      "maxHealth": 90
+    },
+    "abilities": [
+      "Pack attack: If enemy rolls double for speed, -4 health (hero)",
+      "Molten skin: -2 health * rd (hero)",
+      "Body of flame: Immune to Backdraft, Fire Aura, Sear, Searing Mantle"
+    ],
+    "bookRef": {
+      "book": "The Heart of Fire",
+      "act": 2,
+      "section": 564
+    }
+  },
+  {
+    "type": "enemy",
+    "name": "Golden Guards",
+    "stats": {
+      "speed": 9,
+      "brawn": 9,
+      "magic": 0,
+      "armour": 8,
+      "health": 70,
+      "maxHealth": 70
+    },
+    "abilities": [
+      "Scything blades: Each time a speed or combat ability is played, roll a die. 1-4: -4 health (hero), ability is skipped",
+      "Knockdown"
+    ],
+    "bookRef": {
+      "book": "The Heart of Fire",
+      "act": 2,
+      "section": 568
+    }
+  },
+  {
+    "type": "enemy",
+    "name": "Tigris",
+    "stats": {
+      "speed": 9,
+      "brawn": 6,
+      "magic": 0,
+      "armour": 4,
+      "health": 70,
+      "maxHealth": 70
+    },
+    "abilities": [
+      "Revenge of the tigris: 3 damage dice for highest value",
+      "Bleed"
+    ],
+    "bookRef": {
+      "book": "The Heart of Fire",
+      "act": 2,
+      "section": 570
+    }
+  },
+  {
+    "type": "enemy",
+    "name": "Succubus",
+    "stats": {
+      "speed": 10,
+      "brawn": 0,
+      "magic": 5,
+      "armour": 9,
+      "health": 80,
+      "maxHealth": 80
+    },
+    "abilities": [
+      "Mental daggers: -2 health * rd (Hero)",
+      "Delirium: Inflicted when Hero takes damage. When hero wins a round, roll a die. 1-2: Skip damage roll phase",
+      "Revenge of the tigris: +2 damage (hero)"
+    ],
+    "bookRef": {
+      "book": "The Heart of Fire",
+      "act": 2,
+      "section": 572
+    }
+  },
+  {
+    "type": "enemy",
+    "name": "Zephyr",
+    "stats": {
+      "speed": 5,
+      "brawn": 0,
+      "magic": 4,
+      "armour": 3,
+      "health": 50,
+      "maxHealth": 50
+    },
+    "abilities": [
+      "Slipstream: Hero wins speed, roll a die: 1-3: -4 health (hero), skip to passive phase",
+      "Body of air: Immune to Bleed, Disease and Venom"
+    ],
+    "bookRef": {
+      "book": "The Heart of Fire",
+      "act": 2,
+      "section": 573
+    }
+  },
+  {
+    "type": "enemy",
+    "name": "Cernos",
+    "stats": {
+      "speed": 10,
+      "brawn": 9,
+      "magic": 0,
+      "armour": 10,
+      "health": 85,
+      "maxHealth": 85
+    },
+    "abilities": [],
+    "spawns": [
+      "Rock fists"
+    ],
+    "bookRef": {
+      "book": "The Heart of Fire",
+      "act": 2,
+      "section": 579
+    }
+  },
+  {
+    "type": "enemy",
+    "name": "Rock fists",
+    "stats": {
+      "speed": 0,
+      "brawn": 0,
+      "magic": 0,
+      "armour": 10,
+      "health": 40,
+      "maxHealth": 40
+    },
+    "abilities": [
+      "Rock fists: +2 speed (enemy), 2 damage dice",
+      "Body of rock: Immune to Barbs, Bleed, Disease, Piercing, Thorns, Thorn Cage, Venom"
+    ],
+    "bookRef": {
+      "book": "The Heart of Fire",
+      "act": 2,
+      "section": 579
+    }
+  },
+  {
+    "type": "enemy",
+    "name": "Arratoch",
+    "stats": {
+      "speed": 0,
+      "brawn": 0,
+      "magic": 0,
+      "armour": 5,
+      "health": 35,
+      "maxHealth": 35
+    },
+    "abilities": [
+      "Arratoch alarm: -2 brawn * rd (hero), -2 magic * rd (hero)",
+      "Body of rock",
+      "Companions courage: +2 damage (hero)",
+      "Golem need: If both Otum and Atum are dead, hero wins fight"
+    ],
+    "spawns": [
+      "Otum",
+      "Atum"
+    ],
+    "bookRef": {
+      "book": "The Heart of Fire",
+      "act": 2,
+      "section": 582
+    }
+  },
+  {
+    "type": "enemy",
+    "name": "Olum",
+    "stats": {
+      "speed": 11,
+      "brawn": 8,
+      "magic": 0,
+      "armour": 9,
+      "health": 50,
+      "maxHealth": 50
+    },
+    "abilities": [
+      "Brotherly love: If Atum is dead: +2 speed (Olum), +4 brawn (Olum)",
+      "Body of rock",
+      "Golem protector: When winning a round the hero can choose to Attack Arratoch instead"
+    ],
+    "bookRef": {
+      "book": "The Heart of Fire",
+      "act": 2,
+      "section": 582
+    }
+  },
+  {
+    "type": "enemy",
+    "name": "Atum",
+    "stats": {
+      "speed": 11,
+      "brawn": 9,
+      "magic": 0,
+      "armour": 7,
+      "health": 50,
+      "maxHealth": 50
+    },
+    "abilities": [
+      "Brotherly love: If Olum is dead: +2 speed (Atum), +4 brawn (Atum)",
+      "Body of rock",
+      "Golem protector"
+    ],
+    "bookRef": {
+      "book": "The Heart of Fire",
+      "act": 2,
+      "section": 582
+    }
+  },
+  {
+    "type": "enemy",
+    "name": "Sitadell",
+    "stats": {
+      "speed": 10,
+      "brawn": 7,
+      "magic": 0,
+      "armour": 8,
+      "health": 60,
+      "maxHealth": 60
+    },
+    "abilities": [
+      "Rock bluff: +2 armour * rd. When hero wins round instead of rolling for damage: 7 armour (enemy)",
+      "Body of rock"
+    ],
+    "bookRef": {
+      "book": "The Heart of Fire",
+      "act": 2,
+      "section": 584
+    }
+  },
+  {
+    "type": "enemy",
+    "name": "The weeper",
+    "stats": {
+      "speed": 7,
+      "brawn": 5,
+      "magic": 0,
+      "armour": 4,
+      "health": 60,
+      "maxHealth": 60
+    },
+    "abilities": [
+      "Septic seepage: -rd health * rd (hero)"
+    ],
+    "bookRef": {
+      "book": "The Heart of Fire",
+      "act": 2,
+      "section": 586
+    }
+  },
+  {
+    "type": "enemy",
+    "name": "Zambezi",
+    "stats": {
+      "speed": 9,
+      "brawn": 7,
+      "magic": 0,
+      "armour": 6,
+      "health": 60,
+      "maxHealth": 60
+    },
+    "abilities": [
+      "Sniper fire: At the end of the round roll a die. 1-3: -3 health (hero), 4-6: -3 health (enemy)"
+    ],
+    "bookRef": {
+      "book": "The Heart of Fire",
+      "act": 2,
+      "section": 588
+    }
+  },
+  {
+    "type": "enemy",
+    "name": "Langurs",
+    "stats": {
+      "speed": 10,
+      "brawn": 4,
+      "magic": 0,
+      "armour": 6,
+      "health": 40,
+      "maxHealth": 40
+    },
+    "abilities": [
+      "Leaf blades: Piercing"
+    ],
+    "spawns": [
+      "Squirrels"
+    ],
+    "bookRef": {
+      "book": "The Heart of Fire",
+      "act": 2,
+      "section": 596
+    }
+  },
+  {
+    "type": "enemy",
+    "name": "Squirrels",
+    "stats": {
+      "speed": 0,
+      "brawn": 0,
+      "magic": 0,
+      "armour": 2,
+      "health": 30,
+      "maxHealth": 30
+    },
+    "abilities": [
+      "Angry mob: Speed challenge @ end of round. 1-16: -5 health (hero)"
+    ],
+    "bookRef": {
+      "book": "The Heart of Fire",
+      "act": 2,
+      "section": 596
+    }
+  },
+  {
+    "type": "enemy",
+    "name": "Perez",
+    "stats": {
+      "speed": 9,
+      "brawn": 6,
+      "magic": 0,
+      "armour": 6,
+      "health": 70,
+      "maxHealth": 70
+    },
+    "abilities": [
+      "Bark whip: For each 1 hero rolls for speed: -4 health"
+    ],
+    "bookRef": {
+      "book": "The Heart of Fire",
+      "act": 2,
+      "section": 597
+    }
+  },
+  {
+    "type": "enemy",
+    "name": "Lich",
+    "stats": {
+      "speed": 10,
+      "brawn": 0,
+      "magic": 9,
+      "armour": 10,
+      "health": 90,
+      "maxHealth": 90
+    },
+    "abilities": [
+      "Rune master: Roll a die @ end of round. 1-2: +4 health (enemy), 3-4: -armour health (hero), 5-6: -2 speed * 1 rd (hero), unless hero is Hexed"
+    ],
+    "bookRef": {
+      "book": "The Heart of Fire",
+      "act": 2,
+      "section": 599
+    }
+  },
+  {
+    "type": "enemy",
+    "name": "Fire sprite",
+    "stats": {
+      "speed": 11,
+      "brawn": 0,
+      "magic": 6,
+      "armour": 4,
+      "health": 40,
+      "maxHealth": 40
+    },
+    "abilities": [
+      "Blistering heat: -1 health (hero), unless hero has Fire Shield",
+      "Fan the flames: Once, when reduced to <=20 health, roll a die: 1-2: +10 health, +3 magic (enemy), 3-4: +5 health (enemy), 5-6: +3 magic (enemy). If hero has Wind Breaker, 2 is addded to the die roll",
+      "Body of flame",
+      "Forge master: If hero has Fire Quencher: 30 health (enemy)"
+    ],
+    "bookRef": {
+      "book": "The Heart of Fire",
+      "act": 2,
+      "section": 601
+    }
+  },
+  {
+    "type": "enemy",
+    "name": "Nergal",
+    "stats": {
+      "speed": 10,
+      "brawn": 0,
+      "magic": 8,
+      "armour": 10,
+      "health": 100,
+      "maxHealth": 100
+    },
+    "abilities": [
+      "Hunger strike: Hero takes damage, roll a die. 1: Proceded, 2-6: +4 health (enemy, max 100), repeat max 6 times)",
+      "Unstoppable feast: If hero loses round, no abilities can be used for the remainder of the round",
+      "Companions' courage: +2 damage (hero)"
+    ],
+    "bookRef": {
+      "book": "The Heart of Fire",
+      "act": 2,
+      "section": 603
     }
   }
 ];
