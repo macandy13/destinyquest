@@ -4283,6 +4283,1564 @@ export const ENEMIES: Enemy[] = [
       "act": 3,
       "section": 939
     }
+  },
+  {
+    "type": "enemy",
+    "name": "Ghastly Goblin",
+    "stats": {
+      "speed": 2,
+      "brawn": 2,
+      "magic": 0,
+      "armour": 1,
+      "health": 20,
+      "maxHealth": 20
+    },
+    "abilities": [],
+    "bookRef": {
+      "book": "The Heart of Fire",
+      "act": 1,
+      "section": 10
+    }
+  },
+  {
+    "type": "enemy",
+    "name": "Troll",
+    "stats": {
+      "speed": 0,
+      "brawn": 1,
+      "magic": 0,
+      "armour": 0,
+      "health": 15,
+      "maxHealth": 15
+    },
+    "abilities": [
+      "Regeneration:+2 health at start of combat round max 15"
+    ],
+    "bookRef": {
+      "book": "The Heart of Fire",
+      "act": 1,
+      "section": 11
+    }
+  },
+  {
+    "type": "enemy",
+    "name": "Number 13",
+    "stats": {
+      "speed": 2,
+      "brawn": 3,
+      "magic": 0,
+      "armour": 2,
+      "health": 30,
+      "maxHealth": 30
+    },
+    "abilities": [
+      "Unlucky for some: If hero rolls 1 - receive 2 damage ignoring armour"
+    ],
+    "bookRef": {
+      "book": "The Heart of Fire",
+      "act": 1,
+      "section": 13
+    }
+  },
+  {
+    "type": "enemy",
+    "name": "Raging storm",
+    "stats": {
+      "speed": 0,
+      "brawn": 0,
+      "magic": 1,
+      "armour": 0,
+      "health": 12,
+      "maxHealth": 12
+    },
+    "abilities": [
+      "Celestial charge: If hero deals damage - receive 2 damage ignoring armour"
+    ],
+    "bookRef": {
+      "book": "The Heart of Fire",
+      "act": 1,
+      "section": 14
+    }
+  },
+  {
+    "type": "enemy",
+    "name": "Bilhal the Fish",
+    "stats": {
+      "speed": 5,
+      "brawn": 4,
+      "magic": 0,
+      "armour": 2,
+      "health": 35,
+      "maxHealth": 35
+    },
+    "abilities": [
+      "Motley Crew: If Ruffians are alive - add 3 to damage score of Bilhal"
+    ],
+    "bookRef": {
+      "book": "The Heart of Fire",
+      "act": 2,
+      "section": 16
+    }
+  },
+  {
+    "type": "enemy",
+    "name": "Ruffians",
+    "stats": {
+      "speed": 0,
+      "brawn": 0,
+      "magic": 0,
+      "armour": 2,
+      "health": 15,
+      "maxHealth": 15
+    },
+    "abilities": [],
+    "bookRef": {
+      "book": "The Heart of Fire",
+      "act": 1,
+      "section": 16
+    }
+  },
+  {
+    "type": "enemy",
+    "name": "Wiccan witch",
+    "stats": {
+      "speed": 0,
+      "brawn": 0,
+      "magic": 1,
+      "armour": 0,
+      "health": 14,
+      "maxHealth": 14
+    },
+    "abilities": [],
+    "bookRef": {
+      "book": "The Heart of Fire",
+      "act": 1,
+      "section": 40
+    }
+  },
+  {
+    "type": "enemy",
+    "name": "Gutless",
+    "stats": {
+      "speed": 3,
+      "brawn": 3,
+      "magic": 0,
+      "armour": 2,
+      "health": 30,
+      "maxHealth": 30
+    },
+    "abilities": [
+      "Blood n Guts:At the start of a combat round, roll a die - 1-2 reduce hero speed by 1 for 1 round, 3-6 reduce enemy speed by 1 for 1 round",
+      "Undead: You can use ashes, holy water, holy protector"
+    ],
+    "bookRef": {
+      "book": "The Heart of Fire",
+      "act": 1,
+      "section": 58
+    }
+  },
+  {
+    "type": "enemy",
+    "name": "Drust the defiled",
+    "stats": {
+      "speed": 0,
+      "brawn": 0,
+      "magic": 0,
+      "armour": 0,
+      "health": 14,
+      "maxHealth": 14
+    },
+    "abilities": [],
+    "bookRef": {
+      "book": "The Heart of Fire",
+      "act": 1,
+      "section": 61
+    }
+  },
+  {
+    "type": "enemy",
+    "name": "Zombies",
+    "stats": {
+      "speed": 2,
+      "brawn": 2,
+      "magic": 0,
+      "armour": 1,
+      "health": 70,
+      "maxHealth": 70
+    },
+    "abilities": [
+      "Grappling hands: If enemy wins a round and rolls a 6 for damage - hero loses an equipment item or backpack item"
+    ],
+    "bookRef": {
+      "book": "The Heart of Fire",
+      "act": 1,
+      "section": 66
+    }
+  },
+  {
+    "type": "enemy",
+    "name": "Knight",
+    "stats": {
+      "speed": 0,
+      "brawn": 1,
+      "magic": 0,
+      "armour": 2,
+      "health": 18,
+      "maxHealth": 18
+    },
+    "abilities": [],
+    "bookRef": {
+      "book": "The Heart of Fire",
+      "act": 1,
+      "section": 67
+    }
+  },
+  {
+    "type": "enemy",
+    "name": "First mate",
+    "stats": {
+      "speed": 2,
+      "brawn": 2,
+      "magic": 0,
+      "armour": 2,
+      "health": 20,
+      "maxHealth": 20
+    },
+    "abilities": [
+      "Blast of: The enemy wins after round 6",
+      "Cowardly: If First mate is defeated, Hero wins the combat"
+    ],
+    "bookRef": {
+      "book": "The Heart of Fire",
+      "act": 1,
+      "section": 71
+    }
+  },
+  {
+    "type": "enemy",
+    "name": "Cannon team",
+    "stats": {
+      "speed": 0,
+      "brawn": 0,
+      "magic": 0,
+      "armour": 1,
+      "health": 15,
+      "maxHealth": 15
+    },
+    "abilities": [],
+    "bookRef": {
+      "book": "The Heart of Fire",
+      "act": 1,
+      "section": 71
+    }
+  },
+  {
+    "type": "enemy",
+    "name": "Dire wolf",
+    "stats": {
+      "speed": 1,
+      "brawn": 2,
+      "magic": 0,
+      "armour": 2,
+      "health": 20,
+      "maxHealth": 20
+    },
+    "abilities": [],
+    "bookRef": {
+      "book": "The Heart of Fire",
+      "act": 1,
+      "section": 95
+    }
+  },
+  {
+    "type": "enemy",
+    "name": "Lazlo",
+    "stats": {
+      "speed": 5,
+      "brawn": 4,
+      "magic": 0,
+      "armour": 2,
+      "health": 40,
+      "maxHealth": 40
+    },
+    "abilities": [
+      "Shock treatment: If any character rolls a double - lose 4 health ignoring armour",
+      "In a spin: If hero wins a combat round, roll a die - 1-2 hero does not roll for damage"
+    ],
+    "bookRef": {
+      "book": "The Heart of Fire",
+      "act": 1,
+      "section": 102
+    }
+  },
+  {
+    "type": "enemy",
+    "name": "Archers",
+    "stats": {
+      "speed": 2,
+      "brawn": 2,
+      "magic": 0,
+      "armour": 0,
+      "health": 20,
+      "maxHealth": 20
+    },
+    "abilities": [
+      "Ranged foe: Hero cannot use speed or combat abilities"
+    ],
+    "bookRef": {
+      "book": "The Heart of Fire",
+      "act": 1,
+      "section": 103
+    }
+  },
+  {
+    "type": "enemy",
+    "name": "Enraged Zombies",
+    "stats": {
+      "speed": 2,
+      "brawn": 2,
+      "magic": 0,
+      "armour": 1,
+      "health": 25,
+      "maxHealth": 25
+    },
+    "abilities": [
+      "Back from dead: When enemy is defeated, roll a die - 1-2 enemy gains 6 health. Can only be used once per combat",
+      "Undead: You can use ashes, holy water, holy protector"
+    ],
+    "bookRef": {
+      "book": "The Heart of Fire",
+      "act": 1,
+      "section": 138
+    }
+  },
+  {
+    "type": "enemy",
+    "name": "Hellhound",
+    "stats": {
+      "speed": 4,
+      "brawn": 7,
+      "magic": 0,
+      "armour": 3,
+      "health": 50,
+      "maxHealth": 50
+    },
+    "abilities": [
+      "Backdraft: When hero scores damage, take 3 damage ignoring armour",
+      "Enraged: At the start of round 5 - enemy gains +1 speed and +1 brawn"
+    ],
+    "bookRef": {
+      "book": "The Heart of Fire",
+      "act": 1,
+      "section": 144
+    }
+  },
+  {
+    "type": "enemy",
+    "name": "Poltergeist",
+    "stats": {
+      "speed": 5,
+      "brawn": 0,
+      "magic": 3,
+      "armour": 3,
+      "health": 35,
+      "maxHealth": 35
+    },
+    "abilities": [],
+    "bookRef": {
+      "book": "The Heart of Fire",
+      "act": 1,
+      "section": 147
+    }
+  },
+  {
+    "type": "enemy",
+    "name": "Sinister sprigs",
+    "stats": {
+      "speed": 0,
+      "brawn": 0,
+      "magic": 0,
+      "armour": 1,
+      "health": 12,
+      "maxHealth": 12
+    },
+    "abilities": [],
+    "bookRef": {
+      "book": "The Heart of Fire",
+      "act": 1,
+      "section": 150
+    }
+  },
+  {
+    "type": "enemy",
+    "name": "Gairn",
+    "stats": {
+      "speed": 5,
+      "brawn": 0,
+      "magic": 5,
+      "armour": 4,
+      "health": 50,
+      "maxHealth": 50
+    },
+    "abilities": [
+      "Frost fire: When hero receives damage from Gairn, they loose 1 health at the end of each round",
+      "Corpse dance: If Gairn's health is reduced to 25 or less, Gairn removes all passive effects and hides and the skeletons will become the sole enemy until they are defated."
+    ],
+    "spawns": [
+      "Skeletons"
+    ],
+    "bookRef": {
+      "book": "The Heart of Fire",
+      "act": 1,
+      "section": 158
+    }
+  },
+  {
+    "type": "enemy",
+    "name": "Skeletons",
+    "stats": {
+      "speed": 4,
+      "brawn": 0,
+      "magic": 4,
+      "armour": 3,
+      "health": 40,
+      "maxHealth": 40
+    },
+    "abilities": [
+      "Army: Skeletons will only be enemies when Gairn is hidden",
+      "Body of bone",
+      "Undead minions: You can use holy water, holy protector against skeletons, but not Gairn"
+    ],
+    "bookRef": {
+      "book": "The Heart of Fire",
+      "act": 1,
+      "section": 158
+    }
+  },
+  {
+    "type": "enemy",
+    "name": "Reverend",
+    "stats": {
+      "speed": 2,
+      "brawn": 0,
+      "magic": 3,
+      "armour": 2,
+      "health": 50,
+      "maxHealth": 50
+    },
+    "abilities": [
+      "Pest control: At the end of each combat round, roll a die - 1-2: Add +2 to the ghoul effect: Ghoul effect: Hero takes 0 damage at the end of each combat round",
+      "Undead: You can use ashes, holy water, holy protector"
+    ],
+    "bookRef": {
+      "book": "The Heart of Fire",
+      "act": 1,
+      "section": 168
+    }
+  },
+  {
+    "type": "enemy",
+    "name": "Margoyle",
+    "stats": {
+      "speed": 3,
+      "brawn": 3,
+      "magic": 0,
+      "armour": 3,
+      "health": 50,
+      "maxHealth": 50
+    },
+    "abilities": [
+      "Stone blood: If enemy rolls 4-6 for damage - armour of the enemy is raised by 1 up to 6"
+    ],
+    "bookRef": {
+      "book": "The Heart of Fire",
+      "act": 1,
+      "section": 200
+    }
+  },
+  {
+    "type": "enemy",
+    "name": "Ironclad",
+    "stats": {
+      "speed": 5,
+      "brawn": 5,
+      "magic": 0,
+      "armour": 5,
+      "health": 35,
+      "maxHealth": 35
+    },
+    "abilities": [
+      "Body of iron: Immune to Bleed, Thorns, Thorn Cage"
+    ],
+    "bookRef": {
+      "book": "The Heart of Fire",
+      "act": 1,
+      "section": 208
+    }
+  },
+  {
+    "type": "enemy",
+    "name": "Assasin Ant",
+    "stats": {
+      "speed": 3,
+      "brawn": 2,
+      "magic": 0,
+      "armour": 2,
+      "health": 35,
+      "maxHealth": 35
+    },
+    "abilities": [
+      "Venom: Once hero receives damage from the Assasin Ant, lose 2 health at the end of each combat round"
+    ],
+    "bookRef": {
+      "book": "The Heart of Fire",
+      "act": 1,
+      "section": 229
+    }
+  },
+  {
+    "type": "enemy",
+    "name": "Orgorath",
+    "stats": {
+      "speed": 5,
+      "brawn": 5,
+      "magic": 0,
+      "armour": 4,
+      "health": 80,
+      "maxHealth": 80
+    },
+    "abilities": [
+      "Deadly thorns: Hero loses 3 health at the end of the round",
+      "Divine fury: Hero's damage is increased by 3",
+      "Thousand fists: Instead of rolling for damage, roll 2-5 damage dice ignoring armor in consecutive rounds, once in combat"
+    ],
+    "bookRef": {
+      "book": "The Heart of Fire",
+      "act": 1,
+      "section": 237
+    }
+  },
+  {
+    "type": "enemy",
+    "name": "Roadside Robbers",
+    "stats": {
+      "speed": 3,
+      "brawn": 3,
+      "magic": 0,
+      "armour": 1,
+      "health": 25,
+      "maxHealth": 25
+    },
+    "abilities": [],
+    "bookRef": {
+      "book": "The Heart of Fire",
+      "act": 1,
+      "section": 241
+    }
+  },
+  {
+    "type": "enemy",
+    "name": "Warriors",
+    "stats": {
+      "speed": 5,
+      "brawn": 0,
+      "magic": 4,
+      "armour": 3,
+      "health": 40,
+      "maxHealth": 40
+    },
+    "abilities": [
+      "Body of bone: Immune to Bleed, Venom",
+      "Undead minions: You can use ashes, holy water, holy protector"
+    ],
+    "spawns": [
+      "Mages, High Priest"
+    ],
+    "bookRef": {
+      "book": "The Heart of Fire",
+      "act": 2,
+      "section": 249
+    }
+  },
+  {
+    "type": "enemy",
+    "name": "Mages",
+    "stats": {
+      "speed": 0,
+      "brawn": 0,
+      "magic": 0,
+      "armour": 2,
+      "health": 20,
+      "maxHealth": 20
+    },
+    "abilities": [
+      "Dark fire: At the end of the round, take a speed challenge. If you get 0-12 - hero takes 5 damage ignoring armour",
+      "Body of bone: Immune to Bleed, Venom",
+      "Undead minions: You can use ashes, holy water, holy protector"
+    ],
+    "bookRef": {
+      "book": "The Heart of Fire",
+      "act": 2,
+      "section": 249
+    }
+  },
+  {
+    "type": "enemy",
+    "name": "High Priest",
+    "stats": {
+      "speed": 0,
+      "brawn": 0,
+      "magic": 0,
+      "armour": 2,
+      "health": 20,
+      "maxHealth": 20
+    },
+    "abilities": [
+      "Bone mending: +4 health (max 40) to Warriors at the end of the round",
+      "Body of bone: Immune to Bleed, Venom",
+      "Undead minions: You can use ashes, holy water, holy protector"
+    ],
+    "bookRef": {
+      "book": "The Heart of Fire",
+      "act": 2,
+      "section": 249
+    }
+  },
+  {
+    "type": "enemy",
+    "name": "Dagona",
+    "stats": {
+      "speed": 6,
+      "brawn": 4,
+      "magic": 0,
+      "armour": 4,
+      "health": 70,
+      "maxHealth": 70
+    },
+    "abilities": [
+      "Slash and burn: Roll 3 damage dice and take the highest result",
+      "Ashes to ashes: When hero rolls double for speed, they lose the combat round"
+    ],
+    "bookRef": {
+      "book": "The Heart of Fire",
+      "act": 1,
+      "section": 256
+    }
+  },
+  {
+    "type": "enemy",
+    "name": "Zombie horde",
+    "stats": {
+      "speed": 3,
+      "brawn": 3,
+      "magic": 0,
+      "armour": 2,
+      "health": 28,
+      "maxHealth": 28
+    },
+    "abilities": [
+      "Unstoppable: If hero is alive at the end of round 5, the enemy is defeated",
+      "All pile on: No special abilities or backpack items can be used in this combat"
+    ],
+    "bookRef": {
+      "book": "The Heart of Fire",
+      "act": 1,
+      "section": 262
+    }
+  },
+  {
+    "type": "enemy",
+    "name": "Poltergeist",
+    "stats": {
+      "speed": 5,
+      "brawn": 0,
+      "magic": 3,
+      "armour": 3,
+      "health": 35,
+      "maxHealth": 35
+    },
+    "abilities": [],
+    "bookRef": {
+      "book": "The Heart of Fire",
+      "act": 1,
+      "section": 266
+    }
+  },
+  {
+    "type": "enemy",
+    "name": "Orgorath",
+    "stats": {
+      "speed": 5,
+      "brawn": 5,
+      "magic": 0,
+      "armour": 4,
+      "health": 80,
+      "maxHealth": 80
+    },
+    "abilities": [
+      "Deadly thorns: Hero loses 3 health at the end of the round",
+      "Earth golems: The enemy loses 2 health at the end of each round. If hero loses a round, they can sacrifice the Earth golems to avoid damage",
+      "Furious roar: Instead of rolling for damage, increase speed, brawn and magic by 1 for 3 rounds"
+    ],
+    "bookRef": {
+      "book": "The Heart of Fire",
+      "act": 1,
+      "section": 268
+    }
+  },
+  {
+    "type": "enemy",
+    "name": "Manticore",
+    "stats": {
+      "speed": 2,
+      "brawn": 3,
+      "magic": 0,
+      "armour": 1,
+      "health": 25,
+      "maxHealth": 25
+    },
+    "abilities": [
+      "Benin's blessing: +1 speed, brawn and magic for hero",
+      "Holy healer: When the hero's health is 1-8, restore full health and remove Venom (once per combat)",
+      "Venom: Once hero receives damage, lose 1 health at the end of each combat round"
+    ],
+    "bookRef": {
+      "book": "The Heart of Fire",
+      "act": 1,
+      "section": 280
+    }
+  },
+  {
+    "type": "enemy",
+    "name": "Archer ants",
+    "stats": {
+      "speed": 2,
+      "brawn": 1,
+      "magic": 0,
+      "armour": 1,
+      "health": 20,
+      "maxHealth": 20
+    },
+    "abilities": [],
+    "bookRef": {
+      "book": "The Heart of Fire",
+      "act": 1,
+      "section": 281
+    }
+  },
+  {
+    "type": "enemy",
+    "name": "Headless",
+    "stats": {
+      "speed": 2,
+      "brawn": 0,
+      "magic": 3,
+      "armour": 2,
+      "health": 35,
+      "maxHealth": 35
+    },
+    "abilities": [
+      "Wrath of the witchfinder: +2 damage for the hero"
+    ],
+    "spawns": [
+      "Flaming skull"
+    ],
+    "bookRef": {
+      "book": "The Heart of Fire",
+      "act": 1,
+      "section": 284
+    }
+  },
+  {
+    "type": "enemy",
+    "name": "Flaming skull",
+    "stats": {
+      "speed": 0,
+      "brawn": 0,
+      "magic": 0,
+      "armour": 2,
+      "health": 20,
+      "maxHealth": 20
+    },
+    "abilities": [
+      "Searing skull: At the end of each round, hero loses 2 health",
+      "Head case: Immune to Bleed"
+    ],
+    "bookRef": {
+      "book": "The Heart of Fire",
+      "act": 1,
+      "section": 284
+    }
+  },
+  {
+    "type": "enemy",
+    "name": "Fungalus",
+    "stats": {
+      "speed": 4,
+      "brawn": 0,
+      "magic": 4,
+      "armour": 12,
+      "health": 30,
+      "maxHealth": 30
+    },
+    "abilities": [
+      "Sinister saps: At the end of the round, add 1 sap. Each sap deals 1 damage to the hero, ignoring armour",
+      "Blast the bile: When hero wins round, instead of rolling for damage, destroy all saps",
+      "Power pruning: If hero wins round, instead of rolling for damage, -4 armour (enemy)."
+    ],
+    "bookRef": {
+      "book": "The Heart of Fire",
+      "act": 1,
+      "section": 288
+    }
+  },
+  {
+    "type": "enemy",
+    "name": "Bombardier ant",
+    "stats": {
+      "speed": 3,
+      "brawn": 2,
+      "magic": 0,
+      "armour": 2,
+      "health": 40,
+      "maxHealth": 40
+    },
+    "abilities": [
+      "Bullet storm: If the enemy wins a round, roll a die. 4-6 - ant does not deal damage"
+    ],
+    "bookRef": {
+      "book": "The Heart of Fire",
+      "act": 1,
+      "section": 290
+    }
+  },
+  {
+    "type": "enemy",
+    "name": "Billah the fish",
+    "stats": {
+      "speed": 5,
+      "brawn": 4,
+      "magic": 0,
+      "armour": 2,
+      "health": 35,
+      "maxHealth": 35
+    },
+    "abilities": [],
+    "spawns": [
+      "Ruffians"
+    ],
+    "bookRef": {
+      "book": "The Heart of Fire",
+      "act": 1,
+      "section": 295
+    }
+  },
+  {
+    "type": "enemy",
+    "name": "Ruffians",
+    "stats": {
+      "speed": 0,
+      "brawn": 0,
+      "magic": 0,
+      "armour": 2,
+      "health": 20,
+      "maxHealth": 20
+    },
+    "abilities": [
+      "Motley crew: +3 damage (enemy)"
+    ],
+    "bookRef": {
+      "book": "The Heart of Fire",
+      "act": 1,
+      "section": 295
+    }
+  },
+  {
+    "type": "enemy",
+    "name": "Rap Unzal",
+    "stats": {
+      "speed": 11,
+      "brawn": 0,
+      "magic": 7,
+      "armour": 3,
+      "health": 40,
+      "maxHealth": 40
+    },
+    "abilities": [
+      "Dem bones: +2 health (enemy) at the end of the round",
+      "Ghost of a victory: Immune to Cutpurse, Pillage"
+    ],
+    "bookRef": {
+      "book": "The Heart of Fire",
+      "act": 2,
+      "section": 298
+    }
+  },
+  {
+    "type": "enemy",
+    "name": "Queen Bellona",
+    "stats": {
+      "speed": 3,
+      "brawn": 2,
+      "magic": 0,
+      "armour": 3,
+      "health": 40,
+      "maxHealth": 40
+    },
+    "abilities": [
+      "Pin cushion: Each time hero causes damage they take 1 damage ignoring armour",
+      "Look out for larvae: At the start of the combat round, roll a die. 1-3 adds one larvae. Each larvae deals 1 damage ignoring armour at the end of the round",
+      "Bug blaster: Use borehole charge -  -10 health"
+    ],
+    "bookRef": {
+      "book": "The Heart of Fire",
+      "act": 1,
+      "section": 307
+    }
+  },
+  {
+    "type": "enemy",
+    "name": "Benin",
+    "stats": {
+      "speed": 0,
+      "brawn": 0,
+      "magic": 2,
+      "armour": 1,
+      "health": 18,
+      "maxHealth": 18
+    },
+    "abilities": [
+      "Harm or heal: If enemy wins a round, roll a die. 1-2: +2 health (enemy, max 18), 3-6: roll for damage"
+    ],
+    "bookRef": {
+      "book": "The Heart of Fire",
+      "act": 1,
+      "section": 312
+    }
+  },
+  {
+    "type": "enemy",
+    "name": "Blood ticks",
+    "stats": {
+      "speed": 3,
+      "brawn": 2,
+      "magic": 0,
+      "armour": 2,
+      "health": 30,
+      "maxHealth": 30
+    },
+    "abilities": [
+      "Bombardement: At the start of a round, roll a die. 1-3: -2 health (hero)",
+      "Blood suckers: When enemy wins round and causes damage to the enemy, +1 health (enemy, max 30)"
+    ],
+    "bookRef": {
+      "book": "The Heart of Fire",
+      "act": 1,
+      "section": 327
+    }
+  },
+  {
+    "type": "enemy",
+    "name": "Inkheart",
+    "stats": {
+      "speed": 5,
+      "brawn": 4,
+      "magic": 0,
+      "armour": 3,
+      "health": 35,
+      "maxHealth": 35
+    },
+    "abilities": [
+      "Back to black: +1 brawn at the end of round (max 8)",
+      "Body of ink: Immune to Bleed, Thorns, Thorn Cage"
+    ],
+    "bookRef": {
+      "book": "The Heart of Fire",
+      "act": 1,
+      "section": 362
+    }
+  },
+  {
+    "type": "enemy",
+    "name": "Kaala",
+    "stats": {
+      "speed": 10,
+      "brawn": 7,
+      "magic": 0,
+      "armour": 6,
+      "health": 100,
+      "maxHealth": 100
+    },
+    "abilities": [
+      "Look into my eyes: When the hero rolls the 8th 1 die (after rerolling) and they don't have the Golden mirror, the hero loses",
+      "if the enemy rolls the 8th 1 die and the hero has the Golden mirror, the hero wins",
+      "Lethal venom: Once the hero receives damage, lose 6 health at the end of each combat round"
+    ],
+    "bookRef": {
+      "book": "The Heart of Fire",
+      "act": 2,
+      "section": 371
+    }
+  },
+  {
+    "type": "enemy",
+    "name": "Erkil",
+    "stats": {
+      "speed": 13,
+      "brawn": 10,
+      "magic": 0,
+      "armour": 10,
+      "health": 120,
+      "maxHealth": 120
+    },
+    "abilities": [
+      "Stone skin: At the start of the 5th round, raise armour to 28",
+      "Chip away: After the start of the 5th round, instead of rolling for damage the hero can reduce armour of the enemy by 4, taking 4 damage ignoring armour",
+      "",
+      "Titan stone: At the start of round 5, enemy is immune to all passive damage"
+    ],
+    "bookRef": {
+      "book": "The Heart of Fire",
+      "act": 2,
+      "section": 379
+    }
+  },
+  {
+    "type": "enemy",
+    "name": "Gaia",
+    "stats": {
+      "speed": 5,
+      "brawn": 4,
+      "magic": 0,
+      "armour": 4,
+      "health": 45,
+      "maxHealth": 45
+    },
+    "abilities": [],
+    "spawns": [
+      "Roots"
+    ],
+    "bookRef": {
+      "book": "The Heart of Fire",
+      "act": 2,
+      "section": 384
+    }
+  },
+  {
+    "type": "enemy",
+    "name": "Roots",
+    "stats": {
+      "speed": 0,
+      "brawn": 0,
+      "magic": 0,
+      "armour": 1,
+      "health": 20,
+      "maxHealth": 20
+    },
+    "abilities": [
+      "Feeding time: Every 3 rounds, if Roots are still alive hero receives 15 damage. Roots restore full health (even when defeated)"
+    ],
+    "bookRef": {
+      "book": "The Heart of Fire",
+      "act": 2,
+      "section": 384
+    }
+  },
+  {
+    "type": "enemy",
+    "name": "Xenos",
+    "stats": {
+      "speed": 12,
+      "brawn": 0,
+      "magic": 9,
+      "armour": 9,
+      "health": 65,
+      "maxHealth": 65
+    },
+    "abilities": [
+      "Knowledge is power: If the hero wins a round, instead for rolling for damage: -1 speed -1 magic -1 armour (enemy, min speed 9, min magic armour 6)"
+    ],
+    "bookRef": {
+      "book": "The Heart of Fire",
+      "act": 2,
+      "section": 390
+    }
+  },
+  {
+    "type": "enemy",
+    "name": "Stone giants",
+    "stats": {
+      "speed": 5,
+      "brawn": 4,
+      "magic": 0,
+      "armour": 12,
+      "health": 35,
+      "maxHealth": 35
+    },
+    "abilities": [
+      "Charged: Each time hero scores damage on the giant and don't have Insulated - -2 health",
+      "Enchanted rock: Immune to Bleed, Sear, Thorns, Thorn Cage, Fire Aura"
+    ],
+    "spawns": [
+      "Runed pilar"
+    ],
+    "bookRef": {
+      "book": "The Heart of Fire",
+      "act": 2,
+      "section": 392
+    }
+  },
+  {
+    "type": "enemy",
+    "name": "Runed pilar",
+    "stats": {
+      "speed": 0,
+      "brawn": 0,
+      "magic": 0,
+      "armour": 3,
+      "health": 10,
+      "maxHealth": 10
+    },
+    "abilities": [
+      "Pound those pillars: When destroyed, -4 armour (Stone giant), 6 damage (hero)",
+      "Enchanted rock: Immune to Bleed, Sear, Thorns, Thorn Cage, Fire Aura"
+    ],
+    "bookRef": {
+      "book": "The Heart of Fire",
+      "act": 2,
+      "section": 392
+    }
+  },
+  {
+    "type": "enemy",
+    "name": "Runed pilar",
+    "stats": {
+      "speed": 0,
+      "brawn": 0,
+      "magic": 0,
+      "armour": 3,
+      "health": 10,
+      "maxHealth": 10
+    },
+    "abilities": [
+      "Pound those pillars: When destroyed, -4 armour (Stone giant), 6 damage (hero)",
+      "Enchanted rock: Immune to Bleed, Sear, Thorns, Thorn Cage, Fire Aura"
+    ],
+    "bookRef": {
+      "book": "The Heart of Fire",
+      "act": 2,
+      "section": 392
+    }
+  },
+  {
+    "type": "enemy",
+    "name": "Runed pilar",
+    "stats": {
+      "speed": 0,
+      "brawn": 0,
+      "magic": 0,
+      "armour": 3,
+      "health": 10,
+      "maxHealth": 10
+    },
+    "abilities": [
+      "Pound those pillars: When destroyed, -4 armour (Stone giant), 6 damage (hero)",
+      "Enchanted rock: Immune to Bleed, Sear, Thorns, Thorn Cage, Fire Aura"
+    ],
+    "bookRef": {
+      "book": "The Heart of Fire",
+      "act": 2,
+      "section": 392
+    }
+  },
+  {
+    "type": "enemy",
+    "name": "Saw",
+    "stats": {
+      "speed": 5,
+      "brawn": 4,
+      "magic": 0,
+      "armour": 3,
+      "health": 40,
+      "maxHealth": 40
+    },
+    "abilities": [
+      "Spinning saw: At the end of each round, roll a die. 1-2: -4 health (hero), 3-6: -4 health (Soldiers)",
+      "Wood and metal: Immune to Bleet"
+    ],
+    "bookRef": {
+      "book": "The Heart of Fire",
+      "act": 1,
+      "section": 398
+    }
+  },
+  {
+    "type": "enemy",
+    "name": "Soldiers",
+    "stats": {
+      "speed": 0,
+      "brawn": 0,
+      "magic": 0,
+      "armour": 1,
+      "health": 25,
+      "maxHealth": 25
+    },
+    "abilities": [
+      "Stabbing swords: At the end of the combat round, -2 health (hero)",
+      "Wood and metal: Immune to Bleet"
+    ],
+    "bookRef": {
+      "book": "The Heart of Fire",
+      "act": 1,
+      "section": 398
+    }
+  },
+  {
+    "type": "enemy",
+    "name": "Fisher king",
+    "stats": {
+      "speed": 8,
+      "brawn": 6,
+      "magic": 0,
+      "armour": 5,
+      "health": 80,
+      "maxHealth": 80
+    },
+    "abilities": [
+      "Jump around: At the start of the combat round, pick [North, Center, East] and roll a die. 1-2: Continue when North was picked, 3-4: Continue when Center was picked, 5-6: Continue when East was picked. Otherwise take speed challenge - 1-13: -6 health (hero). Continue with passive effects."
+    ],
+    "bookRef": {
+      "book": "The Heart of Fire",
+      "act": 2,
+      "section": 408
+    }
+  },
+  {
+    "type": "enemy",
+    "name": "Custodian",
+    "stats": {
+      "speed": 5,
+      "brawn": 0,
+      "magic": 4,
+      "armour": 3,
+      "health": 50,
+      "maxHealth": 50
+    },
+    "abilities": [
+      "Reanimator: Once per combat when Custodian is below 25 health - +40 health (Forty thieves)",
+      "Hex of pain: At the end of the combat round, -1 health (hero)"
+    ],
+    "bookRef": {
+      "book": "The Heart of Fire",
+      "act": 1,
+      "section": 419
+    }
+  },
+  {
+    "type": "enemy",
+    "name": "Forty thieves",
+    "stats": {
+      "speed": 5,
+      "brawn": 0,
+      "magic": 5,
+      "armour": 2,
+      "health": 0,
+      "maxHealth": 0
+    },
+    "abilities": [
+      "Protector: Custodian cannot be damaged while Forty thieves are alive",
+      "Reanimator 2: At the end of the round, +2 health (enemy, max 50)"
+    ],
+    "spawns": [
+      "Forty thieves"
+    ],
+    "bookRef": {
+      "book": "The Heart of Fire",
+      "act": 1,
+      "section": 419
+    }
+  },
+  {
+    "type": "enemy",
+    "name": "The Forger",
+    "stats": {
+      "speed": 4,
+      "brawn": 3,
+      "magic": 0,
+      "armour": 4,
+      "health": 40,
+      "maxHealth": 40
+    },
+    "abilities": [
+      "Flame wrapper: At the start of the combat round, roll a die. 1-3: +1 brawn (enemy)",
+      "Knockdown"
+    ],
+    "bookRef": {
+      "book": "The Heart of Fire",
+      "act": 1,
+      "section": 422
+    }
+  },
+  {
+    "type": "enemy",
+    "name": "Rocco",
+    "stats": {
+      "speed": 5,
+      "brawn": 4,
+      "magic": 0,
+      "armour": 4,
+      "health": 35,
+      "maxHealth": 35
+    },
+    "abilities": [
+      "Body of rock: Immune to Bleed"
+    ],
+    "bookRef": {
+      "book": "The Heart of Fire",
+      "act": 1,
+      "section": 425
+    }
+  },
+  {
+    "type": "enemy",
+    "name": "Umbra",
+    "stats": {
+      "speed": 6,
+      "brawn": 5,
+      "magic": 0,
+      "armour": 4,
+      "health": 60,
+      "maxHealth": 60
+    },
+    "abilities": [
+      "It's behind you: At the end of the combat round, roll a die. 1-2: 10 damage (hero)"
+    ],
+    "bookRef": {
+      "book": "The Heart of Fire",
+      "act": 2,
+      "section": 432
+    }
+  },
+  {
+    "type": "enemy",
+    "name": "Cuddles",
+    "stats": {
+      "speed": 5,
+      "brawn": 3,
+      "magic": 0,
+      "armour": 3,
+      "health": 40,
+      "maxHealth": 40
+    },
+    "abilities": [
+      "Piercing claws: Piercing",
+      "Bleed"
+    ],
+    "bookRef": {
+      "book": "The Heart of Fire",
+      "act": 2,
+      "section": 433
+    }
+  },
+  {
+    "type": "enemy",
+    "name": "Papyrus",
+    "stats": {
+      "speed": 5,
+      "brawn": 4,
+      "magic": 0,
+      "armour": 3,
+      "health": 30,
+      "maxHealth": 30
+    },
+    "abilities": [
+      "Body of paper: Immune to Bleed"
+    ],
+    "bookRef": {
+      "book": "The Heart of Fire",
+      "act": 1,
+      "section": 444
+    }
+  },
+  {
+    "type": "enemy",
+    "name": "Quetzal",
+    "stats": {
+      "speed": 7,
+      "brawn": 6,
+      "magic": 0,
+      "armour": 5,
+      "health": 40,
+      "maxHealth": 40
+    },
+    "abilities": [
+      "Razor beak: Piercing"
+    ],
+    "bookRef": {
+      "book": "The Heart of Fire",
+      "act": 2,
+      "section": 457
+    }
+  },
+  {
+    "type": "enemy",
+    "name": "Totem",
+    "stats": {
+      "speed": 6,
+      "brawn": 0,
+      "magic": 5,
+      "armour": 0,
+      "health": 0,
+      "maxHealth": 0
+    },
+    "abilities": [
+      "Power cubed: When all cubes are alive, roll 3 damage dice."
+    ],
+    "spawns": [
+      "Snake cube",
+      "Spider cube",
+      "Jaguar cube"
+    ],
+    "bookRef": {
+      "book": "The Heart of Fire",
+      "act": 2,
+      "section": 459
+    }
+  },
+  {
+    "type": "enemy",
+    "name": "Snake cube",
+    "stats": {
+      "speed": 0,
+      "brawn": 0,
+      "magic": 0,
+      "armour": 5,
+      "health": 25,
+      "maxHealth": 25
+    },
+    "abilities": [
+      "Snake cube: Venom (Totem)",
+      "Enhanted rock: Immune to Bleed"
+    ],
+    "bookRef": {
+      "book": "The Heart of Fire",
+      "act": 2,
+      "section": 459
+    }
+  },
+  {
+    "type": "enemy",
+    "name": "Spider cube",
+    "stats": {
+      "speed": 0,
+      "brawn": 0,
+      "magic": 0,
+      "armour": 5,
+      "health": 25,
+      "maxHealth": 25
+    },
+    "abilities": [
+      "Spider cube: +1 speed (Totem)",
+      "Enhanted rock: Immune to Bleed"
+    ],
+    "bookRef": {
+      "book": "The Heart of Fire",
+      "act": 2,
+      "section": 459
+    }
+  },
+  {
+    "type": "enemy",
+    "name": "Jaguar cube",
+    "stats": {
+      "speed": 0,
+      "brawn": 0,
+      "magic": 0,
+      "armour": 5,
+      "health": 25,
+      "maxHealth": 25
+    },
+    "abilities": [
+      "Jaguar cube: At the end of the combat round, -2 health (hero)",
+      "Enhanted rock: Immune to Bleed"
+    ],
+    "bookRef": {
+      "book": "The Heart of Fire",
+      "act": 2,
+      "section": 459
+    }
+  },
+  {
+    "type": "enemy",
+    "name": "",
+    "stats": {
+      "speed": 0,
+      "brawn": 0,
+      "magic": 0,
+      "armour": 0,
+      "health": 0,
+      "maxHealth": 0
+    },
+    "abilities": [],
+    "bookRef": {
+      "book": "The Heart of Fire",
+      "act": 1,
+      "section": null
+    }
+  },
+  {
+    "type": "enemy",
+    "name": "",
+    "stats": {
+      "speed": 0,
+      "brawn": 0,
+      "magic": 0,
+      "armour": 0,
+      "health": 0,
+      "maxHealth": 0
+    },
+    "abilities": [],
+    "bookRef": {
+      "book": "The Heart of Fire",
+      "act": 1,
+      "section": null
+    }
+  },
+  {
+    "type": "enemy",
+    "name": "",
+    "stats": {
+      "speed": 0,
+      "brawn": 0,
+      "magic": 0,
+      "armour": 0,
+      "health": 0,
+      "maxHealth": 0
+    },
+    "abilities": [],
+    "bookRef": {
+      "book": "The Heart of Fire",
+      "act": 1,
+      "section": null
+    }
+  },
+  {
+    "type": "enemy",
+    "name": "",
+    "stats": {
+      "speed": 0,
+      "brawn": 0,
+      "magic": 0,
+      "armour": 0,
+      "health": 0,
+      "maxHealth": 0
+    },
+    "abilities": [],
+    "bookRef": {
+      "book": "The Heart of Fire",
+      "act": 1,
+      "section": null
+    }
   }
 ];
 
