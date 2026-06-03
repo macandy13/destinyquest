@@ -7050,6 +7050,10 @@ const BOOKS = [
   {
     book: "The Legion of Shadow",
     acts: [1, 2, 3]
+  },
+  {
+    book: "The Heart of Fire",
+    acts: [1, 2, 3]
   }
 ];
 const STORAGE_KEY$1 = "dq-book-filter-v1";
@@ -7088,67 +7092,39 @@ function useBookFilter() {
   const filterFn = (bookRef) => matchesFilter(filter, bookRef);
   return { filter, setFilter, filterFn };
 }
-function isActive(current, candidate) {
-  if (current.type === "all" && candidate.type === "all") {
-    return true;
-  }
-  if (current.type === "book" && candidate.type === "book") {
-    return current.book === candidate.book;
-  }
-  if (current.type === "act" && candidate.type === "act") {
-    return current.book === candidate.book && current.act === candidate.act;
-  }
-  return false;
-}
 const BookActSelector = ({ filter, onFilterChange }) => {
+  const selectedBook = filter.type === "book" || filter.type === "act" ? filter.book : "";
+  const selectedAct = filter.type === "act" ? filter.act : "";
+  const handleBookChange = (event) => {
+    const book = event.target.value;
+    if (book === "all") {
+      onFilterChange({ type: "all" });
+    } else {
+      onFilterChange({ type: "book", book });
+    }
+  };
+  const handleActChange = (event) => {
+    const act = parseInt(event.target.value, 10);
+    if (selectedBook) {
+      onFilterChange({ type: "act", book: selectedBook, act });
+    }
+  };
+  const currentBookInfo = BOOKS.find((book) => book.book === selectedBook);
   return /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "book-act-selector", children: [
-    /* @__PURE__ */ jsxRuntimeExports.jsx(
-      "button",
-      {
-        className: `filter-pill ${isActive(filter, { type: "all" }) ? "active" : ""}`,
-        onClick: () => onFilterChange({ type: "all" }),
-        children: "All"
-      }
-    ),
-    BOOKS.map((bookInfo) => /* @__PURE__ */ jsxRuntimeExports.jsxs(React.Fragment, { children: [
-      /* @__PURE__ */ jsxRuntimeExports.jsxs(
-        "button",
-        {
-          className: `filter-pill ${isActive(filter, {
-            type: "book",
-            book: bookInfo.book
-          }) ? "active" : ""}`,
-          onClick: () => onFilterChange({
-            type: "book",
-            book: bookInfo.book
-          }),
-          children: [
-            "📖 ",
-            bookInfo.book
-          ]
-        }
-      ),
-      bookInfo.acts.map((act) => /* @__PURE__ */ jsxRuntimeExports.jsxs(
-        "button",
-        {
-          className: `filter-pill ${isActive(filter, {
-            type: "act",
-            book: bookInfo.book,
-            act
-          }) ? "active" : ""}`,
-          onClick: () => onFilterChange({
-            type: "act",
-            book: bookInfo.book,
-            act
-          }),
-          children: [
-            "Act ",
-            act
-          ]
-        },
+    /* @__PURE__ */ jsxRuntimeExports.jsxs("select", { className: "filter-dropdown", value: selectedBook === "" ? "all" : selectedBook, onChange: handleBookChange, children: [
+      /* @__PURE__ */ jsxRuntimeExports.jsx("option", { value: "all", children: "All" }),
+      BOOKS.map((bookInfo) => /* @__PURE__ */ jsxRuntimeExports.jsxs("option", { value: bookInfo.book, children: [
+        "📖 ",
+        bookInfo.book
+      ] }, bookInfo.book))
+    ] }),
+    selectedBook && currentBookInfo && /* @__PURE__ */ jsxRuntimeExports.jsxs("select", { className: "filter-dropdown", value: selectedAct === "" ? "all" : selectedAct, onChange: handleActChange, children: [
+      /* @__PURE__ */ jsxRuntimeExports.jsx("option", { value: "all", children: "All Acts" }),
+      currentBookInfo.acts.map((act) => /* @__PURE__ */ jsxRuntimeExports.jsxs("option", { value: act, children: [
+        "Akt ",
         act
-      ))
-    ] }, bookInfo.book))
+      ] }, act))
+    ] })
   ] });
 };
 const HealthControl = ({
@@ -7812,20 +7788,27 @@ ${removedItems.join("\n")}`);
   ] });
 };
 function formatEffect(effect) {
+  var _a, _b;
   if (effect.description) return effect.description;
+  if (effect.conditions) {
+    return [...((_a = effect.conditions.add) == null ? void 0 : _a.map((s) => `+${s}`)) || [], ...((_b = effect.conditions.remove) == null ? void 0 : _b.map((s) => `-${s}`)) || []].join(", ");
+  }
   return Object.entries(effect.stats).map(([stat, value]) => {
     if (!value) return null;
-    const statEffect = (value > 0 ? `+${value}` : `${value}`) + ` ${stat}`;
+    const statEffect = (value > 0 ? `+${value}` : value === -1 ? "max" : `${value}`) + ` ${stat}`;
     let effectDescription = "";
     switch (effect.duration) {
       case void 0:
-        effectDescription = statEffect + "/∞";
+        effectDescription = statEffect + " * ∞";
         break;
       case 0:
         effectDescription = statEffect;
         break;
+      case 1:
+        effectDescription = statEffect + ` * 1rd`;
+        break;
       default:
-        effectDescription = statEffect + `/${effect.duration}rd`;
+        effectDescription = statEffect + ` * ${effect.duration}rds`;
     }
     if (!effect.visible) {
       effectDescription = `[${effectDescription}]`;
@@ -24076,7 +24059,6 @@ const BACKPACK_ITEMS = [
   {
     "id": "healing_potion",
     "name": "Healing Potion",
-    "description": "+6 health",
     "type": "backpack",
     "effect": {
       "stats": {
@@ -24087,9 +24069,10 @@ const BACKPACK_ITEMS = [
       "duration": 0
     },
     "uses": 1,
+    "description": "",
     "notes": "Sold by the Apothecary",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 1,
       "section": 56
     }
@@ -24097,7 +24080,6 @@ const BACKPACK_ITEMS = [
   {
     "id": "speed_potion",
     "name": "Speed Potion",
-    "description": "+2 speed",
     "type": "backpack",
     "effect": {
       "stats": {
@@ -24108,9 +24090,10 @@ const BACKPACK_ITEMS = [
       "duration": 1
     },
     "uses": 1,
+    "description": "",
     "notes": "Sold by the Apothecary",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 1,
       "section": 56
     }
@@ -24118,7 +24101,6 @@ const BACKPACK_ITEMS = [
   {
     "id": "brawn_potion",
     "name": "Brawn Potion",
-    "description": "+2 brawn",
     "type": "backpack",
     "effect": {
       "stats": {
@@ -24129,9 +24111,10 @@ const BACKPACK_ITEMS = [
       "duration": 1
     },
     "uses": 1,
+    "description": "",
     "notes": "Sold by the Apothecary",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 1,
       "section": 56
     }
@@ -24139,7 +24122,6 @@ const BACKPACK_ITEMS = [
   {
     "id": "magic_potion",
     "name": "Magic Potion",
-    "description": "+2 magic",
     "type": "backpack",
     "effect": {
       "stats": {
@@ -24150,9 +24132,10 @@ const BACKPACK_ITEMS = [
       "duration": 1
     },
     "uses": 1,
+    "description": "",
     "notes": "Sold by the Apothecary",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 1,
       "section": 56
     }
@@ -24160,7 +24143,6 @@ const BACKPACK_ITEMS = [
   {
     "id": "crocodile_skin",
     "name": "Crocodile Skin",
-    "description": "Quest Item",
     "type": "backpack",
     "effect": {
       "stats": {},
@@ -24169,9 +24151,10 @@ const BACKPACK_ITEMS = [
       "duration": 0
     },
     "uses": 0,
+    "description": "",
     "notes": "Dropped by the Crocodile",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 1,
       "section": 118
     }
@@ -24179,7 +24162,6 @@ const BACKPACK_ITEMS = [
   {
     "id": "goblin_grog",
     "name": "Goblin Grog",
-    "description": "+4 health",
     "type": "backpack",
     "effect": {
       "stats": {
@@ -24190,9 +24172,10 @@ const BACKPACK_ITEMS = [
       "duration": 0
     },
     "uses": 2,
+    "description": "",
     "notes": "Found in Goblin loot",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 1,
       "section": 125
     }
@@ -24200,7 +24183,6 @@ const BACKPACK_ITEMS = [
   {
     "id": "healing_salve",
     "name": "Healing Salve",
-    "description": "+6 health",
     "type": "backpack",
     "effect": {
       "stats": {
@@ -24211,9 +24193,10 @@ const BACKPACK_ITEMS = [
       "duration": 0
     },
     "uses": 1,
+    "description": "",
     "notes": "Found in Goblin loot",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 1,
       "section": 125
     }
@@ -24221,7 +24204,6 @@ const BACKPACK_ITEMS = [
   {
     "id": "miracle_grow",
     "name": "Miracle Grow",
-    "description": "+2 brawn",
     "type": "backpack",
     "effect": {
       "stats": {
@@ -24232,9 +24214,10 @@ const BACKPACK_ITEMS = [
       "duration": 1
     },
     "uses": 1,
+    "description": "",
     "notes": "Found in Goblin loot",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 1,
       "section": 125
     }
@@ -24242,7 +24225,6 @@ const BACKPACK_ITEMS = [
   {
     "id": "ghoul_hair",
     "name": "Ghoul Hair",
-    "description": "Quest Item",
     "type": "backpack",
     "effect": {
       "stats": {},
@@ -24251,9 +24233,10 @@ const BACKPACK_ITEMS = [
       "duration": 0
     },
     "uses": 0,
+    "description": "",
     "notes": "Dropped by Ghouls",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 1,
       "section": 127
     }
@@ -24261,7 +24244,6 @@ const BACKPACK_ITEMS = [
   {
     "id": "explosives_bombs",
     "name": "Explosives / Bombs",
-    "description": "+10 damage",
     "type": "backpack",
     "effect": {
       "stats": {
@@ -24272,9 +24254,10 @@ const BACKPACK_ITEMS = [
       "duration": 0
     },
     "uses": 1,
+    "description": "",
     "notes": "Sold by the Tinker",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 1,
       "section": 175
     }
@@ -24282,7 +24265,6 @@ const BACKPACK_ITEMS = [
   {
     "id": "spiders_leg",
     "name": "Spider's Leg",
-    "description": "Quest Item",
     "type": "backpack",
     "effect": {
       "stats": {},
@@ -24291,9 +24273,10 @@ const BACKPACK_ITEMS = [
       "duration": 0
     },
     "uses": 0,
+    "description": "",
     "notes": "Dropped by Spiders",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 1,
       "section": 179
     }
@@ -24301,7 +24284,6 @@ const BACKPACK_ITEMS = [
   {
     "id": "goblin_grog",
     "name": "Goblin Grog",
-    "description": "+4 health",
     "type": "backpack",
     "effect": {
       "stats": {
@@ -24312,9 +24294,10 @@ const BACKPACK_ITEMS = [
       "duration": 0
     },
     "uses": 2,
+    "description": "",
     "notes": "Found in Goblin Chief's loot",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 1,
       "section": 260
     }
@@ -24322,7 +24305,6 @@ const BACKPACK_ITEMS = [
   {
     "id": "da_boss",
     "name": "Da Boss",
-    "description": "+10 damage",
     "type": "backpack",
     "effect": {
       "stats": {
@@ -24333,11 +24315,1334 @@ const BACKPACK_ITEMS = [
       "duration": 0
     },
     "uses": 1,
+    "description": "",
     "notes": "Sold by Sea-Spray Steve",
     "bookRef": {
-      "book": "Legions of Shadows",
+      "book": "The Legion of Shadow",
       "act": 1,
       "section": 432
+    }
+  },
+  {
+    "id": "spindle_silk",
+    "name": "Spindle Silk",
+    "type": "backpack",
+    "effect": {
+      "stats": {},
+      "source": "Spindle Silk",
+      "target": "hero",
+      "duration": 0
+    },
+    "uses": 2,
+    "description": "Perhaps a master clothier could do something with this fine silk",
+    "bookRef": {
+      "book": "The Legion of Shadow",
+      "act": 1,
+      "section": 48
+    }
+  },
+  {
+    "id": "jar_of_night_creeps",
+    "name": "Jar of Night Creeps",
+    "type": "backpack",
+    "effect": {
+      "stats": {},
+      "source": "Jar of Night Creeps",
+      "target": "hero",
+      "duration": 0
+    },
+    "uses": 0,
+    "description": "They're slimey",
+    "notes": "",
+    "bookRef": {
+      "book": "The Legion of Shadow",
+      "act": 1,
+      "section": 640
+    }
+  },
+  {
+    "id": "borehole_explosives",
+    "name": "Borehole Explosives",
+    "type": "backpack",
+    "effect": {
+      "stats": {},
+      "source": "Borehole Explosives",
+      "target": "hero",
+      "duration": 0
+    },
+    "uses": 0,
+    "description": "Warning: Handle with Care",
+    "notes": "",
+    "bookRef": {
+      "book": "The Legion of Shadow",
+      "act": 1,
+      "section": 648
+    }
+  },
+  {
+    "id": "flask_of_healing",
+    "name": "Flask of Healing",
+    "type": "backpack",
+    "effect": {
+      "stats": {
+        "health": 10
+      },
+      "source": "Flask of Healing",
+      "target": "hero",
+      "duration": 0
+    },
+    "uses": 1,
+    "description": "",
+    "notes": "Sold by Lansbury",
+    "bookRef": {
+      "book": "The Legion of Shadow",
+      "act": 1,
+      "section": 697
+    }
+  },
+  {
+    "id": "elixir_of_swiftness",
+    "name": "Elixir of Swiftness",
+    "type": "backpack",
+    "effect": {
+      "stats": {
+        "speed": 4
+      },
+      "source": "Elixir of Swiftness",
+      "target": "hero",
+      "duration": 1
+    },
+    "uses": 1,
+    "description": "",
+    "notes": "Sold by Lansbury",
+    "bookRef": {
+      "book": "The Legion of Shadow",
+      "act": 1,
+      "section": 697
+    }
+  },
+  {
+    "id": "pot_of_mending",
+    "name": "Pot of Mending",
+    "type": "backpack",
+    "effect": {
+      "stats": {
+        "health": 12
+      },
+      "source": "Pot of Mending",
+      "target": "hero",
+      "duration": 0
+    },
+    "uses": 1,
+    "description": "",
+    "notes": "Found",
+    "bookRef": {
+      "book": "The Legion of Shadow",
+      "act": 1,
+      "section": 724
+    }
+  },
+  {
+    "id": "pot_of_mending",
+    "name": "Pot of Mending",
+    "type": "backpack",
+    "effect": {
+      "stats": {
+        "health": 12
+      },
+      "source": "Pot of Mending",
+      "target": "hero",
+      "duration": 0
+    },
+    "uses": 1,
+    "description": "",
+    "notes": "Found",
+    "bookRef": {
+      "book": "The Legion of Shadow",
+      "act": 1,
+      "section": 726
+    }
+  },
+  {
+    "id": "elixir_of_life",
+    "name": "Elixir of Life",
+    "type": "backpack",
+    "effect": {
+      "stats": {
+        "health": -1
+      },
+      "source": "Elixir of Life",
+      "target": "hero",
+      "duration": 0
+    },
+    "uses": 1,
+    "description": "",
+    "notes": "Found",
+    "bookRef": {
+      "book": "The Legion of Shadow",
+      "act": 1,
+      "section": 776
+    }
+  },
+  {
+    "id": "fluffy_dice",
+    "name": "Fluffy dice",
+    "type": "backpack",
+    "effect": {
+      "stats": {},
+      "source": "Fluffy dice",
+      "target": "hero",
+      "duration": 0
+    },
+    "uses": 1,
+    "description": "The ultimate in backpack accessories",
+    "notes": "Found",
+    "bookRef": {
+      "book": "The Legion of Shadow",
+      "act": 1,
+      "section": 776
+    }
+  },
+  {
+    "id": "scarron_bile",
+    "name": "Scarron bile",
+    "type": "backpack",
+    "effect": {
+      "stats": {},
+      "source": "Scarron bile",
+      "target": "hero",
+      "duration": 0
+    },
+    "uses": 2,
+    "description": "It smells bad. Very bad.",
+    "notes": "Dropped by Scarrons",
+    "bookRef": {
+      "book": "The Legion of Shadow",
+      "act": 1,
+      "section": 785
+    }
+  },
+  {
+    "id": "spirit_tincture",
+    "name": "Spirit Tincture",
+    "type": "backpack",
+    "effect": {
+      "stats": {
+        "health": -4,
+        "brawn": 2,
+        "magic": 2
+      },
+      "source": "Spirit Tincture",
+      "target": "hero",
+      "duration": 0
+    },
+    "uses": 1,
+    "description": "",
+    "notes": "Dropped by Ghasts",
+    "bookRef": {
+      "book": "The Legion of Shadow",
+      "act": 1,
+      "section": 794
+    }
+  },
+  {
+    "id": "ghoolish_gloup",
+    "name": "Ghoolish Gloup",
+    "type": "backpack",
+    "effect": {
+      "stats": {
+        "armour": 2
+      },
+      "source": "Ghoolish Gloup",
+      "target": "hero",
+      "duration": 0
+    },
+    "uses": 2,
+    "description": "",
+    "notes": "Dropped by Mages",
+    "bookRef": {
+      "book": "The Legion of Shadow",
+      "act": 1,
+      "section": 802
+    }
+  },
+  {
+    "id": "arthurians_horn",
+    "name": "Arthurian's Horn",
+    "type": "backpack",
+    "effect": {
+      "stats": {
+        "damageModifier": 20
+      },
+      "source": "Arthurian's Horn",
+      "target": "hero",
+      "duration": 0
+    },
+    "uses": 1,
+    "description": "",
+    "notes": "Dropped by Necromancers",
+    "bookRef": {
+      "book": "The Legion of Shadow",
+      "act": 3,
+      "section": 808
+    }
+  },
+  {
+    "id": "oil_flask",
+    "name": "Oil flask",
+    "type": "backpack",
+    "effect": {
+      "stats": {
+        "damageModifier": 0
+      },
+      "source": "Oil flask",
+      "target": "hero",
+      "duration": 0
+    },
+    "uses": 2,
+    "description": "",
+    "notes": "",
+    "bookRef": {
+      "book": "The Legion of Shadow",
+      "act": 3,
+      "section": 827
+    }
+  },
+  {
+    "id": "portable_shield",
+    "name": "Portable Shield",
+    "type": "backpack",
+    "effect": {
+      "stats": {
+        "damageModifier": -10
+      },
+      "source": "Portable Shield",
+      "target": "hero",
+      "duration": 0
+    },
+    "uses": 1,
+    "description": "",
+    "notes": "",
+    "bookRef": {
+      "book": "The Legion of Shadow",
+      "act": 3,
+      "section": 890
+    }
+  },
+  {
+    "id": "trolls_bones",
+    "name": "Troll's bones",
+    "type": "backpack",
+    "effect": {
+      "stats": {},
+      "source": "Troll's bones",
+      "target": "hero",
+      "duration": 0
+    },
+    "uses": 1,
+    "description": "These might prove valuable to the right person",
+    "notes": "",
+    "bookRef": {
+      "book": "The Heart of Fire",
+      "act": 1,
+      "section": 43
+    }
+  },
+  {
+    "id": "pot_of_healing",
+    "name": "Pot of healing",
+    "type": "backpack",
+    "effect": {
+      "stats": {
+        "health": 4
+      },
+      "source": "Pot of healing",
+      "target": "hero",
+      "duration": 0
+    },
+    "uses": 1,
+    "description": "",
+    "notes": "Donated by Benin",
+    "bookRef": {
+      "book": "The Heart of Fire",
+      "act": 1,
+      "section": 69
+    }
+  },
+  {
+    "id": "flask_of_healing",
+    "name": "Flask of healing",
+    "type": "backpack",
+    "effect": {
+      "stats": {
+        "health": 6
+      },
+      "source": "Flask of healing",
+      "target": "hero",
+      "duration": 0
+    },
+    "uses": 1,
+    "description": "",
+    "notes": "Donated by Benin",
+    "bookRef": {
+      "book": "The Heart of Fire",
+      "act": 1,
+      "section": 69
+    }
+  },
+  {
+    "id": "pot_of_magic",
+    "name": "Pot of magic",
+    "type": "backpack",
+    "effect": {
+      "stats": {
+        "magic": 2
+      },
+      "source": "Pot of magic",
+      "target": "hero",
+      "duration": 1
+    },
+    "uses": 1,
+    "description": "",
+    "notes": "Donated by Benin",
+    "bookRef": {
+      "book": "The Heart of Fire",
+      "act": 1,
+      "section": 69
+    }
+  },
+  {
+    "id": "book_of_binding",
+    "name": "Book of binding",
+    "type": "backpack",
+    "effect": {
+      "stats": {},
+      "source": "Book of binding",
+      "target": "hero",
+      "duration": 0
+    },
+    "uses": 1,
+    "description": "This ancient tome might prove useful in the future",
+    "notes": "Deciphered",
+    "bookRef": {
+      "book": "The Heart of Fire",
+      "act": 1,
+      "section": 81
+    }
+  },
+  {
+    "id": "unknown_elixir",
+    "name": "Unknown elixir",
+    "type": "backpack",
+    "effect": {
+      "stats": {},
+      "source": "Unknown elixir",
+      "target": "hero",
+      "duration": 0
+    },
+    "uses": 1,
+    "description": "This could be the miraclecure that Eldias needs",
+    "notes": "Brewn",
+    "bookRef": {
+      "book": "The Heart of Fire",
+      "act": 1,
+      "section": 83
+    }
+  },
+  {
+    "id": "healing_salve",
+    "name": "Healing salve",
+    "type": "backpack",
+    "effect": {
+      "stats": {
+        "health": 2
+      },
+      "source": "Healing salve",
+      "target": "hero"
+    },
+    "uses": 2,
+    "description": "",
+    "notes": "",
+    "bookRef": {
+      "book": "The Heart of Fire",
+      "act": 1,
+      "section": 88
+    }
+  },
+  {
+    "id": "elixir_of_life",
+    "name": "Elixir of life",
+    "type": "backpack",
+    "effect": {
+      "stats": {
+        "health": -1
+      },
+      "source": "Elixir of life",
+      "target": "hero",
+      "duration": 0
+    },
+    "uses": 1,
+    "description": "",
+    "notes": "",
+    "bookRef": {
+      "book": "The Heart of Fire",
+      "act": 1,
+      "section": 88
+    }
+  },
+  {
+    "id": "pot_of_healing",
+    "name": "Pot of healing",
+    "type": "backpack",
+    "effect": {
+      "stats": {
+        "health": 4
+      },
+      "source": "Pot of healing",
+      "target": "hero",
+      "duration": 0
+    },
+    "uses": 1,
+    "description": "",
+    "notes": "",
+    "bookRef": {
+      "book": "The Heart of Fire",
+      "act": 1,
+      "section": 120
+    }
+  },
+  {
+    "id": "pot_of_brawn",
+    "name": "Pot of brawn",
+    "type": "backpack",
+    "effect": {
+      "stats": {
+        "brawn": 2
+      },
+      "source": "Pot of brawn",
+      "target": "hero",
+      "duration": 1
+    },
+    "uses": 1,
+    "description": "",
+    "notes": "",
+    "bookRef": {
+      "book": "The Heart of Fire",
+      "act": 1,
+      "section": 120
+    }
+  },
+  {
+    "id": "pot_of_magic",
+    "name": "Pot of magic",
+    "type": "backpack",
+    "effect": {
+      "stats": {
+        "magic": 2
+      },
+      "source": "Pot of magic",
+      "target": "hero",
+      "duration": 1
+    },
+    "uses": 1,
+    "description": "",
+    "notes": "",
+    "bookRef": {
+      "book": "The Heart of Fire",
+      "act": 1,
+      "section": 120
+    }
+  },
+  {
+    "id": "goblin_bones",
+    "name": "Goblin bones",
+    "type": "backpack",
+    "effect": {
+      "stats": {},
+      "source": "Goblin bones",
+      "target": "hero",
+      "duration": 0
+    },
+    "uses": 1,
+    "description": "These might prove valuable to the right person",
+    "notes": "",
+    "bookRef": {
+      "book": "The Heart of Fire",
+      "act": 1,
+      "section": 164
+    }
+  },
+  {
+    "id": "pot_of_speed",
+    "name": "Pot of speed",
+    "type": "backpack",
+    "effect": {
+      "stats": {
+        "speed": 2
+      },
+      "source": "Pot of speed",
+      "target": "hero",
+      "duration": 1
+    },
+    "uses": 1,
+    "description": "",
+    "notes": "2",
+    "bookRef": {
+      "book": "The Heart of Fire",
+      "act": 1,
+      "section": 164
+    }
+  },
+  {
+    "id": "glyph_of_power",
+    "name": "Glyph of Power",
+    "type": "backpack",
+    "effect": {
+      "stats": {
+        "magic": 1
+      },
+      "source": "Glyph of Power",
+      "target": "hero",
+      "duration": 0
+    },
+    "uses": 1,
+    "description": "Use on any item to add 1 magic",
+    "notes": "",
+    "bookRef": {
+      "book": "The Heart of Fire",
+      "act": 1,
+      "section": 176
+    }
+  },
+  {
+    "id": "rune_of_healing",
+    "name": "Rune of Healing",
+    "type": "backpack",
+    "effect": {
+      "stats": {},
+      "source": "Rune of Healing",
+      "target": "hero",
+      "duration": 0
+    },
+    "uses": 1,
+    "description": "Use on any item to add Heal ability",
+    "notes": "",
+    "bookRef": {
+      "book": "The Heart of Fire",
+      "act": 1,
+      "section": 176
+    }
+  },
+  {
+    "id": "borehole_charge",
+    "name": "Borehole Charge",
+    "type": "backpack",
+    "effect": {
+      "stats": {},
+      "source": "Borehole Charge",
+      "target": "hero",
+      "duration": 0
+    },
+    "uses": 1,
+    "description": "The writing on the side states: Handle with care",
+    "notes": "",
+    "bookRef": {
+      "book": "The Heart of Fire",
+      "act": 1,
+      "section": 189
+    }
+  },
+  {
+    "id": "pumpkin_squash",
+    "name": "Pumpkin Squash",
+    "type": "backpack",
+    "effect": {
+      "stats": {
+        "brawn": 1,
+        "magic": 1
+      },
+      "source": "Pumpkin Squash",
+      "target": "hero",
+      "duration": 1
+    },
+    "uses": 2,
+    "description": "",
+    "notes": "",
+    "bookRef": {
+      "book": "The Heart of Fire",
+      "act": 1,
+      "section": 201
+    }
+  },
+  {
+    "id": "goblin_bones",
+    "name": "Goblin bones",
+    "type": "backpack",
+    "effect": {
+      "stats": {},
+      "source": "Goblin bones",
+      "target": "hero",
+      "duration": 0
+    },
+    "uses": 1,
+    "description": "These might prove valuable to the right person",
+    "notes": "",
+    "bookRef": {
+      "book": "The Heart of Fire",
+      "act": 1,
+      "section": 205
+    }
+  },
+  {
+    "id": "giant_bones",
+    "name": "Giant bones",
+    "type": "backpack",
+    "effect": {
+      "stats": {},
+      "source": "Giant bones",
+      "target": "hero",
+      "duration": 0
+    },
+    "uses": 1,
+    "description": "These might prove valuable to the right person",
+    "notes": "",
+    "bookRef": {
+      "book": "The Heart of Fire",
+      "act": 1,
+      "section": 234
+    }
+  },
+  {
+    "id": "book_of_alpha",
+    "name": "Book of Alpha",
+    "type": "backpack",
+    "effect": {
+      "stats": {},
+      "source": "Book of Alpha",
+      "target": "hero",
+      "duration": 0
+    },
+    "uses": 1,
+    "description": "An ancient Lamuri spell book",
+    "notes": "Found in Temple",
+    "bookRef": {
+      "book": "The Heart of Fire",
+      "act": 2,
+      "section": 239
+    }
+  },
+  {
+    "id": "goblin_bones",
+    "name": "Goblin bones",
+    "type": "backpack",
+    "effect": {
+      "stats": {},
+      "source": "Goblin bones",
+      "target": "hero",
+      "duration": 0
+    },
+    "uses": 1,
+    "description": "These might prove valuable to the right person",
+    "notes": "",
+    "bookRef": {
+      "book": "The Heart of Fire",
+      "act": 1,
+      "section": 258
+    }
+  },
+  {
+    "id": "goblin_bones",
+    "name": "Goblin bones",
+    "type": "backpack",
+    "effect": {
+      "stats": {},
+      "source": "Goblin bones",
+      "target": "hero",
+      "duration": 0
+    },
+    "uses": 1,
+    "description": "These might prove valuable to the right person",
+    "notes": "",
+    "bookRef": {
+      "book": "The Heart of Fire",
+      "act": 1,
+      "section": 292
+    }
+  },
+  {
+    "id": "a_bottle_of_wisps",
+    "name": "A bottle of wisps",
+    "type": "backpack",
+    "effect": {
+      "stats": {},
+      "source": "A bottle of wisps",
+      "target": "hero",
+      "duration": 0
+    },
+    "uses": 1,
+    "description": "Tiny glowing lights are trapped inside",
+    "notes": "",
+    "bookRef": {
+      "book": "The Heart of Fire",
+      "act": 1,
+      "section": 318
+    }
+  },
+  {
+    "id": "goblin_bones",
+    "name": "Goblin bones",
+    "type": "backpack",
+    "effect": {
+      "stats": {},
+      "source": "Goblin bones",
+      "target": "hero",
+      "duration": 0
+    },
+    "uses": 1,
+    "description": "These might prove valuable to the right person",
+    "notes": "",
+    "bookRef": {
+      "book": "The Heart of Fire",
+      "act": 1,
+      "section": 336
+    }
+  },
+  {
+    "id": "sanctified_ashes",
+    "name": "Sanctified ashes",
+    "type": "backpack",
+    "effect": {
+      "stats": {},
+      "source": "Sanctified ashes",
+      "target": "hero",
+      "duration": 0
+    },
+    "uses": 2,
+    "description": "",
+    "notes": "",
+    "bookRef": {
+      "book": "The Heart of Fire",
+      "act": 1,
+      "section": 340
+    }
+  },
+  {
+    "id": "holy_water",
+    "name": "Holy water",
+    "type": "backpack",
+    "effect": {
+      "stats": {
+        "damageModifier": 2
+      },
+      "source": "Holy water",
+      "target": "hero",
+      "duration": 0
+    },
+    "uses": 2,
+    "description": "",
+    "notes": "",
+    "bookRef": {
+      "book": "The Heart of Fire",
+      "act": 1,
+      "section": 340
+    }
+  },
+  {
+    "id": "angelica_wreath",
+    "name": "Angelica wreath",
+    "type": "backpack",
+    "effect": {
+      "stats": {},
+      "source": "Angelica wreath",
+      "target": "hero",
+      "duration": 0
+    },
+    "uses": 1,
+    "description": "",
+    "notes": "",
+    "bookRef": {
+      "book": "The Heart of Fire",
+      "act": 1,
+      "section": 340
+    }
+  },
+  {
+    "id": "borehole_charge",
+    "name": "Borehole Charge",
+    "type": "backpack",
+    "effect": {
+      "stats": {},
+      "source": "Borehole Charge",
+      "target": "hero",
+      "duration": 0
+    },
+    "uses": 1,
+    "description": "The writing on the side states: Handle with care",
+    "notes": "",
+    "bookRef": {
+      "book": "The Heart of Fire",
+      "act": 1,
+      "section": 345
+    }
+  },
+  {
+    "id": "might_monster_metal",
+    "name": "Might monster metal",
+    "type": "backpack",
+    "effect": {
+      "stats": {
+        "armour": 1
+      },
+      "source": "Might monster metal",
+      "target": "hero",
+      "duration": 0
+    },
+    "uses": 1,
+    "description": "",
+    "notes": "",
+    "bookRef": {
+      "book": "The Heart of Fire",
+      "act": 1,
+      "section": 349
+    }
+  },
+  {
+    "id": "putrid_pixie_puke",
+    "name": "Putrid pixie puke",
+    "type": "backpack",
+    "effect": {
+      "stats": {
+        "magic": 1
+      },
+      "source": "Putrid pixie puke",
+      "target": "hero",
+      "duration": 0
+    },
+    "uses": 1,
+    "description": "",
+    "notes": "",
+    "bookRef": {
+      "book": "The Heart of Fire",
+      "act": 1,
+      "section": 349
+    }
+  },
+  {
+    "id": "slimy_stringy_snot",
+    "name": "Slimy stringy snot",
+    "type": "backpack",
+    "effect": {
+      "stats": {
+        "brawn": 1
+      },
+      "source": "Slimy stringy snot",
+      "target": "hero",
+      "duration": 0
+    },
+    "uses": 1,
+    "description": "",
+    "notes": "",
+    "bookRef": {
+      "book": "The Heart of Fire",
+      "act": 1,
+      "section": 349
+    }
+  },
+  {
+    "id": "coat_of_many_scales",
+    "name": "Coat of many scales",
+    "type": "backpack",
+    "effect": {
+      "stats": {},
+      "source": "Coat of many scales",
+      "target": "hero",
+      "duration": 0
+    },
+    "uses": 1,
+    "description": "A dazzling coat made of basilisk scales",
+    "notes": "",
+    "bookRef": {
+      "book": "The Heart of Fire",
+      "act": 1,
+      "section": 367
+    }
+  },
+  {
+    "id": "pot_of_speed",
+    "name": "Pot of speed",
+    "type": "backpack",
+    "effect": {
+      "stats": {
+        "speed": 2
+      },
+      "source": "Pot of speed",
+      "target": "hero",
+      "duration": 1
+    },
+    "uses": 2,
+    "description": "",
+    "notes": "",
+    "bookRef": {
+      "book": "The Heart of Fire",
+      "act": 1,
+      "section": 367
+    }
+  },
+  {
+    "id": "saints_blessing",
+    "name": "Saints blessing",
+    "type": "backpack",
+    "effect": {
+      "stats": {
+        "health": -1
+      },
+      "source": "Saints blessing",
+      "target": "hero",
+      "duration": 0
+    },
+    "uses": 1,
+    "description": "",
+    "notes": "",
+    "bookRef": {
+      "book": "The Heart of Fire",
+      "act": 1,
+      "section": 368
+    }
+  },
+  {
+    "id": "runed_rod",
+    "name": "Runed rod",
+    "type": "backpack",
+    "effect": {
+      "stats": {},
+      "source": "Runed rod",
+      "target": "hero",
+      "duration": 0
+    },
+    "uses": 1,
+    "description": "A splintered length of black metal",
+    "notes": "",
+    "bookRef": {
+      "book": "The Heart of Fire",
+      "act": 1,
+      "section": 377
+    }
+  },
+  {
+    "id": "mothers_medicine",
+    "name": "Mother's medicine",
+    "type": "backpack",
+    "effect": {
+      "stats": {
+        "health": 4
+      },
+      "source": "Mother's medicine",
+      "target": "hero",
+      "duration": 0
+    },
+    "uses": 2,
+    "description": "",
+    "notes": "",
+    "bookRef": {
+      "book": "The Heart of Fire",
+      "act": 2,
+      "section": 425
+    }
+  },
+  {
+    "id": "jacobs_special_mix",
+    "name": "Jacob's special mix",
+    "type": "backpack",
+    "effect": {
+      "stats": {
+        "speed": 1
+      },
+      "source": "Jacob's special mix",
+      "target": "hero",
+      "duration": 1
+    },
+    "uses": 2,
+    "description": "",
+    "notes": "",
+    "bookRef": {
+      "book": "The Heart of Fire",
+      "act": 2,
+      "section": 425
+    }
+  },
+  {
+    "id": "secret_brew",
+    "name": "Secret brew",
+    "type": "backpack",
+    "effect": {
+      "stats": {
+        "brawn": 2
+      },
+      "source": "Secret brew",
+      "target": "hero",
+      "duration": 1
+    },
+    "uses": 1,
+    "description": "",
+    "notes": "",
+    "bookRef": {
+      "book": "The Heart of Fire",
+      "act": 2,
+      "section": 425
+    }
+  },
+  {
+    "id": "snakebite_shake",
+    "name": "Snakebite shake",
+    "type": "backpack",
+    "effect": {
+      "stats": {},
+      "conditions": {
+        "remove": [
+          "venom"
+        ]
+      },
+      "source": "Snakebite shake",
+      "target": "hero",
+      "duration": 0
+    },
+    "uses": 1,
+    "description": "",
+    "notes": "",
+    "bookRef": {
+      "book": "The Heart of Fire",
+      "act": 2,
+      "section": 433
+    }
+  },
+  {
+    "id": "gourd_of_healing",
+    "name": "Gourd of healing",
+    "type": "backpack",
+    "effect": {
+      "stats": {
+        "health": 6
+      },
+      "source": "Gourd of healing",
+      "target": "hero",
+      "duration": 0
+    },
+    "uses": 1,
+    "description": "",
+    "notes": "",
+    "bookRef": {
+      "book": "The Heart of Fire",
+      "act": 2,
+      "section": 433
+    }
+  },
+  {
+    "id": "elixir_of_invisibility",
+    "name": "Elixir of invisibility",
+    "type": "backpack",
+    "effect": {
+      "stats": {},
+      "source": "Elixir of invisibility",
+      "target": "hero",
+      "duration": 0
+    },
+    "uses": 1,
+    "description": "",
+    "notes": "",
+    "bookRef": {
+      "book": "The Heart of Fire",
+      "act": 2,
+      "section": 433
+    }
+  },
+  {
+    "id": "book_of_omega",
+    "name": "Book of Omega",
+    "type": "backpack",
+    "effect": {
+      "stats": {},
+      "source": "Book of Omega",
+      "target": "hero",
+      "duration": 0
+    },
+    "uses": 1,
+    "description": "An ancient Lamuri spell book",
+    "notes": "",
+    "bookRef": {
+      "book": "The Heart of Fire",
+      "act": 2,
+      "section": 465
+    }
+  },
+  {
+    "id": "onyx_blade",
+    "name": "Onyx blade",
+    "type": "backpack",
+    "effect": {
+      "stats": {},
+      "source": "Onyx blade",
+      "target": "hero",
+      "duration": 0
+    },
+    "uses": 1,
+    "description": "A crescent-shaped blade for a mighty weapon",
+    "notes": "",
+    "bookRef": {
+      "book": "The Heart of Fire",
+      "act": 2,
+      "section": 470
+    }
+  },
+  {
+    "id": "mambas_memory_stones",
+    "name": "Mamba's memory stones",
+    "type": "backpack",
+    "effect": {
+      "stats": {
+        "health": 4
+      },
+      "source": "Mamba's memory stones",
+      "target": "hero",
+      "duration": 0
+    },
+    "uses": 2,
+    "description": "",
+    "notes": "",
+    "bookRef": {
+      "book": "The Heart of Fire",
+      "act": 2,
+      "section": 483
+    }
+  },
+  {
+    "id": "snakebite_shake",
+    "name": "Snakebite shake",
+    "type": "backpack",
+    "effect": {
+      "stats": {},
+      "conditions": {
+        "remove": [
+          "venom"
+        ]
+      },
+      "source": "Snakebite shake",
+      "target": "hero",
+      "duration": 0
+    },
+    "uses": 1,
+    "description": "",
+    "notes": "",
+    "bookRef": {
+      "book": "The Heart of Fire",
+      "act": 2,
+      "section": 501
+    }
+  },
+  {
+    "id": "quetzal_egg",
+    "name": "Quetzal egg",
+    "type": "backpack",
+    "effect": {
+      "stats": {},
+      "source": "Quetzal egg",
+      "target": "hero",
+      "duration": 0
+    },
+    "uses": 1,
+    "description": "A large, oval, red-speckled egg",
+    "notes": "",
+    "bookRef": {
+      "book": "The Heart of Fire",
+      "act": 2,
+      "section": 509
+    }
+  },
+  {
+    "id": "book_of_enigma",
+    "name": "Book of enigma",
+    "type": "backpack",
+    "effect": {
+      "stats": {},
+      "source": "Book of enigma",
+      "target": "hero",
+      "duration": 0
+    },
+    "uses": 1,
+    "description": "An ancient Lamuri spell book",
+    "notes": "",
+    "bookRef": {
+      "book": "The Heart of Fire",
+      "act": 2,
+      "section": 540
+    }
+  },
+  {
+    "id": "snakebite_shake",
+    "name": "Snakebite shake",
+    "type": "backpack",
+    "effect": {
+      "stats": {},
+      "conditions": {
+        "remove": [
+          "venom"
+        ]
+      },
+      "source": "Snakebite shake",
+      "target": "hero",
+      "duration": 0
+    },
+    "uses": 1,
+    "description": "",
+    "notes": "",
+    "bookRef": {
+      "book": "The Heart of Fire",
+      "act": 2,
+      "section": 593
+    }
+  },
+  {
+    "id": "travellers_tonic",
+    "name": "Traveller's tonic",
+    "type": "backpack",
+    "effect": {
+      "stats": {
+        "health": 6
+      },
+      "source": "Traveller's tonic",
+      "target": "hero",
+      "duration": 0
+    },
+    "uses": 1,
+    "description": "",
+    "notes": "",
+    "bookRef": {
+      "book": "The Heart of Fire",
+      "act": 2,
+      "section": 593
+    }
+  },
+  {
+    "id": "first_aid_kit",
+    "name": "First aid kit",
+    "type": "backpack",
+    "effect": {
+      "stats": {},
+      "conditions": {
+        "remove": [
+          "delirium"
+        ]
+      },
+      "source": "First aid kit",
+      "target": "hero",
+      "duration": 0
+    },
+    "uses": 1,
+    "description": "",
+    "notes": "",
+    "bookRef": {
+      "book": "The Heart of Fire",
+      "act": 2,
+      "section": 593
     }
   }
 ];
@@ -28699,6 +30004,2189 @@ const ENEMIES = [
       "book": "The Legion of Shadow",
       "act": 3,
       "section": 939
+    }
+  },
+  {
+    "type": "enemy",
+    "name": "Ghastly Goblin",
+    "stats": {
+      "speed": 2,
+      "brawn": 2,
+      "magic": 0,
+      "armour": 1,
+      "health": 20,
+      "maxHealth": 20
+    },
+    "abilities": [],
+    "bookRef": {
+      "book": "The Heart of Fire",
+      "act": 1,
+      "section": 10
+    }
+  },
+  {
+    "type": "enemy",
+    "name": "Troll",
+    "stats": {
+      "speed": 0,
+      "brawn": 1,
+      "magic": 0,
+      "armour": 0,
+      "health": 15,
+      "maxHealth": 15
+    },
+    "abilities": [
+      "Regeneration:+2 health at start of combat round max 15"
+    ],
+    "bookRef": {
+      "book": "The Heart of Fire",
+      "act": 1,
+      "section": 11
+    }
+  },
+  {
+    "type": "enemy",
+    "name": "Number 13",
+    "stats": {
+      "speed": 2,
+      "brawn": 3,
+      "magic": 0,
+      "armour": 2,
+      "health": 30,
+      "maxHealth": 30
+    },
+    "abilities": [
+      "Unlucky for some: If hero rolls 1 - receive 2 damage ignoring armour"
+    ],
+    "bookRef": {
+      "book": "The Heart of Fire",
+      "act": 1,
+      "section": 13
+    }
+  },
+  {
+    "type": "enemy",
+    "name": "Raging storm",
+    "stats": {
+      "speed": 0,
+      "brawn": 0,
+      "magic": 1,
+      "armour": 0,
+      "health": 12,
+      "maxHealth": 12
+    },
+    "abilities": [
+      "Celestial charge: If hero deals damage - receive 2 damage ignoring armour"
+    ],
+    "bookRef": {
+      "book": "The Heart of Fire",
+      "act": 1,
+      "section": 14
+    }
+  },
+  {
+    "type": "enemy",
+    "name": "Bilhal the Fish",
+    "stats": {
+      "speed": 5,
+      "brawn": 4,
+      "magic": 0,
+      "armour": 2,
+      "health": 35,
+      "maxHealth": 35
+    },
+    "abilities": [
+      "Motley Crew: If Ruffians are alive - add 3 to damage score of Bilhal"
+    ],
+    "bookRef": {
+      "book": "The Heart of Fire",
+      "act": 2,
+      "section": 16
+    }
+  },
+  {
+    "type": "enemy",
+    "name": "Ruffians",
+    "stats": {
+      "speed": 0,
+      "brawn": 0,
+      "magic": 0,
+      "armour": 2,
+      "health": 15,
+      "maxHealth": 15
+    },
+    "abilities": [],
+    "bookRef": {
+      "book": "The Heart of Fire",
+      "act": 1,
+      "section": 16
+    }
+  },
+  {
+    "type": "enemy",
+    "name": "Wiccan witch",
+    "stats": {
+      "speed": 0,
+      "brawn": 0,
+      "magic": 1,
+      "armour": 0,
+      "health": 14,
+      "maxHealth": 14
+    },
+    "abilities": [],
+    "bookRef": {
+      "book": "The Heart of Fire",
+      "act": 1,
+      "section": 40
+    }
+  },
+  {
+    "type": "enemy",
+    "name": "Gutless",
+    "stats": {
+      "speed": 3,
+      "brawn": 3,
+      "magic": 0,
+      "armour": 2,
+      "health": 30,
+      "maxHealth": 30
+    },
+    "abilities": [
+      "Blood n Guts:At the start of a combat round, roll a die - 1-2 reduce hero speed by 1 for 1 round, 3-6 reduce enemy speed by 1 for 1 round",
+      "Undead: You can use ashes, holy water, holy protector"
+    ],
+    "bookRef": {
+      "book": "The Heart of Fire",
+      "act": 1,
+      "section": 58
+    }
+  },
+  {
+    "type": "enemy",
+    "name": "Drust the defiled",
+    "stats": {
+      "speed": 0,
+      "brawn": 0,
+      "magic": 0,
+      "armour": 0,
+      "health": 14,
+      "maxHealth": 14
+    },
+    "abilities": [],
+    "bookRef": {
+      "book": "The Heart of Fire",
+      "act": 1,
+      "section": 61
+    }
+  },
+  {
+    "type": "enemy",
+    "name": "Zombies",
+    "stats": {
+      "speed": 2,
+      "brawn": 2,
+      "magic": 0,
+      "armour": 1,
+      "health": 70,
+      "maxHealth": 70
+    },
+    "abilities": [
+      "Grappling hands: If enemy wins a round and rolls a 6 for damage - hero loses an equipment item or backpack item"
+    ],
+    "bookRef": {
+      "book": "The Heart of Fire",
+      "act": 1,
+      "section": 66
+    }
+  },
+  {
+    "type": "enemy",
+    "name": "Knight",
+    "stats": {
+      "speed": 0,
+      "brawn": 1,
+      "magic": 0,
+      "armour": 2,
+      "health": 18,
+      "maxHealth": 18
+    },
+    "abilities": [],
+    "bookRef": {
+      "book": "The Heart of Fire",
+      "act": 1,
+      "section": 67
+    }
+  },
+  {
+    "type": "enemy",
+    "name": "First mate",
+    "stats": {
+      "speed": 2,
+      "brawn": 2,
+      "magic": 0,
+      "armour": 2,
+      "health": 20,
+      "maxHealth": 20
+    },
+    "abilities": [
+      "Blast of: The enemy wins after round 6",
+      "Cowardly: If First mate is defeated, Hero wins the combat"
+    ],
+    "bookRef": {
+      "book": "The Heart of Fire",
+      "act": 1,
+      "section": 71
+    }
+  },
+  {
+    "type": "enemy",
+    "name": "Cannon team",
+    "stats": {
+      "speed": 0,
+      "brawn": 0,
+      "magic": 0,
+      "armour": 1,
+      "health": 15,
+      "maxHealth": 15
+    },
+    "abilities": [],
+    "bookRef": {
+      "book": "The Heart of Fire",
+      "act": 1,
+      "section": 71
+    }
+  },
+  {
+    "type": "enemy",
+    "name": "Dire wolf",
+    "stats": {
+      "speed": 1,
+      "brawn": 2,
+      "magic": 0,
+      "armour": 2,
+      "health": 20,
+      "maxHealth": 20
+    },
+    "abilities": [],
+    "bookRef": {
+      "book": "The Heart of Fire",
+      "act": 1,
+      "section": 95
+    }
+  },
+  {
+    "type": "enemy",
+    "name": "Lazlo",
+    "stats": {
+      "speed": 5,
+      "brawn": 4,
+      "magic": 0,
+      "armour": 2,
+      "health": 40,
+      "maxHealth": 40
+    },
+    "abilities": [
+      "Shock treatment: If any character rolls a double - lose 4 health ignoring armour",
+      "In a spin: If hero wins a combat round, roll a die - 1-2 hero does not roll for damage"
+    ],
+    "bookRef": {
+      "book": "The Heart of Fire",
+      "act": 1,
+      "section": 102
+    }
+  },
+  {
+    "type": "enemy",
+    "name": "Archers",
+    "stats": {
+      "speed": 2,
+      "brawn": 2,
+      "magic": 0,
+      "armour": 0,
+      "health": 20,
+      "maxHealth": 20
+    },
+    "abilities": [
+      "Ranged foe: Hero cannot use speed or combat abilities"
+    ],
+    "bookRef": {
+      "book": "The Heart of Fire",
+      "act": 1,
+      "section": 103
+    }
+  },
+  {
+    "type": "enemy",
+    "name": "Enraged Zombies",
+    "stats": {
+      "speed": 2,
+      "brawn": 2,
+      "magic": 0,
+      "armour": 1,
+      "health": 25,
+      "maxHealth": 25
+    },
+    "abilities": [
+      "Back from dead: When enemy is defeated, roll a die - 1-2 enemy gains 6 health. Can only be used once per combat",
+      "Undead: You can use ashes, holy water, holy protector"
+    ],
+    "bookRef": {
+      "book": "The Heart of Fire",
+      "act": 1,
+      "section": 138
+    }
+  },
+  {
+    "type": "enemy",
+    "name": "Hellhound",
+    "stats": {
+      "speed": 4,
+      "brawn": 7,
+      "magic": 0,
+      "armour": 3,
+      "health": 50,
+      "maxHealth": 50
+    },
+    "abilities": [
+      "Backdraft: When hero scores damage, take 3 damage ignoring armour",
+      "Enraged: At the start of round 5 - enemy gains +1 speed and +1 brawn"
+    ],
+    "bookRef": {
+      "book": "The Heart of Fire",
+      "act": 1,
+      "section": 144
+    }
+  },
+  {
+    "type": "enemy",
+    "name": "Poltergeist",
+    "stats": {
+      "speed": 5,
+      "brawn": 0,
+      "magic": 3,
+      "armour": 3,
+      "health": 35,
+      "maxHealth": 35
+    },
+    "abilities": [],
+    "bookRef": {
+      "book": "The Heart of Fire",
+      "act": 1,
+      "section": 147
+    }
+  },
+  {
+    "type": "enemy",
+    "name": "Sinister sprigs",
+    "stats": {
+      "speed": 0,
+      "brawn": 0,
+      "magic": 0,
+      "armour": 1,
+      "health": 12,
+      "maxHealth": 12
+    },
+    "abilities": [],
+    "bookRef": {
+      "book": "The Heart of Fire",
+      "act": 1,
+      "section": 150
+    }
+  },
+  {
+    "type": "enemy",
+    "name": "Gairn",
+    "stats": {
+      "speed": 5,
+      "brawn": 0,
+      "magic": 5,
+      "armour": 4,
+      "health": 50,
+      "maxHealth": 50
+    },
+    "abilities": [
+      "Frost fire: When hero receives damage from Gairn, they loose 1 health at the end of each round",
+      "Corpse dance: If Gairn's health is reduced to 25 or less, Gairn removes all passive effects and hides and the skeletons will become the sole enemy until they are defated."
+    ],
+    "spawns": [
+      "Skeletons"
+    ],
+    "bookRef": {
+      "book": "The Heart of Fire",
+      "act": 1,
+      "section": 158
+    }
+  },
+  {
+    "type": "enemy",
+    "name": "Skeletons",
+    "stats": {
+      "speed": 4,
+      "brawn": 0,
+      "magic": 4,
+      "armour": 3,
+      "health": 40,
+      "maxHealth": 40
+    },
+    "abilities": [
+      "Army: Skeletons will only be enemies when Gairn is hidden",
+      "Body of bone",
+      "Undead minions: You can use holy water, holy protector against skeletons, but not Gairn"
+    ],
+    "bookRef": {
+      "book": "The Heart of Fire",
+      "act": 1,
+      "section": 158
+    }
+  },
+  {
+    "type": "enemy",
+    "name": "Reverend",
+    "stats": {
+      "speed": 2,
+      "brawn": 0,
+      "magic": 3,
+      "armour": 2,
+      "health": 50,
+      "maxHealth": 50
+    },
+    "abilities": [
+      "Pest control: At the end of each combat round, roll a die - 1-2: Add +2 to the ghoul effect: Ghoul effect: Hero takes 0 damage at the end of each combat round",
+      "Undead: You can use ashes, holy water, holy protector"
+    ],
+    "bookRef": {
+      "book": "The Heart of Fire",
+      "act": 1,
+      "section": 168
+    }
+  },
+  {
+    "type": "enemy",
+    "name": "Margoyle",
+    "stats": {
+      "speed": 3,
+      "brawn": 3,
+      "magic": 0,
+      "armour": 3,
+      "health": 50,
+      "maxHealth": 50
+    },
+    "abilities": [
+      "Stone blood: If enemy rolls 4-6 for damage - armour of the enemy is raised by 1 up to 6"
+    ],
+    "bookRef": {
+      "book": "The Heart of Fire",
+      "act": 1,
+      "section": 200
+    }
+  },
+  {
+    "type": "enemy",
+    "name": "Ironclad",
+    "stats": {
+      "speed": 5,
+      "brawn": 5,
+      "magic": 0,
+      "armour": 5,
+      "health": 35,
+      "maxHealth": 35
+    },
+    "abilities": [
+      "Body of iron: Immune to Bleed, Thorns, Thorn Cage"
+    ],
+    "bookRef": {
+      "book": "The Heart of Fire",
+      "act": 1,
+      "section": 208
+    }
+  },
+  {
+    "type": "enemy",
+    "name": "Assasin Ant",
+    "stats": {
+      "speed": 3,
+      "brawn": 2,
+      "magic": 0,
+      "armour": 2,
+      "health": 35,
+      "maxHealth": 35
+    },
+    "abilities": [
+      "Venom: Once hero receives damage from the Assasin Ant, lose 2 health at the end of each combat round"
+    ],
+    "bookRef": {
+      "book": "The Heart of Fire",
+      "act": 1,
+      "section": 229
+    }
+  },
+  {
+    "type": "enemy",
+    "name": "Orgorath",
+    "stats": {
+      "speed": 5,
+      "brawn": 5,
+      "magic": 0,
+      "armour": 4,
+      "health": 80,
+      "maxHealth": 80
+    },
+    "abilities": [
+      "Deadly thorns: Hero loses 3 health at the end of the round",
+      "Divine fury: Hero's damage is increased by 3",
+      "Thousand fists: Instead of rolling for damage, roll 2-5 damage dice ignoring armor in consecutive rounds, once in combat"
+    ],
+    "bookRef": {
+      "book": "The Heart of Fire",
+      "act": 1,
+      "section": 237
+    }
+  },
+  {
+    "type": "enemy",
+    "name": "Roadside Robbers",
+    "stats": {
+      "speed": 3,
+      "brawn": 3,
+      "magic": 0,
+      "armour": 1,
+      "health": 25,
+      "maxHealth": 25
+    },
+    "abilities": [],
+    "bookRef": {
+      "book": "The Heart of Fire",
+      "act": 1,
+      "section": 241
+    }
+  },
+  {
+    "type": "enemy",
+    "name": "Warriors",
+    "stats": {
+      "speed": 5,
+      "brawn": 0,
+      "magic": 4,
+      "armour": 3,
+      "health": 40,
+      "maxHealth": 40
+    },
+    "abilities": [
+      "Body of bone: Immune to Bleed, Venom",
+      "Undead minions: You can use ashes, holy water, holy protector"
+    ],
+    "spawns": [
+      "Mages, High Priest"
+    ],
+    "bookRef": {
+      "book": "The Heart of Fire",
+      "act": 2,
+      "section": 249
+    }
+  },
+  {
+    "type": "enemy",
+    "name": "Mages",
+    "stats": {
+      "speed": 0,
+      "brawn": 0,
+      "magic": 0,
+      "armour": 2,
+      "health": 20,
+      "maxHealth": 20
+    },
+    "abilities": [
+      "Dark fire: At the end of the round, take a speed challenge. If you get 0-12 - hero takes 5 damage ignoring armour",
+      "Body of bone: Immune to Bleed, Venom",
+      "Undead minions: You can use ashes, holy water, holy protector"
+    ],
+    "bookRef": {
+      "book": "The Heart of Fire",
+      "act": 2,
+      "section": 249
+    }
+  },
+  {
+    "type": "enemy",
+    "name": "High Priest",
+    "stats": {
+      "speed": 0,
+      "brawn": 0,
+      "magic": 0,
+      "armour": 2,
+      "health": 20,
+      "maxHealth": 20
+    },
+    "abilities": [
+      "Bone mending: +4 health (max 40) to Warriors at the end of the round",
+      "Body of bone: Immune to Bleed, Venom",
+      "Undead minions: You can use ashes, holy water, holy protector"
+    ],
+    "bookRef": {
+      "book": "The Heart of Fire",
+      "act": 2,
+      "section": 249
+    }
+  },
+  {
+    "type": "enemy",
+    "name": "Dagona",
+    "stats": {
+      "speed": 6,
+      "brawn": 4,
+      "magic": 0,
+      "armour": 4,
+      "health": 70,
+      "maxHealth": 70
+    },
+    "abilities": [
+      "Slash and burn: Roll 3 damage dice and take the highest result",
+      "Ashes to ashes: When hero rolls double for speed, they lose the combat round"
+    ],
+    "bookRef": {
+      "book": "The Heart of Fire",
+      "act": 1,
+      "section": 256
+    }
+  },
+  {
+    "type": "enemy",
+    "name": "Zombie horde",
+    "stats": {
+      "speed": 3,
+      "brawn": 3,
+      "magic": 0,
+      "armour": 2,
+      "health": 28,
+      "maxHealth": 28
+    },
+    "abilities": [
+      "Unstoppable: If hero is alive at the end of round 5, the enemy is defeated",
+      "All pile on: No special abilities or backpack items can be used in this combat"
+    ],
+    "bookRef": {
+      "book": "The Heart of Fire",
+      "act": 1,
+      "section": 262
+    }
+  },
+  {
+    "type": "enemy",
+    "name": "Poltergeist",
+    "stats": {
+      "speed": 5,
+      "brawn": 0,
+      "magic": 3,
+      "armour": 3,
+      "health": 35,
+      "maxHealth": 35
+    },
+    "abilities": [],
+    "bookRef": {
+      "book": "The Heart of Fire",
+      "act": 1,
+      "section": 266
+    }
+  },
+  {
+    "type": "enemy",
+    "name": "Orgorath",
+    "stats": {
+      "speed": 5,
+      "brawn": 5,
+      "magic": 0,
+      "armour": 4,
+      "health": 80,
+      "maxHealth": 80
+    },
+    "abilities": [
+      "Deadly thorns: Hero loses 3 health at the end of the round",
+      "Earth golems: The enemy loses 2 health at the end of each round. If hero loses a round, they can sacrifice the Earth golems to avoid damage",
+      "Furious roar: Instead of rolling for damage, increase speed, brawn and magic by 1 for 3 rounds"
+    ],
+    "bookRef": {
+      "book": "The Heart of Fire",
+      "act": 1,
+      "section": 268
+    }
+  },
+  {
+    "type": "enemy",
+    "name": "Manticore",
+    "stats": {
+      "speed": 2,
+      "brawn": 3,
+      "magic": 0,
+      "armour": 1,
+      "health": 25,
+      "maxHealth": 25
+    },
+    "abilities": [
+      "Benin's blessing: +1 speed, brawn and magic for hero",
+      "Holy healer: When the hero's health is 1-8, restore full health and remove Venom (once per combat)",
+      "Venom: Once hero receives damage, lose 1 health at the end of each combat round"
+    ],
+    "bookRef": {
+      "book": "The Heart of Fire",
+      "act": 1,
+      "section": 280
+    }
+  },
+  {
+    "type": "enemy",
+    "name": "Archer ants",
+    "stats": {
+      "speed": 2,
+      "brawn": 1,
+      "magic": 0,
+      "armour": 1,
+      "health": 20,
+      "maxHealth": 20
+    },
+    "abilities": [],
+    "bookRef": {
+      "book": "The Heart of Fire",
+      "act": 1,
+      "section": 281
+    }
+  },
+  {
+    "type": "enemy",
+    "name": "Headless",
+    "stats": {
+      "speed": 2,
+      "brawn": 0,
+      "magic": 3,
+      "armour": 2,
+      "health": 35,
+      "maxHealth": 35
+    },
+    "abilities": [
+      "Wrath of the witchfinder: +2 damage for the hero"
+    ],
+    "spawns": [
+      "Flaming skull"
+    ],
+    "bookRef": {
+      "book": "The Heart of Fire",
+      "act": 1,
+      "section": 284
+    }
+  },
+  {
+    "type": "enemy",
+    "name": "Flaming skull",
+    "stats": {
+      "speed": 0,
+      "brawn": 0,
+      "magic": 0,
+      "armour": 2,
+      "health": 20,
+      "maxHealth": 20
+    },
+    "abilities": [
+      "Searing skull: At the end of each round, hero loses 2 health",
+      "Head case: Immune to Bleed"
+    ],
+    "bookRef": {
+      "book": "The Heart of Fire",
+      "act": 1,
+      "section": 284
+    }
+  },
+  {
+    "type": "enemy",
+    "name": "Fungalus",
+    "stats": {
+      "speed": 4,
+      "brawn": 0,
+      "magic": 4,
+      "armour": 12,
+      "health": 30,
+      "maxHealth": 30
+    },
+    "abilities": [
+      "Sinister saps: At the end of the round, add 1 sap. Each sap deals 1 damage to the hero, ignoring armour",
+      "Blast the bile: When hero wins round, instead of rolling for damage, destroy all saps",
+      "Power pruning: If hero wins round, instead of rolling for damage, -4 armour (enemy)."
+    ],
+    "bookRef": {
+      "book": "The Heart of Fire",
+      "act": 1,
+      "section": 288
+    }
+  },
+  {
+    "type": "enemy",
+    "name": "Bombardier ant",
+    "stats": {
+      "speed": 3,
+      "brawn": 2,
+      "magic": 0,
+      "armour": 2,
+      "health": 40,
+      "maxHealth": 40
+    },
+    "abilities": [
+      "Bullet storm: If the enemy wins a round, roll a die. 4-6 - ant does not deal damage"
+    ],
+    "bookRef": {
+      "book": "The Heart of Fire",
+      "act": 1,
+      "section": 290
+    }
+  },
+  {
+    "type": "enemy",
+    "name": "Billah the fish",
+    "stats": {
+      "speed": 5,
+      "brawn": 4,
+      "magic": 0,
+      "armour": 2,
+      "health": 35,
+      "maxHealth": 35
+    },
+    "abilities": [],
+    "spawns": [
+      "Ruffians"
+    ],
+    "bookRef": {
+      "book": "The Heart of Fire",
+      "act": 1,
+      "section": 295
+    }
+  },
+  {
+    "type": "enemy",
+    "name": "Ruffians",
+    "stats": {
+      "speed": 0,
+      "brawn": 0,
+      "magic": 0,
+      "armour": 2,
+      "health": 20,
+      "maxHealth": 20
+    },
+    "abilities": [
+      "Motley crew: +3 damage (enemy)"
+    ],
+    "bookRef": {
+      "book": "The Heart of Fire",
+      "act": 1,
+      "section": 295
+    }
+  },
+  {
+    "type": "enemy",
+    "name": "Rap Unzal",
+    "stats": {
+      "speed": 11,
+      "brawn": 0,
+      "magic": 7,
+      "armour": 3,
+      "health": 40,
+      "maxHealth": 40
+    },
+    "abilities": [
+      "Dem bones: +2 health (enemy) at the end of the round",
+      "Ghost of a victory: Immune to Cutpurse, Pillage"
+    ],
+    "bookRef": {
+      "book": "The Heart of Fire",
+      "act": 2,
+      "section": 298
+    }
+  },
+  {
+    "type": "enemy",
+    "name": "Queen Bellona",
+    "stats": {
+      "speed": 3,
+      "brawn": 2,
+      "magic": 0,
+      "armour": 3,
+      "health": 40,
+      "maxHealth": 40
+    },
+    "abilities": [
+      "Pin cushion: Each time hero causes damage they take 1 damage ignoring armour",
+      "Look out for larvae: At the start of the combat round, roll a die. 1-3 adds one larvae. Each larvae deals 1 damage ignoring armour at the end of the round",
+      "Bug blaster: Use borehole charge -  -10 health"
+    ],
+    "bookRef": {
+      "book": "The Heart of Fire",
+      "act": 1,
+      "section": 307
+    }
+  },
+  {
+    "type": "enemy",
+    "name": "Benin",
+    "stats": {
+      "speed": 0,
+      "brawn": 0,
+      "magic": 2,
+      "armour": 1,
+      "health": 18,
+      "maxHealth": 18
+    },
+    "abilities": [
+      "Harm or heal: If enemy wins a round, roll a die. 1-2: +2 health (enemy, max 18), 3-6: roll for damage"
+    ],
+    "bookRef": {
+      "book": "The Heart of Fire",
+      "act": 1,
+      "section": 312
+    }
+  },
+  {
+    "type": "enemy",
+    "name": "Blood ticks",
+    "stats": {
+      "speed": 3,
+      "brawn": 2,
+      "magic": 0,
+      "armour": 2,
+      "health": 30,
+      "maxHealth": 30
+    },
+    "abilities": [
+      "Bombardement: At the start of a round, roll a die. 1-3: -2 health (hero)",
+      "Blood suckers: When enemy wins round and causes damage to the enemy, +1 health (enemy, max 30)"
+    ],
+    "bookRef": {
+      "book": "The Heart of Fire",
+      "act": 1,
+      "section": 327
+    }
+  },
+  {
+    "type": "enemy",
+    "name": "Inkheart",
+    "stats": {
+      "speed": 5,
+      "brawn": 4,
+      "magic": 0,
+      "armour": 3,
+      "health": 35,
+      "maxHealth": 35
+    },
+    "abilities": [
+      "Back to black: +1 brawn at the end of round (max 8)",
+      "Body of ink: Immune to Bleed, Thorns, Thorn Cage"
+    ],
+    "bookRef": {
+      "book": "The Heart of Fire",
+      "act": 1,
+      "section": 362
+    }
+  },
+  {
+    "type": "enemy",
+    "name": "Kaala",
+    "stats": {
+      "speed": 10,
+      "brawn": 7,
+      "magic": 0,
+      "armour": 6,
+      "health": 100,
+      "maxHealth": 100
+    },
+    "abilities": [
+      "Look into my eyes: When the hero rolls the 8th 1 die (after rerolling) and they don't have the Golden mirror, the hero loses",
+      "if the enemy rolls the 8th 1 die and the hero has the Golden mirror, the hero wins",
+      "Lethal venom: Once the hero receives damage, lose 6 health at the end of each combat round"
+    ],
+    "bookRef": {
+      "book": "The Heart of Fire",
+      "act": 2,
+      "section": 371
+    }
+  },
+  {
+    "type": "enemy",
+    "name": "Erkil",
+    "stats": {
+      "speed": 13,
+      "brawn": 10,
+      "magic": 0,
+      "armour": 10,
+      "health": 120,
+      "maxHealth": 120
+    },
+    "abilities": [
+      "Stone skin: At the start of the 5th round, raise armour to 28",
+      "Chip away: After the start of the 5th round, instead of rolling for damage the hero can reduce armour of the enemy by 4, taking 4 damage ignoring armour",
+      "",
+      "Titan stone: At the start of round 5, enemy is immune to all passive damage"
+    ],
+    "bookRef": {
+      "book": "The Heart of Fire",
+      "act": 2,
+      "section": 379
+    }
+  },
+  {
+    "type": "enemy",
+    "name": "Gaia",
+    "stats": {
+      "speed": 5,
+      "brawn": 4,
+      "magic": 0,
+      "armour": 4,
+      "health": 45,
+      "maxHealth": 45
+    },
+    "abilities": [],
+    "spawns": [
+      "Roots"
+    ],
+    "bookRef": {
+      "book": "The Heart of Fire",
+      "act": 2,
+      "section": 384
+    }
+  },
+  {
+    "type": "enemy",
+    "name": "Roots",
+    "stats": {
+      "speed": 0,
+      "brawn": 0,
+      "magic": 0,
+      "armour": 1,
+      "health": 20,
+      "maxHealth": 20
+    },
+    "abilities": [
+      "Feeding time: Every 3 rounds, if Roots are still alive hero receives 15 damage. Roots restore full health (even when defeated)"
+    ],
+    "bookRef": {
+      "book": "The Heart of Fire",
+      "act": 2,
+      "section": 384
+    }
+  },
+  {
+    "type": "enemy",
+    "name": "Xenos",
+    "stats": {
+      "speed": 12,
+      "brawn": 0,
+      "magic": 9,
+      "armour": 9,
+      "health": 65,
+      "maxHealth": 65
+    },
+    "abilities": [
+      "Knowledge is power: If the hero wins a round, instead for rolling for damage: -1 speed -1 magic -1 armour (enemy, min speed 9, min magic armour 6)"
+    ],
+    "bookRef": {
+      "book": "The Heart of Fire",
+      "act": 2,
+      "section": 390
+    }
+  },
+  {
+    "type": "enemy",
+    "name": "Stone giants",
+    "stats": {
+      "speed": 5,
+      "brawn": 4,
+      "magic": 0,
+      "armour": 12,
+      "health": 35,
+      "maxHealth": 35
+    },
+    "abilities": [
+      "Charged: Each time hero scores damage on the giant and don't have Insulated - -2 health",
+      "Enchanted rock: Immune to Bleed, Sear, Thorns, Thorn Cage, Fire Aura"
+    ],
+    "spawns": [
+      "Runed pilar"
+    ],
+    "bookRef": {
+      "book": "The Heart of Fire",
+      "act": 2,
+      "section": 392
+    }
+  },
+  {
+    "type": "enemy",
+    "name": "Runed pilar",
+    "stats": {
+      "speed": 0,
+      "brawn": 0,
+      "magic": 0,
+      "armour": 3,
+      "health": 10,
+      "maxHealth": 10
+    },
+    "abilities": [
+      "Pound those pillars: When destroyed, -4 armour (Stone giant), 6 damage (hero)",
+      "Enchanted rock: Immune to Bleed, Sear, Thorns, Thorn Cage, Fire Aura"
+    ],
+    "bookRef": {
+      "book": "The Heart of Fire",
+      "act": 2,
+      "section": 392
+    }
+  },
+  {
+    "type": "enemy",
+    "name": "Runed pilar",
+    "stats": {
+      "speed": 0,
+      "brawn": 0,
+      "magic": 0,
+      "armour": 3,
+      "health": 10,
+      "maxHealth": 10
+    },
+    "abilities": [
+      "Pound those pillars: When destroyed, -4 armour (Stone giant), 6 damage (hero)",
+      "Enchanted rock: Immune to Bleed, Sear, Thorns, Thorn Cage, Fire Aura"
+    ],
+    "bookRef": {
+      "book": "The Heart of Fire",
+      "act": 2,
+      "section": 392
+    }
+  },
+  {
+    "type": "enemy",
+    "name": "Runed pilar",
+    "stats": {
+      "speed": 0,
+      "brawn": 0,
+      "magic": 0,
+      "armour": 3,
+      "health": 10,
+      "maxHealth": 10
+    },
+    "abilities": [
+      "Pound those pillars: When destroyed, -4 armour (Stone giant), 6 damage (hero)",
+      "Enchanted rock: Immune to Bleed, Sear, Thorns, Thorn Cage, Fire Aura"
+    ],
+    "bookRef": {
+      "book": "The Heart of Fire",
+      "act": 2,
+      "section": 392
+    }
+  },
+  {
+    "type": "enemy",
+    "name": "Saw",
+    "stats": {
+      "speed": 5,
+      "brawn": 4,
+      "magic": 0,
+      "armour": 3,
+      "health": 40,
+      "maxHealth": 40
+    },
+    "abilities": [
+      "Spinning saw: At the end of each round, roll a die. 1-2: -4 health (hero), 3-6: -4 health (Soldiers)",
+      "Wood and metal: Immune to Bleet"
+    ],
+    "bookRef": {
+      "book": "The Heart of Fire",
+      "act": 1,
+      "section": 398
+    }
+  },
+  {
+    "type": "enemy",
+    "name": "Soldiers",
+    "stats": {
+      "speed": 0,
+      "brawn": 0,
+      "magic": 0,
+      "armour": 1,
+      "health": 25,
+      "maxHealth": 25
+    },
+    "abilities": [
+      "Stabbing swords: At the end of the combat round, -2 health (hero)",
+      "Wood and metal: Immune to Bleet"
+    ],
+    "bookRef": {
+      "book": "The Heart of Fire",
+      "act": 1,
+      "section": 398
+    }
+  },
+  {
+    "type": "enemy",
+    "name": "Fisher king",
+    "stats": {
+      "speed": 8,
+      "brawn": 6,
+      "magic": 0,
+      "armour": 5,
+      "health": 80,
+      "maxHealth": 80
+    },
+    "abilities": [
+      "Jump around: At the start of the combat round, pick [North, Center, East] and roll a die. 1-2: Continue when North was picked, 3-4: Continue when Center was picked, 5-6: Continue when East was picked. Otherwise take speed challenge - 1-13: -6 health (hero). Continue with passive effects."
+    ],
+    "bookRef": {
+      "book": "The Heart of Fire",
+      "act": 2,
+      "section": 408
+    }
+  },
+  {
+    "type": "enemy",
+    "name": "Custodian",
+    "stats": {
+      "speed": 5,
+      "brawn": 0,
+      "magic": 4,
+      "armour": 3,
+      "health": 50,
+      "maxHealth": 50
+    },
+    "abilities": [
+      "Reanimator: Once per combat when Custodian is below 25 health - +40 health (Forty thieves)",
+      "Hex of pain: At the end of the combat round, -1 health (hero)"
+    ],
+    "bookRef": {
+      "book": "The Heart of Fire",
+      "act": 1,
+      "section": 419
+    }
+  },
+  {
+    "type": "enemy",
+    "name": "Forty thieves",
+    "stats": {
+      "speed": 5,
+      "brawn": 0,
+      "magic": 5,
+      "armour": 2,
+      "health": 0,
+      "maxHealth": 0
+    },
+    "abilities": [
+      "Protector: Custodian cannot be damaged while Forty thieves are alive",
+      "Reanimator 2: At the end of the round, +2 health (enemy, max 50)"
+    ],
+    "spawns": [
+      "Forty thieves"
+    ],
+    "bookRef": {
+      "book": "The Heart of Fire",
+      "act": 1,
+      "section": 419
+    }
+  },
+  {
+    "type": "enemy",
+    "name": "The Forger",
+    "stats": {
+      "speed": 4,
+      "brawn": 3,
+      "magic": 0,
+      "armour": 4,
+      "health": 40,
+      "maxHealth": 40
+    },
+    "abilities": [
+      "Flame wrapper: At the start of the combat round, roll a die. 1-3: +1 brawn (enemy)",
+      "Knockdown"
+    ],
+    "bookRef": {
+      "book": "The Heart of Fire",
+      "act": 1,
+      "section": 422
+    }
+  },
+  {
+    "type": "enemy",
+    "name": "Rocco",
+    "stats": {
+      "speed": 5,
+      "brawn": 4,
+      "magic": 0,
+      "armour": 4,
+      "health": 35,
+      "maxHealth": 35
+    },
+    "abilities": [
+      "Body of rock: Immune to Bleed"
+    ],
+    "bookRef": {
+      "book": "The Heart of Fire",
+      "act": 1,
+      "section": 425
+    }
+  },
+  {
+    "type": "enemy",
+    "name": "Umbra",
+    "stats": {
+      "speed": 6,
+      "brawn": 5,
+      "magic": 0,
+      "armour": 4,
+      "health": 60,
+      "maxHealth": 60
+    },
+    "abilities": [
+      "It's behind you: At the end of the combat round, roll a die. 1-2: 10 damage (hero)"
+    ],
+    "bookRef": {
+      "book": "The Heart of Fire",
+      "act": 2,
+      "section": 432
+    }
+  },
+  {
+    "type": "enemy",
+    "name": "Cuddles",
+    "stats": {
+      "speed": 5,
+      "brawn": 3,
+      "magic": 0,
+      "armour": 3,
+      "health": 40,
+      "maxHealth": 40
+    },
+    "abilities": [
+      "Piercing claws: Piercing",
+      "Bleed"
+    ],
+    "bookRef": {
+      "book": "The Heart of Fire",
+      "act": 2,
+      "section": 433
+    }
+  },
+  {
+    "type": "enemy",
+    "name": "Papyrus",
+    "stats": {
+      "speed": 5,
+      "brawn": 4,
+      "magic": 0,
+      "armour": 3,
+      "health": 30,
+      "maxHealth": 30
+    },
+    "abilities": [
+      "Body of paper: Immune to Bleed"
+    ],
+    "bookRef": {
+      "book": "The Heart of Fire",
+      "act": 1,
+      "section": 444
+    }
+  },
+  {
+    "type": "enemy",
+    "name": "Quetzal",
+    "stats": {
+      "speed": 7,
+      "brawn": 6,
+      "magic": 0,
+      "armour": 5,
+      "health": 40,
+      "maxHealth": 40
+    },
+    "abilities": [
+      "Razor beak: Piercing"
+    ],
+    "bookRef": {
+      "book": "The Heart of Fire",
+      "act": 2,
+      "section": 457
+    }
+  },
+  {
+    "type": "enemy",
+    "name": "Totem",
+    "stats": {
+      "speed": 6,
+      "brawn": 0,
+      "magic": 5,
+      "armour": 0,
+      "health": 0,
+      "maxHealth": 0
+    },
+    "abilities": [
+      "Power cubed: When all cubes are alive, roll 3 damage dice."
+    ],
+    "spawns": [
+      "Snake cube",
+      "Spider cube",
+      "Jaguar cube"
+    ],
+    "bookRef": {
+      "book": "The Heart of Fire",
+      "act": 2,
+      "section": 459
+    }
+  },
+  {
+    "type": "enemy",
+    "name": "Snake cube",
+    "stats": {
+      "speed": 0,
+      "brawn": 0,
+      "magic": 0,
+      "armour": 5,
+      "health": 25,
+      "maxHealth": 25
+    },
+    "abilities": [
+      "Snake cube: Venom (Totem)",
+      "Enhanted rock: Immune to Bleed"
+    ],
+    "bookRef": {
+      "book": "The Heart of Fire",
+      "act": 2,
+      "section": 459
+    }
+  },
+  {
+    "type": "enemy",
+    "name": "Spider cube",
+    "stats": {
+      "speed": 0,
+      "brawn": 0,
+      "magic": 0,
+      "armour": 5,
+      "health": 25,
+      "maxHealth": 25
+    },
+    "abilities": [
+      "Spider cube: +1 speed (Totem)",
+      "Enhanted rock: Immune to Bleed"
+    ],
+    "bookRef": {
+      "book": "The Heart of Fire",
+      "act": 2,
+      "section": 459
+    }
+  },
+  {
+    "type": "enemy",
+    "name": "Jaguar cube",
+    "stats": {
+      "speed": 0,
+      "brawn": 0,
+      "magic": 0,
+      "armour": 5,
+      "health": 25,
+      "maxHealth": 25
+    },
+    "abilities": [
+      "Jaguar cube: At the end of the combat round, -2 health (hero)",
+      "Enhanted rock: Immune to Bleed"
+    ],
+    "bookRef": {
+      "book": "The Heart of Fire",
+      "act": 2,
+      "section": 459
+    }
+  },
+  {
+    "type": "enemy",
+    "name": "Succubus",
+    "stats": {
+      "speed": 10,
+      "brawn": 0,
+      "magic": 5,
+      "armour": 9,
+      "health": 80,
+      "maxHealth": 80
+    },
+    "abilities": [
+      "Mental daggers: -2 health * rd (Hero)",
+      "Delirium: Inflicted when Hero takes damage. When hero wins a round, roll a die. 1-2: Skip damage roll phase",
+      "Revenge of the tigris: +2 damage (hero)"
+    ],
+    "bookRef": {
+      "book": "The Heart of Fire",
+      "act": 2,
+      "section": 463
+    }
+  },
+  {
+    "type": "enemy",
+    "name": "Bill",
+    "stats": {
+      "speed": 9,
+      "brawn": 8,
+      "magic": 0,
+      "armour": 8,
+      "health": 90,
+      "maxHealth": 90
+    },
+    "abilities": [
+      "Backshot barrage: At the end of round, take a speed challenge. 1-14: 10 damage (hero)",
+      "Animal attraction: If you have the rhinosaur pheromone & the rhinosaur has been freed from its cage, instead of rolling for damage: -4 health * every rd (enemy)",
+      "Survival of the fittest: Immune to Strength in Numbers"
+    ],
+    "bookRef": {
+      "book": "The Heart of Fire",
+      "act": 2,
+      "section": 466
+    }
+  },
+  {
+    "type": "enemy",
+    "name": "Orgorath",
+    "stats": {
+      "speed": 5,
+      "brawn": 5,
+      "magic": 0,
+      "armour": 4,
+      "health": 40,
+      "maxHealth": 40
+    },
+    "abilities": [
+      "Deadly thorns: -3 health * rd (hero)"
+    ],
+    "bookRef": {
+      "book": "The Heart of Fire",
+      "act": 1,
+      "section": 468
+    }
+  },
+  {
+    "type": "enemy",
+    "name": "Sniper",
+    "stats": {
+      "speed": 9,
+      "brawn": 6,
+      "magic": 0,
+      "armour": 5,
+      "health": 60,
+      "maxHealth": 60
+    },
+    "abilities": [],
+    "bookRef": {
+      "book": "The Heart of Fire",
+      "act": 2,
+      "section": 482
+    }
+  },
+  {
+    "type": "enemy",
+    "name": "Maximus",
+    "stats": {
+      "speed": 5,
+      "brawn": 5,
+      "magic": 0,
+      "armour": 15,
+      "health": 40,
+      "maxHealth": 40
+    },
+    "abilities": [
+      "Dismantle: Instead of rolling for damage: -3 armour (enemy, min 0)",
+      "Body or iron: Immune to bleed, thorsn and thorn cage"
+    ],
+    "bookRef": {
+      "book": "The Heart of Fire",
+      "act": 2,
+      "section": 484
+    }
+  },
+  {
+    "type": "enemy",
+    "name": "The furnace",
+    "stats": {
+      "speed": 5,
+      "brawn": 0,
+      "magic": 4,
+      "armour": 2,
+      "health": 70,
+      "maxHealth": 70
+    },
+    "abilities": [
+      "Fury of the furnace: -3 health * rd (hero)",
+      "Holy vengeance: +3 damage (hero)"
+    ],
+    "bookRef": {
+      "book": "The Heart of Fire",
+      "act": 2,
+      "section": 490
+    }
+  },
+  {
+    "type": "enemy",
+    "name": "Lycanth",
+    "stats": {
+      "speed": 5,
+      "brawn": 5,
+      "magic": 0,
+      "armour": 4,
+      "health": 55,
+      "maxHealth": 55
+    },
+    "abilities": [
+      "Miasma of decay: -3 health * rd (hero)",
+      "Disease"
+    ],
+    "bookRef": {
+      "book": "The Heart of Fire",
+      "act": 2,
+      "section": 495
+    }
+  },
+  {
+    "type": "enemy",
+    "name": "Succubus",
+    "stats": {
+      "speed": 10,
+      "brawn": 0,
+      "magic": 5,
+      "armour": 9,
+      "health": 80,
+      "maxHealth": 80
+    },
+    "abilities": [
+      "Mental daggers: -2 health * rd (Hero)",
+      "Delirium: Inflicted when Hero takes damage. When hero wins a round, roll a die. 1-2: Skip damage roll phase",
+      "Revenge of the tigris: +4 damage (hero)"
+    ],
+    "bookRef": {
+      "book": "The Heart of Fire",
+      "act": 2,
+      "section": 505
+    }
+  },
+  {
+    "type": "enemy",
+    "name": "Mandrills",
+    "stats": {
+      "speed": 9,
+      "brawn": 6,
+      "magic": 0,
+      "armour": 8,
+      "health": 50,
+      "maxHealth": 50
+    },
+    "abilities": [
+      "Feral frency: +1 speed * rd (enemy, max 14)"
+    ],
+    "bookRef": {
+      "book": "The Heart of Fire",
+      "act": 2,
+      "section": 517
+    }
+  },
+  {
+    "type": "enemy",
+    "name": "Hunters",
+    "stats": {
+      "speed": 9,
+      "brawn": 7,
+      "magic": 0,
+      "armour": 4,
+      "health": 35,
+      "maxHealth": 35
+    },
+    "abilities": [],
+    "bookRef": {
+      "book": "The Heart of Fire",
+      "act": 2,
+      "section": 521
+    }
+  },
+  {
+    "type": "enemy",
+    "name": "Grub knight",
+    "stats": {
+      "speed": 6,
+      "brawn": 5,
+      "magic": 0,
+      "armour": 4,
+      "health": 55,
+      "maxHealth": 55
+    },
+    "abilities": [
+      "Grappling grubs: Damage (hero) -> roll a die. 1-3: -1 speed (hero)",
+      "Disease"
+    ],
+    "bookRef": {
+      "book": "The Heart of Fire",
+      "act": 2,
+      "section": 523
+    }
+  },
+  {
+    "type": "enemy",
+    "name": "Fengz",
+    "stats": {
+      "speed": 11,
+      "brawn": 0,
+      "magic": 7,
+      "armour": 3,
+      "health": 40,
+      "maxHealth": 40
+    },
+    "abilities": [
+      "Whirling chains: -4 health * rd (hero)",
+      "Ghost of a victory"
+    ],
+    "bookRef": {
+      "book": "The Heart of Fire",
+      "act": 2,
+      "section": 533
+    }
+  },
+  {
+    "type": "enemy",
+    "name": "Furies",
+    "stats": {
+      "speed": 11,
+      "brawn": 0,
+      "magic": 7,
+      "armour": 3,
+      "health": 100,
+      "maxHealth": 100
+    },
+    "abilities": [
+      "Endless assault: At the end of the round, roll a die. 1-2: +4 health (enemy), +4 maxHealth (enemy)",
+      "Fury of the swarm: -2 health * rd (hero)"
+    ],
+    "bookRef": {
+      "book": "The Heart of Fire",
+      "act": 2,
+      "section": 538
+    }
+  },
+  {
+    "type": "enemy",
+    "name": "Boogaloo",
+    "stats": {
+      "speed": 6,
+      "brawn": 4,
+      "magic": 0,
+      "armour": 3,
+      "health": 50,
+      "maxHealth": 50
+    },
+    "abilities": [
+      "It's `lectric: If not Insulated, -(2 + armour) health (hero)"
+    ],
+    "bookRef": {
+      "book": "The Heart of Fire",
+      "act": 2,
+      "section": 552
+    }
+  },
+  {
+    "type": "enemy",
+    "name": "Hounds",
+    "stats": {
+      "speed": 11,
+      "brawn": 7,
+      "magic": 0,
+      "armour": 5,
+      "health": 90,
+      "maxHealth": 90
+    },
+    "abilities": [
+      "Pack attack: If enemy rolls double for speed, -4 health (hero)",
+      "Molten skin: -2 health * rd (hero)",
+      "Body of flame: Immune to Backdraft, Fire Aura, Sear, Searing Mantle"
+    ],
+    "bookRef": {
+      "book": "The Heart of Fire",
+      "act": 2,
+      "section": 564
+    }
+  },
+  {
+    "type": "enemy",
+    "name": "Golden Guards",
+    "stats": {
+      "speed": 9,
+      "brawn": 9,
+      "magic": 0,
+      "armour": 8,
+      "health": 70,
+      "maxHealth": 70
+    },
+    "abilities": [
+      "Scything blades: Each time a speed or combat ability is played, roll a die. 1-4: -4 health (hero), ability is skipped",
+      "Knockdown"
+    ],
+    "bookRef": {
+      "book": "The Heart of Fire",
+      "act": 2,
+      "section": 568
+    }
+  },
+  {
+    "type": "enemy",
+    "name": "Tigris",
+    "stats": {
+      "speed": 9,
+      "brawn": 6,
+      "magic": 0,
+      "armour": 4,
+      "health": 70,
+      "maxHealth": 70
+    },
+    "abilities": [
+      "Revenge of the tigris: 3 damage dice for highest value",
+      "Bleed"
+    ],
+    "bookRef": {
+      "book": "The Heart of Fire",
+      "act": 2,
+      "section": 570
+    }
+  },
+  {
+    "type": "enemy",
+    "name": "Succubus",
+    "stats": {
+      "speed": 10,
+      "brawn": 0,
+      "magic": 5,
+      "armour": 9,
+      "health": 80,
+      "maxHealth": 80
+    },
+    "abilities": [
+      "Mental daggers: -2 health * rd (Hero)",
+      "Delirium: Inflicted when Hero takes damage. When hero wins a round, roll a die. 1-2: Skip damage roll phase",
+      "Revenge of the tigris: +2 damage (hero)"
+    ],
+    "bookRef": {
+      "book": "The Heart of Fire",
+      "act": 2,
+      "section": 572
+    }
+  },
+  {
+    "type": "enemy",
+    "name": "Zephyr",
+    "stats": {
+      "speed": 5,
+      "brawn": 0,
+      "magic": 4,
+      "armour": 3,
+      "health": 50,
+      "maxHealth": 50
+    },
+    "abilities": [
+      "Slipstream: Hero wins speed, roll a die: 1-3: -4 health (hero), skip to passive phase",
+      "Body of air: Immune to Bleed, Disease and Venom"
+    ],
+    "bookRef": {
+      "book": "The Heart of Fire",
+      "act": 2,
+      "section": 573
+    }
+  },
+  {
+    "type": "enemy",
+    "name": "Cernos",
+    "stats": {
+      "speed": 10,
+      "brawn": 9,
+      "magic": 0,
+      "armour": 10,
+      "health": 85,
+      "maxHealth": 85
+    },
+    "abilities": [],
+    "spawns": [
+      "Rock fists"
+    ],
+    "bookRef": {
+      "book": "The Heart of Fire",
+      "act": 2,
+      "section": 579
+    }
+  },
+  {
+    "type": "enemy",
+    "name": "Rock fists",
+    "stats": {
+      "speed": 0,
+      "brawn": 0,
+      "magic": 0,
+      "armour": 10,
+      "health": 40,
+      "maxHealth": 40
+    },
+    "abilities": [
+      "Rock fists: +2 speed (enemy), 2 damage dice",
+      "Body of rock: Immune to Barbs, Bleed, Disease, Piercing, Thorns, Thorn Cage, Venom"
+    ],
+    "bookRef": {
+      "book": "The Heart of Fire",
+      "act": 2,
+      "section": 579
+    }
+  },
+  {
+    "type": "enemy",
+    "name": "Arratoch",
+    "stats": {
+      "speed": 0,
+      "brawn": 0,
+      "magic": 0,
+      "armour": 5,
+      "health": 35,
+      "maxHealth": 35
+    },
+    "abilities": [
+      "Arratoch alarm: -2 brawn * rd (hero), -2 magic * rd (hero)",
+      "Body of rock",
+      "Companions courage: +2 damage (hero)",
+      "Golem need: If both Otum and Atum are dead, hero wins fight"
+    ],
+    "spawns": [
+      "Otum",
+      "Atum"
+    ],
+    "bookRef": {
+      "book": "The Heart of Fire",
+      "act": 2,
+      "section": 582
+    }
+  },
+  {
+    "type": "enemy",
+    "name": "Olum",
+    "stats": {
+      "speed": 11,
+      "brawn": 8,
+      "magic": 0,
+      "armour": 9,
+      "health": 50,
+      "maxHealth": 50
+    },
+    "abilities": [
+      "Brotherly love: If Atum is dead: +2 speed (Olum), +4 brawn (Olum)",
+      "Body of rock",
+      "Golem protector: When winning a round the hero can choose to Attack Arratoch instead"
+    ],
+    "bookRef": {
+      "book": "The Heart of Fire",
+      "act": 2,
+      "section": 582
+    }
+  },
+  {
+    "type": "enemy",
+    "name": "Atum",
+    "stats": {
+      "speed": 11,
+      "brawn": 9,
+      "magic": 0,
+      "armour": 7,
+      "health": 50,
+      "maxHealth": 50
+    },
+    "abilities": [
+      "Brotherly love: If Olum is dead: +2 speed (Atum), +4 brawn (Atum)",
+      "Body of rock",
+      "Golem protector"
+    ],
+    "bookRef": {
+      "book": "The Heart of Fire",
+      "act": 2,
+      "section": 582
+    }
+  },
+  {
+    "type": "enemy",
+    "name": "Sitadell",
+    "stats": {
+      "speed": 10,
+      "brawn": 7,
+      "magic": 0,
+      "armour": 8,
+      "health": 60,
+      "maxHealth": 60
+    },
+    "abilities": [
+      "Rock bluff: +2 armour * rd. When hero wins round instead of rolling for damage: 7 armour (enemy)",
+      "Body of rock"
+    ],
+    "bookRef": {
+      "book": "The Heart of Fire",
+      "act": 2,
+      "section": 584
+    }
+  },
+  {
+    "type": "enemy",
+    "name": "The weeper",
+    "stats": {
+      "speed": 7,
+      "brawn": 5,
+      "magic": 0,
+      "armour": 4,
+      "health": 60,
+      "maxHealth": 60
+    },
+    "abilities": [
+      "Septic seepage: -rd health * rd (hero)"
+    ],
+    "bookRef": {
+      "book": "The Heart of Fire",
+      "act": 2,
+      "section": 586
+    }
+  },
+  {
+    "type": "enemy",
+    "name": "Zambezi",
+    "stats": {
+      "speed": 9,
+      "brawn": 7,
+      "magic": 0,
+      "armour": 6,
+      "health": 60,
+      "maxHealth": 60
+    },
+    "abilities": [
+      "Sniper fire: At the end of the round roll a die. 1-3: -3 health (hero), 4-6: -3 health (enemy)"
+    ],
+    "bookRef": {
+      "book": "The Heart of Fire",
+      "act": 2,
+      "section": 588
+    }
+  },
+  {
+    "type": "enemy",
+    "name": "Langurs",
+    "stats": {
+      "speed": 10,
+      "brawn": 4,
+      "magic": 0,
+      "armour": 6,
+      "health": 40,
+      "maxHealth": 40
+    },
+    "abilities": [
+      "Leaf blades: Piercing"
+    ],
+    "spawns": [
+      "Squirrels"
+    ],
+    "bookRef": {
+      "book": "The Heart of Fire",
+      "act": 2,
+      "section": 596
+    }
+  },
+  {
+    "type": "enemy",
+    "name": "Squirrels",
+    "stats": {
+      "speed": 0,
+      "brawn": 0,
+      "magic": 0,
+      "armour": 2,
+      "health": 30,
+      "maxHealth": 30
+    },
+    "abilities": [
+      "Angry mob: Speed challenge @ end of round. 1-16: -5 health (hero)"
+    ],
+    "bookRef": {
+      "book": "The Heart of Fire",
+      "act": 2,
+      "section": 596
+    }
+  },
+  {
+    "type": "enemy",
+    "name": "Perez",
+    "stats": {
+      "speed": 9,
+      "brawn": 6,
+      "magic": 0,
+      "armour": 6,
+      "health": 70,
+      "maxHealth": 70
+    },
+    "abilities": [
+      "Bark whip: For each 1 hero rolls for speed: -4 health"
+    ],
+    "bookRef": {
+      "book": "The Heart of Fire",
+      "act": 2,
+      "section": 597
+    }
+  },
+  {
+    "type": "enemy",
+    "name": "Lich",
+    "stats": {
+      "speed": 10,
+      "brawn": 0,
+      "magic": 9,
+      "armour": 10,
+      "health": 90,
+      "maxHealth": 90
+    },
+    "abilities": [
+      "Rune master: Roll a die @ end of round. 1-2: +4 health (enemy), 3-4: -armour health (hero), 5-6: -2 speed * 1 rd (hero), unless hero is Hexed"
+    ],
+    "bookRef": {
+      "book": "The Heart of Fire",
+      "act": 2,
+      "section": 599
+    }
+  },
+  {
+    "type": "enemy",
+    "name": "Fire sprite",
+    "stats": {
+      "speed": 11,
+      "brawn": 0,
+      "magic": 6,
+      "armour": 4,
+      "health": 40,
+      "maxHealth": 40
+    },
+    "abilities": [
+      "Blistering heat: -1 health (hero), unless hero has Fire Shield",
+      "Fan the flames: Once, when reduced to <=20 health, roll a die: 1-2: +10 health, +3 magic (enemy), 3-4: +5 health (enemy), 5-6: +3 magic (enemy). If hero has Wind Breaker, 2 is addded to the die roll",
+      "Body of flame",
+      "Forge master: If hero has Fire Quencher: 30 health (enemy)"
+    ],
+    "bookRef": {
+      "book": "The Heart of Fire",
+      "act": 2,
+      "section": 601
+    }
+  },
+  {
+    "type": "enemy",
+    "name": "Nergal",
+    "stats": {
+      "speed": 10,
+      "brawn": 0,
+      "magic": 8,
+      "armour": 10,
+      "health": 100,
+      "maxHealth": 100
+    },
+    "abilities": [
+      "Hunger strike: Hero takes damage, roll a die. 1: Proceded, 2-6: +4 health (enemy, max 100), repeat max 6 times)",
+      "Unstoppable feast: If hero loses round, no abilities can be used for the remainder of the round",
+      "Companions' courage: +2 damage (hero)"
+    ],
+    "bookRef": {
+      "book": "The Heart of Fire",
+      "act": 2,
+      "section": 603
     }
   }
 ];
@@ -34370,11 +37858,11 @@ const EnemyCarousel = ({ enemies, activeIndex, onSelect }) => {
       ),
       /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "carousel-dot-indicator", children: enemies.map((enemy, index) => {
         const isDead = enemy.stats.health <= 0;
-        const isActive2 = index === activeIndex;
+        const isActive = index === activeIndex;
         return /* @__PURE__ */ jsxRuntimeExports.jsx(
           "div",
           {
-            className: `indicator-dot ${isActive2 ? "active" : ""} ${isDead ? "dead" : ""}`,
+            className: `indicator-dot ${isActive ? "active" : ""} ${isDead ? "dead" : ""}`,
             title: `${enemy.name} ${isDead ? "(Defeated)" : ""}`
           },
           enemy.id
@@ -35689,4 +39177,4 @@ function App() {
 client.createRoot(document.getElementById("root")).render(
   /* @__PURE__ */ jsxRuntimeExports.jsx(React.StrictMode, { children: /* @__PURE__ */ jsxRuntimeExports.jsx(App, {}) })
 );
-//# sourceMappingURL=index-B3XWxJ2W.js.map
+//# sourceMappingURL=index-BxNB9FIa.js.map
