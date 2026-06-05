@@ -1,5 +1,4 @@
-import { getCombatant } from '../../../types/combatState';
-import { AbilityHooks, AbilityDefinition, AbilityType, registerAbility } from '../../abilityRegistry';
+import { registerAbility } from '../../abilityRegistry';
 import { createNoopAbility } from '../abilityFactories';
 
 /**

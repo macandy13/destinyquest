@@ -230,7 +230,7 @@ createEndOfRoundRollAbility({
     type: 'dice-roll',
     diceCount: 1,
     effects: new Map([
-        [between(1, 2), (state: CombatState, source: string) => {
+        [between(1, 2), (state: CombatState) => {
             // TODO: Add goul effect or modify it
             return state;
         }]

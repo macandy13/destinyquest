@@ -1,5 +1,5 @@
 import { registerAbility } from '../../abilityRegistry';
-import { getOpponent } from '../../../types/character';
+import { CharacterType, getOpponent } from '../../../types/character';
 import {
     appendEffect,
     dealDamage,
@@ -18,7 +18,7 @@ export function createDoTAbility(config: {
     ignoreArmour?: boolean;
     condition?: 'always' | 'on-hit' | 'on-damage' | 'on-start-round';
     icon?: string;
-    target?: string;
+    target?: CharacterType;
 }) {
     registerAbility({
         name: config.name,
@@ -76,10 +76,10 @@ export function createDoTAbility(config: {
         onCombatStart: (state, context) => {
             const target = config.target ?? context.target ?? getOpponent(context.owner);
             if (config.condition === 'always' && !hasEffect(state, target, config.name)) {
-                return appendEffect(state, owner, {
+                return appendEffect(state, target, {
                     stats: {},
                     source: config.name,
-                    target: owner,
+                    target: target,
                     duration: undefined,
                     icon: config.icon ?? '☠️',
                     description: config.description
