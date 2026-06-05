@@ -10,6 +10,8 @@ export function createHealingAbility(config: {
     amount: number;
     trigger: 'round-start' | 'round-end';
     stopAtZero?: boolean;
+    target?: string;
+    max?: number;
 }) {
     registerAbility({
         name: config.name,
@@ -18,10 +20,9 @@ export function createHealingAbility(config: {
         icon: '💚',
         reviewed: true,
         onRoundStart: config.trigger === 'round-start' ? (state, { owner }) => {
-            const combatant = getCombatant(state, owner);
-            if (config.stopAtZero && combatant.stats.health <= 0) {
-                return state;
-            }
+            const combatant = getCombatant(state, config.target ?? owner);
+            if (config.stopAtZero && combatant.stats.health <= 0) return state;
+            if (config.max && combatant.stats.health >= config.max) return state;
             state = healDamage(
                 state,
                 config.name,
@@ -32,10 +33,9 @@ export function createHealingAbility(config: {
             return state;
         } : undefined,
         onPassiveAbility: config.trigger === 'round-end' ? (state, { owner }) => {
-            const combatant = getCombatant(state, owner);
-            if (config.stopAtZero && combatant.stats.health <= 0) {
-                return state;
-            }
+            const combatant = getCombatant(state, config.target ?? owner);
+            if (config.stopAtZero && combatant.stats.health <= 0) return state;
+            if (config.max && combatant.stats.health >= config.max) return state;
             state = healDamage(
                 state,
                 config.name,
@@ -75,6 +75,23 @@ createHealingAbility({
     description: 'At the end of the combat round, the Architect heals 4 health.',
     amount: 4,
     trigger: 'round-end'
+});
+
+createHealingAbility({
+    name: 'Bone mending',
+    description: 'At the end of the combat round, the Warriors heals 4 health.',
+    amount: 4,
+    trigger: 'round-end',
+    target: 'Warriors',
+    max: 40
+});
+
+createHealingAbility({
+    name: 'Dem bones',
+    description: 'At the end of the combat round, Rap Unzal heals 2 health.',
+    amount: 2,
+    trigger: 'round-end',
+    target: 'enemy',
 });
 
 createHealingAbility({

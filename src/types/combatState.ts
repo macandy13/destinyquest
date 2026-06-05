@@ -264,7 +264,7 @@ export function healDamage(state: CombatState, source: string, target: Character
         health: targetChar.stats.health + actualHealed,
     });
     state = addLogs(state, {
-        message: message ?? `${source} healed ${actualHealed} health to ${targetChar.name}`,
+        message: message ?? `${source} healed ${actualHealed} for ${targetChar.name}`,
         type: getDamageType(target)
     });
     return state;
@@ -463,10 +463,14 @@ export function getAliveEnemies(state: CombatState): Combatant<Enemy>[] {
 
 export function getCombatant(
     state: CombatState,
-    selector: CombatantSelector | CharacterType
+    selector: CombatantSelector | CharacterType | string
 ): Combatant {
     const type = typeof selector === 'string' ? selector : selector.type;
     if (type === 'hero') return state.hero;
+    if (type !== 'enemy') {
+        const enemyByName = state.enemies.find(e => e.name == type);
+        if (enemyByName) return enemyByName;
+    }
     const index = typeof selector === 'object' ? selector.enemyIndex ?? 0 : 0;
     return state.enemies[index];
 }

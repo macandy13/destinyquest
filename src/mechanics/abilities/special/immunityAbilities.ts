@@ -46,8 +46,18 @@ createImmunityAbility({
 });
 
 createImmunityAbility({
+    name: 'Body of Air',
+    immunities: ['Bleed', 'Venom', 'Disease']
+});
+
+createImmunityAbility({
+    name: 'Body of Bone',
+    immunities: ['Bleed', 'Venom']
+});
+
+createImmunityAbility({
     name: 'Body of Flame',
-    immunities: ['Sear', 'Fire aura', 'Bleed', 'Burn', 'Ignite']
+    immunities: ['Bleed', 'Burn', 'Fire aura', 'Ignite', 'Sear']
 });
 
 createImmunityAbility({
@@ -56,18 +66,43 @@ createImmunityAbility({
 });
 
 createImmunityAbility({
-    name: 'Body of air',
-    immunities: ['Bleed', 'Venom', 'Disease']
+    name: 'Body of Ink',
+    immunities: ['Bleed', 'Thorns', 'Thorn Cage'],
 });
 
 createImmunityAbility({
-    name: 'Body of bone',
-    immunities: ['Bleed', 'Venom']
+    name: 'Body of Iron',
+    immunities: ['Venom', 'Disease', 'Bleed']
 });
 
 createImmunityAbility({
-    name: 'Body of rock',
-    immunities: ['Piercing', 'Impale', 'Bleed', 'Venom', 'Thorns', 'Barbs', 'Lightning']
+    name: 'Body of Metal',
+    immunities: ['Piercing', 'Impale', 'Barbs', 'Thorns', 'Bleed', 'Venom', 'Disease']
+});
+
+createImmunityAbility({
+    name: 'Body of Paper',
+    immunities: ['Bleed'],
+});
+
+createImmunityAbility({
+    name: 'Body of Rock',
+    immunities: ['Bleed', 'Barbs', 'Disease', 'Impale', 'Lightning', 'Piercing', 'Venom', 'Thorns', 'Thorn Cage']
+});
+
+createImmunityAbility({
+    name: 'Ghost of a victory',
+    immunities: ['Cutpurse', 'Pillage'],
+});
+
+createImmunityAbility({
+    name: 'Enhanted rock',
+    immunities: ['Bleed', 'Sear', 'Thorns', 'Thorn Cage', 'Fire Aura'],
+});
+
+createImmunityAbility({
+    name: 'Head case',
+    immunities: ['Bleed'],
 });
 
 createImmunityAbility({
@@ -128,11 +163,6 @@ createImmunityAbility({
 createImmunityAbility({
     name: 'Iron-Mane',
     immunities: ['Piercing', 'Impale']
-});
-
-createImmunityAbility({
-    name: 'Body of Metal',
-    immunities: ['Piercing', 'Impale', 'Barbs', 'Thorns', 'Bleed', 'Venom', 'Disease']
 });
 
 createImmunityAbility({

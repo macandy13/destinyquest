@@ -75,6 +75,17 @@ export function createRollDamageAbility(config: {
 // Roll-based damage abilities
 
 createRollDamageAbility({
+    name: 'Unlucky for some',
+    description:
+        'For each 1 you roll you immediately lose 2 health, ignoring armour.',
+    triggerValues: [1],
+    damagePerTrigger: 2,
+    rollType: 'all',
+    rollsTarget: 'hero',
+    damageTarget: 'hero',
+});
+
+createRollDamageAbility({
     name: 'By hook',
     description:
         'For each 1 you roll you immediately lose 2 health, ignoring armour.',

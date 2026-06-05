@@ -45,6 +45,39 @@ registerAbility({
     }
 });
 
+registerAbility({
+    name: 'Blood n Guts',
+    type: 'special',
+    description:
+        'At the start of a combat round, roll a die - 1-2 reduce hero speed by 1 for 1 round, 3-6 reduce enemy speed by 1 for 1 round.',
+    reviewed: false,
+    onRoundStart: (state, { owner }) => {
+        const target = getOpponent(owner);
+        const roll = rollDie().value;
+        let logMsg = `Blood n Guts: Rolled ${roll}`;
+        switch (roll) {
+            case 1: case 2:
+                logMsg += '- -1sp * 1rd for hero';
+                state = appendEffect(state, target, {
+                    stats: { speed: -1 },
+                    source: 'Blood n Guts',
+                    target: 'hero',
+                    duration: 1,
+                });
+                break;
+            default:
+                logMsg += '- -1sp * 1rd for enemy';
+                state = appendEffect(state, target, {
+                    stats: { speed: -1 },
+                    source: 'Blood n Guts',
+                    target: 'enemy',
+                    duration: 1,
+                });
+        }
+        return addLogs(state, { message: logMsg });
+    }
+});
+
 // Soft spot
 // When winning, roll damage. If 1-2, can't deal damage this round.
 registerAbility({

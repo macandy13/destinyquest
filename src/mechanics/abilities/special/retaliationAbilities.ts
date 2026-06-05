@@ -47,6 +47,22 @@ export function createRetaliationAbility(config: {
 // Retaliation abilities
 
 createRetaliationAbility({
+    name: 'Celestial charge',
+    description:
+        'Each time you inflict health damage, ' +
+        'you take 2 damage in return. This ability ignores armour.',
+    damage: 2,
+    trigger: 'on-owner-damaged',
+});
+
+createRetaliationAbility({
+    name: 'Pin cushion',
+    description: 'Each time hero causes damage they take 1 damage ignoring armour.',
+    damage: 1,
+    trigger: 'on-owner-damaged',
+});
+
+createRetaliationAbility({
     name: 'Charged',
     description:
         'Each time you inflict health damage on the elemental, ' +

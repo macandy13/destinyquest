@@ -49,6 +49,27 @@ createStatCombatModifierAbility({
 });
 
 createStatCombatModifierAbility({
+    name: 'Benin\'s blessing',
+    description: 'Add 1 to the hero\'s speed, brawn and magic score.',
+    stats: { speed: 1, brawn: 1, magic: 1 },
+    target: 'hero',
+});
+
+createStatCombatModifierAbility({
+    name: 'Wrath of the witchfinder',
+    description: 'Add 2 to the hero\'s damage.',
+    stats: { damageModifier: 2 },
+    target: 'hero',
+});
+
+createStatCombatModifierAbility({
+    name: 'Motley crew',
+    description: 'Add 3 to the enemy\'s damage.',
+    stats: { damageModifier: 3 },
+    target: 'enemy',
+});
+
+createStatCombatModifierAbility({
     name: 'Holy Flame',
     description: 'Add 4 to the Architect\'s damage score.',
     stats: { damageModifier: 4 },
