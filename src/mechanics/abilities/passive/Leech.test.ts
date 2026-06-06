@@ -22,7 +22,9 @@ describe('Leech', () => {
         const updates = ability.onDamageDealt!(state, { owner: 'hero', target: 'enemy' }, 'Attack', 5);
 
         expect(updates?.hero?.stats.health).toBe(22);
-        expect(updates?.logs?.[0].message).toContain('Leech healed 2 health');
+        expect(updates?.logs?.[0].message).toContain(
+            'Leech healed 2 for Test Hero'
+        );
     });
 
     it('should not heal if no damage dealt', () => {

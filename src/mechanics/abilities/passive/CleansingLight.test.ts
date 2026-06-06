@@ -36,7 +36,9 @@ describe('Cleansing Light', () => {
         expect(result.hero).toBeDefined();
         expect(result.hero!.stats.health).toBe(22); // 20 + 2
         expect(result.logs).toBeDefined();
-        expect(result.logs![0].message).toContain('Cleansing Light healed 2 health');
+        expect(result.logs![0].message).toContain(
+            'Cleansing Light healed 2 for Test Hero'
+        );
     });
 
     it('should not heal beyond max health', () => {
@@ -48,7 +50,9 @@ describe('Cleansing Light', () => {
         const result = ability.onPassiveAbility!(state, { owner: 'hero' });
         expect(result.hero).toBeDefined();
         expect(result.hero!.stats.health).toBe(30); // Capped at 30
-        expect(result.logs![0].message).toContain('Cleansing Light healed 1 health');
+        expect(result.logs![0].message).toContain(
+            'Cleansing Light healed 1 for Test Hero'
+        );
     });
 
     it('should do nothing if health is full', () => {
