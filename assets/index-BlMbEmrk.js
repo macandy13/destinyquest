@@ -32598,7 +32598,7 @@ function healDamage(state, source, target, amount, message) {
     health: targetChar.stats.health + actualHealed
   });
   state = addLogs(state, {
-    message: message ?? `${source} healed ${actualHealed} health to ${targetChar.name}`,
+    message: message ?? `${source} healed ${actualHealed} for ${targetChar.name}`,
     type: getDamageType(target)
   });
   return state;
@@ -32756,6 +32756,10 @@ function getActiveEnemy(state) {
 function getCombatant(state, selector) {
   const type = typeof selector === "string" ? selector : selector.type;
   if (type === "hero") return state.hero;
+  if (type !== "enemy") {
+    const enemyByName = state.enemies.find((e) => e.name == type);
+    if (enemyByName) return enemyByName;
+  }
   const index = typeof selector === "object" ? selector.enemyIndex ?? 0 : 0;
   return state.enemies[index];
 }
@@ -35054,6 +35058,38 @@ registerAbility({
   }
 });
 registerAbility({
+  name: "Blood n Guts",
+  type: "special",
+  description: "At the start of a combat round, roll a die - 1-2 reduce hero speed by 1 for 1 round, 3-6 reduce enemy speed by 1 for 1 round.",
+  reviewed: false,
+  onRoundStart: (state, { owner }) => {
+    const target = getOpponent(owner);
+    const roll = rollDie().value;
+    let logMsg = `Blood n Guts: Rolled ${roll}`;
+    switch (roll) {
+      case 1:
+      case 2:
+        logMsg += "- -1sp * 1rd for hero";
+        state = appendEffect(state, target, {
+          stats: { speed: -1 },
+          source: "Blood n Guts",
+          target: "hero",
+          duration: 1
+        });
+        break;
+      default:
+        logMsg += "- -1sp * 1rd for enemy";
+        state = appendEffect(state, target, {
+          stats: { speed: -1 },
+          source: "Blood n Guts",
+          target: "enemy",
+          duration: 1
+        });
+    }
+    return addLogs(state, { message: logMsg });
+  }
+});
+registerAbility({
   name: "Soft spot",
   type: "special",
   description: "When you win a round, roll a die before damage. If you roll a 1 or 2, you cannot deal damage this round.",
@@ -35575,10 +35611,9 @@ function createHealingAbility(config) {
     icon: "💚",
     reviewed: true,
     onRoundStart: config.trigger === "round-start" ? (state, { owner }) => {
-      const combatant = getCombatant(state, owner);
-      if (config.stopAtZero && combatant.stats.health <= 0) {
-        return state;
-      }
+      const combatant = getCombatant(state, config.target ?? owner);
+      if (config.stopAtZero && combatant.stats.health <= 0) return state;
+      if (config.max && combatant.stats.health >= config.max) return state;
       state = healDamage(
         state,
         config.name,
@@ -35589,10 +35624,9 @@ function createHealingAbility(config) {
       return state;
     } : void 0,
     onPassiveAbility: config.trigger === "round-end" ? (state, { owner }) => {
-      const combatant = getCombatant(state, owner);
-      if (config.stopAtZero && combatant.stats.health <= 0) {
-        return state;
-      }
+      const combatant = getCombatant(state, config.target ?? owner);
+      if (config.stopAtZero && combatant.stats.health <= 0) return state;
+      if (config.max && combatant.stats.health >= config.max) return state;
       state = healDamage(
         state,
         config.name,
@@ -35623,6 +35657,21 @@ createHealingAbility({
   description: "At the end of the combat round, the Architect heals 4 health.",
   amount: 4,
   trigger: "round-end"
+});
+createHealingAbility({
+  name: "Bone mending",
+  description: "At the end of the combat round, the Warriors heals 4 health.",
+  amount: 4,
+  trigger: "round-end",
+  target: "Warriors",
+  max: 40
+});
+createHealingAbility({
+  name: "Dem bones",
+  description: "At the end of the combat round, Rap Unzal heals 2 health.",
+  amount: 2,
+  trigger: "round-end",
+  target: "enemy"
 });
 createHealingAbility({
   name: "Dark Runes",
@@ -35675,24 +35724,52 @@ createImmunityAbility({
   immunities: ["Piercing", "Impale", "Barbs", "Thorns"]
 });
 createImmunityAbility({
+  name: "Body of Air",
+  immunities: ["Bleed", "Venom", "Disease"]
+});
+createImmunityAbility({
+  name: "Body of Bone",
+  immunities: ["Bleed", "Venom"]
+});
+createImmunityAbility({
   name: "Body of Flame",
-  immunities: ["Sear", "Fire aura", "Bleed", "Burn", "Ignite"]
+  immunities: ["Bleed", "Burn", "Fire aura", "Ignite", "Sear"]
 });
 createImmunityAbility({
   name: "Body of Ice",
   immunities: ["Venom", "Disease", "Bleed"]
 });
 createImmunityAbility({
-  name: "Body of air",
-  immunities: ["Bleed", "Venom", "Disease"]
+  name: "Body of Ink",
+  immunities: ["Bleed", "Thorns", "Thorn Cage"]
 });
 createImmunityAbility({
-  name: "Body of bone",
-  immunities: ["Bleed", "Venom"]
+  name: "Body of Iron",
+  immunities: ["Venom", "Disease", "Bleed"]
 });
 createImmunityAbility({
-  name: "Body of rock",
-  immunities: ["Piercing", "Impale", "Bleed", "Venom", "Thorns", "Barbs", "Lightning"]
+  name: "Body of Metal",
+  immunities: ["Piercing", "Impale", "Barbs", "Thorns", "Bleed", "Venom", "Disease"]
+});
+createImmunityAbility({
+  name: "Body of Paper",
+  immunities: ["Bleed"]
+});
+createImmunityAbility({
+  name: "Body of Rock",
+  immunities: ["Bleed", "Barbs", "Disease", "Impale", "Lightning", "Piercing", "Venom", "Thorns", "Thorn Cage"]
+});
+createImmunityAbility({
+  name: "Ghost of a victory",
+  immunities: ["Cutpurse", "Pillage"]
+});
+createImmunityAbility({
+  name: "Enhanted rock",
+  immunities: ["Bleed", "Sear", "Thorns", "Thorn Cage", "Fire Aura"]
+});
+createImmunityAbility({
+  name: "Head case",
+  immunities: ["Bleed"]
 });
 createImmunityAbility({
   name: "Dragon hide",
@@ -35741,10 +35818,6 @@ createImmunityAbility({
 createImmunityAbility({
   name: "Iron-Mane",
   immunities: ["Piercing", "Impale"]
-});
-createImmunityAbility({
-  name: "Body of Metal",
-  immunities: ["Piercing", "Impale", "Barbs", "Thorns", "Bleed", "Venom", "Disease"]
 });
 createImmunityAbility({
   name: "Natural Immunity",
@@ -35808,8 +35881,9 @@ function createDoTAbility(config) {
     description: config.description,
     icon: config.icon ?? "☠️",
     reviewed: true,
-    onDamageDealt: (state, { target }, _source, damageDealt) => {
+    onDamageDealt: (state, context, _source, damageDealt) => {
       if (config.condition === "always") return state;
+      const target = config.target ?? context.target ?? getOpponent(context.owner);
       if (!target) return state;
       const conditionMet = config.condition === "on-hit" || config.condition === "on-damage" && damageDealt > 0;
       if (conditionMet && !hasEffect(state, target, config.name)) {
@@ -35824,15 +35898,16 @@ function createDoTAbility(config) {
       }
       return state;
     },
-    onPassiveAbility: (state, { owner }) => {
-      const opponent = getOpponent(owner);
-      const shouldTrigger = config.condition === "always" || hasEffect(state, opponent, config.name);
+    onPassiveAbility: (state, context) => {
+      const target = config.target ?? context.target ?? getOpponent(context.owner);
+      if (!target) return state;
+      const shouldTrigger = config.condition === "always" || hasEffect(state, target, config.name);
       if (shouldTrigger) {
         let damage = config.damage;
         let damageMsg = `${config.name} deals ${damage} damage`;
         const ignoreArmour = config.ignoreArmour !== false;
         if (!ignoreArmour) {
-          const targetChar = getCombatant(state, opponent);
+          const targetChar = getCombatant(state, target);
           const armour = targetChar.stats.armour;
           damage = Math.max(0, damage - armour);
           damageMsg += ` (reduced by armour)`;
@@ -35840,17 +35915,18 @@ function createDoTAbility(config) {
           damageMsg += ` (ignoring armour)`;
         }
         if (damage > 0) {
-          return dealDamage(state, config.name, opponent, damage, damageMsg);
+          return dealDamage(state, config.name, target, damage, damageMsg);
         }
       }
       return state;
     },
-    onCombatStart: (state, { owner }) => {
-      if (config.condition === "always" && !hasEffect(state, owner, config.name)) {
-        return appendEffect(state, owner, {
+    onCombatStart: (state, context) => {
+      const target = config.target ?? context.target ?? getOpponent(context.owner);
+      if (config.condition === "always" && !hasEffect(state, target, config.name)) {
+        return appendEffect(state, target, {
           stats: {},
           source: config.name,
-          target: owner,
+          target,
           duration: void 0,
           icon: config.icon ?? "☠️",
           description: config.description
@@ -35864,193 +35940,267 @@ createDoTAbility({
   name: "Black coils",
   description: "At the end of every combat round you automatically lose 2 health ignoring armour",
   damage: 2,
-  condition: "always"
+  condition: "always",
+  target: "hero"
 });
 createDoTAbility({
   name: "Black sigill",
   description: "At the end of each combat round, your hero suffers 1 damage. This ability ignores armour.",
   damage: 1,
-  condition: "always"
+  condition: "always",
+  target: "hero"
 });
 createDoTAbility({
   name: "Black venom",
   description: "After a successful attack causing damage, lose 2 health on every end of a round, ignoring armour.",
   damage: 2,
-  condition: "on-damage"
+  condition: "on-damage",
+  target: "hero"
 });
 createDoTAbility({
   name: "Blacke fire",
   description: "At the end of the combat round, your hero takes 2 damage from the flames that surround the demon. This ability ignores armour.",
   damage: 2,
-  condition: "always"
+  condition: "always",
+  target: "hero"
 });
 createDoTAbility({
   name: "Carrion Beetles",
   description: "At the end of the round, you take 2 health damage, ignoring armour.",
   damage: 2,
-  condition: "always"
+  condition: "always",
+  target: "hero"
 });
 createDoTAbility({
   name: "Carrion Crows",
   description: "At the start of each round, you take 4 health damage, ignoring armour.",
   damage: 4,
-  condition: "on-start-round"
+  condition: "on-start-round",
+  target: "hero"
 });
 createDoTAbility({
   name: "Deadly venom",
   description: "Once you have taken health damage, you lose 3 health at the end of each combat round.",
   damage: 3,
-  condition: "on-damage"
+  condition: "on-damage",
+  target: "hero"
 });
 createDoTAbility({
   name: "Disease",
   description: "Once you have taken health damage, you lose 2 health at the end of each combat round.",
   damage: 2,
-  condition: "on-damage"
+  condition: "on-damage",
+  target: "hero"
 });
 createDoTAbility({
   name: "Fiery aura",
   description: "At the end of each combat round, the hero takes 3 damage ignoring armour.",
   damage: 3,
-  condition: "always"
+  condition: "always",
+  target: "hero"
 });
 createDoTAbility({
   name: "Grave Chill",
   description: "At the end of each combat round, the hero takes 2 damage ignoring armour.",
   damage: 2,
-  condition: "always"
+  condition: "always",
+  target: "hero"
 });
 createDoTAbility({
   name: "Hellfire",
   description: "At the end of the combat round, your hero takes 2 damage from the flames that surround the demon. This ability ignores armour.",
   damage: 2,
-  condition: "always"
+  condition: "always",
+  target: "hero"
 });
 createDoTAbility({
   name: "Heat Exposure",
   description: "At the end of each combat round, you take 2 damage ignoring armour.",
   damage: 2,
-  condition: "always"
+  condition: "always",
+  target: "hero"
 });
 createDoTAbility({
   name: "Fire Sprite",
   description: "At the end of each combat round, you take 2 damage ignoring armour.",
   damage: 2,
-  condition: "always"
+  condition: "always",
+  target: "hero"
 });
 createDoTAbility({
   name: "Black Lightening",
   description: "At the end of each combat round, you take 4 damage ignoring armour.",
   damage: 4,
-  condition: "always"
+  condition: "always",
+  target: "hero"
 });
 createDoTAbility({
   name: "Black Poison",
   description: "Once you have taken health damage, at the end of every combat round you must automatically lose 2 health.",
   damage: 2,
-  condition: "on-damage"
+  condition: "on-damage",
+  target: "hero"
 });
 createDoTAbility({
   name: "Sucker Punch",
   description: "Once you have taken health damage, at the end of every combat round you must automatically lose 2 health ignoring armour.",
   damage: 2,
-  condition: "on-damage"
+  condition: "on-damage",
+  target: "hero"
 });
 createDoTAbility({
   name: "Wyvern Talons",
   description: "At the end of the round, you take 2 damage ignoring armour.",
   damage: 2,
-  condition: "always"
+  condition: "always",
+  target: "hero"
 });
 createDoTAbility({
   name: "Poison Needles",
   description: "At the end of every combat round, lose 2 health.",
   damage: 2,
-  condition: "always"
+  condition: "always",
+  target: "hero"
 });
 createDoTAbility({
   name: "Poisened arrow",
   description: "At the end of each combat round you lose 2 health.",
   damage: 2,
-  condition: "always"
+  condition: "always",
+  target: "hero"
 });
 createDoTAbility({
   name: "Snapping Beak",
   description: "At the end of every combat round, lose 2 health ignoring armour.",
   damage: 2,
-  condition: "always"
+  condition: "always",
+  target: "hero"
 });
 createDoTAbility({
   name: "Snappers",
   description: "At the end of every combat round, lose 2 health ignoring armour.",
   damage: 2,
-  condition: "always"
+  condition: "always",
+  target: "hero"
 });
 createDoTAbility({
   name: "Stone Golem",
   description: "At the end of the round, take 1 damage ignoring armour.",
   damage: 1,
-  condition: "always"
+  condition: "always",
+  target: "hero"
 });
 createDoTAbility({
   name: "Whirling Blades",
   description: "At the end of each combat round, you take 2 damage ignoring armour.",
   damage: 2,
-  condition: "always"
+  condition: "always",
+  target: "hero"
 });
 createDoTAbility({
   name: "Mark of Fury",
   description: "At the end of the combat round, the hero takes 3 damage ignoring armour.",
   damage: 3,
-  condition: "always"
+  condition: "always",
+  target: "hero"
 });
 createDoTAbility({
   name: "Giblets",
   description: "At the end of the combat round, the hero takes 3 damage ignoring armour.",
   damage: 3,
-  condition: "always"
+  condition: "always",
+  target: "hero"
 });
 createDoTAbility({
   name: "Stomping Statues",
   description: "At the end of the combat round, the statues deal 4 damage ignoring armour to the hero.",
   damage: 4,
-  condition: "always"
+  condition: "always",
+  target: "hero"
 });
 createDoTAbility({
   name: "Poison Nodes",
   description: "At the end of each combat round, the hero takes 2 damage ignoring armour.",
   damage: 2,
-  condition: "always"
+  condition: "always",
+  target: "hero"
 });
 createDoTAbility({
   name: "Flame Form",
   description: "At the end of the combat round, the hero loses 4 health ignoring armour.",
   damage: 4,
-  condition: "always"
+  condition: "always",
+  target: "hero"
 });
 createDoTAbility({
   name: "Molten armour",
   description: "At the end of the round the hero takes 4 damage ignoring armour.",
   damage: 4,
-  condition: "always"
+  condition: "always",
+  target: "hero"
 });
 createDoTAbility({
   name: "Neural Blast",
   description: "At the end of the combat round, the hero takes 10 damage ignoring armour.",
   damage: 10,
-  condition: "always"
+  condition: "always",
+  target: "hero"
 });
 createDoTAbility({
   name: "Tight Spot",
   description: "At the end of the round, take 5 damage ignoring armour.",
   damage: 5,
-  condition: "always"
+  condition: "always",
+  target: "hero"
 });
 createDoTAbility({
   name: "Oozing Tentacles",
   description: "At the end of the round, you take 2 damage ignoring armour from every Tentacle.",
   damage: 2,
-  condition: "always"
+  condition: "always",
+  target: "hero"
+});
+createDoTAbility({
+  name: "Fury of the swarm",
+  description: "At the end of the round, you take 2 damage ignoring armour.",
+  damage: 2,
+  condition: "always",
+  target: "hero"
+});
+createDoTAbility({
+  name: "Whirling chains",
+  description: "At the end of the round, you take 4 damage ignoring armour.",
+  damage: 4,
+  condition: "always",
+  target: "hero"
+});
+createDoTAbility({
+  name: "Lethal venom",
+  description: "Once you have taken health damage, you lose 6 health at the end of each combat round.",
+  damage: 6,
+  condition: "on-damage",
+  target: "hero"
+});
+createDoTAbility({
+  name: "Deadly thorns",
+  description: "Hero loses 3 health at the end of the round.",
+  damage: 3,
+  condition: "always",
+  target: "hero"
+});
+createDoTAbility({
+  name: "Searing skull",
+  description: "Hero loses 2 health at the end of the round.",
+  damage: 2,
+  condition: "always",
+  target: "hero"
+});
+createDoTAbility({
+  name: "Earth golems",
+  description: "The enemy loses 2 health at the end of each round",
+  damage: 2,
+  condition: "always",
+  target: "enemy"
 });
 function createRetaliationAbility(config) {
   registerAbility({
@@ -36084,6 +36234,18 @@ function createRetaliationAbility(config) {
   });
 }
 createRetaliationAbility({
+  name: "Celestial charge",
+  description: "Each time you inflict health damage, you take 2 damage in return. This ability ignores armour.",
+  damage: 2,
+  trigger: "on-owner-damaged"
+});
+createRetaliationAbility({
+  name: "Pin cushion",
+  description: "Each time hero causes damage they take 1 damage ignoring armour.",
+  damage: 1,
+  trigger: "on-owner-damaged"
+});
+createRetaliationAbility({
   name: "Charged",
   description: "Each time you inflict health damage on the elemental, you take 2 damage in return. This ability ignores armour.",
   damage: 2,
@@ -36101,7 +36263,7 @@ createRetaliationAbility({
   damage: 1,
   trigger: "on-owner-damaged"
 });
-function createRollCheckAbility(config) {
+function createStartOfRoundRollAbility(config) {
   registerAbility({
     name: config.name,
     type: "special",
@@ -36141,14 +36303,14 @@ function createRollCheckAbility(config) {
     }
   });
 }
-createRollCheckAbility({
+createStartOfRoundRollAbility({
   name: "Mud Pie",
   description: "At the start of each round, roll 2 dice. If the result is higher than your speed, you take 2 damage ignoring armour.",
   diceCount: 2,
   triggerCondition: { type: "vs-speed" },
   damage: 2
 });
-createRollCheckAbility({
+createStartOfRoundRollAbility({
   name: "Vortex of fire",
   description: "At the start of each round, roll 2 dice. If the result is higher than your speed, you take 4 damage ignoring armour.",
   diceCount: 2,
@@ -36156,7 +36318,7 @@ createRollCheckAbility({
   damage: 4,
   icon: "🔥"
 });
-createRollCheckAbility({
+createStartOfRoundRollAbility({
   name: "Clobbering Time",
   description: "At the start of each round, roll 4 dice. If the result is higher than your speed, you take 15 damage minus half your armour.",
   diceCount: 4,
@@ -36165,7 +36327,7 @@ createRollCheckAbility({
   damageFormula: (armour) => Math.max(0, 15 - Math.floor(armour / 2)),
   icon: "👊"
 });
-createRollCheckAbility({
+createStartOfRoundRollAbility({
   name: "Pincer Movement",
   description: "At the start of each round, roll 1 die. If you roll a 1, you lose 2 health ignoring armour.",
   diceCount: 1,
@@ -36173,7 +36335,7 @@ createRollCheckAbility({
   damage: 2,
   icon: "🦂"
 });
-createRollCheckAbility({
+createStartOfRoundRollAbility({
   name: "Shield Slam",
   description: "At the start of each round, roll 1 die. If you roll a 1, you take 6 damage ignoring armour. Rerolls not allowed.",
   diceCount: 1,
@@ -36181,7 +36343,7 @@ createRollCheckAbility({
   damage: 6,
   icon: "🛡️"
 });
-createRollCheckAbility({
+createStartOfRoundRollAbility({
   name: "Tangled roots",
   description: "At the start of each round, roll 1 die. If you roll a 1 or 2, you lose 5 health ignoring armour.",
   diceCount: 1,
@@ -36189,13 +36351,91 @@ createRollCheckAbility({
   damage: 5,
   icon: "🌿"
 });
-createRollCheckAbility({
+createStartOfRoundRollAbility({
   name: "Bolt from the Blue",
   description: "At the end of the combat round, roll a die. If the result is 1, 2, or 3, take 5 damage ignoring armour.",
   diceCount: 1,
   triggerCondition: { type: "fixed", values: [1, 2, 3] },
   damage: 5,
   icon: "⚡"
+});
+createStartOfRoundRollAbility({
+  name: "Bombardement",
+  description: "At the start of a round, roll a die. 1-3: -2 health (hero)",
+  diceCount: 1,
+  triggerCondition: { type: "fixed", values: [1, 2, 3] },
+  damage: 2,
+  icon: "⚡"
+});
+function createEndOfRoundRollAbility(config) {
+  registerAbility({
+    name: config.name,
+    type: "special",
+    description: config.description,
+    icon: config.icon ?? "🎲",
+    reviewed: false,
+    onPassiveAbility: (state, { owner }) => {
+      let total = 0;
+      let logMsg = "";
+      switch (config.type) {
+        case "dice-roll": {
+          const rolls = rollDice(config.diceCount);
+          const total2 = sumDice(rolls);
+          const rollStr = formatDice(rolls);
+          logMsg = `${config.name}: Rolled ${rollStr}=${total2}`;
+          break;
+        }
+        case "speed-challenge": {
+          const hero = getCombatant(state, "hero");
+          const rolls = rollDice(2);
+          const total2 = sumDice(rolls) + hero.stats.speed;
+          const rollStr = formatDice(rolls);
+          logMsg = `${config.name}: Rolled ${hero.stats.speed} ${rollStr}=${total2}`;
+          break;
+        }
+      }
+      if (logMsg) addLogs(state, { message: logMsg });
+      for (const [trigger, effect] of config.effects.entries()) {
+        if (trigger(total)) {
+          return effect(state, config.name, owner);
+        }
+      }
+      addLogs(state, { message: `${config.name} - no effect` });
+      return state;
+    }
+  });
+}
+function between(min, max) {
+  return (total) => total >= min && total <= max;
+}
+createEndOfRoundRollAbility({
+  name: "Endless assault",
+  description: "At the end of the round, roll a die. 1-2: +4 health (enemy)",
+  type: "dice-roll",
+  diceCount: 1,
+  effects: /* @__PURE__ */ new Map([
+    [between(1, 2), (state, source) => healDamage(state, source, "enemy", 4)]
+  ])
+});
+createEndOfRoundRollAbility({
+  name: "Pest control",
+  description: "At the end of each combat round, roll a die - 1-2: Add +2 to the ghoul effect. Ghoul effect: Hero takes 0 damage at the end of each combat round",
+  type: "dice-roll",
+  diceCount: 1,
+  effects: /* @__PURE__ */ new Map([
+    [between(1, 2), (state) => {
+      return state;
+    }]
+  ])
+});
+createEndOfRoundRollAbility({
+  name: "Pest control",
+  description: "At the end of each combat round, roll a die - 1-2: Add +2 to the ghoul effect. Ghoul effect: Hero takes 0 damage at the end of each combat round",
+  type: "speed-challenge",
+  diceCount: 1,
+  effects: /* @__PURE__ */ new Map([
+    [between(1, 12), (state, source) => dealDamage(state, source, "hero", 5)]
+  ])
 });
 function createRollDamageAbility(config) {
   registerAbility({
@@ -36241,6 +36481,15 @@ function createRollDamageAbility(config) {
     } : void 0
   });
 }
+createRollDamageAbility({
+  name: "Unlucky for some",
+  description: "For each 1 you roll you immediately lose 2 health, ignoring armour.",
+  triggerValues: [1],
+  damagePerTrigger: 2,
+  rollType: "all",
+  rollsTarget: "hero",
+  damageTarget: "hero"
+});
 createRollDamageAbility({
   name: "By hook",
   description: "For each 1 you roll you immediately lose 2 health, ignoring armour.",
@@ -36345,6 +36594,24 @@ createStatCombatModifierAbility({
   description: "You may add 2 to your damage score in this combat.",
   stats: { damageModifier: 2 },
   target: "hero"
+});
+createStatCombatModifierAbility({
+  name: "Benin's blessing",
+  description: "Add 1 to the hero's speed, brawn and magic score.",
+  stats: { speed: 1, brawn: 1, magic: 1 },
+  target: "hero"
+});
+createStatCombatModifierAbility({
+  name: "Wrath of the witchfinder",
+  description: "Add 2 to the hero's damage.",
+  stats: { damageModifier: 2 },
+  target: "hero"
+});
+createStatCombatModifierAbility({
+  name: "Motley crew",
+  description: "Add 3 to the enemy's damage.",
+  stats: { damageModifier: 3 },
+  target: "enemy"
 });
 createStatCombatModifierAbility({
   name: "Holy Flame",
@@ -36608,6 +36875,158 @@ registerAbility(createNoopAbility({
 registerAbility(createNoopAbility({
   name: "Dismantle",
   description: "If you win a combat round, you can choose to skip the damage roll and lower the enemies armour by 4 for the rest of the combat."
+}));
+registerAbility(createNoopAbility({
+  name: "Sinister saps",
+  description: "At the end of the round, add 1 sap. Each sap deals 1 damage to the hero, ignoring armour."
+}));
+registerAbility(createNoopAbility({
+  name: "Blast the bile",
+  description: "When hero wins round, instead of rolling for damage, destroy all saps."
+}));
+registerAbility(createNoopAbility({
+  name: "Power pruning",
+  description: "If hero wins round, instead of rolling for damage, -4 armour (enemy)."
+}));
+registerAbility(createNoopAbility({
+  name: "Bullet storm",
+  description: "If the enemy wins a round, roll a die. 4-6 - ant does not deal damage."
+}));
+registerAbility(createNoopAbility({
+  name: "Ghost of a victory",
+  description: "Immune to Cutpurse, Pillage."
+}));
+registerAbility(createNoopAbility({
+  name: "Look out for larvae",
+  description: "At the start of the combat round, roll a die. 1-3 adds one larvae. Each larvae deals 1 damage ignoring armour at the end of the round."
+}));
+registerAbility(createNoopAbility({
+  name: "Bug blaster",
+  description: "Use borehole charge -  -10 health."
+}));
+registerAbility(createNoopAbility({
+  name: "Harm or heal",
+  description: "If enemy wins a round, roll a die. 1-2: +2 health (enemy, max 18), 3-6: roll for damage."
+}));
+registerAbility(createNoopAbility({
+  name: "Blood suckers",
+  description: "When enemy wins round and causes damage to the enemy, +1 health (enemy, max 30)."
+}));
+registerAbility(createNoopAbility({
+  name: "Back to black",
+  description: "+1 brawn at the end of round (max 8)."
+}));
+registerAbility(createNoopAbility({
+  name: "Look into my eyes",
+  description: "When the hero rolls the 8th 1 die (after rerolling) and they don't have the Golden mirror, the hero loses; if the enemy rolls the 8th 1 die and the hero has the Golden mirror, the hero wins."
+}));
+registerAbility(createNoopAbility({
+  name: "Stone skin",
+  description: "At the start of the 5th round, raise armour to 28."
+}));
+registerAbility(createNoopAbility({
+  name: "Chip away",
+  description: "After the start of the 5th round, instead of rolling for damage the hero can reduce armour of the enemy by 4, taking 4 damage ignoring armour."
+}));
+registerAbility(createNoopAbility({
+  name: "Titan stone",
+  description: "At the start of round 5, enemy is immune to all passive damage."
+}));
+registerAbility(createNoopAbility({
+  name: "Feeding time",
+  description: "Every 3 rounds, if Roots are still alive hero receives 15 damage. Roots restore full health (even when defeated)."
+}));
+registerAbility(createNoopAbility({
+  name: "Undead",
+  description: "You can use ashes, holy water, holy protector."
+}));
+registerAbility(createNoopAbility({
+  name: "Grappling hands",
+  description: "If enemy wins a round and rolls a 6 for damage - hero loses an equipment item or backpack item."
+}));
+registerAbility(createNoopAbility({
+  name: "Blast of",
+  description: "The enemy wins after round 6."
+}));
+registerAbility(createNoopAbility({
+  name: "Cowardly",
+  description: "If First mate is defeated, Hero wins the combat."
+}));
+registerAbility(createNoopAbility({
+  name: "Shock treatment",
+  description: "If any character rolls a double - lose 4 health ignoring armour."
+}));
+registerAbility(createNoopAbility({
+  name: "In a spin",
+  description: "If hero wins a combat round, roll a die - 1-2 hero does not roll for damage."
+}));
+registerAbility(createNoopAbility({
+  name: "Ranged foe",
+  description: "Hero cannot use speed or combat abilities."
+}));
+registerAbility(createNoopAbility({
+  name: "Back from dead",
+  description: "When enemy is defeated, roll a die - 1-2 enemy gains 6 health. Can only be used once per combat."
+}));
+registerAbility(createNoopAbility({
+  name: "Backdraft",
+  description: "When hero scores damage, take 3 damage ignoring armour."
+}));
+registerAbility(createNoopAbility({
+  name: "Enraged",
+  description: "At the start of round 5 - enemy gains +1 speed and +1 brawn."
+}));
+registerAbility(createNoopAbility({
+  name: "Frost fire",
+  description: "When hero receives damage, lose 1 health at the end of each round."
+}));
+registerAbility(createNoopAbility({
+  name: "Corpse dance",
+  description: "If Gairn's health is reduced to 25 or less, Gairn removes all passive effects and hides."
+}));
+registerAbility(createNoopAbility({
+  name: "Army",
+  description: "Skeletons will only be enemies when Gairn is hidden."
+}));
+registerAbility(createNoopAbility({
+  name: "Undead minions",
+  description: "You can use holy water, holy protector against these minions."
+}));
+registerAbility(createNoopAbility({
+  name: "Stone blood",
+  description: "If enemy rolls 4-6 for damage - armour of the enemy is raised by 1 up to 6."
+}));
+registerAbility(createNoopAbility({
+  name: "Divine fury",
+  description: "Hero's damage is increased by 3."
+}));
+registerAbility(createNoopAbility({
+  name: "Thousand fists",
+  description: "Instead of rolling for damage, roll 2 (then 3, 4, 5 in consecuitve round) damage dice ignoring armor. Can only be triggered once."
+}));
+registerAbility(createNoopAbility({
+  name: "Slash and burn",
+  description: "Roll 3 damage dice and take the highest result."
+}));
+registerAbility(createNoopAbility({
+  name: "Ashes to ashes",
+  description: "When hero rolls double for speed, they lose the combat round."
+}));
+registerAbility(createNoopAbility({
+  name: "Unstoppable",
+  description: "If hero is alive at the end of round 5, the enemy is defeated."
+}));
+registerAbility(createNoopAbility({
+  name: "All pile on",
+  description: "No special abilities or backpack items can be used in this combat."
+}));
+registerAbility(createNoopAbility({
+  name: "Furious roar",
+  description: "Instead of rolling for damage, increase speed, brawn and magic by 1 for 3 rounds."
+}));
+registerAbility(createNoopAbility({
+  name: "Holy healer",
+  description: "Restore full health when hero is <=8. Only use once per combat."
 }));
 registerAbility({
   name: "Trample",
@@ -39177,4 +39596,4 @@ function App() {
 client.createRoot(document.getElementById("root")).render(
   /* @__PURE__ */ jsxRuntimeExports.jsx(React.StrictMode, { children: /* @__PURE__ */ jsxRuntimeExports.jsx(App, {}) })
 );
-//# sourceMappingURL=index-BxNB9FIa.js.map
+//# sourceMappingURL=index-BlMbEmrk.js.map
