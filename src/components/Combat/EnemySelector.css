@@ -61,14 +61,6 @@
     gap: var(--spacing-md);
 }
 
-/* Unified offensive stat row styling */
-.offensive-stat-row {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: var(--spacing-sm);
-}
-
 /* Clickable stat toggle label */
 .clickable-toggle {
     cursor: pointer;

@@ -326,7 +326,7 @@ const EnemySelector: React.FC<EnemySelectorProps> = ({
                             />
                         </div>
 
-                        <div className="stat-row offensive-stat-row">
+                        <div className="stat-row">
                             <span
                                 className="stat-label clickable-toggle"
                                 onClick={() =>
