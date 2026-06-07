@@ -1,184 +1,187 @@
-import { CharacterType } from "../../../types/character";
-import { appendEffect } from "../../../types/combatState";
-import { Stats, getStatIcon } from "../../../types/stats";
-import { registerAbility } from "../../abilityRegistry";
+import {
+    defineAbility,
+    onCombatStart,
+    onRoundEnd,
+    always,
+    modifyStat,
+} from '../builders';
 
-/**
- * Creates a simple stat modifier ability (e.g., +2 Damage).
- */
-function createStatCombatModifierAbility(config: {
-    name: string;
-    description: string;
-    stats: Partial<Stats>;
-    target?: CharacterType;
-    icon?: string;
-}) {
-    const skillIcons = Object.keys(config.stats).map(name => getStatIcon(name as string));
-    const icon = config.icon ?? skillIcons.length > 0 ? skillIcons[0] : getStatIcon('enemy');
-    registerAbility({
-        name: config.name,
-        type: 'modifier',
-        description: config.description,
-        icon: icon,
-        onCombatStart(state, { owner }) {
-            state = appendEffect(state, config.target ?? owner, {
-                stats: config.stats,
-                source: config.name,
-                target: owner,
-                duration: undefined,
-                icon: icon,
-            });
-            return state;
-        },
-    });
-}
+// ---------------------------------------------------------------------------
+// Stat modifier abilities
+//
+// Applied once at combat start for the entire fight duration.
+// ---------------------------------------------------------------------------
 
-// Simple combat modifiers (Speed/Damage)
-createStatCombatModifierAbility({
-    name: 'Avian\'s aid', // "Avian's aid"
+defineAbility({
+    name: "Avian's aid",
     description: 'Add 2 to your damage score for the entire combat.',
-    stats: { damageModifier: 2 },
-    target: 'hero',
+    trigger: onCombatStart(always()),
+    effect: modifyStat({ damageModifier: 2 }, 'hero'),
+    type: 'modifier',
 });
 
-createStatCombatModifierAbility({
+defineAbility({
     name: 'Holy Water',
     description: 'You may add 2 to your damage score in this combat.',
-    stats: { damageModifier: 2 },
-    target: 'hero',
+    trigger: onCombatStart(always()),
+    effect: modifyStat({ damageModifier: 2 }, 'hero'),
+    type: 'modifier',
 });
 
-createStatCombatModifierAbility({
-    name: 'Benin\'s blessing',
-    description: 'Add 1 to the hero\'s speed, brawn and magic score.',
-    stats: { speed: 1, brawn: 1, magic: 1 },
-    target: 'hero',
+defineAbility({
+    name: "Benin's blessing",
+    description: "Add 1 to the hero's speed, brawn and magic score.",
+    trigger: onCombatStart(always()),
+    effect: modifyStat({ speed: 1, brawn: 1, magic: 1 }, 'hero'),
+    type: 'modifier',
 });
 
-createStatCombatModifierAbility({
+defineAbility({
     name: 'Wrath of the witchfinder',
-    description: 'Add 2 to the hero\'s damage.',
-    stats: { damageModifier: 2 },
-    target: 'hero',
+    description: "Add 2 to the hero's damage.",
+    trigger: onCombatStart(always()),
+    effect: modifyStat({ damageModifier: 2 }, 'hero'),
+    type: 'modifier',
 });
 
-createStatCombatModifierAbility({
+defineAbility({
     name: 'Motley crew',
-    description: 'Add 3 to the enemy\'s damage.',
-    stats: { damageModifier: 3 },
-    target: 'enemy',
+    description: "Add 3 to the enemy's damage.",
+    trigger: onCombatStart(always()),
+    effect: modifyStat({ damageModifier: 3 }, 'enemy'),
+    type: 'modifier',
 });
 
-createStatCombatModifierAbility({
+defineAbility({
     name: 'Holy Flame',
-    description: 'Add 4 to the Architect\'s damage score.',
-    stats: { damageModifier: 4 },
-    target: 'enemy',
+    description: "Add 4 to the Architect's damage score.",
+    trigger: onCombatStart(always()),
+    effect: modifyStat({ damageModifier: 4 }, 'enemy'),
+    type: 'modifier',
 });
 
-createStatCombatModifierAbility({
+defineAbility({
     name: 'Team Effort',
-    description: 'The hero adds 2 to their damage score, and 2 to their armour.',
-    stats: { damageModifier: 2, armour: 2 },
+    description:
+        'The hero adds 2 to their damage score, and 2 to their armour.',
+    trigger: onCombatStart(always()),
+    effect: modifyStat({ damageModifier: 2, armour: 2 }, 'owner'),
+    type: 'modifier',
 });
 
-createStatCombatModifierAbility({
+defineAbility({
     name: 'Power of Shadow',
     description: 'Your brawn and magic are raised by 5.',
-    stats: { brawn: 5, magic: 5 },
-    target: 'hero',
+    trigger: onCombatStart(always()),
+    effect: modifyStat({ brawn: 5, magic: 5 }, 'hero'),
+    type: 'modifier',
 });
 
-createStatCombatModifierAbility({
+defineAbility({
     name: 'Holy Aura',
     description: 'The hero adds 2 to their brawn and magic scores.',
-    stats: { brawn: 2, magic: 2 },
-    target: 'hero',
+    trigger: onCombatStart(always()),
+    effect: modifyStat({ brawn: 2, magic: 2 }, 'hero'),
+    type: 'modifier',
 });
 
-createStatCombatModifierAbility({
-    name: 'Caaleb\'s Shield',
-    description: 'The hero\'s armour is increased by 2.',
-    stats: { armour: 2 },
-    target: 'hero',
+defineAbility({
+    name: "Caaleb's Shield",
+    description: "The hero's armour is increased by 2.",
+    trigger: onCombatStart(always()),
+    effect: modifyStat({ armour: 2 }, 'hero'),
+    type: 'modifier',
 });
 
-createStatCombatModifierAbility({
+defineAbility({
     name: 'Fatigue',
-    description: 'The hero reduces their brawn and magic by 2 for the combat.',
-    stats: { brawn: -2, magic: -2 },
-    target: 'hero',
+    description:
+        'The hero reduces their brawn and magic by 2 for the combat.',
+    trigger: onCombatStart(always()),
+    effect: modifyStat({ brawn: -2, magic: -2 }, 'hero'),
+    type: 'modifier',
 });
 
-createStatCombatModifierAbility({
+defineAbility({
     name: 'Thorn Spines',
     description: 'Reduce hero speed by 1 for the entire combat.',
-    stats: { speed: -1 },
-    target: 'hero',
+    trigger: onCombatStart(always()),
+    effect: modifyStat({ speed: -1 }, 'hero'),
+    type: 'modifier',
 });
 
-createStatCombatModifierAbility({
+defineAbility({
     name: 'Wing buffet',
     description: 'You must reduce your speed by 1 for the entire combat.',
-    stats: { speed: -1 },
-    target: 'hero',
+    trigger: onCombatStart(always()),
+    effect: modifyStat({ speed: -1 }, 'hero'),
+    type: 'modifier',
 });
 
-createStatCombatModifierAbility({
+defineAbility({
     name: 'Dread',
-    description: 'Causes Fear, reducing brawn and magic by 1 for the entire combat.',
-    stats: { brawn: -1, magic: -1 },
-    target: 'hero',
+    description:
+        'Causes Fear, reducing brawn and magic by 1 for the entire combat.',
+    trigger: onCombatStart(always()),
+    effect: modifyStat({ brawn: -1, magic: -1 }, 'hero'),
+    type: 'modifier',
 });
 
-createStatCombatModifierAbility({
+defineAbility({
     name: 'Mighty blows',
     description: 'Voldring rolls 2 damage dice.',
-    stats: { damageDice: 1 },
-    target: 'enemy',
+    trigger: onCombatStart(always()),
+    effect: modifyStat({ damageDice: 1 }, 'enemy'),
+    type: 'modifier',
 });
 
-createStatCombatModifierAbility({
+defineAbility({
     name: 'Double Danger',
     description: 'The enemy rolls 2 damage dice.',
-    stats: { damageDice: 1 },
-    target: 'enemy',
+    trigger: onCombatStart(always()),
+    effect: modifyStat({ damageDice: 1 }, 'enemy'),
+    type: 'modifier',
 });
 
-createStatCombatModifierAbility({
-    name: 'Cat\'s speed',
-    description:
-        'Shara Khana rolls 3 dice to determine her attack speed. ' +
-        'Your hero special abilities can be used to reduce this number.',
-    stats: { speedDice: 1 },
-    target: 'enemy',
-});
 
-createStatCombatModifierAbility({
+
+defineAbility({
     name: 'Piercing Claws',
-    description: 'The ghouls\' attacks ignore armour.',
-    stats: { armour: -100 },
-    target: 'hero',
+    description: "The ghouls' attacks ignore armour.",
+    trigger: onCombatStart(always()),
+    effect: modifyStat({ armour: -100 }, 'hero'),
+    type: 'modifier',
 });
 
-createStatCombatModifierAbility({
+defineAbility({
     name: 'Stingers',
     description: 'Attacks ignore armour.',
-    stats: { armour: -100 },
-    target: 'hero',
+    trigger: onCombatStart(always()),
+    effect: modifyStat({ armour: -100 }, 'hero'),
+    type: 'modifier',
 });
 
-createStatCombatModifierAbility({
+defineAbility({
     name: 'Dervish',
     description: 'Attacks ignore armour.',
-    stats: { armour: -100 },
-    target: 'hero',
+    trigger: onCombatStart(always()),
+    effect: modifyStat({ armour: -100 }, 'hero'),
+    type: 'modifier',
 });
 
-createStatCombatModifierAbility({
+defineAbility({
     name: 'Crazy hal',
     description:
         'When you roll for damage, Crazy hal adds 1 extra damage score.',
-    stats: { damageModifier: 1 },
-    target: 'enemy',
+    trigger: onCombatStart(always()),
+    effect: modifyStat({ damageModifier: 1 }, 'enemy'),
+    type: 'modifier',
+});
+
+defineAbility({
+    name: 'Fed from fear',
+    description: "At the end of each combat round, the owner's armour is increased by 1.",
+    trigger: onRoundEnd(always()),
+    effect: modifyStat({ armour: 1 }, 'owner'),
+    type: 'modifier',
 });

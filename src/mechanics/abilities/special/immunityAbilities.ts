@@ -1,178 +1,121 @@
-import { registerAbility, toCanonicalName } from '../../abilityRegistry';
-import { healDamage, addLogs } from '../../../types/combatState';
+import {
+    defineAbility,
+    fromSource,
+    onDamageTaken,
+    cancelDamage,
+} from '../builders';
 
-/**
- * Creates an immunity ability.
- * TODO: This only reverts damage, but it also needs to avoid adding effects
- */
-export function createImmunityAbility(config: {
-    name: string;
-    immunities: string[];
-    description?: string;
-}) {
-    const desc = config.description ||
-        `Immune to ${config.immunities.join(', ')}.`;
-    const immunities = config.immunities.map(i => toCanonicalName(i));
-    registerAbility({
-        name: config.name,
-        type: 'passive',
+// ---------------------------------------------------------------------------
+// Immunity abilities
+//
+// Each ability cancels (reverses) damage from specific named sources.
+// The fromSource() condition matches against the canonical (lowercased)
+// name of the ability or attack that dealt the damage.
+//
+// TODO: Immunity currently only reverses damage after it is applied; it
+// does not yet prevent effect markers from being set beforehand.
+// ---------------------------------------------------------------------------
+
+function immune(
+    name: string,
+    immunities: string[],
+    description?: string,
+): void {
+    const desc = description ??
+        `Immune to ${immunities.join(', ')}.`;
+    defineAbility({
+        name,
         description: desc,
+        trigger: onDamageTaken(fromSource(immunities)),
+        effect: cancelDamage(),
         icon: '🛡️',
-        reviewed: true,
-        onDamageDealt: (state, { owner, target }, source, damageDealt) => {
-            if (!target || owner !== target) return state;
-            if (immunities.includes(source)) {
-                state = healDamage(state, config.name, target, damageDealt, 'Immune');
-                state = addLogs(state, {
-                    message: `${target} is immune to ${source}.`,
-                });
-                return state;
-            }
-            return state;
-        }
+        type: 'passive',
     });
 }
 
-// Immunity abilities
+// ---------------------------------------------------------------------------
 
-createImmunityAbility({
-    name: 'Blazing armour',
-    immunities: ['Piercing', 'Sear', 'Impale', 'Bleed', 'Burn', 'Ignite']
-});
+immune('Blazing armour', [
+    'Piercing', 'Sear', 'Impale', 'Bleed', 'Burn', 'Ignite',
+]);
 
-createImmunityAbility({
-    name: 'Bloated body',
-    immunities: ['Piercing', 'Impale', 'Barbs', 'Thorns']
-});
+immune('Bloated body', [
+    'Piercing', 'Impale', 'Barbs', 'Thorns',
+]);
 
-createImmunityAbility({
-    name: 'Body of Air',
-    immunities: ['Bleed', 'Venom', 'Disease']
-});
+immune('Body of Air', ['Bleed', 'Venom', 'Disease']);
 
-createImmunityAbility({
-    name: 'Body of Bone',
-    immunities: ['Bleed', 'Venom']
-});
+immune('Body of Bone', ['Bleed', 'Venom']);
 
-createImmunityAbility({
-    name: 'Body of Flame',
-    immunities: ['Bleed', 'Burn', 'Fire aura', 'Ignite', 'Sear']
-});
+immune('Body of Flame', [
+    'Bleed', 'Burn', 'Fire aura', 'Ignite', 'Sear',
+]);
 
-createImmunityAbility({
-    name: 'Body of Ice',
-    immunities: ['Venom', 'Disease', 'Bleed']
-});
+immune('Body of Ice', ['Venom', 'Disease', 'Bleed']);
 
-createImmunityAbility({
-    name: 'Body of Ink',
-    immunities: ['Bleed', 'Thorns', 'Thorn Cage'],
-});
+immune('Body of Ink', ['Bleed', 'Thorns', 'Thorn Cage']);
 
-createImmunityAbility({
-    name: 'Body of Iron',
-    immunities: ['Venom', 'Disease', 'Bleed']
-});
+immune('Body of Iron', ['Venom', 'Disease', 'Bleed']);
 
-createImmunityAbility({
-    name: 'Body of Metal',
-    immunities: ['Piercing', 'Impale', 'Barbs', 'Thorns', 'Bleed', 'Venom', 'Disease']
-});
+immune('Body of Metal', [
+    'Piercing', 'Impale', 'Barbs', 'Thorns',
+    'Bleed', 'Venom', 'Disease',
+]);
 
-createImmunityAbility({
-    name: 'Body of Paper',
-    immunities: ['Bleed'],
-});
+immune('Body of Paper', ['Bleed']);
 
-createImmunityAbility({
-    name: 'Body of Rock',
-    immunities: ['Bleed', 'Barbs', 'Disease', 'Impale', 'Lightning', 'Piercing', 'Venom', 'Thorns', 'Thorn Cage']
-});
+immune('Body of Rock', [
+    'Bleed', 'Barbs', 'Disease', 'Impale', 'Lightning',
+    'Piercing', 'Venom', 'Thorns', 'Thorn Cage',
+]);
 
-createImmunityAbility({
-    name: 'Ghost of a victory',
-    immunities: ['Cutpurse', 'Pillage'],
-});
+immune('Ghost of a victory', ['Cutpurse', 'Pillage']);
 
-createImmunityAbility({
-    name: 'Enhanted rock',
-    immunities: ['Bleed', 'Sear', 'Thorns', 'Thorn Cage', 'Fire Aura'],
-});
+immune('Enhanted rock', [
+    'Bleed', 'Sear', 'Thorns', 'Thorn Cage', 'Fire Aura',
+]);
 
-createImmunityAbility({
-    name: 'Head case',
-    immunities: ['Bleed'],
-});
+immune('Head case', ['Bleed']);
 
-createImmunityAbility({
-    name: 'Dragon hide',
-    immunities: ['Piercing', 'Impale', 'Thorns', 'Barbs']
-});
+immune('Dragon hide', ['Piercing', 'Impale', 'Thorns', 'Barbs']);
 
-createImmunityAbility({
-    name: 'Got ma eyes an yer',
-    immunities: ['Sidestep', 'Evade', 'Vanish']
-});
+immune('Got ma eyes an yer', ['Sidestep', 'Evade', 'Vanish']);
 
-createImmunityAbility({
-    name: 'Heightened Magic',
-    immunities: ['Sidestep', 'Evade', 'Vanish']
-});
+immune('Heightened Magic', ['Sidestep', 'Evade', 'Vanish']);
 
-createImmunityAbility({
-    name: 'Iron Clad',
-    immunities: ['Piercing', 'Impale', 'Bleed', 'Disease', 'Venom']
-});
+immune('Iron Clad', [
+    'Piercing', 'Impale', 'Bleed', 'Disease', 'Venom',
+]);
 
-createImmunityAbility({
-    name: 'Lightning reflex',
-    immunities: ['Sidestep', 'Evade', 'Vanish']
-});
+immune('Lightning reflex', ['Sidestep', 'Evade', 'Vanish']);
 
-createImmunityAbility({
-    name: 'Painted Veil',
-    immunities: ['Venom', 'Bleed']
-});
+immune('Painted Veil', ['Venom', 'Bleed']);
 
-createImmunityAbility({
-    name: 'Sack and straw',
-    immunities: ['Lightning', 'Piercing', 'Immobilise', 'Venom', 'Thorns', 'Corruption']
-});
+immune('Sack and straw', [
+    'Lightning', 'Piercing', 'Immobilise',
+    'Venom', 'Thorns', 'Corruption',
+]);
 
-createImmunityAbility({
-    name: 'Steel yourself',
-    immunities: ['Piercing', 'Impale', 'Barbs', 'Thorns']
-});
+immune('Steel yourself', ['Piercing', 'Impale', 'Barbs', 'Thorns']);
 
-createImmunityAbility({
-    name: 'Sinister Steel',
-    immunities: ['Piercing', 'Impale', 'Barbs', 'Thorns', 'Bleed', 'Venom']
-});
+immune('Sinister Steel', [
+    'Piercing', 'Impale', 'Barbs', 'Thorns', 'Bleed', 'Venom',
+]);
 
-createImmunityAbility({
-    name: 'Lightning Reflexes',
-    immunities: ['Sidestep', 'Evade', 'Vanish']
-});
+immune('Lightning Reflexes', ['Sidestep', 'Evade', 'Vanish']);
 
-createImmunityAbility({
-    name: 'Heightened Senses',
-    immunities: ['Sidestep', 'Evade', 'Vanish']
-});
+immune('Heightened Senses', ['Sidestep', 'Evade', 'Vanish']);
 
-createImmunityAbility({
-    name: 'Iron-Mane',
-    immunities: ['Piercing', 'Impale']
-});
+immune('Iron-Mane', ['Piercing', 'Impale']);
 
-createImmunityAbility({
-    name: 'Natural Immunity',
-    description: 'Immune to all passive effects.',
-    immunities: []
-});
+immune(
+    'Natural Immunity',
+    [],
+    'Immune to all passive effects.',
+);
 
-createImmunityAbility({
-    name: 'Enchanted Stone',
-    description: 'Immune to all passive effects.',
-    immunities: []
-});
+immune(
+    'Enchanted Stone',
+    [],
+    'Immune to all passive effects.',
+);

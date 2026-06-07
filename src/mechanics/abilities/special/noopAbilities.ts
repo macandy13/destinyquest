@@ -65,11 +65,7 @@ registerAbility(createNoopAbility({
     description: 'Can switch between Shadow, Flame, and Rock forms.',
 }));
 
-registerAbility(createNoopAbility({
-    name: 'Fed from fear',
-    description:
-        'At the end of each combat round, the armour is increased by 1.',
-}));
+
 
 registerAbility(createNoopAbility({
     name: 'First cut',
@@ -563,11 +559,7 @@ registerAbility(createNoopAbility({
         'Immune to Bleet',
 }));
 
-registerAbility(createNoopAbility({
-    name: 'Stabbing swords',
-    description:
-        'At the end of the combat round, -2 health (hero)',
-}));
+
 
 registerAbility(createNoopAbility({
     name: 'Jump around',
@@ -586,11 +578,7 @@ registerAbility(createNoopAbility({
         'health (Forty thieves)',
 }));
 
-registerAbility(createNoopAbility({
-    name: 'Hex of pain',
-    description:
-        'At the end of the combat round, -1 health (hero)',
-}));
+
 
 registerAbility(createNoopAbility({
     name: 'Protector',
@@ -598,11 +586,7 @@ registerAbility(createNoopAbility({
         'Custodian cannot be damaged while Forty thieves are alive',
 }));
 
-registerAbility(createNoopAbility({
-    name: 'Reanimator 2',
-    description:
-        'At the end of the round, +2 health (enemy, max 50)',
-}));
+
 
 registerAbility(createNoopAbility({
     name: 'Flame wrapper',
@@ -642,17 +626,9 @@ registerAbility(createNoopAbility({
         '+1 speed (Totem)',
 }));
 
-registerAbility(createNoopAbility({
-    name: 'Jaguar cube',
-    description:
-        'At the end of the combat round, -2 health (hero)',
-}));
 
-registerAbility(createNoopAbility({
-    name: 'Mental daggers',
-    description:
-        '-2 health * rd (Hero)',
-}));
+
+
 
 registerAbility(createNoopAbility({
     name: 'Delirium',
@@ -694,11 +670,7 @@ registerAbility(createNoopAbility({
         'Immune to bleed, thorsn and thorn cage',
 }));
 
-registerAbility(createNoopAbility({
-    name: 'Fury of the furnace',
-    description:
-        '-3 health * rd (hero)',
-}));
+
 
 registerAbility(createNoopAbility({
     name: 'Holy vengeance',
@@ -706,11 +678,7 @@ registerAbility(createNoopAbility({
         '+3 damage (hero)',
 }));
 
-registerAbility(createNoopAbility({
-    name: 'Miasma of decay',
-    description:
-        '-3 health * rd (hero)',
-}));
+
 
 registerAbility(createNoopAbility({
     name: 'Feral frency',
@@ -736,11 +704,7 @@ registerAbility(createNoopAbility({
         'If enemy rolls double for speed, -4 health (hero)',
 }));
 
-registerAbility(createNoopAbility({
-    name: 'Molten skin',
-    description:
-        '-2 health * rd (hero)',
-}));
+
 
 registerAbility(createNoopAbility({
     name: 'Scything blades',
@@ -878,6 +842,11 @@ registerAbility(createNoopAbility({
     name: 'Companions\' courage',
     description:
         '+2 damage (hero)',
+}));
+
+registerAbility(createNoopAbility({
+    name: 'Pest control',
+    description: 'At the end of each combat round, roll a die - 1-2: Add +2 to the ghoul effect. Ghoul effect: Hero takes 0 damage at the end of each combat round',
 }));
 
 // function createAbility(config: {
