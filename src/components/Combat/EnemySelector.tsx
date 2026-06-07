@@ -16,6 +16,18 @@ import {
 } from '../../mechanics/abilityRegistry';
 import '../../mechanics/allAbilities';
 
+// Helper to get ability display name
+const getAbilityDisplayName = (abName: string): string => {
+    const def = getAbilityDefinition(abName);
+    return def ? def.name : abName;
+};
+
+// Helper to get ability description
+const getAbilityDescriptionText = (abName: string): string => {
+    const def = getAbilityDefinition(abName);
+    return def ? def.description : '';
+};
+
 interface EnemySelectorProps {
     onSelect: (enemy: Enemy) => void;
     filterFn?: (bookRef: BookRef) => boolean;
@@ -35,7 +47,7 @@ const EnemySelector: React.FC<EnemySelectorProps> = ({
         stats: {
             speed: 2,
             brawn: 2,
-            magic: 0,
+            magic: 2,
             armour: 0,
             health: 20,
             maxHealth: 20,
@@ -100,17 +112,6 @@ const EnemySelector: React.FC<EnemySelectorProps> = ({
 
     const handleOffensiveModeChange = (mode: 'brawn' | 'magic') => {
         setOffensiveMode(mode);
-        const currentValue = mode === 'brawn'
-            ? customEnemy.stats.magic || 2
-            : customEnemy.stats.brawn || 2;
-        setCustomEnemy(prev => ({
-            ...prev,
-            stats: {
-                ...prev.stats,
-                brawn: mode === 'brawn' ? currentValue : 0,
-                magic: mode === 'magic' ? currentValue : 0,
-            }
-        }));
     };
 
     const handleOffensiveValueChange = (v: number) => {
@@ -118,8 +119,8 @@ const EnemySelector: React.FC<EnemySelectorProps> = ({
             ...prev,
             stats: {
                 ...prev.stats,
-                brawn: offensiveMode === 'brawn' ? v : 0,
-                magic: offensiveMode === 'magic' ? v : 0,
+                brawn: offensiveMode === 'brawn' ? v : prev.stats.brawn,
+                magic: offensiveMode === 'magic' ? v : prev.stats.magic,
             }
         }));
     };
@@ -145,6 +146,8 @@ const EnemySelector: React.FC<EnemySelectorProps> = ({
             ...customEnemy,
             stats: {
                 ...customEnemy.stats,
+                brawn: offensiveMode === 'brawn' ? customEnemy.stats.brawn : 0,
+                magic: offensiveMode === 'magic' ? customEnemy.stats.magic : 0,
                 maxHealth: customEnemy.stats.health
             }
         });
@@ -231,13 +234,7 @@ const EnemySelector: React.FC<EnemySelectorProps> = ({
             {mode === 'list' && (
                 <div className="items-list">
                     {filteredEnemies.length === 0 ? (
-                        <div
-                            className="text-dim"
-                            style={{
-                                textAlign: 'center',
-                                padding: '20px'
-                            }}
-                        >
+                        <div className="text-dim empty-list-message">
                             No enemies found.
                         </div>
                     ) : (
@@ -429,13 +426,12 @@ const EnemySelector: React.FC<EnemySelectorProps> = ({
                             customEnemy.abilities.length > 0 && (
                                 <div className="selected-abilities-list">
                                     {customEnemy.abilities.map(abName => {
-                                        const def = getAbilityDefinition(abName);
-                                        const displayName = def
-                                            ? def.name
-                                            : abName;
-                                        const description = def
-                                            ? def.description
-                                            : '';
+                                        const displayName = getAbilityDisplayName(
+                                            abName
+                                        );
+                                        const description = getAbilityDescriptionText(
+                                            abName
+                                        );
                                         return (
                                             <div
                                                 key={abName}
@@ -477,9 +473,8 @@ const EnemySelector: React.FC<EnemySelectorProps> = ({
                         Start Fight
                     </button>
                     <button
-                        className="btn btn-secondary"
+                        className="btn btn-secondary dummy-btn"
                         onClick={selectTrainingDummy}
-                        style={{ marginTop: '10px' }}
                     >
                         Fight Dummy
                     </button>
