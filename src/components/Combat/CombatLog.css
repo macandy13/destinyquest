@@ -7,9 +7,8 @@
     border-radius: var(--radius-sm);
     display: flex;
     flex-direction: column;
-    /* Occupy the full height of the grid row */
-    height: 100%;
-    min-height: 15vh;
+    /* Occupy a fixed height when not fullscreen */
+    height: 140px;
     border-top: var(--border-md) solid var(--dq-gold-dim);
     position: relative;
     /* For z-index context */
@@ -33,7 +32,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: var(--spacing-sm);
+    padding: var(--spacing-xs) var(--spacing-sm);
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
     background: rgba(255, 255, 255, 0.05);
 }
@@ -64,7 +63,7 @@
 .log-content {
     flex: 1;
     overflow-y: auto;
-    padding: var(--spacing-sm);
+    padding: var(--spacing-xs) var(--spacing-sm);
     font-size: var(--font-sm);
     /* font-family: monospace; removed to consolidate fonts */
 }
