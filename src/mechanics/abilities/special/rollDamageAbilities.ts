@@ -3,12 +3,14 @@ import { dealDamage } from '../../../types/combatState';
 import { CharacterType } from '../../../types/character';
 
 /**
- * Creates an ability that deals damage based on rolled dice values.
- * 
- * @param checkOwnerRolls - If true, checks the owner's rolls. 
- *                          If false, checks the opponent's rolls.
- * @param affectsOwner - If true, deals damage to the owner.
- *                       If false, deals damage to the opponent.
+ * Creates an ability that deals damage for each die showing a trigger
+ * value during the speed or damage roll phase.
+ *
+ * @param rollType      Which roll phase to inspect.
+ * @param rollsTarget   Whose rolls to inspect.
+ * @param triggerValues Face values that count as a trigger.
+ * @param damagePerTrigger Damage dealt per triggering die.
+ * @param damageTarget  Who takes the resulting damage.
  */
 export function createRollDamageAbility(config: {
     name: string;
@@ -19,60 +21,76 @@ export function createRollDamageAbility(config: {
     rollsTarget: CharacterType;
     damageTarget: CharacterType;
     icon?: string;
-}) {
+}): void {
     registerAbility({
         name: config.name,
         type: 'special',
         description: config.description,
         icon: config.icon ?? '🎲',
         reviewed: true,
-        onSpeedRoll: (config.rollType === 'speed' || config.rollType === 'all')
-            ? (state) => {
-                const targetRolls = config.rollsTarget === 'hero' ? state.heroSpeedRolls : state.enemySpeedRolls;
-                if (!targetRolls) return state;
+        onSpeedRoll:
+            config.rollType === 'speed' || config.rollType === 'all'
+                ? (state) => {
+                      const targetRolls =
+                          config.rollsTarget === 'hero'
+                              ? state.heroSpeedRolls
+                              : state.enemySpeedRolls;
+                      if (!targetRolls) return state;
 
-                const triggerCount = targetRolls.filter(
-                    r => config.triggerValues.includes(r.value)
-                ).length;
-                if (triggerCount > 0) {
-                    const totalDamage = triggerCount * config.damagePerTrigger;
-                    state = dealDamage(
-                        state,
-                        config.name,
-                        config.damageTarget,
-                        totalDamage,
-                        `${config.name}: ${triggerCount}x ${config.triggerValues.join('/')} ` +
-                        `rolled = ${totalDamage} damage`
-                    );
-                }
-                return state;
-            }
-            : undefined,
-        onDamageRoll: (config.rollType === 'damage' || config.rollType === 'all')
-            ? (state) => {
-                if (!state.damage || state.winner !== config.rollsTarget) return state;
+                      const triggerCount = targetRolls.filter((r) =>
+                          config.triggerValues.includes(r.value)
+                      ).length;
+                      if (triggerCount === 0) return state;
 
-                const triggerCount = state.damage.damageRolls.filter(
-                    r => config.triggerValues.includes(r.value)
-                ).length;
-                if (triggerCount > 0) {
-                    const totalDamage = triggerCount * config.damagePerTrigger;
-                    state = dealDamage(
-                        state,
-                        config.name,
-                        config.damageTarget,
-                        totalDamage,
-                        `${config.name}: ${triggerCount}x ${config.triggerValues.join('/')} ` +
-                        `rolled = ${totalDamage} damage`
-                    );
-                }
-                return state;
-            }
-            : undefined
+                      const totalDamage =
+                          triggerCount * config.damagePerTrigger;
+                      return dealDamage(
+                          state,
+                          config.name,
+                          config.damageTarget,
+                          totalDamage,
+                          `${config.name}: ` +
+                          `${triggerCount}x ${config.triggerValues.join('/')} ` +
+                          `rolled = ${totalDamage} damage`,
+                      );
+                  }
+                : undefined,
+
+        onDamageRoll:
+            config.rollType === 'damage' || config.rollType === 'all'
+                ? (state) => {
+                      if (
+                          !state.damage ||
+                          state.winner !== config.rollsTarget
+                      ) {
+                          return state;
+                      }
+
+                      const triggerCount =
+                          state.damage.damageRolls.filter((r) =>
+                              config.triggerValues.includes(r.value)
+                          ).length;
+                      if (triggerCount === 0) return state;
+
+                      const totalDamage =
+                          triggerCount * config.damagePerTrigger;
+                      return dealDamage(
+                          state,
+                          config.name,
+                          config.damageTarget,
+                          totalDamage,
+                          `${config.name}: ` +
+                          `${triggerCount}x ${config.triggerValues.join('/')} ` +
+                          `rolled = ${totalDamage} damage`,
+                      );
+                  }
+                : undefined,
     });
 }
 
+// ---------------------------------------------------------------------------
 // Roll-based damage abilities
+// ---------------------------------------------------------------------------
 
 createRollDamageAbility({
     name: 'Unlucky for some',
@@ -99,7 +117,8 @@ createRollDamageAbility({
 createRollDamageAbility({
     name: 'Tail lash',
     description:
-        'For every 1 you roll, the ratling hits you for 1 damage, ignoring armour.',
+        'For every 1 you roll, the ratling hits you for 1 damage, ' +
+        'ignoring armour.',
     triggerValues: [1],
     damagePerTrigger: 1,
     rollType: 'all',
@@ -150,9 +169,9 @@ createRollDamageAbility({
 });
 
 createRollDamageAbility({
-    name: 'Crone\'s dagger',
+    name: "Crone's dagger",
     description:
-        'If the Ruffians roll a 6 for damage, the crone\'s dagger ' +
+        "If the Ruffians roll a 6 for damage, the crone's dagger " +
         'automatically inflicts 1 extra point of health damage.',
     triggerValues: [6],
     damagePerTrigger: 1,
@@ -172,4 +191,3 @@ createRollDamageAbility({
     rollsTarget: 'enemy',
     damageTarget: 'hero',
 });
-
