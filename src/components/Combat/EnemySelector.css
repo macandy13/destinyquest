@@ -139,7 +139,7 @@
 }
 
 .ability-dropdown .dropdown-item:hover {
-    background-color: rgba(212, 175, 55, 0.1);
+    background-color: color-mix(in srgb, var(--dq-gold) 10%, transparent);
 }
 
 .ability-dropdown .dropdown-item.empty {
@@ -170,8 +170,8 @@
 }
 
 .selected-ability-row {
-    background-color: rgba(212, 175, 55, 0.05);
-    border: 1px solid rgba(212, 175, 55, 0.2);
+    background-color: color-mix(in srgb, var(--dq-gold) 5%, transparent);
+    border: 1px solid color-mix(in srgb, var(--dq-gold) 20%, transparent);
     border-radius: var(--radius-sm);
     padding: var(--spacing-sm);
     display: flex;
@@ -182,8 +182,8 @@
 }
 
 .selected-ability-row:hover {
-    background-color: rgba(212, 175, 55, 0.08);
-    border-color: rgba(212, 175, 55, 0.4);
+    background-color: color-mix(in srgb, var(--dq-gold) 8%, transparent);
+    border-color: color-mix(in srgb, var(--dq-gold) 40%, transparent);
 }
 
 .ability-info {
