@@ -67,7 +67,6 @@
     align-items: center;
     justify-content: space-between;
     gap: var(--spacing-sm);
-    flex-wrap: wrap;
 }
 
 /* Clickable stat toggle label */
