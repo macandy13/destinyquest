@@ -44,13 +44,14 @@ function App() {
     return (
         <MobileLayout>
             <header className="app-header">
-                <img src={logo} alt="Destiny Quest" className="app-logo" />
+                <div className="header-container">
+                    <img src={logo} alt="Destiny Quest" className="app-logo" />
+                    <BookActSelector
+                        filter={filter}
+                        onFilterChange={setFilter}
+                    />
+                </div>
             </header>
-
-            <BookActSelector
-                filter={filter}
-                onFilterChange={setFilter}
-            />
 
             <main className="app-main">
                 {activeTab === 'stats' && (
