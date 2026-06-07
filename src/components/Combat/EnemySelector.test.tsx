@@ -16,7 +16,8 @@ describe('EnemySelector - Custom Enemy', () => {
         expect(brawnElement).toBeInTheDocument();
 
         // Verify the offensive-stat-row shows 2
-        const row = brawnElement.closest('.offensive-stat-row');
+        const row = brawnElement.closest('.offensive-stat-row') as
+            HTMLElement | null;
         expect(row).toBeInTheDocument();
         expect(within(row!).getByText('2')).toBeInTheDocument();
     });
@@ -36,7 +37,8 @@ describe('EnemySelector - Custom Enemy', () => {
         expect(magicElement).toBeInTheDocument();
 
         // Verify Magic has preserved the value of 2
-        const row = magicElement.closest('.offensive-stat-row');
+        const row = magicElement.closest('.offensive-stat-row') as
+            HTMLElement | null;
         expect(within(row!).getByText('2')).toBeInTheDocument();
 
         // Click Start Fight
