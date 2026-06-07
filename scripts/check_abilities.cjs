@@ -12,12 +12,13 @@ function getImplementedAbilities() {
 
     for (const file of files) {
         const content = fs.readFileSync(file, 'utf8');
-        const regex = /name:\s*['"]([^'"]+)['"]/g;
+        const regex = /name:\s*(?:\x27((?:[^\x27\\]|\\.)*)\x27|"((?:[^"\\]|\\.)*)")/g;
         let match;
         const isNoopFile = file.includes('noopAbilities.ts');
 
         while ((match = regex.exec(content)) !== null) {
-            const name = match[1].trim();
+            const rawName = match[1] || match[2];
+            const name = rawName.replace(/\\(.)/g, '$1').trim();
             if (isNoopFile) {
                 noop.add(name);
             } else {
