@@ -7103,27 +7103,46 @@ const BookActSelector = ({ filter, onFilterChange }) => {
       onFilterChange({ type: "book", book });
     }
   };
-  const handleActChange = (event) => {
-    const act = parseInt(event.target.value, 10);
-    if (selectedBook) {
+  const handleActClick = (act) => {
+    if (!selectedBook) return;
+    if (act === "all") {
+      onFilterChange({ type: "book", book: selectedBook });
+    } else {
       onFilterChange({ type: "act", book: selectedBook, act });
     }
   };
   const currentBookInfo = BOOKS.find((book) => book.book === selectedBook);
   return /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "book-act-selector", children: [
-    /* @__PURE__ */ jsxRuntimeExports.jsxs("select", { className: "filter-dropdown", value: selectedBook === "" ? "all" : selectedBook, onChange: handleBookChange, children: [
-      /* @__PURE__ */ jsxRuntimeExports.jsx("option", { value: "all", children: "All" }),
+    /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "book-selector-wrapper", children: /* @__PURE__ */ jsxRuntimeExports.jsxs("select", { className: "filter-dropdown", value: selectedBook === "" ? "all" : selectedBook, onChange: handleBookChange, children: [
+      /* @__PURE__ */ jsxRuntimeExports.jsx("option", { value: "all", children: "All Books" }),
       BOOKS.map((bookInfo) => /* @__PURE__ */ jsxRuntimeExports.jsxs("option", { value: bookInfo.book, children: [
         "📖 ",
         bookInfo.book
       ] }, bookInfo.book))
-    ] }),
-    selectedBook && currentBookInfo && /* @__PURE__ */ jsxRuntimeExports.jsxs("select", { className: "filter-dropdown", value: selectedAct === "" ? "all" : selectedAct, onChange: handleActChange, children: [
-      /* @__PURE__ */ jsxRuntimeExports.jsx("option", { value: "all", children: "All Acts" }),
-      currentBookInfo.acts.map((act) => /* @__PURE__ */ jsxRuntimeExports.jsxs("option", { value: act, children: [
-        "Akt ",
+    ] }) }),
+    selectedBook && currentBookInfo && /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "act-buttons-group", children: [
+      /* @__PURE__ */ jsxRuntimeExports.jsx(
+        "button",
+        {
+          type: "button",
+          className: `act-btn ${selectedAct === "" ? "active" : ""}`,
+          onClick: () => handleActClick("all"),
+          children: "All Acts"
+        }
+      ),
+      currentBookInfo.acts.map((act) => /* @__PURE__ */ jsxRuntimeExports.jsxs(
+        "button",
+        {
+          type: "button",
+          className: `act-btn ${selectedAct === act ? "active" : ""}`,
+          onClick: () => handleActClick(act),
+          children: [
+            "Act ",
+            act
+          ]
+        },
         act
-      ] }, act))
+      ))
     ] })
   ] });
 };
@@ -32190,229 +32209,6 @@ const ENEMIES = [
     }
   }
 ];
-const EnemySelector = ({ onSelect, filterFn }) => {
-  const [mode, setMode] = reactExports.useState("list");
-  const [searchTerm, setSearchTerm] = reactExports.useState("");
-  const [customEnemy, setCustomEnemy] = reactExports.useState({
-    type: "enemy",
-    name: "Custom Enemy",
-    stats: {
-      speed: 2,
-      brawn: 2,
-      magic: 2,
-      armour: 0,
-      health: 20,
-      maxHealth: 20
-    },
-    bookRef: {
-      book: "Core",
-      act: 1
-    },
-    abilities: []
-  });
-  const bookFiltered = filterFn ? ENEMIES.filter((e) => filterFn(e.bookRef)) : ENEMIES;
-  const filteredEnemies = bookFiltered.filter(
-    (enemy) => {
-      const term = searchTerm.toLowerCase();
-      return enemy.name.toLowerCase().includes(term) || enemy.bookRef.section && enemy.bookRef.section.toString().includes(term);
-    }
-  );
-  const handleCustomChange = (field, value) => {
-    if (field === "name") {
-      setCustomEnemy((prev) => ({ ...prev, name: String(value) }));
-    } else if (field === "bookRef" || field === "abilities" || field === "preventHealing" || field === "stats") ;
-    else {
-      setCustomEnemy((prev) => ({
-        ...prev,
-        stats: {
-          ...prev.stats,
-          [field]: value,
-          maxHealth: field === "health" ? Number(value) : prev.stats.maxHealth
-        }
-      }));
-    }
-  };
-  const confirmCustomEnemy = () => {
-    onSelect({
-      ...customEnemy,
-      stats: { ...customEnemy.stats, maxHealth: customEnemy.stats.health }
-    });
-  };
-  const selectTrainingDummy = () => {
-    onSelect({
-      type: "enemy",
-      name: "Training Dummy",
-      stats: {
-        speed: 2,
-        brawn: 2,
-        magic: 0,
-        armour: 0,
-        health: 20,
-        maxHealth: 20
-      },
-      bookRef: {
-        book: "",
-        act: 0
-      },
-      abilities: []
-    });
-  };
-  return /* @__PURE__ */ jsxRuntimeExports.jsxs(DqCard, { title: "Select Opponent", className: "enemy-selector-card", children: [
-    /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "selector-header", children: [
-      /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "enemy-tabs", children: [
-        /* @__PURE__ */ jsxRuntimeExports.jsx(
-          "button",
-          {
-            className: `tab-btn ${mode === "list" ? "active" : ""}`,
-            onClick: () => setMode("list"),
-            children: "Bestiary"
-          }
-        ),
-        /* @__PURE__ */ jsxRuntimeExports.jsx(
-          "button",
-          {
-            className: `tab-btn ${mode === "custom" ? "active" : ""}`,
-            onClick: () => setMode("custom"),
-            children: "Custom"
-          }
-        )
-      ] }),
-      mode === "list" && /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "header-row-search", children: [
-        /* @__PURE__ */ jsxRuntimeExports.jsx(
-          "input",
-          {
-            type: "text",
-            className: "dq-input",
-            placeholder: "Search enemy...",
-            value: searchTerm,
-            onChange: (e) => setSearchTerm(e.target.value),
-            autoFocus: true
-          }
-        ),
-        searchTerm && /* @__PURE__ */ jsxRuntimeExports.jsx(
-          "button",
-          {
-            className: "action-btn-secondary",
-            onClick: () => setSearchTerm(""),
-            title: "Clear search",
-            children: "✕"
-          }
-        )
-      ] })
-    ] }),
-    mode === "list" && /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "items-list", children: filteredEnemies.length === 0 ? /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "text-dim", style: { textAlign: "center", padding: "20px" }, children: "No enemies found." }) : filteredEnemies.map((enemy, idx) => /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "item-card enemy-card", onClick: () => onSelect(enemy), children: [
-      /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "item-card-header", children: [
-        /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "item-name", children: enemy.name }),
-        /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "item-source", children: [
-          /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "text-dim", style: { fontSize: "0.8rem" }, children: [
-            "Act ",
-            enemy.bookRef.act
-          ] }),
-          enemy.bookRef.section && /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "text-dim", style: { fontSize: "0.8rem" }, children: [
-            "📖 ",
-            enemy.bookRef.section
-          ] })
-        ] })
-      ] }),
-      /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "item-stats", children: [
-        `${getStatIcon("speed")} ${enemy.stats.speed} `,
-        `${getStatIcon("brawn")} ${enemy.stats.brawn} `,
-        `${getStatIcon("magic")} ${enemy.stats.magic} `,
-        `${getStatIcon("armour")} ${enemy.stats.armour} `,
-        `${getStatIcon("health")} ${enemy.stats.health}`
-      ] }),
-      enemy.abilities && enemy.abilities.length > 0 && /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "item-abilities-tag", children: enemy.abilities.map((a) => `★ ${a}`).join(", ") })
-    ] }, idx)) }),
-    mode === "custom" && /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "custom-enemy-form", children: [
-      /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "stats-grid", children: /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "stat-row", children: [
-        /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "stat-label", children: "Name" }),
-        /* @__PURE__ */ jsxRuntimeExports.jsx(
-          "input",
-          {
-            type: "text",
-            className: "enemy-name-input",
-            value: customEnemy.name,
-            onChange: (e) => handleCustomChange("name", e.target.value)
-          }
-        )
-      ] }) }),
-      /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "stats-grid", children: [
-        /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "stat-row", children: [
-          /* @__PURE__ */ jsxRuntimeExports.jsxs("span", { className: "stat-label", children: [
-            getStatIcon("speed"),
-            " Speed"
-          ] }),
-          /* @__PURE__ */ jsxRuntimeExports.jsx(
-            NumberControl,
-            {
-              value: customEnemy.stats.speed,
-              onChange: (v2) => handleCustomChange("speed", v2),
-              min: 0
-            }
-          )
-        ] }),
-        /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "stat-row", children: [
-          /* @__PURE__ */ jsxRuntimeExports.jsxs("span", { className: "stat-label", children: [
-            getStatIcon("brawn"),
-            " Brawn"
-          ] }),
-          /* @__PURE__ */ jsxRuntimeExports.jsx(
-            NumberControl,
-            {
-              value: customEnemy.stats.brawn,
-              onChange: (v2) => handleCustomChange("brawn", v2),
-              min: 0
-            }
-          )
-        ] }),
-        /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "stat-row", children: [
-          /* @__PURE__ */ jsxRuntimeExports.jsxs("span", { className: "stat-label", children: [
-            getStatIcon("magic"),
-            " Magic"
-          ] }),
-          /* @__PURE__ */ jsxRuntimeExports.jsx(
-            NumberControl,
-            {
-              value: customEnemy.stats.magic,
-              onChange: (v2) => handleCustomChange("magic", v2),
-              min: 0
-            }
-          )
-        ] }),
-        /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "stat-row", children: [
-          /* @__PURE__ */ jsxRuntimeExports.jsxs("span", { className: "stat-label", children: [
-            getStatIcon("armour"),
-            " Armour"
-          ] }),
-          /* @__PURE__ */ jsxRuntimeExports.jsx(
-            NumberControl,
-            {
-              value: customEnemy.stats.armour,
-              onChange: (v2) => handleCustomChange("armour", v2),
-              min: 0
-            }
-          )
-        ] }),
-        /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "stat-row", children: [
-          /* @__PURE__ */ jsxRuntimeExports.jsxs("span", { className: "stat-label", children: [
-            getStatIcon("health"),
-            " Health"
-          ] }),
-          /* @__PURE__ */ jsxRuntimeExports.jsx(
-            NumberControl,
-            {
-              value: customEnemy.stats.health,
-              onChange: (v2) => handleCustomChange("health", v2),
-              min: 1
-            }
-          )
-        ] })
-      ] }),
-      /* @__PURE__ */ jsxRuntimeExports.jsx("button", { className: "btn btn-primary", onClick: confirmCustomEnemy, children: "Start Fight" }),
-      /* @__PURE__ */ jsxRuntimeExports.jsx("button", { className: "btn btn-secondary", onClick: selectTrainingDummy, style: { marginTop: "10px" }, children: "Fight Dummy" })
-    ] })
-  ] });
-};
 function getOpponent(target) {
   return target === "hero" ? "enemy" : "hero";
 }
@@ -32772,34 +32568,6 @@ function updateCombatant(state, selector, combatant) {
   const newEnemies = [...state.enemies];
   newEnemies[index] = combatant;
   return { ...state, enemies: newEnemies };
-}
-function getEnemyDefinition(name) {
-  return ENEMIES.find((e) => e.name === name);
-}
-function resolveSpawns(enemies) {
-  const result = [];
-  const queue = [...enemies];
-  let count = 0;
-  const MAX_ENEMIES = 20;
-  while (queue.length > 0 && count < MAX_ENEMIES) {
-    const current = queue.shift();
-    result.push(current);
-    count++;
-    if (current.spawns && current.spawns.length > 0) {
-      for (const spawnName of current.spawns) {
-        const spawnDef = getEnemyDefinition(spawnName);
-        if (spawnDef) {
-          queue.push({ ...spawnDef });
-        } else {
-          console.warn(`Spawn definition not found: ${spawnName}`);
-        }
-      }
-    }
-  }
-  if (queue.length > 0) {
-    console.warn(`Spawn limit reached (${MAX_ENEMIES}). Some enemies were not spawned.`);
-  }
-  return result;
 }
 registerAbility({
   name: "Avenging Spirit",
@@ -37664,6 +37432,411 @@ registerAbility(createNoopAbility({ name: "Wish master", description: "Not imple
 registerAbility(createNoopAbility({ name: "Wither", description: "Not implemented yet." }));
 registerAbility(createNoopAbility({ name: "finery of the fallen", description: "Not implemented yet." }));
 registerAbility(createNoopAbility({ name: "frostbite", description: "Not implemented yet." }));
+const getAbilityDisplayName = (abName) => {
+  const def = getAbilityDefinition(abName);
+  return def ? def.name : abName;
+};
+const getAbilityDescriptionText = (abName) => {
+  const def = getAbilityDefinition(abName);
+  return def ? def.description : "";
+};
+const EnemySelector = ({
+  onSelect,
+  filterFn
+}) => {
+  const [mode, setMode] = reactExports.useState("list");
+  const [searchTerm, setSearchTerm] = reactExports.useState("");
+  const [customEnemy, setCustomEnemy] = reactExports.useState({
+    type: "enemy",
+    name: "Custom Enemy",
+    stats: {
+      speed: 2,
+      brawn: 2,
+      magic: 2,
+      armour: 0,
+      health: 20,
+      maxHealth: 20
+    },
+    bookRef: {
+      book: "Core",
+      act: 1
+    },
+    abilities: []
+  });
+  const [offensiveMode, setOffensiveMode] = reactExports.useState("brawn");
+  const [abilitySearch, setAbilitySearch] = reactExports.useState("");
+  const [showAbilityDropdown, setShowAbilityDropdown] = reactExports.useState(false);
+  const bookFiltered = filterFn ? ENEMIES.filter((e) => filterFn(e.bookRef)) : ENEMIES;
+  const filteredEnemies = bookFiltered.filter(
+    (enemy) => {
+      const term = searchTerm.toLowerCase();
+      return enemy.name.toLowerCase().includes(term) || enemy.bookRef.section && enemy.bookRef.section.toString().includes(term);
+    }
+  );
+  const handleCustomChange = (field, value) => {
+    if (field === "name") {
+      setCustomEnemy((prev) => ({ ...prev, name: String(value) }));
+    } else if (field === "bookRef" || field === "abilities" || field === "preventHealing" || field === "stats") ;
+    else {
+      setCustomEnemy((prev) => ({
+        ...prev,
+        stats: {
+          ...prev.stats,
+          [field]: value,
+          maxHealth: field === "health" ? Number(value) : prev.stats.maxHealth
+        }
+      }));
+    }
+  };
+  const handleOffensiveModeChange = (mode2) => {
+    setOffensiveMode(mode2);
+  };
+  const handleOffensiveValueChange = (v2) => {
+    setCustomEnemy((prev) => ({
+      ...prev,
+      stats: {
+        ...prev.stats,
+        brawn: offensiveMode === "brawn" ? v2 : prev.stats.brawn,
+        magic: offensiveMode === "magic" ? v2 : prev.stats.magic
+      }
+    }));
+  };
+  const handleAddAbility = (name) => {
+    setCustomEnemy((prev) => ({
+      ...prev,
+      abilities: [...prev.abilities || [], name]
+    }));
+    setAbilitySearch("");
+    setShowAbilityDropdown(false);
+  };
+  const handleRemoveAbility = (name) => {
+    setCustomEnemy((prev) => ({
+      ...prev,
+      abilities: (prev.abilities || []).filter((a) => a !== name)
+    }));
+  };
+  const confirmCustomEnemy = () => {
+    onSelect({
+      ...customEnemy,
+      stats: {
+        ...customEnemy.stats,
+        brawn: offensiveMode === "brawn" ? customEnemy.stats.brawn : 0,
+        magic: offensiveMode === "magic" ? customEnemy.stats.magic : 0,
+        maxHealth: customEnemy.stats.health
+      }
+    });
+  };
+  const selectTrainingDummy = () => {
+    onSelect({
+      type: "enemy",
+      name: "Training Dummy",
+      stats: {
+        speed: 2,
+        brawn: 2,
+        magic: 0,
+        armour: 0,
+        health: 20,
+        maxHealth: 20
+      },
+      bookRef: {
+        book: "",
+        act: 0
+      },
+      abilities: []
+    });
+  };
+  const availableSpecialAbilities = Object.values(ABILITY_REGISTRY).filter((ab2) => {
+    const canonicalAdded = (customEnemy.abilities || []).map(toCanonicalName);
+    if (canonicalAdded.includes(toCanonicalName(ab2.name))) {
+      return false;
+    }
+    return ab2.name.toLowerCase().includes(abilitySearch.toLowerCase());
+  }).sort((a, b) => a.name.localeCompare(b.name));
+  return /* @__PURE__ */ jsxRuntimeExports.jsxs(DqCard, { title: "Select Opponent", className: "enemy-selector-card", children: [
+    /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "selector-header", children: [
+      /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "enemy-tabs", children: [
+        /* @__PURE__ */ jsxRuntimeExports.jsx(
+          "button",
+          {
+            className: `tab-btn ${mode === "list" ? "active" : ""}`,
+            onClick: () => setMode("list"),
+            children: "Bestiary"
+          }
+        ),
+        /* @__PURE__ */ jsxRuntimeExports.jsx(
+          "button",
+          {
+            className: `tab-btn ${mode === "custom" ? "active" : ""}`,
+            onClick: () => setMode("custom"),
+            children: "Custom"
+          }
+        )
+      ] }),
+      mode === "list" && /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "header-row-search", children: [
+        /* @__PURE__ */ jsxRuntimeExports.jsx(
+          "input",
+          {
+            type: "text",
+            className: "dq-input",
+            placeholder: "Search enemy...",
+            value: searchTerm,
+            onChange: (e) => setSearchTerm(e.target.value),
+            autoFocus: true
+          }
+        ),
+        searchTerm && /* @__PURE__ */ jsxRuntimeExports.jsx(
+          "button",
+          {
+            className: "action-btn-secondary",
+            onClick: () => setSearchTerm(""),
+            title: "Clear search",
+            children: "✕"
+          }
+        )
+      ] })
+    ] }),
+    mode === "list" && /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "items-list", children: filteredEnemies.length === 0 ? /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "text-dim empty-list-message", children: "No enemies found." }) : filteredEnemies.map((enemy, idx) => /* @__PURE__ */ jsxRuntimeExports.jsxs(
+      "div",
+      {
+        className: "item-card enemy-card",
+        onClick: () => onSelect(enemy),
+        children: [
+          /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "item-card-header", children: [
+            /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "item-name", children: enemy.name }),
+            /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "item-source", children: [
+              /* @__PURE__ */ jsxRuntimeExports.jsxs(
+                "div",
+                {
+                  className: "text-dim",
+                  style: { fontSize: "0.8rem" },
+                  children: [
+                    "Act ",
+                    enemy.bookRef.act
+                  ]
+                }
+              ),
+              enemy.bookRef.section && /* @__PURE__ */ jsxRuntimeExports.jsxs(
+                "div",
+                {
+                  className: "text-dim",
+                  style: { fontSize: "0.8rem" },
+                  children: [
+                    "📖 ",
+                    enemy.bookRef.section
+                  ]
+                }
+              )
+            ] })
+          ] }),
+          /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "item-stats", children: [
+            `${getStatIcon("speed")} ${enemy.stats.speed} `,
+            `${getStatIcon("brawn")} ${enemy.stats.brawn} `,
+            `${getStatIcon("magic")} ${enemy.stats.magic} `,
+            `${getStatIcon("armour")} ${enemy.stats.armour} `,
+            `${getStatIcon("health")} ${enemy.stats.health}`
+          ] }),
+          enemy.abilities && enemy.abilities.length > 0 && /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "item-abilities-tag", children: enemy.abilities.map((a) => `★ ${a}`).join(", ") })
+        ]
+      },
+      idx
+    )) }),
+    mode === "custom" && /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "custom-enemy-form", children: [
+      /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "stats-grid", children: /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "stat-row", children: [
+        /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "stat-label", children: "Name" }),
+        /* @__PURE__ */ jsxRuntimeExports.jsx(
+          "input",
+          {
+            type: "text",
+            className: "enemy-name-input",
+            value: customEnemy.name,
+            onChange: (e) => handleCustomChange("name", e.target.value)
+          }
+        )
+      ] }) }),
+      /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "stats-grid", children: [
+        /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "stat-row", children: [
+          /* @__PURE__ */ jsxRuntimeExports.jsxs("span", { className: "stat-label", children: [
+            getStatIcon("speed"),
+            " Speed"
+          ] }),
+          /* @__PURE__ */ jsxRuntimeExports.jsx(
+            NumberControl,
+            {
+              value: customEnemy.stats.speed,
+              onChange: (v2) => handleCustomChange("speed", v2),
+              min: 0
+            }
+          )
+        ] }),
+        /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "stat-row offensive-stat-row", children: [
+          /* @__PURE__ */ jsxRuntimeExports.jsx(
+            "span",
+            {
+              className: "stat-label clickable-toggle",
+              onClick: () => handleOffensiveModeChange(
+                offensiveMode === "brawn" ? "magic" : "brawn"
+              ),
+              title: "Click to toggle offensive stat mode",
+              children: offensiveMode === "brawn" ? "💪 Brawn" : "✨ Magic"
+            }
+          ),
+          /* @__PURE__ */ jsxRuntimeExports.jsx(
+            NumberControl,
+            {
+              value: offensiveMode === "brawn" ? customEnemy.stats.brawn : customEnemy.stats.magic,
+              onChange: handleOffensiveValueChange,
+              min: 0
+            }
+          )
+        ] }),
+        /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "stat-row", children: [
+          /* @__PURE__ */ jsxRuntimeExports.jsxs("span", { className: "stat-label", children: [
+            getStatIcon("armour"),
+            " Armour"
+          ] }),
+          /* @__PURE__ */ jsxRuntimeExports.jsx(
+            NumberControl,
+            {
+              value: customEnemy.stats.armour,
+              onChange: (v2) => handleCustomChange("armour", v2),
+              min: 0
+            }
+          )
+        ] }),
+        /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "stat-row", children: [
+          /* @__PURE__ */ jsxRuntimeExports.jsxs("span", { className: "stat-label", children: [
+            getStatIcon("health"),
+            " Health"
+          ] }),
+          /* @__PURE__ */ jsxRuntimeExports.jsx(
+            NumberControl,
+            {
+              value: customEnemy.stats.health,
+              onChange: (v2) => handleCustomChange("health", v2),
+              min: 1
+            }
+          )
+        ] })
+      ] }),
+      /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "abilities-section", children: [
+        /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "stat-label", children: "Special Abilities" }),
+        /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "ability-selector-wrapper", children: [
+          /* @__PURE__ */ jsxRuntimeExports.jsx(
+            "input",
+            {
+              type: "text",
+              className: "dq-input ability-search-input",
+              placeholder: "Search & add special ability...",
+              value: abilitySearch,
+              onChange: (e) => {
+                setAbilitySearch(e.target.value);
+                setShowAbilityDropdown(true);
+              },
+              onFocus: () => setShowAbilityDropdown(true),
+              onBlur: () => {
+                setTimeout(() => {
+                  setShowAbilityDropdown(false);
+                }, 200);
+              }
+            }
+          ),
+          showAbilityDropdown && abilitySearch && /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "ability-dropdown", children: availableSpecialAbilities.length === 0 ? /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "dropdown-item empty", children: "No abilities found" }) : availableSpecialAbilities.map((ab2) => /* @__PURE__ */ jsxRuntimeExports.jsxs(
+            "div",
+            {
+              className: "dropdown-item",
+              onClick: () => handleAddAbility(ab2.name),
+              children: [
+                /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "dropdown-item-name", children: ab2.name }),
+                /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "dropdown-item-desc", children: ab2.description })
+              ]
+            },
+            ab2.name
+          )) })
+        ] }),
+        customEnemy.abilities && customEnemy.abilities.length > 0 && /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "selected-abilities-list", children: customEnemy.abilities.map((abName) => {
+          const displayName = getAbilityDisplayName(
+            abName
+          );
+          const description = getAbilityDescriptionText(
+            abName
+          );
+          return /* @__PURE__ */ jsxRuntimeExports.jsxs(
+            "div",
+            {
+              className: "selected-ability-row",
+              children: [
+                /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "ability-info", children: [
+                  /* @__PURE__ */ jsxRuntimeExports.jsxs("span", { className: "ability-title", children: [
+                    "★ ",
+                    displayName
+                  ] }),
+                  description && /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "ability-desc", children: description })
+                ] }),
+                /* @__PURE__ */ jsxRuntimeExports.jsx(
+                  "button",
+                  {
+                    type: "button",
+                    className: "remove-ability-btn",
+                    onClick: () => handleRemoveAbility(
+                      abName
+                    ),
+                    title: "Remove ability",
+                    children: "✕"
+                  }
+                )
+              ]
+            },
+            abName
+          );
+        }) })
+      ] }),
+      /* @__PURE__ */ jsxRuntimeExports.jsx(
+        "button",
+        {
+          className: "btn btn-primary",
+          onClick: confirmCustomEnemy,
+          children: "Start Fight"
+        }
+      ),
+      /* @__PURE__ */ jsxRuntimeExports.jsx(
+        "button",
+        {
+          className: "btn btn-secondary dummy-btn",
+          onClick: selectTrainingDummy,
+          children: "Fight Dummy"
+        }
+      )
+    ] })
+  ] });
+};
+function getEnemyDefinition(name) {
+  return ENEMIES.find((e) => e.name === name);
+}
+function resolveSpawns(enemies) {
+  const result = [];
+  const queue = [...enemies];
+  let count = 0;
+  const MAX_ENEMIES = 20;
+  while (queue.length > 0 && count < MAX_ENEMIES) {
+    const current = queue.shift();
+    result.push(current);
+    count++;
+    if (current.spawns && current.spawns.length > 0) {
+      for (const spawnName of current.spawns) {
+        const spawnDef = getEnemyDefinition(spawnName);
+        if (spawnDef) {
+          queue.push({ ...spawnDef });
+        } else {
+          console.warn(`Spawn definition not found: ${spawnName}`);
+        }
+      }
+    }
+  }
+  if (queue.length > 0) {
+    console.warn(`Spawn limit reached (${MAX_ENEMIES}). Some enemies were not spawned.`);
+  }
+  return result;
+}
 function createHeroCombatant(character) {
   const hero = "original" in character ? character.original : character;
   const combatant = {
@@ -39760,14 +39933,16 @@ function App() {
     setActiveTab("stats");
   };
   return /* @__PURE__ */ jsxRuntimeExports.jsxs(MobileLayout, { children: [
-    /* @__PURE__ */ jsxRuntimeExports.jsx("header", { className: "app-header", children: /* @__PURE__ */ jsxRuntimeExports.jsx("img", { src: logo, alt: "Destiny Quest", className: "app-logo" }) }),
-    /* @__PURE__ */ jsxRuntimeExports.jsx(
-      BookActSelector,
-      {
-        filter,
-        onFilterChange: setFilter
-      }
-    ),
+    /* @__PURE__ */ jsxRuntimeExports.jsx("header", { className: "app-header", children: /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "header-container", children: [
+      /* @__PURE__ */ jsxRuntimeExports.jsx("img", { src: logo, alt: "Destiny Quest", className: "app-logo" }),
+      /* @__PURE__ */ jsxRuntimeExports.jsx(
+        BookActSelector,
+        {
+          filter,
+          onFilterChange: setFilter
+        }
+      )
+    ] }) }),
     /* @__PURE__ */ jsxRuntimeExports.jsxs("main", { className: "app-main", children: [
       activeTab === "stats" && /* @__PURE__ */ jsxRuntimeExports.jsx(
         HeroStats,
@@ -39808,4 +39983,4 @@ function App() {
 client.createRoot(document.getElementById("root")).render(
   /* @__PURE__ */ jsxRuntimeExports.jsx(React.StrictMode, { children: /* @__PURE__ */ jsxRuntimeExports.jsx(App, {}) })
 );
-//# sourceMappingURL=index-BaVRiSFF.js.map
+//# sourceMappingURL=index-BGkUakLK.js.map
