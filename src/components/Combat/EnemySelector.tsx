@@ -330,30 +330,33 @@ const EnemySelector: React.FC<EnemySelectorProps> = ({
                         </div>
 
                         <div className="stat-row offensive-stat-row">
-                            <div className="offensive-toggle">
-                                <button
-                                    type="button"
-                                    className={`toggle-btn ${
-                                        offensiveMode === 'brawn' ? 'active' : ''
-                                    }`}
-                                    onClick={() =>
-                                        handleOffensiveModeChange('brawn')
-                                    }
-                                >
-                                    {getStatIcon('brawn')} Brawn
-                                </button>
-                                <button
-                                    type="button"
-                                    className={`toggle-btn ${
-                                        offensiveMode === 'magic' ? 'active' : ''
-                                    }`}
-                                    onClick={() =>
-                                        handleOffensiveModeChange('magic')
-                                    }
-                                >
-                                    {getStatIcon('magic')} Magic
-                                </button>
-                            </div>
+                            <span
+                                className="stat-label clickable-toggle"
+                                onClick={() =>
+                                    handleOffensiveModeChange(
+                                        offensiveMode === 'brawn'
+                                            ? 'magic'
+                                            : 'brawn'
+                                    )
+                                }
+                                title="Click to toggle offensive stat mode"
+                            >
+                                {offensiveMode === 'brawn' ? (
+                                    <>
+                                        💪 Brawn
+                                        <span className="toggle-indicator">
+                                            ➔ ✨
+                                        </span>
+                                    </>
+                                ) : (
+                                    <>
+                                        ✨ Magic
+                                        <span className="toggle-indicator">
+                                            ➔ 💪
+                                        </span>
+                                    </>
+                                )}
+                            </span>
                             <NumberControl
                                 value={
                                     offensiveMode === 'brawn'
@@ -438,18 +441,30 @@ const EnemySelector: React.FC<EnemySelectorProps> = ({
 
                         {customEnemy.abilities &&
                             customEnemy.abilities.length > 0 && (
-                                <div className="selected-abilities-tags">
+                                <div className="selected-abilities-list">
                                     {customEnemy.abilities.map(abName => {
                                         const def = getAbilityDefinition(abName);
                                         const displayName = def
                                             ? def.name
                                             : abName;
+                                        const description = def
+                                            ? def.description
+                                            : '';
                                         return (
-                                            <span
+                                            <div
                                                 key={abName}
-                                                className="ability-tag"
+                                                className="selected-ability-row"
                                             >
-                                                {displayName}
+                                                <div className="ability-info">
+                                                    <span className="ability-title">
+                                                        ★ {displayName}
+                                                    </span>
+                                                    {description && (
+                                                        <span className="ability-desc">
+                                                            {description}
+                                                        </span>
+                                                    )}
+                                                </div>
                                                 <button
                                                     type="button"
                                                     className="remove-ability-btn"
@@ -462,7 +477,7 @@ const EnemySelector: React.FC<EnemySelectorProps> = ({
                                                 >
                                                     ✕
                                                 </button>
-                                            </span>
+                                            </div>
                                         );
                                     })}
                                 </div>
