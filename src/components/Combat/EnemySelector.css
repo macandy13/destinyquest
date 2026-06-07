@@ -82,6 +82,7 @@
     background-color: rgba(255, 255, 255, 0.03);
     border: 1px solid rgba(255, 255, 255, 0.05);
     width: auto;
+    white-space: nowrap;
 }
 
 .clickable-toggle:hover {
