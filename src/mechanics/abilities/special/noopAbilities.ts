@@ -535,6 +535,351 @@ registerAbility(createNoopAbility({
     description: 'Restore full health when hero is <=8. Only use once per combat.',
 }));
 
+
+registerAbility(createNoopAbility({
+    name: 'Knowledge is power',
+    description:
+        'If the hero wins a round, instead for rolling for damage: -1 ' +
+        'speed -1 magic -1 armour (enemy, min speed 9, min magic ' +
+        'armour 6)',
+}));
+
+registerAbility(createNoopAbility({
+    name: 'Pound those pillars',
+    description:
+        'When destroyed, -4 armour (Stone giant), 6 damage (hero)',
+}));
+
+registerAbility(createNoopAbility({
+    name: 'Spinning saw',
+    description:
+        'At the end of each round, roll a die. 1-2: -4 health (hero), ' +
+        '3-6: -4 health (Soldiers)',
+}));
+
+registerAbility(createNoopAbility({
+    name: 'Wood and metal',
+    description:
+        'Immune to Bleet',
+}));
+
+registerAbility(createNoopAbility({
+    name: 'Stabbing swords',
+    description:
+        'At the end of the combat round, -2 health (hero)',
+}));
+
+registerAbility(createNoopAbility({
+    name: 'Jump around',
+    description:
+        'At the start of the combat round, pick [North, Center, East] ' +
+        'and roll a die. 1-2: Continue when North was picked, 3-4: ' +
+        'Continue when Center was picked, 5-6: Continue when East was ' +
+        'picked. Otherwise take speed challenge - 1-13: -6 health ' +
+        '(hero). Continue with passive effects.',
+}));
+
+registerAbility(createNoopAbility({
+    name: 'Reanimator',
+    description:
+        'Once per combat when Custodian is below 25 health - +40 ' +
+        'health (Forty thieves)',
+}));
+
+registerAbility(createNoopAbility({
+    name: 'Hex of pain',
+    description:
+        'At the end of the combat round, -1 health (hero)',
+}));
+
+registerAbility(createNoopAbility({
+    name: 'Protector',
+    description:
+        'Custodian cannot be damaged while Forty thieves are alive',
+}));
+
+registerAbility(createNoopAbility({
+    name: 'Reanimator 2',
+    description:
+        'At the end of the round, +2 health (enemy, max 50)',
+}));
+
+registerAbility(createNoopAbility({
+    name: 'Flame wrapper',
+    description:
+        'At the start of the combat round, roll a die. 1-3: +1 brawn ' +
+        '(enemy)',
+}));
+
+registerAbility(createNoopAbility({
+    name: 'It\'s behind you',
+    description:
+        'At the end of the combat round, roll a die. 1-2: 10 damage ' +
+        '(hero)',
+}));
+
+registerAbility(createNoopAbility({
+    name: 'Razor beak',
+    description:
+        'Piercing',
+}));
+
+registerAbility(createNoopAbility({
+    name: 'Power cubed',
+    description:
+        'When all cubes are alive, roll 3 damage dice.',
+}));
+
+registerAbility(createNoopAbility({
+    name: 'Snake cube',
+    description:
+        'Venom (Totem)',
+}));
+
+registerAbility(createNoopAbility({
+    name: 'Spider cube',
+    description:
+        '+1 speed (Totem)',
+}));
+
+registerAbility(createNoopAbility({
+    name: 'Jaguar cube',
+    description:
+        'At the end of the combat round, -2 health (hero)',
+}));
+
+registerAbility(createNoopAbility({
+    name: 'Mental daggers',
+    description:
+        '-2 health * rd (Hero)',
+}));
+
+registerAbility(createNoopAbility({
+    name: 'Delirium',
+    description:
+        'Inflicted when Hero takes damage. When hero wins a round, ' +
+        'roll a die. 1-2: Skip damage roll phase',
+}));
+
+registerAbility(createNoopAbility({
+    name: 'Revenge of the tigris',
+    description:
+        '3 damage dice for highest value',
+}));
+
+registerAbility(createNoopAbility({
+    name: 'Backshot barrage',
+    description:
+        'At the end of round, take a speed challenge. 1-14: 10 damage ' +
+        '(hero)',
+}));
+
+registerAbility(createNoopAbility({
+    name: 'Animal attraction',
+    description:
+        'If you have the rhinosaur pheromone & the rhinosaur has been ' +
+        'freed from its cage, instead of rolling for damage: -4 ' +
+        'health * every rd (enemy)',
+}));
+
+registerAbility(createNoopAbility({
+    name: 'Survival of the fittest',
+    description:
+        'Immune to Strength in Numbers',
+}));
+
+registerAbility(createNoopAbility({
+    name: 'Body or iron',
+    description:
+        'Immune to bleed, thorsn and thorn cage',
+}));
+
+registerAbility(createNoopAbility({
+    name: 'Fury of the furnace',
+    description:
+        '-3 health * rd (hero)',
+}));
+
+registerAbility(createNoopAbility({
+    name: 'Holy vengeance',
+    description:
+        '+3 damage (hero)',
+}));
+
+registerAbility(createNoopAbility({
+    name: 'Miasma of decay',
+    description:
+        '-3 health * rd (hero)',
+}));
+
+registerAbility(createNoopAbility({
+    name: 'Feral frency',
+    description:
+        '+1 speed * rd (enemy, max 14)',
+}));
+
+registerAbility(createNoopAbility({
+    name: 'Grappling grubs',
+    description:
+        'Damage (hero) -> roll a die. 1-3: -1 speed (hero)',
+}));
+
+registerAbility(createNoopAbility({
+    name: 'It\'s `lectric',
+    description:
+        'If not Insulated, -(2 + armour) health (hero)',
+}));
+
+registerAbility(createNoopAbility({
+    name: 'Pack attack',
+    description:
+        'If enemy rolls double for speed, -4 health (hero)',
+}));
+
+registerAbility(createNoopAbility({
+    name: 'Molten skin',
+    description:
+        '-2 health * rd (hero)',
+}));
+
+registerAbility(createNoopAbility({
+    name: 'Scything blades',
+    description:
+        'Each time a speed or combat ability is played, roll a die. ' +
+        '1-4: -4 health (hero), ability is skipped',
+}));
+
+registerAbility(createNoopAbility({
+    name: 'Slipstream',
+    description:
+        'Hero wins speed, roll a die: 1-3: -4 health (hero), skip to ' +
+        'passive phase',
+}));
+
+registerAbility(createNoopAbility({
+    name: 'Rock fists',
+    description:
+        '+2 speed (enemy), 2 damage dice',
+}));
+
+registerAbility(createNoopAbility({
+    name: 'Arratoch alarm',
+    description:
+        '-2 brawn * rd (hero), -2 magic * rd (hero)',
+}));
+
+registerAbility(createNoopAbility({
+    name: 'Companions courage',
+    description:
+        '+2 damage (hero)',
+}));
+
+registerAbility(createNoopAbility({
+    name: 'Golem need',
+    description:
+        'If both Otum and Atum are dead, hero wins fight',
+}));
+
+registerAbility(createNoopAbility({
+    name: 'Brotherly love',
+    description:
+        'If Atum is dead: +2 speed (Olum), +4 brawn (Olum)',
+}));
+
+registerAbility(createNoopAbility({
+    name: 'Golem protector',
+    description:
+        'When winning a round the hero can choose to Attack Arratoch ' +
+        'instead',
+}));
+
+registerAbility(createNoopAbility({
+    name: 'Rock bluff',
+    description:
+        '+2 armour * rd. When hero wins round instead of rolling for ' +
+        'damage: 7 armour (enemy)',
+}));
+
+registerAbility(createNoopAbility({
+    name: 'Septic seepage',
+    description:
+        '-rd health * rd (hero)',
+}));
+
+registerAbility(createNoopAbility({
+    name: 'Sniper fire',
+    description:
+        'At the end of the round roll a die. 1-3: -3 health (hero), ' +
+        '4-6: -3 health (enemy)',
+}));
+
+registerAbility(createNoopAbility({
+    name: 'Leaf blades',
+    description:
+        'Piercing',
+}));
+
+registerAbility(createNoopAbility({
+    name: 'Angry mob',
+    description:
+        'Speed challenge @ end of round. 1-16: -5 health (hero)',
+}));
+
+registerAbility(createNoopAbility({
+    name: 'Bark whip',
+    description:
+        'For each 1 hero rolls for speed: -4 health',
+}));
+
+registerAbility(createNoopAbility({
+    name: 'Rune master',
+    description:
+        'Roll a die @ end of round. 1-2: +4 health (enemy), 3-4: ' +
+        '-armour health (hero), 5-6: -2 speed * 1 rd (hero), unless ' +
+        'hero is Hexed',
+}));
+
+registerAbility(createNoopAbility({
+    name: 'Blistering heat',
+    description:
+        '-1 health (hero), unless hero has Fire Shield',
+}));
+
+registerAbility(createNoopAbility({
+    name: 'Fan the flames',
+    description:
+        'Once, when reduced to <=20 health, roll a die: 1-2: +10 ' +
+        'health, +3 magic (enemy), 3-4: +5 health (enemy), 5-6: +3 ' +
+        'magic (enemy). If hero has Wind Breaker, 2 is addded to the ' +
+        'die roll',
+}));
+
+registerAbility(createNoopAbility({
+    name: 'Forge master',
+    description:
+        'If hero has Fire Quencher: 30 health (enemy)',
+}));
+
+registerAbility(createNoopAbility({
+    name: 'Hunger strike',
+    description:
+        'Hero takes damage, roll a die. 1: Proceded, 2-6: +4 health ' +
+        '(enemy, max 100), repeat max 6 times)',
+}));
+
+registerAbility(createNoopAbility({
+    name: 'Unstoppable feast',
+    description:
+        'If hero loses round, no abilities can be used for the ' +
+        'remainder of the round',
+}));
+
+registerAbility(createNoopAbility({
+    name: 'Companions\' courage',
+    description:
+        '+2 damage (hero)',
+}));
+
 // function createAbility(config: {
 //     name: string;
 //     description: string;
