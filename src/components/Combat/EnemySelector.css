@@ -91,11 +91,7 @@
     border-color: var(--dq-gold-dim);
 }
 
-.toggle-indicator {
-    font-size: 0.8rem;
-    opacity: 0.6;
-    margin-left: 2px;
-}
+
 
 /* Abilities section and selection styling */
 .abilities-section {

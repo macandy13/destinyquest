@@ -341,21 +341,7 @@ const EnemySelector: React.FC<EnemySelectorProps> = ({
                                 }
                                 title="Click to toggle offensive stat mode"
                             >
-                                {offensiveMode === 'brawn' ? (
-                                    <>
-                                        💪 Brawn
-                                        <span className="toggle-indicator">
-                                            ➔ ✨
-                                        </span>
-                                    </>
-                                ) : (
-                                    <>
-                                        ✨ Magic
-                                        <span className="toggle-indicator">
-                                            ➔ 💪
-                                        </span>
-                                    </>
-                                )}
+                                {offensiveMode === 'brawn' ? '💪 Brawn' : '✨ Magic'}
                             </span>
                             <NumberControl
                                 value={
