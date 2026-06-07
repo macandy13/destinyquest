@@ -8,6 +8,7 @@
         "build": "tsc && vite build",
         "preview": "vite preview",
         "test": "vitest run",
+        "test:visual": "node scripts/run_screenshot_tests.cjs",
         "generate:enemies": "node scripts/generateEnemies.js > src/data/enemies.ts",
         "generate:items": "node scripts/generateItems.js > src/data/items.ts",
         "generate:backpack": "node scripts/generateBackpackItems.js > src/data/backpackItems.ts"
