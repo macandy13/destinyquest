@@ -25,6 +25,20 @@ const STORAGE_KEY = 'dq-book-filter-v1';
 
 function loadFilter(): BookFilter {
     try {
+        if (typeof window !== 'undefined') {
+            const params = new URLSearchParams(window.location.search);
+            const bookParam = params.get('book');
+            const actParam = params.get('act');
+            if (bookParam) {
+                if (actParam) {
+                    const act = parseInt(actParam, 10);
+                    if (!isNaN(act)) {
+                        return { type: 'act', book: bookParam, act };
+                    }
+                }
+                return { type: 'book', book: bookParam };
+            }
+        }
         const saved = localStorage.getItem(STORAGE_KEY);
         if (saved) {
             return JSON.parse(saved) as BookFilter;

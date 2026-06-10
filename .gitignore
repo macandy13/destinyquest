@@ -2,3 +2,4 @@ node_modules
 dist
 build_output.txt
 tsc_output.txt
+src/test/visual/actual/
