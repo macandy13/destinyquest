@@ -32615,7 +32615,17 @@ function resolveTarget(state, context, target) {
       return getOpponent(state.winner);
   }
 }
+function checkHeroLimits(state, type) {
+  const usedThisPhase = (state.usedAbilities || []).some((a) => a.phase === state.phase);
+  if (usedThisPhase) return false;
+  if (["speed", "combat"].includes(type)) {
+    const usedThisRound = (state.usedAbilities || []).some((a) => a.type === type);
+    if (usedThisRound) return false;
+  }
+  return true;
+}
 function canModifySpeed(state) {
+  if (!checkHeroLimits(state, "speed")) return false;
   return ["combat-start", "round-start"].includes(state.phase);
 }
 function canModifySpeedDice(state) {
@@ -32631,15 +32641,18 @@ function canModifyArmour(state) {
   return ["combat-start", "round-start", "apply-damage"].includes(state.phase);
 }
 function isHeroDamageRollPhase(state) {
+  if (!checkHeroLimits(state, "combat")) return false;
   return canModifyDamage(state) && state.winner === "hero";
 }
 function isEnemyDamageRollPhase(state) {
   return canModifyDamage(state) && state.winner === "enemy";
 }
 function isOwnerDamageRollPhase(state, context) {
+  if (context.owner === "hero" && !checkHeroLimits(state, "combat")) return false;
   return canModifyDamage(state) && state.winner === context.owner;
 }
 function isOpponentDamageRollPhase(state, context) {
+  if (context.owner === "hero" && !checkHeroLimits(state, "combat")) return false;
   return canModifyDamage(state) && state.winner === getOpponent(context.owner);
 }
 function createStatModifierAbility(config) {
@@ -33479,7 +33492,8 @@ registerAbility(createStatModifierAbility({
   description: "Avoid damage",
   stats: { armour: 200 },
   duration: 1,
-  target: "hero"
+  target: "hero",
+  canActivate: (state) => state.phase === "damage-roll" && state.winner === "enemy"
 }));
 registerAbility(createRetaliationAbility({
   name: "Sideswipe",
@@ -34244,6 +34258,10 @@ registerAbility({
   name: "Regrowth",
   type: "modifier",
   description: "Instantly restore 6 health. Multiple items can each be used once.",
+  canActivate: (state, { owner }) => {
+    const char = getCombatant(state, owner);
+    return char.stats.health < char.stats.maxHealth;
+  },
   onActivate: (state, { owner }) => {
     return healDamage(state, "Regrowth", owner, 6);
   }
@@ -38048,23 +38066,47 @@ function activateAbility(state, rawAbilityName) {
   if (!ability || !ability.uses || ability.uses <= 0) return state;
   const definition = getAbilityDefinition(abilityName);
   if (!definition || !definition.onActivate) return state;
-  if (["speed", "combat"].includes(definition.type)) {
-    const used = state.usedAbilities || [];
-    if (used.some((a) => a.type === definition.type)) {
+  const isActive = ["speed", "combat", "modifier"].includes(definition.type);
+  const context = { owner: ability.owner, ability };
+  if (definition.canActivate) {
+    if (!definition.canActivate(state, context)) {
       return state;
     }
   }
-  state = definition.onActivate(state, { owner: ability.owner, ability });
+  if (!definition.canActivate) {
+    if (isActive) {
+      const usedThisPhase = (state.usedAbilities || []).some((a) => a.phase === state.phase);
+      if (usedThisPhase) {
+        return state;
+      }
+    }
+    if (["speed", "combat"].includes(definition.type)) {
+      const used = state.usedAbilities || [];
+      if (used.some((a) => a.type === definition.type)) {
+        return state;
+      }
+    }
+    if (definition.type === "speed") {
+      if (state.phase !== "round-start") {
+        return state;
+      }
+    } else if (definition.type === "combat") {
+      if (state.phase !== "damage-roll" || state.winner !== ability.owner) {
+        return state;
+      }
+    }
+  }
+  state = definition.onActivate(state, context);
+  if (isActive) {
+    state = {
+      ...state,
+      usedAbilities: [...state.usedAbilities || [], { name: abilityName, type: definition.type, phase: state.phase }]
+    };
+  }
   if (state.pendingInteraction) {
     return state;
   }
   state = useAbility(state, "hero", abilityName);
-  if (["speed", "combat"].includes(definition.type)) {
-    state = {
-      ...state,
-      usedAbilities: [...state.usedAbilities || [], { name: abilityName, type: definition.type }]
-    };
-  }
   if (state.phase === "speed-roll" && state.heroSpeedRolls && state.enemySpeedRolls) {
     state = updateWinner(state);
   }
@@ -38081,13 +38123,6 @@ function resolveInteraction(state, data) {
   state = callback(state, data);
   if (ability.uses) {
     state = useAbility(state, ability.owner, ability.name);
-  }
-  const definition = getAbilityDefinition(ability.name);
-  if (definition && ["speed", "combat"].includes(definition.type)) {
-    state = {
-      ...state,
-      usedAbilities: [...state.usedAbilities || [], { name: ability.name, type: definition.type }]
-    };
   }
   if (requests.some((r2) => r2.type === "dice")) {
     if (state.phase === "speed-roll") {
@@ -38806,13 +38841,26 @@ const CombatBackpackItem = ({ item, onClick, disabled }) => {
 const CombatAbilitySelector = ({ combat, onActivateAbility, onUseBackbackItem }) => {
   const [selectedAbility, setSelectedAbility] = reactExports.useState(null);
   const canActivateAbility = (abilityName) => {
+    var _a;
     const def = getAbilityDefinition(abilityName);
     if (!def || def.type === "passive" || !def.onActivate) return false;
+    const isActive = ["speed", "combat", "modifier"].includes(def.type);
+    if (def.canActivate) {
+      return def.canActivate(combat, { owner: "hero" });
+    }
+    if (isActive && ((_a = combat.usedAbilities) == null ? void 0 : _a.some((a) => a.phase === combat.phase))) {
+      return false;
+    }
     if (["speed", "combat"].includes(def.type)) {
       const used = combat.usedAbilities || [];
       if (used.some((a) => a.type === def.type)) return false;
     }
-    if (def.canActivate) return def.canActivate(combat, { owner: "hero" });
+    if (def.type === "speed") {
+      return combat.phase === "round-start";
+    }
+    if (def.type === "combat") {
+      return combat.phase === "damage-roll" && combat.winner === "hero";
+    }
     return true;
   };
   const handleBackpackClick = (itemIndex) => {
@@ -40069,4 +40117,4 @@ function App() {
 client.createRoot(document.getElementById("root")).render(
   /* @__PURE__ */ jsxRuntimeExports.jsx(React.StrictMode, { children: /* @__PURE__ */ jsxRuntimeExports.jsx(App, {}) })
 );
-//# sourceMappingURL=index-oP15JoZM.js.map
+//# sourceMappingURL=index-CQxVyVSa.js.map
