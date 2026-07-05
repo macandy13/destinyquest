@@ -11,7 +11,7 @@
         "generate:enemies": "node scripts/generateEnemies.js > src/data/enemies.ts",
         "generate:items": "node scripts/generateItems.js > src/data/items.ts",
         "generate:backpack": "node scripts/generateBackpackItems.js > src/data/backpackItems.ts",
-        "capture": "node scripts/capture.js"
+        "test:smoke": "node scripts/capture.cjs"
     },
     "dependencies": {
         "glob": "^13.0.0",

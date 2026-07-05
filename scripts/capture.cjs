@@ -1,141 +1,330 @@
+const { spawn } = require('child_process');
 const puppeteer = require('puppeteer');
 const path = require('path');
 const fs = require('fs');
 
+const PORT = 5188;
+const BASE_URL = `http://localhost:${PORT}`;
+const SCREENSHOTS_DIR = path.join(__dirname, '../tests/screenshots');
+
+// Helper to wait
+const wait = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
+
 (async () => {
-    const browser = await puppeteer.launch({
-        headless: 'new',
-        args: ['--no-sandbox', '--disable-setuid-sandbox']
-    });
-    const page = await browser.newPage();
-    
-    // Set simulated mobile device viewport size
-    await page.setViewport({
-        width: 440,
-        height: 850,
-        deviceScaleFactor: 2,
-        isMobile: true,
-        hasTouch: true
+    // 1. Start Vite Server
+    console.log(`Starting Vite server on port ${PORT}...`);
+    const server = spawn('npx', ['vite', '--port', PORT.toString()], {
+        cwd: path.join(__dirname, '..'),
+        shell: true
     });
 
-    const outputDir = path.join(__dirname, '../tests/screenshots');
-    if (!fs.existsSync(outputDir)) {
-        fs.mkdirSync(outputDir, { recursive: true });
+    let serverReady = false;
+    server.stdout.on('data', (data) => {
+        const output = data.toString();
+        if (output.includes('ready in') || output.includes(PORT.toString())) {
+            serverReady = true;
+        }
+    });
+
+    server.stderr.on('data', (data) => {
+        console.error(`Vite error: ${data}`);
+    });
+
+    // Wait for server to boot (up to 5 seconds)
+    for (let i = 0; i < 10; i++) {
+        if (serverReady) break;
+        await wait(500);
     }
 
-    console.log('Navigating to local dev server...');
-    await page.goto('http://localhost:5174/', { waitUntil: 'networkidle2' });
+    if (!serverReady) {
+        console.error('Vite server failed to start');
+        server.kill();
+        process.exit(1);
+    }
 
-    console.log('Setting test hero in localStorage...');
-    await page.evaluate(() => {
-        const testHero = {
-            type: 'hero',
-            name: 'Mighty Gladiator',
-            path: 'Warrior',
-            career: 'Gladiator',
-            stats: {
-                speed: 3,
-                brawn: 4,
-                magic: 1,
-                armour: 2,
-                health: 45,
-                maxHealth: 45
-            },
-            equipment: {
-                mainHand: {
-                    id: 'sword1',
-                    name: 'Gladiator Sword',
-                    type: 'mainHand',
-                    stats: { brawn: 2, speed: 1 },
-                    abilities: ['Pound'],
-                    bookRef: { book: 'Core', act: 1 }
-                },
-                chest: {
-                    id: 'armour1',
-                    name: 'Gladiator Plate',
-                    type: 'chest',
-                    stats: { armour: 2 },
-                    abilities: ['Thorn Armour'],
-                    bookRef: { book: 'Core', act: 1 }
-                }
-            },
-            backpack: [
-                {
-                    id: 'potion1',
-                    name: 'Healing Potion',
-                    type: 'backpack',
-                    description: 'Restore 10 health',
-                    effect: { name: 'heal', value: 10 },
-                    bookRef: { book: 'Core', act: 1 }
-                },
-                null, null, null, null
-            ],
-            money: 100
-        };
-        localStorage.setItem('dq-hero-v1', JSON.stringify(testHero));
-    });
+    console.log('Server started. Running smoke test...');
 
-    console.log('Reloading to load test hero...');
-    await page.reload({ waitUntil: 'networkidle2' });
+    let browser;
+    try {
+        // Ensure screenshots directory exists
+        if (!fs.existsSync(SCREENSHOTS_DIR)) {
+            fs.mkdirSync(SCREENSHOTS_DIR, { recursive: true });
+        }
 
-    await page.waitForSelector('.nav-button');
-    const buttons = await page.$$('.nav-button');
-    await buttons[2].click();
+        // 2. Launch Puppeteer
+        browser = await puppeteer.launch({
+            headless: 'new',
+            args: ['--no-sandbox', '--disable-setuid-sandbox']
+        });
+        const page = await browser.newPage();
 
-    await page.waitForSelector('.tab-btn');
-    const tabBtns = await page.$$('.tab-btn');
-    await tabBtns[1].click();
+        await page.setViewport({
+            width: 440,
+            height: 850,
+            deviceScaleFactor: 2,
+            isMobile: true,
+            hasTouch: true
+        });
 
-    await page.waitForSelector('.custom-enemy-form .btn-secondary');
-    const fightDummyBtn = await page.$('.custom-enemy-form .btn-secondary');
-    await fightDummyBtn.click();
+        // 3. Clear localStorage for clean state
+        console.log('Navigating and clearing localStorage...');
+        await page.goto(BASE_URL, { waitUntil: 'networkidle2' });
+        await page.evaluate(() => localStorage.clear());
+        await page.reload({ waitUntil: 'networkidle2' });
 
-    await page.waitForSelector('.combat-arena');
+        // 4. Create Hero
+        console.log('Entering hero name...');
+        const inputEl = await page.waitForSelector('.hero-input');
+        await inputEl.click({ clickCount: 3 });
+        await page.keyboard.press('Backspace');
+        await page.type('.hero-input', 'Mighty Gladiator');
 
-    // 1. COMBAT START PHASE SCREENSHOT
-    console.log('Capturing: combat-start.png...');
-    await page.screenshot({ path: path.join(outputDir, 'combat-start.png') });
+        console.log('Selecting Warrior path...');
+        const selects = await page.$$('.hero-input');
+        await selects[1].select('Warrior');
+        await wait(500);
 
-    // 2. Click "Roll Speed Dice"
-    console.log('Clicking Roll Speed Dice...');
-    let actionBtn = await page.waitForSelector('.btn-phase-action');
-    await actionBtn.click();
-    await new Promise(r => setTimeout(r, 1000));
+        console.log('Selecting Gladiator career...');
+        const selectsUpdated = await page.$$('.hero-input');
+        await selectsUpdated[2].select('Gladiator');
+        await wait(500);
 
-    // 3. SPEED ROLL PHASE SCREENSHOT
-    console.log('Capturing: speed-roll.png...');
-    await page.screenshot({ path: path.join(outputDir, 'speed-roll.png') });
+        await page.screenshot({
+            path: path.join(SCREENSHOTS_DIR, '01-hero-created.png')
+        });
 
-    // 4. Click "Roll Damage Dice" or "Commit Speed..."
-    console.log('Clicking Roll Damage/Commit Speed...');
-    actionBtn = await page.waitForSelector('.btn-phase-action');
-    await actionBtn.click();
-    await new Promise(r => setTimeout(r, 1000));
+        // 5. Navigate to Inventory
+        console.log('Navigating to Inventory...');
+        await page.waitForSelector('.nav-button');
+        const navButtons = await page.$$('.nav-button');
+        await navButtons[1].click();
+        await wait(500);
 
-    // 5. DAMAGE ROLL PHASE SCREENSHOT
-    console.log('Capturing: damage-roll.png...');
-    await page.screenshot({ path: path.join(outputDir, 'damage-roll.png') });
+        await page.screenshot({
+            path: path.join(SCREENSHOTS_DIR, '02-inventory-tab.png')
+        });
 
-    // 6. Click "Confirm Damage Roll"
-    console.log('Clicking Confirm Damage...');
-    actionBtn = await page.waitForSelector('.btn-phase-action');
-    await actionBtn.click();
-    await new Promise(r => setTimeout(r, 1000));
+        // 6. Equip Main-Hand Weapon
+        console.log('Equipping Main weapon...');
+        const slots = await page.$$('.equipment-slot');
+        let foundMain = false;
+        for (const slot of slots) {
+            const label = await slot.$eval(
+                '.slot-label',
+                el => el.textContent
+            ).catch(() => null);
+            if (label === 'Main') {
+                await slot.click();
+                foundMain = true;
+                break;
+            }
+        }
+        if (!foundMain) throw new Error('Main Hand slot not found');
+        await wait(500);
 
-    // 7. APPLY DAMAGE / PASSIVE PHASE SCREENSHOT
-    console.log('Capturing: apply-damage.png...');
-    await page.screenshot({ path: path.join(outputDir, 'apply-damage.png') });
+        await page.waitForSelector('.dq-input');
+        await page.type('.dq-input', 'Skullbreaker');
+        await wait(500);
 
-    // 8. Click "Resolve Passive Abilities" or "Next Round"
-    console.log('Clicking Next Action...');
-    actionBtn = await page.waitForSelector('.btn-phase-action');
-    await actionBtn.click();
-    await new Promise(r => setTimeout(r, 1000));
+        await page.waitForSelector('.item-card');
+        const itemCards = await page.$$('.item-card');
+        let equippedWeapon = false;
+        for (const card of itemCards) {
+            const name = await card.$eval(
+                '.item-name',
+                el => el.textContent
+            ).catch(() => null);
+            if (name && name.includes('Skullbreaker')) {
+                await card.click();
+                equippedWeapon = true;
+                break;
+            }
+        }
+        if (!equippedWeapon) throw new Error('Skullbreaker not equipped');
+        await wait(500);
 
-    // 9. ROUND SUMMARY / PASSIVE DAMAGE SCREENSHOT
-    console.log('Capturing: round-summary.png...');
-    await page.screenshot({ path: path.join(outputDir, 'round-summary.png') });
+        // 7. Equip Chest Armour
+        console.log('Equipping Chest armor...');
+        const slots2 = await page.$$('.equipment-slot');
+        let foundChest = false;
+        for (const slot of slots2) {
+            const label = await slot.$eval(
+                '.slot-label',
+                el => el.textContent
+            ).catch(() => null);
+            if (label === 'Chest') {
+                await slot.click();
+                foundChest = true;
+                break;
+            }
+        }
+        if (!foundChest) throw new Error('Chest slot not found');
+        await wait(500);
 
-    await browser.close();
-    console.log('Finished capturing all phases.');
+        await page.waitForSelector('.dq-input');
+        await page.type('.dq-input', 'Goblin leathers');
+        await wait(500);
+
+        await page.waitForSelector('.item-card');
+        const itemCards2 = await page.$$('.item-card');
+        let equippedChest = false;
+        for (const card of itemCards2) {
+            const name = await card.$eval(
+                '.item-name',
+                el => el.textContent
+            ).catch(() => null);
+            if (name && name.includes('Goblin leathers')) {
+                await card.click();
+                equippedChest = true;
+                break;
+            }
+        }
+        if (!equippedChest) throw new Error('Goblin leathers not equipped');
+        await wait(500);
+
+        // 8. Equip Backpack Healing Potion
+        console.log('Equipping Healing Potion to backpack...');
+        await page.waitForSelector('.backpack-slot-wrapper');
+        const backpackSlots = await page.$$('.backpack-slot-wrapper');
+        await backpackSlots[0].click();
+        await wait(500);
+
+        await page.waitForSelector('.dq-input');
+        await page.type('.dq-input', 'Healing Potion');
+        await wait(500);
+
+        await page.waitForSelector('.item-card');
+        const itemCards3 = await page.$$('.item-card');
+        let equippedPotion = false;
+        for (const card of itemCards3) {
+            const name = await card.$eval(
+                '.item-name',
+                el => el.textContent
+            ).catch(() => null);
+            if (name && name.includes('Healing Potion')) {
+                await card.click();
+                equippedPotion = true;
+                break;
+            }
+        }
+        if (!equippedPotion) throw new Error('Healing Potion not equipped');
+        await wait(500);
+
+        await page.screenshot({
+            path: path.join(SCREENSHOTS_DIR, '03-equipped.png')
+        });
+
+        // 9. Navigate to Combat
+        console.log('Navigating to Combat...');
+        const navButtonsCombat = await page.$$('.nav-button');
+        await navButtonsCombat[2].click();
+        await wait(500);
+
+        await page.screenshot({
+            path: path.join(SCREENSHOTS_DIR, '04-combat-opponent-selection.png')
+        });
+
+        // 10. Select Custom Opponent and click Fight Dummy
+        console.log('Selecting Custom opponent tab...');
+        await page.waitForSelector('.tab-btn');
+        const tabBtns = await page.$$('.tab-btn');
+        await tabBtns[1].click();
+        await wait(500);
+
+        console.log('Starting fight with Training Dummy...');
+        await page.waitForSelector('.custom-enemy-form .btn-secondary');
+        const fightDummyBtn = await page.$(
+            '.custom-enemy-form .btn-secondary'
+        );
+        await fightDummyBtn.click();
+        await wait(1000);
+
+        // 11. Run through Combat
+        let screenshotIndex = 5;
+        while (true) {
+            const isEnded = await page.evaluate(() => {
+                const arena = document.querySelector('.combat-arena');
+                if (!arena) return false;
+                const text = arena.textContent || '';
+                return text.includes('VICTORY!') || text.includes('DEFEAT!');
+            });
+
+            if (isEnded) {
+                console.log('Combat finished!');
+                break;
+            }
+
+            const actionBtn = await page.$(
+                '.btn-primary.btn-phase-action'
+            );
+            if (actionBtn) {
+                const btnText = await page.evaluate(
+                    el => el.textContent.trim(),
+                    actionBtn
+                );
+                console.log(`Combat Action: clicking "${btnText}"`);
+
+                const cleanText = btnText.toLowerCase().replace(/\s+/g, '-');
+                const filename = `${String(screenshotIndex).padStart(
+                    2,
+                    '0'
+                )}-combat-${cleanText}.png`;
+
+                await page.screenshot({
+                    path: path.join(SCREENSHOTS_DIR, filename)
+                });
+                screenshotIndex++;
+
+                await actionBtn.click();
+                await wait(1000);
+            } else {
+                console.log('Waiting for action button...');
+                await wait(1000);
+            }
+        }
+
+        // 12. Combat End Phase Screenshot
+        const endFilename = `${String(screenshotIndex).padStart(
+            2,
+            '0'
+        )}-combat-end.png`;
+        await page.screenshot({
+            path: path.join(SCREENSHOTS_DIR, endFilename)
+        });
+        screenshotIndex++;
+
+        // 13. Exit Combat and restore health
+        console.log('Exiting combat and restoring health...');
+        const endButtons = await page.$$('button');
+        let exited = false;
+        for (const btn of endButtons) {
+            const text = await page.evaluate(el => el.textContent, btn);
+            if (text.includes('Restore Health')) {
+                await btn.click();
+                exited = true;
+                break;
+            }
+        }
+        if (!exited) throw new Error('Exit combat button not found');
+        await wait(1000);
+
+        // 14. Final Screenshot
+        const finalFilename = `${String(screenshotIndex).padStart(
+            2,
+            '0'
+        )}-returned-to-hero-sheet.png`;
+        await page.screenshot({
+            path: path.join(SCREENSHOTS_DIR, finalFilename)
+        });
+
+        console.log('🎉 E2E Smoke Test completed successfully!');
+        await browser.close();
+        server.kill();
+        process.exit(0);
+    } catch (err) {
+        console.error('❌ E2E Smoke Test failed:', err.message);
+        if (browser) await browser.close();
+        server.kill();
+        process.exit(1);
+    }
 })();
