@@ -15,11 +15,10 @@ describe('EnemySelector - Custom Enemy', () => {
         const brawnElement = screen.getByText(/Brawn/i);
         expect(brawnElement).toBeInTheDocument();
 
-        // Verify the offensive-stat-row shows 2
-        const row = brawnElement.closest('.offensive-stat-row') as
-            HTMLElement | null;
+        // Verify the stat-row shows 2
+        const row = brawnElement.closest('.stat-row') as HTMLElement;
         expect(row).toBeInTheDocument();
-        expect(within(row!).getByText('2')).toBeInTheDocument();
+        expect(within(row).getByText('2')).toBeInTheDocument();
     });
 
     it('toggles offensive mode and preserves values', () => {
@@ -36,10 +35,8 @@ describe('EnemySelector - Custom Enemy', () => {
         const magicElement = screen.getByText(/Magic/i);
         expect(magicElement).toBeInTheDocument();
 
-        // Verify Magic has preserved the value of 2
-        const row = magicElement.closest('.offensive-stat-row') as
-            HTMLElement | null;
-        expect(within(row!).getByText('2')).toBeInTheDocument();
+        const row = magicElement.closest('.stat-row') as HTMLElement;
+        expect(within(row).getByText('2')).toBeInTheDocument();
 
         // Click Start Fight
         fireEvent.click(screen.getByRole('button', { name: /Start Fight/i }));
