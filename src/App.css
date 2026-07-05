@@ -28,8 +28,7 @@
     min-height: 0;
     display: flex;
     flex-direction: column;
-    padding: var(--spacing-md) var(--spacing-md) 0;
-    padding-bottom: var(--nav-height);
+    padding: var(--spacing-md);
     overflow: hidden;
 }
 
