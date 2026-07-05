@@ -114,7 +114,7 @@ export function modifyStat(
             const combatant = getCombatant(state, resolved);
             for (const [key, maxVal] of Object.entries(options.max)) {
                 const current =
-                    (combatant.stats as Record<string, number>)[key] ?? 0;
+                    combatant.stats[key as keyof Stats] ?? 0;
                 if (current >= (maxVal as number)) return state;
             }
         }
