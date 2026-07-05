@@ -1,5 +1,4 @@
 import { CombatState, addLogs } from '../../../types/combatState';
-import { CharacterType } from '../../../types/character';
 import { AbilityContext, registerAbility } from '../../abilityRegistry';
 import {
     rollDice,

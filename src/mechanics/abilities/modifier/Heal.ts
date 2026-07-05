@@ -1,17 +1,14 @@
-import { registerAbility } from '../../abilityRegistry';
-import { healDamage, getCombatant } from '../../../types/combatState';
+import { defineAbility, heal } from '../builders';
+import { getCombatant } from '../../../types/combatState';
 
-registerAbility({
+defineAbility({
     name: 'Heal',
     type: 'modifier',
-    description: 'Instantly restore 4 health.',
     icon: '❤️',
-    reviewed: true,
+    description: 'Instantly restore 4 health.',
     canActivate: (state, { owner }) => {
         const char = getCombatant(state, owner);
         return char.stats.health < char.stats.maxHealth;
     },
-    onActivate: (state, { owner }) => {
-        return healDamage(state, 'Heal', owner, 4);
-    }
+    effect: heal(4, 'owner'),
 });

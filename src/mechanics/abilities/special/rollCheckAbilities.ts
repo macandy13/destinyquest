@@ -1,4 +1,4 @@
-import { getCombatant, dealDamage, healDamage } from '../../../types/combatState';
+import { getCombatant, dealDamage } from '../../../types/combatState';
 import { getOpponent } from '../../../types/character';
 import {
     defineAbility,
@@ -6,10 +6,8 @@ import {
     onRoundStart,
     onRoundEnd,
     roll,
-    always,
     dealDamage as dmg,
     heal,
-    modifyStat,
     type Effect,
 } from '../builders';
 

@@ -5,6 +5,7 @@ import {
     healDamage,
     addLogs,
     getCombatant,
+    skipDamagePhase,
 } from '../../../types/combatState';
 import { CharacterType, getOpponent } from '../../../types/character';
 import { Stats } from '../../../types/stats';
@@ -13,14 +14,16 @@ export type TargetType =
     | 'hero'
     | 'enemy'
     | 'owner'
-    | 'opponent';
+    | 'opponent'
+    | 'winner'
+    | 'loser';
 
 /**
  * Resolves a TargetType to a concrete CharacterType given
  * the ability owner in the current state.
  */
 export function resolveEffectTarget(
-    _state: CombatState,
+    state: CombatState,
     owner: CharacterType,
     target: TargetType,
 ): CharacterType {
@@ -29,6 +32,8 @@ export function resolveEffectTarget(
         case 'enemy': return 'enemy';
         case 'owner': return owner;
         case 'opponent': return getOpponent(owner);
+        case 'winner': return state.winner!;
+        case 'loser': return getOpponent(state.winner!);
     }
 }
 
@@ -109,7 +114,7 @@ export function modifyStat(
             const combatant = getCombatant(state, resolved);
             for (const [key, maxVal] of Object.entries(options.max)) {
                 const current =
-                    (combatant.stats as Record<string, number>)[key] ?? 0;
+                    combatant.stats[key as keyof Stats] ?? 0;
                 if (current >= (maxVal as number)) return state;
             }
         }
@@ -141,5 +146,12 @@ export function cancelDamage(): Effect {
         return addLogs(state, {
             message: `${owner} is immune to ${source}.`,
         });
+    };
+}
+
+/** Skips/blocks the normal damage phase of the round. */
+export function skipDamage(): Effect {
+    return (state, source) => {
+        return skipDamagePhase(state, `Ability ${source} blocked damage`);
     };
 }

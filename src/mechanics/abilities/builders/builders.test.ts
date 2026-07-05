@@ -8,6 +8,7 @@ import {
     INITIAL_STATE,
 } from '../../../tests/testUtils';
 import '../../allAbilities';
+import { defineAbility, modifyStat, dealDamage, onRoundStart, always } from './index';
 
 // These tests verify the defineAbility builder by exercising abilities
 // that were migrated to use it, covering each trigger type.
@@ -203,6 +204,52 @@ describe('defineAbility builder', () => {
             );
             expect(effect).toBeDefined();
             expect(effect?.stats.speedDice).toBe(1);
+        });
+    });
+
+    // -------------------------------------------------------------------------
+    // Active abilities and target resolution (winner/loser, skipDamage)
+    // -------------------------------------------------------------------------
+    describe('Active abilities and new effects', () => {
+        it('supports active abilities with canActivate and onActivate', () => {
+            let activeState = state;
+            const canActivateMock = (s: CombatState) => s.phase === 'speed-roll';
+
+            defineAbility({
+                name: 'Test Active speed',
+                description: 'Add speed',
+                canActivate: canActivateMock,
+                effect: modifyStat({ speed: 2 }, 'owner', { duration: 1 }),
+            });
+
+            const def = requireAbilityDefinition('Test Active speed');
+            expect(def.canActivate).toBe(canActivateMock);
+            expect(def.onActivate).toBeDefined();
+
+            // Should not activate if canActivate is false
+            activeState.phase = 'combat-start';
+            let resultState = def.onActivate!(activeState, { owner: 'hero' });
+            expect(resultState.hero.activeEffects.length).toBe(0);
+
+            // Should activate if canActivate is true
+            activeState.phase = 'speed-roll';
+            resultState = def.onActivate!(activeState, { owner: 'hero' });
+            expect(resultState.hero.activeEffects[0].stats.speed).toBe(2);
+        });
+
+        it('supports resolving winner and loser targets', () => {
+            let activeState: CombatState = { ...state, winner: 'hero' as const };
+
+            defineAbility({
+                name: 'Test Winner damage',
+                description: 'deals damage to loser',
+                trigger: onRoundStart(always()),
+                effect: dealDamage(3, 'loser'),
+            });
+
+            const def = requireAbilityDefinition('Test Winner damage');
+            activeState = def.onRoundStart!(activeState, { owner: 'hero' });
+            expect(activeState.enemies[0].stats.health).toBe(17);
         });
     });
 });

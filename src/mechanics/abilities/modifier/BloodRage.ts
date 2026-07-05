@@ -1,7 +1,7 @@
-import { registerAbility } from '../../abilityRegistry';
+import { defineAbility } from '../builders';
 import { appendEffect, hasEffect } from '../../../types/combatState';
 
-registerAbility({
+defineAbility({
     name: 'Blood Rage',
     type: 'modifier',
     description: 'If you win two consecutive rounds and cause health damage in both, your brawn increases by 2 for the remainder of the combat.',

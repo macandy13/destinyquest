@@ -1,12 +1,8 @@
-import { registerAbility } from '../../abilityRegistry';
-import { createStatModifierAbility } from '../abilityFactories';
+import { defineAbility, modifyStat } from '../builders';
 
-registerAbility(createStatModifierAbility({
+defineAbility({
     name: 'Focus',
     type: 'modifier',
     description: 'Raise magic by 3 for one round.',
-    stats: {
-        magic: 3
-    },
-    duration: 1
-}));
+    effect: modifyStat({ magic: 3 }, 'owner', { duration: 1 }),
+});

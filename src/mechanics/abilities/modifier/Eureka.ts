@@ -1,13 +1,9 @@
-import { registerAbility } from '../../abilityRegistry';
-import { createStatModifierAbility } from '../abilityFactories';
+import { defineAbility, modifyStat } from '../builders';
 
-registerAbility(createStatModifierAbility({
+defineAbility({
     name: 'Eureka',
     type: 'modifier',
     description: 'Raise speed, brawn, or magic by 1 for one round. Used once per combat.',
     // TODO: Implement choice. Defaulting to Brawn.
-    stats: {
-        brawn: 1
-    },
-    duration: 1
-}));
+    effect: modifyStat({ brawn: 1 }, 'owner', { duration: 1 }),
+});

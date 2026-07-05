@@ -9,7 +9,7 @@
  */
 
 export { type Effect, type TargetType, resolveEffectTarget,
-    dealDamage, heal, modifyStat, cancelDamage,
+    dealDamage, heal, modifyStat, cancelDamage, skipDamage,
 } from './effects';
 
 export {
