@@ -7059,6 +7059,20 @@ const BOOKS = [
 const STORAGE_KEY$1 = "dq-book-filter-v1";
 function loadFilter() {
   try {
+    if (typeof window !== "undefined") {
+      const params = new URLSearchParams(window.location.search);
+      const bookParam = params.get("book");
+      const actParam = params.get("act");
+      if (bookParam) {
+        if (actParam) {
+          const act = parseInt(actParam, 10);
+          if (!isNaN(act)) {
+            return { type: "act", book: bookParam, act };
+          }
+        }
+        return { type: "book", book: bookParam };
+      }
+    }
     const saved = localStorage.getItem(STORAGE_KEY$1);
     if (saved) {
       return JSON.parse(saved);
@@ -37740,7 +37754,7 @@ const EnemySelector = ({
             }
           )
         ] }),
-        /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "stat-row offensive-stat-row", children: [
+        /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "stat-row", children: [
           /* @__PURE__ */ jsxRuntimeExports.jsx(
             "span",
             {
@@ -40055,4 +40069,4 @@ function App() {
 client.createRoot(document.getElementById("root")).render(
   /* @__PURE__ */ jsxRuntimeExports.jsx(React.StrictMode, { children: /* @__PURE__ */ jsxRuntimeExports.jsx(App, {}) })
 );
-//# sourceMappingURL=index-4XEHxPgM.js.map
+//# sourceMappingURL=index-B_OqpPwI.js.map
