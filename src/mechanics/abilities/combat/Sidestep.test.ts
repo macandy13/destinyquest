@@ -13,7 +13,7 @@ describe('Sidestep', () => {
     });
 
     it('should boost armour by 200 on activation', () => {
-        const state = { ...INITIAL_STATE };
+        const state = { ...INITIAL_STATE, phase: 'damage-roll' as const, winner: 'enemy' as const };
         const updates = ability.onActivate?.(state, { owner: 'hero' });
 
         expect(updates!.hero!.activeEffects).toHaveLength(1);

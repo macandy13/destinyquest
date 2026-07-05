@@ -208,29 +208,58 @@ export function activateAbility(state: CombatState, rawAbilityName: string): Com
     const definition = getAbilityDefinition(abilityName);
     if (!definition || !definition.onActivate) return state;
 
-    // Check usage limits, some types can only be used once per round.
-    // TODO: Look-up the rule for that again.
-    if (['speed', 'combat'].includes(definition.type)) {
-        const used = state.usedAbilities || [];
-        if (used.some(a => a.type === definition.type)) {
+    const isActive = ['speed', 'combat', 'modifier'].includes(definition.type);
+    const context = { owner: ability.owner, ability };
+
+    // Check timing/phase validation & limits
+    if (definition.canActivate) {
+        if (!definition.canActivate(state, context)) {
             return state;
         }
     }
 
-    state = definition.onActivate(state, { owner: ability.owner, ability });
+    if (!definition.canActivate) {
+        // Enforce phase limit by default for active abilities
+        if (isActive) {
+            const usedThisPhase = (state.usedAbilities || []).some(a => a.phase === state.phase);
+            if (usedThisPhase) {
+                return state;
+            }
+        }
+
+        // Check usage limits, some types can only be used once per round by default.
+        if (['speed', 'combat'].includes(definition.type)) {
+            const used = state.usedAbilities || [];
+            if (used.some(a => a.type === definition.type)) {
+                return state;
+            }
+        }
+
+        if (definition.type === 'speed') {
+            if (state.phase !== 'round-start') {
+                return state;
+            }
+        } else if (definition.type === 'combat') {
+            if (state.phase !== 'damage-roll' || state.winner !== ability.owner) {
+                return state;
+            }
+        }
+    }
+
+    state = definition.onActivate(state, context);
+
+    if (isActive) {
+        state = {
+            ...state,
+            usedAbilities: [...(state.usedAbilities || []), { name: abilityName, type: definition.type, phase: state.phase }]
+        };
+    }
+
     if (state.pendingInteraction) {
         return state;
     }
 
     state = useAbility(state, 'hero', abilityName);
-
-    // Track usage
-    if (['speed', 'combat'].includes(definition.type)) {
-        state = {
-            ...state,
-            usedAbilities: [...(state.usedAbilities || []), { name: abilityName, type: definition.type }]
-        };
-    }
 
     // Recalculate winner if speed rolls were modified (e.g. Trickster)
     if (state.phase === 'speed-roll' && state.heroSpeedRolls && state.enemySpeedRolls) {
@@ -251,19 +280,8 @@ export function resolveInteraction(state: CombatState, data: InteractionResponse
     state = callback(state, data);
 
     // Decrement uses via useAbility helper to ensure immutability
-    // We assume the ability name in pendingInteraction matches the one in activeAbilities
-    // Note: pendingInteraction.ability is a snapshot, so we use its name to look up and decrement the current state's version.
     if (ability.uses) {
         state = useAbility(state, ability.owner, ability.name);
-    }
-
-    // Track usage for interactions (as they were delayed activations)
-    const definition = getAbilityDefinition(ability.name);
-    if (definition && ['speed', 'combat'].includes(definition.type)) {
-        state = {
-            ...state,
-            usedAbilities: [...(state.usedAbilities || []), { name: ability.name, type: definition.type }]
-        };
     }
 
     if (requests.some(r => r.type === 'dice')) {

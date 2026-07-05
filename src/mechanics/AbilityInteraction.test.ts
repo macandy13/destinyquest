@@ -1,7 +1,7 @@
 import { describe, it, expect } from 'vitest';
 import { activateAbility, resolveInteraction, cancelInteraction, startCombat } from './CombatEngine';
 import { registerAbility, AbilityDefinition } from './abilityRegistry';
-import { addLogs } from '../types/combatState';
+import { addLogs, setDamageRoll } from '../types/combatState';
 import { Hero } from '../types/hero';
 import { Enemy } from '../types/character';
 
@@ -54,6 +54,8 @@ describe('Ability Interactions', () => {
 
         // 2. Start combat and give hero the ability
         let state = startCombat(MOCK_HERO, [MOCK_ENEMY]);
+        state = setDamageRoll(state, [{ value: 3, isRerolled: false }]);
+        state.winner = 'hero';
         state.hero.activeAbilities.set('dice-selector', {
             name: 'Dice Selector',
             owner: 'hero',
@@ -107,6 +109,8 @@ describe('Ability Interactions', () => {
         registerAbility(testAbility);
 
         let state = startCombat(MOCK_HERO, [MOCK_ENEMY]);
+        state = setDamageRoll(state, [{ value: 3, isRerolled: false }]);
+        state.winner = 'hero';
         state.hero.activeAbilities.set('cancellable-ability', {
             name: 'Cancellable Ability',
             owner: 'hero',

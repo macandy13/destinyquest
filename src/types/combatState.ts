@@ -112,7 +112,7 @@ export interface CombatState {
     pendingInteraction?: PendingInteraction;
 
     /* Abilities used in the current round */
-    usedAbilities?: { name: string; type: AbilityType }[];
+    usedAbilities?: { name: string; type: AbilityType; phase: CombatPhase }[];
 
     /* Items used in the current round */
     itemsUsedThisRound?: number;

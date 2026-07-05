@@ -7,5 +7,6 @@ registerAbility(createStatModifierAbility({
     description: 'Avoid damage',
     stats: { armour: 200 },
     duration: 1,
-    target: 'hero'
+    target: 'hero',
+    canActivate: (state) => state.phase === 'damage-roll' && state.winner === 'enemy',
 }));

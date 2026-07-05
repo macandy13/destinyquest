@@ -25,7 +25,20 @@ export function resolveTarget(state: CombatState, context: AbilityContext, targe
     }
 }
 
+function checkHeroLimits(state: CombatState, type: AbilityType): boolean {
+    const usedThisPhase = (state.usedAbilities || []).some(a => a.phase === state.phase);
+    if (usedThisPhase) return false;
+
+    if (['speed', 'combat'].includes(type)) {
+        const usedThisRound = (state.usedAbilities || []).some(a => a.type === type);
+        if (usedThisRound) return false;
+    }
+
+    return true;
+}
+
 export function canModifySpeed(state: CombatState): boolean {
+    if (!checkHeroLimits(state, 'speed')) return false;
     return ['combat-start', 'round-start'].includes(state.phase);
 }
 export function canModifySpeedDice(state: CombatState): boolean {
@@ -49,6 +62,7 @@ export function canModifyArmour(state: CombatState): boolean {
 }
 
 export function isHeroDamageRollPhase(state: CombatState): boolean {
+    if (!checkHeroLimits(state, 'combat')) return false;
     return canModifyDamage(state) && state.winner === 'hero';
 };
 
@@ -57,10 +71,12 @@ export function isEnemyDamageRollPhase(state: CombatState): boolean {
 };
 
 export function isOwnerDamageRollPhase(state: CombatState, context: AbilityContext): boolean {
+    if (context.owner === 'hero' && !checkHeroLimits(state, 'combat')) return false;
     return canModifyDamage(state) && state.winner === context.owner;
 };
 
 export function isOpponentDamageRollPhase(state: CombatState, context: AbilityContext): boolean {
+    if (context.owner === 'hero' && !checkHeroLimits(state, 'combat')) return false;
     return canModifyDamage(state) && state.winner === getOpponent(context.owner);
 };
 

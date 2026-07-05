@@ -20,13 +20,29 @@ const CombatAbilitySelector: React.FC<CombatAbilitySelectorProps> = ({ combat, o
         const def = getAbilityDefinition(abilityName);
         if (!def || def.type === 'passive' || !def.onActivate) return false;
 
+        const isActive = ['speed', 'combat', 'modifier'].includes(def.type);
+
+        if (def.canActivate) {
+            return def.canActivate(combat, { owner: 'hero' });
+        }
+
+        // Check phase limits
+        if (isActive && combat.usedAbilities?.some(a => a.phase === combat.phase)) {
+            return false;
+        }
+
         // Check per-round limits
         if (['speed', 'combat'].includes(def.type)) {
             const used = combat.usedAbilities || [];
             if (used.some(a => a.type === def.type)) return false;
         }
 
-        if (def.canActivate) return def.canActivate(combat, { owner: 'hero' });
+        if (def.type === 'speed') {
+            return combat.phase === 'round-start';
+        }
+        if (def.type === 'combat') {
+            return combat.phase === 'damage-roll' && combat.winner === 'hero';
+        }
         return true;
     };
 

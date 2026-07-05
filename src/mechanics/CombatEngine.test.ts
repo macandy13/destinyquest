@@ -224,6 +224,8 @@ describe('CombatEngine', () => {
 
             expect(state.hero.activeAbilities.get(toCanonicalName(abilityName))?.uses).toBe(1);
 
+            state.phase = 'damage-roll';
+            state.winner = 'hero';
             state = activateAbility(state, abilityName);
             expect(state.hero.activeAbilities.has(toCanonicalName(abilityName))).toBe(false); // Should be removed if uses 0
         });
