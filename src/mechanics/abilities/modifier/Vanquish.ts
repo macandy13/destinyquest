@@ -1,12 +1,8 @@
-import { registerAbility } from '../../abilityRegistry';
-import { createStatModifierAbility } from '../abilityFactories';
+import { defineAbility, modifyStat } from '../builders';
 
-registerAbility(createStatModifierAbility({
+defineAbility({
     name: 'Vanquish',
     type: 'modifier',
     description: 'Raise brawn by 2 for one round.',
-    stats: {
-        brawn: 2
-    },
-    duration: 1
-}));
+    effect: modifyStat({ brawn: 2 }, 'owner', { duration: 1 }),
+});

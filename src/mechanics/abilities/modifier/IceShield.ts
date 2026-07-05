@@ -1,14 +1,9 @@
-import { registerAbility } from '../../abilityRegistry';
-import { createStatModifierAbility } from '../abilityFactories';
+import { defineAbility, modifyStat } from '../builders';
 
-
-registerAbility(createStatModifierAbility({
+defineAbility({
     name: 'Ice Shield',
     type: 'modifier',
     description: 'Add 1 die to your armour score for one round.',
-    stats: {
-        // TODO: This should be determined by a die.
-        armour: 3
-    },
-    duration: 1
-}));
+    // TODO: This should be determined by a die.
+    effect: modifyStat({ armour: 3 }, 'owner', { duration: 1 }),
+});

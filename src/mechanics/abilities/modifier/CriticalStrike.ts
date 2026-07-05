@@ -1,9 +1,9 @@
+import { defineAbility } from '../builders';
 import { modifyDamageRolls } from '../../../types/combatState';
 import { deterministicRoll } from '../../../types/dice';
-import { registerAbility } from '../../abilityRegistry';
 import { canModifyDamage } from '../abilityFactories';
 
-registerAbility({
+defineAbility({
     name: 'Critical Strike',
     type: 'modifier',
     description: 'All 6s',

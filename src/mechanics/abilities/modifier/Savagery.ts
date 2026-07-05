@@ -1,8 +1,8 @@
-import { registerAbility } from '../../abilityRegistry';
+import { defineAbility } from '../builders';
 import { appendEffect } from '../../../types/combatState';
 import { Stats } from '../../../types/stats';
 
-registerAbility({
+defineAbility({
     name: 'Savagery',
     type: 'modifier',
     description: 'Raise brawn or magic by 2 for one round.',

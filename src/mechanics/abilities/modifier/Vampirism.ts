@@ -1,7 +1,7 @@
-import { registerAbility } from '../../abilityRegistry';
+import { defineAbility } from '../builders';
 import { healDamage } from '../../../types/combatState';
 
-registerAbility({
+defineAbility({
     name: 'Vampirism',
     type: 'modifier',
     description: 'Heal for half the amount of health damage you inflict (rounding up).',

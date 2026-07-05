@@ -5,71 +5,66 @@ import {
 } from '../../../types/combatState';
 import { CharacterType } from '../../../types/character';
 import { AbilityType } from '../../../types/abilityDescription';
-import { AbilityContext, registerAbility } from '../../abilityRegistry';
+import { AbilityContext, registerAbility, AbilityHooks } from '../../abilityRegistry';
 import { Effect, resolveEffectTarget } from './effects';
 import { DamageContext, Trigger } from './triggers';
 
-export interface AbilityConfig {
+export interface AbilityConfig extends Partial<AbilityHooks> {
     name: string;
     description: string;
     icon?: string;
     type?: AbilityType;
-    trigger: Trigger;
-    effect: Effect;
+    trigger?: Trigger;
+    effect?: Effect;
 }
 
 /**
- * Declares a special ability using a trigger and an effect function.
+ * Declares an ability using composable triggers and effect functions.
  * Registers it in the global ability registry.
- *
- * @example
- * defineAbility({
- *   name: 'Hellfire',
- *   description: '...',
- *   trigger: onRoundEnd(always()),
- *   effect: dealDamage(2, 'hero'),
- * });
  */
 export function defineAbility(config: AbilityConfig): void {
-    const { name, description, icon, trigger, effect } = config;
+    const { name, description, icon, trigger, effect, ...customHooks } = config;
 
     function runEffect(
         state: CombatState,
         owner: CharacterType,
         damageDealt?: number,
     ): CombatState {
+        if (!effect) return state;
         return effect(state, name, owner, damageDealt);
     }
 
-    const hookName = trigger.hook;
-    const { activationPattern } = trigger;
+    let hookName: string | undefined;
+    let activationPattern: any | undefined;
+    let primaryCondition: any | undefined;
 
-    // ----- Build the primary hook body -----
+    if (trigger) {
+        hookName = trigger.hook;
+        activationPattern = trigger.activationPattern;
 
-    // When an activationPattern is present, the primary hook (always
-    // onPassiveAbility) should check for the presence of the marker
-    // effect instead of the user-supplied condition.
-    const primaryCondition = activationPattern
-        ? (state: CombatState, context: AbilityContext): {
-              triggered: boolean;
-              state: CombatState;
-          } => {
-              const resolved = resolveEffectTarget(
-                  state,
-                  context.owner,
-                  activationPattern.markerTarget,
-              );
-              return hasEffect(state, resolved, name)
-                  ? { triggered: true, state }
-                  : { triggered: false, state };
-          }
-        : trigger.condition;
+        primaryCondition = activationPattern
+            ? (state: CombatState, context: AbilityContext): {
+                  triggered: boolean;
+                  state: CombatState;
+              } => {
+                  const resolved = resolveEffectTarget(
+                      state,
+                      context.owner,
+                      activationPattern.markerTarget,
+                  );
+                  return hasEffect(state, resolved, name)
+                      ? { triggered: true, state }
+                      : { triggered: false, state };
+              }
+            : trigger.condition;
+    }
 
     function applyPrimaryHook(
         state: CombatState,
         context: AbilityContext,
         extra?: DamageContext,
     ): CombatState {
+        if (!primaryCondition) return state;
         const { triggered, state: newState } = primaryCondition(
             state,
             context,
@@ -79,61 +74,68 @@ export function defineAbility(config: AbilityConfig): void {
         return runEffect(newState, context.owner, extra?.damageDealt);
     }
 
-    // ----- Build the onDamageDealt hook -----
-    // This is needed for:
-    //   (a) onDamageTaken trigger (immunity, retaliation)
-    //   (b) activationPattern marker-setting
-    // Both may be needed simultaneously in the future but currently
-    // activationPattern always pairs with onPassiveAbility, not
-    // onDamageDealt as primary.
+    let onDamageDealt: any | undefined;
 
-    let onDamageDealt:
-        | ((
-              state: CombatState,
-              context: AbilityContext,
-              source: string,
-              damageDealt: number,
-          ) => CombatState)
-        | undefined;
-
-    if (hookName === 'onDamageDealt') {
-        onDamageDealt = (state, context, source, damageDealt) => {
-            const extra: DamageContext = {
-                damageDealt,
-                source,
-                target: context.target!,
+    if (trigger) {
+        if (hookName === 'onDamageDealt') {
+            onDamageDealt = (
+                state: CombatState,
+                context: AbilityContext,
+                source: string,
+                damageDealt: number,
+            ) => {
+                const extra: DamageContext = {
+                    damageDealt,
+                    source,
+                    target: context.target!,
+                };
+                return applyPrimaryHook(state, context, extra);
             };
-            return applyPrimaryHook(state, context, extra);
-        };
+        }
+
+        if (activationPattern) {
+            const { activationCondition, markerTarget } = activationPattern;
+            onDamageDealt = (
+                state: CombatState,
+                context: AbilityContext,
+                source: string,
+                damageDealt: number,
+            ) => {
+                const extra: DamageContext = {
+                    damageDealt,
+                    source,
+                    target: context.target!,
+                };
+                const { triggered, state: s } = activationCondition(
+                    state,
+                    context,
+                    extra,
+                );
+                if (!triggered) return s;
+
+                const resolved = resolveEffectTarget(s, context.owner, markerTarget);
+                if (hasEffect(s, resolved, name)) return s;
+
+                return appendEffect(s, resolved, {
+                    stats: {},
+                    source: name,
+                    target: resolved,
+                    duration: undefined,
+                    visible: false,
+                });
+            };
+        }
     }
 
-    if (activationPattern) {
-        const { activationCondition, markerTarget } = activationPattern;
-        onDamageDealt = (state, context, source, damageDealt) => {
-            const extra: DamageContext = {
-                damageDealt,
-                source,
-                target: context.target!,
-            };
-            const { triggered, state: s } = activationCondition(
-                state,
-                context,
-                extra,
-            );
-            if (!triggered) return s;
-
-            const resolved = resolveEffectTarget(s, context.owner, markerTarget);
-            if (hasEffect(s, resolved, name)) return s;
-
-            return appendEffect(s, resolved, {
-                stats: {},
-                source: name,
-                target: resolved,
-                duration: undefined,
-                visible: false,
-            });
-        };
-    }
+    const onActivate =
+        !trigger && effect
+            ? (state: CombatState, context: AbilityContext): CombatState => {
+                  if (config.canActivate && !config.canActivate(state, context)) {
+                      return state;
+                  }
+                  return effect(state, name, context.owner);
+              }
+            : undefined;
 
     registerAbility({
         name,
@@ -157,6 +159,19 @@ export function defineAbility(config: AbilityConfig): void {
                 ? (state, context) => applyPrimaryHook(state, context)
                 : undefined,
 
+        onSpeedRoll:
+            hookName === 'onSpeedRoll'
+                ? (state, context) => applyPrimaryHook(state, context)
+                : undefined,
+
+        onDamageRoll:
+            hookName === 'onDamageRoll'
+                ? (state, context) => applyPrimaryHook(state, context)
+                : undefined,
+
         onDamageDealt,
+        onActivate,
+
+        ...customHooks,
     });
 }

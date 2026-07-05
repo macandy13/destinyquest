@@ -1,12 +1,8 @@
-import { registerAbility } from '../../abilityRegistry';
-import { createStatModifierAbility } from '../abilityFactories';
+import { defineAbility, modifyStat } from '../builders';
 
-registerAbility(createStatModifierAbility({
+defineAbility({
     name: 'Bright Shield',
     type: 'modifier',
     description: 'Raise your armour by 4 for one combat round.',
-    stats: {
-        armour: 4
-    },
-    duration: 1
-}));
+    effect: modifyStat({ armour: 4 }, 'owner', { duration: 1 }),
+});
